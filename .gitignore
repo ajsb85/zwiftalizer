@@ -1,0 +1,22 @@
+# ignore aws creds
+aws-credentials.json
+
+# node logs
+npm-debug.log*
+
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+build/Release
+
+# Optional npm cache directory
+.npm
+
+node_modules
+
+# mac cruft
+.DS_Store
