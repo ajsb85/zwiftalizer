@@ -71,43 +71,49 @@ class Navigation extends React.Component {
 
   render() {
     return (
-      <div className="container" style={{
-        marginTop: '2rem'
-      }}>
-        <div className="row">
-          <div className="col-xs-12 col-sm-2">
-            <div className={styles.brand}>
-              <span className={styles.signal}>
-                <i className="fa fa-line-chart" aria-hidden="true"></i>
-              </span>&nbsp;Zwiftalizer
-            </div>
-          </div>
-          <div className="col-xs-12 col-sm-offset-4 col-sm-3 col-md-offset-6 col-md-2">
-            <div className={styles.navItem}>
-              <a onClick={this.handleDemoClick}>
-                <i className='fa fa-download'></i>&nbsp;Demo
-              </a>
-            </div>
-          </div>
-          <div className="col-xs-12 col-sm-3 col-md-2">
-            <div className={styles.navItem}>
-              <a onClick={this.handleAboutClick}>
-                <i className='fa fa-info-circle'></i>
-              </a>&nbsp;
-              <a onClick={this.handleTwitterClick}>
-                <i className='fa fa-twitter-square'></i>
-              </a>&nbsp;
-              <a onClick={this.handleSupportClick}>
-                <i className='fa fa-paypal'></i>
-              </a>&nbsp;
-              <a onClick={this.handleGithubClick}>
-                <i className='fa fa-github'></i>
-              </a>
-            </div>
-          </div>
+
+      <div>
+        <div className={styles.ribbonWrapper}>
+          <div className={styles.ribbon}>BETA</div>
         </div>
-        <About/>
-        <Support/>
+        <div className="container" style={{
+          marginTop: '2rem'
+        }}>
+          <div className="row">
+            <div className="col-xs-12 col-sm-2">
+              <div className={styles.brand}>
+                <span className={styles.signal}>
+                  <i className="fa fa-line-chart" aria-hidden="true"></i>
+                </span>&nbsp;Zwiftalizer
+              </div>
+            </div>
+            <div className="col-xs-12 col-sm-offset-4 col-sm-3 col-md-offset-6 col-md-2">
+              <div className={styles.navItem}>
+                <a onClick={this.handleDemoClick}>
+                  <i className='fa fa-download'></i>&nbsp;Demo
+                </a>
+              </div>
+            </div>
+            <div className="col-xs-12 col-sm-3 col-md-2">
+              <div className={styles.navItem}>
+                <a onClick={this.handleAboutClick}>
+                  <i className='fa fa-info-circle'></i>
+                </a>&nbsp;
+                <a onClick={this.handleTwitterClick}>
+                  <i className='fa fa-twitter-square'></i>
+                </a>&nbsp;
+                <a onClick={this.handleSupportClick}>
+                  <i className='fa fa-paypal'></i>
+                </a>&nbsp;
+                <a onClick={this.handleGithubClick}>
+                  <i className='fa fa-github'></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <About/>
+          <Support/>
+        </div>
       </div>
     )
   }
