@@ -173,8 +173,6 @@ class Chart extends React.Component {
     return (device.manufacturer + ' ' + device.model).trim()
   }
 
-  // getBatteryLevelClass(level){   let batteryLevelSpanStyle = {     fontSize: '1.4rem'   } }
-
   getBatteryClassName(device) {
     return 'fa fa-battery-' + device.batteryLevel
   }
