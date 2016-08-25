@@ -1,0 +1,11 @@
+[13:36:26] Log Time: 13:36:26 2016-07-04
+[13:36:41] NETWORK:error (4) sending player state
+[13:36:42] NETWORK:Delayed packet detected: Delay=0.00, Meters=145.0 networkID=-5565, rider name=
+[13:36:47] NETCLIENT:Reconnection requested
+[13:55:18] NETCLIENT:Auxiliary Controller: Attempting to connect to phone at: 192.168.0.141:21587
+[13:55:23] NETCLIENT:WARN: Auxiliary Controller: Error shutting down tcp socket: 'A request to send or receive data was disallowed because the socket is not connected and (when sending on a datagram socket using a sendto call) no address was supplied.' (302314928)
+[13:55:23] NETCLIENT:ERROR: Auxiliary Controller: Error connecting socket: 'The I/O operation has been aborted because of either a thread exit or an application request.' (995)
+[13:55:31] NETCLIENT:server_to_client_received_count_ is 21001
+[13:55:31] NETCLIENT:latest player_state_size is 10
+[13:55:31] NETCLIENT:server to client popped count: 21001
+[13:55:41] NETCLIENT:Renew server lease period reached...

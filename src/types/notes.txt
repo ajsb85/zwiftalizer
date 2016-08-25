@@ -1,0 +1,56 @@
+The following smart trainers change resistance in Zwift:
+
+  Wahoo KICKR
+  Wahoo KICKR SNAP
+  Racermate Computrainer
+  CycleOps Powerbeam Pro
+  CycleOps PowerSync
+  Tacx Bushido Smart ANT+ T2780 (needs ANT+ FE-C update)
+  Tacx Vortex Smart ANT+ T2180 (needs ANT+ FE-C update)
+  Tacx i-Genius Multiplayer Smart T2010
+  Tacx Genius Smart T2080
+  Tacx IRONMAN Smart T2060
+  Tacx Flow Smart T2240
+  Tacx Smart Neo
+  BKOOL (needs ANT+ FE-C update)
+  Elite Qubo Digital Smart B+
+  Elite Real wired trainers
+
+
+Zwift also works with the ANT+ versions of the following:
+
+  Elite Real Turbo Muin (including B+)
+  Elite RealAxiom (including B+)
+  Elite RealPower
+  Elite RealTour (including B+) - see known issues
+  Elite Real E-motion smart rollers (including B+)
+
+
+The following smart trainers work with Zwift, but don't change resistance:
+
+  Elite Turbo Muin Smart B+ (with the Misuro B+sensor)
+  Elite Qubo Power Smart B+
+  Tacx Satori Smart T2400 (ANT+)
+  The Lemond Revolution with Wattbox
+
+These indoor bikes broadcast power in Zwift, but don't change resistance:
+
+  Wattbike
+  CycleOps Phantom 3
+  CycleOps Phantom 5
+  Body Bike Indoor Cycle
+
+ANT+ Power Meters
+
+Zwift is compatible with all ANT+ power meters, including:
+
+  Powertap
+  Quarq
+  SRM
+  Stages
+  power2max
+  Garmin Vector
+  Pioneer
+  InfoCrank
+  PowerCal
+  bePRO

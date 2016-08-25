@@ -1,0 +1,38 @@
+.navItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  vertical-align: baseline;
+  color: #178acc;
+  height: 2.6rem;
+  padding: 0.2rem 0.2rem 0.8rem 0.2rem;
+  width: 100%;
+  white-space: normal;
+  font-weight: 700;
+  font-size: 2.4rem;
+}
+.navItem> a {
+  text-decoration: none;
+}
+.navItem> a:hover {
+  color: #f9672b;
+  cursor: pointer;
+}
+.signal {
+  color: #f9672b;
+}
+.brand {
+  composes: navItem;
+  justify-content: flex-start;
+}
+@media(max-width:767px) {
+  .navItem, .brand {
+    justify-content: center;
+    height: 4.0rem;
+  }
+}
+@media(min-width:768px) {}
+@media(min-width:992px) {}
+@media(min-width:1200px) {}

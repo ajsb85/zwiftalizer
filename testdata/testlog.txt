@@ -1,0 +1,22 @@
+[20:23:47] Log Time: 20:23:47 2016-01-12
+[20:23:52] Changed resolution to 2560 x 1440
+[20:23:52] Changed resolution to 1920 x 1080(NO MSAA)
+[20:23:52] Changed resolution to 1280 x 720
+[20:23:49] Using low graphics profile
+[20:23:50] Using medium graphics profile
+[20:23:51] Using high graphics profile
+[20:23:52] OpenGL 3.1.0 NVIDIA 359.06 initialized
+[20:24:53] Graphics Vendor: NVIDIA Corporation
+[21:25:54] Graphics Renderer: GeForce GTX 750 Ti/PCIe/SSE2
+[22:26:55] RAM: 4GB
+[23:27:56] CPU: Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
+[01:00:00] Day 2
+[06:00:00] Day 2
+[12:00:00] Day 2
+[21:00:00] Day 2
+[00:00:00] Day 3
+[06:00:00] Day 3
+[12:00:00] Day 3
+[18:00:00] Day 3
+[23:59:59] Day 3
+[00:00:00] Day 4

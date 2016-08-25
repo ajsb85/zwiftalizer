@@ -1,0 +1,1283 @@
+[22:23:07] Log Time: 22:23:07 2015-12-30
+[22:23:07] Loading WAD file 'assets/global.wad' with file.
+[22:23:07] Loading WAD file 'assets/UI/WhiteOrangeTheme/WhiteOrangeTheme.wad' with file.
+[22:23:08] Successful audio init!
+[22:23:08] Initializing graphics window of size 0 x 0
+[22:23:08] Checking Extensions
+[22:23:08] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not fi
+[22:23:08] Calculation Graphics Score
+[22:23:08] Initializing Render Targets
+[22:23:08] Initializing Texture Systems
+[22:23:08] Suceeded initializing graphics
+[22:23:08] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+
+[22:23:08] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+
+[22:23:08] Loading WAD file 'assets/fonts/font.wad' with file.
+[22:23:09] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+
+[22:23:09] Using basic graphics profile
+[22:23:09] > res 1024x576(0x)
+[22:23:09] Changed resolution to 1024 x 576  ( NO MSAA )
+
+[22:23:09] > sres 512x512
+[22:23:09] Changed shadow resolution to 512 x 512
+
+[22:23:09] > aniso 4
+[22:23:09] > set gSSAO=0
+[22:23:09] > set gFXAA=1
+[22:23:09] > set gSunRays=0
+[22:23:09] > set gHeadlight=0
+[22:23:09] > set gFoliagePercent=0.5
+[22:23:09] > set gSimpleReflections=1
+[22:23:09] > set gLODBias=2
+[22:23:09] Loading WAD file 'assets/Environment/Road/FreshRoad/FreshRoad.wad' with file.
+[22:23:09] Loading WAD file 'assets/Environment/Road/Cobblestone/Cobblestone.wad' with file.
+[22:23:10] Loading WAD file 'assets/Environment/Road/DirtRoad/DirtRoad.wad' with file.
+[22:23:11] Unable to load texture file Environment\Structures\CoveredBridge_Norm_02.tga
+[22:23:13] Unable to load texture file Environment\Structures\ArchEntrance\Textures\BridgeConcrete02NMGM.tga
+[22:23:14] Unable to load texture file Environment\Structures\ArchEntrance\Textures\BridgeConcrete02NMGM.tga
+[22:23:14] Unable to load texture file Environment\Buildings\VictorianHouses\Textures\WoodSiding04.tga
+[22:23:16] Unable to load texture file Environment\Structures\ArchEntrance\Textures\BridgeConcrete02NMGM.tga
+[22:23:17] Unable to load texture file Environment\Structures\ArchEntrance\Textures\BridgeConcrete02NMGM.tga
+[22:23:20] OpenGL 2.1 INTEL-10.6.33 initialized
+[22:23:20] Graphics Vendor: Intel Inc.
+[22:23:20] Graphics Renderer: Intel Iris Pro OpenGL Engine
+[22:23:20] RAM: 8GB
+[22:23:20] CPU: Intel(R) Core(TM) i5-4570R CPU @ 2.70GHz
+[22:23:20] ANT  : ANT USB receiver NOT found
+[22:23:20] Loading WAD file 'assets/UI/Achievements/achievements.wad' with file.
+[22:23:20] Loading WAD file 'assets/workouts/workouts.wad' with file.
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not fi
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not fi
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not fi
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+WARNING: Output of vertex shader 'vColor' not read by fragment shader
+
+[22:23:20] ERROR: GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+WARNING: Output of vertex shader 'linDepth' not read by fragment shader
+ERROR: Input of fragment shader 'vShad
+[22:23:20] ERROR: Missing Vertex Shader asset data/shaders/Final/simpleShader.vsh
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+WARNING: Output of vertex shader 'vNormal' not read by fragment shader
+WARNING: Output of vertex shader 'vViewNormal' not read by fragment shader
+
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not fi
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not fi
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+WARNING: Output of vertex shader 'vShadowTexCoords' not read by fragment shader
+WARNING: Output of vertex shader 'vTexCoord0' not read by fragment shader
+WARNING: Output of vertex shader 'vViewNormal' not read by fragment shader
+WARNING: Output of vertex shader 'vHeadlightCoords' not read by fragment shader
+
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+WARNING: Output of vertex shader 'vColor' not read by fragment shader
+WARNING: Output of vertex shader 'vNormal' not read by fragment shader
+WARNING: Output of vertex shader 'vTan' not read by fragment shader
+WARNING: Output of vertex shader 'fogFactor' not read by fragment shader
+WARNING: Output of vertex shad
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+WARNING: Output of vertex shader 'vColor' not read by fragment shader
+WARNING: Output of vertex shader 'vNormal' not 
+[22:23:20] ERROR: Missing Vertex Shader asset data/shaders/Final/SSR.vsh
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+WARNING: Output of vertex shader 'vHeadlightCoords' not read by fragment shader
+WARNING: Output of vertex shader 'vCo
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+WARNING: Output of vertex shader 'vHeadlightCoords' not read by fragment shader
+WARNING: Output of vertex shader 'vCo
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+WARNING: Output of vertex shader 'vShadowTexCoords' not read by fragment shader
+
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+WARNING: Output of vertex shader 'vShadowTexCoords' not read by fragment shader
+
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+WARNING: Output of vertex shader 'vColor' not read by fragment shader
+WARNING: Output of vertex shader 'fogFactor' not read by fragment shader
+
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+
+[22:23:20] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+
+[22:23:21] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+WARNING: Output of vertex shader 'vShadowTexCoords' not read by fragment shader
+
+[22:23:21] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not fi
+[22:23:21] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+
+[22:23:21] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not fi
+[22:23:21] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+WARNING: Output
+[22:23:21] Loading WAD file 'assets/Environment/SkyDome/sky.wad' with file.
+[22:23:21] GLSL log: WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+
+[22:23:21] GLSL log: WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+
+[22:23:21] GLSL log: WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+
+[22:23:21] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+
+[22:23:21] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+WARNING: Output of vertex shader 'vNormal' not read by fragment shader
+WARNING: Output of vertex shader 'vViewNormal' not read by fragment shader
+
+[22:23:21] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not fi
+[22:23:21] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+
+[22:23:21] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord0' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+WARNING: Output o
+[22:23:22] Loading WAD file 'assets/Bikes/Components/Zwift/Steel/ZwiftSteel.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Components/Campagnolo/SuperRecord/SuperRecord.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Wheels/Vision/Vision_Metron_81/Metron81.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Canyon_Aeroad/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Parlee_ESX/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Pinarello_Dogma/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Pinarello_F8/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Pinarello_TT/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Trek/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/TrekMadone/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Zwift_Aero/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Zwift_BW/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Zwift_Carbon/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Zwift_Concept/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Zwift_Steel/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Zwift_TT/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Specialized_Allez/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Specialized_Venge/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/TrekEmonda/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Specialized_Tarmac/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Canyon_Speedmax/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Wheels/Zipp/Zipp_808_Firecrest/Firecrest808.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Wheels/Zipp/Zipp_404_Firecrest/Firecrest404.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Wheels/Zipp/Zipp_202_Firecrest/Firecrest202.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Wheels/Enve/EnveSES_2.2/Enve22.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Wheels/Enve/EnveSES_6.7/Enve67.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Wheels/Enve/EnveSES_8.9/Enve89.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Components/Shimano/DuraAce/DuraAce.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Components/Specialized/Sworks/Sworks.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Wheels/Zipp/Zipp_Disc/Disc.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Wheels/Mavic/CosmicCXR60c/CosmicCXR60c.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Wheels/Zwift/Zwift_Concept/Concept.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Wheels/Zwift/Zwift_Classic/Classic.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Wheels/Zwift/Zwift_BW/BW.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Wheels/Campagnolo/Campagnolo_Bora_Ultra/BoraUltra.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Wheels/Bontrager/Aeolus5/Aeolus5.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Wheels/Specialized/Roval/Roval.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Specialized_Amira/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/SpecializedShiv/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/CerveloS5/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/Frames/Buffalo/frame.wad' with file.
+[22:23:22] Loading WAD file 'assets/Humans/Accessories/Helmets/ZwiftHelmet.wad' with file.
+[22:23:22] Loading WAD file 'assets/Humans/Accessories/Glasses/ZwiftGlasses.wad' with file.
+[22:23:22] Loading WAD file 'assets/Humans/Accessories/Shoes/Shoes.wad' with file.
+[22:23:22] Loading WAD file 'assets/Bikes/bikes_config.wad' with file.
+[22:23:24] Unable to load texture file Frames\Specialized_Amira\Textures\SpecializedAmira.tga
+[22:23:25] Unable to load texture file Bikes\Wheels\Vision_Metron_81\Textures\wheel_D_BlackOut.tga
+[22:23:25] Unable to load texture file Bikes\Wheels\Vision_Metron_81\Textures\wheel_D_BlackOut.tga
+[22:23:25] Unable to load texture file Bikes\Wheels\Zwift_Classic\Textures\Zwift_Classic_Diffuse.tga
+[22:23:25] Unable to load texture file Bikes\Wheels\Zwift_Classic\Textures\Zwift_Classic_Diffuse.tga
+[22:23:25] Loading WAD file 'assets/Humans/Jerseys/Originals/originals_01.wad' with file.
+[22:23:25] Loading WAD file 'assets/Humans/Jerseys/Pro_Teams/pro_teams_01.wad' with file.
+[22:23:25] Loading WAD file 'assets/Humans/Jerseys/Companies/Companies.wad' with file.
+[22:23:26] Loading WAD file 'assets/Humans/Jerseys/Originals/camo_01.wad' with file.
+[22:23:26] Loading WAD file 'assets/Humans/Male_Road_Cyclist_01/male_road_cyclist_01.wad' with file.
+[22:23:26] Loading WAD file 'assets/Humans/Male_Road_Cyclist_01/male_road_cyclist_01_textures.wad' with file.
+[22:23:26] Loading WAD file 'assets/Humans/Jerseys/Specials/specials_01.wad' with file.
+[22:23:26] Loading WAD file 'assets/Humans/Jerseys/Events/Events.wad' with file.
+[22:23:26] Loading WAD file 'assets/Humans/Jerseys/Clubs/Clubs.wad' with file.
+[22:23:26] Loading WAD file 'assets/Humans/Jerseys/Pack01/Pack01.wad' with file.
+[22:23:27] Loading WAD file 'assets/Humans/Jerseys/Pack02/Pack02.wad' with file.
+[22:23:27] Loading WAD file 'assets/Humans/Jerseys/Charities/Charities.wad' with file.
+[22:23:28] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+
+[22:23:29] Loading WAD file 'assets/UI/flags/flags.wad' with file.
+[22:23:29] Loading WAD file 'assets/UI/Challenges/Challenges.wad' with file.
+[22:23:29] Got an access token
+[22:23:29] Attempting Token Login...
+[22:23:29] ANT  : Setting network key on network 0...
+[22:23:29] Loaded audio banks
+[22:23:30] ANT  : Setting network key on network 1...
+[22:23:30] ANT  : Setting network key on network 2...
+[22:23:31] LOAD TIME = 23948
+[22:23:31] ANT DONGLE NOT CONNECTED
+[22:23:31] GLSL log: WARNING: Could not find vertex shader attribute 'inWeights' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inPos_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm_alt' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inNorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTan' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inTexCoord1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inBinorm' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inColor1' to match BindAttributeLocation request.
+WARNING: Could not find vertex shader attribute 'inIndices' to match BindAttributeLocation request.
+WARNING: Output of vertex shader 'vColor' not read by fragment shader
+
+[22:23:31] resize: 1920 x 972
+
+[22:23:34] Logged in user: mrh5937@gmail.com
+[22:23:34] NETCLIENT:Connecting to game server node [54.218.7.179:3022]
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] NETWORK:Got the list of worlds
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:34] FPS  16,  8803, 10196, -23009
+[22:23:34] NETWORK:error (4) sending player state
+[22:23:35] NETWORK:error (4) sending player state
+[22:23:35] NETWORK:error (4) sending player state
+[22:23:35] NETWORK:error (4) sending player state
+[22:23:35] NETWORK:error (4) sending player state
+[22:23:36] NETWORK:error (4) sending player state
+[22:23:36] NETWORK:error (4) sending player state
+[22:23:36] NETWORK:error (4) sending player state
+[22:23:36] NETWORK:error (4) sending player state
+[22:23:36] NETWORK:error (4) sending player state
+[22:23:36] NETWORK:error (4) sending player state
+[22:23:37] NETWORK:error (4) sending player state
+[22:23:37] NETWORK:error (4) sending player state
+[22:23:37] FPS  39,  8803, 10196, -23009
+[22:23:37] NETWORK:error (4) sending player state
+[22:23:37] NETWORK:error (4) sending player state
+[22:23:38] NETWORK:error (4) sending player state
+[22:23:38] NETWORK:error (4) sending player state
+[22:23:38] NETWORK:error (4) sending player state
+[22:23:38] Power Icon = 891
+[22:23:38] HR Icon = 892
+[22:23:38] Cadence Icon = 893
+[22:23:38] Speed Icon = 894
+[22:23:38] Power Icon = 891
+[22:23:38] HR Icon = 892
+[22:23:38] Cadence Icon = 893
+[22:23:38] Speed Icon = 894
+[22:23:38] Power Icon = 891
+[22:23:38] HR Icon = 892
+[22:23:38] Cadence Icon = 893
+[22:23:38] Speed Icon = 894
+[22:23:38] Power Icon = 891
+[22:23:38] HR Icon = 892
+[22:23:38] Cadence Icon = 893
+[22:23:38] Speed Icon = 894
+[22:23:38] Power Icon = 891
+[22:23:38] HR Icon = 892
+[22:23:38] Cadence Icon = 893
+[22:23:38] Speed Icon = 894
+[22:23:38] NETWORK:error (4) sending player state
+[22:23:38] Loading WAD file 'assets/UI/WhiteOrangeTheme/Help_Overlay/Pairing_Screen_Help/PairingTutorial.wad' with file.
+[22:23:38] NETWORK:error (4) sending player state
+[22:23:39] NETWORK:error (4) sending player state
+[22:23:39] NETWORK:error (4) sending player state
+[22:23:39] NETWORK:error (4) sending player state
+[22:23:39] NETWORK:error (4) sending player state
+[22:23:39] NETWORK:error (4) sending player state
+[22:23:40] NETWORK:error (4) sending player state
+[22:23:40] NETWORK:Joining world 1
+[22:23:40] NETWORK:Got the list of worlds
+[22:23:40] NETWORK:Selected a world
+
+[22:23:40] NETCLIENT:send player state sequence number: 1
+[22:23:40] NETWORK:error (5) sending player state
+[22:23:40] NETWORK:error (5) sending player state
+[22:23:40] =================================================================================================================================
+[22:23:40] =================================================================================================================================
+[22:23:40] NETWORK:Player 81584 joined the world
+[22:23:40] NETWORK:Player 76796 joined the world
+[22:23:40] NETWORK:Player 85098 joined the world
+[22:23:40] NETWORK:Player 65056 joined the world
+[22:23:40] NETWORK:Heard area message from 46597 (The 4 amigos )
+[22:23:40] =================================================================================================================================
+[22:23:40] =================================================================================================================================
+[22:23:40] NETWORK:error (5) sending player state
+[22:23:40] FPS  31,  8803, 10196, -23009
+[22:23:40] NETWORK:error (5) sending player state
+[22:23:40] NETCLIENT:Connected to [54.218.7.179:3022]
+[22:23:40] NETCLIENT:server_to_client_received_count_ is 1
+[22:23:40] NETCLIENT:latest player_state_size is 0
+[22:23:40] NETCLIENT:server to client popped count: 1
+[22:23:40] NETWORK:error (5) sending player state
+[22:23:41] NETWORK:error (5) sending player state
+[22:23:41] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:41] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:41] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:41] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:42] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:42] FB resize: 1895 x 972
+
+[22:23:42] resize: 1895 x 972
+
+[22:23:42] FB resize: 1861 x 948
+
+[22:23:42] resize: 1861 x 948
+
+[22:23:42] FB resize: 1845 x 940
+
+[22:23:42] resize: 1845 x 940
+
+[22:23:42] FB resize: 1825 x 927
+
+[22:23:42] resize: 1825 x 927
+
+[22:23:42] FB resize: 1806 x 910
+
+[22:23:42] resize: 1806 x 910
+
+[22:23:42] FB resize: 1784 x 891
+
+[22:23:42] resize: 1784 x 891
+
+[22:23:42] FB resize: 1759 x 869
+
+[22:23:42] resize: 1759 x 869
+
+[22:23:42] FB resize: 1733 x 850
+
+[22:23:42] resize: 1733 x 850
+
+[22:23:42] FB resize: 1715 x 834
+
+[22:23:42] resize: 1715 x 834
+
+[22:23:42] FB resize: 1698 x 819
+
+[22:23:42] resize: 1698 x 819
+
+[22:23:42] FB resize: 1681 x 803
+
+[22:23:42] resize: 1681 x 803
+
+[22:23:42] FB resize: 1659 x 782
+
+[22:23:42] resize: 1659 x 782
+
+[22:23:42] FB resize: 1636 x 759
+
+[22:23:42] resize: 1636 x 759
+
+[22:23:42] FB resize: 1615 x 738
+
+[22:23:42] resize: 1615 x 738
+
+[22:23:42] FB resize: 1596 x 720
+
+[22:23:42] resize: 1596 x 720
+
+[22:23:42] FB resize: 1583 x 708
+
+[22:23:42] resize: 1583 x 708
+
+[22:23:42] FB resize: 1569 x 697
+
+[22:23:42] resize: 1569 x 697
+
+[22:23:42] FB resize: 1562 x 691
+
+[22:23:42] resize: 1562 x 691
+
+[22:23:42] FB resize: 1555 x 684
+
+[22:23:42] resize: 1555 x 684
+
+[22:23:42] FB resize: 1542 x 668
+
+[22:23:42] resize: 1542 x 668
+
+[22:23:42] FB resize: 1524 x 648
+
+[22:23:42] resize: 1524 x 648
+
+[22:23:42] FB resize: 1506 x 625
+
+[22:23:42] resize: 1506 x 625
+
+[22:23:42] FB resize: 1486 x 603
+
+[22:23:42] resize: 1486 x 603
+
+[22:23:42] FB resize: 1470 x 586
+
+[22:23:42] resize: 1470 x 586
+
+[22:23:42] FB resize: 1457 x 573
+
+[22:23:42] resize: 1457 x 573
+
+[22:23:42] FB resize: 1447 x 563
+
+[22:23:42] resize: 1447 x 563
+
+[22:23:42] FB resize: 1440 x 558
+
+[22:23:42] resize: 1440 x 558
+
+[22:23:42] FB resize: 1433 x 550
+
+[22:23:42] resize: 1433 x 550
+
+[22:23:42] FB resize: 1429 x 547
+
+[22:23:42] resize: 1429 x 547
+
+[22:23:42] FB resize: 1428 x 546
+
+[22:23:42] resize: 1428 x 546
+
+[22:23:42] Creating new nameplate for "J.Neubauer"
+[22:23:42] Creating new nameplate for "k.n"
+[22:23:42] Creating new nameplate for "j.Jang"
+[22:23:42] Creating new nameplate for "O.Lacov"
+[22:23:42] Creating new nameplate for "A.Jose"
+[22:23:42] Creating new nameplate for "m.kim"
+[22:23:42] Creating new nameplate for "y.changsoo"
+[22:23:42] Creating new nameplate for "M.Dobson (iCycleCC)"
+[22:23:42] Creating new nameplate for "D.Post"
+[22:23:42] Creating new nameplate for "T.Lauridsen"
+[22:23:42] Creating new nameplate for "R.Mansikkasalo"
+[22:23:42] Creating new nameplate for "T.Stylianou"
+[22:23:42] Creating new nameplate for "J.Nettles"
+[22:23:42] Creating new nameplate for "M.Fluss"
+[22:23:42] Creating new nameplate for "J.Dzurisin"
+[22:23:42] Creating new nameplate for "K.HunSin[KEIRIN]-KOR"
+[22:23:42] Creating new nameplate for "T.Penguin"
+[22:23:43] Creating new nameplate for "G.Arber RPR"
+[22:23:43] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:43] FPS  53, 61406, 10560, -49376
+[22:23:43] Creating new nameplate for "P.Fischer"
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] NETWORK:Delayed packet detected: Delay=0.00, Meters=40.5 networkID=57382, rider name=
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] NETWORK:Delayed packet detected: Delay=0.00, Meters=47.4 networkID=86337, rider name=
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:44] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:45] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:45] FB resize: 1402 x 546
+
+[22:23:45] resize: 1402 x 546
+
+[22:23:45] FB resize: 1384 x 546
+
+[22:23:45] resize: 1384 x 546
+
+[22:23:45] FB resize: 1362 x 546
+
+[22:23:45] resize: 1362 x 546
+
+[22:23:45] FB resize: 1335 x 546
+
+[22:23:45] resize: 1335 x 546
+
+[22:23:45] FB resize: 1305 x 546
+
+[22:23:45] resize: 1305 x 546
+
+[22:23:45] FB resize: 1271 x 546
+
+[22:23:45] resize: 1271 x 546
+
+[22:23:45] FB resize: 1237 x 546
+
+[22:23:45] resize: 1237 x 546
+
+[22:23:45] FB resize: 1200 x 546
+
+[22:23:45] resize: 1200 x 546
+
+[22:23:45] FB resize: 1172 x 546
+
+[22:23:45] resize: 1172 x 546
+
+[22:23:45] FB resize: 1152 x 546
+
+[22:23:45] resize: 1152 x 546
+
+[22:23:45] FB resize: 1137 x 546
+
+[22:23:45] resize: 1137 x 546
+
+[22:23:45] FB resize: 1129 x 546
+
+[22:23:45] resize: 1129 x 546
+
+[22:23:45] FB resize: 1127 x 546
+
+[22:23:45] resize: 1127 x 546
+
+[22:23:45] FB resize: 1126 x 546
+
+[22:23:45] resize: 1126 x 546
+
+[22:23:45] FB resize: 1124 x 546
+
+[22:23:45] resize: 1124 x 546
+
+[22:23:45] FB resize: 1115 x 546
+
+[22:23:45] resize: 1115 x 546
+
+[22:23:45] FB resize: 1101 x 546
+
+[22:23:45] resize: 1101 x 546
+
+[22:23:45] FB resize: 1082 x 546
+
+[22:23:45] resize: 1082 x 546
+
+[22:23:45] FB resize: 1060 x 546
+
+[22:23:45] resize: 1060 x 546
+
+[22:23:45] FB resize: 1040 x 546
+
+[22:23:45] resize: 1040 x 546
+
+[22:23:46] FB resize: 1027 x 546
+
+[22:23:46] resize: 1027 x 546
+
+[22:23:46] FB resize: 1018 x 546
+
+[22:23:46] resize: 1018 x 546
+
+[22:23:46] FB resize: 1008 x 546
+
+[22:23:46] resize: 1008 x 546
+
+[22:23:46] FB resize: 998 x 546
+
+[22:23:46] resize: 998 x 546
+
+[22:23:46] FB resize: 995 x 546
+
+[22:23:46] resize: 995 x 546
+
+[22:23:46] FB resize: 994 x 546
+
+[22:23:46] resize: 994 x 546
+
+[22:23:46] Creating new nameplate for "J.Grimm"
+[22:23:46] Creating new nameplate for "J.McInnes"
+[22:23:46] Creating new nameplate for "S.Ikebe"
+[22:23:46] Creating new nameplate for "A.GOM"
+[22:23:46] Creating new nameplate for "J.Vargas"
+[22:23:46] Creating new nameplate for "I.B"
+[22:23:46] Creating new nameplate for "t.tamada"
+[22:23:46] Creating new nameplate for "[.ZEON"
+[22:23:46] Creating new nameplate for "M.Henline SUB 2"
+[22:23:46] Creating new nameplate for "E.Cork"
+[22:23:46] Creating new nameplate for "H.Yoshida(R.Sapporo)"
+[22:23:46] Creating new nameplate for "A.HK-KOR"
+[22:23:46] Creating new nameplate for "a.jin sook-kor"
+[22:23:46] Creating new nameplate for "R.Swanepoel"
+[22:23:46] Creating new nameplate for "L.Morgan"
+[22:23:46] Creating new nameplate for "s.gomis"
+[22:23:46] Creating new nameplate for "T.Coles"
+[22:23:46] Creating new nameplate for "H.Goldthorpe"
+[22:23:46] Creating new nameplate for "L.Williamson"
+[22:23:46] Creating new nameplate for "D.WRIGHT ZTR-EB (C)"
+[22:23:46] Creating new nameplate for "S.T"
+[22:23:46] Creating new nameplate for "A.Soderback (Neo)"
+[22:23:46] Creating new nameplate for "P.Tippett"
+[22:23:46] Creating new nameplate for "T.Metzger"
+[22:23:46] Creating new nameplate for " . Spinmonkey"
+[22:23:46] Creating new nameplate for "J.(team JRC)"
+[22:23:46] Creating new nameplate for "..Larry4711"
+[22:23:46] Creating new nameplate for "C.Cacatian"
+[22:23:46] Creating new nameplate for "K.Lee"
+[22:23:46] Creating new nameplate for "P.CK"
+[22:23:46] Creating new nameplate for "V.Santacesaria"
+[22:23:46] Creating new nameplate for "L.Ascenders"
+[22:23:46] Creating new nameplate for "M.Thomsen"
+[22:23:46] Creating new nameplate for "A.Begue"
+[22:23:46] Creating new nameplate for "M.Miyakawa"
+[22:23:46] Creating new nameplate for "J.GONZALES"
+[22:23:46] Creating new nameplate for "P.Cain"
+[22:23:46] Creating new nameplate for "y.kim"
+[22:23:46] Creating new nameplate for "U.Osawa"
+[22:23:46] Creating new nameplate for "T.Iwanami"
+[22:23:46] Creating new nameplate for "[.JANG"
+[22:23:46] Creating new nameplate for "Y.Hans"
+[22:23:46] Creating new nameplate for "O.Perelson"
+[22:23:46] Creating new nameplate for "M.Holman"
+[22:23:46] Creating new nameplate for "J.Spies"
+[22:23:46] Creating new nameplate for "K.van den Heever"
+[22:23:46] Creating new nameplate for "M.Snabb (TOAC)"
+[22:23:46] Creating new nameplate for "B.Panda"
+[22:23:46] Creating new nameplate for "S.Kim"
+[22:23:46] Creating new nameplate for "P.Gallagher"
+[22:23:46] Creating new nameplate for "M.Gonzalez"
+[22:23:46] Creating new nameplate for "s.kim"
+[22:23:46] Creating new nameplate for "D.Betteridge"
+[22:23:46] Creating new nameplate for "l.chul"
+[22:23:46] Creating new nameplate for "j.cross"
+[22:23:46] Creating new nameplate for "J.Kersey"
+[22:23:46] Creating new nameplate for "S.Karre (Flatlanders Unite)"
+[22:23:46] Creating new nameplate for "J.Vlaiko"
+[22:23:46] Creating new nameplate for "C.Andrews"
+[22:23:46] Creating new nameplate for "A.Cole"
+[22:23:46] Creating new nameplate for "O.KAITO"
+[22:23:46] Creating new nameplate for "K.Latham"
+[22:23:46] Creating new nameplate for "t.cooper"
+[22:23:46] Creating new nameplate for "h.yeum"
+[22:23:46] Creating new nameplate for "T.Takemura"
+[22:23:46] Creating new nameplate for "C.Krauss"
+[22:23:46] Creating new nameplate for "H.Bould"
+[22:23:46] Creating new nameplate for "T.MUNGDOONG2(PQ)"
+[22:23:46] Creating new nameplate for "M.Ka"
+[22:23:46] Creating new nameplate for "R.Heishman"
+[22:23:46] Creating new nameplate for "P.Crane"
+[22:23:46] Creating new nameplate for "N.310(Turbo Muin)"
+[22:23:46] Creating new nameplate for "Z.Evgenii"
+[22:23:46] Creating new nameplate for "K.Perry"
+[22:23:46] Creating new nameplate for "P.CLIMBER"
+[22:23:46] Creating new nameplate for "H.002(HBSC)"
+[22:23:46] Creating new nameplate for "A.Borruel"
+[22:23:46] Creating new nameplate for "T.D.K"
+[22:23:46] Creating new nameplate for "S.King"
+[22:23:46] Creating new nameplate for "D.Triska FCCC"
+[22:23:46] FPS  20, 61405, 10559, -49377
+[22:23:48] FPS  58, 61405, 10559, -49377
+[22:23:48] NETWORK:Player 11979 joined the world
+[22:23:49] NETCLIENT:server_to_client_received_count_ is 101
+[22:23:49] NETCLIENT:latest player_state_size is 15
+[22:23:49] NETCLIENT:server to client popped count: 101
+[22:23:49] FPS  60, 61405, 10560, -49377
+[22:23:51] FPS  58, 61405, 10559, -49377
+[22:23:52] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:23:52] Creating new nameplate for "k.gower"
+[22:23:53] FPS  58, 61405, 10559, -49377
+[22:23:55] FPS  56, 61405, 10559, -49377
+[22:23:55] NETWORK:Player 29836 joined the world
+[22:23:56] FPS  56, 61405, 10560, -49377
+[22:23:57] NETWORK:Delayed packet detected: Delay=15.20, Meters=143.7 networkID=-9853, rider name=AI 1232609084
+[22:23:57] NETCLIENT:server_to_client_received_count_ is 201
+[22:23:57] NETCLIENT:latest player_state_size is 8
+[22:23:57] NETCLIENT:server to client popped count: 201
+[22:23:58] FPS  56, 83959,  9547, -38843
+[22:24:00] NETCLIENT:send player state sequence number: 101
+[22:24:00] FPS  51, 83959,  9546, -38843
+[22:24:02] FPS  58, 83959,  9546, -38843
+[22:24:02] NETWORK:Player 26655 joined the world
+[22:24:02] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:24:03] Creating new nameplate for " .GisliOlafsson_CT"
+[22:24:03] FPS  60, 83959,  9546, -38843
+[22:24:05] FPS  60, 83959,  9546, -38843
+[22:24:05] > res 1280x720
+[22:24:05] Changed resolution to 1280 x 720
+
+[22:24:05] NETCLIENT:server_to_client_received_count_ is 301
+[22:24:05] NETCLIENT:latest player_state_size is 15
+[22:24:05] NETCLIENT:server to client popped count: 301
+[22:24:07] FPS  60, 83959,  9546, -38843
+[22:24:09] FPS  60, 83959,  9546, -38843
+[22:24:09] FB resize: 1008 x 547
+
+[22:24:09] resize: 1008 x 547
+
+[22:24:09] FB resize: 1018 x 551
+
+[22:24:09] resize: 1018 x 551
+
+[22:24:09] FB resize: 1034 x 561
+
+[22:24:09] resize: 1034 x 561
+
+[22:24:09] FB resize: 1049 x 574
+
+[22:24:09] resize: 1049 x 574
+
+[22:24:09] FB resize: 1069 x 597
+
+[22:24:09] resize: 1069 x 597
+
+[22:24:09] FB resize: 1090 x 621
+
+[22:24:09] resize: 1090 x 621
+
+[22:24:09] FB resize: 1113 x 645
+
+[22:24:09] resize: 1113 x 645
+
+[22:24:09] FB resize: 1131 x 663
+
+[22:24:09] resize: 1131 x 663
+
+[22:24:09] FB resize: 1146 x 682
+
+[22:24:09] resize: 1146 x 682
+
+[22:24:09] FB resize: 1163 x 697
+
+[22:24:09] resize: 1163 x 697
+
+[22:24:09] FB resize: 1175 x 709
+
+[22:24:09] resize: 1175 x 709
+
+[22:24:09] FB resize: 1181 x 715
+
+[22:24:09] resize: 1181 x 715
+
+[22:24:09] FB resize: 1181 x 716
+
+[22:24:09] resize: 1181 x 716
+
+[22:24:11] FPS  60, 83959,  9546, -38843
+[22:24:13] FPS  60, 83959,  9546, -38843
+[22:24:14] FPS  60, 83959,  9546, -38843
+[22:24:14] NETCLIENT:server_to_client_received_count_ is 401
+[22:24:14] NETCLIENT:latest player_state_size is 15
+[22:24:15] NETCLIENT:server to client popped count: 401
+[22:24:16] FPS  58, 83959,  9546, -38843
+[22:24:17] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:24:18] FPS  60, 93347,  9509, -32698
+[22:24:18] Creating new nameplate for "E.Young"
+[22:24:19] FPS  56, 93902,  9512, -32236
+[22:24:20] NETCLIENT:send player state sequence number: 201
+[22:24:21] Creating new nameplate for "..Larry4711"
+[22:24:21] FPS  56, 94812,  9519, -31446
+[22:24:23] FPS  55, 95741,  9527, -30539
+[22:24:24] NETCLIENT:server_to_client_received_count_ is 501
+[22:24:24] NETCLIENT:latest player_state_size is 15
+[22:24:24] NETCLIENT:server to client popped count: 501
+[22:24:25] FPS  51, 97063,  9509, -28912
+[22:24:25] NETWORK:Delayed packet detected: Delay=0.00, Meters=91.7 networkID=-31101, rider name=AI 826497929
+[22:24:27] FPS  45, 98060,  9515, -27639
+[22:24:29] FPS  46, 98527,  9517, -26915
+[22:24:31] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:24:31] FPS  52, 95640,  9526, -30665
+[22:24:31] Creating new nameplate for "T.urboGarry"
+[22:24:32] NETWORK:Player 85178 joined the world
+[22:24:33] FPS  37, 55778, 11272, -59246
+[22:24:33] NETCLIENT:server_to_client_received_count_ is 601
+[22:24:33] NETCLIENT:latest player_state_size is 12
+[22:24:33] NETCLIENT:server to client popped count: 601
+[22:24:34] NETCLIENT:Renew server lease period reached...
+[22:24:35] NETWORK:Player 83840 joined the world
+[22:24:36] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:24:36] FPS  36, 57278, 11048, -55922
+[22:24:37] NETWORK:Heard area message from 46323 (Jezza is good !)
+[22:24:37] NETWORK:Player 86458 joined the world
+[22:24:37] Creating new nameplate for "E.Shilov"
+[22:24:39] FPS  40, 61405, 10561, -49377
+[22:24:40] NETCLIENT:send player state sequence number: 301
+[22:24:40] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:24:41] FPS  60, 83959,  9546, -38843
+[22:24:41] Creating new nameplate for "K.Ascenders"
+[22:24:43] FPS  38,  7470, 13605, -36841
+[22:24:43] NETCLIENT:server_to_client_received_count_ is 701
+[22:24:43] NETCLIENT:latest player_state_size is 15
+[22:24:43] NETCLIENT:server to client popped count: 701
+[22:24:46] FPS  38,  8222, 13701, -35928
+[22:24:46] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:24:46] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:24:46] NETWORK:Player 61607 joined the world
+[22:24:46] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:24:47] Creating new nameplate for "T.Searle"
+[22:24:47] Creating new nameplate for "H.Shomura"
+[22:24:47] Creating new nameplate for "G.Whiteside (Tri-Bow, Cymru)"
+[22:24:48] FB resize: 1920 x 1080
+
+[22:24:48] resize: 1920 x 1080
+
+[22:24:49] FPS  27,  9361, 13783, -34915
+[22:24:50] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:24:51] FPS  56, 35077, 34579, -15221
+[22:24:51] Creating new nameplate for "M.Fluss"
+[22:24:51] Creating new nameplate for "C.Haydock"
+[22:24:52] NETCLIENT:server_to_client_received_count_ is 801
+[22:24:52] NETCLIENT:latest player_state_size is 15
+[22:24:52] NETCLIENT:server to client popped count: 801
+[22:24:53] FPS  58, 35077, 34579, -15221
+[22:24:54] NETWORK:Delayed packet detected: Delay=10.81, Meters=116.9 networkID=-10383, rider name=AI 93073435
+[22:24:55] FPS  42, 61405, 10559, -49377
+[22:24:55] NETWORK:Player 79849 joined the world
+[22:24:55] NETWORK:Delayed packet detected: Delay=14.00, Meters=94.0 networkID=-21659, rider name=AI 1280674219
+[22:24:57] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:24:57] FPS  56, 89578,  9493, -35164
+[22:24:57] Creating new nameplate for "R.KIM"
+[22:24:57] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:24:58] Creating new nameplate for "S.Park"
+[22:24:58] FPS  56, 89578,  9493, -35164
+[22:25:00] NETCLIENT:send player state sequence number: 401
+[22:25:00] FPS  57, 89578,  9493, -35164
+[22:25:02] NETWORK:Player 86458 joined the world
+[22:25:02] NETWORK:Player 86452 joined the world
+[22:25:02] NETCLIENT:server_to_client_received_count_ is 901
+[22:25:02] NETCLIENT:latest player_state_size is 15
+[22:25:02] NETCLIENT:server to client popped count: 901
+[22:25:03] Creating new nameplate for "L.Ascenders"
+[22:25:03] FPS  26, 96311,  9533,  1161
+[22:25:04] NETWORK:Player 85757 joined the world
+[22:25:07] FPS  25, 96309,  9533,  1158
+[22:25:09] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:25:09] Creating new nameplate for "J.JEONG"
+[22:25:10] FPS  58, 83959,  9546, -38843
+[22:25:10] NETWORK:Delayed packet detected: Delay=11.80, Meters=163.2 networkID=-31783, rider name=AI 354425841
+[22:25:10] NETWORK:Delayed packet detected: Delay=11.98, Meters=163.8 networkID=-28321, rider name=AI 1472283709
+[22:25:12] FPS  56, 83959,  9546, -38843
+[22:25:13] NETCLIENT:server_to_client_received_count_ is 1001
+[22:25:13] NETCLIENT:latest player_state_size is 15
+[22:25:13] NETCLIENT:server to client popped count: 1001
+[22:25:13] FPS  53, 83959,  9546, -38843
+[22:25:15] FPS  53, 83959,  9546, -38843
+[22:25:16] > res 1920x1080
+[22:25:16] Changed resolution to 1920 x 1080
+
+[22:25:16] NETWORK:Player 83324 joined the world
+[22:25:18] FPS  40, 83959,  9546, -38843
+[22:25:20] NETCLIENT:send player state sequence number: 501
+[22:25:20] FPS  42, 83959,  9546, -38843
+[22:25:23] FPS  41, 83959,  9546, -38843
+[22:25:24] NETCLIENT:server_to_client_received_count_ is 1101
+[22:25:24] NETCLIENT:latest player_state_size is 14
+[22:25:25] NETCLIENT:server to client popped count: 1101
+[22:25:25] FPS  36, 68997, 10112, -45043
+[22:25:25] NETWORK:Player 33398 joined the world
+[22:25:26] NETWORK:Player 83853 joined the world
+[22:25:28] FPS  36, 68997, 10112, -45043
+[22:25:28] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:25:29] Creating new nameplate for "C.Beavis"
+[22:25:30] Creating new nameplate for "J.Neubauer"
+[22:25:31] FPS  32, 63214, 10421, -48420
+[22:25:32] NETWORK:Player 85177 joined the world
+[22:25:33] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:25:34] Creating new nameplate for "J.Persson"
+[22:25:34] NETCLIENT:server_to_client_received_count_ is 1201
+[22:25:34] NETCLIENT:latest player_state_size is 15
+[22:25:34] NETCLIENT:server to client popped count: 1201
+[22:25:34] NETCLIENT:Renew server lease period reached...
+[22:25:34] FPS  34, 66387, 10240, -46560
+[22:25:35] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:25:36] Creating new nameplate for "D.Lee"
+[22:25:37] FPS  29, 70483, 10021, -44853
+[22:25:40] NETCLIENT:send player state sequence number: 601
+[22:25:41] FPS  25, 74943,  9828, -43263
+[22:25:43] NETCLIENT:server_to_client_received_count_ is 1301
+[22:25:43] NETCLIENT:latest player_state_size is 15
+[22:25:43] NETCLIENT:server to client popped count: 1301
+[22:25:45] FPS  31, 17121, 12253, -52631
+[22:25:47] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:25:47] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:25:47] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:25:47] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
+[22:25:48] Creating new nameplate for "B.Hodges  V5"
+[22:25:48] Creating new nameplate for "H.Funch  V5"
+[22:25:48] Creating new nameplate for "G.Crane  V5"
+[22:25:48] Creating new nameplate for "J.Finlay   V5"
+[22:25:48] FPS  29, 19127, 12376, -54513
+[22:25:51] NETCLIENT:server_to_client_received_count_ is 1401
+[22:25:51] NETCLIENT:latest player_state_size is 15
+[22:25:51] NETCLIENT:server to client popped count: 1401
+[22:25:52] FPS  23, 21673, 12094, -56529
+[22:25:53] NETWORK:Player 34118 joined the world
+[22:25:53] Creating new nameplate for "M.Miyakawa"
+[22:25:56] FPS  36, 24353, 12097, -57943
+[22:25:58] Analytics logged
+
+[22:25:58] User profile updated

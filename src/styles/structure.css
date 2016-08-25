@@ -1,0 +1,149 @@
+.fullWidth: {
+  width: 100%;
+}
+.boxesWrapOuter {
+  composes: fullWidth;
+  margin-top: 1.5rem;
+}
+.boxesWrapInner {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  border-width: 0.1rem 0.1rem 0.1rem 0.1rem;
+  border-top-right-radius: 2.75rem;
+  border-bottom-left-radius: 2.5rem;
+}
+.boxBase {
+  flex: 1 auto;
+  text-align: center;
+  border-color: #fff;
+  border-width: 0 0.25rem 0 0;
+  border-style: solid;
+  overflow: hidden;
+}
+.box {
+  composes: boxBase;
+  height: 100%;
+  min-height: 100%;
+}
+.boxFirst {
+  composes: box;
+  border-bottom-left-radius: 2.5rem;
+}
+.boxLast {
+  composes: box;
+  border-width: 0;
+}
+.boxFirstLast {
+  composes: box;
+  border-bottom-left-radius: 2.5rem;
+  border-width: 0;
+}
+.chartsBoxContent {
+  composes: box;
+  min-height: 35rem;
+  background: #eee;
+  border-top-right-radius: 2.5rem;
+  border-bottom-left-radius: 2.5rem;
+  margin-bottom: 10rem;
+}
+.boxHeading {
+  text-align: center;
+  letter-spacing: 0.1rem;
+  text-transform: lowercase;
+  vertical-align: baseline;
+  color: #fff;
+  height: 2.6rem;
+  padding: 0.15rem 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  overflow: hidden;
+  background: #178acc;
+}
+.boxHeadingLast {
+  composes: boxHeading;
+  border-top-right-radius: 2.5rem;
+}
+.boxContent {
+  background: #eee;
+  display: flex;
+  padding: 1rem 0.2rem 1rem 0.2rem;
+  width: 100%;
+  white-space: normal;
+  font-weight: 700;
+  font-size: 2.8rem;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  height: 5rem;
+  min-height: 5rem;
+  align-items: center;
+  justify-content: center;
+}
+.boxValueInner {
+  letter-spacing: -0.1rem;
+  opacity: 1;
+  color: #666;
+  overflow: hidden;
+  padding: 0 1.2rem 0 1.2rem;
+}
+.boxValueBig {
+  composes: boxValueInner;
+  font-weight: 700;
+  font-size: 2.2rem;
+  line-height: 2.6rem;
+}
+.boxValueSmall {
+  composes: boxValueInner;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.25rem;
+}
+.sectionHeading {
+  margin-top: 4rem;
+  margin-bottom: 0.1rem;
+  color: #178acc;
+  text-align: center;
+  font-weight: 600;
+  font-size: 3.5rem;
+  line-height: 3.5rem;
+}
+.sectionSubHeading {
+  color: #999;
+  text-align: center;
+  font-weight: 600;
+  font-size: 3rem;
+  line-height: 3rem;
+}
+.chartContainer {
+  margin-bottom: 2rem;
+}
+.heading {
+  color: #178acc;
+  font-size: 2.2rem;
+  line-height: 2.4rem;
+  font-weight: 600;
+}
+.subHeading {
+  color: #178acc;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+.infoHeading {
+  color: #666;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+}
+.legendWrapper {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.alignLeft {
+  text-align: left;
+}

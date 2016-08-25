@@ -1,0 +1,5 @@
+/index.html
+/favicon.ico
+/bundle.js
+/demolog.txt
+/img/*

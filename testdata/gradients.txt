@@ -1,0 +1,35 @@
+[15:35:39] Log Time: 15:35:39 2016-02-13
+
+[15:35:40] ANT  : FET grade set successfully
+
+[15:35:40] ANT  : FET changing grade to -0.10
+
+[15:35:41] ANT  : Transfer Completed.
+
+[15:35:41] ANT  : FET grade set successfully
+
+[15:35:41] ANT  : Rx Fail on channel 1
+
+[15:35:41] ANT  : Rx Fail on channel 1
+
+[15:35:41] ANT  : FET changing grade to -0.03
+
+[15:35:41] ANT  : Transfer Completed.
+
+[15:35:41] ANT  : FET grade set successfully
+
+[15:35:41] ANT  : Rx Fail on channel 1
+
+[15:35:41] ANT  : Rx Fail on channel 1
+
+[15:35:41] ANT  : FET changing grade to 0.04
+
+[15:35:42] ANT  : Rx Fail on channel 2
+
+[15:35:42] ANT  : Rx Fail on channel 1
+
+[15:35:42] ANT  : Rx Fail on channel 2
+
+[15:35:42] ANT  : Rx Fail on channel 1
+
+[15:35:42] ANT  : FET changing grade to 0.09
