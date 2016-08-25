@@ -1,7 +1,7 @@
 Idea for compiling a benchmarks db using AWS Lambda, Web API gateway, DynamoDB & static json in S3 Bucket
 ==
 
-[diagram](https://github.com/mhanney/zwiftalizer/blob/master/screenshots/zwiftalizer-serverless-aws.png)
+![diagram](https://github.com/mhanney/zwiftalizer/blob/master/screenshots/zwiftalizer-serverless-aws.png)
 
 
 
