@@ -2,48 +2,53 @@
 
 Zwift log file analyzer - a web browser based drag and drop tool for reading Zwift log files
 
-![screenshot](https://github.com/mhanney/zwiftlog/blob/master/screenshots/zwiftlog-v.0.3.0.png)
+![screenshot1](https://github.com/mhanney/zwiftalizer/blob/master/screenshots/screencapture-localhost-8080-1472101188829.png)
+
+![screenshot2](https://github.com/mhanney/zwiftalizer/blob/master/screenshots/screencapture-localhost-8080-1472101154779.png)
+
+![screenshot3](https://github.com/mhanney/zwiftalizer/blob/master/screenshots/screencapture-localhost-8080-1472101207665.png)
 
 ## What is this?
 
 This is a browser based tool to analyze the log file from the Zwift cycling
-platform and output graphics frames per second and ANT+ signal performance charts.
-The code runs 100% client side with no back-end component.
-Log files are not uploaded anywhere and no data is transferred off the end user's computer.
+platform and output graphics, ANT+ device and network performance charts.
+The code runs 100% in your web browser on your computers. There is no back-end server or database.
 
-## 0.4.0 Changes (TBA)
+## 0.9.0 Changes (2016-08-24)
 
-# Tabbed sections for ANT+, Network and Graphics (React tabs)
-# ANT+ Device signals  
-# ANT+ Device to channel mapped correctly
-# ANT+ Power source identification (experimental)
-# ANT+ Device manufacturer and model identification (experimental)
-# ANT+ Powermeter reading line chart for crank and wheel based meters (including Kickr, not including Power2Max)
-# ANT+ Powermeter calibration (current zero offset value) displayed (not including Power2Max)
-# ANT+ Powermeter calibration auto-zero support displayed (true/false)
-# ANT+ reconnects now shows max value per 10s rollup (to exaggerate bars)
-# ANT+ reconnects chart zoom (mouse wheel)
-# ANT+ reconnects chart pan (click and drag brushing)
-# ANT+ Wahoo Kickr gradient changes line chart
-# ANT+ FE-C gradient changes line chart (Tested with Tacx)
-# ANT+ Basic device (4Hz) and Advanced device (8Hz) sample rates identified (experimental)
-# Network reconnect attempts chart
-# Network phone connection attempts chart
-# Network errors chart
-# Graphics OpenGL version and driver information
-# Graphics shadow resolution added
-# Graphics line chart zoom (mouse wheel)
-# Graphics line chart pan (click and drag brush area)
-# Graphics line chart tracker (vertical bar)
-# Graphics line chart Min, Max, Avg for zoomed area
-# Graphics line chart using 15s avg rollups
-# Redux for managing state
-# Replaced Dropzone.js with React Dropzone
-# Parser function library for improved testing with fewer side effects
-# More unit tests (Tape)
-# Activity Date Time changed from ANSI to more Humanly readable format
-# Styles overhaul (CSS modules)
-# Removed bogus 'help' modal windows
+* ANT+ Device signal per channel
+* ANT+ Device signal is POSITIVE (assumed sample rate minus RxFails per second)
+* ANT+ Basic device (4Hz) and Advanced device (8Hz) sample rates guessed (experimental)
+* ANT+ Device to channel mapped correctly
+* ANT+ Device battery level indicator (if device broadcasts it)
+* ANT+ Power source identification (experimental)
+* ANT+ Device manufacturer and model identification (experimental)
+* ANT+ Powermeter reading line chart for crank and wheel based meters (including Kickr, not including Power2Max)
+* ANT+ Powermeter calibration (current zero offset value) displayed (not including Power2Max)
+* ANT+ Powermeter calibration auto-zero support displayed (true/false)
+* ANT+ reconnects now shows max value per 10s rollup (to exaggerate bars)
+* ANT+ reconnects chart zoom (mouse wheel)
+* ANT+ reconnects chart pan (click and drag)
+* ANT+ Wahoo Kickr gradient changes line chart
+* ANT+ FE-C gradient changes line chart (Tested with Tacx Neo logs)
+* Network reconnect attempts chart
+* Network phone connection attempts chart
+* Network errors chart
+* Graphics OpenGL major version and driver version
+* Graphics shadow resolution
+* Graphics min, avg, max FPS update to chart highlighted area
+* Graphics line chart zoom (mouse wheel)
+* Graphics line chart pan (click and drag brush area)
+* Graphics line chart tracker (vertical bar)
+* Graphics line chart using 15s avg rollups for performance
+* Tabbed sections for ANT+, Network and Graphics
+* Redux for managing state
+* Replaced Dropzone.js with React Dropzone
+* Parser function mini-library for improved testing with fewer side effects
+* More unit tests
+* Activity Date Time changed from ANSI to more humanly readable format
+* Styles overhaul (CSS modules)
+* Removed opinions and incorrect assumptions from 'help' modal windows
 
 
 ## 0.3.1 Changes (2016-04-05)
