@@ -2,11 +2,11 @@
 
 Zwift log file analyzer - a web browser based drag and drop tool for reading Zwift log files
 
-![screenshot1](https://github.com/mhanney/zwiftalizer/blob/master/screenshots/screencapture-localhost-8080-1472104771807.png)
+![screenshot1](https://github.com/mhanney/zwiftalizer/blob/master/screenshots/screencapture-localhost-8080-1472101188829.png)
 
-![screenshot2](https://github.com/mhanney/zwiftalizer/blob/master/screenshots/screencapture-localhost-8080-1472101207665.png)
+![screenshot2](https://github.com/mhanney/zwiftalizer/blob/master/screenshots/screencapture-localhost-8080-1472101154779.png)
 
-![screenshot3](https://github.com/mhanney/zwiftalizer/blob/master/screenshots/screencapture-localhost-8080-1472104782951.png)
+![screenshot3](https://github.com/mhanney/zwiftalizer/blob/master/screenshots/screencapture-localhost-8080-1472101207665.png)
 
 ## What is this?
 
