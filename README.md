@@ -2,11 +2,11 @@
 
 Zwift log file analyzer - a web browser based drag and drop tool for reading Zwift log files
 
-![screenshot1](https://github.com/mhanney/zwiftalizer/blob/master/screenshots/screencapture-localhost-8080-1472101188829.png)
+![screenshot1](https://github.com/mhanney/zwiftalizer/blob/master/screenshots/screencapture-localhost-8080-1472104771807.png)
 
-![screenshot2](https://github.com/mhanney/zwiftalizer/blob/master/screenshots/screencapture-localhost-8080-1472101154779.png)
+![screenshot2](https://github.com/mhanney/zwiftalizer/blob/master/screenshots/screencapture-localhost-8080-1472101207665.png)
 
-![screenshot3](https://github.com/mhanney/zwiftalizer/blob/master/screenshots/screencapture-localhost-8080-1472101207665.png)
+![screenshot3](https://github.com/mhanney/zwiftalizer/blob/master/screenshots/screencapture-localhost-8080-1472104782951.png)
 
 ## What is this?
 
@@ -14,7 +14,7 @@ This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
 The code runs 100% in your web browser on your computer. There is no back-end server or database.
 
-## 0.9.0 Changes (2016-08-24)
+## 0.9.1 Changes (2016-08-24)
 
 * ANT+ Device signal per channel
 * ANT+ Device signal is POSITIVE (assumed sample rate minus RxFails per second)

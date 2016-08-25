@@ -48,9 +48,7 @@ class About extends React.Component {
 
                   <p>ESnet React Timeseries Charts and Pond.js are copyright of The Regents of the University of California, through Lawrence Berkeley National Laboratory.</p>
 
-                  <p>Everything else is copyright
-                    <a href="https://github.com/mhanney" target="_blank">Mike Hanney</a>
-                    and made available by the GNU GPL V3 license</p>
+                  <p>Everything else is copyright Mike Hanney and made available by the GNU GPL V3 license</p>
 
                   <p>
                     <a href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md" target="_blank">The full licenses can be found here</a>
