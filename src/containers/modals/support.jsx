@@ -32,15 +32,16 @@ class Support extends React.Component {
 
                     <h3>
                       <i className="fa fa-github"></i>&nbsp;Open Source</h3>
-                    <p>The Zwiftalizer is free, open source software. You may&nbsp;
-                      <a href="https://github.com/mhanney/zwiftlog" target="_blank">checkout the source on GitHub</a>&nbsp;and modify it, for non-commercial use, in anyway you see fit.</p>
+                    <p>The Zwiftalizer is free, open source software. You are encouraged to
+                      <a href="https://github.com/mhanney/zwiftalizer" target="_blank">checkout the source from GitHub</a>
+                      and contribute changes</p>
                     <p>You do not have to be a coder to make a contribution.
                     </p>
                     <p>
-                      <a href="https://github.com/mhanney/zwiftlog/issues" target="_blank">Submit an bug report or feature request</a>&nbsp;or simply "star" the project on GitHub (we like nerd hugs).
+                      <a href="https://github.com/mhanney/zwiftalizer/issues" target="_blank">Submit an bug report or feature request</a>&nbsp;or simply "star" the project on GitHub (we like nerd hugs).
                     </p>
                     <p>
-                      <a href="https://github.com/mhanney/zwiftlog" target="_blank">github.com/mhanney/zwiftlog</a>
+                      <a href="https://github.com/mhanney/zwiftalizer" target="_blank">github.com/mhanney/zwiftalizer</a>
                     </p>
 
                   </div>

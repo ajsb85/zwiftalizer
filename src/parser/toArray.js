@@ -8,8 +8,6 @@ export default function toArray(str) {
     return str
   }
 
-  //console.log(typeof str)
-
   if (typeof str !== 'string') {
     return str
   }

@@ -44,13 +44,16 @@ class About extends React.Component {
 
                   <h3>Copyrights and licenses</h3>
 
-                  <p>ESnet React Timeseries Charts and Pond.js are the copyright of The Regents of the University of California, through Lawrence Berkeley National Laboratory.</p>
+                  <p>ReactJS is copyright of Facebook</p>
 
-                  <p>Everything else is copyright of&nbsp;<a href="https://github.com/mhanney" target="_blank">Mike Hanney</a>. You may copy, modify and distribute copies of the code for
-non-commercial use but derived works must include the original copyright notices of the aforementioned parties, and you should check with &nbsp;<a href="http://software.es.net/react-timeseries-charts/" target="_blank">ESnet</a>&nbsp; first.</p>
+                  <p>ESnet React Timeseries Charts and Pond.js are copyright of The Regents of the University of California, through Lawrence Berkeley National Laboratory.</p>
+
+                  <p>Everything else is copyright
+                    <a href="https://github.com/mhanney" target="_blank">Mike Hanney</a>
+                    and made available by the GNU GPL V3 license</p>
 
                   <p>
-                    <a href="https://github.com/mhanney/zwiftlog/blob/master/LICENSE.md" target="_blank">The full licenses can be found here</a>
+                    <a href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md" target="_blank">The full licenses can be found here</a>
                   </p>
 
                   <p>Ride on!&nbsp;<em>Mike</em>

@@ -72,8 +72,5 @@ export default function mapAntBatteryLevels(lines, device) {
     })
     .value()
 
-  console.log('battery level')
-  console.log(reduced)
-
   return reduced
 }

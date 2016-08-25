@@ -9,7 +9,7 @@
 
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
-import {loadDemo} from '../../actions/parse.js'
+import {loadDemo, reset} from '../../actions/parse.js'
 // bootstrap.native is the bootstrap API without the jquery dependency
 var bsn = require('bootstrap.native');
 import structure from '../../styles/structure.css'
@@ -30,8 +30,17 @@ class Navigation extends React.Component {
 
   handleDemoClick(e) {
     e.preventDefault()
-    const {dispatch} = this.props
-    dispatch(loadDemo())
+
+    const {dispatch, isLoaded} = this.props
+
+    if (isLoaded) {
+      dispatch(reset())
+    }
+
+    setTimeout(() => {
+      dispatch(loadDemo())
+    }, 250)
+
   }
 
   handleTwitterClick(e) {
@@ -51,7 +60,7 @@ class Navigation extends React.Component {
 
   handleGithubClick(e) {
     e.preventDefault()
-    window.location.href = 'https://github.com/mhanney/zwiftlog'
+    window.location.href = 'https://github.com/mhanney/zwiftalizer'
   }
 
   componentDidMount() {

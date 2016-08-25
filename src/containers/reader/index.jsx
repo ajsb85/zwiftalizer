@@ -29,20 +29,16 @@ class Reader extends React.Component {
       ? {
         height: '7rem'
       }
-      : isLoading
-        ? {
-          height: '20rem'
-        }
-        : {
-          height: '50rem'
-        }
+      : {
+        height: '50rem'
+      }
 
     const dropBoxInnerStyle = isLoaded
       ? {
         height: '6rem'
       }
       : {
-        height: '10rem'
+        height: '14rem'
       }
 
     const instructionsDiv = isLoading
@@ -91,9 +87,10 @@ class Reader extends React.Component {
       dispatch(reset())
     }
 
-    //@todo, raise warning if the file does not appear to be a log file (dropping the launcher log is a common error)
-
-    dispatch(readFile(files[0]))
+    //@todo, raise warning if the file does not appear to be a log file (dropping the launcher log is a common error) delayed so that the state can update the loading message
+    setTimeout(() => {
+      dispatch(readFile(files[0]))
+    }, 250)
   }
 
 }

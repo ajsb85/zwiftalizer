@@ -503,8 +503,6 @@ class Chart extends React.Component {
       maxGrad = parseInt(device.gradient.max())
     }
 
-    console.log(minGrad)
-
     return (
       <div key={key} className={structure.chartContainer}>
         <div className="row" style={headingRowStyle}>
