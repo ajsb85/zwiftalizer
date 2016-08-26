@@ -10,15 +10,27 @@ import toArray from './toArray'
 // lines is assumed to be Networking lines only, as an array, with times already in unix format using epochify
 export default function mapNetworkErrors(lines, timeAxisTimeSeries) {
 
-  const result = {
+  const networkErrors = {
     name: 'errors',
+    columns: ['time', 'value'],
+    points: []
+  };
+
+  const delayedPackets = {
+    name: 'delayedPackets',
+    columns: ['time', 'value'],
+    points: []
+  };
+
+  const invalidRoadTimeWarnings = {
+    name: 'invalidRoadTimeWarnings',
     columns: ['time', 'value'],
     points: []
   };
 
   const networkLines = Array.isArray(lines) ? lines : toArray(lines)
 
-  const errorsRegex = /^\[[^\]]*\]\s+network:error.*$/i
+  const errorsRegex = /^\[[^\]]*\]\s+(network:error|network:delayed|warn\s+:\s+invalid\sroad\stime).*$/i
 
   const errors = []
 
@@ -28,7 +40,7 @@ export default function mapNetworkErrors(lines, timeAxisTimeSeries) {
 
   _.each(errors, line => {
 
-    const matches = line.match(/^\[([^\]]*)\].*$/i)
+    const matches = line.match(/^\[([^\]]*)\]\s+(network:error|network:delayed|warn\s+:\s+invalid\sroad\stime).*$/i)
 
     if (!matches) {
       return
@@ -36,22 +48,77 @@ export default function mapNetworkErrors(lines, timeAxisTimeSeries) {
 
     const timestamp = parseInt(matches[1])
 
-    result.points.push([timestamp, 1])
+    const type = matches[2]
+
+    let errorType = null
+
+    try {
+      errorType = (type.split(':')[1]).toLowerCase().trim()
+    } catch (e) {
+      console.log('Failed to parse network error type')
+      return
+    }
+
+    switch (errorType) {
+
+      case ('error'):
+        {
+          networkErrors.points.push([timestamp, 1])
+        }
+        break
+
+      case ('delayed'):
+        {
+          delayedPackets.points.push([timestamp, 1])
+        }
+        break
+
+      case ('invalid road time'):
+        {
+          invalidRoadTimeWarnings.points.push([timestamp, 1])
+        }
+        break
+    }
 
   })
 
-  const ts = new TimeSeries(result)
+  const networkErrorsTs = new TimeSeries(networkErrors)
 
-  const reducedSeries = TimeSeries.timeSeriesListSum({
+  const reducedNetworkErrors = TimeSeries.timeSeriesListSum({
     name: 'errors',
     columns: ['time', 'value'],
-  }, [timeAxisTimeSeries, ts])
+  }, [timeAxisTimeSeries, networkErrorsTs])
 
-  // rollup max to exaggerate the reconnects bars
-  const rollup = reducedSeries.fixedWindowRollup('10s', {
+  const rollupNetworkErrors = reducedNetworkErrors.fixedWindowRollup('10s', {
     value: max
   })
 
-  return rollup
+  const delayedPacketsTs = new TimeSeries(delayedPackets)
+
+  const reducedDelayedPackets = TimeSeries.timeSeriesListSum({
+    name: 'delayedPackets',
+    columns: ['time', 'value'],
+  }, [timeAxisTimeSeries, delayedPacketsTs])
+
+  const rollupDelayedPackets = reducedDelayedPackets.fixedWindowRollup('10s', {
+    value: max
+  })
+
+  const reducedInvalidRoadTimeWarningsTs = new TimeSeries(invalidRoadTimeWarnings)
+
+  const reducedInvalidRoadTimeWarnings = TimeSeries.timeSeriesListSum({
+    name: 'invalidRoadTimeWarnings',
+    columns: ['time', 'value'],
+  }, [timeAxisTimeSeries, reducedInvalidRoadTimeWarningsTs])
+
+  const rollupInvalidRoadTimeWarnings = reducedInvalidRoadTimeWarnings.fixedWindowRollup('10s', {
+    value: max
+  })
+
+  return {
+    generalErrors: rollupNetworkErrors,
+    delayedPackets: rollupDelayedPackets,
+    invalidRoadTimeWarnings: rollupInvalidRoadTimeWarnings
+  }
 
 }

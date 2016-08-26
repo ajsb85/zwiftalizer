@@ -72,9 +72,23 @@ const phoneConnectionAttemtpsStyles = {
   }
 }
 
-const errorStyles = {
+const generalErrorsStyles = {
   value: {
     stroke: colors.fiestared,
+    strokeWidth: 1.5
+  }
+}
+
+const delayedPacketErrorsStyles = {
+  value: {
+    stroke: colors.sonicblue,
+    strokeWidth: 1.5
+  }
+}
+
+const invalidRoadTimeWarningsStyles = {
+  value: {
+    stroke: colors.lavender,
     strokeWidth: 1.5
   }
 }
@@ -127,18 +141,55 @@ class Chart extends React.Component {
 
   renderNetworkSignals() {
 
-    const maxErrors = parseInt(signalFormat(this.state.errors.max()))
+    const maxGeneralErrors = parseInt(signalFormat(this.state.errors.generalErrors.max()))
+    const maxDelayed = parseInt(signalFormat(this.state.errors.delayedPackets.max()))
+    const maxInvalidRoadTimeWarnings = parseInt(signalFormat(this.state.errors.invalidRoadTimeWarnings.max()))
+
+    const maxMaxErrors = _.max([maxGeneralErrors, maxDelayed, maxInvalidRoadTimeWarnings])
 
     return (
       <div key="networkSignals">
 
         <div className="row" style={headingRowStyle}>
-          <div className="col-xs-12 col-sm-offset-1 col-sm-10">
+          <div className="col-xs-12 col-sm-offset-1 col-sm-4">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>Network errors</h4>
               <h5 className={structure.infoHeading}>Lower is better. A bump at the beginning is normal.</h5>
             </div>
           </div>
+          <div className="col-xs-12 col-sm-6">
+            <div className="pull-right">
+              <div className={structure.legendWrapper}>
+                <Legend
+                  type="swatch"
+                  categories={[
+                  {
+                    key: "erros",
+                    label: "Error",
+                    disabled: false,
+                    style: {
+                      fill: colors.fiestared
+                    }
+                  }, {
+                    key: "delays",
+                    label: "Delayed Packet",
+                    disabled: false,
+                    style: {
+                      fill: colors.sonicblue
+                    }
+                  },, {
+                    key: "invalidRoadTimeWarnings",
+                    label: "Invalid Road Time Warning",
+                    disabled: false,
+                    style: {
+                      fill: colors.lavender
+                    }
+                  }
+                ]}/>
+              </div>
+            </div>
+          </div>
+
         </div>
         <Resizable>
           <ChartContainer
@@ -150,12 +201,14 @@ class Chart extends React.Component {
             maxTime={this.state.initialRange.end()}
             minTime={this.state.initialRange.begin()}
             showGrid={false}>
-            <ChartRow height={chartHeight} debug={false}>
-              <YAxis id="errors1" label="Errors" min={0} max={maxErrors} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
+            <ChartRow height="150" debug={false}>
+              <YAxis id="errors1" label="Errors" min={0} max={maxMaxErrors} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
               <Charts>
-                <LineChart axis="errors1" breakLine={true} series={this.state.errors} style={errorStyles} smooth={true} interpolation="curveBasis"/>
+                <LineChart axis="errors1" breakLine={true} series={this.state.errors.generalErrors} style={generalErrorsStyles} smooth={true} interpolation="curveBasis"/>
+                <LineChart axis="errors1" breakLine={true} series={this.state.errors.delayedPackets} style={delayedPacketErrorsStyles} smooth={true} interpolation="curveBasis"/>
+                <LineChart axis="errors1" breakLine={true} series={this.state.errors.invalidRoadTimeWarnings} style={invalidRoadTimeWarningsStyles} smooth={true} interpolation="curveBasis"/>
               </Charts>
-              <YAxis id="errors1" label="Connection Errors" min={0} max={maxErrors} absolute={true} width={rightAxisLabelWidth} type="linear" format="d"/>
+              <YAxis id="errors1" label="Network" min={0} max={maxMaxErrors} absolute={true} width={rightAxisLabelWidth} type="linear" format="d"/>
             </ChartRow>
           </ChartContainer>
         </Resizable>
