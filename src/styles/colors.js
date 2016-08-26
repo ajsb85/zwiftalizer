@@ -14,7 +14,7 @@ const colors = {
   lavender: '#BB89EC',
   slategray: '#3e3e3e',
   brand: '#178acc',
-  brandinverse: '#f9672b',
+  brandinverse: '#FF9800',
   purple: '#B535CE'
 }
 

@@ -45,7 +45,7 @@
 .chartsBoxContent {
   composes: box;
   min-height: 35rem;
-  background: #eee;
+  background: #f6f6f6;
   border-top-right-radius: 2.5rem;
   border-bottom-left-radius: 2.5rem;
   margin-bottom: 10rem;
@@ -68,7 +68,7 @@
   border-top-right-radius: 2.5rem;
 }
 .boxContent {
-  background: #eee;
+  background: #f6f6f6;
   display: flex;
   padding: 1rem 0.2rem 1rem 0.2rem;
   width: 100%;

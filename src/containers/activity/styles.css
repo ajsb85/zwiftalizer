@@ -1,7 +1,7 @@
 .activityBoxContent {
   composes: boxContent from '../../styles/structure.css';
-  color: #f9672b;
+  color: #FF9800;
   font-size: 2.4rem;
   line-height: 2.6rem;
-  font-weight: 800;
+  font-weight: 700;
 }

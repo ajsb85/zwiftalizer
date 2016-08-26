@@ -1,5 +1,6 @@
-/index.html
-/favicon.ico
-/bundle.js
-/demolog.txt
 /img/*
+/favicon.ico
+/index.html
+/demolog.txt
+/bundle.js
+/bootstrap/*
