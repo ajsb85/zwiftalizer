@@ -25,7 +25,7 @@ The code runs 100% in your web browser on your computer. There is no back-end se
 * ANT+ Device manufacturer and model identification (experimental)
 * ANT+ Powermeter reading line chart for crank and wheel based meters (including Kickr, not including Power2Max)
 * ANT+ Powermeter calibration (current zero offset value) displayed (not including Power2Max)
-* ANT+ Powermeter calibration auto-zero support displayed (true/false)
+* ANT+ Powermeter calibration auto-zero enabled displayed (true/false/unsupported)
 * ANT+ reconnects now shows max value per 10s rollup (to exaggerate bars)
 * ANT+ reconnects chart zoom (mouse wheel)
 * ANT+ reconnects chart pan (click and drag)
@@ -49,6 +49,9 @@ The code runs 100% in your web browser on your computer. There is no back-end se
 * Activity Date Time changed from ANSI to more humanly readable format
 * Styles overhaul (CSS modules)
 * Removed opinions and incorrect assumptions from 'help' modal windows
+* Removed Pondjs and react-timeseries-charts source code from repo
+* Using pondjs 0.6.0 from npm
+* Using react-timeseries-charts 0.9.2 from npm
 
 
 ## 0.3.1 Changes (2016-04-05)
