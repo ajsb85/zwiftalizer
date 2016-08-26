@@ -188,7 +188,6 @@ class Chart extends React.Component {
 
       switch (device.batteryLevel) {
         case 0:
-
         case 1:
           batteryLevelSpanStyle.color = colors.fiestared
           break;
@@ -220,20 +219,26 @@ class Chart extends React.Component {
         ? 'succesful'
         : 'failed'
 
-      const calibrationValues = '[' + device.calibration.values[0] + ',' + device.calibration.values[1] + ']'
+      const calibrationValues = device.calibration.values[0] + ',' + device.calibration.values[1]
 
-      const autoZero = (device.calibration.autoZero
-        ? ''
-        : 'not ') + 'supported'
+      let autoZero = 'not supported'
+
+      // hack, 4iiii doesn't report auto-zero enabled status properly, but is always enabled
+      if (device.manufacturer === '4iiii') {
+        autoZero = 'enabled'
+      } else if (!_.isUndefined(device.calibration.autoZero)) {
+        autoZero = (device.calibration.autoZero
+          ? ''
+          : 'not ') + 'enabled'
+      }
 
       return (
-        <h5 className={structure.subHeading}>Calibration {calibrationSuccess}, values {calibrationValues}, auto-zero {autoZero}</h5>
+        <h5 className={structure.subHeading}>Calibration {calibrationSuccess}&nbsp;<strong>({calibrationValues})</strong>&nbsp;auto-zero&nbsp;<strong>{autoZero}</strong>
+        </h5>
       )
 
+      return null
     }
-
-    return null
-
   }
 
   renderPowerDevice(device) {

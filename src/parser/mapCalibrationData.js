@@ -53,6 +53,31 @@ export default function mapCalibrationData(lines) {
 
   let bytes
 
+  // D00001086_-_ANT+_Device_Profile_-_Bicycle_Power_-_Rev4.2.pdf
+  // Page 53
+
+  // Table 13-5. General Calibration Response Message Format
+  // Byte,   Description,   Length,  Value,  Units
+  // 0,  Data Page Number 1 Byte,   0x01 (Calibration Message)
+  // 1,  Calibration ID, 1 Byte,    0xAC (172) (Calibration Response Successful),
+  //                                0xAF (175) (Calibration Response Failed)
+  // see https://github.com/GoldenCheetah/GoldenCheetah/blob/master/src/ANT/ANTMessage.cpp
+  // for SRM, proprietary, non standard ANT+ value here
+  //                                0x01 (1) (SRM, zero offset, read last 2 bytes as big endian)
+  //                                0x02 (2) (SRM, slope)
+  //                                0x03 (3) (SRM, serial number)
+  // Quarq is also proprietary, non standard ANT+ value here too
+  //                                0x12 (18) (Quarq, zero offset, read last 2 bytes as big endian)
+  // 2, Auto Zero status, 1 Byte,
+  //                                0x00 (0) – Auto Zero Is OFF
+  //                                0x01 (1) – Auto Zero Is ON
+  //                                0xFF (255) – Auto Zero Is Not Supported
+  // 3, Reserved \
+  // 4, Reserved  -- 3 Bytes Set to 0xFFFFFF N/A
+  // 5, Reserved /
+  // 6+7, Calibration Data LSB+MSB, 2 Bytes, This is a signed two-byte number allowing for
+  // values ranging from -32768 to +32767
+
   try {
 
     bytes = captures[1].replace(/[\[|\]]/g, '').split(' ')
@@ -88,12 +113,20 @@ export default function mapCalibrationData(lines) {
 
     switch (autoZerostatusByte) {
 
+      /* standard */
       case 0:
+        autoZero = false;
+        break
+
+        /* standard */
+      case 1:
+        /* Quarq */
+      case 3:
         autoZero = true;
         break
 
-      case 1:
-        autoZero = false;
+      default:
+        autoZero = undefined;
         break
     }
 
@@ -102,32 +135,7 @@ export default function mapCalibrationData(lines) {
     // Endian-ness matters :-(
     const zeroOffsetBytes = bytes.slice(6, 8)
 
-    // D00001086_-_ANT+_Device_Profile_-_Bicycle_Power_-_Rev4.2.pdf
-    // Page 53
-
-    // Table 13-5. General Calibration Response Message Format
-    // Byte,   Description,   Length,  Value,  Units
-    // 0,  Data Page Number 1 Byte,   0x01 (Calibration Message)
-    // 1,  Calibration ID, 1 Byte,    0xAC (172) (Calibration Response Successful),
-    //                                0xAF (175) (Calibration Response Failed)
-    // see https://github.com/GoldenCheetah/GoldenCheetah/blob/master/src/ANT/ANTMessage.cpp
-    // for SRM, proprietary, non standard ANT+ value here
-    //                                0x01 (1) (SRM, zero offset, read last 2 bytes as big endian)
-    //                                0x02 (2) (SRM, slope)
-    //                                0x03 (3) (SRM, serial number)
-    // Quarq is also proprietary, non standard ANT+ value here too
-    //                                0x12 (18) (Quarq, zero offset, read last 2 bytes as big endian)
-    // 2, Auto Zero status, 1 Byte,
-    //                                0x00 (0) – Auto Zero Is OFF
-    //                                0x01 (1) – Auto Zero Is ON
-    //                                0xFF (255) – Auto Zero Is Not Supported
-    // 3, Reserved \
-    // 4, Reserved  -- 3 Bytes Set to 0xFFFFFF N/A
-    // 5, Reserved /
-    // 6+7, Calibration Data LSB+MSB, 2 Bytes, This is a signed two-byte number allowing for
-    // values ranging from -32768 to +32767
-
-    // don't trust value of zero, or max value 
+    // don't trust value of zero, or max value
 
     if (parseInt(zeroOffsetBytes[0]) === 0 && parseInt(zeroOffsetBytes[1]) === 0) {
       return undefined
