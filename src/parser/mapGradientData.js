@@ -43,7 +43,6 @@ export default function mapGradientData(lines, timeAxisTimeSeries) {
       return
     }
 
-    //@todo, interpret +/- correctly, and multiply by 100 if kickr
     try {
 
       const timestamp = parseInt(matches[1])

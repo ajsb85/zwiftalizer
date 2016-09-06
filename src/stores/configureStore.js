@@ -21,7 +21,7 @@ export default function configureStore() {
       applyMiddleware(
         // lets us dispatch async functions
         thunkMiddleware,
-        //loggerMiddleware // neat middleware that logs actions
+        loggerMiddleware // neat middleware that logs actions
       ),
       // enables redux chrome dev tools extension
       window.devToolsExtension ? window.devToolsExtension() : f => f

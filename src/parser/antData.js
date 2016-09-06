@@ -83,7 +83,7 @@ export default function antData(log, timeAxisTimeSeries) {
         }
         break
 
-        // kickr, doing it's own thing, not FE-C standard when setting gradient
+        // kickr, doing its own thing, not FE-C standard when setting gradient
         // and looks like a regular ANT+ powermeter
       case (WAHOO_KICKR_DEVICE):
         {
@@ -96,7 +96,7 @@ export default function antData(log, timeAxisTimeSeries) {
         }
         break
 
-        //TACX, FE-C, standard, sets gradient, power over fec, does not look like a regular ANT+ powermeter
+        //TACX, BKOOL, ELITE, or Kickr using FE-C beta, sets gradient, power over fec, does not look like a regular ANT+ powermeter
       case (FEC_DEVICE):
         {
           const gradient = mapGradientData(antLines, timeAxisTimeSeries)

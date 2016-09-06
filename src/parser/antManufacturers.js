@@ -6,12 +6,15 @@ import manufacturersLookup from '../types/antCyclingManufacturers.json'
 
 import tacxDevices from '../types/tacx.json'
 import wahooDevices from '../types/wahoo.json'
+import bkoolDevices from '../types/bkool.json'
 
 import {
   MAX_DEVICES,
   MAX_MANUFACTURER_ID,
   WAHOO_MANUFACTURER_ID,
   TACX_MANUFACTURER_ID,
+  BKOOL_MANUFACTURER_ID,
+  ELITE_MANUFACTURER_ID,
   SMART_TRAINER_MANUFACTURERS,
   POWERMETER_MANUFACTURERS,
   BASIC_DEVICE,
@@ -135,6 +138,12 @@ export default function antManufacturers(lines) {
         case (TACX_MANUFACTURER_ID):
           if (_(tacxDevices).has(modelId)) {
             model = titleCase(tacxDevices[modelId])
+          }
+          break;
+
+        case (BKOOL_MANUFACTURER_ID):
+          if (_(bkoolDevices).has(modelId)) {
+            model = titleCase(bkoolDevices[modelId])
           }
           break;
 
