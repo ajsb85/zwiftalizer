@@ -38,7 +38,7 @@ function parseFileContents(log) {
     // delayed so that the state can update the loading message
     setTimeout(() => {
 
-      const head = Parser.head(log);
+      const head = Parser.head(log)
 
       // turn all times into continuous epoch unix timestamps, and normalize all the new lines
       const normalizedLog = Parser.epochify(Parser.normalize(log));

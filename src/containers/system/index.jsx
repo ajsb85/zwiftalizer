@@ -31,34 +31,39 @@ class System extends React.Component {
     const {platform, cpuVendor, cpuDetails, ram} = this.props;
 
     let platformClass,
-      cpuClass
+      cpuClass = null
 
-    switch (platform.toLowerCase()) {
-      case('pc'):
-        platformClass = images.pc
-        break
+    if (platform) {
 
-      case('mac'):
-        platformClass = images.mac
-        break
+      switch (platform.toLowerCase()) {
+        case('pc'):
+          platformClass = images.pc
+          break
 
-      default:
-        platformClass = null
-        break
+        case('mac'):
+          platformClass = images.mac
+          break
+
+        default:
+          platformClass = null
+          break
+      }
     }
 
-    switch (cpuVendor.toLowerCase()) {
-      case('amd'):
-        cpuClass = images.amd
-        break
+    if (cpuVendor) {
+      switch (cpuVendor.toLowerCase()) {
+        case('amd'):
+          cpuClass = images.amd
+          break
 
-      case('intel'):
-        cpuClass = images.intel
-        break
+        case('intel'):
+          cpuClass = images.intel
+          break
 
-      default:
-        cpuClass = null
-        break
+        default:
+          cpuClass = null
+          break
+      }
     }
 
     // <div className="row">   <div className="col-sm-12">     <h2 className={structure.sectionHeading}>System</h2>   </div> </div>

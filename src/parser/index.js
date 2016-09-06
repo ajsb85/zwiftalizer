@@ -147,6 +147,11 @@ export {
 from './stripFpsLines'
 
 export {
+  default as stripLoadingLines
+}
+from './stripLoadingLines'
+
+export {
   default as mapAntLines
 }
 from './mapAntLines'

@@ -24,41 +24,44 @@ class Specs extends React.Component {
 
     const specs = props.specs
 
-    let gpuClass
+    let gpuClass = null
 
     const {gpuVendor, gpuDetails} = specs
 
-    switch (gpuVendor.toLowerCase()) {
-      case('amd'):
-        if (isFire(gpuDetails)) {
-          gpuClass = images.firepro
-        } else {
-          gpuClass = images.radeon
-        }
-        break
+    if (gpuVendor) {
 
-        //@todo, parse actual GPU data to get radeon or firegl
-      case('ati'):
-        if (isFire(gpuDetails)) {
-          gpuClass = images.firepro
-        } else {
-          gpuClass = images.ati
-        }
-        break
+      switch (gpuVendor.toLowerCase()) {
+        case('amd'):
+          if (isFire(gpuDetails)) {
+            gpuClass = images.firepro
+          } else {
+            gpuClass = images.radeon
+          }
+          break
 
-        //@todo, parse actual GPU data to get HD or Iris
-      case('intel'):
-        gpuClass = images.intel
-        break
+          //@todo, parse actual GPU data to get radeon or firegl
+        case('ati'):
+          if (isFire(gpuDetails)) {
+            gpuClass = images.firepro
+          } else {
+            gpuClass = images.ati
+          }
+          break
 
-      case('nvidia'):
-        gpuClass = images.nvidia
-        break
+          //@todo, parse actual GPU data to get HD or Iris
+        case('intel'):
+          gpuClass = images.intel
+          break
 
-        //@todo, add a graphic for unknown
-      default:
-        gpuClass = null
-        break
+        case('nvidia'):
+          gpuClass = images.nvidia
+          break
+
+          //@todo, add a graphic for unknown
+        default:
+          gpuClass = null
+          break
+      }
     }
 
     this.state = {
