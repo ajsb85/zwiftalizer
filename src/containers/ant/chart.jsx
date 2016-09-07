@@ -337,7 +337,7 @@ class Chart extends React.Component {
     let minGrad = 0
     let maxGrad = 0
 
-    console.log(device.gradient.toJSON())
+    //console.log(device.gradient.toJSON())
 
     if (device.gradient && device.gradient.count() > 0) {
       minGrad = parseInt(device.gradient.min())
