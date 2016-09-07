@@ -51,8 +51,8 @@ export default function mapGradientData(lines, timeAxisTimeSeries) {
 
       let value = parseFloat(matches[3])
 
-      if (type && type.toLowerCase() === 'fet') {
-        value /= 100
+      if (type && type.toLowerCase() === 'kickr') {
+        value = value / 100
       }
 
       result.points.push([timestamp, value])
@@ -66,6 +66,8 @@ export default function mapGradientData(lines, timeAxisTimeSeries) {
   if (result.points.length === 0) {
     return new TimeSeries(result)
   }
+
+  const ts = new TimeSeries(result);
 
   const gradientTimeSeries = new TimeSeries(result);
 

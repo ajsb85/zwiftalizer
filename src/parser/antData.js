@@ -19,6 +19,10 @@ import mapPowermeterData from './mapPowermeterData'
 import mapGradientData from './mapGradientData'
 import mapCalibrationData from './mapCalibrationData'
 
+import {
+  TimeSeries,
+} from 'pondjs'
+
 const BASIC_DEVICE_SAMPLE_RATE = 4
 
 export default function antData(log, timeAxisTimeSeries) {
@@ -32,6 +36,10 @@ export default function antData(log, timeAxisTimeSeries) {
   const batteryLevels = mapAntBatteryLevels(antLines)
 
   const searches = mapAntSearches(antLines, timeAxisTimeSeries)
+
+  const power = mapPowermeterData(antLines, timeAxisTimeSeries)
+
+  const calibration = mapCalibrationData(antLines)
 
   // get failures for each device, and map in the manufacturer, if known
   _.each(devices, device => {
@@ -69,49 +77,60 @@ export default function antData(log, timeAxisTimeSeries) {
       Object.assign(device, batteryLevel)
     }
 
-    switch (device.type) {
-
-      case (POWER_METER_DEVICE):
-        {
-          const calibration = mapCalibrationData(antLines)
-
-          const power = mapPowermeterData(antLines, timeAxisTimeSeries)
-          Object.assign(device, {
-            power,
-            calibration
-          })
-        }
-        break
-
-        // kickr, doing its own thing, not FE-C standard when setting gradient
-        // and looks like a regular ANT+ powermeter
-      case (WAHOO_KICKR_DEVICE):
-        {
-          const power = mapPowermeterData(antLines, timeAxisTimeSeries)
-          const gradient = mapGradientData(antLines, timeAxisTimeSeries)
-          Object.assign(device, {
-            power,
-            gradient
-          })
-        }
-        break
-
-        //TACX, BKOOL, ELITE, or Kickr using FE-C beta, sets gradient, power over fec, does not look like a regular ANT+ powermeter
-      case (FEC_DEVICE):
-        {
-          const gradient = mapGradientData(antLines, timeAxisTimeSeries)
-          Object.assign(device, {
-            gradient
-          })
-        }
-        break
-
-      default:
-        {}
-        break
-
-    }
   })
+
+  const powerDevice = _.find(devices, device => {
+    return (device.type === POWER_METER_DEVICE)
+  })
+
+  const kickrDevice = _.find(devices, device => {
+    return (device.type === FEC_DEVICE && device.manufacturerId === WAHOO_MANUFACTURER_ID)
+  })
+
+  // can be kickr again
+  const fecSmartTrainerDevice = _.find(devices, device => {
+    return (device.type === FEC_DEVICE)
+  })
+
+  // assign the power data to the powermeter before the kickr, but never both
+  if (powerDevice) {
+    Object.assign(powerDevice, {
+      power,
+      calibration
+    })
+  } else if (kickrDevice) {
+    // kickr does not emit calibration offset
+    Object.assign(kickrDevice, {
+      power
+    })
+  }
+
+  // if power was assigned to powermeter device, then kickrDevice.power will be undefined
+  //  assign a null power timeseries to kickr
+  if (kickrDevice && !kickrDevice.power) {
+
+    const power = new TimeSeries({
+      name: 'power',
+      columns: ['time', 'value'],
+      points: []
+    })
+
+    const reducedPowerSeries = TimeSeries.timeSeriesListSum({
+      name: 'power',
+      columns: ['time', 'value'],
+    }, [timeAxisTimeSeries, power])
+
+    Object.assign(kickrDevice, {
+      power: reducedPowerSeries
+    })
+  }
+
+  if (fecSmartTrainerDevice) {
+    const gradient = mapGradientData(antLines, timeAxisTimeSeries)
+    Object.assign(fecSmartTrainerDevice, {
+      gradient
+    })
+  }
 
   return Object.freeze({
     devices,

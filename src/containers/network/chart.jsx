@@ -154,7 +154,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-offset-1 col-sm-4">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>Network errors</h4>
-              <h5 className={structure.infoHeading}>Lower is better. A bump at the beginning is normal.</h5>
+              <h5 className={structure.infoHeading}>Lower is better. A bump at the start is normal.</h5>
             </div>
           </div>
           <div className="col-xs-12 col-sm-6">
@@ -263,7 +263,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-offset-1 col-sm-10">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>Network reconnects</h4>
-              <h5 className={structure.infoHeading}>Fewer is better. Empty is perfect.</h5>
+              <h5 className={structure.infoHeading}>Fewer bars are better.</h5>
             </div>
           </div>
         </div>

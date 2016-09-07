@@ -15,7 +15,7 @@ import {format} from 'd3-format'
 import {timeFormat} from 'd3-time-format'
 import {colors} from '../../styles/colors'
 import {timeAxis} from '../../parser'
-import {BASIC_DEVICE, POWER_METER_DEVICE, FEC_DEVICE, WAHOO_KICKR_DEVICE} from '../../parser/constants'
+import {BASIC_DEVICE, POWER_METER_DEVICE, FEC_DEVICE, WAHOO_MANUFACTURER_ID} from '../../parser/constants'
 
 import {
   TimeRange,
@@ -337,6 +337,8 @@ class Chart extends React.Component {
     let minGrad = 0
     let maxGrad = 0
 
+    console.log(device.gradient.toJSON())
+
     if (device.gradient && device.gradient.count() > 0) {
       minGrad = parseInt(device.gradient.min())
       maxGrad = parseInt(device.gradient.max())
@@ -390,7 +392,7 @@ class Chart extends React.Component {
             minTime={this.state.initialRange.begin()}
             showGrid={false}>
             <ChartRow height={largeChartHeight} debug={false}>
-              <YAxis id="gradientAxis" label="Resistance" min={minGrad} max={maxGrad} absolute={true} width={leftAxisLabelWidth} type="linear" format="+.0%"/>
+              <YAxis id="gradientAxis" label="Resistance" min={minGrad} max={maxGrad} absolute={true} width={leftAxisLabelWidth} type="linear" format=",.2f"/>
               <Charts>
                 <AreaChart axis="fecSignal" series={device.signal} style={fecSignalStyles} columns={{
                   up: ['value']
@@ -561,7 +563,7 @@ class Chart extends React.Component {
             showGrid={false}>
             <ChartRow height={largeChartHeight} debug={false}>
               <YAxis id="powerAxis" label="Power" min={minPower} max={maxPower} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
-              <YAxis id="gradientAxis" label="Resistance" min={minGrad} max={maxGrad} absolute={true} width={leftAxisLabelWidth} type="linear" format="+.0%"/>
+              <YAxis id="gradientAxis" label="Resistance" min={minGrad} max={maxGrad} absolute={true} width={leftAxisLabelWidth} type="linear" format=",.2f"/>
               <Charts>
                 <AreaChart axis="powerSignal" series={device.signal} style={kickrSignalStyle} columns={{
                   up: ['value']
@@ -636,7 +638,7 @@ class Chart extends React.Component {
       : null
 
     const kickrDevice = _.find(this.state.devices, device => {
-      return (device.type === WAHOO_KICKR_DEVICE)
+      return (device.type === FEC_DEVICE && device.manufacturerId === WAHOO_MANUFACTURER_ID)
     })
 
     const kickrChart = kickrDevice
@@ -647,7 +649,7 @@ class Chart extends React.Component {
       return (device.type === FEC_DEVICE)
     })
 
-    const fecChart = fecDevice
+    const fecChart = fecDevice && !kickrDevice
       ? this.renderFecDevice(fecDevice)
       : null
 

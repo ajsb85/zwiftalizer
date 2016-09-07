@@ -19,8 +19,7 @@ import {
   POWERMETER_MANUFACTURERS,
   BASIC_DEVICE,
   POWER_METER_DEVICE,
-  FEC_DEVICE,
-  WAHOO_KICKR_DEVICE
+  FEC_DEVICE
 } from './constants'
 
 // we know battery level is coming from powermeter if we know
@@ -92,6 +91,7 @@ export default function antManufacturers(lines) {
 
     let type = BASIC_DEVICE
 
+    // treat kickr as FEC smart trainer, until we know whether or not it is doing its own gradient protocol or FEC standard
     if (_.contains(SMART_TRAINER_MANUFACTURERS, manufacturerId)) {
       type = FEC_DEVICE
     } else if (_.contains(POWERMETER_MANUFACTURERS, manufacturerId)) {
@@ -126,10 +126,6 @@ export default function antManufacturers(lines) {
       switch (manufacturerIdSting) {
 
         case (WAHOO_MANUFACTURER_ID):
-          // treat kickr as if it is both powermeter and fec device
-          type = WAHOO_KICKR_DEVICE
-            // pretty sure now that device is a kickr or kickr snap
-            // (we will handle the ant+fec data stream in a different way to other devices)
           if (_(wahooDevices).has(modelId)) {
             model = titleCase(wahooDevices[modelId])
           }

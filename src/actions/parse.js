@@ -40,11 +40,11 @@ function parseFileContents(log) {
 
       const head = Parser.head(log)
 
-      // turn all times into continuous epoch unix timestamps, and normalize all the new lines
-      const normalizedLog = Parser.epochify(Parser.normalize(log));
-
       // we parse the head of the log to get all of the system properties, and the constants for the graphics properties
       const systemData = parseHead(head)
+
+      // turn all times into continuous epoch unix timestamps, and normalize all the new lines
+      const normalizedLog = Parser.epochify(Parser.normalize(log));
 
       const activityData = parseActivity(normalizedLog)
 

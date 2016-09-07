@@ -76,7 +76,11 @@ export default function antDevices(lines) {
       type: BASIC_DEVICE
     }
 
-    if (!_.findWhere(result, device)) {
+    const exisingDeviceFound = _.find(result, existingDevice => {
+      return (existingDevice.deviceId === device.deviceId)
+    })
+
+    if (!exisingDeviceFound) {
       result.push(device);
     }
 
