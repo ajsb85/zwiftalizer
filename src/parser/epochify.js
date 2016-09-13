@@ -39,6 +39,12 @@ export default function epochify(str) {
   // for each entry, convert the time to a unixtimestamp,
   // and add the result to the new lines array
 
+  // @todo, this loop hogs the thread for long logs
+  // (Test with 10 MB file in Firefox)
+  // figure out the length, call a separate function with a setTimeout to
+  // yeild to the UI
+  // loop over chunks until length is done.
+
   _.each(entries, entry => {
 
     const matches = entry.match(/^\[([^\]]*)\]\s+?(.*)$/i)
