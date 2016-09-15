@@ -7,6 +7,7 @@ import manufacturersLookup from '../types/antCyclingManufacturers.json'
 import tacxDevices from '../types/tacx.json'
 import wahooDevices from '../types/wahoo.json'
 import bkoolDevices from '../types/bkool.json'
+import sarisDevices from '../types/saris.json'
 
 import {
   MAX_DEVICES,
@@ -15,6 +16,7 @@ import {
   TACX_MANUFACTURER_ID,
   BKOOL_MANUFACTURER_ID,
   ELITE_MANUFACTURER_ID,
+  SARIS_MANUFACTURER_ID,
   SMART_TRAINER_MANUFACTURERS,
   POWERMETER_MANUFACTURERS,
   BASIC_DEVICE,
@@ -92,6 +94,8 @@ export default function antManufacturers(lines) {
     let type = BASIC_DEVICE
 
     // treat kickr as FEC smart trainer, until we know whether or not it is doing its own gradient protocol or FEC standard
+
+    //@todo, need a better way to tell the difference between a saris smart trainer (cycleops hammer, magnus) and powermeter
     if (_.contains(SMART_TRAINER_MANUFACTURERS, manufacturerId)) {
       type = FEC_DEVICE
     } else if (_.contains(POWERMETER_MANUFACTURERS, manufacturerId)) {
@@ -140,6 +144,12 @@ export default function antManufacturers(lines) {
         case (BKOOL_MANUFACTURER_ID):
           if (_(bkoolDevices).has(modelId)) {
             model = titleCase(bkoolDevices[modelId])
+          }
+          break;
+
+        case (SARIS_MANUFACTURER_ID):
+          if (_(sarisDevices).has(modelId)) {
+            model = titleCase(sarisDevices[modelId])
           }
           break;
 
