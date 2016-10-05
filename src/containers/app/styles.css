@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  letter-spacing: 0.3rem;
   text-transform: uppercase;
   vertical-align: baseline;
   color: #178acc;
@@ -11,12 +10,13 @@
   width: 100%;
   white-space: normal;
   font-weight: 700;
-  font-size: 2.4rem;
+  font-size: 2rem;
+  text-align: center;
 }
-.navItem> a {
+.navItem>a {
   text-decoration: none;
 }
-.navItem> a:hover {
+.navItem>a:hover {
   color: #f9672b;
   cursor: pointer;
 }
@@ -26,6 +26,7 @@
 .brand {
   composes: navItem;
   justify-content: flex-start;
+  /*letter-spacing: 0.3rem;*/
 }
 @media(max-width:767px) {
   .navItem, .brand {

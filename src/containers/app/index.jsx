@@ -8,7 +8,7 @@
  */
 
 import React, {Component, PropTypes} from 'react'
-import {Link, browserHistory} from 'react-router'
+import {Link} from 'react-router'
 import {connect} from 'react-redux'
 import {loadDemo, reset} from '../../actions/parse.js'
 // bootstrap.native is the bootstrap API without the jquery dependency
@@ -18,7 +18,7 @@ import styles from './styles.css'
 import {About} from '../modals/about.jsx'
 import {Support} from '../modals/support.jsx'
 
-class Navigation extends React.Component {
+class App extends React.Component {
 
   constructor(props) {
     super(props)
@@ -37,11 +37,6 @@ class Navigation extends React.Component {
     if (isLoaded) {
       dispatch(reset())
     }
-
-    // load home route and allow to render
-    setTimeout(() => {
-      browserHistory.push('/')
-    }, 250)
 
     setTimeout(() => {
       dispatch(loadDemo())
@@ -86,21 +81,30 @@ class Navigation extends React.Component {
           marginTop: '2rem'
         }}>
           <div className="row">
-            <div className="col-xs-12 col-sm-2">
+            <div className="col-xs-12 col-sm-3">
               <div className={styles.brand}>
+
                 <span className={styles.signal}>
                   <i className="fa fa-line-chart" aria-hidden="true"></i>
-                </span>&nbsp;Zwiftalizer
+                </span>&nbsp;<Link to="/">Zwiftalizer</Link>
               </div>
             </div>
-            <div className="col-xs-12 col-sm-offset-4 col-sm-3 col-md-offset-6 col-md-2">
+
+            <div className="col-xs-12 col-sm-3 col-md-6">
+              <div className={styles.navItem}>
+                <Link to="/testedBest">Tested Best</Link>
+              </div>
+            </div>
+
+            <div className="col-xs-12 col-sm-3">
               <div className={styles.navItem}>
                 <a onClick={this.handleDemoClick}>
-                  <i className='fa fa-download'></i>&nbsp;Demo
+                  Demo
                 </a>
               </div>
             </div>
-            <div className="col-xs-12 col-sm-3 col-md-2">
+
+            <div className="col-xs-12 col-sm-3">
               <div className={styles.navItem}>
                 <a onClick={this.handleAboutClick}>
                   <i className='fa fa-info-circle'></i>
@@ -136,6 +140,6 @@ function mapStateToProps(state) {
   }
 }
 
-Navigation.propTypes = {}
+App.propTypes = {}
 
-export default connect(mapStateToProps)(Navigation)
+export default connect(mapStateToProps)(App)

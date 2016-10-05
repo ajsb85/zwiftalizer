@@ -8,32 +8,32 @@
  */
 
 import {Provider} from 'react-redux'
-import {Router, Route} from 'react-router'
+import {Router, Route, IndexRoute, browserHistory} from 'react-router'
+
 import configureStore from '../stores/configureStore'
 
 var _ = require('underscore')
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Navigation from './navigation'
-import Reader from './reader'
-import Activity from './activity'
-import TabPanels from './tabPanels'
-import System from './system'
+import App from './app'
+import Home from './home'
+import {TestedBest} from './testedBest'
+import {Benchmarks} from './benchmarks'
 
 function run() {
 
   let store = configureStore()
 
-  // <Graphics/> <Ant/> <Network/>
-
   ReactDOM.render(
     <Provider store={store}>
     <div>
-      <Navigation/>
-      <Reader/>
-      <Activity/>
-      <System/>
-      <TabPanels/>
+      <Router history={browserHistory}>
+        <Route path='/' component={App}>
+          <IndexRoute component={Home}/>
+          <Route path='testedbest' component={TestedBest}/>
+          <Route path='benchmarks' component={Benchmarks}/>
+        </Route>
+      </Router>
     </div>
   </Provider>, document.getElementById('app'))
 }
