@@ -130,6 +130,7 @@ if (TARGET === 'dev' || !TARGET) {
 }
 
 if (TARGET === 'release') {
+
   module.exports = merge(common, {
 
     plugins: [
