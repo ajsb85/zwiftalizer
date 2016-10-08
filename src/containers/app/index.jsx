@@ -8,7 +8,7 @@
  */
 
 import React, {Component, PropTypes} from 'react'
-import {Link} from 'react-router'
+import {Link, withRouter} from 'react-router'
 import {connect} from 'react-redux'
 import {loadDemo, reset} from '../../actions/parse.js'
 // bootstrap.native is the bootstrap API without the jquery dependency
@@ -37,6 +37,11 @@ class App extends React.Component {
     if (isLoaded) {
       dispatch(reset())
     }
+
+    // load home route and allow to render
+    setTimeout(() => {
+      this.props.router.push('/')
+    }, 250)
 
     setTimeout(() => {
       dispatch(loadDemo())
@@ -90,9 +95,10 @@ class App extends React.Component {
               </div>
             </div>
 
-            <div className="col-xs-12 col-sm-3 col-md-6">
+            <div className="col-xs-12 col-sm-3">
               <div className={styles.navItem}>
-                <Link to="/testedBest">Tested Best</Link>
+                <i className="fa fa-amazon" aria-hidden="true">&nbsp;</i>
+                <Link to="/accessorize">Accessorize</Link>
               </div>
             </div>
 
@@ -105,19 +111,21 @@ class App extends React.Component {
             </div>
 
             <div className="col-xs-12 col-sm-3">
-              <div className={styles.navItem}>
-                <a onClick={this.handleAboutClick}>
-                  <i className='fa fa-info-circle'></i>
-                </a>&nbsp;
-                <a onClick={this.handleTwitterClick}>
-                  <i className='fa fa-twitter-square'></i>
-                </a>&nbsp;
-                <a onClick={this.handleSupportClick}>
-                  <i className='fa fa-paypal'></i>
-                </a>&nbsp;
-                <a onClick={this.handleGithubClick}>
-                  <i className='fa fa-github'></i>
-                </a>
+              <div className="pull-right">
+                <div className={styles.navItem}>
+                  <a onClick={this.handleAboutClick}>
+                    <i className='fa fa-info-circle'></i>
+                  </a>&nbsp;
+                  <a onClick={this.handleTwitterClick}>
+                    <i className='fa fa-twitter-square'></i>
+                  </a>&nbsp;
+                  <a onClick={this.handleSupportClick}>
+                    <i className='fa fa-paypal'></i>
+                  </a>&nbsp;
+                  <a onClick={this.handleGithubClick}>
+                    <i className='fa fa-github'></i>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -140,6 +148,11 @@ function mapStateToProps(state) {
   }
 }
 
-App.propTypes = {}
+// PropTypes
+App.propTypes = {
+  router: React.PropTypes.shape({push: React.PropTypes.func.isRequired}).isRequired
+}
 
-export default connect(mapStateToProps)(App)
+var RoutedApp = withRouter(App);
+
+export default connect(mapStateToProps)(RoutedApp)

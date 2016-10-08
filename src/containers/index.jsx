@@ -17,7 +17,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './app'
 import Home from './home'
-import {TestedBest} from './testedBest'
+import {Accessorize} from './accessorize'
 import {Benchmarks} from './benchmarks'
 
 function run() {
@@ -30,7 +30,7 @@ function run() {
       <Router history={browserHistory}>
         <Route path='/' component={App}>
           <IndexRoute component={Home}/>
-          <Route path='testedbest' component={TestedBest}/>
+          <Route path='accessorize' component={Accessorize}/>
           <Route path='benchmarks' component={Benchmarks}/>
         </Route>
       </Router>
