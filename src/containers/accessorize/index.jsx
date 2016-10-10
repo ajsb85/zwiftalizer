@@ -177,10 +177,10 @@ class Accessorize extends React.Component {
                         </p>
                         <ul>
                           <li>
-                            <a hre="https://www.youtube.com/watch?v=OeH9Di4zEFI" target="_blank">YouTube - Zwift 1080@60 AVG FPS, Intel Core 2 Duo E8400 3.0GHz, Nvidia GeForce GTX 750 Ti 2 GB</a>
+                            <a href="https://www.youtube.com/watch?v=OeH9Di4zEFI" target="_blank">YouTube - Zwift 1080@60 AVG FPS, Intel Core 2 Duo E8400 3.0GHz, Nvidia GeForce GTX 750 Ti 2 GB</a>
                           </li>
                           <li>
-                            <a hre="https://www.youtube.com/watch?v=W8NozOHyQ_g" target="_blank">YouTube - Zwift 1080@60 AVG FPS, Intel Core 2 Duo E8400 3.0GHz, Nvidia GeForce GTX 750 Ti 2 GB</a>
+                            <a href="https://www.youtube.com/watch?v=W8NozOHyQ_g" target="_blank">YouTube - Zwift 1080@60 AVG FPS, Intel Core 2 Duo E8400 3.0GHz, Nvidia GeForce GTX 750 Ti 2 GB</a>
                           </li>
                         </ul>
                         <p>
