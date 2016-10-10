@@ -28,8 +28,12 @@
   justify-content: flex-start;
   /*letter-spacing: 0.3rem;*/
 }
+.navPills {
+  composes: navItem;
+  justify-content: flex-end;
+}
 @media(max-width:767px) {
-  .navItem, .brand {
+  .navItem, .brand, .navPills {
     justify-content: center;
     height: 4.0rem;
   }

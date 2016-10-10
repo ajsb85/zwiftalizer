@@ -88,7 +88,6 @@ class App extends React.Component {
           <div className="row">
             <div className="col-xs-12 col-sm-3">
               <div className={styles.brand}>
-
                 <span className={styles.signal}>
                   <i className="fa fa-line-chart" aria-hidden="true"></i>
                 </span>&nbsp;<Link to="/">Zwiftalizer</Link>
@@ -110,22 +109,22 @@ class App extends React.Component {
             </div>
 
             <div className="col-xs-12 col-sm-3">
-              <div className="pull-right">
-                <div className={styles.navItem}>
-                  <a onClick={this.handleAboutClick}>
-                    <i className='fa fa-info-circle'></i>
-                  </a>&nbsp;
-                  <a onClick={this.handleTwitterClick}>
-                    <i className='fa fa-twitter-square'></i>
-                  </a>&nbsp;
-                  <a onClick={this.handleSupportClick}>
-                    <i className='fa fa-paypal'></i>
-                  </a>&nbsp;
-                  <a onClick={this.handleGithubClick}>
-                    <i className='fa fa-github'></i>
-                  </a>
-                </div>
+
+              <div className={styles.navPills}>
+                <a onClick={this.handleAboutClick}>
+                  <i className='fa fa-info-circle'></i>
+                </a>&nbsp;
+                <a onClick={this.handleTwitterClick}>
+                  <i className='fa fa-twitter-square'></i>
+                </a>&nbsp;
+                <a onClick={this.handleSupportClick}>
+                  <i className='fa fa-paypal'></i>
+                </a>&nbsp;
+                <a onClick={this.handleGithubClick}>
+                  <i className='fa fa-github'></i>
+                </a>
               </div>
+
             </div>
           </div>
 

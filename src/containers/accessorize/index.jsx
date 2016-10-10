@@ -27,7 +27,7 @@ class Accessorize extends React.Component {
                         </div>
                       </div>
                     </div>
-                    <div className="col-xs-12 col-sm-offset-1 col-sm-7">
+                    <div className="col-xs-12 col-sm-8">
                       <p></p>
                       <p>
                         The following Zwift related peripherals have been tested by the Zwiftalizer contributors and are considered 'the best' based on personal experience. The opinions on this page are
@@ -72,7 +72,7 @@ class Accessorize extends React.Component {
                         </div>
                       </div>
                     </div>
-                    <div className="col-xs-12 col-sm-offset-1 col-sm-7">
+                    <div className="col-xs-12 col-sm-8">
                       <div className={styles.accessorizeProduct}>
                         <h2>Suunto Movestick Mini ANT+ stick</h2>
                         <p>This is the best ANT+ stick available. It's small, doesn't stick out far - so won't snap off or fall out, you can leave it plugged into your laptop or computer all the time, and
@@ -108,7 +108,7 @@ class Accessorize extends React.Component {
                         </div>
                       </div>
                     </div>
-                    <div className="col-xs-12 col-sm-offset-1 col-sm-7">
+                    <div className="col-xs-12 col-sm-8">
                       <div className={styles.accessorizeProduct}>
                         <h2>Tripp Lite USB 2.0 Hi-Speed Active Extension Repeater Cable, 5 Meter (16 ft.) (U026-016)</h2>
 
@@ -155,7 +155,7 @@ class Accessorize extends React.Component {
                         </div>
                       </div>
                     </div>
-                    <div className="col-xs-12 col-sm-offset-1 col-sm-7">
+                    <div className="col-xs-12 col-sm-8">
                       <div className={styles.accessorizeProduct}>
                         <h2>ZOTAC GeForce GTX 750Ti 2GB GDDR5 Graphics Card (ZT-70605-10M)</h2>
 
@@ -163,7 +163,7 @@ class Accessorize extends React.Component {
                           Alienware Alpha 860M GPU (much loved by Zwifters)</p>
 
                         <p>
-                          <strong>PC requirements:</strong>
+                          <strong>PC requirements</strong>
                         </p>
 
                         <ul>
@@ -224,7 +224,7 @@ class Accessorize extends React.Component {
                         </div>
                       </div>
                     </div>
-                    <div className="col-xs-12 col-sm-offset-1 col-sm-7">
+                    <div className="col-xs-12 col-sm-8">
                       <div className={styles.accessorizeProduct}>
                         <h2>TP-Link Wireless N150 High Gain USB Adapter, 150Mbps, 4dBi External Antenna (TL-WN722N)</h2>
 
@@ -264,7 +264,7 @@ class Accessorize extends React.Component {
                         </div>
                       </div>
                     </div>
-                    <div className="col-xs-12 col-sm-offset-1 col-sm-7">
+                    <div className="col-xs-12 col-sm-8">
                       <div className={styles.accessorizeProduct}>
                         <h2>Vornado 630 Mid-Size Whole Room Air Circulator</h2>
                         <ul>
@@ -299,7 +299,7 @@ class Accessorize extends React.Component {
                         </div>
                       </div>
                     </div>
-                    <div className="col-xs-12 col-sm-offset-1 col-sm-7">
+                    <div className="col-xs-12 col-sm-8">
                       <div className={styles.accessorizeProduct}>
                         <h2>Sony CR2032 Lithium Coin Cell 3V 20 Pack</h2>
 
@@ -339,7 +339,7 @@ class Accessorize extends React.Component {
                         </div>
                       </div>
                     </div>
-                    <div className="col-xs-12 col-sm-offset-1 col-sm-7">
+                    <div className="col-xs-12 col-sm-8">
                       <div className={styles.accessorizeProduct}>
                         <h2>Energizer 357/303 Zero Mercury Batteries, 12 Pack</h2>
 
