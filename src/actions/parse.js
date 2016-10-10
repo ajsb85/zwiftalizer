@@ -150,8 +150,6 @@ function parseFileContents(log, isDemo = false) {
           }
         }
 
-        console.log(summaryData)
-
         dispatch(uploadResults(summaryData))
 
       }
@@ -325,9 +323,9 @@ export function uploadResults(data) {
       cache: false,
       dataType: 'json'
     }).then((xhr, json) => {
-      console.log('Success uploading results')
-      console.log(xhr)
-      console.log(json)
+      //console.log('Success uploading results')
+      //console.log(xhr)
+      //console.log(json)
     }).catch(function(e, xhr, response) {
       console.log('Error uploading results')
       console.log(e)
