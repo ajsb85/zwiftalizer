@@ -107,7 +107,7 @@ function parseFileContents(log, isDemo = false) {
 
         let profileId = '0'
 
-        switch (graphicsData.profile) {
+        switch (systemData.profile) {
 
           case ('medium'):
             {
