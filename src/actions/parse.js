@@ -10,6 +10,7 @@
 var request = require('qwest')
 var _ = require('underscore')
 var moment = require('moment')
+var uuid = require('node-uuid');
 
 import * as Parser from '../parser/index.js'
 
@@ -26,7 +27,7 @@ export const FILE_LOADING = 'FILE_LOADING'
 export const RESET = 'RESET'
 export const UPDATE_PROGRESS = 'UPDATE_PROGRESS'
 
-function parseFileContents(log) {
+function parseFileContents(log, isDemo = false) {
 
   return dispatch => {
 
@@ -102,6 +103,59 @@ function parseFileContents(log) {
 
       dispatch(fileLoaded())
 
+      if (!isDemo && graphicsData.fpsData.count) {
+
+        let profileId = '0'
+
+        switch (graphicsData.profile) {
+
+          case ('medium'):
+            {
+              profileId = '1'
+              break;
+            }
+          case ('high'):
+            {
+              profileId = '2'
+              break;
+            }
+          case ('ultra'):
+            {
+              profileId = '3'
+              break;
+            }
+        }
+
+        const summaryData = {
+          'logId': uuid.v4(),
+          'timestamp': activityData.startTimestamp,
+          'duration': activityData.duration + '',
+          'specs': {
+            'resolution': systemData.resolution,
+            'profileId': profileId + '',
+            'profile': systemData.profile,
+            'minFps': Math.round(graphicsData.fpsData.min()) + '',
+            'maxFps': Math.round(graphicsData.fpsData.max()) + '',
+            'avgFps': Math.round(graphicsData.fpsData.avg()) + '',
+            'stdev': Math.round(graphicsData.fpsData.stdev()) + '',
+            'samples': graphicsData.fpsSamples + '',
+            'platform': systemData.platform,
+            'cpuVendor': systemData.cpuVendor,
+            'cpuDetails': systemData.cpuDetails,
+            'ram': systemData.ram,
+            'gpuVendor': systemData.gpuVendor,
+            'gpuDetails': systemData.gpuDetails,
+            'shadowres': systemData.shadowres,
+            'openglMajor': systemData.openglMajor
+          }
+        }
+
+        console.log(summaryData)
+
+        dispatch(uploadResults(summaryData))
+
+      }
+
     }, delay)
   }
 }
@@ -113,7 +167,7 @@ export function loadDemo() {
       cache: true,
       dataType: 'json'
     }).then((xhr, response) => {
-      dispatch(parseFileContents(response))
+      dispatch(parseFileContents(response, true))
     })
   }
 }
@@ -125,7 +179,7 @@ export function readFile(log) {
     const reader = new FileReader()
 
     reader.onload = () => {
-      dispatch(parseFileContents(reader.result))
+      dispatch(parseFileContents(reader.result, false))
     }
 
     reader.readAsBinaryString(log);
@@ -261,7 +315,26 @@ function parseNetwork(log, timeAxisTimeSeries) {
     errors,
     phoneConnectionAttempts
   }
+}
 
+export function uploadResults(data) {
+
+  return function(dispatch) {
+
+    return request.post('https://pmqw53ywng.execute-api.us-west-2.amazonaws.com/dev/logs', data, {
+      cache: false,
+      dataType: 'json'
+    }).then((xhr, json) => {
+      console.log('Success uploading results')
+      console.log(xhr)
+      console.log(json)
+    }).catch(function(e, xhr, response) {
+      console.log('Error uploading results')
+      console.log(e)
+      console.log(xhr)
+      console.log(response)
+    });
+  }
 }
 
 function fileLoading() {

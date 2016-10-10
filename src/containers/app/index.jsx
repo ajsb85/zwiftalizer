@@ -97,16 +97,15 @@ class App extends React.Component {
 
             <div className="col-xs-12 col-sm-3">
               <div className={styles.navItem}>
-                <i className="fa fa-amazon" aria-hidden="true">&nbsp;</i>
-                <Link to="/accessorize">Accessorize</Link>
+                <a onClick={this.handleDemoClick}>
+                  Demo
+                </a>
               </div>
             </div>
 
             <div className="col-xs-12 col-sm-3">
               <div className={styles.navItem}>
-                <a onClick={this.handleDemoClick}>
-                  Demo
-                </a>
+                <Link to="/accessorize">Accessorize</Link>
               </div>
             </div>
 
