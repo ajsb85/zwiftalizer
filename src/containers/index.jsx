@@ -15,10 +15,19 @@ import configureStore from '../stores/configureStore'
 var _ = require('underscore')
 import React from 'react'
 import ReactDOM from 'react-dom'
+
+var ReactGA = require('react-ga')
+ReactGA.initialize('UA-2833327-13')
+
 import App from './app'
 import Home from './home'
 import {Accessorize} from './accessorize'
 import {Benchmarks} from './benchmarks'
+
+function logPageView() {
+  ReactGA.set({page: window.location.pathname})
+  ReactGA.pageview(window.location.pathname)
+}
 
 function run() {
 
@@ -27,7 +36,7 @@ function run() {
   ReactDOM.render(
     <Provider store={store}>
     <div>
-      <Router history={browserHistory}>
+      <Router onUpdate={logPageView} history={browserHistory}>
         <Route path='/' component={App}>
           <IndexRoute component={Home}/>
           <Route path='accessorize' component={Accessorize}/>
