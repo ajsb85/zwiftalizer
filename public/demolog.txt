@@ -40,7 +40,7 @@
 [6:35:03] Graphics Vendor: NVIDIA Corporation
 [6:35:03] Graphics Renderer: GeForce GTX 970/PCIe/SSE2
 [6:35:03] RAM: 8GB
-[6:35:03] CPU: Intel(R) Pentium(R) CPU G3258 @ 3.20GHz
+[6:35:03] CPU: Intel(R) Pentium(R) CPU G3258 @ 4.20GHz
 [6:35:03] ANT  : Clearing network key on network 0.
 [6:35:03] ANT  : Clearing network key on network 1.
 [6:35:03] ANT  : Clearing network key on network 2.
@@ -318,10 +318,10 @@ error: the locations of a builtin vertex attribute (named gl_MultiTexCoord0) and
 [6:35:12] Shader Loaded successfully.
 [6:35:12] FPS   5, -372284, 48932, 190113
 [6:35:12] resize: 1920 x 1080
-
+
 [6:35:14] FPS 124, -372284, 48932, 190113
 [6:35:14] NETCLIENT:Session ID: 444ebdf6-ae80-447c-b7f4-eef54a89741d
-[6:35:15] Logged in user: mrh5937@gmail.com
+[6:35:15] Logged in user: anonymous@gmail.com
 [6:35:16] NETCLIENT:Connecting to game server node [54.213.246.33:3022]
 [6:35:16] NETWORK:error (4) sending player state
 [6:35:16] NETWORK:error (4) sending player state
