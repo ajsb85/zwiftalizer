@@ -22,11 +22,10 @@ ReactGA.initialize('UA-2833327-13')
 import App from './app'
 import Home from './home'
 import {Accessorize} from './accessorize'
-import {Benchmarks} from './benchmarks'
+import Benchmarks from './benchmarks'
 
 function logPageView() {
-  ReactGA.set({page: window.location.pathname})
-  ReactGA.pageview(window.location.pathname)
+  // ReactGA.set({page: window.location.pathname}) ReactGA.pageview(window.location.pathname)
 }
 
 function run() {

@@ -94,7 +94,7 @@ class App extends React.Component {
               </div>
             </div>
 
-            <div className="col-xs-12 col-sm-3">
+            <div className="col-xs-12 col-sm-2">
               <div className={styles.navItem}>
                 <a onClick={this.handleDemoClick}>
                   Demo
@@ -104,11 +104,17 @@ class App extends React.Component {
 
             <div className="col-xs-12 col-sm-3">
               <div className={styles.navItem}>
+                <Link to="/benchmarks">Benchmarks</Link>
+              </div>
+            </div>
+
+            <div className="col-xs-12 col-sm-2">
+              <div className={styles.navItem}>
                 <Link to="/accessorize">Accessorize</Link>
               </div>
             </div>
 
-            <div className="col-xs-12 col-sm-3">
+            <div className="col-xs-12 col-sm-2">
 
               <div className={styles.navPills}>
                 <a onClick={this.handleAboutClick}>

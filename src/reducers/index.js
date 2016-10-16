@@ -8,6 +8,7 @@ import activity from './activity'
 import graphics from './graphics'
 import ant from './ant'
 import network from './network'
+import benchmarks from './benchmarks'
 
 const reducers = {
   reader,
@@ -15,7 +16,8 @@ const reducers = {
   activity,
   graphics,
   ant,
-  network
+  network,
+  benchmarks
 }
 
 const combinedReducers = combineReducers(reducers)

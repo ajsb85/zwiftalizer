@@ -5,6 +5,13 @@ import styles from './styles.css'
 
 class Accessorize extends React.Component {
 
+  constructor(props) {
+    super(props)
+
+    console.log('Accessorize constructor load')
+
+  }
+
   render() {
 
     // style="border:none !important; margin:0px !important;"

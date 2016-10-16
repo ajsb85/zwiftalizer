@@ -10,7 +10,7 @@
 var request = require('qwest')
 var _ = require('underscore')
 var moment = require('moment')
-var uuid = require('node-uuid');
+var uuid = require('node-uuid')
 
 import * as Parser from '../parser/index.js'
 
