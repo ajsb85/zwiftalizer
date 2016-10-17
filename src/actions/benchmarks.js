@@ -16,7 +16,7 @@ export function load() {
       dispatch({
         type: SET_BENCHMARKS_DATA,
         data: {
-          data
+          ...data
         }
       })
 

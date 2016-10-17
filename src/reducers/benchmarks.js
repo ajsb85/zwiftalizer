@@ -4,7 +4,9 @@ import {
 
 function benchmarks(state = {
   isLoaded: false,
-  benchmarks: null
+  resolutions: [],
+  dateLastUpdate: null,
+  totalRecords: 0
 }, action) {
 
   switch (action.type) {
@@ -12,7 +14,9 @@ function benchmarks(state = {
     case SET_BENCHMARKS_DATA:
       return Object.assign({}, state, {
         isLoaded: true,
-        benchmarks: action.data
+        resolutions: action.data.resolutions,
+        dateLastUpdate: action.data.dateLastUpdate,
+        totalRecords: action.data.totalRecords
       })
 
     default:

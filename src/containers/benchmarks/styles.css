@@ -1,0 +1,41 @@
+.benchmarksWrapOuter {
+  width: 100%;
+  margin: 1.5rem 0 1.5rem 0;
+}
+.benchmarksBoxHeading {
+  composes: boxHeadingLast from '../../styles/structure.css';
+  border-top-right-radius: 2.5rem;
+  font-weight: 600;
+  font-size: 2.2rem;
+  line-height: 2.2rem;
+  min-height: 5rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+}
+.benchmarksBoxContent {
+  background: #f6f6f6;
+  padding: 1rem 0.2rem 1rem 0.2rem;
+  width: 100%;
+  overflow: hidden;
+  border-bottom-left-radius: 2.5rem;
+  text-align: left;
+}
+.benchmarksBoxContent h3 {
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 4rem;
+  margin: 0 0 1rem 0;
+  text-align: left;
+}
+.systemNameOuter {
+  width: 100%;
+  padding-right: 2.5 rem;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: normal;
+  font-size: 1.4rem;
+  line-height: 2rem;
+}

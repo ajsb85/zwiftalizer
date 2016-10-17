@@ -1,6 +1,9 @@
-import React from 'react'
+var _ = require('underscore')
 
+import React from 'react'
 import System from './system.jsx'
+import structure from '../../styles/structure.css'
+import styles from './styles.css'
 
 class Profile extends React.Component {
 
@@ -38,18 +41,38 @@ class Profile extends React.Component {
         break;
     }
 
+    var systemWithBestAvg = results && _.max(results, _.property('avgFps'))
+
+    var maxAvgResolutionProfile = systemWithBestAvg
+      ? systemWithBestAvg.avgFps
+      : 0;
+
     var resultsData = results && results.map(function(result, i) {
-      return (<System data={result}/>)
+
+      const data = {
+        maxAvgResolutionProfile,
+        ...result
+      }
+
+      return (<System data={data}/>)
     }, this)
 
     return (
       <div>
-        <h2>{resolution} {name}</h2>
-        <table className="table table-striped table-condensed">
-          <tbody>
+        <div className={styles.benchmarksBoxHeading}>{resolution}&nbsp;{name}</div>
+        <div className={styles.benchmarksBoxContent}>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-xs-12 col-sm-6">
+                <h3>System</h3>
+              </div>
+              <div className="col-xs-12 col-sm-6">
+                <h3>Average Frames Per Second</h3>
+              </div>
+            </div>
             {resultsData}
-          </tbody>
-        </table>
+          </div>
+        </div>
       </div>
     )
 

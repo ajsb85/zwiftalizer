@@ -1,5 +1,4 @@
 var _ = require('underscore')
-var moment = require('moment')
 
 import toArray from './toArray'
 import getTimestamp from './getTimestamp'

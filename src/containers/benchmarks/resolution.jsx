@@ -1,6 +1,7 @@
 import React from 'react'
-
 import Profile from './profile.jsx'
+import structure from '../../styles/structure.css'
+import styles from './styles.css'
 
 class Resolution extends React.Component {
 
@@ -29,9 +30,13 @@ class Resolution extends React.Component {
     }, this)
 
     return (
-      <div>
-        <h2>{resolution}</h2>
-        {profileData}
+
+      <div className={styles.benchmarksWrapOuter}>
+        <div className={structure.boxesWrapInner}>
+          <div className={structure.boxLast}>
+            {profileData}
+          </div>
+        </div>
       </div>
     )
 

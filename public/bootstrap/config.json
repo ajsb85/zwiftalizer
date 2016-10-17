@@ -387,8 +387,9 @@
     "tables.less",
     "buttons.less",
     "responsive-utilities.less",
+    "progress-bars.less",
     "modals.less"
   ],
   "js": [],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=fc010aba72970b56e71111980c144871"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=fac848b7eec3d6c39b2702d44940dceb"
 }
