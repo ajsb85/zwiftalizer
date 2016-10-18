@@ -31,7 +31,7 @@ class Resolution extends React.Component {
 
     return (
 
-      <div className={styles.benchmarksWrapOuter}>
+      <div>
         <div className={structure.boxesWrapInner}>
           <div className={structure.boxLast}>
             {profileData}

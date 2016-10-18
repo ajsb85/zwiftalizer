@@ -25,7 +25,8 @@ import {Accessorize} from './accessorize'
 import Benchmarks from './benchmarks'
 
 function logPageView() {
-  // ReactGA.set({page: window.location.pathname}) ReactGA.pageview(window.location.pathname)
+  ReactGA.set({page: window.location.pathname})
+  ReactGA.pageview(window.location.pathname)
 }
 
 function run() {

@@ -58,16 +58,16 @@ class Profile extends React.Component {
     }, this)
 
     return (
-      <div>
+      <div className={styles.benchmarksWrapOuter}>
         <div className={styles.benchmarksBoxHeading}>{resolution}&nbsp;{name}</div>
         <div className={styles.benchmarksBoxContent}>
           <div className="container-fluid">
             <div className="row">
-              <div className="col-xs-12 col-sm-6">
+              <div className="col-xs-12 col-sm-offset-2 col-sm-6">
                 <h3>System</h3>
               </div>
-              <div className="col-xs-12 col-sm-6">
-                <h3>Average Frames Per Second</h3>
+              <div className="col-xs-12 col-sm-4">
+                <h3>Average FPS</h3>
               </div>
             </div>
             {resultsData}

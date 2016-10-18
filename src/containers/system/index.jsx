@@ -60,6 +60,11 @@ class System extends React.Component {
           cpuClass = images.intel
           break
 
+        case('apple'):
+        case('arm'):
+          cpuClass = images.mac
+          break
+
         default:
           cpuClass = null
           break

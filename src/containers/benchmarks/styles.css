@@ -1,6 +1,18 @@
 .benchmarksWrapOuter {
   width: 100%;
-  margin: 1.5rem 0 1.5rem 0;
+  margin: 1.5rem 0 3rem 0;
+}
+.iconsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon {
+  height: 3.2rem;
+  min-height: 3.2rem;
+  width: 3.2rem;
+  min-width: 2.4rem;
+  margin: -0.5rem 0.5rem 0 0.5rem;
 }
 .benchmarksBoxHeading {
   composes: boxHeadingLast from '../../styles/structure.css';
@@ -31,11 +43,12 @@
   text-align: left;
 }
 .systemNameOuter {
-  width: 100%;
-  padding-right: 2.5 rem;
   white-space: nowrap;
   overflow: hidden;
-  font-weight: normal;
-  font-size: 1.4rem;
+  font-weight: 600;
+  font-size: 1.5rem;
   line-height: 2rem;
+  margin-top: 0rem;
+  color: #666;
+  letter-spacing: -0.05rem;
 }
