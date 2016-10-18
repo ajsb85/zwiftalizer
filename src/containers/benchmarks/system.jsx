@@ -28,7 +28,6 @@ class System extends React.Component {
     const widthStyle = {
       width: relativeWidth + '%',
       minWidth: '0.2 rem'
-
     }
 
     return (

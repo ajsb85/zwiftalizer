@@ -16,7 +16,7 @@ var _ = require('underscore')
     }
 
     handleSelect(index, last) {
-      console.log('Selected tab: ' + index + ', Last tab: ' + last);
+      //console.log('Selected tab: ' + index + ', Last tab: ' + last);
     }
 
     render() {

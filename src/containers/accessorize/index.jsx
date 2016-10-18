@@ -7,9 +7,6 @@ class Accessorize extends React.Component {
 
   constructor(props) {
     super(props)
-
-    console.log('Accessorize constructor load')
-
   }
 
   render() {
