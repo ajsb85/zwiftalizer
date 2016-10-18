@@ -45,7 +45,7 @@
 [6:35:03] ANT  : Clearing network key on network 1.
 [6:35:03] ANT  : Clearing network key on network 2.
 [6:35:03] ANT  : TX POWER ID
-[6:35:03] ANT  : RESET Complete, reason: 
+[6:35:03] ANT  : RESET Complete, reason:
 [6:35:03] ANT  : RESET_POR
 [6:35:03] ANT  : ANT USB receiver found
 [6:35:03] Loading WAD file 'assets/UI/Achievements/goals.wad' with file.
@@ -3386,9 +3386,9 @@ error: the locations of a builtin vertex attribute (named gl_MultiTexCoord0) and
 [6:38:15] ANT  : [PowerMeter] Prev: WheelPower: EC: 018  WT: 120  Period: 58894  AccumTorque: 52975
 [6:38:15] ANT  : [PowerMeter] WheelPower: EC: 019  WT: 122  Period: 59905  AccumTorque: 53166
 [6:38:15] ANT  : [PowerMeter] Vang = 12.73 radians/sec   Tavg: 5.97 nm   Pavg: 75.97 watts timeElapsed=0.494
-[6:38:15] NETWORK:Delayed packet detected: Delay=0.00, Meters=146.3 networkID=66199, rider name= 
-[6:38:15] NETWORK:Delayed packet detected: Delay=0.00, Meters=72.6 networkID=67341, rider name= 
-[6:38:15] NETWORK:Delayed packet detected: Delay=0.00, Meters=143.8 networkID=122227, rider name= 
+[6:38:15] NETWORK:Delayed packet detected: Delay=0.00, Meters=146.3 networkID=66199, rider name=
+[6:38:15] NETWORK:Delayed packet detected: Delay=0.00, Meters=72.6 networkID=67341, rider name=
+[6:38:15] NETWORK:Delayed packet detected: Delay=0.00, Meters=143.8 networkID=122227, rider name=
 [6:38:15] ANT  : Rx Fail on channel 2
 [6:38:15] FPS 126, 93427,  9511, -32325
 [6:38:15] ANT  : Rx Fail on channel 2
@@ -3875,7 +3875,7 @@ error: the locations of a builtin vertex attribute (named gl_MultiTexCoord0) and
 [6:39:03] FPS 120, 103133,  9550, -16358
 [6:39:03] ANT  : Rx Fail on channel 2
 [6:39:04] ANT  : Rx Fail on channel 2
-[6:39:04] NETWORK:Delayed packet detected: Delay=0.00, Meters=66.3 networkID=18979, rider name= 
+[6:39:04] NETWORK:Delayed packet detected: Delay=0.00, Meters=66.3 networkID=18979, rider name=
 [6:39:04] ANT  : Rx Fail on channel 2
 [6:39:04] ANT  : [PowerMeter] Prev: WheelPower: EC: 067  WT: 223  Period: 41388  AccumTorque: 61888
 [6:39:04] ANT  : [PowerMeter] WheelPower: EC: 068  WT: 225  Period: 42357  AccumTorque: 62097
@@ -4325,7 +4325,7 @@ error: the locations of a builtin vertex attribute (named gl_MultiTexCoord0) and
 [6:39:52] FPS 114, 86433,  9526,  8608
 [6:39:53] ANT  : Rx Fail on channel 2
 [6:39:53] ANT  : Rx Fail on channel 2
-[6:39:53] NETWORK:Delayed packet detected: Delay=0.00, Meters=151.3 networkID=74828, rider name= 
+[6:39:53] NETWORK:Delayed packet detected: Delay=0.00, Meters=151.3 networkID=74828, rider name=
 [6:39:53] ANT  : Rx Fail on channel 2
 [6:39:53] ANT  : Rx Fail on channel 1
 [6:39:53] FPS 112, 85922,  9527,  9033
@@ -4423,7 +4423,7 @@ error: the locations of a builtin vertex attribute (named gl_MultiTexCoord0) and
 [6:40:03] NETCLIENT:server_to_client_received_count_ is 701
 [6:40:03] NETCLIENT:latest player_state_size is 12
 [6:40:03] NETCLIENT:server to client popped count: 701
-[6:40:03] NETWORK:Delayed packet detected: Delay=0.00, Meters=87.8 networkID=76765, rider name= 
+[6:40:03] NETWORK:Delayed packet detected: Delay=0.00, Meters=87.8 networkID=76765, rider name=
 [6:40:03] ANT  : Rx Fail on channel 2
 [6:40:04] ANT  : Rx Fail on channel 2
 [6:40:04] ANT  : Rx Fail on channel 2
@@ -4941,7 +4941,7 @@ error: the locations of a builtin vertex attribute (named gl_MultiTexCoord0) and
 [6:40:59] ANT  : Rx Fail on channel 2
 [6:40:59] FPS 134, 87419, 10031, 42347
 [6:40:59] ANT  : Rx Fail on channel 2
-[6:40:59] NETWORK:Delayed packet detected: Delay=0.00, Meters=164.3 networkID=65989, rider name= 
+[6:40:59] NETWORK:Delayed packet detected: Delay=0.00, Meters=164.3 networkID=65989, rider name=
 [6:40:59] ANT  : [PowerMeter] Prev: WheelPower: EC: 182  WT: 022  Period: 64310  AccumTorque: 19272
 [6:40:59] ANT  : [PowerMeter] WheelPower: EC: 183  WT: 026  Period: 64936  AccumTorque: 19474
 [6:40:59] ANT  : [PowerMeter] Vang = 20.56 radians/sec   Tavg: 6.31 nm   Pavg: 129.75 watts timeElapsed=0.306

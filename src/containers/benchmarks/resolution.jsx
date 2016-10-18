@@ -1,7 +1,6 @@
 import React from 'react'
 import Profile from './profile.jsx'
 import structure from '../../styles/structure.css'
-import styles from './styles.css'
 
 class Resolution extends React.Component {
 

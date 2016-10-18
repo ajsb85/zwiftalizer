@@ -17,7 +17,7 @@
     "posttest": "rm .babelrc",
     "pretest": "cp .testbabelrc .babelrc",
     "release": "webpack",
-    "test": "babel-tape-runner tests/*.js"
+    "test": "babel-tape-runner tests/mapGradient*.js"
   },
   "optionalDependencies": {
     "fsevents": "^1.0.12"

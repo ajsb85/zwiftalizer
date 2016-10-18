@@ -23,7 +23,7 @@ class System extends React.Component {
       return undefined
     }
 
-    return match[1].toLowerCase()
+    return match[1]
 
   }
 
@@ -36,7 +36,7 @@ class System extends React.Component {
       return undefined
     }
 
-    return match[1].toLowerCase()
+    return match[1]
   }
 
   render() {
@@ -84,7 +84,7 @@ class System extends React.Component {
     }
 
     if (cpuVendor) {
-      switch (cpuVendor) {
+      switch (cpuVendor.toLowerCase()) {
         case('amd'):
           cpuClass = images.amd
           break
@@ -105,7 +105,7 @@ class System extends React.Component {
     }
 
     if (gpuVendor) {
-      switch (gpuVendor) {
+      switch (gpuVendor.toLowerCase()) {
         case('amd'):
         case('ati'):
           gpuClass = images.amd

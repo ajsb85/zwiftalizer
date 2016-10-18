@@ -55,6 +55,7 @@ class Profile extends React.Component {
       }
 
       return (<System data={data}/>)
+
     }, this)
 
     return (
@@ -63,10 +64,10 @@ class Profile extends React.Component {
         <div className={styles.benchmarksBoxContent}>
           <div className="container-fluid">
             <div className="row">
-              <div className="col-xs-12 col-sm-offset-2 col-sm-6">
+              <div className="hidden-xs col-sm-offset-2 col-sm-6">
                 <h3>System</h3>
               </div>
-              <div className="col-xs-12 col-sm-4">
+              <div className="hidden-xs col-sm-4">
                 <h3>Average FPS</h3>
               </div>
             </div>
