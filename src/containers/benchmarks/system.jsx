@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './styles.css'
 import images from '../../styles/images.css'
+import * as Parser from '../../parser/index.js'
 
 class System extends React.Component {
 
@@ -39,9 +40,13 @@ class System extends React.Component {
     return match[1]
   }
 
-  renderVsyncSymbol() {
+  renderCpuDetail(cpuDetail) {
+    if (!cpuDetail) {
+      return null
+    }
+
     return (
-      <span>&nbsp;~V</span>
+      <h4 className={styles.cpuDetail}>{cpuDetail}</h4>
     )
   }
 
@@ -150,6 +155,12 @@ class System extends React.Component {
       }
     }
 
+    const cpuDetail = Parser.cpuClass(systemId)
+
+    const cpuDetailMarkup = cpuDetail
+      ? this.renderCpuDetail(cpuDetail)
+      : null
+
     const barStyle = {
       marginBottom: '0.2rem'
     }
@@ -168,10 +179,6 @@ class System extends React.Component {
       width: relativeMinWidth + '%',
       minWidth: '0.2rem'
     }
-
-    const vSyncMarkup = isVsyncOn
-      ? this.renderVsyncSymbol()
-      : null
 
     return (
       <div className="row">
@@ -192,6 +199,7 @@ class System extends React.Component {
           <div className={styles.systemName}>
             {systemId}
           </div>
+          {cpuDetailMarkup}
         </div>
         <div className="col-xs-12 col-sm-5">
           <div className={styles.barsOuter}>

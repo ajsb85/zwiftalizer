@@ -2,15 +2,17 @@ var _ = require('underscore')
 
 // http://www.intel.com/content/www/us/en/processors/processor-numbers.html
 
+// http://arstechnica.com/gadgets/2016/02/pentium-core-i5-core-i7-making-sense-of-intels-convoluted-cpu-lineup/
+
 const intelSuffixes = {
   C: 'Desktop processor based on the LGA 1150 package with high performance graphics',
   H: 'High performance graphics',
-  K: 'Unlocked',
-  M: 'Mobile',
+  K: 'Unlocked frequency multiplier',
+  M: 'Mobile (Laptop)',
   Q: 'Quad-core',
   R: 'Desktop processor based on BGA1364 (mobile) package with high performance graphics',
   S: 'Performance-optimized lifestyle',
-  T: 'Power-optimized lifestyle (probably Alienware Alpha)',
+  T: 'Power-optimized lifestyle (Alienware Alpha)',
   U: 'Ultra-low power',
   X: 'Extreme edition',
   Y: 'Extremely low power'
@@ -55,7 +57,7 @@ export default function cpuClass(str) {
   const cpuSpec = match[1]
 
   // Intel Core i7-2600K @ 3.40GHz
-  const cpuRegex = /^intel\s(\w*)\s(i\d)-(\d)(\d+)(\w)?(\w)?\s\@.*/i
+  const cpuRegex = /^intel\s(\w*)\s(i\d)-(\d+)(\w)?(\w)?\s\@.*/i
 
   const matches = cpuRegex.exec(cpuSpec)
 
@@ -67,19 +69,21 @@ export default function cpuClass(str) {
     console.log(match)
   })
 
+  const family = matches[1]
+
   const brandModifier = matches[2]
 
-  const generation = humanizeGeneration(matches[3])
+  const generation = (matches[3] + '').length === 3 ? '1st generation' : humanizeGeneration(matches[3][0])
 
-  const sku = matches[4]
+  //const sku = matches[3]
 
-  const letterSuffix = matches[5]
+  const letterSuffix = matches[4]
 
-  const productLineSuffix = matches[6]
+  const productLineSuffix = matches[5]
 
-  let letterSuffixValue = ''
+  let letterSuffixValue = undefined
 
-  let productLineSuffixValue = ''
+  let productLineSuffixValue = undefined
 
   if (letterSuffix && _(intelSuffixes).has(letterSuffix)) {
     letterSuffixValue = intelSuffixes[letterSuffix]
@@ -89,6 +93,16 @@ export default function cpuClass(str) {
     productLineSuffixValue = intelSuffixes[productLineSuffix]
   }
 
-  return (generation + ' ' + brandModifier + ' - ' + letterSuffixValue + ' ' + productLineSuffixValue).trim()
+  let description = generation + ' Intel ' + family + ' family processor';
+
+  if (letterSuffixValue) {
+    description += ' - ' + letterSuffixValue
+  }
+
+  if (productLineSuffixValue) {
+    description += ' ' + productLineSuffixValue
+  }
+
+  return description.trim()
 
 }
