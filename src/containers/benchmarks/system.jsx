@@ -72,6 +72,7 @@ class System extends React.Component {
     const absAvgFps = Math.round(maxFps)
 
     const isVsyncOn = (absMaxFps < 90) && (absMaxFps % 30 === 0) && absMaxFps >= absAvgFps;
+
     // const isVsyncOn = (absMaxFps < 90) && (Math.round((absMaxFps / (Math.round((absMaxFps + absAvgFps) / 2) - absMaxFps)) * 100) >= 0.02) && ((absMaxFps % 30 === 0) || (absAvgFps %
     // 30 === 0));
 
