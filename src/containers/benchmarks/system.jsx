@@ -39,6 +39,12 @@ class System extends React.Component {
     return match[1]
   }
 
+  renderVsyncSymbol() {
+    return (
+      <span>&nbsp;~V</span>
+    )
+  }
+
   render() {
 
     const {
@@ -47,14 +53,27 @@ class System extends React.Component {
       maxFps,
       avgFps,
       samples,
-      maxAvgResolutionProfile
+      maxAvgResolutionProfile,
+      maxMaxResolutionProfile
     } = this.props.data
 
-    var relativeWidth = 100
+    var relativeMaxWidth = 100
+    var relativeAvgWidth = 100
+    var relativeMinWidth = 100
 
-    if (maxAvgResolutionProfile > 0) {
-      relativeWidth = Math.round((avgFps / maxAvgResolutionProfile) * 100)
+    if (maxMaxResolutionProfile > 0) {
+      relativeMaxWidth = Math.round((maxFps / maxMaxResolutionProfile) * 100)
+      relativeAvgWidth = Math.round((avgFps / maxMaxResolutionProfile) * 100)
+      relativeMinWidth = Math.round((minFps / maxMaxResolutionProfile) * 100)
     }
+
+    const absMaxFps = Math.round(maxFps)
+
+    const absAvgFps = Math.round(maxFps)
+
+    const isVsyncOn = (absMaxFps < 90) && (absMaxFps % 30 === 0) && absMaxFps >= absAvgFps;
+    // const isVsyncOn = (absMaxFps < 90) && (Math.round((absMaxFps / (Math.round((absMaxFps + absAvgFps) / 2) - absMaxFps)) * 100) >= 0.02) && ((absMaxFps % 30 === 0) || (absAvgFps %
+    // 30 === 0));
 
     const platform = this.platform(systemId);
 
@@ -130,10 +149,28 @@ class System extends React.Component {
       }
     }
 
-    const widthStyle = {
-      width: relativeWidth + '%',
-      minWidth: '0.2 rem'
+    const barStyle = {
+      marginBottom: '0.2rem'
     }
+
+    const maxWidthStyle = {
+      width: relativeMaxWidth + '%',
+      minWidth: '0.2rem'
+    }
+
+    const avgWidthStyle = {
+      width: relativeAvgWidth + '%',
+      minWidth: '0.2rem'
+    }
+
+    const minWidthStyle = {
+      width: relativeMinWidth + '%',
+      minWidth: '0.2rem'
+    }
+
+    const vSyncMarkup = isVsyncOn
+      ? this.renderVsyncSymbol()
+      : null
 
     return (
       <div className="row">
@@ -150,17 +187,30 @@ class System extends React.Component {
             </div>
           </div>
         </div>
-        <div className="col-xs-12 col-sm-6">
-          <div className={styles.systemNameOuter}>
-            <div>{systemId}</div>
+        <div className="col-xs-12 col-sm-5">
+          <div className={styles.systemName}>
+            {systemId}
           </div>
         </div>
-        <div className="col-xs-12 col-sm-4">
-          <div className="progress">
-            <div className="progress-bar" role="progressbar" aria-valuenow={relativeWidth} aria-valuemin="0" aria-valuemax="100" style={widthStyle}>
-              {avgFps}
+        <div className="col-xs-12 col-sm-5">
+          <div className={styles.barsOuter}>
+            <div className="progress" style={barStyle}>
+              <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow={relativeMaxWidth} aria-valuemin="0" aria-valuemax="100" style={maxWidthStyle}>
+                {maxFps}
+              </div>
+            </div>
+            <div className="progress" style={barStyle}>
+              <div className="progress-bar" role="progressbar" aria-valuenow={relativeAvgWidth} aria-valuemin="0" aria-valuemax="100" style={avgWidthStyle}>
+                {avgFps}
+              </div>
+            </div>
+            <div className="progress" style={barStyle}>
+              <div className="progress-bar progress-bar-warning" role="progressbar" aria-valuenow={relativeMinWidth} aria-valuemin="0" aria-valuemax="100" style={minWidthStyle}>
+                {minFps}
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     )
