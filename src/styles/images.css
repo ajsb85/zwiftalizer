@@ -3,39 +3,58 @@
   height: 100%;
   width: 100%;
 }
+
 .intel {
   composes: bgImage;
   background: url('../img/intel_logo.png') no-repeat 50% 50%/contain;
 }
+
 .nvidia {
   composes: bgImage;
   background: url('../img/nvidia_logo.png') no-repeat 50% 50%/contain;
 }
+
 .amd {
   composes: bgImage;
   background: url('../img/amd_logo.png') no-repeat 50% 50%/contain;
 }
+
 .ati {
   composes: bgImage;
   background: url('../img/ati_radeon_logo.png') no-repeat 50% 50%/contain;
 }
+
 .radeon {
   composes: bgImage;
   background: url('../img/amd_radeon_logo.png') no-repeat 50% 50%/contain;
 }
+
 .firepro {
   composes: bgImage;
   background: url('../img/amd_firepro_logo.png') no-repeat 50% 50%/contain;
 }
+
 .amd {
   composes: bgImage;
   background: url('../img/amd_logo.png') no-repeat 50% 50%/contain;
 }
+
 .pc {
   composes: bgImage;
   background: url('../img/windows_logo.png') no-repeat 50% 50%/contain;
 }
+
 .mac {
   composes: bgImage;
   background: url('../img/apple_logo.png') no-repeat 50% 50%/contain;
+}
+
+.arm64 {
+  composes: bgImage;
+  background: url('../img/arm64_logo.png') no-repeat 50% 50%/contain;
+}
+
+.alienware {
+  composes: bgImage;
+  background: url('../img/alienware_logo.png') no-repeat 50% 50%/contain;
 }

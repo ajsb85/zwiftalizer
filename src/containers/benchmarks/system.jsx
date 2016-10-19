@@ -81,11 +81,23 @@ class System extends React.Component {
     // const isVsyncOn = (absMaxFps < 90) && (Math.round((absMaxFps / (Math.round((absMaxFps + absAvgFps) / 2) - absMaxFps)) * 100) >= 0.02) && ((absMaxFps % 30 === 0) || (absAvgFps %
     // 30 === 0));
 
-    const platform = this.platform(systemId);
+    let platform = this.platform(systemId);
 
-    const cpuVendor = this.cpuVendor(systemId);
+    let cpuVendor = this.cpuVendor(systemId);
 
-    const gpuVendor = this.gpuVendor(systemId);
+    let gpuVendor = this.gpuVendor(systemId);
+
+    const cpuDetail = Parser.cpuClass(systemId);
+
+    if (platform === 'Mac' && cpuVendor && cpuVendor.toLowerCase() === 'arm64') {
+      platform = 'iOS',
+      gpuVendor = 'arm64',
+      cpuVendor = 'arm64'
+    }
+
+    if (platform === 'PC' && cpuDetail && (cpuDetail.toLowerCase().indexOf('alienware') !== -1) && gpuVendor && gpuVendor.toLowerCase() === 'nvidia') {
+      platform = 'Alienware'
+    }
 
     let platformClass,
       cpuClass,
@@ -94,12 +106,21 @@ class System extends React.Component {
     if (platform) {
 
       switch (platform.toLowerCase()) {
+
+        case('alienware'):
+          platformClass = images.alienware
+          break
+
         case('pc'):
           platformClass = images.pc
           break
 
         case('mac'):
           platformClass = images.mac
+          break
+
+        case('ios'):
+          platformClass = images.arm64
           break
 
         default:
@@ -119,8 +140,11 @@ class System extends React.Component {
           break
 
         case('apple'):
-        case('arm'):
           cpuClass = images.mac
+          break
+
+        case('arm64'):
+          cpuClass = images.arm64
           break
 
         default:
@@ -145,8 +169,11 @@ class System extends React.Component {
           break
 
         case('apple'):
-        case('arm'):
           gpuClass = images.mac
+          break
+
+        case('arm64'):
+          gpuClass = images.arm64
           break
 
         default:
@@ -155,11 +182,9 @@ class System extends React.Component {
       }
     }
 
-    const cpuDetail = Parser.cpuClass(systemId)
-
     const cpuDetailMarkup = cpuDetail
       ? this.renderCpuDetail(cpuDetail)
-      : null
+      : null;
 
     const barStyle = {
       marginBottom: '0.2rem'

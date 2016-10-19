@@ -8,14 +8,14 @@ const intelSuffixes = {
   C: 'Desktop processor based on the LGA 1150 package with high performance graphics',
   H: 'High performance graphics',
   K: 'Unlocked frequency multiplier',
-  M: 'Mobile (Laptop)',
+  M: 'Mobile (laptop)',
   Q: 'Quad-core',
-  R: 'Desktop processor based on BGA1364 (mobile) package with high performance graphics',
-  S: 'Performance-optimized lifestyle',
+  R: 'Desktop processor based on BGA1364 (mobile) package with high performance graphics (possibly iMac or other all-in-one)',
+  S: 'Performance-optimized lifestyle (possibly iMac or other all-in-one)',
   T: 'Power-optimized lifestyle (Alienware Alpha)',
-  U: 'Ultra-low power',
-  X: 'Extreme edition',
-  Y: 'Extremely low power'
+  U: 'Ultra-low power (laptop, mini-pc, all-in-one)',
+  X: 'Extreme edition (freakin\' hackers)',
+  Y: 'Extremely low power (laptop, notebook, mini-pc, all-in-one)'
 }
 
 function humanizeGeneration(num) {
@@ -41,8 +41,6 @@ function humanizeGeneration(num) {
 
   return num + 'th' + gen;
 }
-
-// PC / Intel Core i7-2600K @ 3.40GHz / Nvidia GeForce GTX 980 Ti/PCIe/SSE2
 
 export default function cpuClass(str) {
 
