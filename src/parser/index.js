@@ -71,6 +71,11 @@ export {
 from './cpuDetails'
 
 export {
+  default as cpuClass
+}
+from './cpuClass'
+
+export {
   default as gpuVendor
 }
 from './gpuVendor'
