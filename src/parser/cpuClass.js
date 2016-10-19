@@ -65,17 +65,11 @@ export default function cpuClass(str) {
     return undefined
   }
 
-  matches.forEach((match) => {
-    console.log(match)
-  })
-
   const family = matches[1]
 
   const brandModifier = matches[2]
 
   const generation = (matches[3] + '').length === 3 ? '1st generation' : humanizeGeneration(matches[3][0])
-
-  //const sku = matches[3]
 
   const letterSuffix = matches[4]
 
