@@ -23,7 +23,9 @@ class Resolution extends React.Component {
           ...profile
         }
 
-        return (<Profile data={data}/>)
+        const key = resolution.resolution + '-' + profileId
+
+        return (<Profile data={data} key={key}/>)
       }
 
     }, this)

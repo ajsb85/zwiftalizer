@@ -9,6 +9,7 @@ import graphics from './graphics'
 import ant from './ant'
 import network from './network'
 import benchmarks from './benchmarks'
+import preferences from './preferences'
 
 const reducers = {
   reader,
@@ -17,7 +18,8 @@ const reducers = {
   graphics,
   ant,
   network,
-  benchmarks
+  benchmarks,
+  preferences
 }
 
 const combinedReducers = combineReducers(reducers)

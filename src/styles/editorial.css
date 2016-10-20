@@ -1,0 +1,40 @@
+.boxesWrapOuter {
+  width: 100%;
+  margin: 1.5rem 0 1.5rem 0;
+}
+.editorialBoxHeading {
+  composes: boxHeadingLast from './structure.css';
+  border-top-right-radius: 2.5rem;
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 2.2rem;
+  line-height: 2.2rem;
+  min-height: 5rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.editorialBoxContent {
+  background: #f6f6f6;
+  padding: 4rem 0.2rem 1rem 0.2rem;
+  width: 100%;
+  overflow: hidden;
+  border-bottom-left-radius: 2.5rem;
+}
+.editorialBoxContent p {
+  font-weight: normal;
+  font-size: 1.4rem;
+  color: #666;
+  text-align: left;
+  margin: 0 1.5rem 2.0rem 1.5rem
+}
+.editorialColumn {
+  text-align: left;
+}

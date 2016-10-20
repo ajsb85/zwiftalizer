@@ -14,11 +14,25 @@ import {readFile, reset} from '../../actions/parse'
 import structure from '../../styles/structure.css'
 import styles from './styles.css'
 
+// bootstrap.native is the bootstrap API without the jquery dependency
+var bsn = require('bootstrap.native');
+import {About} from '../modals/about.jsx'
+
 class Reader extends React.Component {
 
   constructor(props) {
     super(props)
     this.onDrop = this.onDrop.bind(this)
+    this.handleAboutClick = this.handleAboutClick.bind(this)
+  }
+
+  handleAboutClick(e) {
+    e.preventDefault()
+    this.aboutModal.open();
+  }
+
+  componentDidMount() {
+    this.aboutModal = new bsn.Modal(document.getElementById('aboutModal'));
   }
 
   render() {
@@ -64,6 +78,22 @@ class Reader extends React.Component {
     return (
       <div className={styles.root}>
         <div className="container">
+
+          <div className="row">
+            <div className="col-xs-12">
+
+              <div className="alert alert-warning" role="alert">
+                <p>
+                  <strong>Change Notice:</strong>&nbsp;This tool now uploads a summary of your system for inclusion in the community benchmarks report.
+                </p>
+                <p>
+                  Please see the&nbsp;
+                  <a onClick={this.handleAboutClick}>about page</a>&nbsp; for more details. Opting out of the upload step will be made available soon.
+                </p>
+              </div>
+            </div>
+          </div>
+
           <div className="row">
             <div className="col-xs-12">
               <Dropzone onDrop={this.onDrop} multiple={false} accept="text/plain" className={styles.default} activeClassName={styles.active} rejectClassName={styles.reject} style={dropBoxStyle}>

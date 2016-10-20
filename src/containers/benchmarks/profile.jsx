@@ -61,7 +61,9 @@ class Profile extends React.Component {
         ...result
       }
 
-      return (<System data={data}/>)
+      const key = resolution.resolution + '-' + profileId + '-' + i
+
+      return (<System data={data} key={key}/>)
 
     }, this)
 
@@ -71,7 +73,7 @@ class Profile extends React.Component {
     }
 
     const barStyle = {
-      width: '100%',
+      width: '33.33%',
       minWidth: '0.2rem'
     }
 
@@ -91,23 +93,15 @@ class Profile extends React.Component {
                     <h3>FPS</h3>
                   </div>
 
-                  <div className="col-xs-2">
+                  <div className="col-xs-6">
                     <div className="progress" style={progressStyle}>
-                      <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style={barStyle}>
+                      <div className="progress-bar progress-bar-success" role="progressbar" style={barStyle}>
                         Max
                       </div>
-                    </div>
-                  </div>
-                  <div className="col-xs-2">
-                    <div className="progress" style={progressStyle}>
-                      <div className="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style={barStyle}>
+                      <div className="progress-bar" role="progressbar" style={barStyle}>
                         Avg
                       </div>
-                    </div>
-                  </div>
-                  <div className="col-xs-2">
-                    <div className="progress" style={progressStyle}>
-                      <div className="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style={barStyle}>
+                      <div className="progress-bar progress-bar-warning" role="progressbar" style={barStyle}>
                         Min
                       </div>
                     </div>

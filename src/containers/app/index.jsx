@@ -75,8 +75,6 @@ class App extends React.Component {
     this.supportModal = new bsn.Modal(document.getElementById('supportModal'));
   }
 
-  // <div className="col-xs-12 col-sm-3">   <div className={styles.navItem}>     <Link to="/benchmarks">Benchmarks</Link>   </div> </div>
-
   render() {
     return (
 
@@ -96,7 +94,7 @@ class App extends React.Component {
               </div>
             </div>
 
-            <div className="col-xs-12 col-sm-3">
+            <div className="col-xs-12 col-sm-2">
               <div className={styles.navItem}>
                 <a onClick={this.handleDemoClick}>
                   Demo
@@ -104,7 +102,13 @@ class App extends React.Component {
               </div>
             </div>
 
-            <div className="col-xs-12 col-sm-3">
+            <div className="col-xs-12 col-sm-2">
+              <div className={styles.navItem}>
+                <Link to="/benchmarks">Benchmarks</Link>
+              </div>
+            </div>
+
+            <div className="col-xs-12 col-sm-2">
               <div className={styles.navItem}>
                 <Link to="/accessorize">Accessorize</Link>
               </div>

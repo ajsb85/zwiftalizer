@@ -2,13 +2,11 @@
   width: 100%;
   margin: 1.5rem 0 3rem 0;
 }
-
 .iconsWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .icon {
   height: 3.2rem;
   min-height: 3.2rem;
@@ -16,7 +14,6 @@
   min-width: 2.4rem;
   margin: -0.5rem 0.5rem 0 0.5rem;
 }
-
 .benchmarksBoxHeading {
   composes: boxHeadingLast from '../../styles/structure.css';
   border-top-right-radius: 2.5rem;
@@ -30,7 +27,6 @@
   justify-content: center;
   text-transform: capitalize;
 }
-
 .benchmarksBoxContent {
   background: #f6f6f6;
   padding: 1rem 0.2rem 1rem 0.2rem;
@@ -39,7 +35,6 @@
   border-bottom-left-radius: 2.5rem;
   text-align: left;
 }
-
 .benchmarksBoxContent h3 {
   font-weight: 600;
   font-size: 2rem;
@@ -47,7 +42,6 @@
   margin: 0 0 1rem 0;
   text-align: left;
 }
-
 .systemName {
   display: block;
   white-space: nowrap;
@@ -60,7 +54,6 @@
   color: #666;
   letter-spacing: -0.05rem;
 }
-
 .cpuDetail {
   display: block;
   overflow: hidden;
@@ -72,7 +65,6 @@
   color: #666;
   letter-spacing: -0.05rem;
 }
-
 .barsOuter {
   height: 9rem;
   min-height: 9rem;
