@@ -5,9 +5,6 @@ export const SET_BENCHMARKS_DATA = 'SET_BENCHMARKS_DATA'
 
 export function load() {
 
-  // testbenchmarks.json
-  //
-
   return dispatch => {
     //request.get('http://data.zwiftalizer.com', null, {
     request.get('testbenchmarks.json', null, {

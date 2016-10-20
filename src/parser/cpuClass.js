@@ -14,7 +14,7 @@ const intelSuffixes = {
   S: 'Performance-optimized lifestyle (possibly iMac or other all-in-one)',
   T: 'Power-optimized lifestyle (Alienware Alpha)',
   U: 'Ultra-low power (laptop, mini-pc, all-in-one)',
-  X: 'Extreme edition (freakin\' hackers)',
+  X: 'Extreme edition',
   Y: 'Extremely low power (laptop, notebook, mini-pc, all-in-one)'
 }
 
@@ -41,6 +41,8 @@ function humanizeGeneration(num) {
 
   return num + 'th' + gen;
 }
+
+// @todo, refactor ito 3 functions - core, core 2 (which came before core), and pentium/celeron family regexes
 
 export default function cpuClass(str) {
 

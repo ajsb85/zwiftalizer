@@ -72,15 +72,6 @@ class System extends React.Component {
       relativeMinWidth = Math.round((minFps / maxMaxResolutionProfile) * 100)
     }
 
-    const absMaxFps = Math.round(maxFps)
-
-    const absAvgFps = Math.round(maxFps)
-
-    const isVsyncOn = (absMaxFps < 90) && (absMaxFps % 30 === 0) && absMaxFps >= absAvgFps;
-
-    // const isVsyncOn = (absMaxFps < 90) && (Math.round((absMaxFps / (Math.round((absMaxFps + absAvgFps) / 2) - absMaxFps)) * 100) >= 0.02) && ((absMaxFps % 30 === 0) || (absAvgFps %
-    // 30 === 0));
-
     let platform = this.platform(systemId);
 
     let cpuVendor = this.cpuVendor(systemId);
@@ -89,14 +80,20 @@ class System extends React.Component {
 
     const cpuDetail = Parser.cpuClass(systemId);
 
+    let systemIdVariable = systemId;
+
+    // crude iOS detection
     if (platform === 'Mac' && cpuVendor && cpuVendor.toLowerCase() === 'arm64') {
       platform = 'iOS',
       gpuVendor = 'arm64',
       cpuVendor = 'arm64'
+      systemIdVariable = systemIdVariable.replace('Mac /', 'iOS /')
     }
 
-    if (platform === 'PC' && cpuDetail && (cpuDetail.toLowerCase().indexOf('alienware') !== -1) && gpuVendor && gpuVendor.toLowerCase() === 'nvidia') {
-      platform = 'Alienware'
+    // crude Alienware detection, checks for a T series intel CPU and (Nvidia or AMD GPU).
+    if (platform === 'PC' && cpuDetail && (cpuDetail.toLowerCase().indexOf('alienware') !== -1) && gpuVendor && (gpuVendor.toLowerCase() === 'nvidia' || gpuVendor.toLowerCase() === 'amd')) {
+      platform = 'Alienware',
+      systemIdVariable = systemIdVariable.replace('PC /', 'Alienware /')
     }
 
     let platformClass,
@@ -222,7 +219,7 @@ class System extends React.Component {
         </div>
         <div className="col-xs-12 col-sm-5">
           <div className={styles.systemName}>
-            {systemId}
+            {systemIdVariable}
           </div>
           {cpuDetailMarkup}
         </div>
