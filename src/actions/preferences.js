@@ -1,15 +1,14 @@
-export function setUserPreferences(prefs) {
+export const SET_PREFERENCES = 'SET_PREFERENCES'
 
-  localStorage.currentUserPreferences = JSON.stringify(prefs)
+export function setPreferences(data) {
 
-  return prefs
-}
+  console.log('setPreferences')
+  console.log(data)
 
-export function getUserPreferences() {
+  localStorage.preferences = JSON.stringify(data)
 
-  if (!localStorage.currentUserPreferences) {
-    return undefined;
+  return {
+    type: SET_PREFERENCES,
+    data
   }
-
-  return JSON.parse(localStorage.currentUserPreferences)
 }

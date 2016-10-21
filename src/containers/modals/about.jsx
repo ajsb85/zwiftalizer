@@ -32,16 +32,15 @@ class About extends React.Component {
 
                   <p>The Zwiftalizer is a JavaScript application to analyze the log file from &nbsp;<a href="http://www.zwift.com" target="_blank">Zwift</a>
                   </p>
+
                   <h3>Privacy Policy</h3>
 
                   <p>
-                    The log reader code runs entirely on your computer. Your log file stays private because it never leaves your computer.
+                    The log reader code runs entirely on your computer. Your log file does not get uploaded anywhere.
                   </p>
                   <p>
-                    <strong>However, a tiny fragment of data, derived from your log file, is uploaded to a database to include in the benchmarks report</strong>
-                  </p>
-                  <p>
-                    No personal data is uploaded, only your computer specs.
+                    However, a tiny fragment of data, derived from your log file, is OPTIONALLY uploaded to a database to include in the benchmarks report No personal data is uploaded, only your
+                    computer specs.
                   </p>
                   <p>
                     The following data is uploaded: OS, CPU make and model, GPU make and model, RAM, min FPS, avg FPS, max FPS, resolution, profile, date, time and duration of the activity in the log.

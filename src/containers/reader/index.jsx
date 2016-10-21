@@ -14,6 +14,8 @@ import {readFile, reset} from '../../actions/parse'
 import structure from '../../styles/structure.css'
 import styles from './styles.css'
 
+import {setPreferences} from '../../actions/preferences'
+
 // bootstrap.native is the bootstrap API without the jquery dependency
 var bsn = require('bootstrap.native');
 import {About} from '../modals/about.jsx'
@@ -24,11 +26,17 @@ class Reader extends React.Component {
     super(props)
     this.onDrop = this.onDrop.bind(this)
     this.handleAboutClick = this.handleAboutClick.bind(this)
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
   }
 
   handleAboutClick(e) {
     e.preventDefault()
     this.aboutModal.open();
+  }
+
+  handleCheckboxChange(e) {
+    const {dispatch} = this.props
+    dispatch(setPreferences({share: e.target.checked}))
   }
 
   componentDidMount() {
@@ -37,7 +45,7 @@ class Reader extends React.Component {
 
   render() {
 
-    const {isLoading, isLoaded} = this.props
+    const {isLoading, isLoaded, share} = this.props
 
     const dropBoxStyle = isLoaded
       ? {
@@ -75,21 +83,42 @@ class Reader extends React.Component {
         </div>
       : null
 
+    const shareStatus = share
+      ? 'checked'
+      : ''
+
     return (
       <div className={styles.root}>
-        <div className="container">
 
+        <div className="container-fluid">
           <div className="row">
             <div className="col-xs-12">
 
               <div className="alert alert-warning" role="alert">
-                <p>
-                  <strong>Change Notice:</strong>&nbsp;This tool now uploads a summary of your system for inclusion in the community benchmarks report.
-                </p>
-                <p>
-                  Please see the&nbsp;
-                  <a onClick={this.handleAboutClick}>about page</a>&nbsp; for more details. Opting out of the upload step will be made available soon.
-                </p>
+
+                <div className="container-fluid">
+                  <div className="row">
+                    <div className="col-xs-2">
+
+                      <form>
+                        <div className="form-group">
+                          <div className={styles.checkbox}>
+                            <input id="shareCheckbox" type="checkbox" onChange={this.handleCheckboxChange} checked={shareStatus}/>
+                            <label htmlFor="shareCheckbox"></label>
+                          </div>
+                        </div>
+                      </form>
+
+                    </div>
+                    <div className="col-xs-10">
+                      <h2 className={styles.checkboxLabel}>Upload my results to the benchmarks database</h2>
+                      <p>
+                        Check this box if you agree to a summary of your system being included in the community benchmarks database. See the&nbsp;
+                        <a onClick={this.handleAboutClick}>about page</a>&nbsp; for more details.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -111,7 +140,7 @@ class Reader extends React.Component {
   }
 
   onDrop(files) {
-    const {dispatch, isLoaded} = this.props
+    const {dispatch, isLoaded, share} = this.props
 
     if (isLoaded) {
       dispatch(reset())
@@ -119,16 +148,17 @@ class Reader extends React.Component {
 
     //@todo, raise warning if the file does not appear to be a log file (dropping the launcher log is a common error) delayed so that the state can update the loading message
     setTimeout(() => {
-      dispatch(readFile(files[0]))
+      dispatch(readFile(files[0], share))
     }, 250)
   }
 
 }
 
 function mapStateToProps(state) {
-  const {reader} = state
+  const {reader, preferences} = state
   return {
-    ...reader
+    ...reader,
+    ...preferences
   }
 }
 

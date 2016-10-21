@@ -4,30 +4,36 @@ import {
   applyMiddleware
 } from 'redux'
 
-import {
-  setUserPreferences,
-  getUserPreferences
-} from '../actions/preferences'
-
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import rootReducer from '../reducers'
 
 const loggerMiddleware = createLogger()
 
-export default function configureStore() {
+export function getPreferencesFromLocalStorage() {
 
-  let localStorageUserPreferences = getUserPreferences() || null
+  if (!localStorage.preferences) {
+    return undefined;
+  }
+
+  return JSON.parse(localStorage.preferences)
+}
+
+export default function configureStore() {
 
   const initialState = {}
 
+  let localStoragePreferences = getPreferencesFromLocalStorage() || null
+
+  // default sharing to the benchmarks is on
   let share = true;
 
-  // if localStorageUserPreferences exists, set share to whatever it was before
-  share = localStorageUserPreferences && localStorageUserPreferences.share
+  if (localStoragePreferences !== null) {
+    share = localStoragePreferences.share
+  }
 
   initialState.preferences = {
-    share
+    share: share
   }
 
   const store = createStore(
@@ -37,11 +43,11 @@ export default function configureStore() {
       applyMiddleware(
         // lets us dispatch async functions
         thunkMiddleware,
-        loggerMiddleware // neat middleware that logs actions
+        //loggerMiddleware // neat middleware that logs actions
       )
       //,
       // enables redux chrome dev tools extension
-      // window.devToolsExtension ? window.devToolsExtension() : f => f
+      //window.devToolsExtension ? window.devToolsExtension() : f => f
     )
   )
 

@@ -27,7 +27,7 @@ export const FILE_LOADING = 'FILE_LOADING'
 export const RESET = 'RESET'
 export const UPDATE_PROGRESS = 'UPDATE_PROGRESS'
 
-function parseFileContents(log, isDemo = false) {
+function parseFileContents(log, isDemo = false, share = true) {
 
   return dispatch => {
 
@@ -126,31 +126,37 @@ function parseFileContents(log, isDemo = false) {
             }
         }
 
-        const summaryData = {
-          'logId': uuid.v4(),
-          'timestamp': activityData.startTimestamp,
-          'duration': activityData.duration + '',
-          'specs': {
-            'resolution': systemData.resolution,
-            'profileId': profileId + '',
-            'profile': systemData.profile,
-            'minFps': Math.round(graphicsData.fpsData.min()) + '',
-            'maxFps': Math.round(graphicsData.fpsData.max()) + '',
-            'avgFps': Math.round(graphicsData.fpsData.avg()) + '',
-            'stdev': Math.round(graphicsData.fpsData.stdev()) + '',
-            'samples': graphicsData.fpsSamples + '',
-            'platform': systemData.platform,
-            'cpuVendor': systemData.cpuVendor,
-            'cpuDetails': systemData.cpuDetails,
-            'ram': systemData.ram,
-            'gpuVendor': systemData.gpuVendor,
-            'gpuDetails': systemData.gpuDetails,
-            'shadowres': systemData.shadowres,
-            'openglMajor': systemData.openglMajor
-          }
-        }
+        if (share) {
 
-        dispatch(uploadResults(summaryData))
+          //console.log('uploading to API gateway')
+
+          const summaryData = {
+            'logId': uuid.v4(),
+            'timestamp': activityData.startTimestamp,
+            'duration': activityData.duration + '',
+            'specs': {
+              'resolution': systemData.resolution,
+              'profileId': profileId + '',
+              'profile': systemData.profile,
+              'minFps': Math.round(graphicsData.fpsData.min()) + '',
+              'maxFps': Math.round(graphicsData.fpsData.max()) + '',
+              'avgFps': Math.round(graphicsData.fpsData.avg()) + '',
+              'stdev': Math.round(graphicsData.fpsData.stdev()) + '',
+              'samples': graphicsData.fpsSamples + '',
+              'platform': systemData.platform,
+              'cpuVendor': systemData.cpuVendor,
+              'cpuDetails': systemData.cpuDetails,
+              'ram': systemData.ram,
+              'gpuVendor': systemData.gpuVendor,
+              'gpuDetails': systemData.gpuDetails,
+              'shadowres': systemData.shadowres,
+              'openglMajor': systemData.openglMajor
+            }
+          }
+
+          dispatch(uploadResults(summaryData))
+
+        }
 
       }
 
@@ -165,19 +171,19 @@ export function loadDemo() {
       cache: true,
       dataType: 'json'
     }).then((xhr, response) => {
-      dispatch(parseFileContents(response, true))
+      dispatch(parseFileContents(response, true, false))
     })
   }
 }
 
-export function readFile(log) {
+export function readFile(log, share = true) {
 
   return dispatch => {
 
     const reader = new FileReader()
 
     reader.onload = () => {
-      dispatch(parseFileContents(reader.result, false))
+      dispatch(parseFileContents(reader.result, false, share))
     }
 
     reader.readAsBinaryString(log);
