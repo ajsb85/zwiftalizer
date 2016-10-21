@@ -62,20 +62,11 @@ class Benchmarks extends React.Component {
                           <div className="alert alert-danger" role="alert">
                             <div className={styles.centered}>
                               <p>
-                                <strong>Disclaimer:</strong>&nbsp;These stats are collected by the Zwiftalizer (a free open source project by members of the Zwift community). This is&nbsp;<strong>not an official Zwift resource</strong>&nbsp; and does not come with any guarantees or support by Zwift HQ.
+                                This report is&nbsp;<strong>not</strong>&nbsp;an official Zwift resource and is&nbsp;<strong>not</strong>&nbsp;supported by Zwift HQ.
                               </p>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-xs-12 col-sm-offset-1 col-sm-10">
-                      <div className={styles.centered}>
-                        <p>
-                          This report is regenerated every time somebody uses the Zwiftalizer. Regeneration is not instant. Reload the page if you do not see your system after using the tool.
-                        </p>
                       </div>
                     </div>
                   </div>
