@@ -12,7 +12,7 @@ Zwift log file analyzer - a web browser based drag and drop tool for reading Zwi
 
 This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
-The code runs 100% in your web browser on your computer. There is no back-end server or database.
+The code runs 100% in your web browser on your computer.
 
 ## 0.9.1 Changes (2016-08-24)
 
