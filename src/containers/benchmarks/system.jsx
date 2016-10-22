@@ -91,7 +91,7 @@ class System extends React.Component {
     }
 
     // crude Alienware detection, checks for a T series intel CPU and (Nvidia or AMD GPU).
-    if (platform === 'PC' && cpuDetail && (cpuDetail.toLowerCase().indexOf('alienware') !== -1) && gpuVendor && (gpuVendor.toLowerCase() === 'nvidia' || gpuVendor.toLowerCase() === 'amd')) {
+    if (platform === 'PC' && cpuDetail && (cpuDetail.toLowerCase().indexOf('alienware') !== -1) && gpuVendor && (gpuVendor.toLowerCase() === 'nvidia' || gpuVendor.toLowerCase() === 'ati')) {
       platform = 'Alienware',
       systemIdVariable = systemIdVariable.replace('PC /', 'Alienware /')
     }

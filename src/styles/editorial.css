@@ -9,11 +9,18 @@
   font-weight: 600;
   font-size: 2.2rem;
   line-height: 2.2rem;
-  min-height: 5rem;
+  height: 6rem;
+  min-height: 6rem;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+@media(max-width:768px) {
+  .editorialBoxHeading {
+    height: 12rem;
+    min-height: 12rem;
+  }
 }
 .centered {
   display: flex;

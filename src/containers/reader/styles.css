@@ -118,13 +118,22 @@
     font-size: 3.4rem;
     color: #999;
   }
+  .consentWrapper {
+    height: 6rem;
+    min-height: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
   .checkbox {
-    padding-left: 2rem;
+    display: block;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
   }
   .checkbox label {
-    display: inline-block;
     position: relative;
-    padding-left: 0.5rem;
   }
   .checkbox label::before {
     content: "";
@@ -174,5 +183,29 @@
     color: #fff;
   }
   .checkboxLabel {
+    font-weight: 400;
     font-size: 2.0rem;
+    line-height: 2.8rem;
+    height: 6rem;
+    min-height: 6rem;
+    letter-spacing: -0.05rem;
+    padding-top: 1.5rem;
+  }
+  .checkboxLabelStrong {
+    font-weight: 700;
+  }
+  @media(max-width:991px) {
+    .checkbox {
+      display: block;
+      position: relative;
+      left: -2rem;
+    }
+    .checkboxLabel {
+      font-weight: normal;
+      font-size: 1.6rem;
+      line-height: 2.2rem;
+    }
+    .checkboxLabelStrong {
+      font-weight: 600;
+    }
   }

@@ -18,6 +18,9 @@ const intelSuffixes = {
   Y: 'Extremely low power (laptop, notebook, mini-pc, all-in-one)'
 }
 
+// @todo get make and family
+// ^([\w]*)\s([\w]*).*
+
 function humanizeGeneration(num) {
 
   const gen = ' generation'
@@ -57,7 +60,7 @@ export default function cpuClass(str) {
   const cpuSpec = match[1]
 
   // Intel Core i7-2600K @ 3.40GHz
-  const cpuRegex = /^intel\s(\w*)\s(i\d)-(\d+)(\w)?(\w)?\s\@.*/i
+  const cpuRegex = /^intel\s(\w*)\s(i\d)([-\s]?)(\d+)(\w)?(\w)?\s\@.*/i
 
   const matches = cpuRegex.exec(cpuSpec)
 
@@ -69,11 +72,11 @@ export default function cpuClass(str) {
 
   const brandModifier = matches[2]
 
-  const generation = (matches[3] + '').length === 3 ? '1st generation' : humanizeGeneration(matches[3][0])
+  const generation = (matches[4] + '').length === 3 ? '1st generation' : humanizeGeneration(matches[4][0])
 
-  const letterSuffix = matches[4]
+  const letterSuffix = matches[5]
 
-  const productLineSuffix = matches[5]
+  const productLineSuffix = matches[6]
 
   let letterSuffixValue = undefined
 

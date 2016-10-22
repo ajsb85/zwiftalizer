@@ -14,7 +14,7 @@ test('should extract CPU class details for core i7', (assert) => {
 })
 
 test('should get 1st gen core right', (assert) => {
-  const entry = 'PC / Intel Core i7-940 @ 2.93GHz / Nvidia GeForce GTX 980 Ti/PCIe/SSE2'
+  const entry = 'PC / Intel Core i7 840 @ 2.93GHz / Nvidia GeForce GTX 980 Ti/PCIe/SSE2'
   const expected = '1st generation Intel Core family processor'
   const actual = cpuClass(entry)
   console.log(actual)
@@ -31,7 +31,16 @@ test('should recognise alienware alpha cpu', (assert) => {
   assert.end()
 })
 
-test('should be undefined for 20th anniversary pentium', (assert) => {
+test('should recognise alienware alpha R2', (assert) => {
+  const entry = 'PC / Intel Core i5-6400T @ 2.20GHz / ATi AMD Radeon R9 M470X'
+  const expected = '6th generation Intel Core family processor - Power-optimized lifestyle (Alienware Alpha)'
+  const actual = cpuClass(entry)
+  console.log(actual)
+  assert.equals(actual, expected)
+  assert.end()
+})
+
+test('should NOT recognize 20th anniversary pentium yet', (assert) => {
   const entry = 'PC / Intel Pentium G3258 @ 4.20GHz / Nvidia GeForce GTX 970/PCIe/SSE2'
   const expected = undefined
   const actual = cpuClass(entry)

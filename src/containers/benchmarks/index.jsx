@@ -117,10 +117,10 @@ class Benchmarks extends React.Component {
                           because it is decided by the game engine code that picks a profile based on the capabilities of your GPU.
                         </p>
                         <p>
-                          Q: Why are some systems stuck at 30 or 60 FPS?
+                          Q: Why are some systems stuck at 60 FPS?
                         </p>
                         <p>
-                          A: It is most probably because the frame rate is set to sync with the vertical refresh rate of the display, which is 60 times per second, or half refresh rate.
+                          A: It is most probably because the frame rate is set to synchronize with the vertical refresh rate of the display. The refresh rate of the vast majority of 1080p HD TVs is 60Hz.
                         </p>
                         <p>
                           Q: What's the tech behind this report?

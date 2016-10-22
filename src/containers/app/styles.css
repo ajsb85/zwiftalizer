@@ -32,7 +32,7 @@
   composes: navItem;
   justify-content: flex-end;
 }
-@media(max-width:767px) {
+@media(max-width:991px) {
   .navItem, .brand, .navPills {
     justify-content: center;
     height: 4.0rem;

@@ -86,7 +86,7 @@ class App extends React.Component {
           marginTop: '2rem'
         }}>
           <div className="row">
-            <div className="col-xs-12 col-sm-3">
+            <div className="col-sm-12 col-md-3">
               <div className={styles.brand}>
                 <span className={styles.signal}>
                   <i className="fa fa-line-chart" aria-hidden="true"></i>
@@ -94,7 +94,7 @@ class App extends React.Component {
               </div>
             </div>
 
-            <div className="col-xs-12 col-sm-2">
+            <div className="col-sm-12 col-md-2">
               <div className={styles.navItem}>
                 <a onClick={this.handleDemoClick}>
                   Demo
@@ -102,19 +102,19 @@ class App extends React.Component {
               </div>
             </div>
 
-            <div className="col-xs-12 col-sm-2">
+            <div className="col-sm-12 col-md-2">
               <div className={styles.navItem}>
                 <Link to="/benchmarks">Benchmarks</Link>
               </div>
             </div>
 
-            <div className="col-xs-12 col-sm-2">
+            <div className="col-sm-12 col-md-2">
               <div className={styles.navItem}>
                 <Link to="/accessorize">Accessorize</Link>
               </div>
             </div>
 
-            <div className="col-xs-12 col-sm-3">
+            <div className="col-sm-12 col-md-3">
 
               <div className={styles.navPills}>
                 <a onClick={this.handleAboutClick}>

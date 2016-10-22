@@ -16,8 +16,6 @@ import styles from './styles.css'
 
 import {setPreferences} from '../../actions/preferences'
 
-// bootstrap.native is the bootstrap API without the jquery dependency
-var bsn = require('bootstrap.native');
 import {About} from '../modals/about.jsx'
 
 class Reader extends React.Component {
@@ -25,22 +23,12 @@ class Reader extends React.Component {
   constructor(props) {
     super(props)
     this.onDrop = this.onDrop.bind(this)
-    this.handleAboutClick = this.handleAboutClick.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
-  }
-
-  handleAboutClick(e) {
-    e.preventDefault()
-    this.aboutModal.open();
   }
 
   handleCheckboxChange(e) {
     const {dispatch} = this.props
     dispatch(setPreferences({share: e.target.checked}))
-  }
-
-  componentDidMount() {
-    this.aboutModal = new bsn.Modal(document.getElementById('aboutModal'));
   }
 
   render() {
@@ -98,24 +86,25 @@ class Reader extends React.Component {
 
                 <div className="container-fluid">
                   <div className="row">
-                    <div className="col-xs-2">
-
+                    <div className="col-sm-12 col-md-2">
                       <form>
                         <div className="form-group">
-                          <div className={styles.checkbox}>
-                            <input id="shareCheckbox" type="checkbox" onChange={this.handleCheckboxChange} checked={shareStatus}/>
-                            <label htmlFor="shareCheckbox"></label>
+                          <div className={styles.consentWrapper}>
+                            <div className={styles.checkbox}>
+                              <input id="shareCheckbox" type="checkbox" onChange={this.handleCheckboxChange} checked={shareStatus}/>
+                              <label htmlFor="shareCheckbox"></label>
+                            </div>
                           </div>
                         </div>
                       </form>
 
                     </div>
-                    <div className="col-xs-10">
-                      <h2 className={styles.checkboxLabel}>Upload my results to the benchmarks database</h2>
-                      <p>
-                        Check this box if you agree to a summary of your system being included in the community benchmarks database. See the&nbsp;
-                        <a onClick={this.handleAboutClick}>about page</a>&nbsp; for more details.
-                      </p>
+                    <div className="col-sm-12 col-md-10">
+                      <div className={styles.consentWrapper}>
+                        <h2 className={styles.checkboxLabel}>
+                          <span className={styles.checkboxLabelStrong}>I agree</span>&nbsp;to my system summary being included in the benchmarks database.
+                        </h2>
+                      </div>
                     </div>
                   </div>
                 </div>
