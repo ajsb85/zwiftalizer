@@ -112,7 +112,7 @@ class Benchmarks extends React.Component {
                           Q: Why is my system listed under '1440 High' when I chose '1440 Ultra' in the game? (or '1080 Basic' when I chose '1080 High').
                         </p>
                         <p>
-                          A: Resolution and profile are actually two separate things. Resolution is the number of vertical lines in the picture. Profile is the level of detail of items rendered - things
+                          A: Resolution and profile are actually two separate things. Resolution is the number of horizontal lines in the picture. Profile is the level of detail of items rendered - things
                           like road texture, walls, buildings, clothing, skin, special effects, etc (using higher resolution texture maps afforded by discrete GPUs). Profile can not be set by the user
                           because it is decided by the game engine code that picks a profile based on the capabilities of your GPU.
                         </p>

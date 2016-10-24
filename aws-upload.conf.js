@@ -8,6 +8,7 @@ module.exports = {
     'public/favicon.ico',
     'public/demolog.txt',
     'public/index.html',
-    'public/*.png'
+    'public/*.png',
+    'public/img/*.*'
   ]
 };
