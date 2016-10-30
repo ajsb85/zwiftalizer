@@ -24,13 +24,6 @@ import {
   FEC_DEVICE
 } from './constants'
 
-// we know battery level is coming from powermeter if we know
-// dID 743018 is quark PM
-// [10:58:44] ANT  : dID 743018 Battery Level 3
-
-// [10:58:44] ANT  : dID 743018 SW Revision 6912 SerialNum 1462654570
-// Report Powermeter = Quarq, Software Revision 6912
-
 /**
  * Returns an array of ant+ device manufacturer Ids
  * where each element of the array is an object with the following properties

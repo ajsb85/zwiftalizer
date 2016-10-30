@@ -13,7 +13,6 @@ import mapAntLines from './mapAntLines'
 import antDevices from './antDevices'
 import antManufacturers from './antManufacturers'
 import mapAntSearches from './mapAntSearches'
-import mapAntBatteryLevels from './mapAntBatteryLevels'
 import mapAntRxFails from './mapAntRxFails'
 import mapPowermeterData from './mapPowermeterData'
 import mapGradientData from './mapGradientData'
@@ -32,8 +31,6 @@ export default function antData(log, timeAxisTimeSeries) {
   const devices = antDevices(antLines)
 
   const manufacturers = antManufacturers(antLines)
-
-  const batteryLevels = mapAntBatteryLevels(antLines)
 
   const searches = mapAntSearches(antLines, timeAxisTimeSeries)
 
@@ -68,14 +65,6 @@ export default function antData(log, timeAxisTimeSeries) {
     Object.assign(device, {
       signal,
     })
-
-    const batteryLevel = _.find(batteryLevels, b => {
-      return b.deviceId === device.deviceId
-    })
-
-    if (batteryLevel) {
-      Object.assign(device, batteryLevel)
-    }
 
   })
 

@@ -173,44 +173,6 @@ class Chart extends React.Component {
     return (device.manufacturer + ' ' + device.model).trim()
   }
 
-  getBatteryClassName(device) {
-    return 'fa fa-battery-' + device.batteryLevel
-  }
-
-  renderBatteryLevel(device) {
-
-    if (!_.isUndefined(device.batteryLevel)) {
-
-      let batteryLevelSpanStyle = {
-        fontSize: '2.4rem',
-        marginLeft: '1rem'
-      }
-
-      switch (device.batteryLevel) {
-        case 0:
-        case 1:
-          batteryLevelSpanStyle.color = colors.fiestared
-          break;
-
-        case 2:
-          batteryLevelSpanStyle.color = colors.orange
-          break;
-
-        default:
-          batteryLevelSpanStyle.color = colors.green
-          break;
-      }
-
-      return (
-        <span style={batteryLevelSpanStyle}>
-          <i className={this.getBatteryClassName(device)} aria-hidden="true"></i>
-        </span>
-      )
-    }
-
-    return null
-  }
-
   renderCalibration(device) {
 
     if (device.calibration) {
@@ -249,8 +211,6 @@ class Chart extends React.Component {
 
     const calibrationMessage = this.renderCalibration(device)
 
-    const batteryLevel = this.renderBatteryLevel(device)
-
     let minPower = 0
     let avgPower = 0
     let maxPower = 0
@@ -268,7 +228,7 @@ class Chart extends React.Component {
         <div className="row" style={headingRowStyle}>
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
-              <h4 className={structure.heading}>{label}{batteryLevel}</h4>
+              <h4 className={structure.heading}>{label}</h4>
               {calibrationMessage}
               <h5 className={structure.infoHeading}>Denser area is better. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
             </div>
@@ -332,8 +292,6 @@ class Chart extends React.Component {
 
     let label = ('Device ' + device.deviceId + ' - ' + this.getMakeAndModel(device) + ' Smart Trainer').replace(/\s(\s)+/, ' ').trim()
 
-    const batteryLevel = this.renderBatteryLevel(device)
-
     let minGrad = 0
     let maxGrad = 0
 
@@ -351,7 +309,7 @@ class Chart extends React.Component {
         <div className="row" style={headingRowStyle}>
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
-              <h4 className={structure.heading}>{label}{batteryLevel}</h4>
+              <h4 className={structure.heading}>{label}</h4>
               <h5 className={structure.infoHeading}>Denser area is better. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
             </div>
           </div>
@@ -418,8 +376,6 @@ class Chart extends React.Component {
 
     let label = ('Device ' + device.deviceId + ' - ' + this.getMakeAndModel(device) + ' Basic Sensor').replace(/\s(\s)+/, ' ').trim()
 
-    const batteryLevel = this.renderBatteryLevel(device)
-
     const labelAxisId = 'labelAxis' + i
     const leftAxisId = 'leftAxis' + i
     const rightAxisId = 'rightAxis' + i
@@ -433,7 +389,7 @@ class Chart extends React.Component {
         <div className="row" style={headingRowStyle}>
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
-              <h4 className={structure.heading}>{label}{batteryLevel}</h4>
+              <h4 className={structure.heading}>{label}</h4>
               <h5 className={structure.infoHeading}>Denser area is better. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
             </div>
           </div>
@@ -486,8 +442,6 @@ class Chart extends React.Component {
 
     let label = ('Device ' + device.deviceId + ' - ' + this.getMakeAndModel(device)).replace(/\s(\s)+/, ' ').trim()
 
-    const batteryLevel = this.renderBatteryLevel(device)
-
     let minPower = 0
     let avgPower = 0
     let maxPower = 0
@@ -513,7 +467,7 @@ class Chart extends React.Component {
         <div className="row" style={headingRowStyle}>
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
-              <h4 className={structure.heading}>{label}{batteryLevel}</h4>
+              <h4 className={structure.heading}>{label}</h4>
               <h5 className={structure.infoHeading}>Denser area is better. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
             </div>
           </div>

@@ -87,7 +87,7 @@ class Reader extends React.Component {
                     <div className="col-sm-12 col-md-2">
                       <form>
                         <div className="form-group">
-                          <div className={styles.consentWrapper}>
+                          <div className={styles.checkboxWrapper}>
                             <div className={styles.checkbox}>
                               <input id="shareCheckbox" type="checkbox" onChange={this.handleCheckboxChange} checked={shareStatus}/>
                               <label htmlFor="shareCheckbox"></label>
