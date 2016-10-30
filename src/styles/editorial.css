@@ -6,21 +6,15 @@
   composes: boxHeadingLast from './structure.css';
   border-top-right-radius: 2.5rem;
   text-transform: capitalize;
-  font-weight: 600;
-  font-size: 2.2rem;
-  line-height: 2.2rem;
+  font-weight: 700;
+  font-size: 2.6rem;
+  line-height: 2.8rem;
   height: 6rem;
   min-height: 6rem;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-@media(max-width:768px) {
-  .editorialBoxHeading {
-    height: 12rem;
-    min-height: 12rem;
-  }
 }
 .centered {
   display: flex;
@@ -37,11 +31,62 @@
 }
 .editorialBoxContent p {
   font-weight: normal;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #666;
   text-align: left;
-  margin: 0 1.5rem 2.0rem 1.5rem
+  margin: 0 0 3rem 0;
+  line-height: 2.3rem;
+}
+.editorialBoxContent h3 {
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 2.8rem;
+  margin: 0 0 2rem 0;
+  text-align: left;
+  color: #666;
+}
+.editorialBoxContent h4 {
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  margin: 0 0 1rem 0;
+  text-align: left;
+  color: #666;
 }
 .editorialColumn {
   text-align: left;
+}
+.donateButtonWrapper {
+  height: 4rem;
+  min-height: 4rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+@media(max-width:991px) {
+  .editorialBoxHeading {
+    height: 12rem;
+    min-height: 12rem;
+  }
+  .donateButtonWrapper {
+    height: 9rem;
+    min-height: 9rem;
+    justify-content: center;
+  }
+  .editorialBoxContent h3 {
+    text-align: center;
+  }
+}
+.architectureDiagramWrapper {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.architectureDiagramWrapper img {
+  width: 100%;
+  hwight: 100%;
 }

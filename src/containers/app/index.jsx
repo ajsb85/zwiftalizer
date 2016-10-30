@@ -11,12 +11,9 @@ import React, {Component, PropTypes} from 'react'
 import {Link, withRouter} from 'react-router'
 import {connect} from 'react-redux'
 import {loadDemo, reset} from '../../actions/parse.js'
-// bootstrap.native is the bootstrap API without the jquery dependency
-var bsn = require('bootstrap.native');
+
 import structure from '../../styles/structure.css'
 import styles from './styles.css'
-import {About} from '../modals/about.jsx'
-import {Support} from '../modals/support.jsx'
 
 class App extends React.Component {
 
@@ -25,8 +22,6 @@ class App extends React.Component {
     this.handleDemoClick = this.handleDemoClick.bind(this)
     this.handleGithubClick = this.handleGithubClick.bind(this)
     this.handleTwitterClick = this.handleTwitterClick.bind(this)
-    this.handleAboutClick = this.handleAboutClick.bind(this)
-    this.handleSupportClick = this.handleSupportClick.bind(this)
   }
 
   handleDemoClick(e) {
@@ -54,25 +49,9 @@ class App extends React.Component {
     window.location.href = 'https://twitter.com/zwiftalizer'
   }
 
-  handleAboutClick(e) {
-    e.preventDefault()
-    this.aboutModal.open();
-  }
-
-  handleSupportClick(e) {
-    e.preventDefault()
-    this.supportModal.open();
-  }
-
   handleGithubClick(e) {
     e.preventDefault()
     window.location.href = 'https://github.com/mhanney/zwiftalizer'
-  }
-
-  componentDidMount() {
-    // find modals and use bootstrap native to enable them, without depending on jquery
-    this.aboutModal = new bsn.Modal(document.getElementById('aboutModal'));
-    this.supportModal = new bsn.Modal(document.getElementById('supportModal'));
   }
 
   render() {
@@ -117,15 +96,15 @@ class App extends React.Component {
             <div className="col-sm-12 col-md-3">
 
               <div className={styles.navPills}>
-                <a onClick={this.handleAboutClick}>
+                <Link to="/about">
                   <i className='fa fa-info-circle'></i>
-                </a>&nbsp;
+                </Link>&nbsp;
                 <a onClick={this.handleTwitterClick}>
                   <i className='fa fa-twitter-square'></i>
                 </a>&nbsp;
-                <a onClick={this.handleSupportClick}>
+                <Link to="/support">
                   <i className='fa fa-paypal'></i>
-                </a>&nbsp;
+                </Link>&nbsp;
                 <a onClick={this.handleGithubClick}>
                   <i className='fa fa-github'></i>
                 </a>
@@ -133,11 +112,7 @@ class App extends React.Component {
 
             </div>
           </div>
-
           {this.props.children}
-
-          <About/>
-          <Support/>
         </div>
       </div>
     )
@@ -152,7 +127,6 @@ function mapStateToProps(state) {
   }
 }
 
-// PropTypes
 App.propTypes = {
   router: React.PropTypes.shape({push: React.PropTypes.func.isRequired}).isRequired
 }

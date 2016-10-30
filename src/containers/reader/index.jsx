@@ -16,8 +16,6 @@ import styles from './styles.css'
 
 import {setPreferences} from '../../actions/preferences'
 
-import {About} from '../modals/about.jsx'
-
 class Reader extends React.Component {
 
   constructor(props) {

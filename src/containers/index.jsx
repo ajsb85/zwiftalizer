@@ -22,11 +22,13 @@ ReactGA.initialize('UA-2833327-13')
 import App from './app'
 import Home from './home'
 import {Accessorize} from './accessorize'
+import {About} from './about'
+import {Support} from './support'
 import Benchmarks from './benchmarks'
 
 function logPageView() {
   ReactGA.set({page: window.location.pathname})
-  ReactGA.pageview(window.location.pathname)
+  //ReactGA.pageview(window.location.pathname)
 }
 
 function run() {
@@ -40,6 +42,8 @@ function run() {
         <Route path='/' component={App}>
           <IndexRoute component={Home}/>
           <Route path='accessorize' component={Accessorize}/>
+          <Route path='about' component={About}/>
+          <Route path='support' component={Support}/>
           <Route path='benchmarks' component={Benchmarks}/>
         </Route>
       </Router>

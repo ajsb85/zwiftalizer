@@ -11,7 +11,6 @@ class Accessorize extends React.Component {
 
   render() {
 
-    // style="border:none !important; margin:0px !important;"
     return (
 
       <div className="container-fluid">
