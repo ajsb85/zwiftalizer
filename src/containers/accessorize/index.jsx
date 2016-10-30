@@ -1,6 +1,7 @@
 import React from 'react'
 
 import structure from '../../styles/structure.css'
+import editorialStyles from '../../styles/editorial.css'
 import styles from './styles.css'
 
 class Accessorize extends React.Component {
@@ -14,11 +15,11 @@ class Accessorize extends React.Component {
     return (
 
       <div className="container-fluid">
-        <div className={styles.boxesWrapOuter}>
+        <div className={editorialStyles.boxesWrapOuter}>
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxLast}>
-              <div className={styles.accessorizeBoxHeading}>Tested Best Accessories For Zwift</div>
-              <div className={styles.accessorizeBoxContent}>
+              <div className={editorialStyles.editorialBoxHeading}>Tested Best Accessories For Zwift</div>
+              <div className={editorialStyles.editorialBoxContent}>
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-xs-12 col-sm-3">
@@ -50,11 +51,11 @@ class Accessorize extends React.Component {
           </div>
         </div>
 
-        <div className={styles.boxesWrapOuter}>
+        <div className={editorialStyles.boxesWrapOuter}>
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxLast}>
-              <div className={styles.accessorizeBoxHeading}>Best ANT+ USB Dongle</div>
-              <div className={styles.accessorizeBoxContent}>
+              <div className={editorialStyles.editorialBoxHeading}>Best ANT+ USB Dongle</div>
+              <div className={editorialStyles.editorialBoxContent}>
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-xs-12 col-sm-3">
@@ -95,11 +96,11 @@ class Accessorize extends React.Component {
           </div>
         </div>
 
-        <div className={styles.boxesWrapOuter}>
+        <div className={editorialStyles.boxesWrapOuter}>
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxLast}>
-              <div className={styles.accessorizeBoxHeading}>Best Active USB Extension Cable</div>
-              <div className={styles.accessorizeBoxContent}>
+              <div className={editorialStyles.editorialBoxHeading}>Best Active USB Extension Cable</div>
+              <div className={editorialStyles.editorialBoxContent}>
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-xs-12 col-sm-3">
@@ -137,11 +138,11 @@ class Accessorize extends React.Component {
           </div>
         </div>
 
-        <div className={styles.boxesWrapOuter}>
+        <div className={editorialStyles.boxesWrapOuter}>
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxLast}>
-              <div className={styles.accessorizeBoxHeading}>Best Budget HD 1080 Gaming GPU</div>
-              <div className={styles.accessorizeBoxContent}>
+              <div className={editorialStyles.editorialBoxHeading}>Best Budget HD 1080 Gaming GPU</div>
+              <div className={editorialStyles.editorialBoxContent}>
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-xs-12 col-sm-3">
@@ -211,11 +212,11 @@ class Accessorize extends React.Component {
           </div>
         </div>
 
-        <div className={styles.boxesWrapOuter}>
+        <div className={editorialStyles.boxesWrapOuter}>
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxLast}>
-              <div className={styles.accessorizeBoxHeading}>Best USB WiFi Adapter</div>
-              <div className={styles.accessorizeBoxContent}>
+              <div className={editorialStyles.editorialBoxHeading}>Best USB WiFi Adapter</div>
+              <div className={editorialStyles.editorialBoxContent}>
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-xs-12 col-sm-3">
@@ -251,11 +252,11 @@ class Accessorize extends React.Component {
           </div>
         </div>
 
-        <div className={styles.boxesWrapOuter}>
+        <div className={editorialStyles.boxesWrapOuter}>
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxLast}>
-              <div className={styles.accessorizeBoxHeading}>Best Cooling Fan</div>
-              <div className={styles.accessorizeBoxContent}>
+              <div className={editorialStyles.editorialBoxHeading}>Best Cooling Fan</div>
+              <div className={editorialStyles.editorialBoxContent}>
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-xs-12 col-sm-3">
@@ -286,11 +287,11 @@ class Accessorize extends React.Component {
           </div>
         </div>
 
-        <div className={styles.boxesWrapOuter}>
+        <div className={editorialStyles.boxesWrapOuter}>
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxLast}>
-              <div className={styles.accessorizeBoxHeading}>Best 20 Pack CR2032 Coin Cell Batteries</div>
-              <div className={styles.accessorizeBoxContent}>
+              <div className={editorialStyles.editorialBoxHeading}>Best 20 Pack CR2032 Coin Cell Batteries</div>
+              <div className={editorialStyles.editorialBoxContent}>
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-xs-12 col-sm-3">
@@ -326,11 +327,11 @@ class Accessorize extends React.Component {
           </div>
         </div>
 
-        <div className={styles.boxesWrapOuter}>
+        <div className={editorialStyles.boxesWrapOuter}>
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxLast}>
-              <div className={styles.accessorizeBoxHeading}>Best 12 Pack Button Cell Batteries</div>
-              <div className={styles.accessorizeBoxContent}>
+              <div className={editorialStyles.editorialBoxHeading}>Best 12 Pack Button Cell Batteries</div>
+              <div className={editorialStyles.editorialBoxContent}>
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-xs-12 col-sm-3">

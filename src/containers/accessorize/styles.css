@@ -1,41 +1,10 @@
-.boxesWrapOuter {
-  width: 100%;
-  margin: 1.5rem 0 1.5rem 0;
-}
-.accessorizeBoxHeading {
-  composes: boxHeadingLast from '../../styles/structure.css';
-  border-top-right-radius: 2.5rem;
-  text-transform: capitalize;
-  font-weight: 600;
-  font-size: 2.2rem;
-  line-height: 2.2rem;
-  min-height: 5rem;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .centered {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-.accessorizeBoxContent {
-  background: #f6f6f6;
-  padding: 1rem 0.2rem 1rem 0.2rem;
-  width: 100%;
-  overflow: hidden;
-  border-bottom-left-radius: 2.5rem;
-}
-.accessorizeBoxContent p {
-  font-weight: normal;
-  font-size: 1.4rem;
-  color: #666;
-  text-align: left;
-  margin: 0 1.5rem 2.0rem 1.5rem
-}
-.accessorizeBoxContent p.massiveText {
+p.massiveText {
   display: block;
   margin: 3rem auto 1rem auto;
   font-weight: 700;
@@ -64,13 +33,6 @@
   font-weight: 600;
   color: #666;
   margin-bottom: 1.6rem;
-}
-.accessorizeProduct p {
-  font-weight: normal;
-  font-size: 1.4rem;
-  color: #666;
-  text-align: left;
-  margin: 0 1.5rem 2.0rem 0
 }
 .accessorizeProduct ul {
   font-weight: normal;
