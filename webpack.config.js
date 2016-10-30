@@ -61,7 +61,7 @@ const common = {
       // },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'url-loader?limit=32768'
+        loader: 'url-loader?limit=65536'
       }, {
         test: /\.json$/,
         loader: 'json-loader'
