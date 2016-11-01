@@ -133,6 +133,7 @@ class System extends React.Component {
           break
 
         case('intel'):
+        case('pentium'):
           cpuClass = images.intel
           break
 
