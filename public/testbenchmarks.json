@@ -5,12 +5,21 @@
       "profileId": 3,
       "results": [{
         "systemId": "PC / Intel Core i7-2600K @ 3.40GHz / Nvidia GeForce GTX 980 Ti/PCIe/SSE2",
-        "maxFps": 138.33,
+        "maxFps": 135.8,
         "resolution": 2160,
-        "avgFps": 107,
-        "minFps": 76,
+        "avgFps": 109.2,
+        "minFps": 81.2,
         "profileId": 3,
-        "samples": 3,
+        "samples": 5,
+        "profile": "ultra"
+      }, {
+        "systemId": "PC / Intel Core i5-6600K @ 3.50GHz / Nvidia GeForce GTX 1070/PCIe/SSE2",
+        "maxFps": 134.8,
+        "resolution": 2160,
+        "avgFps": 93.2,
+        "minFps": 65.6,
+        "profileId": 3,
+        "samples": 5,
         "profile": "ultra"
       }, {
         "systemId": "PC / Intel Core i5-4690K @ 3.50GHz / Nvidia GeForce GTX 980 Ti/PCIe/SSE2",
@@ -31,11 +40,29 @@
         "samples": 1,
         "profile": "ultra"
       }, {
-        "systemId": "PC / Intel Core i5-6600K @ 3.50GHz / Nvidia GeForce GTX 1070/PCIe/SSE2",
+        "systemId": "PC / Intel Core i5-3570K @ 3.40GHz / Nvidia GeForce GTX 970/PCIe/SSE2",
+        "maxFps": 100,
+        "resolution": 2160,
+        "avgFps": 70,
+        "minFps": 49,
+        "profileId": 3,
+        "samples": 1,
+        "profile": "ultra"
+      }, {
+        "systemId": "PC / Intel Core i3-6100 @ 3.70GHz / Nvidia GeForce GTX 1060 6GB/PCIe/SSE2",
         "maxFps": 60,
         "resolution": 2160,
-        "avgFps": 60,
-        "minFps": 55,
+        "avgFps": 59.3,
+        "minFps": 40,
+        "profileId": 3,
+        "samples": 10,
+        "profile": "ultra"
+      }, {
+        "systemId": "PC / Intel Core i5-6600 @ 3.30GHz / Nvidia GeForce GTX 970/PCIe/SSE2",
+        "maxFps": 60,
+        "resolution": 2160,
+        "avgFps": 58,
+        "minFps": 49,
         "profileId": 3,
         "samples": 1,
         "profile": "ultra"
@@ -59,12 +86,12 @@
         "profile": "ultra"
       }, {
         "systemId": "PC / Intel Core i5-2500 @ 3.30GHz / Nvidia GeForce GTX 980/PCIe/SSE2",
-        "maxFps": 71,
+        "maxFps": 73.25,
         "resolution": 2160,
-        "avgFps": 55.33,
-        "minFps": 42,
+        "avgFps": 56.5,
+        "minFps": 42.75,
         "profileId": 3,
-        "samples": 3,
+        "samples": 4,
         "profile": "ultra"
       }, {
         "systemId": "PC / Intel Core i7-6700HQ @ 2.60GHz / Nvidia GeForce GTX 980M/PCIe/SSE2",
@@ -86,12 +113,21 @@
         "profile": "ultra"
       }, {
         "systemId": "PC / Intel Core i5-2400 @ 3.10GHz / Nvidia GeForce GTX 960/PCIe/SSE2",
-        "maxFps": 63.25,
+        "maxFps": 67,
         "resolution": 2160,
-        "avgFps": 42.75,
+        "avgFps": 43.2,
         "minFps": 31,
         "profileId": 3,
-        "samples": 4,
+        "samples": 5,
+        "profile": "ultra"
+      }, {
+        "systemId": "PC / Intel Core i7 870 @ 2.93GHz / Nvidia GeForce GTX 960/PCIe/SSE2",
+        "maxFps": 52,
+        "resolution": 2160,
+        "avgFps": 39,
+        "minFps": 30,
+        "profileId": 3,
+        "samples": 1,
         "profile": "ultra"
       }, {
         "systemId": "PC / Intel Pentium G850 @ 2.90GHz / Nvidia GeForce GTX 960/PCIe/SSE2",
@@ -99,6 +135,24 @@
         "resolution": 2160,
         "avgFps": 37,
         "minFps": 25,
+        "profileId": 3,
+        "samples": 2,
+        "profile": "ultra"
+      }, {
+        "systemId": "Mac / Intel Xeon E5-1650 v2 @ 3.50GHz / ATi AMD Radeon HD - FirePro D700 OpenGL Engine",
+        "maxFps": 39.33,
+        "resolution": 2160,
+        "avgFps": 32.33,
+        "minFps": 24,
+        "profileId": 3,
+        "samples": 3,
+        "profile": "ultra"
+      }, {
+        "systemId": "PC / Intel Core i7-6700HQ @ 2.60GHz / Nvidia GeForce GTX 960M/PCIe/SSE2",
+        "maxFps": 38,
+        "resolution": 2160,
+        "avgFps": 29,
+        "minFps": 13,
         "profileId": 3,
         "samples": 2,
         "profile": "ultra"
@@ -118,6 +172,24 @@
     "profiles": [{
       "profileId": 3,
       "results": [{
+        "systemId": "PC / Intel Core i5-6600K @ 3.50GHz / Nvidia GeForce GTX 1080/PCIe/SSE2",
+        "maxFps": 226,
+        "resolution": 1440,
+        "avgFps": 139.5,
+        "minFps": 83,
+        "profileId": 3,
+        "samples": 2,
+        "profile": "ultra"
+      }, {
+        "systemId": "PC / Intel Core i7-6700K @ 4.00GHz / Nvidia GeForce GTX 1070/PCIe/SSE2",
+        "maxFps": 155.5,
+        "resolution": 1440,
+        "avgFps": 132.5,
+        "minFps": 108,
+        "profileId": 3,
+        "samples": 2,
+        "profile": "ultra"
+      }, {
         "systemId": "PC / Intel Pentium G3258 @ 4.20GHz / Nvidia GeForce GTX 970/PCIe/SSE2",
         "maxFps": 155,
         "resolution": 1440,
@@ -128,12 +200,12 @@
         "profile": "ultra"
       }, {
         "systemId": "PC / Intel Pentium G3258 @ 3.20GHz / Nvidia GeForce GTX 970/PCIe/SSE2",
-        "maxFps": 125.57,
+        "maxFps": 127.53,
         "resolution": 1440,
-        "avgFps": 104.79,
-        "minFps": 77.5,
+        "avgFps": 107.13,
+        "minFps": 80.93,
         "profileId": 3,
-        "samples": 14,
+        "samples": 15,
         "profile": "ultra"
       }, {
         "systemId": "PC / Intel Core i7-6700 @ 3.40GHz / Nvidia GeForce GTX 970/PCIe/SSE2",
@@ -146,12 +218,12 @@
         "profile": "ultra"
       }, {
         "systemId": "PC / Intel Core i5-2400 @ 3.10GHz / Nvidia GeForce GTX 960/PCIe/SSE2",
-        "maxFps": 88,
+        "maxFps": 91.3,
         "resolution": 1440,
-        "avgFps": 68.27,
-        "minFps": 42.53,
+        "avgFps": 69.15,
+        "minFps": 40.4,
         "profileId": 3,
-        "samples": 15,
+        "samples": 20,
         "profile": "ultra"
       }, {
         "systemId": "PC / Intel Core i7-3770 @ 3.40GHz / Nvidia GeForce GTX 960/PCIe/SSE2",
@@ -163,20 +235,11 @@
         "samples": 3,
         "profile": "ultra"
       }, {
-        "systemId": "PC / Intel Core i7-3770 @ 3.40GHz / Nvidia GeForce GTX 970/PCIe/SSE2",
-        "maxFps": 61,
+        "systemId": "PC / Intel Core i5-6600 @ 3.30GHz / Nvidia GeForce GTX 1060 3GB/PCIe/SSE2",
+        "maxFps": 60,
         "resolution": 1440,
         "avgFps": 60,
-        "minFps": 47,
-        "profileId": 3,
-        "samples": 1,
-        "profile": "ultra"
-      }, {
-        "systemId": "PC / Intel Core i7-6700K @ 4.00GHz / Nvidia GeForce GTX 1070/PCIe/SSE2",
-        "maxFps": 61,
-        "resolution": 1440,
-        "avgFps": 60,
-        "minFps": 59,
+        "minFps": 54,
         "profileId": 3,
         "samples": 1,
         "profile": "ultra"
@@ -195,6 +258,15 @@
         "resolution": 1440,
         "avgFps": 60,
         "minFps": 59,
+        "profileId": 3,
+        "samples": 1,
+        "profile": "ultra"
+      }, {
+        "systemId": "PC / Intel Core i7-3770 @ 3.40GHz / Nvidia GeForce GTX 970/PCIe/SSE2",
+        "maxFps": 61,
+        "resolution": 1440,
+        "avgFps": 60,
+        "minFps": 47,
         "profileId": 3,
         "samples": 1,
         "profile": "ultra"
@@ -235,13 +307,40 @@
         "samples": 1,
         "profile": "ultra"
       }, {
-        "systemId": "PC / Intel Core i7-6500U @ 2.50GHz / Nvidia GeForce GTX 960M/PCIe/SSE2",
-        "maxFps": 45.56,
+        "systemId": "Mac / Intel Core i7-4790K @ 4.00GHz / ATi AMD Radeon R9 M295X OpenGL Engine",
+        "maxFps": 55.67,
         "resolution": 1440,
-        "avgFps": 35.11,
-        "minFps": 23.89,
+        "avgFps": 42.67,
+        "minFps": 33,
         "profileId": 3,
-        "samples": 9,
+        "samples": 3,
+        "profile": "ultra"
+      }, {
+        "systemId": "PC / Intel Core i7-6500U @ 2.50GHz / Nvidia GeForce GTX 960M/PCIe/SSE2",
+        "maxFps": 47.25,
+        "resolution": 1440,
+        "avgFps": 35.55,
+        "minFps": 23.45,
+        "profileId": 3,
+        "samples": 20,
+        "profile": "ultra"
+      }, {
+        "systemId": "PC / Intel Core i5-6300HQ @ 2.30GHz / Nvidia GeForce GTX 960M/PCIe/SSE2",
+        "maxFps": 40.2,
+        "resolution": 1440,
+        "avgFps": 31.8,
+        "minFps": 23,
+        "profileId": 3,
+        "samples": 5,
+        "profile": "ultra"
+      }, {
+        "systemId": "Mac / Intel Core i7-6700HQ @ 2.60GHz / Nvidia GeForce GTX 960M/PCIe/SSE2",
+        "maxFps": 35,
+        "resolution": 1440,
+        "avgFps": 20,
+        "minFps": 19,
+        "profileId": 3,
+        "samples": 1,
         "profile": "ultra"
       }]
     }, {
@@ -265,6 +364,15 @@
         "samples": 1,
         "profile": "high"
       }, {
+        "systemId": "PC / Intel Core i5-6500 @ 3.20GHz / ATi Radeon RX 470 Graphics",
+        "maxFps": 120,
+        "resolution": 1440,
+        "avgFps": 74,
+        "minFps": 34,
+        "profileId": 2,
+        "samples": 1,
+        "profile": "high"
+      }, {
         "systemId": "PC / Intel Core i3-4170 @ 3.70GHz / ATi AMD Radeon HD 7800 Series",
         "maxFps": 95,
         "resolution": 1440,
@@ -274,11 +382,11 @@
         "samples": 1,
         "profile": "high"
       }, {
-        "systemId": "PC / Intel Core i5-6500 @ 3.20GHz / ATi AMD Radeon R9 390 Series",
-        "maxFps": 108,
+        "systemId": "PC / AMD FX-4100 Quad-Core Processor / Nvidia GeForce GTX 950/PCIe/SSE2",
+        "maxFps": 74,
         "resolution": 1440,
-        "avgFps": 57,
-        "minFps": 16,
+        "avgFps": 59,
+        "minFps": 24,
         "profileId": 2,
         "samples": 1,
         "profile": "high"
@@ -301,6 +409,42 @@
         "samples": 1,
         "profile": "high"
       }, {
+        "systemId": "PC / AMD FX-8350 Eight-Core Processor / ATi AMD Radeon R9 200 Series",
+        "maxFps": 77,
+        "resolution": 1440,
+        "avgFps": 56,
+        "minFps": 42,
+        "profileId": 2,
+        "samples": 1,
+        "profile": "high"
+      }, {
+        "systemId": "PC / AMD Athlon X4 845 Quad Core Processor / Nvidia GeForce GTX 950/PCIe/SSE2",
+        "maxFps": 60,
+        "resolution": 1440,
+        "avgFps": 53.67,
+        "minFps": 40,
+        "profileId": 2,
+        "samples": 3,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Intel Core i5-6500 @ 3.20GHz / ATi AMD Radeon R9 390 Series",
+        "maxFps": 107,
+        "resolution": 1440,
+        "avgFps": 53.5,
+        "minFps": 22,
+        "profileId": 2,
+        "samples": 2,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Intel Core i3-2100 @ 3.10GHz / Nvidia GeForce GTX 950/PCIe/SSE2",
+        "maxFps": 80.33,
+        "resolution": 1440,
+        "avgFps": 51.67,
+        "minFps": 31,
+        "profileId": 2,
+        "samples": 3,
+        "profile": "high"
+      }, {
         "systemId": "PC / AMD Phenom 9750 Quad-Core Processor / Nvidia GeForce GTX 950/PCIe/SSE2",
         "maxFps": 60,
         "resolution": 1440,
@@ -317,6 +461,15 @@
         "minFps": 40,
         "profileId": 2,
         "samples": 1,
+        "profile": "high"
+      }, {
+        "systemId": "PC / AMD FX-8370 Eight-Core Processor / ATi AMD Radeon R9 200 Series",
+        "maxFps": 63.33,
+        "resolution": 1440,
+        "avgFps": 50,
+        "minFps": 39,
+        "profileId": 2,
+        "samples": 3,
         "profile": "high"
       }, {
         "systemId": "PC / AMD Phenom II X4 955 Processor / ATi AMD Radeon HD 7900 Series",
@@ -337,15 +490,6 @@
         "samples": 1,
         "profile": "high"
       }, {
-        "systemId": "PC / Intel Core i3-4130T @ 2.90GHz / Nvidia GeForce GPU/PCIe/SSE2",
-        "maxFps": 70,
-        "resolution": 1440,
-        "avgFps": 45.5,
-        "minFps": 28,
-        "profileId": 2,
-        "samples": 2,
-        "profile": "high"
-      }, {
         "systemId": "PC / Intel Core i7-2600K @ 3.40GHz / Nvidia GeForce GTX 950/PCIe/SSE2",
         "maxFps": 60,
         "resolution": 1440,
@@ -353,6 +497,24 @@
         "minFps": 26,
         "profileId": 2,
         "samples": 3,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Intel Core i3-4130T @ 2.90GHz / Nvidia GeForce GPU/PCIe/SSE2",
+        "maxFps": 66.33,
+        "resolution": 1440,
+        "avgFps": 44.67,
+        "minFps": 26,
+        "profileId": 2,
+        "samples": 3,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Pentium Dual-Core E5700 @ 3.00GHz / ATi AMD Radeon HD 7900 Series",
+        "maxFps": 67.5,
+        "resolution": 1440,
+        "avgFps": 44.5,
+        "minFps": 37,
+        "profileId": 2,
+        "samples": 2,
         "profile": "high"
       }, {
         "systemId": "Mac / Intel Core i7-3770 @ 3.40GHz / Nvidia NVIDIA GeForce GTX 680MX OpenGL Engine",
@@ -364,15 +526,6 @@
         "samples": 4,
         "profile": "high"
       }, {
-        "systemId": "PC / Intel Core2 Duo E8400 @ 3.00GHz / Nvidia GeForce GTX 750 Ti/PCIe/SSE2",
-        "maxFps": 55,
-        "resolution": 1440,
-        "avgFps": 42,
-        "minFps": 24,
-        "profileId": 2,
-        "samples": 1,
-        "profile": "high"
-      }, {
         "systemId": "PC / Intel Core i3 550 @ 3.20GHz / ATi AMD Radeon HD 6800 Series",
         "maxFps": 50.67,
         "resolution": 1440,
@@ -380,6 +533,15 @@
         "minFps": 30.17,
         "profileId": 2,
         "samples": 6,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Intel Core2 Quad Q6600 @ 2.40GHz / Nvidia GeForce GTX 750 Ti/PCIe/SSE2",
+        "maxFps": 53,
+        "resolution": 1440,
+        "avgFps": 41,
+        "minFps": 25,
+        "profileId": 2,
+        "samples": 1,
         "profile": "high"
       }, {
         "systemId": "PC / Intel Core i7-4790 @ 3.60GHz / Nvidia GeForce GPU/PCIe/SSE2",
@@ -400,6 +562,15 @@
         "samples": 1,
         "profile": "high"
       }, {
+        "systemId": "PC / Intel Core i5 650 @ 3.20GHz / Nvidia GeForce GTX 750 Ti/PCIe/SSE2",
+        "maxFps": 56.33,
+        "resolution": 1440,
+        "avgFps": 38.33,
+        "minFps": 25,
+        "profileId": 2,
+        "samples": 3,
+        "profile": "high"
+      }, {
         "systemId": "PC / Intel Core i5-2500K @ 3.30GHz / ATi AMD Radeon R7 370 Series",
         "maxFps": 52,
         "resolution": 1440,
@@ -416,6 +587,33 @@
         "minFps": 16,
         "profileId": 2,
         "samples": 1,
+        "profile": "high"
+      }, {
+        "systemId": "PC / AMD Phenom II X6 1090T Processor / ATi AMD Radeon R9 380 Series",
+        "maxFps": 59,
+        "resolution": 1440,
+        "avgFps": 37,
+        "minFps": 14,
+        "profileId": 2,
+        "samples": 1,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Intel Core2 Duo E8400 @ 3.00GHz / Nvidia GeForce GTX 750 Ti/PCIe/SSE2",
+        "maxFps": 42.5,
+        "resolution": 1440,
+        "avgFps": 36,
+        "minFps": 22,
+        "profileId": 2,
+        "samples": 2,
+        "profile": "high"
+      }, {
+        "systemId": "PC / AMD A8-7600 Radeon R7, 10 Compute Cores 4C+6G / ATi AMD Radeon R9 255",
+        "maxFps": 53,
+        "resolution": 1440,
+        "avgFps": 32,
+        "minFps": 25.5,
+        "profileId": 2,
+        "samples": 2,
         "profile": "high"
       }, {
         "systemId": "PC / Intel Core i7-4765T @ 2.00GHz / Nvidia GeForce GPU/PCIe/SSE2",
@@ -436,11 +634,11 @@
         "samples": 1,
         "profile": "high"
       }, {
-        "systemId": "PC / Intel Core i3-2100 @ 3.10GHz / Nvidia GeForce GTX 950/PCIe/SSE2",
-        "maxFps": 60,
+        "systemId": "Mac / Intel Core i7-4980HQ @ 2.80GHz / ATi AMD Radeon R9 M370X OpenGL Engine",
+        "maxFps": 31,
         "resolution": 1440,
-        "avgFps": 26,
-        "minFps": 7,
+        "avgFps": 28,
+        "minFps": 25,
         "profileId": 2,
         "samples": 1,
         "profile": "high"
@@ -455,12 +653,21 @@
         "profile": "high"
       }, {
         "systemId": "PC / Intel Core2 Quad Q6600 @ 2.40GHz / ATi AMD Radeon R9 380 Series",
-        "maxFps": 49,
+        "maxFps": 57.67,
         "resolution": 1440,
-        "avgFps": 19,
-        "minFps": 10,
+        "avgFps": 23,
+        "minFps": 13.33,
         "profileId": 2,
-        "samples": 1,
+        "samples": 3,
+        "profile": "high"
+      }, {
+        "systemId": "PC / AMD Athlon II X4 630 Processor / Nvidia GeForce GTX 760/PCIe/SSE2",
+        "maxFps": 45.33,
+        "resolution": 1440,
+        "avgFps": 23,
+        "minFps": 10.33,
+        "profileId": 2,
+        "samples": 3,
         "profile": "high"
       }]
     }, {
@@ -475,6 +682,15 @@
     "profiles": [{
       "profileId": 3,
       "results": [{
+        "systemId": "PC / Intel Pentium G3258 @ 3.20GHz / Nvidia GeForce GTX 970/PCIe/SSE2",
+        "maxFps": 185.5,
+        "resolution": 1080,
+        "avgFps": 134.5,
+        "minFps": 114,
+        "profileId": 3,
+        "samples": 2,
+        "profile": "ultra"
+      }, {
         "systemId": "PC / Intel Core i7-6700 @ 3.40GHz / Nvidia GeForce GTX 960/PCIe/SSE2",
         "maxFps": 159,
         "resolution": 1080,
@@ -484,40 +700,49 @@
         "samples": 1,
         "profile": "ultra"
       }, {
-        "systemId": "PC / Intel Pentium G3258 @ 3.20GHz / Nvidia GeForce GTX 970/PCIe/SSE2",
-        "maxFps": 205,
-        "resolution": 1080,
-        "avgFps": 116,
-        "minFps": 94,
-        "profileId": 3,
-        "samples": 1,
-        "profile": "ultra"
-      }, {
         "systemId": "PC / Intel Core i5-2400 @ 3.10GHz / Nvidia GeForce GTX 960/PCIe/SSE2",
-        "maxFps": 116.83,
+        "maxFps": 116.14,
         "resolution": 1080,
-        "avgFps": 96.17,
-        "minFps": 78.33,
+        "avgFps": 95.29,
+        "minFps": 76.71,
         "profileId": 3,
-        "samples": 6,
+        "samples": 7,
         "profile": "ultra"
       }, {
         "systemId": "PC / Intel Core i3-4170 @ 3.70GHz / Nvidia GeForce GTX 960/PCIe/SSE2",
-        "maxFps": 109.4,
+        "maxFps": 115.14,
         "resolution": 1080,
-        "avgFps": 90.8,
-        "minFps": 72.4,
+        "avgFps": 94.71,
+        "minFps": 73.43,
+        "profileId": 3,
+        "samples": 7,
+        "profile": "ultra"
+      }, {
+        "systemId": "PC / AMD FX-6300 Six-Core Processor / Nvidia GeForce GTX 970/PCIe/SSE2",
+        "maxFps": 134,
+        "resolution": 1080,
+        "avgFps": 78.4,
+        "minFps": 35.8,
         "profileId": 3,
         "samples": 5,
         "profile": "ultra"
       }, {
-        "systemId": "PC / AMD FX-6300 Six-Core Processor / Nvidia GeForce GTX 970/PCIe/SSE2",
-        "maxFps": 128.75,
+        "systemId": "PC / Intel Core i5-3570K @ 3.40GHz / Nvidia GeForce GTX 780/PCIe/SSE2",
+        "maxFps": 122.33,
         "resolution": 1080,
-        "avgFps": 63.25,
-        "minFps": 29.25,
+        "avgFps": 78.33,
+        "minFps": 53.33,
         "profileId": 3,
-        "samples": 4,
+        "samples": 3,
+        "profile": "ultra"
+      }, {
+        "systemId": "PC / Intel Core i7-4770 @ 3.40GHz / Nvidia GeForce GTX 970/PCIe/SSE2",
+        "maxFps": 60,
+        "resolution": 1080,
+        "avgFps": 60,
+        "minFps": 55.33,
+        "profileId": 3,
+        "samples": 3,
         "profile": "ultra"
       }, {
         "systemId": "PC / Intel Core i5-6500 @ 3.20GHz / Nvidia GeForce GTX 1070/PCIe/SSE2",
@@ -525,6 +750,15 @@
         "resolution": 1080,
         "avgFps": 60,
         "minFps": 58,
+        "profileId": 3,
+        "samples": 1,
+        "profile": "ultra"
+      }, {
+        "systemId": "PC / Intel Core i7-3770K @ 3.50GHz / Nvidia GeForce GTX 960/PCIe/SSE2",
+        "maxFps": 60,
+        "resolution": 1080,
+        "avgFps": 60,
+        "minFps": 52,
         "profileId": 3,
         "samples": 1,
         "profile": "ultra"
@@ -538,6 +772,24 @@
         "samples": 1,
         "profile": "ultra"
       }, {
+        "systemId": "PC / Intel Core i5-6400 @ 2.70GHz / Nvidia GeForce GTX 1060 6GB/PCIe/SSE2",
+        "maxFps": 60,
+        "resolution": 1080,
+        "avgFps": 60,
+        "minFps": 60,
+        "profileId": 3,
+        "samples": 1,
+        "profile": "ultra"
+      }, {
+        "systemId": "PC / Intel Core i7-6700 @ 3.40GHz / Nvidia GeForce GTX 1070/PCIe/SSE2",
+        "maxFps": 60.13,
+        "resolution": 1080,
+        "avgFps": 60,
+        "minFps": 57.63,
+        "profileId": 3,
+        "samples": 16,
+        "profile": "ultra"
+      }, {
         "systemId": "PC / Intel Core i7-4790 @ 3.60GHz / Nvidia GeForce GTX 970/PCIe/SSE2",
         "maxFps": 60,
         "resolution": 1080,
@@ -545,24 +797,6 @@
         "minFps": 59,
         "profileId": 3,
         "samples": 1,
-        "profile": "ultra"
-      }, {
-        "systemId": "PC / Intel Core i7-4770 @ 3.40GHz / Nvidia GeForce GTX 970/PCIe/SSE2",
-        "maxFps": 60,
-        "resolution": 1080,
-        "avgFps": 60,
-        "minFps": 57,
-        "profileId": 3,
-        "samples": 1,
-        "profile": "ultra"
-      }, {
-        "systemId": "PC / Intel Core i7-6700 @ 3.40GHz / Nvidia GeForce GTX 1070/PCIe/SSE2",
-        "maxFps": 60,
-        "resolution": 1080,
-        "avgFps": 60,
-        "minFps": 59,
-        "profileId": 3,
-        "samples": 2,
         "profile": "ultra"
       }, {
         "systemId": "PC / Intel Core i7-6700K @ 4.00GHz / Nvidia GeForce GTX 970/PCIe/SSE2",
@@ -583,11 +817,11 @@
         "samples": 4,
         "profile": "ultra"
       }, {
-        "systemId": "PC / Intel Core i7-4770K @ 3.50GHz / Nvidia GeForce GTX 770/PCIe/SSE2",
-        "maxFps": 59,
+        "systemId": "PC / Intel Core i3-6100 @ 3.70GHz / Nvidia GeForce GTX 1060 6GB/PCIe/SSE2",
+        "maxFps": 60,
         "resolution": 1080,
         "avgFps": 59,
-        "minFps": 57,
+        "minFps": 42,
         "profileId": 3,
         "samples": 1,
         "profile": "ultra"
@@ -601,6 +835,15 @@
         "samples": 1,
         "profile": "ultra"
       }, {
+        "systemId": "PC / Intel Core i7-4770K @ 3.50GHz / Nvidia GeForce GTX 770/PCIe/SSE2",
+        "maxFps": 59,
+        "resolution": 1080,
+        "avgFps": 59,
+        "minFps": 57,
+        "profileId": 3,
+        "samples": 1,
+        "profile": "ultra"
+      }, {
         "systemId": "PC / Intel Core i3-4150 @ 3.50GHz / Nvidia GeForce GTX 960/PCIe/SSE2",
         "maxFps": 60,
         "resolution": 1080,
@@ -608,6 +851,24 @@
         "minFps": 18,
         "profileId": 3,
         "samples": 2,
+        "profile": "ultra"
+      }, {
+        "systemId": "PC / Intel Core2 Duo E6550 @ 2.33GHz / Nvidia GeForce GTX 970/PCIe/SSE2",
+        "maxFps": 60,
+        "resolution": 1080,
+        "avgFps": 58,
+        "minFps": 52,
+        "profileId": 3,
+        "samples": 1,
+        "profile": "ultra"
+      }, {
+        "systemId": "PC / Intel Core i7-2600K @ 3.40GHz / Nvidia GeForce GTX 970/PCIe/SSE2",
+        "maxFps": 60,
+        "resolution": 1080,
+        "avgFps": 57,
+        "minFps": 36.5,
+        "profileId": 3,
+        "samples": 4,
         "profile": "ultra"
       }, {
         "systemId": "PC / Intel Core i5-6300HQ @ 2.30GHz / Nvidia GeForce GTX 960M/PCIe/SSE2",
@@ -619,13 +880,31 @@
         "samples": 4,
         "profile": "ultra"
       }, {
+        "systemId": "Mac / Intel Core i7-4720HQ @ 2.60GHz / Nvidia GeForce GTX 960M/PCIe/SSE2",
+        "maxFps": 59,
+        "resolution": 1080,
+        "avgFps": 47,
+        "minFps": 28,
+        "profileId": 3,
+        "samples": 1,
+        "profile": "ultra"
+      }, {
         "systemId": "PC / Intel Core i7-6700HQ @ 2.60GHz / Nvidia GeForce GTX 960M/PCIe/SSE2",
+        "maxFps": 48.91,
+        "resolution": 1080,
+        "avgFps": 38.55,
+        "minFps": 24.82,
+        "profileId": 3,
+        "samples": 11,
+        "profile": "ultra"
+      }, {
+        "systemId": "PC / AMD Athlon 64 X2 Dual Core Processor 3800+ / Nvidia GeForce GTX 960/PCIe/SSE2",
         "maxFps": 60,
         "resolution": 1080,
-        "avgFps": 43,
-        "minFps": 18,
+        "avgFps": 26,
+        "minFps": 9,
         "profileId": 3,
-        "samples": 3,
+        "samples": 1,
         "profile": "ultra"
       }]
     }, {
@@ -667,11 +946,11 @@
         "samples": 4,
         "profile": "high"
       }, {
-        "systemId": "PC / Intel Core i3-4170 @ 3.70GHz / Nvidia GeForce GTX 750 Ti/PCIe/SSE2",
-        "maxFps": 113,
+        "systemId": "Mac / Intel Core i5-4690 @ 3.50GHz / ATi AMD Radeon R9 M290X OpenGL Engine",
+        "maxFps": 102,
         "resolution": 1080,
-        "avgFps": 79,
-        "minFps": 59,
+        "avgFps": 76,
+        "minFps": 52,
         "profileId": 2,
         "samples": 1,
         "profile": "high"
@@ -685,13 +964,49 @@
         "samples": 1,
         "profile": "high"
       }, {
-        "systemId": "PC / Intel Core2 Duo E8400 @ 3.00GHz / Nvidia GeForce GTX 570/PCIe/SSE2",
+        "systemId": "PC / Intel Core i3-4170 @ 3.70GHz / Nvidia GeForce GTX 750 Ti/PCIe/SSE2",
+        "maxFps": 100,
+        "resolution": 1080,
+        "avgFps": 70,
+        "minFps": 49.5,
+        "profileId": 2,
+        "samples": 2,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Intel Core i7-3820 @ 3.60GHz / ATi AMD Radeon R9 200 Series",
+        "maxFps": 157,
+        "resolution": 1080,
+        "avgFps": 69,
+        "minFps": 21,
+        "profileId": 2,
+        "samples": 1,
+        "profile": "high"
+      }, {
+        "systemId": "PC / AMD FX-8370 Eight-Core Processor / ATi AMD Radeon R9 200 Series",
         "maxFps": 87,
         "resolution": 1080,
-        "avgFps": 66.25,
-        "minFps": 47,
+        "avgFps": 69,
+        "minFps": 38,
+        "profileId": 2,
+        "samples": 1,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Intel Core i3-2130 @ 3.40GHz / Nvidia GeForce GTX 750 Ti/PCIe/SSE2",
+        "maxFps": 105.75,
+        "resolution": 1080,
+        "avgFps": 66,
+        "minFps": 28.75,
         "profileId": 2,
         "samples": 4,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Intel Core i5-4460 @ 3.20GHz / ATi AMD Radeon R9 200 Series",
+        "maxFps": 93.5,
+        "resolution": 1080,
+        "avgFps": 65.5,
+        "minFps": 51,
+        "profileId": 2,
+        "samples": 2,
         "profile": "high"
       }, {
         "systemId": "Mac / Intel Xeon E5-1680 v2 @ 3.00GHz / ATi AMD Radeon HD - FirePro D500 OpenGL Engine",
@@ -701,6 +1016,15 @@
         "minFps": 50,
         "profileId": 2,
         "samples": 1,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Intel Core2 Duo E8400 @ 3.00GHz / Nvidia GeForce GTX 570/PCIe/SSE2",
+        "maxFps": 75.71,
+        "resolution": 1080,
+        "avgFps": 63.14,
+        "minFps": 47.43,
+        "profileId": 2,
+        "samples": 7,
         "profile": "high"
       }, {
         "systemId": "PC / Intel Core i5-4570 @ 3.20GHz / Nvidia GeForce GTX 760/PCIe/SSE2",
@@ -731,21 +1055,12 @@
         "profile": "high"
       }, {
         "systemId": "PC / Intel Core2 Quad Q6600 @ 2.40GHz / Nvidia GeForce GTX 750 Ti/PCIe/SSE2",
-        "maxFps": 77.4,
+        "maxFps": 71.09,
         "resolution": 1080,
-        "avgFps": 57.2,
-        "minFps": 34,
+        "avgFps": 56.36,
+        "minFps": 38,
         "profileId": 2,
-        "samples": 5,
-        "profile": "high"
-      }, {
-        "systemId": "PC / AMD Athlon X4 845 Quad Core Processor / Nvidia GeForce GTX 950/PCIe/SSE2",
-        "maxFps": 60,
-        "resolution": 1080,
-        "avgFps": 55,
-        "minFps": 37,
-        "profileId": 2,
-        "samples": 1,
+        "samples": 11,
         "profile": "high"
       }, {
         "systemId": "PC / Intel Core i5-6400T @ 2.20GHz / ATi AMD Radeon R9 M470X",
@@ -767,21 +1082,39 @@
         "profile": "high"
       }, {
         "systemId": "PC / Intel Core i3-4130T @ 2.90GHz / Nvidia GeForce GPU/PCIe/SSE2",
-        "maxFps": 61.84,
+        "maxFps": 67.37,
         "resolution": 1080,
-        "avgFps": 49.08,
-        "minFps": 33.06,
+        "avgFps": 50.61,
+        "minFps": 33.65,
         "profileId": 2,
-        "samples": 63,
+        "samples": 102,
         "profile": "high"
       }, {
         "systemId": "PC / Intel Core i5-3570K @ 3.40GHz / Nvidia GeForce GTX 670/PCIe/SSE2",
         "maxFps": 60,
         "resolution": 1080,
-        "avgFps": 48,
-        "minFps": 24.33,
+        "avgFps": 49.5,
+        "minFps": 24.5,
         "profileId": 2,
-        "samples": 3,
+        "samples": 4,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Intel Core i7-6700HQ @ 2.60GHz / Nvidia GeForce GTX 950M/PCIe/SSE2",
+        "maxFps": 60,
+        "resolution": 1080,
+        "avgFps": 49,
+        "minFps": 32,
+        "profileId": 2,
+        "samples": 2,
+        "profile": "high"
+      }, {
+        "systemId": "PC / AMD Athlon X4 845 Quad Core Processor / Nvidia GeForce GTX 950/PCIe/SSE2",
+        "maxFps": 60,
+        "resolution": 1080,
+        "avgFps": 47,
+        "minFps": 31,
+        "profileId": 2,
+        "samples": 2,
         "profile": "high"
       }, {
         "systemId": "PC / Intel Core i3-6100 @ 3.70GHz / Nvidia GeForce GTX 750 Ti/PCIe/SSE2",
@@ -803,10 +1136,46 @@
         "profile": "high"
       }, {
         "systemId": "PC / Intel Core2 Duo E8400 @ 3.00GHz / Nvidia GeForce GTX 750 Ti/PCIe/SSE2",
+        "maxFps": 56.75,
+        "resolution": 1080,
+        "avgFps": 45.75,
+        "minFps": 30.75,
+        "profileId": 2,
+        "samples": 4,
+        "profile": "high"
+      }, {
+        "systemId": "PC / AMD Phenom II X6 1090T Processor / ATi AMD Radeon R9 380 Series",
         "maxFps": 60,
         "resolution": 1080,
         "avgFps": 45,
-        "minFps": 24,
+        "minFps": 30,
+        "profileId": 2,
+        "samples": 1,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Intel Core i3-3225 @ 3.30GHz / Nvidia GeForce GTX 750 Ti/PCIe/SSE2",
+        "maxFps": 45,
+        "resolution": 1080,
+        "avgFps": 44.5,
+        "minFps": 36.5,
+        "profileId": 2,
+        "samples": 4,
+        "profile": "high"
+      }, {
+        "systemId": "PC / AMD Phenom II X4 965 Processor / ATi AMD Radeon R9 200 Series",
+        "maxFps": 82,
+        "resolution": 1080,
+        "avgFps": 43,
+        "minFps": 10,
+        "profileId": 2,
+        "samples": 1,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Intel Core2 Quad Q9450 @ 2.66GHz / Nvidia GeForce GTX 580/PCIe/SSE2",
+        "maxFps": 60,
+        "resolution": 1080,
+        "avgFps": 40,
+        "minFps": 14,
         "profileId": 2,
         "samples": 1,
         "profile": "high"
@@ -820,13 +1189,13 @@
         "samples": 2,
         "profile": "high"
       }, {
-        "systemId": "PC / Intel Core i3-3225 @ 3.30GHz / Nvidia GeForce GTX 750 Ti/PCIe/SSE2",
-        "maxFps": 30,
+        "systemId": "PC / AMD A8-7600 Radeon R7, 10 Compute Cores 4C+6G / ATi AMD Radeon R9 255",
+        "maxFps": 50.4,
         "resolution": 1080,
-        "avgFps": 30,
-        "minFps": 22,
+        "avgFps": 35.8,
+        "minFps": 25.4,
         "profileId": 2,
-        "samples": 1,
+        "samples": 5,
         "profile": "high"
       }, {
         "systemId": "Mac / Intel Core i7-4870HQ @ 2.50GHz / ATi AMD Radeon R9 M370X OpenGL Engine",
@@ -841,6 +1210,15 @@
     }, {
       "profileId": 1,
       "results": [{
+        "systemId": "PC / Intel Core2 6600 @ 2.40GHz / Nvidia GeForce GTX 460/PCIe/SSE2",
+        "maxFps": 103,
+        "resolution": 1080,
+        "avgFps": 74,
+        "minFps": 37,
+        "profileId": 1,
+        "samples": 1,
+        "profile": "medium"
+      }, {
         "systemId": "PC / Intel Core i5-4460 @ 3.20GHz / ATi AMD Radeon R7 360 Series",
         "maxFps": 85,
         "resolution": 1080,
@@ -857,6 +1235,24 @@
         "minFps": 51,
         "profileId": 1,
         "samples": 1,
+        "profile": "medium"
+      }, {
+        "systemId": "PC / Intel Core i7 920 @ 2.67GHz / Nvidia GeForce GTX 660 Ti/PCIe/SSE2",
+        "maxFps": 60,
+        "resolution": 1080,
+        "avgFps": 60,
+        "minFps": 55,
+        "profileId": 1,
+        "samples": 3,
+        "profile": "medium"
+      }, {
+        "systemId": "PC / Intel Core i5-3570 @ 3.40GHz / Nvidia GeForce GTX 660/PCIe/SSE2",
+        "maxFps": 60,
+        "resolution": 1080,
+        "avgFps": 59,
+        "minFps": 44,
+        "profileId": 1,
+        "samples": 2,
         "profile": "medium"
       }, {
         "systemId": "PC / Intel Core i5-2500 @ 3.30GHz / Nvidia GeForce GTX 660 Ti/PCIe/SSE2",
@@ -877,6 +1273,15 @@
         "samples": 4,
         "profile": "medium"
       }, {
+        "systemId": "PC / AMD FX-6350 Six-Core Processor / ATi AMD Radeon R7 200 Series",
+        "maxFps": 60,
+        "resolution": 1080,
+        "avgFps": 41,
+        "minFps": 27,
+        "profileId": 1,
+        "samples": 1,
+        "profile": "medium"
+      }, {
         "systemId": "PC / Intel Core i7-4702HQ @ 2.20GHz / Nvidia Quadro K1100M/PCIe/SSE2",
         "maxFps": 46,
         "resolution": 1080,
@@ -884,6 +1289,42 @@
         "minFps": 8,
         "profileId": 1,
         "samples": 1,
+        "profile": "medium"
+      }, {
+        "systemId": "PC / Intel Core i5-6200U @ 2.30GHz / Nvidia GeForce 940M/PCIe/SSE2",
+        "maxFps": 34,
+        "resolution": 1080,
+        "avgFps": 28,
+        "minFps": 23,
+        "profileId": 1,
+        "samples": 1,
+        "profile": "medium"
+      }, {
+        "systemId": "PC / Intel Core i7-3632QM @ 2.20GHz / Nvidia GeForce GT 740M/PCIe/SSE2",
+        "maxFps": 30.75,
+        "resolution": 1080,
+        "avgFps": 27.5,
+        "minFps": 24,
+        "profileId": 1,
+        "samples": 4,
+        "profile": "medium"
+      }, {
+        "systemId": "PC / Intel Core i7-4700MQ @ 2.40GHz / Nvidia GeForce GT 730M/PCIe/SSE2",
+        "maxFps": 38,
+        "resolution": 1080,
+        "avgFps": 27,
+        "minFps": 18,
+        "profileId": 1,
+        "samples": 1,
+        "profile": "medium"
+      }, {
+        "systemId": "PC / Intel Core i7-4710MQ @ 2.50GHz / Nvidia Quadro K2100M/PCIe/SSE2",
+        "maxFps": 27.9,
+        "resolution": 1080,
+        "avgFps": 25.9,
+        "minFps": 23.4,
+        "profileId": 1,
+        "samples": 10,
         "profile": "medium"
       }, {
         "systemId": "PC / Intel Core i7 870 @ 2.93GHz / Nvidia GeForce GT 730/PCIe/SSE2",
@@ -895,13 +1336,40 @@
         "samples": 3,
         "profile": "medium"
       }, {
-        "systemId": "PC / AMD FX-4300 Quad-Core Processor / ATi AMD Radeon R7 200 Series",
-        "maxFps": 31.75,
+        "systemId": "PC / Intel Core i5-4200M @ 2.50GHz / Nvidia GeForce GT 730M/PCIe/SSE2",
+        "maxFps": 34,
         "resolution": 1080,
-        "avgFps": 21.75,
-        "minFps": 9,
+        "avgFps": 25,
+        "minFps": 19,
         "profileId": 1,
-        "samples": 4,
+        "samples": 1,
+        "profile": "medium"
+      }, {
+        "systemId": "Mac / Intel Core i7-4870HQ @ 2.50GHz / Nvidia NVIDIA GeForce GT 750M OpenGL Engine",
+        "maxFps": 38.5,
+        "resolution": 1080,
+        "avgFps": 24,
+        "minFps": 13.5,
+        "profileId": 1,
+        "samples": 2,
+        "profile": "medium"
+      }, {
+        "systemId": "Mac / Intel Core i7-4980HQ @ 2.80GHz / Nvidia NVIDIA GeForce GT 750M OpenGL Engine",
+        "maxFps": 36,
+        "resolution": 1080,
+        "avgFps": 23,
+        "minFps": 18,
+        "profileId": 1,
+        "samples": 1,
+        "profile": "medium"
+      }, {
+        "systemId": "PC / AMD FX-4300 Quad-Core Processor / ATi AMD Radeon R7 200 Series",
+        "maxFps": 31.71,
+        "resolution": 1080,
+        "avgFps": 22.14,
+        "minFps": 10.57,
+        "profileId": 1,
+        "samples": 7,
         "profile": "medium"
       }, {
         "systemId": "Mac / Intel Core i7-3615QM @ 2.30GHz / Nvidia NVIDIA GeForce GT 650M OpenGL Engine",
@@ -913,6 +1381,15 @@
         "samples": 10,
         "profile": "medium"
       }, {
+        "systemId": "PC / Intel Core i7-5500U @ 2.40GHz / Nvidia GeForce 920M/PCIe/SSE2",
+        "maxFps": 20,
+        "resolution": 1080,
+        "avgFps": 20,
+        "minFps": 20,
+        "profileId": 1,
+        "samples": 1,
+        "profile": "medium"
+      }, {
         "systemId": "PC / Intel Core i5-6200U @ 2.30GHz / Nvidia GeForce 930M/PCIe/SSE2",
         "maxFps": 24,
         "resolution": 1080,
@@ -920,6 +1397,15 @@
         "minFps": 14.6,
         "profileId": 1,
         "samples": 5,
+        "profile": "medium"
+      }, {
+        "systemId": "PC / Intel Core i7-4700MQ @ 2.40GHz / Nvidia GeForce GT 740M/PCIe/SSE2",
+        "maxFps": 27,
+        "resolution": 1080,
+        "avgFps": 19,
+        "minFps": 13,
+        "profileId": 1,
+        "samples": 1,
         "profile": "medium"
       }, {
         "systemId": "PC / AMD Phenom II X4 940 Processor / Nvidia GeForce GTX 275/PCIe/SSE2",
@@ -952,11 +1438,47 @@
         "samples": 2,
         "profile": "basic"
       }, {
+        "systemId": "Mac / Intel Core i7-4980HQ @ 2.80GHz / Intel Intel Iris Pro OpenGL Engine",
+        "maxFps": 55.67,
+        "resolution": 1080,
+        "avgFps": 41.67,
+        "minFps": 33.67,
+        "profileId": 0,
+        "samples": 3,
+        "profile": "basic"
+      }, {
+        "systemId": "Mac / Intel Core i7-4750HQ @ 2.00GHz / Intel Intel Iris Pro OpenGL Engine",
+        "maxFps": 47.5,
+        "resolution": 1080,
+        "avgFps": 39.5,
+        "minFps": 31,
+        "profileId": 0,
+        "samples": 2,
+        "profile": "basic"
+      }, {
         "systemId": "PC / Intel Core i5-6600 @ 3.30GHz / Intel Intel HD Graphics 530",
         "maxFps": 51,
         "resolution": 1080,
         "avgFps": 38,
         "minFps": 28,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "Mac / Intel Core i7-4850HQ @ 2.30GHz / Intel Intel Iris Pro OpenGL Engine",
+        "maxFps": 44.33,
+        "resolution": 1080,
+        "avgFps": 35.33,
+        "minFps": 28,
+        "profileId": 0,
+        "samples": 3,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i3-6100U @ 2.30GHz / Intel Intel HD Graphics 520",
+        "maxFps": 62,
+        "resolution": 1080,
+        "avgFps": 35,
+        "minFps": 26,
         "profileId": 0,
         "samples": 1,
         "profile": "basic"
@@ -970,15 +1492,6 @@
         "samples": 3,
         "profile": "basic"
       }, {
-        "systemId": "PC / Intel Core i5-6300U @ 2.40GHz / Intel Intel HD Graphics 520",
-        "maxFps": 38,
-        "resolution": 1080,
-        "avgFps": 32,
-        "minFps": 24,
-        "profileId": 0,
-        "samples": 1,
-        "profile": "basic"
-      }, {
         "systemId": "PC / Intel Core i7-4790S @ 3.20GHz / Intel Intel HD Graphics 4600",
         "maxFps": 40,
         "resolution": 1080,
@@ -988,13 +1501,31 @@
         "samples": 2,
         "profile": "basic"
       }, {
-        "systemId": "PC / Intel Core i5-3230M @ 2.60GHz / ATi AMD Radeon HD 8600/8700M",
-        "maxFps": 38.29,
+        "systemId": "PC / Intel Core i7-4710MQ @ 2.50GHz / Intel Intel HD Graphics 4600",
+        "maxFps": 33,
         "resolution": 1080,
-        "avgFps": 31.71,
-        "minFps": 25.57,
+        "avgFps": 32,
+        "minFps": 28,
         "profileId": 0,
-        "samples": 7,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / AMD Athlon II X3 435 Processor / ATi AMD Radeon HD 5670",
+        "maxFps": 38,
+        "resolution": 1080,
+        "avgFps": 32,
+        "minFps": 16,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i5-6300U @ 2.40GHz / Intel Intel HD Graphics 520",
+        "maxFps": 38,
+        "resolution": 1080,
+        "avgFps": 32,
+        "minFps": 24,
+        "profileId": 0,
+        "samples": 1,
         "profile": "basic"
       }, {
         "systemId": "PC / Intel Core i7-6500U @ 2.50GHz / Intel Intel HD Graphics 520",
@@ -1006,13 +1537,31 @@
         "samples": 3,
         "profile": "basic"
       }, {
-        "systemId": "Mac / Intel Core i5-5250U @ 1.60GHz / Intel Intel HD Graphics 6000",
-        "maxFps": 38.71,
+        "systemId": "PC / Intel Core i5-3230M @ 2.60GHz / ATi AMD Radeon HD 8600/8700M",
+        "maxFps": 39.3,
         "resolution": 1080,
-        "avgFps": 31.14,
-        "minFps": 22.29,
+        "avgFps": 31.6,
+        "minFps": 22.9,
         "profileId": 0,
-        "samples": 7,
+        "samples": 10,
+        "profile": "basic"
+      }, {
+        "systemId": "Mac / Intel Core i7 870 @ 2.93GHz / ATi ATI Radeon HD 5750 OpenGL Engine",
+        "maxFps": 38,
+        "resolution": 1080,
+        "avgFps": 31,
+        "minFps": 20,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "Mac / Intel Core i5-5250U @ 1.60GHz / Intel Intel HD Graphics 6000",
+        "maxFps": 38.25,
+        "resolution": 1080,
+        "avgFps": 30.88,
+        "minFps": 21.88,
+        "profileId": 0,
+        "samples": 8,
         "profile": "basic"
       }, {
         "systemId": "Mac / Intel Core i5-4308U @ 2.80GHz / Intel Intel Iris OpenGL Engine",
@@ -1020,6 +1569,33 @@
         "resolution": 1080,
         "avgFps": 30,
         "minFps": 20,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "Mac / Intel Core i7-4558U @ 2.80GHz / Intel Intel Iris OpenGL Engine",
+        "maxFps": 37.5,
+        "resolution": 1080,
+        "avgFps": 30,
+        "minFps": 23.5,
+        "profileId": 0,
+        "samples": 2,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i5-4210U @ 1.70GHz / ATi AMD Radeon R7 M260",
+        "maxFps": 35.33,
+        "resolution": 1080,
+        "avgFps": 30,
+        "minFps": 23.33,
+        "profileId": 0,
+        "samples": 3,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i7 Q 720 @ 1.60GHz / ATi ATI Mobility Radeon HD 5850",
+        "maxFps": 39,
+        "resolution": 1080,
+        "avgFps": 28,
+        "minFps": 17,
         "profileId": 0,
         "samples": 1,
         "profile": "basic"
@@ -1034,12 +1610,21 @@
         "profile": "basic"
       }, {
         "systemId": "PC / Intel Core2 Quad Q6600 @ 2.40GHz / ATi AMD Radeon HD 6700 Series",
-        "maxFps": 43.67,
+        "maxFps": 47.75,
         "resolution": 1080,
-        "avgFps": 26.67,
-        "minFps": 15.33,
+        "avgFps": 26.5,
+        "minFps": 15.25,
         "profileId": 0,
-        "samples": 3,
+        "samples": 4,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i7-5500U @ 2.40GHz / Nvidia GeForce 840M/PCIe/SSE2",
+        "maxFps": 35,
+        "resolution": 1080,
+        "avgFps": 26.2,
+        "minFps": 18,
+        "profileId": 0,
+        "samples": 5,
         "profile": "basic"
       }, {
         "systemId": "Mac / Intel Core i5-4288U @ 2.60GHz / Intel Intel Iris OpenGL Engine",
@@ -1051,6 +1636,33 @@
         "samples": 1,
         "profile": "basic"
       }, {
+        "systemId": "PC / AMD A10-6700 APU with Radeon HD Graphics / ATi AMD Radeon HD 8670D",
+        "maxFps": 31,
+        "resolution": 1080,
+        "avgFps": 26,
+        "minFps": 11,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i7-5600U @ 2.60GHz / Intel Intel HD Graphics 5500",
+        "maxFps": 31.16,
+        "resolution": 1080,
+        "avgFps": 24.79,
+        "minFps": 17.58,
+        "profileId": 0,
+        "samples": 19,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i7-6600U @ 2.60GHz / Intel Intel HD Graphics 520",
+        "maxFps": 30,
+        "resolution": 1080,
+        "avgFps": 24.5,
+        "minFps": 18,
+        "profileId": 0,
+        "samples": 2,
+        "profile": "basic"
+      }, {
         "systemId": "Mac / Intel Core i7-4650U @ 1.70GHz / Intel Intel HD Graphics 5000 OpenGL Engine",
         "maxFps": 32,
         "resolution": 1080,
@@ -1060,11 +1672,11 @@
         "samples": 4,
         "profile": "basic"
       }, {
-        "systemId": "PC / Intel Core i7-5500U @ 2.40GHz / Nvidia GeForce 840M/PCIe/SSE2",
-        "maxFps": 39,
+        "systemId": "Mac / Intel Core i5-2400S @ 2.50GHz / ATi AMD Radeon HD 6750M OpenGL Engine",
+        "maxFps": 32,
         "resolution": 1080,
         "avgFps": 24,
-        "minFps": 7,
+        "minFps": 16,
         "profileId": 0,
         "samples": 1,
         "profile": "basic"
@@ -1096,6 +1708,15 @@
         "samples": 3,
         "profile": "basic"
       }, {
+        "systemId": "Mac / Intel Core i7-3520M @ 2.90GHz / Intel Intel HD Graphics 4000 OpenGL Engine",
+        "maxFps": 24.75,
+        "resolution": 1080,
+        "avgFps": 21.5,
+        "minFps": 17.5,
+        "profileId": 0,
+        "samples": 4,
+        "profile": "basic"
+      }, {
         "systemId": "Mac / Intel Core i5-4278U @ 2.60GHz / Intel Intel Iris OpenGL Engine",
         "maxFps": 28.5,
         "resolution": 1080,
@@ -1105,11 +1726,11 @@
         "samples": 2,
         "profile": "basic"
       }, {
-        "systemId": "PC / AMD A8-7650K Radeon R7, 10 Compute Cores 4C+6G / ATi AMD Radeon R7 Graphics",
-        "maxFps": 24.5,
+        "systemId": "PC / Intel Core i7-4500U @ 1.80GHz / Intel Intel HD Graphics 4400",
+        "maxFps": 25,
         "resolution": 1080,
         "avgFps": 20,
-        "minFps": 12.5,
+        "minFps": 15,
         "profileId": 0,
         "samples": 2,
         "profile": "basic"
@@ -1123,22 +1744,13 @@
         "samples": 1,
         "profile": "basic"
       }, {
-        "systemId": "PC / Intel Core i7-4500U @ 1.80GHz / Intel Intel HD Graphics 4400",
-        "maxFps": 25,
+        "systemId": "PC / AMD A8-7650K Radeon R7, 10 Compute Cores 4C+6G / ATi AMD Radeon R7 Graphics",
+        "maxFps": 24.67,
         "resolution": 1080,
         "avgFps": 20,
-        "minFps": 15,
+        "minFps": 9,
         "profileId": 0,
-        "samples": 2,
-        "profile": "basic"
-      }, {
-        "systemId": "PC / Intel Core i7-5600U @ 2.60GHz / Intel Intel HD Graphics 5500",
-        "maxFps": 22,
-        "resolution": 1080,
-        "avgFps": 19,
-        "minFps": 15,
-        "profileId": 0,
-        "samples": 1,
+        "samples": 3,
         "profile": "basic"
       }, {
         "systemId": "PC / Intel Core i7-4600U @ 2.10GHz / Intel Intel HD Graphics 4400",
@@ -1150,11 +1762,11 @@
         "samples": 1,
         "profile": "basic"
       }, {
-        "systemId": "PC / Intel Core i5-4210U @ 1.70GHz / Intel Intel HD Graphics 4400",
-        "maxFps": 20.75,
+        "systemId": "PC / AMD FX-7500 Radeon R7, 10 Compute Cores 4C+6G / ATi AMD Radeon R7 Graphics",
+        "maxFps": 22.5,
         "resolution": 1080,
         "avgFps": 17.75,
-        "minFps": 14.75,
+        "minFps": 13,
         "profileId": 0,
         "samples": 4,
         "profile": "basic"
@@ -1166,6 +1778,51 @@
         "minFps": 14.33,
         "profileId": 0,
         "samples": 3,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i5-4210U @ 1.70GHz / Intel Intel HD Graphics 4400",
+        "maxFps": 20.6,
+        "resolution": 1080,
+        "avgFps": 17.6,
+        "minFps": 14.8,
+        "profileId": 0,
+        "samples": 5,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i5-3337U @ 1.80GHz / ATi AMD Radeon HD 7670M",
+        "maxFps": 27,
+        "resolution": 1080,
+        "avgFps": 17,
+        "minFps": 10,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i7-5500U @ 2.40GHz / Intel Intel HD Graphics 5500",
+        "maxFps": 20,
+        "resolution": 1080,
+        "avgFps": 16.25,
+        "minFps": 13.38,
+        "profileId": 0,
+        "samples": 8,
+        "profile": "basic"
+      }, {
+        "systemId": "Mac / Intel Core i7-3615QM @ 2.30GHz / Intel Intel HD Graphics 4000 OpenGL Engine",
+        "maxFps": 21,
+        "resolution": 1080,
+        "avgFps": 16,
+        "minFps": 12,
+        "profileId": 0,
+        "samples": 2,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i5-4300U @ 1.90GHz / Intel Intel HD Graphics 4400",
+        "maxFps": 21,
+        "resolution": 1080,
+        "avgFps": 16,
+        "minFps": 2,
+        "profileId": 0,
+        "samples": 1,
         "profile": "basic"
       }, {
         "systemId": "PC / Intel Core i3-2100 @ 3.10GHz / ATi AMD Radeon HD 5670",
@@ -1186,24 +1843,6 @@
         "samples": 1,
         "profile": "basic"
       }, {
-        "systemId": "Mac / Intel Core i7-3615QM @ 2.30GHz / Intel Intel HD Graphics 4000 OpenGL Engine",
-        "maxFps": 21,
-        "resolution": 1080,
-        "avgFps": 16,
-        "minFps": 12,
-        "profileId": 0,
-        "samples": 2,
-        "profile": "basic"
-      }, {
-        "systemId": "PC / Intel Core i7-5500U @ 2.40GHz / Intel Intel HD Graphics 5500",
-        "maxFps": 19,
-        "resolution": 1080,
-        "avgFps": 15,
-        "minFps": 12,
-        "profileId": 0,
-        "samples": 7,
-        "profile": "basic"
-      }, {
         "systemId": "PC / Intel Core i5 M 460 @ 2.53GHz / ATi AMD Mobility Radeon HD 5000 Series",
         "maxFps": 17.17,
         "resolution": 1080,
@@ -1211,6 +1850,15 @@
         "minFps": 12.67,
         "profileId": 0,
         "samples": 6,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i5-3450 @ 3.10GHz / ATi AMD Radeon HD 7470",
+        "maxFps": 19.33,
+        "resolution": 1080,
+        "avgFps": 14,
+        "minFps": 9.33,
+        "profileId": 0,
+        "samples": 3,
         "profile": "basic"
       }, {
         "systemId": "PC / Intel Core M-5Y10c @ 0.80GHz / Intel Intel HD Graphics 5300",
@@ -1222,13 +1870,22 @@
         "samples": 1,
         "profile": "basic"
       }, {
-        "systemId": "PC / Intel Core i5-3450 @ 3.10GHz / ATi AMD Radeon HD 7470",
-        "maxFps": 16.5,
+        "systemId": "PC / Intel Pentium G3258 @ 3.20GHz / Intel Intel HD Graphics",
+        "maxFps": 18.5,
         "resolution": 1080,
-        "avgFps": 12,
-        "minFps": 8.5,
+        "avgFps": 13,
+        "minFps": 6.5,
         "profileId": 0,
         "samples": 2,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i7-3630QM @ 2.40GHz / Nvidia GeForce GT 635M/PCIe/SSE2",
+        "maxFps": 23.8,
+        "resolution": 1080,
+        "avgFps": 12,
+        "minFps": 5.2,
+        "profileId": 0,
+        "samples": 5,
         "profile": "basic"
       }, {
         "systemId": "Mac / Intel Core2 Duo P8600 @ 2.40GHz / Nvidia NVIDIA GeForce 320M OpenGL Engine",
@@ -1237,7 +1894,7 @@
         "avgFps": 11,
         "minFps": 7,
         "profileId": 0,
-        "samples": 1,
+        "samples": 2,
         "profile": "basic"
       }, {
         "systemId": "PC / Intel Core i5-2520M @ 2.50GHz / Intel Intel HD Graphics 3000",
@@ -1245,6 +1902,15 @@
         "resolution": 1080,
         "avgFps": 11,
         "minFps": 8,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "Mac / Intel Core i5 M 540 @ 2.53GHz / Nvidia NVIDIA GeForce GT 330M OpenGL Engine",
+        "maxFps": 13,
+        "resolution": 1080,
+        "avgFps": 10,
+        "minFps": 7,
         "profileId": 0,
         "samples": 1,
         "profile": "basic"
@@ -1297,7 +1963,7 @@
         "avgFps": 97,
         "minFps": 37,
         "profileId": 3,
-        "samples": 1,
+        "samples": 2,
         "profile": "ultra"
       }]
     }, {
@@ -1308,6 +1974,15 @@
         "resolution": 720,
         "avgFps": 137,
         "minFps": 100,
+        "profileId": 2,
+        "samples": 1,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Intel Core i7-2600 @ 3.40GHz / Nvidia GeForce GTX 950/PCIe/SSE2",
+        "maxFps": 187,
+        "resolution": 720,
+        "avgFps": 106,
+        "minFps": 81,
         "profileId": 2,
         "samples": 1,
         "profile": "high"
@@ -1326,6 +2001,24 @@
         "resolution": 720,
         "avgFps": 66,
         "minFps": 45,
+        "profileId": 2,
+        "samples": 1,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Intel Core i3-4130T @ 2.90GHz / Nvidia GeForce GPU/PCIe/SSE2",
+        "maxFps": 83,
+        "resolution": 720,
+        "avgFps": 64,
+        "minFps": 36.5,
+        "profileId": 2,
+        "samples": 2,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Intel Core2 Quad Q6600 @ 2.40GHz / Nvidia GeForce GTX 750 Ti/PCIe/SSE2",
+        "maxFps": 60,
+        "resolution": 720,
+        "avgFps": 60,
+        "minFps": 60,
         "profileId": 2,
         "samples": 1,
         "profile": "high"
@@ -1357,13 +2050,22 @@
         "samples": 16,
         "profile": "high"
       }, {
+        "systemId": "PC / Intel Core i7-6700HQ @ 2.60GHz / Nvidia GeForce GTX 950M/PCIe/SSE2",
+        "maxFps": 60,
+        "resolution": 720,
+        "avgFps": 57,
+        "minFps": 45,
+        "profileId": 2,
+        "samples": 1,
+        "profile": "high"
+      }, {
         "systemId": "PC / Intel Core2 Duo E8400 @ 3.00GHz / Nvidia GeForce GTX 750/PCIe/SSE2",
         "maxFps": 60,
         "resolution": 720,
-        "avgFps": 47.33,
-        "minFps": 26.33,
+        "avgFps": 46.5,
+        "minFps": 27,
         "profileId": 2,
-        "samples": 6,
+        "samples": 8,
         "profile": "high"
       }, {
         "systemId": "PC / AMD A8-6600K APU with Radeon HD Graphics / ATi AMD Radeon R9 200 Series",
@@ -1383,10 +2085,28 @@
         "profileId": 2,
         "samples": 6,
         "profile": "high"
+      }, {
+        "systemId": "PC / AMD A8-7600 Radeon R7, 10 Compute Cores 4C+6G / ATi AMD Radeon R9 255",
+        "maxFps": 58.33,
+        "resolution": 720,
+        "avgFps": 37.08,
+        "minFps": 22.17,
+        "profileId": 2,
+        "samples": 12,
+        "profile": "high"
       }]
     }, {
       "profileId": 1,
       "results": [{
+        "systemId": "PC / Intel Core i7 920 @ 2.67GHz / Nvidia GeForce GTX 660 Ti/PCIe/SSE2",
+        "maxFps": 60,
+        "resolution": 720,
+        "avgFps": 59.5,
+        "minFps": 57.5,
+        "profileId": 1,
+        "samples": 2,
+        "profile": "medium"
+      }, {
         "systemId": "PC / Intel Core i5-3570K @ 3.40GHz / Nvidia GeForce GTX 660/PCIe/SSE2",
         "maxFps": 60,
         "resolution": 720,
@@ -1432,6 +2152,24 @@
         "samples": 1,
         "profile": "medium"
       }, {
+        "systemId": "PC / Intel Core i7-7500U @ 2.70GHz / Nvidia GeForce 940MX/PCIe/SSE2",
+        "maxFps": 60,
+        "resolution": 720,
+        "avgFps": 46,
+        "minFps": 35,
+        "profileId": 1,
+        "samples": 1,
+        "profile": "medium"
+      }, {
+        "systemId": "PC / Intel Core i7-3632QM @ 2.20GHz / Nvidia GeForce GT 740M/PCIe/SSE2",
+        "maxFps": 49,
+        "resolution": 720,
+        "avgFps": 45,
+        "minFps": 41,
+        "profileId": 1,
+        "samples": 1,
+        "profile": "medium"
+      }, {
         "systemId": "PC / Intel Celeron G1840 @ 2.80GHz / Nvidia GeForce GT 740/PCIe/SSE2",
         "maxFps": 60,
         "resolution": 720,
@@ -1468,6 +2206,15 @@
         "samples": 2,
         "profile": "medium"
       }, {
+        "systemId": "Mac / Intel Core i7-3720QM @ 2.60GHz / Nvidia NVIDIA GeForce GT 650M OpenGL Engine",
+        "maxFps": 51.33,
+        "resolution": 720,
+        "avgFps": 34,
+        "minFps": 26.67,
+        "profileId": 1,
+        "samples": 3,
+        "profile": "medium"
+      }, {
         "systemId": "PC / Intel Xeon E5-1660 v3 @ 3.00GHz / Nvidia GeForce GT 730/PCIe/SSE2",
         "maxFps": 48,
         "resolution": 720,
@@ -1477,31 +2224,58 @@
         "samples": 1,
         "profile": "medium"
       }, {
-        "systemId": "Mac / Intel Core i5-2500S @ 2.70GHz / ATi AMD Radeon HD 6770M OpenGL Engine",
-        "maxFps": 42,
+        "systemId": "Mac / Intel Core i7-3615QM @ 2.30GHz / Nvidia NVIDIA GeForce GT 650M OpenGL Engine",
+        "maxFps": 46.43,
         "resolution": 720,
-        "avgFps": 31,
-        "minFps": 17,
+        "avgFps": 30.29,
+        "minFps": 20.14,
+        "profileId": 1,
+        "samples": 7,
+        "profile": "medium"
+      }, {
+        "systemId": "PC / Intel Core i7-3630QM @ 2.40GHz / Nvidia GeForce GT 640M/PCIe/SSE2",
+        "maxFps": 40,
+        "resolution": 720,
+        "avgFps": 30,
+        "minFps": 19,
         "profileId": 1,
         "samples": 1,
         "profile": "medium"
       }, {
-        "systemId": "Mac / Intel Core i7-3615QM @ 2.30GHz / Nvidia NVIDIA GeForce GT 650M OpenGL Engine",
-        "maxFps": 46.67,
+        "systemId": "Mac / Intel Core i7-4850HQ @ 2.30GHz / Nvidia NVIDIA GeForce GT 750M OpenGL Engine",
+        "maxFps": 53,
         "resolution": 720,
-        "avgFps": 29.33,
-        "minFps": 20.83,
+        "avgFps": 29,
+        "minFps": 20.67,
         "profileId": 1,
-        "samples": 6,
+        "samples": 3,
         "profile": "medium"
       }, {
-        "systemId": "Mac / Intel Core i7-4850HQ @ 2.30GHz / Nvidia NVIDIA GeForce GT 750M OpenGL Engine",
-        "maxFps": 47,
+        "systemId": "PC / Intel Core i7-3630QM @ 2.40GHz / Nvidia GeForce GT 650M/PCIe/SSE2",
+        "maxFps": 30,
         "resolution": 720,
-        "avgFps": 22,
-        "minFps": 17.5,
+        "avgFps": 29,
+        "minFps": 26,
+        "profileId": 1,
+        "samples": 1,
+        "profile": "medium"
+      }, {
+        "systemId": "Mac / Intel Core i5-2500S @ 2.70GHz / ATi AMD Radeon HD 6770M OpenGL Engine",
+        "maxFps": 36.5,
+        "resolution": 720,
+        "avgFps": 26.5,
+        "minFps": 13,
         "profileId": 1,
         "samples": 2,
+        "profile": "medium"
+      }, {
+        "systemId": "PC / Intel Core i7-4710MQ @ 2.50GHz / Nvidia Quadro K2100M/PCIe/SSE2",
+        "maxFps": 29,
+        "resolution": 720,
+        "avgFps": 20,
+        "minFps": 15,
+        "profileId": 1,
+        "samples": 1,
         "profile": "medium"
       }, {
         "systemId": "PC / Intel Core i5-2500 @ 3.30GHz / Nvidia GeForce GT 710/PCIe/SSE2",
@@ -1516,6 +2290,15 @@
     }, {
       "profileId": 0,
       "results": [{
+        "systemId": "Mac / Intel Core i7-4770HQ @ 2.20GHz / Intel Intel Iris Pro OpenGL Engine",
+        "maxFps": 95.5,
+        "resolution": 720,
+        "avgFps": 61,
+        "minFps": 28,
+        "profileId": 0,
+        "samples": 2,
+        "profile": "basic"
+      }, {
         "systemId": "PC / Intel Core i7-4790S @ 3.20GHz / Intel Intel HD Graphics 4600",
         "maxFps": 61.67,
         "resolution": 720,
@@ -1525,13 +2308,40 @@
         "samples": 3,
         "profile": "basic"
       }, {
-        "systemId": "PC / Intel Core i7-4710MQ @ 2.50GHz / Intel Intel HD Graphics 4600",
-        "maxFps": 56.33,
+        "systemId": "PC / Intel Core i7-5500U @ 2.40GHz / ATi AMD Radeon R7 M265 Series",
+        "maxFps": 63,
         "resolution": 720,
-        "avgFps": 42.83,
-        "minFps": 28.83,
+        "avgFps": 49,
+        "minFps": 32,
         "profileId": 0,
-        "samples": 6,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i5-6300U @ 2.40GHz / Intel Intel HD Graphics 520",
+        "maxFps": 63,
+        "resolution": 720,
+        "avgFps": 49,
+        "minFps": 35,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i7-5600U @ 2.60GHz / Intel Intel HD Graphics 5500",
+        "maxFps": 55,
+        "resolution": 720,
+        "avgFps": 42,
+        "minFps": 33,
+        "profileId": 0,
+        "samples": 2,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i5-6400 @ 2.70GHz / Intel Intel HD Graphics 530",
+        "maxFps": 49.5,
+        "resolution": 720,
+        "avgFps": 41.5,
+        "minFps": 35,
+        "profileId": 0,
+        "samples": 2,
         "profile": "basic"
       }, {
         "systemId": "PC / Intel Core2 Quad Q9550 @ 2.83GHz / ATi AMD Radeon HD 5700 Series",
@@ -1543,13 +2353,13 @@
         "samples": 1,
         "profile": "basic"
       }, {
-        "systemId": "PC / Intel Core i5-6400 @ 2.70GHz / Intel Intel HD Graphics 530",
-        "maxFps": 53,
+        "systemId": "PC / Intel Core i7-4710MQ @ 2.50GHz / Intel Intel HD Graphics 4600",
+        "maxFps": 55.44,
         "resolution": 720,
-        "avgFps": 40,
-        "minFps": 30,
+        "avgFps": 39.56,
+        "minFps": 25.22,
         "profileId": 0,
-        "samples": 1,
+        "samples": 9,
         "profile": "basic"
       }, {
         "systemId": "Mac / Intel Core i7-4578U @ 3.00GHz / Intel Intel Iris OpenGL Engine",
@@ -1557,6 +2367,15 @@
         "resolution": 720,
         "avgFps": 39,
         "minFps": 26,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i5-4690K @ 3.50GHz / Intel Intel HD Graphics 4600",
+        "maxFps": 60,
+        "resolution": 720,
+        "avgFps": 39,
+        "minFps": 13,
         "profileId": 0,
         "samples": 1,
         "profile": "basic"
@@ -1579,11 +2398,38 @@
         "samples": 2,
         "profile": "basic"
       }, {
+        "systemId": "Mac / Intel Core i5-4278U @ 2.60GHz / Intel Intel Iris OpenGL Engine",
+        "maxFps": 50,
+        "resolution": 720,
+        "avgFps": 35,
+        "minFps": 24,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / AMD Athlon II X3 435 Processor / ATi AMD Radeon HD 5670",
+        "maxFps": 43.6,
+        "resolution": 720,
+        "avgFps": 34.6,
+        "minFps": 24.8,
+        "profileId": 0,
+        "samples": 5,
+        "profile": "basic"
+      }, {
         "systemId": "Mac / Intel Core i7-4650U @ 1.70GHz / Intel Intel HD Graphics 5000 OpenGL Engine",
         "maxFps": 46,
         "resolution": 720,
         "avgFps": 34,
         "minFps": 23,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i7-5500U @ 2.40GHz / Nvidia GeForce 840M/PCIe/SSE2",
+        "maxFps": 48,
+        "resolution": 720,
+        "avgFps": 34,
+        "minFps": 7,
         "profileId": 0,
         "samples": 1,
         "profile": "basic"
@@ -1598,10 +2444,19 @@
         "profile": "basic"
       }, {
         "systemId": "PC / AMD Athlon II X2 255 Processor / ATi AMD Radeon HD 6570",
-        "maxFps": 45,
+        "maxFps": 43.5,
         "resolution": 720,
-        "avgFps": 32,
-        "minFps": 18,
+        "avgFps": 32.5,
+        "minFps": 20,
+        "profileId": 0,
+        "samples": 2,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i7-4500U @ 1.80GHz / Intel Intel HD Graphics 4400",
+        "maxFps": 44,
+        "resolution": 720,
+        "avgFps": 31,
+        "minFps": 22,
         "profileId": 0,
         "samples": 1,
         "profile": "basic"
@@ -1613,6 +2468,15 @@
         "minFps": 22,
         "profileId": 0,
         "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / AMD FX-7500 Radeon R7, 10 Compute Cores 4C+6G / ATi AMD Radeon R7 Graphics",
+        "maxFps": 33,
+        "resolution": 720,
+        "avgFps": 29,
+        "minFps": 20,
+        "profileId": 0,
+        "samples": 2,
         "profile": "basic"
       }, {
         "systemId": "PC / Intel Core i5-6200U @ 2.30GHz / Intel Intel HD Graphics 520",
@@ -1642,6 +2506,15 @@
         "samples": 2,
         "profile": "basic"
       }, {
+        "systemId": "PC / Intel Core i5-4200U @ 1.60GHz / Intel Intel HD Graphics 4400",
+        "maxFps": 45,
+        "resolution": 720,
+        "avgFps": 25.67,
+        "minFps": 22,
+        "profileId": 0,
+        "samples": 3,
+        "profile": "basic"
+      }, {
         "systemId": "PC / Intel Core i3-3217U @ 1.80GHz / Nvidia GeForce GT 710M/PCIe/SSE2",
         "maxFps": 34,
         "resolution": 720,
@@ -1660,15 +2533,6 @@
         "samples": 5,
         "profile": "basic"
       }, {
-        "systemId": "PC / Intel Core i3-4005U @ 1.70GHz / Intel Intel HD Graphics 4400",
-        "maxFps": 37,
-        "resolution": 720,
-        "avgFps": 24,
-        "minFps": 14,
-        "profileId": 0,
-        "samples": 2,
-        "profile": "basic"
-      }, {
         "systemId": "PC / Intel Core i5-4210U @ 1.70GHz / Intel Intel HD Graphics 4400",
         "maxFps": 32,
         "resolution": 720,
@@ -1678,13 +2542,22 @@
         "samples": 1,
         "profile": "basic"
       }, {
-        "systemId": "PC / Intel Core i7 Q 720 @ 1.60GHz / ATi AMD Mobility Radeon HD 5000 Series",
-        "maxFps": 30.5,
+        "systemId": "PC / Intel Core i3-4005U @ 1.70GHz / Intel Intel HD Graphics 4400",
+        "maxFps": 37,
         "resolution": 720,
-        "avgFps": 23.5,
+        "avgFps": 24,
         "minFps": 14,
         "profileId": 0,
         "samples": 2,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i5-3437U @ 1.90GHz / Intel Intel HD Graphics 4000",
+        "maxFps": 32.6,
+        "resolution": 720,
+        "avgFps": 23.8,
+        "minFps": 14.6,
+        "profileId": 0,
+        "samples": 5,
         "profile": "basic"
       }, {
         "systemId": "PC / Intel Core i3-5005U @ 2.00GHz / Intel Intel HD Graphics 5500",
@@ -1696,20 +2569,38 @@
         "samples": 3,
         "profile": "basic"
       }, {
-        "systemId": "PC / AMD A10 Extreme Edition Radeon R8, 4C+8G / ATi AMD Radeon R7 Graphics",
-        "maxFps": 44.78,
-        "resolution": 720,
-        "avgFps": 23.22,
-        "minFps": 10.78,
-        "profileId": 0,
-        "samples": 9,
-        "profile": "basic"
-      }, {
         "systemId": "Mac / Intel Core i7-3520M @ 2.90GHz / Intel Intel HD Graphics 4000 OpenGL Engine",
         "maxFps": 31,
         "resolution": 720,
         "avgFps": 22,
         "minFps": 8,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / AMD A10 Extreme Edition Radeon R8, 4C+8G / ATi AMD Radeon R7 Graphics",
+        "maxFps": 45.29,
+        "resolution": 720,
+        "avgFps": 21.93,
+        "minFps": 9.43,
+        "profileId": 0,
+        "samples": 14,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i7 Q 720 @ 1.60GHz / ATi AMD Mobility Radeon HD 5000 Series",
+        "maxFps": 30.25,
+        "resolution": 720,
+        "avgFps": 21.5,
+        "minFps": 14.25,
+        "profileId": 0,
+        "samples": 4,
+        "profile": "basic"
+      }, {
+        "systemId": "Mac / Intel Core i5-3230M @ 2.60GHz / Intel Intel HD Graphics 4000 OpenGL Engine",
+        "maxFps": 34,
+        "resolution": 720,
+        "avgFps": 21,
+        "minFps": 12,
         "profileId": 0,
         "samples": 1,
         "profile": "basic"
@@ -1724,21 +2615,39 @@
         "profile": "basic"
       }, {
         "systemId": "PC / AMD A6-3500 APU with Radeon HD Graphics / ATi AMD Radeon HD 6530D",
-        "maxFps": 28,
+        "maxFps": 27.75,
         "resolution": 720,
-        "avgFps": 20,
-        "minFps": 9.67,
+        "avgFps": 19,
+        "minFps": 8.25,
+        "profileId": 0,
+        "samples": 4,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core2 Duo E6550 @ 2.33GHz / Nvidia GeForce 8800 GTS/PCIe/SSE2",
+        "maxFps": 28.25,
+        "resolution": 720,
+        "avgFps": 17.75,
+        "minFps": 13,
+        "profileId": 0,
+        "samples": 4,
+        "profile": "basic"
+      }, {
+        "systemId": "Mac / Intel Core i5 M 520 @ 2.40GHz / Nvidia NVIDIA GeForce GT 330M OpenGL Engine",
+        "maxFps": 18,
+        "resolution": 720,
+        "avgFps": 16,
+        "minFps": 13.33,
         "profileId": 0,
         "samples": 3,
         "profile": "basic"
       }, {
-        "systemId": "Mac / Intel Core2 Duo P8600 @ 2.40GHz / Nvidia NVIDIA GeForce 320M OpenGL Engine",
-        "maxFps": 14,
+        "systemId": "Mac / Intel Core i5-2557M @ 1.70GHz / Intel Intel HD Graphics 3000 OpenGL Engine",
+        "maxFps": 19.33,
         "resolution": 720,
-        "avgFps": 13,
-        "minFps": 9,
+        "avgFps": 15.67,
+        "minFps": 10.33,
         "profileId": 0,
-        "samples": 1,
+        "samples": 3,
         "profile": "basic"
       }, {
         "systemId": "PC / AMD A8-3500M APU with Radeon HD Graphics / ATi P????L?? ? ?^??J???",
@@ -1746,15 +2655,6 @@
         "resolution": 720,
         "avgFps": 13,
         "minFps": 8,
-        "profileId": 0,
-        "samples": 1,
-        "profile": "basic"
-      }, {
-        "systemId": "PC / Intel Core i5-3230M @ 2.60GHz / Intel Intel HD Graphics 4000",
-        "maxFps": 14,
-        "resolution": 720,
-        "avgFps": 12,
-        "minFps": 10,
         "profileId": 0,
         "samples": 1,
         "profile": "basic"
@@ -1777,6 +2677,15 @@
         "samples": 4,
         "profile": "basic"
       }, {
+        "systemId": "PC / Intel Core i5-3230M @ 2.60GHz / Intel Intel HD Graphics 4000",
+        "maxFps": 14,
+        "resolution": 720,
+        "avgFps": 12,
+        "minFps": 10,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
         "systemId": "Mac / Intel Core i7-2720QM @ 2.20GHz / ATi AMD Radeon HD 6750M OpenGL Engine",
         "maxFps": 29,
         "resolution": 720,
@@ -1784,6 +2693,24 @@
         "minFps": 3,
         "profileId": 0,
         "samples": 2,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i3-2100 @ 3.10GHz / ATi AMD Radeon HD 5450",
+        "maxFps": 15,
+        "resolution": 720,
+        "avgFps": 11,
+        "minFps": 8,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "Mac / Intel Core2 Duo P8600 @ 2.40GHz / Nvidia NVIDIA GeForce 320M OpenGL Engine",
+        "maxFps": 16.2,
+        "resolution": 720,
+        "avgFps": 10.8,
+        "minFps": 7.2,
+        "profileId": 0,
+        "samples": 5,
         "profile": "basic"
       }, {
         "systemId": "PC / Intel Core i3-2100 @ 3.10GHz / Intel Intel HD Graphics Family",
@@ -1804,22 +2731,49 @@
     }, {
       "profileId": 2,
       "results": [{
-        "systemId": "PC / Intel Core i3-4170T @ 3.20GHz / Nvidia GeForce GPU/PCIe/SSE2",
-        "maxFps": 60,
+        "systemId": "PC / Intel Core i3-4130T @ 2.90GHz / Nvidia GeForce GPU/PCIe/SSE2",
+        "maxFps": 149,
         "resolution": 576,
-        "avgFps": 60,
-        "minFps": 55,
+        "avgFps": 101,
+        "minFps": 34,
         "profileId": 2,
         "samples": 2,
         "profile": "high"
       }, {
-        "systemId": "PC / Intel Core i3-2130 @ 3.40GHz / Nvidia GeForce GTX 750 Ti/PCIe/SSE2",
-        "maxFps": 127.5,
+        "systemId": "PC / Intel Core i7-2600 @ 3.40GHz / Nvidia GeForce GTX 950/PCIe/SSE2",
+        "maxFps": 132,
         "resolution": 576,
-        "avgFps": 43.83,
-        "minFps": 22.33,
+        "avgFps": 84.6,
+        "minFps": 70.4,
         "profileId": 2,
-        "samples": 6,
+        "samples": 5,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Intel Core i3-4170T @ 3.20GHz / Nvidia GeForce GPU/PCIe/SSE2",
+        "maxFps": 60,
+        "resolution": 576,
+        "avgFps": 60,
+        "minFps": 56.33,
+        "profileId": 2,
+        "samples": 3,
+        "profile": "high"
+      }, {
+        "systemId": "PC / Intel Core i3-2130 @ 3.40GHz / Nvidia GeForce GTX 750 Ti/PCIe/SSE2",
+        "maxFps": 130.43,
+        "resolution": 576,
+        "avgFps": 45.43,
+        "minFps": 23.14,
+        "profileId": 2,
+        "samples": 7,
+        "profile": "high"
+      }, {
+        "systemId": "Mac / Intel Core i7-4980HQ @ 2.80GHz / ATi AMD Radeon R9 M370X OpenGL Engine",
+        "maxFps": 73,
+        "resolution": 576,
+        "avgFps": 42,
+        "minFps": 16,
+        "profileId": 2,
+        "samples": 1,
         "profile": "high"
       }]
     }, {
@@ -1841,6 +2795,15 @@
         "minFps": 1,
         "profileId": 1,
         "samples": 1,
+        "profile": "medium"
+      }, {
+        "systemId": "PC / Intel Core i7-4710MQ @ 2.50GHz / Nvidia Quadro K2100M/PCIe/SSE2",
+        "maxFps": 35,
+        "resolution": 576,
+        "avgFps": 21,
+        "minFps": 16,
+        "profileId": 1,
+        "samples": 2,
         "profile": "medium"
       }]
     }, {
@@ -1900,6 +2863,24 @@
         "samples": 1,
         "profile": "basic"
       }, {
+        "systemId": "PC / Intel Core i3-6100U @ 2.30GHz / Intel Intel HD Graphics 520",
+        "maxFps": 59,
+        "resolution": 576,
+        "avgFps": 42,
+        "minFps": 26.5,
+        "profileId": 0,
+        "samples": 2,
+        "profile": "basic"
+      }, {
+        "systemId": "Mac / Intel Core i7-5650U @ 2.20GHz / Intel Intel HD Graphics 6000",
+        "maxFps": 52,
+        "resolution": 576,
+        "avgFps": 41,
+        "minFps": 34,
+        "profileId": 0,
+        "samples": 2,
+        "profile": "basic"
+      }, {
         "systemId": "Mac / Intel Core i7-2720QM @ 2.20GHz / ATi AMD Radeon HD 6750M OpenGL Engine",
         "maxFps": 56,
         "resolution": 576,
@@ -1918,11 +2899,29 @@
         "samples": 1,
         "profile": "basic"
       }, {
-        "systemId": "PC / Intel Core i3-6100U @ 2.30GHz / Intel Intel HD Graphics 520",
-        "maxFps": 54,
+        "systemId": "Mac / Intel Core i7-2675QM @ 2.20GHz / ATi AMD Radeon HD 6750M OpenGL Engine",
+        "maxFps": 56,
         "resolution": 576,
-        "avgFps": 39,
-        "minFps": 24,
+        "avgFps": 40,
+        "minFps": 22,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i5-4200U @ 1.60GHz / Intel Intel HD Graphics 4400",
+        "maxFps": 49.5,
+        "resolution": 576,
+        "avgFps": 38.75,
+        "minFps": 27.75,
+        "profileId": 0,
+        "samples": 4,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i7-5500U @ 2.40GHz / Nvidia GeForce 840M/PCIe/SSE2",
+        "maxFps": 48,
+        "resolution": 576,
+        "avgFps": 38,
+        "minFps": 26,
         "profileId": 0,
         "samples": 1,
         "profile": "basic"
@@ -1941,6 +2940,24 @@
         "resolution": 576,
         "avgFps": 36,
         "minFps": 20,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i3-5005U @ 2.00GHz / Intel Intel HD Graphics 5500",
+        "maxFps": 35,
+        "resolution": 576,
+        "avgFps": 35,
+        "minFps": 35,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i7-6650U @ 2.20GHz / Intel Intel Iris Pro Graphics 540",
+        "maxFps": 50,
+        "resolution": 576,
+        "avgFps": 34,
+        "minFps": 18,
         "profileId": 0,
         "samples": 1,
         "profile": "basic"
@@ -1981,6 +2998,24 @@
         "samples": 2,
         "profile": "basic"
       }, {
+        "systemId": "Mac / Intel Core i7-2620M @ 2.70GHz / ATi AMD Radeon HD 6630M OpenGL Engine",
+        "maxFps": 42,
+        "resolution": 576,
+        "avgFps": 30,
+        "minFps": 9,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "Mac / Intel Core M-5Y31 @ 0.90GHz / Intel Intel HD Graphics 5300",
+        "maxFps": 46,
+        "resolution": 576,
+        "avgFps": 29,
+        "minFps": 19,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
         "systemId": "PC / Intel Core i5-3230M @ 2.60GHz / Intel Intel HD Graphics 4000",
         "maxFps": 41,
         "resolution": 576,
@@ -2000,12 +3035,12 @@
         "profile": "basic"
       }, {
         "systemId": "PC / Intel Core M-5Y10c @ 0.80GHz / Intel Intel HD Graphics 5300",
-        "maxFps": 44,
+        "maxFps": 46.1,
         "resolution": 576,
-        "avgFps": 28.5,
-        "minFps": 20.25,
+        "avgFps": 28.4,
+        "minFps": 20.1,
         "profileId": 0,
-        "samples": 8,
+        "samples": 10,
         "profile": "basic"
       }, {
         "systemId": "Mac / Intel Core i7-4650U @ 1.70GHz / Intel Intel HD Graphics 5000 OpenGL Engine",
@@ -2017,6 +3052,24 @@
         "samples": 2,
         "profile": "basic"
       }, {
+        "systemId": "PC / Intel Core i5-4300U @ 1.90GHz / Intel Intel HD Graphics 4400",
+        "maxFps": 29,
+        "resolution": 576,
+        "avgFps": 26,
+        "minFps": 21,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / AMD FX-7500 Radeon R7, 10 Compute Cores 4C+6G / ATi AMD Radeon R7 Graphics",
+        "maxFps": 33.67,
+        "resolution": 576,
+        "avgFps": 25.67,
+        "minFps": 19.67,
+        "profileId": 0,
+        "samples": 3,
+        "profile": "basic"
+      }, {
         "systemId": "PC / Intel Core i7-3770 @ 3.40GHz / Intel Intel HD Graphics 4000",
         "maxFps": 33.5,
         "resolution": 576,
@@ -2026,15 +3079,6 @@
         "samples": 2,
         "profile": "basic"
       }, {
-        "systemId": "Mac / Arm64 V8 / Apple Apple A7 GPU",
-        "maxFps": 29,
-        "resolution": 576,
-        "avgFps": 25,
-        "minFps": 10,
-        "profileId": 0,
-        "samples": 1,
-        "profile": "basic"
-      }, {
         "systemId": "PC / Intel Core i5-3340M @ 2.70GHz / Intel Intel HD Graphics 4000",
         "maxFps": 37.86,
         "resolution": 576,
@@ -2042,6 +3086,15 @@
         "minFps": 20.57,
         "profileId": 0,
         "samples": 7,
+        "profile": "basic"
+      }, {
+        "systemId": "Mac / Arm64 V8 / Apple Apple A7 GPU",
+        "maxFps": 29,
+        "resolution": 576,
+        "avgFps": 25,
+        "minFps": 10,
+        "profileId": 0,
+        "samples": 1,
         "profile": "basic"
       }, {
         "systemId": "PC / Intel Core i7-4500U @ 1.80GHz / Nvidia GeForce 840M/PCIe/SSE2",
@@ -2080,11 +3133,29 @@
         "samples": 1,
         "profile": "basic"
       }, {
-        "systemId": "PC / Intel Core i5 M 460 @ 2.53GHz / ATi AMD Mobility Radeon HD 5000 Series",
-        "maxFps": 21,
+        "systemId": "PC / Intel Core i5-2410M @ 2.30GHz / Intel Intel HD Graphics 3000",
+        "maxFps": 26,
         "resolution": 576,
-        "avgFps": 17,
-        "minFps": 12,
+        "avgFps": 20,
+        "minFps": 15,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core2 Duo E6550 @ 2.33GHz / Nvidia GeForce 8800 GTS/PCIe/SSE2",
+        "maxFps": 26.5,
+        "resolution": 576,
+        "avgFps": 19.5,
+        "minFps": 15.5,
+        "profileId": 0,
+        "samples": 2,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i7-2630QM @ 2.00GHz / Nvidia GeForce GT 540M/PCIe/SSE2",
+        "maxFps": 42,
+        "resolution": 576,
+        "avgFps": 18,
+        "minFps": 13,
         "profileId": 0,
         "samples": 1,
         "profile": "basic"
@@ -2094,6 +3165,24 @@
         "resolution": 576,
         "avgFps": 17,
         "minFps": 12,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i5 M 460 @ 2.53GHz / ATi AMD Mobility Radeon HD 5000 Series",
+        "maxFps": 21,
+        "resolution": 576,
+        "avgFps": 17,
+        "minFps": 12,
+        "profileId": 0,
+        "samples": 1,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i3-2310M @ 2.10GHz / Intel Intel HD Graphics 3000",
+        "maxFps": 24,
+        "resolution": 576,
+        "avgFps": 17,
+        "minFps": 8,
         "profileId": 0,
         "samples": 1,
         "profile": "basic"
@@ -2108,12 +3197,21 @@
         "profile": "basic"
       }, {
         "systemId": "PC / Intel Pentium N3700 @ 1.60GHz / Intel Intel HD Graphics",
-        "maxFps": 29,
+        "maxFps": 28.33,
         "resolution": 576,
-        "avgFps": 15.5,
-        "minFps": 8.5,
+        "avgFps": 15.33,
+        "minFps": 8,
         "profileId": 0,
-        "samples": 2,
+        "samples": 3,
+        "profile": "basic"
+      }, {
+        "systemId": "Mac / Intel Core i5-2435M @ 2.40GHz / Intel Intel HD Graphics 3000 OpenGL Engine",
+        "maxFps": 20,
+        "resolution": 576,
+        "avgFps": 15,
+        "minFps": 15,
+        "profileId": 0,
+        "samples": 1,
         "profile": "basic"
       }, {
         "systemId": "PC / Intel Core i7 Q 740 @ 1.73GHz / Nvidia GeForce GT 230/PCIe/SSE2",
@@ -2152,6 +3250,24 @@
         "samples": 2,
         "profile": "basic"
       }, {
+        "systemId": "Mac / Intel Core2 Duo U9400 @ 1.40GHz / Nvidia NVIDIA GeForce 320M OpenGL Engine",
+        "maxFps": 17.5,
+        "resolution": 576,
+        "avgFps": 14,
+        "minFps": 12,
+        "profileId": 0,
+        "samples": 2,
+        "profile": "basic"
+      }, {
+        "systemId": "PC / Intel Core i5-3570 @ 3.40GHz / ATi AMD Radeon HD 5450",
+        "maxFps": 16.5,
+        "resolution": 576,
+        "avgFps": 13.5,
+        "minFps": 11,
+        "profileId": 0,
+        "samples": 2,
+        "profile": "basic"
+      }, {
         "systemId": "Mac / Intel Core2 Duo P8700 @ 2.53GHz / Nvidia NVIDIA GeForce 9400 OpenGL Engine",
         "maxFps": 8,
         "resolution": 576,
@@ -2168,15 +3284,6 @@
         "minFps": 3.5,
         "profileId": 0,
         "samples": 2,
-        "profile": "basic"
-      }, {
-        "systemId": "Mac / Intel Core2 Duo L9400 @ 1.86GHz / Nvidia NVIDIA GeForce 9400M OpenGL Engine",
-        "maxFps": 6,
-        "resolution": 576,
-        "avgFps": 5,
-        "minFps": 3,
-        "profileId": 0,
-        "samples": 1,
         "profile": "basic"
       }, {
         "systemId": "Mac / Intel Core2 Duo P7350 @ 2.00GHz / Nvidia NVIDIA GeForce 9400M OpenGL Engine",
@@ -2196,9 +3303,18 @@
         "profileId": 0,
         "samples": 1,
         "profile": "basic"
+      }, {
+        "systemId": "Mac / Intel Core2 Duo L9400 @ 1.86GHz / Nvidia NVIDIA GeForce 9400M OpenGL Engine",
+        "maxFps": 6.5,
+        "resolution": 576,
+        "avgFps": 4.5,
+        "minFps": 2.5,
+        "profileId": 0,
+        "samples": 2,
+        "profile": "basic"
       }]
     }]
   }],
-  "dateLastUpdate": 1477170539722,
-  "totalRecords": 236
+  "dateLastUpdate": 1477973628654,
+  "totalRecords": 360
 }

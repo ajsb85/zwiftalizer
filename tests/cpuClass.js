@@ -40,9 +40,18 @@ test('should recognise alienware alpha R2', (assert) => {
   assert.end()
 })
 
-test('should NOT recognize 20th anniversary pentium yet', (assert) => {
+test('should recognize 20th anniversary pentium', (assert) => {
   const entry = 'PC / Intel Pentium G3258 @ 4.20GHz / Nvidia GeForce GTX 970/PCIe/SSE2'
-  const expected = undefined
+  const expected = '4th generation (Haswell) unlocked Intel Pentium family processor'
+  const actual = cpuClass(entry)
+  console.log(actual)
+  assert.equals(actual, expected)
+  assert.end()
+})
+
+test('should recognize Pentium Dual-Core', (assert) => {
+  const entry = 'PC / Pentium Dual-Core E5700 @ 3.00GHz / ATi AMD Radeon HD 7900 Series'
+  const expected = 'Unknown generation Intel Dual-Core family processor'
   const actual = cpuClass(entry)
   console.log(actual)
   assert.equals(actual, expected)

@@ -18,31 +18,45 @@ const intelSuffixes = {
   Y: 'Extremely low power (laptop, notebook, mini-pc, all-in-one)'
 }
 
-// @todo get make and family
-// ^([\w]*)\s([\w]*).*
+function isNumeric(obj) {
+  return !isNaN(obj - parseFloat(obj))
+}
 
-function humanizeGeneration(num) {
-
-  const gen = ' generation'
+function humanizeGeneration(num, family) {
 
   if (typeof(num) === 'undefined') {
-    return
+    return ''
   }
 
-  if (num % 100 >= 11 && num % 100 <= 13) {
-    return num + 'th' + gen;
+  if (!isNumeric(num)) {
+
+    if (family && family.toLowerCase() === 'pentium' && num === 'G3258') {
+      return '4th generation (Haswell) unlocked'
+    }
+
+    //@todo, parse Xeon generation number
+    return 'Unknown generation'
   }
 
-  switch (num % 10) {
+  // is all numeric, safe to cast 1st number to int
+  const gen = ' generation'
+
+  const genNumber = parseInt(num[0])
+
+  if (genNumber % 100 >= 11 && genNumber % 100 <= 13) {
+    return genNumber + 'th' + gen;
+  }
+
+  switch (genNumber % 10) {
     case 1:
-      return num + 'st' + gen;
+      return genNumber + 'st' + gen;
     case 2:
-      return num + 'nd' + gen;
+      return genNumber + 'nd' + gen;
     case 3:
-      return num + 'rd' + gen;
+      return genNumber + 'rd' + gen;
   }
 
-  return num + 'th' + gen;
+  return genNumber + 'th' + gen;
 }
 
 // @todo, refactor ito 3 functions - core, core 2 (which came before core), and pentium/celeron family regexes
@@ -59,8 +73,9 @@ export default function cpuClass(str) {
 
   const cpuSpec = match[1]
 
-  // Intel Core i7-2600K @ 3.40GHz
-  const cpuRegex = /^intel\s(\w*)\s(i\d)([-\s]?)(\d+)(\w)?(\w)?\s\@.*/i
+  // const cpuRegex = /^(intel)?\s(\w*)\s(i\d)([-\s]?)(\d+)(\w)?(\w)?\s\@.*/i
+
+  const cpuRegex = /^(intel|pentium)\s?([\-\w]*)\s?(i\d)?([-\s]?)([\w\d]+\d+)(\w)?(\w)?\s\@.*/i
 
   const matches = cpuRegex.exec(cpuSpec)
 
@@ -68,15 +83,17 @@ export default function cpuClass(str) {
     return undefined
   }
 
-  const family = matches[1]
+  const model = matches[1]
 
-  const brandModifier = matches[2]
+  const family = matches[2]
 
-  const generation = (matches[4] + '').length === 3 ? '1st generation' : humanizeGeneration(matches[4][0])
+  const brandModifier = matches[3]
 
-  const letterSuffix = matches[5]
+  const generation = (matches[5] + '').length === 3 ? '1st generation' : humanizeGeneration(matches[5], family)
 
-  const productLineSuffix = matches[6]
+  const letterSuffix = matches[6]
+
+  const productLineSuffix = matches[7]
 
   let letterSuffixValue = undefined
 
