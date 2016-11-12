@@ -44,12 +44,18 @@ export default function mapNetworkPhoneConnectionAttempts(lines, timeAxisTimeSer
 
   const reducedSeries = TimeSeries.timeSeriesListSum({
     name: 'phoneConnectionAttempts',
-    columns: ['time', 'value'],
-  }, [timeAxisTimeSeries, ts])
+    fieldSpec: ['time', 'value'],
+    seriesList: [timeAxisTimeSeries, ts]
+  })
 
   // rollup max to exaggerate the reconnects bars
-  const rollup = reducedSeries.fixedWindowRollup('10s', {
-    value: max
+  const rollup = reducedSeries.fixedWindowRollup({
+    windowSize: '10s',
+    aggregation: {
+      value: {
+        value: max()
+      }
+    }
   })
 
   return rollup

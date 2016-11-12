@@ -38,8 +38,6 @@ class Ant extends React.Component {
         </div>
       </div>
 
-    // <div className="row">   <div className="col-sm-12">     <h2 className={structure.sectionHeading}>ANT+ devices</h2>   </div> </div>
-
     return (
       <div className="container">
         {markup}

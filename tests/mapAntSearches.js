@@ -30,12 +30,16 @@ test('should extract ANT+ Searching lines', (assert) => {
   // 1 second rollup
   //const expectedLength = 1227
 
-  // 30 second rollup
-  const expectedLength = 42
+  // 10 second rollup
+  const expectedLength = 123
 
   assert.ok(actual)
 
   assert.true(actual.count() > 0)
+
+  console.log('actual.count()')
+
+  console.log(actual.count())
 
   assert.true(actual.count() === expectedLength)
 

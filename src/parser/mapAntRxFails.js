@@ -87,11 +87,17 @@ export default function mapAntRxFails(lines, device, timeAxisTimeSeries) {
 
   const mergedSeries = TimeSeries.timeSeriesListSum({
     name: 'signal',
-    columns: ['time', 'value'],
-  }, [timeAxisTimeSeries, ts])
+    fieldSpec: ['time', 'value'],
+    seriesList: [timeAxisTimeSeries, ts]
+  })
 
-  const rollup = mergedSeries.fixedWindowRollup('1s', {
-    value: sum
+  const rollup = mergedSeries.fixedWindowRollup({
+    windowSize: '1s',
+    aggregation: {
+      value: {
+        value: sum()
+      }
+    }
   })
 
   const maxValue = rollup.max()

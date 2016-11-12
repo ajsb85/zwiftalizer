@@ -71,8 +71,13 @@ export default function mapGradientData(lines, timeAxisTimeSeries) {
 
   const gradientTimeSeries = new TimeSeries(result);
 
-  const rollup = gradientTimeSeries.fixedWindowRollup('1s', {
-    value: avg
+  const rollup = gradientTimeSeries.fixedWindowRollup({
+    windowSize: '1s',
+    aggregation: {
+      value: {
+        value: avg()
+      }
+    }
   })
 
   return rollup

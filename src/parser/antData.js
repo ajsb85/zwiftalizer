@@ -106,8 +106,9 @@ export default function antData(log, timeAxisTimeSeries) {
 
     const reducedPowerSeries = TimeSeries.timeSeriesListSum({
       name: 'power',
-      columns: ['time', 'value'],
-    }, [timeAxisTimeSeries, power])
+      fieldSpec: ['time', 'value'],
+      seriesList: [timeAxisTimeSeries, power]
+    })
 
     Object.assign(kickrDevice, {
       power: reducedPowerSeries

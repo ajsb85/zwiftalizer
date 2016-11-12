@@ -86,33 +86,51 @@ export default function mapNetworkErrors(lines, timeAxisTimeSeries) {
 
   const reducedNetworkErrors = TimeSeries.timeSeriesListSum({
     name: 'errors',
-    columns: ['time', 'value'],
-  }, [timeAxisTimeSeries, networkErrorsTs])
+    fieldSpec: ['time', 'value'],
+    seriesList: [timeAxisTimeSeries, networkErrorsTs]
+  })
 
-  const rollupNetworkErrors = reducedNetworkErrors.fixedWindowRollup('10s', {
-    value: max
+  const rollupNetworkErrors = reducedNetworkErrors.fixedWindowRollup({
+    windowSize: '10s',
+    aggregation: {
+      value: {
+        value: max()
+      }
+    }
   })
 
   const delayedPacketsTs = new TimeSeries(delayedPackets)
 
   const reducedDelayedPackets = TimeSeries.timeSeriesListSum({
     name: 'delayedPackets',
-    columns: ['time', 'value'],
-  }, [timeAxisTimeSeries, delayedPacketsTs])
+    fieldSpec: ['time', 'value'],
+    seriesList: [timeAxisTimeSeries, delayedPacketsTs]
+  })
 
-  const rollupDelayedPackets = reducedDelayedPackets.fixedWindowRollup('10s', {
-    value: max
+  const rollupDelayedPackets = reducedDelayedPackets.fixedWindowRollup({
+    windowSize: '10s',
+    aggregation: {
+      value: {
+        value: max()
+      }
+    }
   })
 
   const reducedInvalidRoadTimeWarningsTs = new TimeSeries(invalidRoadTimeWarnings)
 
   const reducedInvalidRoadTimeWarnings = TimeSeries.timeSeriesListSum({
     name: 'invalidRoadTimeWarnings',
-    columns: ['time', 'value'],
-  }, [timeAxisTimeSeries, reducedInvalidRoadTimeWarningsTs])
+    fieldSpec: ['time', 'value'],
+    seriesList: [timeAxisTimeSeries, reducedInvalidRoadTimeWarningsTs]
+  })
 
-  const rollupInvalidRoadTimeWarnings = reducedInvalidRoadTimeWarnings.fixedWindowRollup('10s', {
-    value: max
+  const rollupInvalidRoadTimeWarnings = reducedInvalidRoadTimeWarnings.fixedWindowRollup({
+    windowSize: '10s',
+    aggregation: {
+      value: {
+        value: max()
+      }
+    }
   })
 
   return {

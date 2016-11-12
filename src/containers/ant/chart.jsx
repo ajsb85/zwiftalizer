@@ -31,7 +31,8 @@ import {
   BarChart,
   Legend,
   Resizable,
-  Baseline
+  Baseline,
+  styler
 } from 'react-timeseries-charts'
 
 import {TimeSeries} from 'pondjs'
@@ -75,13 +76,6 @@ const rightAxisLabelWidth = 60
 
 const powerFormat = format('d');
 
-const powerOutputStyles = {
-  value: {
-    stroke: colors.purple,
-    strokeWidth: 1.5
-  }
-}
-
 const wahooGradientChangeStyles = {
   value: {
     stroke: colors.yellow,
@@ -96,26 +90,41 @@ const fecGradientChangeStyles = {
   }
 }
 
-const powerSignalStyle = {
-  up: [colors.seafoamgreen]
-}
+const kickrSignalStyle = styler([
+  {
+    key: 'up',
+    color: colors.wahooblue
+  }
+])
 
-const kickrSignalStyle = {
-  up: [colors.wahooblue]
-}
+const fecSignalStyles = styler([
+  {
+    key: 'up',
+    color: colors.tacxblue
+  }
+])
 
-const fecSignalStyles = {
-  up: [colors.tacxblue]
-}
+const basicDeviceColors = [colors.salmonpink, colors.sonicblue, colors.beige]
 
 const basicDeviceStyles = [
-  {
-    up: [colors.salmonpink]
-  }, {
-    up: [colors.sonicblue]
-  }, {
-    up: [colors.beige]
-  }
+  styler([
+    {
+      key: 'value',
+      color: basicDeviceColors[0]
+    }
+  ]),
+  styler([
+    {
+      key: 'value',
+      color: basicDeviceColors[1]
+    }
+  ]),
+  styler([
+    {
+      key: 'value',
+      color: basicDeviceColors[2]
+    }
+  ])
 ]
 
 // 15 second max zoom
@@ -223,6 +232,29 @@ class Chart extends React.Component {
 
     const maxSignal = parseInt(signalFormat(device.signal.max()))
 
+    const style = styler([
+      {
+        key: 'value',
+        color: colors.seafoamgreen
+      }, {
+        key: 'power',
+        color: colors.purple,
+        width: 1.5
+      }
+    ])
+
+    const categories = [
+      {
+        key: 'value',
+        label: 'Signal',
+        disabled: false
+      }, {
+        key: 'power',
+        label: 'Power',
+        disabled: false
+      }
+    ]
+
     return (
       <div key={key} className={structure.chartContainer}>
         <div className="row" style={headingRowStyle}>
@@ -236,25 +268,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-3">
             <div className="pull-right">
               <div className={structure.legendWrapper}>
-                <Legend
-                  type="swatch"
-                  categories={[
-                  {
-                    key: "signal",
-                    label: "Signal",
-                    disabled: false,
-                    style: {
-                      fill: colors.seafoamgreen
-                    }
-                  }, {
-                    key: "power",
-                    label: "Power",
-                    disabled: false,
-                    style: {
-                      fill: colors.purple
-                    }
-                  }
-                ]}/>
+                <Legend type="swatch" style={style} categories={categories}/>
               </div>
             </div>
           </div>
@@ -272,11 +286,11 @@ class Chart extends React.Component {
             <ChartRow height={largeChartHeight} debug={false}>
               <YAxis id="powerWatts" label="Watts" min={minPower} max={maxPower} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
               <Charts>
-                <AreaChart axis="powerSignal" series={device.signal} style={powerSignalStyle} columns={{
+                <AreaChart axis="powerSignal" series={device.signal} style={style} columns={{
                   up: ['value']
                 }}/>
-                <LineChart axis="powerWatts" breakLine={true} series={device.power} style={powerOutputStyles} smooth={true} interpolation="curveBasis"/>
-                <Baseline axis="powerWatts" value={avgPower} style={powerOutputStyles.solid}/>
+                <LineChart axis="powerWatts" breakLine={true} series={device.power} style={style} smooth={true} interpolation="curveBasis"/>
+                <Baseline axis="powerWatts" value={avgPower} style={baselineStyles.solid}/>
               </Charts>
               <YAxis id="powerSignal" label="Signal" min={0} max={maxSignal} absolute={true} width={rightAxisLabelWidth} type="linear" format="d"/>
             </ChartRow>
@@ -304,6 +318,28 @@ class Chart extends React.Component {
 
     const maxSignal = parseInt(signalFormat(device.signal.max()))
 
+    const style = styler([
+      {
+        key: 'value',
+        color: colors.tacxblue
+      }, {
+        key: 'resistance',
+        color: colors.magenta
+      }
+    ])
+
+    const categories = [
+      {
+        key: 'value',
+        label: 'Signal',
+        disabled: false
+      }, {
+        key: 'resistance',
+        label: 'Resistance',
+        disabled: false
+      }
+    ]
+
     return (
       <div key={key} className={structure.chartContainer}>
         <div className="row" style={headingRowStyle}>
@@ -316,25 +352,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-3">
             <div className="pull-right">
               <div className={structure.legendWrapper}>
-                <Legend
-                  type="swatch"
-                  categories={[
-                  {
-                    key: "signal",
-                    label: "Signal",
-                    disabled: false,
-                    style: {
-                      fill: colors.tacxblue
-                    }
-                  }, {
-                    key: "resistance",
-                    label: "Resistance",
-                    disabled: false,
-                    style: {
-                      fill: colors.magenta
-                    }
-                  }
-                ]}/>
+                <Legend type="swatch" style={style} categories={categories}/>
               </div>
             </div>
           </div>
@@ -384,6 +402,16 @@ class Chart extends React.Component {
     const key = device.deviceId + device.channel
     const max = parseInt(signalFormat(device.signal.max()))
 
+    const style = basicDeviceStyles[i]
+
+    const categories = [
+      {
+        key: 'value',
+        label: 'Signal',
+        disabled: false
+      }
+    ]
+
     return (
       <div key={key} className={structure.chartContainer}>
         <div className="row" style={headingRowStyle}>
@@ -396,17 +424,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-3">
             <div className="pull-right">
               <div className={structure.legendWrapper}>
-                <Legend
-                  type="swatch"
-                  categories={[{
-                    key: "signal",
-                    label: "Signal",
-                    disabled: false,
-                    style: {
-                      fill: basicDeviceStyles[i].up[0]
-                    }
-                  }
-                ]}/>
+                <Legend type="swatch" style={style} categories={categories}/>
               </div>
             </div>
           </div>
@@ -424,7 +442,7 @@ class Chart extends React.Component {
             <ChartRow height={chartHeight} debug={false}>
               <YAxis id={leftAxisId} label="Signal" min={0} max={max} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
               <Charts>
-                <AreaChart axis={leftAxisId} series={device.signal} style={basicDeviceStyles[i]} columns={{
+                <AreaChart axis={leftAxisId} series={device.signal} style={style} columns={{
                   up: ['value']
                 }}/>
               </Charts>
@@ -462,6 +480,35 @@ class Chart extends React.Component {
       maxGrad = parseInt(device.gradient.max())
     }
 
+    const style = styler([
+      {
+        key: 'value',
+        color: colors.wahooblue
+      }, {
+        key: 'power',
+        color: colors.purple
+      }, {
+        key: 'resistance',
+        color: colors.yellow
+      }
+    ])
+
+    const categories = [
+      {
+        key: 'value',
+        label: 'Signal',
+        disabled: false
+      }, {
+        key: 'power',
+        label: 'Power',
+        disabled: false
+      }, {
+        key: 'resistance',
+        label: 'Resistance',
+        disabled: false
+      }
+    ]
+
     return (
       <div key={key} className={structure.chartContainer}>
         <div className="row" style={headingRowStyle}>
@@ -474,32 +521,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-3">
             <div className="pull-right">
               <div className={structure.legendWrapper}>
-                <Legend
-                  type="swatch"
-                  categories={[
-                  {
-                    key: "signal",
-                    label: "Signal",
-                    disabled: false,
-                    style: {
-                      fill: colors.wahooblue
-                    }
-                  }, {
-                    key: "power",
-                    label: "Power",
-                    disabled: false,
-                    style: {
-                      fill: colors.purple
-                    }
-                  }, {
-                    key: "resistance",
-                    label: "Resistance",
-                    disabled: false,
-                    style: {
-                      fill: colors.yellow
-                    }
-                  }
-                ]}/>
+                <Legend type="swatch" style={style} categories={categories}/>
               </div>
             </div>
           </div>
@@ -536,6 +558,21 @@ class Chart extends React.Component {
 
   renderSearchesBrush() {
 
+    const style = styler([
+      {
+        key: 'value',
+        color: colors.fiestared
+      }
+    ])
+
+    const categories = [
+      {
+        key: 'value',
+        label: 'Searches',
+        disabled: false
+      }
+    ]
+
     return (
       <div key="searchesBrush" className={structure.chartContainer}>
         <div className="row" style={headingRowStyle}>
@@ -548,17 +585,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-3">
             <div className="pull-right">
               <div className={structure.legendWrapper}>
-                <Legend
-                  type="swatch"
-                  categories={[{
-                    key: "searches",
-                    label: "Searches",
-                    disabled: false,
-                    style: {
-                      fill: colors.fiestared
-                    }
-                  }
-                ]}/>
+                <Legend type="swatch" style={style} categories={categories}/>
               </div>
             </div>
           </div>
@@ -569,7 +596,7 @@ class Chart extends React.Component {
               <Brush timeRange={this.state.brushrange} allowSelectionClear={true} onTimeRangeChanged={this.handleTimeRangeChange}></Brush>
               <YAxis id="searchesBrushAxis" label="Searches" min={0} max={1} width={leftAxisLabelWidth} type="linear" format="d"></YAxis>
               <Charts>
-                <BarChart axis="searchesBrushAxis" series={this.state.searches} style={searchesStyle} columns={["value"]}/>
+                <BarChart axis="searchesBrushAxis" series={this.state.searches} style={style} columns={["value"]}/>
               </Charts>
               <YAxis id="searchesBrushAxis2" label="Searches" min={0} max={1} width={rightAxisLabelWidth} type="linear" format="d"></YAxis>
             </ChartRow>
@@ -617,15 +644,15 @@ class Chart extends React.Component {
 
     const brush = this.renderSearchesBrush()
 
+    // {kickrChart}  {fecChart}
+
     return (
 
       <div className={structure.boxesWrapOuter}>
         <div className={structure.boxesWrapInner}>
           <div className={structure.boxFirstLast}>
             <div className={structure.chartsBoxContent}>
-              {kickrChart}
               {powerChart}
-              {fecChart}
               {basicDeviceCharts}
               {brush}
             </div>

@@ -43,12 +43,18 @@ export default function mapAntSearches(lines, timeAxisTimeSeries) {
 
   const reducedSeries = TimeSeries.timeSeriesListSum({
     name: 'searches',
-    columns: ['time', 'value'],
-  }, [timeAxisTimeSeries, ts])
+    fieldSpec: ['time', 'value'],
+    seriesList: [timeAxisTimeSeries, ts]
+  })
 
   // rollup max to exaggerate the search bars
-  const rollup = reducedSeries.fixedWindowRollup('10s', {
-    value: max
+  const rollup = reducedSeries.fixedWindowRollup({
+    windowSize: '10s',
+    aggregation: {
+      value: {
+        value: max()
+      }
+    }
   })
 
   return rollup

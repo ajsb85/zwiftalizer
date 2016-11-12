@@ -65,8 +65,13 @@ export default function reduceFps(lines, sampleWindow = '15s') {
 
   const timeseries = new TimeSeries(result)
 
-  const rollup = timeseries.fixedWindowRollup(sampleWindow, {
-    value: avg
+  const rollup = timeseries.fixedWindowRollup({
+    windowSize: sampleWindow,
+    aggregation: {
+      value: {
+        value: avg()
+      }
+    }
   })
 
   return rollup
