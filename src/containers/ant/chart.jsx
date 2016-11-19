@@ -206,7 +206,7 @@ class Chart extends React.Component {
       {
         key: 'value',
         color: colors.purple,
-        width: 1.5
+        width: 2
       }
     ])
 
@@ -300,7 +300,7 @@ class Chart extends React.Component {
       {
         key: 'value',
         color: colors.magenta,
-        width: 1.5
+        width: 2
       }
     ])
 
@@ -473,7 +473,7 @@ class Chart extends React.Component {
       {
         key: 'value',
         color: colors.purple,
-        width: 1.5
+        width: 2
       }
     ])
 
@@ -481,7 +481,7 @@ class Chart extends React.Component {
       {
         key: 'value',
         color: colors.yellow,
-        width: 1.5
+        width: 2
       }
     ])
 
