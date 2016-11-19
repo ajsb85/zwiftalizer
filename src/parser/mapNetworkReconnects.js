@@ -50,7 +50,7 @@ export default function mapNetworkReconnects(lines, timeAxisTimeSeries) {
 
   // rollup max to exaggerate the reconnects bars
   const rollup = reducedSeries.fixedWindowRollup({
-    windowSize: '10s',
+    windowSize: '30s',
     aggregation: {
       value: {
         value: max()

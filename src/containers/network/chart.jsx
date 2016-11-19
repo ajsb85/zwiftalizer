@@ -30,7 +30,8 @@ import {
   BarChart,
   Legend,
   Resizable,
-  Baseline
+  Baseline,
+  styler
 } from 'react-timeseries-charts'
 
 import {TimeSeries} from 'pondjs'
@@ -42,7 +43,7 @@ const minDuration = 15 * 1000
 
 const signalFormat = format('d');
 
-const chartHeight = 100
+const chartHeight = 150
 
 const leftLabelAxisLabelWidth = 110
 
@@ -56,42 +57,43 @@ const headingRowStyle = {
   marginBottom: '1rem'
 }
 
-const reconnectsStyle = {
-  value: {
-    normal: {
-      fill: colors.fiestared
-    }
+const reconnectsStyle = styler([
+  {
+    key: 'value',
+    color: colors.fiestared
   }
-}
+])
 
-const phoneConnectionAttemtpsStyles = {
-  value: {
-    normal: {
-      fill: colors.orange
-    }
+const phoneConnectionAttemtpsStyle = styler([
+  {
+    key: 'value',
+    color: colors.orange
   }
-}
+])
 
-const generalErrorsStyles = {
-  value: {
-    stroke: colors.fiestared,
-    strokeWidth: 1.5
+const generalErrorsStyle = styler([
+  {
+    key: 'value',
+    color: colors.fiestared,
+    width: 1.5
   }
-}
+])
 
-const delayedPacketErrorsStyles = {
-  value: {
-    stroke: colors.sonicblue,
-    strokeWidth: 1.5
+const delayedPacketErrorsStyle = styler([
+  {
+    key: 'value',
+    color: colors.sonicblue,
+    width: 1.5
   }
-}
+])
 
-const invalidRoadTimeWarningsStyles = {
-  value: {
-    stroke: colors.lavender,
-    strokeWidth: 1.5
+const invalidRoadTimeWarningsStyle = styler([
+  {
+    key: 'value',
+    color: colors.lavender,
+    width: 1.5
   }
-}
+])
 
 class Chart extends React.Component {
 
@@ -144,8 +146,36 @@ class Chart extends React.Component {
     const maxGeneralErrors = parseInt(signalFormat(this.state.errors.generalErrors.max()))
     const maxDelayed = parseInt(signalFormat(this.state.errors.delayedPackets.max()))
     const maxInvalidRoadTimeWarnings = parseInt(signalFormat(this.state.errors.invalidRoadTimeWarnings.max()))
-
     const maxMaxErrors = _.max([maxGeneralErrors, maxDelayed, maxInvalidRoadTimeWarnings])
+
+    const legendCategories = [
+      {
+        key: 'errors',
+        label: 'Errors',
+        disabled: false
+      }, {
+        key: 'delays',
+        label: 'Delays',
+        disabled: false
+      }, {
+        key: 'invalidRoadTimeWarnings',
+        label: 'Invalid Road Time Warnings',
+        disabled: false
+      }
+    ]
+
+    const legendStyle = styler([
+      {
+        key: 'errors',
+        color: colors.fiestared
+      }, {
+        key: 'delays',
+        color: colors.sonicblue
+      }, {
+        key: 'invalidRoadTimeWarnings',
+        color: colors.lavender
+      }
+    ])
 
     return (
       <div key="networkSignals">
@@ -160,32 +190,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-6">
             <div className="pull-right">
               <div className={structure.legendWrapper}>
-                <Legend
-                  type="swatch"
-                  categories={[
-                  {
-                    key: "erros",
-                    label: "Error",
-                    disabled: false,
-                    style: {
-                      fill: colors.fiestared
-                    }
-                  }, {
-                    key: "delays",
-                    label: "Delayed Packet",
-                    disabled: false,
-                    style: {
-                      fill: colors.sonicblue
-                    }
-                  },, {
-                    key: "invalidRoadTimeWarnings",
-                    label: "Invalid Road Time Warning",
-                    disabled: false,
-                    style: {
-                      fill: colors.lavender
-                    }
-                  }
-                ]}/>
+                <Legend type="swatch" style={legendStyle} categories={legendCategories}/>
               </div>
             </div>
           </div>
@@ -204,9 +209,9 @@ class Chart extends React.Component {
             <ChartRow height="150" debug={false}>
               <YAxis id="errors1" label="Errors" min={0} max={maxMaxErrors} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
               <Charts>
-                <LineChart axis="errors1" breakLine={true} series={this.state.errors.generalErrors} style={generalErrorsStyles} smooth={true} interpolation="curveBasis"/>
-                <LineChart axis="errors1" breakLine={true} series={this.state.errors.delayedPackets} style={delayedPacketErrorsStyles} smooth={true} interpolation="curveBasis"/>
-                <LineChart axis="errors1" breakLine={true} series={this.state.errors.invalidRoadTimeWarnings} style={invalidRoadTimeWarningsStyles} smooth={true} interpolation="curveBasis"/>
+                <LineChart axis="errors1" breakLine={true} series={this.state.errors.generalErrors} style={generalErrorsStyle} smooth={true} interpolation="curveBasis"/>
+                <LineChart axis="errors1" breakLine={true} series={this.state.errors.delayedPackets} style={delayedPacketErrorsStyle} smooth={true} interpolation="curveBasis"/>
+                <LineChart axis="errors1" breakLine={true} series={this.state.errors.invalidRoadTimeWarnings} style={invalidRoadTimeWarningsStyle} smooth={true} interpolation="curveBasis"/>
               </Charts>
               <YAxis id="errors1" label="Network" min={0} max={maxMaxErrors} absolute={true} width={rightAxisLabelWidth} type="linear" format="d"/>
             </ChartRow>
@@ -217,7 +222,6 @@ class Chart extends React.Component {
   }
 
   renderPhoneConnectionAttempts() {
-
     const max = parseInt(signalFormat(this.state.phoneConnectionAttempts.max()))
 
     return (
@@ -245,7 +249,7 @@ class Chart extends React.Component {
             <ChartRow height={chartHeight} debug={false}>
               <YAxis id="connectionAttempts1" label="Connection Attempts" min={0} max={max} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
               <Charts>
-                <BarChart axis="connectionAttempts1" series={this.state.phoneConnectionAttempts} style={phoneConnectionAttemtpsStyles} columns={["value"]}/>
+                <BarChart axis="connectionAttempts1" series={this.state.phoneConnectionAttempts} style={phoneConnectionAttemtpsStyle} columns={["value"]}/>
               </Charts>
               <YAxis id="connectionAttempts2" label="Connection Attempts" min={0} max={max} absolute={true} width={rightAxisLabelWidth} type="linear" format="d"/>
             </ChartRow>
@@ -288,9 +292,7 @@ class Chart extends React.Component {
     const networkSignals = this.renderNetworkSignals()
 
     const phoneConnectionAttempts = this.renderPhoneConnectionAttempts()
-
     const brush = this.renderReconnectsBrush()
-
     return (
       <div>
         {networkSignals}

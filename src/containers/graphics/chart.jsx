@@ -24,7 +24,8 @@ import {
   AreaChart,
   Legend,
   Resizable,
-  Baseline
+  Baseline,
+  styler
 } from 'react-timeseries-charts'
 
 import {TimeSeries} from 'pondjs';
@@ -50,23 +51,20 @@ const goodStyle = {
   color: colors.fiestared
 }
 
-const primaryStyle = {
-  value: {
-    stroke: colors.brand,
-    strokeWidth: 1.5
+const primaryStyle = styler([
+  {
+    key: 'value',
+    color: colors.brand,
+    width: 1.5
   }
-}
+])
 
-const baselineStyles = {
-  solid: {
-    stroke: colors.beige,
-    opacity: 0.3,
-    width: 0.2
-  },
-  dashed: {
+const baselineStyle = {
+  line: {
     stroke: colors.steel,
-    opacity: 0.3,
-    width: 0.2
+    strokeWidth: 1,
+    opacity: 1,
+    dashed: true
   }
 }
 
@@ -257,11 +255,11 @@ class Chart extends React.Component {
                     maxTime={this.state.initialRange.end()}
                     minTime={this.state.initialRange.begin()}
                     showGrid={false}>
-                    <ChartRow height="150" debug={false} trackerValues={trackerValues} trackerHintHeight={30}>
+                    <ChartRow height="175" debug={false} trackerValues={trackerValues} trackerHintHeight={30}>
                       <LabelAxis id="fpsAxis" label="FPS" values={this.state.fpsSummaryValues} min={this.state.minOverall} max={this.state.maxOverall} width={100} type="linear" format="d"/>
                       <Charts>
                         <LineChart axis="fpsAxis" series={this.fpsSeries} style={primaryStyle} smooth={true} interpolation="curveBasis"/>
-                        <Baseline axis="fpsAxis" value={this.state.avgOverall} style={baselineStyles.solid}/>
+                        <Baseline axis="fpsAxis" value={this.state.avgOverall} style={baselineStyle} label="Avg" position="left"/>
                       </Charts>
                       <ValueAxis id="trackerValueAxis" value={fpsValue} detail="FPS" width={60} min={this.state.minOverall} max={this.state.maxOverall}/>
                     </ChartRow>
@@ -269,12 +267,12 @@ class Chart extends React.Component {
                 </Resizable>
                 <Resizable>
                   <ChartContainer timeRange={this.state.initialRange} format="HH:mm:ss" trackerPosition={this.state.tracker}>
-                    <ChartRow height="100" debug={false}>
+                    <ChartRow height="125" debug={false}>
                       <Brush timeRange={this.state.brushrange} allowSelectionClear={true} onTimeRangeChanged={this.handleTimeRangeChange}></Brush>
                       <YAxis id="fpsBrushAxis" label="FPS" min={this.state.minOverall - 5} max={this.state.maxOverall + 5} width={100} type="linear" format="d"></YAxis>
                       <Charts>
                         <LineChart axis="fpsBrushAxis" series={this.fpsSeries} style={primaryStyle} smooth={true} interpolation="curveBasis"/>
-                        <Baseline axis="fpsBrushAxis" value={this.state.avgOverall} style={baselineStyles.solid}/>
+                        <Baseline axis="fpsBrushAxis" value={this.state.avgOverall} style={baselineStyle}/>
                       </Charts>
                       <YAxis id="fpsBrushAxis2" label="FPS" min={this.state.minOverall - 5} max={this.state.maxOverall + 5} width={60} type="linear" format="d"></YAxis>
                     </ChartRow>

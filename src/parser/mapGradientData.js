@@ -52,7 +52,7 @@ export default function mapGradientData(lines, timeAxisTimeSeries) {
       let value = parseFloat(matches[3])
 
       if (type && type.toLowerCase() === 'kickr') {
-        value = value / 100
+        value = value * 100
       }
 
       result.points.push([timestamp, value])

@@ -50,7 +50,7 @@ export default function mapNetworkPhoneConnectionAttempts(lines, timeAxisTimeSer
 
   // rollup max to exaggerate the reconnects bars
   const rollup = reducedSeries.fixedWindowRollup({
-    windowSize: '10s',
+    windowSize: '60s',
     aggregation: {
       value: {
         value: max()

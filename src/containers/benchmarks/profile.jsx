@@ -41,6 +41,10 @@ class Profile extends React.Component {
         break;
     }
 
+    const totalSystems = results && results.length
+      ? results.length
+      : 0;
+
     var systemWithBestAvg = results && _.max(results, _.property('avgFps'))
 
     var maxAvgResolutionProfile = systemWithBestAvg
@@ -79,7 +83,8 @@ class Profile extends React.Component {
 
     return (
       <div className={styles.benchmarksWrapOuter}>
-        <div className={styles.benchmarksBoxHeading}>{resolution}&nbsp;{name}</div>
+        <div className={styles.benchmarksBoxHeading}>{resolution}&nbsp;{name}&nbsp;<span className={styles.badge}>{totalSystems}</span>
+        </div>
         <div className={styles.benchmarksBoxContent}>
           <div className="container-fluid">
             <div className="row">

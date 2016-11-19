@@ -43,30 +43,18 @@ const headingRowStyle = {
   marginBottom: '1rem'
 }
 
-const searchesStyle = {
-  value: {
-    normal: {
-      fill: colors.fiestared
-    }
-  }
-}
-
-const baselineStyles = {
-  solid: {
-    stroke: 'steelblue',
-    opacity: 0.3,
-    width: 1
-  },
-  dashed: {
-    stroke: 'steelblue',
-    opacity: 0.3,
-    width: 1
+const baselineStyle = {
+  line: {
+    stroke: colors.steel,
+    strokeWidth: 1,
+    opacity: 1,
+    dashed: true
   }
 }
 
 const chartHeight = 85
 
-const largeChartHeight = 150
+const largeChartHeight = 175
 
 const leftLabelAxisLabelWidth = 110
 
@@ -75,34 +63,6 @@ const leftAxisLabelWidth = 60
 const rightAxisLabelWidth = 60
 
 const powerFormat = format('d');
-
-const wahooGradientChangeStyles = {
-  value: {
-    stroke: colors.yellow,
-    strokeWidth: 1.5
-  }
-}
-
-const fecGradientChangeStyles = {
-  value: {
-    stroke: colors.magenta,
-    strokeWidth: 1.5
-  }
-}
-
-const kickrSignalStyle = styler([
-  {
-    key: 'up',
-    color: colors.wahooblue
-  }
-])
-
-const fecSignalStyles = styler([
-  {
-    key: 'up',
-    color: colors.tacxblue
-  }
-])
 
 const basicDeviceColors = [colors.salmonpink, colors.sonicblue, colors.beige]
 
@@ -238,6 +198,13 @@ class Chart extends React.Component {
         color: colors.seafoamgreen
       }, {
         key: 'power',
+        color: colors.purple
+      }
+    ])
+
+    const powerStyle = styler([
+      {
+        key: 'value',
         color: colors.purple,
         width: 1.5
       }
@@ -284,13 +251,14 @@ class Chart extends React.Component {
             minTime={this.state.initialRange.begin()}
             showGrid={false}>
             <ChartRow height={largeChartHeight} debug={false}>
-              <YAxis id="powerWatts" label="Watts" min={minPower} max={maxPower} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
+              <YAxis id="powerAxis" label="Watts" min={minPower} max={maxPower} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
               <Charts>
                 <AreaChart axis="powerSignal" series={device.signal} style={style} columns={{
                   up: ['value']
                 }}/>
-                <LineChart axis="powerWatts" breakLine={true} series={device.power} style={style} smooth={true} interpolation="curveBasis"/>
-                <Baseline axis="powerWatts" value={avgPower} style={baselineStyles.solid}/>
+                <LineChart axis="powerAxis" breakLine={true} series={device.power} style={powerStyle} smooth={true} interpolation="curveBasis"/>
+                <Baseline axis="powerAxis" style={baselineStyle} value={maxPower} label="Max Pwr" position="left"/>
+                <Baseline axis="powerAxis" style={baselineStyle} value={avgPower} label="Avg Pwr" position="left"/>
               </Charts>
               <YAxis id="powerSignal" label="Signal" min={0} max={maxSignal} absolute={true} width={rightAxisLabelWidth} type="linear" format="d"/>
             </ChartRow>
@@ -325,6 +293,14 @@ class Chart extends React.Component {
       }, {
         key: 'resistance',
         color: colors.magenta
+      }
+    ])
+
+    const resistanceStyle = styler([
+      {
+        key: 'value',
+        color: colors.magenta,
+        width: 1.5
       }
     ])
 
@@ -370,10 +346,10 @@ class Chart extends React.Component {
             <ChartRow height={largeChartHeight} debug={false}>
               <YAxis id="gradientAxis" label="Resistance" min={minGrad} max={maxGrad} absolute={true} width={leftAxisLabelWidth} type="linear" format=",.2f"/>
               <Charts>
-                <AreaChart axis="fecSignal" series={device.signal} style={fecSignalStyles} columns={{
+                <AreaChart axis="fecSignal" series={device.signal} style={style} columns={{
                   up: ['value']
                 }}/>
-                <LineChart axis="gradientAxis" breakLine={true} series={device.gradient} style={fecGradientChangeStyles} smooth={true} interpolation="curveBasis"/>
+                <LineChart axis="gradientAxis" breakLine={true} series={device.gradient} style={resistanceStyle} smooth={true} interpolation="curveBasis"/>
               </Charts>
               <YAxis id="fecSignal" label="Signal" min={0} max={maxSignal} absolute={true} width={rightAxisLabelWidth} type="linear" format="d"/>
             </ChartRow>
@@ -493,6 +469,22 @@ class Chart extends React.Component {
       }
     ])
 
+    const powerStyle = styler([
+      {
+        key: 'value',
+        color: colors.purple,
+        width: 1.5
+      }
+    ])
+
+    const resistanceStyle = styler([
+      {
+        key: 'value',
+        color: colors.yellow,
+        width: 1.5
+      }
+    ])
+
     const categories = [
       {
         key: 'value',
@@ -541,12 +533,13 @@ class Chart extends React.Component {
               <YAxis id="powerAxis" label="Power" min={minPower} max={maxPower} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
               <YAxis id="gradientAxis" label="Resistance" min={minGrad} max={maxGrad} absolute={true} width={leftAxisLabelWidth} type="linear" format=",.2f"/>
               <Charts>
-                <AreaChart axis="powerSignal" series={device.signal} style={kickrSignalStyle} columns={{
+                <AreaChart axis="powerSignal" series={device.signal} style={style} columns={{
                   up: ['value']
                 }}/>
-                <LineChart axis="gradientAxis" breakLine={true} series={device.gradient} style={wahooGradientChangeStyles} smooth={true} interpolation="curveBasis"/>
-                <LineChart axis="powerAxis" breakLine={true} series={device.power} style={powerOutputStyles} smooth={true} interpolation="curveBasis"/>
-                <Baseline axis="powerAxis" value={avgPower} style={powerOutputStyles.solid}/>
+                <LineChart axis="gradientAxis" breakLine={true} series={device.gradient} style={resistanceStyle} smooth={true} interpolation="curveBasis"/>
+                <LineChart axis="powerAxis" breakLine={true} series={device.power} style={powerStyle} smooth={true} interpolation="curveBasis"/>
+                <Baseline axis="powerAxis" style={baselineStyle} value={maxPower} label="Max" position="left"/>
+                <Baseline axis="powerAxis" style={baselineStyle} value={avgPower} label="Avg" position="left"/>
               </Charts>
               <YAxis id="powerSignal" label="Signal" min={0} max={maxSignal} absolute={true} width={rightAxisLabelWidth} type="linear" format="d"/>
             </ChartRow>
@@ -644,8 +637,6 @@ class Chart extends React.Component {
 
     const brush = this.renderSearchesBrush()
 
-    // {kickrChart}  {fecChart}
-
     return (
 
       <div className={structure.boxesWrapOuter}>
@@ -653,6 +644,8 @@ class Chart extends React.Component {
           <div className={structure.boxFirstLast}>
             <div className={structure.chartsBoxContent}>
               {powerChart}
+              {kickrChart}
+              {fecChart}
               {basicDeviceCharts}
               {brush}
             </div>

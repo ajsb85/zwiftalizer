@@ -4,7 +4,7 @@ import structure from '../../styles/structure.css'
 import editorialStyles from '../../styles/editorial.css'
 import styles from './styles.css'
 
-class Accessorize extends React.Component {
+class Shop extends React.Component {
 
   constructor(props) {
     super(props)
@@ -30,8 +30,7 @@ class Accessorize extends React.Component {
                     <div className="col-xs-12 col-sm-8">
                       <p></p>
                       <p>
-                        The following Zwift related peripherals are considered 'the best' based on personal experience. The opinions on this page are those of the author of this website and are not those
-                        of Zwift LLC.
+                        The following Zwift related peripherals are considered 'the best' based on personal experience.
                       </p>
                     </div>
                   </div>
@@ -289,4 +288,4 @@ class Accessorize extends React.Component {
     )
   }
 }
-export {Accessorize}
+export {Shop}
