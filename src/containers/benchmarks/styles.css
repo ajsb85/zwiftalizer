@@ -16,16 +16,13 @@
 }
 .benchmarksBoxHeading {
   composes: boxHeadingLast from '../../styles/structure.css';
+  text-align: left;
   border-top-right-radius: 2.5rem;
   font-weight: 600;
   font-size: 2.2rem;
   line-height: 2.2rem;
   min-height: 5rem;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: capitalize;
+  padding: 1.2rem 0;
 }
 .benchmarksBoxContent {
   background: #f6f6f6;
@@ -75,12 +72,12 @@
   padding: 0.3rem 0.7rem;
   font-size: 1.8rem;
   font-weight: 600;
-  color: #999;
+  color: #178acc;
   line-height: 1;
   vertical-align: middle;
   white-space: nowrap;
   text-align: center;
   background-color: #eee;
   border-radius: 1.5rem;
-  border: 0.2rem solid #999;
+  border: 0.2rem solid #1580BD;
 }
