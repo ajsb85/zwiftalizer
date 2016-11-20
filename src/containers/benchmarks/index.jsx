@@ -34,11 +34,11 @@ class Benchmarks extends React.Component {
 
   renderBenchmarks() {
 
-    const {resolutions, dateLastUpdate, totalRecords} = this.props
+    const {resolutions, dateLastUpdate, totalRecords, expanded} = this.props
 
     var resolutionEntries = resolutions && resolutions.map(function(resolution, i) {
 
-      const data = Object.assign({}, resolution, {totalRecords})
+      const data = Object.assign({}, resolution, {totalRecords, expanded})
 
       return (<Resolution data={data} key={data.resolution}/>)
     }, this)

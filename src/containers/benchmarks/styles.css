@@ -25,18 +25,13 @@
   padding: 1.2rem 0;
 }
 .benchmarksBoxContent {
+  overflow-y: scroll;
+  overflow-x: hidden;
   background: #f6f6f6;
-  padding: 1rem 0.2rem 1rem 0.2rem;
+  /*padding: 1rem 0.2rem 1rem 0.2rem;*/
   width: 100%;
-  overflow: hidden;
   border-bottom-left-radius: 2.5rem;
   text-align: left;
-  overflow: hidden;
-  transition: all .2s ease-in;
-}
-.benchmarksBoxContentClosed {
-  composes: benchmarksBoxContent;
-  height: 0;
 }
 .benchmarksBoxContent h3 {
   font-weight: 600;

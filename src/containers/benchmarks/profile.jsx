@@ -1,5 +1,8 @@
 var _ = require('underscore');
-import React from 'react'
+const _find = require('lodash/find');
+import React, {Component, PropTypes} from 'react'
+import {connect} from 'react-redux'
+import {toggleProfilePanel} from '../../actions/benchmarks'
 import System from './system.jsx'
 import structure from '../../styles/structure.css'
 import styles from './styles.css'
@@ -8,17 +11,33 @@ class Profile extends React.Component {
 
   constructor(props) {
     super(props)
+    this.togglePanel = this.togglePanel.bind(this)
+  }
+
+  togglePanel(e) {
+    e.preventDefault()
+    const {dispatch} = this.props
+    dispatch(toggleProfilePanel(e.currentTarget.getAttribute('data-panel-key')))
+  }
+
+  getPerformanceScoreMarkup(score) {
+    const items = []
+
+    for (let i = 0, len = score; i < len; i++) {
+      const key = i + 1
+      items.push(
+        <i className="fa fa-star" key={key}></i>
+      )
+
+    }
+    return items
   }
 
   render() {
 
-    console.log(this.props)
+    const {resolution, totalRecords, profileId, results, expanded} = this.props.data
 
-    const {resolution, totalRecords, profileId, results} = this.props.data
-
-    const headingKey = 'heading-' + this.props.keyName
-
-    console.log(headingKey)
+    const panelKey = this.props.keyName
 
     var name = '';
 
@@ -45,6 +64,14 @@ class Profile extends React.Component {
         name = 'Basic'
         break;
     }
+
+    // a 'score' for the current resolution and profile combination works out as a scale of 3/10 to 10/10
+    const performanceScore = Math.round(resolution / 395) + profileId + 2;
+
+    const maxScore = 10;
+
+    console.log('performanceScore')
+    console.log(performanceScore)
 
     const totalSystems = results && results.length
       ? results.length
@@ -90,16 +117,35 @@ class Profile extends React.Component {
 
     //const headingMarkup = renderHeading(resolution, name, totalSystems, totalRecords, percentage)
 
+    const isExpanded = _find(expanded, function(panel) {
+      return panel === panelKey
+    })
+
+    const panelStyle = isExpanded
+      ? {
+        maxHeight: '5000rem'
+      }
+      : {
+        maxHeight: 0,
+        overflow: 'hidden'
+      }
+
     return (
 
       <div className={styles.benchmarksWrapOuter}>
-        <div className={styles.benchmarksBoxHeading}>
+        <div onClick={this.togglePanel} className={styles.benchmarksBoxHeading} data-panel-key={panelKey}>
           <div className="container-fluid">
             <div className="row">
-              <div className="col-xs-6">
-                {resolution}&nbsp;{name}
+              <div className="col-xs-2 col-sm-1">
+                {isExpanded
+                  ? <i className="fa fa-minus"></i>
+                  : <i className="fa fa-plus"></i>
+}
               </div>
-              <div className="col-xs-6">
+              <div className="col-xs-10 col-sm-7">
+                {resolution}&nbsp;{name}&nbsp; {this.getPerformanceScoreMarkup(performanceScore)}&nbsp;<span className={styles.badge}>{performanceScore}/{maxScore}</span>
+              </div>
+              <div className="col-xs-12 col-sm-4">
                 <div className="pull-right">
                   Systems&nbsp;<span className={styles.badge}>{totalSystems}/{totalRecords}</span>&nbsp;<span className={styles.badge}>{percentage}</span>
                 </div>
@@ -108,7 +154,8 @@ class Profile extends React.Component {
           </div>
         </div>
 
-        <div className={styles.benchmarksBoxContentClosed}>
+        <div className={styles.benchmarksBoxContent} style={panelStyle}>
+
           <div className="container-fluid">
             <div className="row">
               <div className="hidden-xs col-sm-offset-2 col-sm-5">
@@ -142,36 +189,24 @@ class Profile extends React.Component {
             </div>
             {resultsData}
           </div>
+
         </div>
 
       </div>
 
     )
   }
-
-  renderHeading(resolution, name, totalSystems, totalRecords, percentage) {
-
-    return (
-
-      <div className={styles.benchmarksBoxHeading}>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-xs-6">
-              {resolution}&nbsp;{name}
-            </div>
-            <div className="col-xs-6">
-              <div className="pull-right">
-                Systems&nbsp;<span className={styles.badge}>{totalSystems}/{totalRecords}</span>&nbsp;<span className={styles.badge}>{percentage}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    )
-
-  }
-
 }
 
-export default Profile
+function mapStateToProps(state) {
+  const {benchmarks} = state
+  return {
+    ...benchmarks
+  }
+}
+
+Profile.propTypes = {
+  benchmarks: PropTypes.object
+}
+
+export default connect(mapStateToProps)(Profile)
