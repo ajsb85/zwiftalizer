@@ -1,7 +1,6 @@
 import React from 'react'
 import Profile from './profile.jsx'
 import structure from '../../styles/structure.css'
-
 class Resolution extends React.Component {
 
   constructor(props) {
@@ -10,7 +9,7 @@ class Resolution extends React.Component {
 
   render() {
 
-    const {resolution, profiles} = this.props.data
+    const {resolution, profiles, totalRecords} = this.props.data
 
     var profileData = profiles && profiles.map(function(profile, i) {
 
@@ -20,24 +19,26 @@ class Resolution extends React.Component {
 
         const data = {
           resolution,
+          totalRecords,
           ...profile
         }
 
-        const key = resolution.resolution + '-' + profileId
+        const key = resolution + '-' + profileId
 
-        return (<Profile data={data} key={key}/>)
+        console.log(key)
+
+        return (<Profile data={data} key={key} keyName={key}/>)
       }
 
     }, this)
 
+    //
+    // <div className={structure.boxesWrapInner}>   <div className={structure.boxLast}>     {profileData}   </div> </div>
+    //
+    //
     return (
-
       <div>
-        <div className={structure.boxesWrapInner}>
-          <div className={structure.boxLast}>
-            {profileData}
-          </div>
-        </div>
+        {profileData}
       </div>
     )
 

@@ -1,5 +1,4 @@
-var _ = require('underscore')
-
+var _ = require('underscore');
 import React from 'react'
 import System from './system.jsx'
 import structure from '../../styles/structure.css'
@@ -7,139 +6,172 @@ import styles from './styles.css'
 
 class Profile extends React.Component {
 
-    constructor(props) {
-        super(props)
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+
+    console.log(this.props)
+
+    const {resolution, totalRecords, profileId, results} = this.props.data
+
+    const headingKey = 'heading-' + this.props.keyName
+
+    console.log(headingKey)
+
+    var name = '';
+
+    switch (profileId) {
+      case(3):
+        {
+          name = 'Ultra'
+        }
+        break;
+
+      case(2):
+        {
+          name = 'High'
+        }
+        break;
+
+      case(1):
+        {
+          name = 'Medium'
+        }
+        break;
+
+      default:
+        name = 'Basic'
+        break;
     }
 
-    render() {
+    const totalSystems = results && results.length
+      ? results.length
+      : 0;
 
-        const {resolution, profileId, results} = this.props.data
+    var systemWithBestAvg = results && _.max(results, _.property('avgFps'))
 
-        var name = '';
+    var maxAvgResolutionProfile = systemWithBestAvg
+      ? systemWithBestAvg.avgFps
+      : 0;
 
-        switch (profileId) {
-            case(3):
-                {
-                    name = 'Ultra'
-                }
-                break;
+    var systemWithBestMax = results && _.max(results, _.property('maxFps'))
 
-            case(2):
-                {
-                    name = 'High'
-                }
-                break;
+    var maxMaxResolutionProfile = systemWithBestMax
+      ? systemWithBestMax.maxFps
+      : 0;
 
-            case(1):
-                {
-                    name = 'Medium'
-                }
-                break;
+    var resultsData = results && results.map(function(result, i) {
 
-            default:
-                name = 'Basic'
-                break;
-        }
+      const data = {
+        maxAvgResolutionProfile,
+        maxMaxResolutionProfile,
+        ...result
+      }
 
-        const totalSystems = results && results.length
-            ? results.length
-            : 0;
+      const key = resolution + '-' + profileId + '-' + i
 
-        var systemWithBestAvg = results && _.max(results, _.property('avgFps'))
+      return (<System data={data} key={key}/>)
 
-        var maxAvgResolutionProfile = systemWithBestAvg
-            ? systemWithBestAvg.avgFps
-            : 0;
+    }, this)
 
-        var systemWithBestMax = results && _.max(results, _.property('maxFps'))
+    const progressStyle = {
+      marginTop: '1rem',
+      marginBottom: '0.2rem'
+    }
 
-        var maxMaxResolutionProfile = systemWithBestMax
-            ? systemWithBestMax.maxFps
-            : 0;
+    const barStyle = {
+      width: '33.33%',
+      minWidth: '0.2rem'
+    }
 
-        var resultsData = results && results.map(function(result, i) {
+    const percentage = Math.round(totalSystems / totalRecords * 100) + '%'
 
-            const data = {
-                maxAvgResolutionProfile,
-                maxMaxResolutionProfile,
-                ...result
-            }
+    //const headingMarkup = renderHeading(resolution, name, totalSystems, totalRecords, percentage)
 
-            const key = resolution.resolution + '-' + profileId + '-' + i
+    return (
 
-            return (<System data={data} key={key}/>)
-
-        }, this)
-
-        const progressStyle = {
-            marginTop: '1rem',
-            marginBottom: '0.2rem'
-        }
-
-        const barStyle = {
-            width: '33.33%',
-            minWidth: '0.2rem'
-        }
-
-        return (
-            <div className={styles.benchmarksWrapOuter}>
-                <div className={styles.benchmarksBoxHeading}>
-
-                    <div className="container-fluid">
-                        <div className="row">
-                            <div className="col-xs-6">
-                                {resolution}&nbsp;{name}
-                            </div>
-                            <div className="col-xs-6">
-                                <div className="pull-right">
-                                    Systems <span className={styles.badge}>{totalSystems}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+      <div className={styles.benchmarksWrapOuter}>
+        <div className={styles.benchmarksBoxHeading}>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-xs-6">
+                {resolution}&nbsp;{name}
+              </div>
+              <div className="col-xs-6">
+                <div className="pull-right">
+                  Systems&nbsp;<span className={styles.badge}>{totalSystems}/{totalRecords}</span>&nbsp;<span className={styles.badge}>{percentage}</span>
                 </div>
-                <div className={styles.benchmarksBoxContent}>
-                    <div className="container-fluid">
-                        <div className="row">
-                            <div className="hidden-xs col-sm-offset-2 col-sm-5">
-                                <h3>System</h3>
-                            </div>
-                            <div className="hidden-xs col-sm-5">
-                                <div className="row">
-
-                                    <div className="col-xs-6">
-                                        <h3>FPS</h3>
-                                    </div>
-
-                                    <div className="col-xs-6">
-                                        <div className="progress" style={progressStyle}>
-                                            <div className="progress-bar progress-bar-success" role="progressbar" style={barStyle}>
-                                                Max
-                                            </div>
-                                            <div className="progress-bar" role="progressbar" style={barStyle}>
-                                                Avg
-                                            </div>
-                                            <div className="progress-bar progress-bar-warning" role="progressbar" style={barStyle}>
-                                                Min
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="hidden-xs col-sm-offset-7 col-sm-5">
-                                <p>Ordered by average FPS descending. Longer bars are better.</p>
-                            </div>
-                        </div>
-                        {resultsData}
-                    </div>
-                </div>
+              </div>
             </div>
-        )
+          </div>
+        </div>
 
-    }
+        <div className={styles.benchmarksBoxContentClosed}>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="hidden-xs col-sm-offset-2 col-sm-5">
+                <h3>System</h3>
+              </div>
+              <div className="hidden-xs col-sm-5">
+                <div className="row">
+                  <div className="col-xs-6">
+                    <h3>FPS</h3>
+                  </div>
+                  <div className="col-xs-6">
+                    <div className="progress" style={progressStyle}>
+                      <div className="progress-bar progress-bar-success" role="progressbar" style={barStyle}>
+                        Max
+                      </div>
+                      <div className="progress-bar" role="progressbar" style={barStyle}>
+                        Avg
+                      </div>
+                      <div className="progress-bar progress-bar-warning" role="progressbar" style={barStyle}>
+                        Min
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="hidden-xs col-sm-offset-7 col-sm-5">
+                <p>Ordered by average FPS descending. Longer bars are better.</p>
+              </div>
+            </div>
+            {resultsData}
+          </div>
+        </div>
+
+      </div>
+
+    )
+  }
+
+  renderHeading(resolution, name, totalSystems, totalRecords, percentage) {
+
+    return (
+
+      <div className={styles.benchmarksBoxHeading}>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-xs-6">
+              {resolution}&nbsp;{name}
+            </div>
+            <div className="col-xs-6">
+              <div className="pull-right">
+                Systems&nbsp;<span className={styles.badge}>{totalSystems}/{totalRecords}</span>&nbsp;<span className={styles.badge}>{percentage}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    )
+
+  }
+
 }
 
 export default Profile

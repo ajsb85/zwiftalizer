@@ -1,6 +1,6 @@
 .benchmarksWrapOuter {
   width: 100%;
-  margin: 1.5rem 0 3rem 0;
+  margin: 1.5rem 0 1.5rem 0;
 }
 .iconsWrapper {
   display: flex;
@@ -31,6 +31,12 @@
   overflow: hidden;
   border-bottom-left-radius: 2.5rem;
   text-align: left;
+  overflow: hidden;
+  transition: all .2s ease-in;
+}
+.benchmarksBoxContentClosed {
+  composes: benchmarksBoxContent;
+  height: 0;
 }
 .benchmarksBoxContent h3 {
   font-weight: 600;
