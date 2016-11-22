@@ -64,10 +64,19 @@
   align-items: center;
   justify-content: flex-end;
 }
-@media(max-width:991px) {
+@media only screen and (max-width: 766px) {
   .editorialBoxHeading {
-    height: 12rem;
-    min-height: 12rem;
+    height: 8.5rem;
+    min-height: 8.5rem;
+    text-align: left;
+    font-size: 1.8rem;
+    line-height: 3.2rem;
+  }
+}
+@media only screen and (max-width:990px) {
+  .editorialBoxHeading {
+    height: 8rem;
+    min-height: 8rem;
   }
   .donateButtonWrapper {
     height: 9rem;

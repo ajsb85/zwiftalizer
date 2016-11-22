@@ -58,29 +58,15 @@ class Benchmarks extends React.Component {
               <div className={editorialStyles.editorialBoxContent}>
                 <div className="container-fluid">
                   <div className="row">
-                    <div className="col-xs-12 col-sm-offset-1 col-sm-10">
-                      <div className={editorialStyles.editorialColumn}>
-                        <div className={styles.centered}>
-                          <div className="alert alert-danger" role="alert">
-                            <div className={styles.centered}>
-                              <p>
-                                This report is&nbsp;<strong>not</strong>&nbsp;an official Zwift resource and is&nbsp;<strong>not</strong>&nbsp;supported by Zwift HQ.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
+                    <div className="col-xs-12 col-sm-8">
+                      <div className={styles.lastUpdateTime}>
+                        Last Updated: {dateLastUpdateHuman}
                       </div>
                     </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="col-xs-12 col-sm-offset-1 col-sm-5">
-                      <p>
-                        Last Updated: {dateLastUpdateHuman}
-                      </p>
-                    </div>
-                    <div className="col-xs-12 col-sm-5">
-                      <div className="pull-right">Total Systems: {totalRecords}</div>
+                    <div className="col-xs-12 col-sm-4">
+                      <div className={styles.systemsCount}>
+                        Total systems&nbsp;<span className={styles.systemsCountBadge}>{totalRecords}</span>
+                      </div>
                     </div>
                   </div>
                 </div>

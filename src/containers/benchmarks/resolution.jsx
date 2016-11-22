@@ -31,10 +31,6 @@ class Resolution extends React.Component {
 
     }, this)
 
-    //
-    // <div className={structure.boxesWrapInner}>   <div className={structure.boxLast}>     {profileData}   </div> </div>
-    //
-    //
     return (
       <div>
         {profileData}
