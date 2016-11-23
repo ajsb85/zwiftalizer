@@ -1,3 +1,5 @@
+const _ = require('underscore');
+
 import {
   createStore,
   compose,
@@ -28,12 +30,27 @@ export default function configureStore() {
   // default sharing to the benchmarks is on
   let share = true;
 
+  // default expanded benchmarks panel
+  let expanded = ['1080-2']
+
   if (localStoragePreferences !== null) {
-    share = localStoragePreferences.share
+
+    if (!_.isUndefined(localStoragePreferences.share)) {
+      share = localStoragePreferences.share
+    }
+
+    if (!_.isUndefined(localStoragePreferences.expanded)) {
+      expanded = localStoragePreferences.expanded
+    }
+
   }
 
   initialState.preferences = {
     share: share
+  }
+
+  initialState.benchmarks = {
+    expanded: expanded
   }
 
   const store = createStore(
@@ -43,7 +60,7 @@ export default function configureStore() {
       applyMiddleware(
         // lets us dispatch async functions
         thunkMiddleware,
-        loggerMiddleware // neat middleware that logs actions
+        //loggerMiddleware // neat middleware that logs actions
       )
       //,
       // enables redux chrome dev tools extension

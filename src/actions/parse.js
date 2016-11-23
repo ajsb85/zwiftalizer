@@ -27,6 +27,10 @@ export const FILE_LOADING = 'FILE_LOADING'
 export const RESET = 'RESET'
 export const UPDATE_PROGRESS = 'UPDATE_PROGRESS'
 
+import {
+  TOGGLE_PROFILE_PANEL
+} from './benchmarks'
+
 function parseFileContents(log, isDemo = false, share = true) {
 
   return dispatch => {
@@ -87,6 +91,51 @@ function parseFileContents(log, isDemo = false, share = true) {
         }
       })
 
+      const profileName = systemData.profile ? systemData.profile.toLowerCase() : '';
+
+      let profileId = 0;
+
+      if (profileName !== '') {
+
+        switch (profileName) {
+
+          case ('ultra'):
+            {
+              profileId = 3
+            }
+            break;
+
+          case ('high'):
+            {
+              profileId = 2
+            }
+            break;
+
+          case ('medium'):
+            {
+              profileId = 1
+            }
+            break;
+
+          default:
+            profileId = 0
+            break;
+        }
+
+        const panelKey = (systemData.resolution ? systemData.resolution : '') + '-' + profileId
+
+        // this dispatch is to write which benchmarks panel to expanded
+        // based on the current system
+        // using local storage to persist this state
+        // of which panels are toggled
+        dispatch({
+          type: TOGGLE_PROFILE_PANEL,
+          data: {
+            'key': panelKey
+          }
+        })
+
+      }
       dispatch({
         type: SET_ANT_DATA,
         data: {

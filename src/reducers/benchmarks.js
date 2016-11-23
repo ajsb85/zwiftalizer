@@ -40,6 +40,18 @@ function benchmarks(state = {
         nextState.expanded.push(action.data.key)
       }
 
+      const prefs = {
+        'expanded': nextState.expanded
+      }
+
+      if (!localStorage.preferences) {
+        localStorage.preferences = JSON.stringify(prefs)
+      } else {
+        const preferences = JSON.parse(localStorage.preferences)
+        let nextPreferences = Object.assign({}, preferences, prefs)
+        localStorage.preferences = JSON.stringify(nextPreferences)
+      }
+
       return nextState
 
     default:

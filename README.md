@@ -14,16 +14,19 @@ This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
 The code runs 100% in your web browser on your computer.
 
-## 0.9.5 Changes (2016-11-24)
+## 0.9.5 Changes (2016-11-22)
 
+* Benchmarks - Added system count (absolute and percentage) in each Resolution/Profile group
+* Benchmarks - Added opinionated score out of 10 and novelty caption for each Resolution/Profile group
+* Benchmarks - Collapsible panels with state persisted to local storage
+* Benchmarks - Default expanded panel is 1080 High, and whatever Resolution/Profile group the current system falls into
+* Maintenance - Renamed Accessorize to Shop
+* Maintenance - Fixed issue with gradient change data not rendering for Wahoo and Tacx trainers
+* Maintenance - Removed battery level indicators (too many proprietary message types to support)
 * Maintenance - ReactJS updated to version 15.3.2
 * Maintenance - React Timeseries Charts updated to version 0.10.2
 * Maintenance - PondJS updated to version 0.7.2
 * Maintenance - Updated chart styles
-* Maintenance - Fixed issue with gradient change data not rendering for Wahoo and Tacx trainers
-* Maintenance - Removed battery level indicators (too many proprietary message types to support)
-* Benchmarks - added number of systems in each Resolution/Profile group
-
 
 
 ## 0.9.1 Changes (2016-08-24)

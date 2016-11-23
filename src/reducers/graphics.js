@@ -21,6 +21,7 @@ function graphics(state = {
   switch (action.type) {
 
     case SET_GRAPHICS_DATA:
+
       return Object.assign({}, state, {
         ...action.data
       })

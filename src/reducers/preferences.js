@@ -9,9 +9,20 @@ function preferences(state = {
   switch (action.type) {
 
     case SET_PREFERENCES:
-      return Object.assign({}, state, {
+
+      const prefs = {
         ...action.data
-      })
+      }
+
+      if (!localStorage.preferences) {
+        localStorage.preferences = JSON.stringify(prefs)
+      } else {
+        const preferences = JSON.parse(localStorage.preferences)
+        let nextPreferences = Object.assign({}, preferences, prefs)
+        localStorage.preferences = JSON.stringify(nextPreferences)
+      }
+
+      return Object.assign({}, state, prefs)
 
     default:
       return state
