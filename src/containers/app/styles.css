@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   vertical-align: baseline;
   color: #178acc;
   height: 2.6rem;

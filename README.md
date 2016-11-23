@@ -14,7 +14,7 @@ This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
 The code runs 100% in your web browser on your computer.
 
-## 0.9.5 Changes (2016-11-22)
+## 0.9.6 Changes (2016-11-22)
 
 * Benchmarks - Added system count (absolute and percentage) in each Resolution/Profile group
 * Benchmarks - Added opinionated score out of 10 and novelty caption for each Resolution/Profile group
