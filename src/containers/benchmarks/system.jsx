@@ -59,7 +59,8 @@ class System extends React.Component {
       avgFps,
       samples,
       maxAvgResolutionProfile,
-      maxMaxResolutionProfile
+      maxMaxResolutionProfile,
+      highlighted
     } = this.props.data
 
     var relativeMaxWidth = 100
@@ -203,8 +204,16 @@ class System extends React.Component {
       minWidth: '0.2rem'
     }
 
+    const rowStyle = highlighted
+      ? {
+        background: '#FFD04C',
+        paddingTop: '1.5rem',
+        marginBottom: '1.5rem'
+      }
+      : {}
+
     return (
-      <div className="row">
+      <div className="row" style={rowStyle}>
         <div className="col-xs-12 col-sm-2">
           <div className={styles.iconsWrapper}>
             <div className={styles.icon}>

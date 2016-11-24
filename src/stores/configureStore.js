@@ -30,8 +30,8 @@ export default function configureStore() {
   // default sharing to the benchmarks is on
   let share = true;
 
-  // default expanded benchmarks panel
-  let expanded = ['1080-2']
+  // default expanded benchmarks panel - none
+  let expanded = []
 
   if (localStoragePreferences !== null) {
 
@@ -60,11 +60,10 @@ export default function configureStore() {
       applyMiddleware(
         // lets us dispatch async functions
         thunkMiddleware,
-        //loggerMiddleware // neat middleware that logs actions
-      )
-      //,
+        loggerMiddleware // neat middleware that logs actions
+      ),
       // enables redux chrome dev tools extension
-      //window.devToolsExtension ? window.devToolsExtension() : f => f
+      window.devToolsExtension ? window.devToolsExtension() : f => f
     )
   )
 

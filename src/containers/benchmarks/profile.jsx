@@ -41,7 +41,30 @@ class Profile extends React.Component {
       return null
     }
 
-    const {resolution, totalRecords, profileId, results} = this.props.data
+    const {resolution, totalRecords, profileId, currentSystem} = this.props.data
+
+    let {results} = this.props.data
+
+    // hot insert current system if exists
+
+    if (currentSystem && (currentSystem.resolution === resolution && currentSystem.profileId === profileId)) {
+
+      // if currentSystem res & profile are equal to res & profile then insert into the correct node in results and sort current results
+
+      const currentHighlighted = Object.assign({}, currentSystem.specs, {'highlighted': true})
+
+      console.log('hot insert')
+      console.log(currentHighlighted)
+
+      results.push(currentHighlighted)
+
+      results = (_.sortBy(results, (o) => {
+        return o.avgFps;
+      })).reverse()
+
+      console.log(results)
+
+    }
 
     var systemWithBestAvg = results && _.max(results, _.property('avgFps'))
 
@@ -98,7 +121,7 @@ class Profile extends React.Component {
             <div className="hidden-xs col-sm-5">
               <div className="row">
                 <div className="col-xs-6">
-                  <h3>FPS</h3>
+                  <h3>Frame Rate</h3>
                 </div>
                 <div className="col-xs-6">
                   <div className="progress" style={progressStyle}>
@@ -118,8 +141,7 @@ class Profile extends React.Component {
           </div>
           <div className="row">
             <div className="hidden-xs col-sm-offset-7 col-sm-5">
-              <p>Ordered by average FPS descending.<br/>
-                Longer bars are better.</p>
+              <p>Ordered by average FPS (Frames Per Second) descending. Longer bars are better.</p>
             </div>
           </div>
           {resultsData}

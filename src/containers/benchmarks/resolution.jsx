@@ -9,7 +9,7 @@ class Resolution extends React.Component {
 
   render() {
 
-    const {resolution, profiles, totalRecords, expanded} = this.props.data
+    const {resolution, profiles, totalRecords, expanded, currentSystem} = this.props.data
 
     var profileData = profiles && profiles.map(function(profile, i) {
 
@@ -21,6 +21,7 @@ class Resolution extends React.Component {
           resolution,
           totalRecords,
           expanded,
+          currentSystem,
           ...profile
         }
 

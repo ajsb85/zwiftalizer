@@ -19,7 +19,7 @@ class Benchmarks extends React.Component {
 
     setTimeout(() => {
       dispatch(load())
-    }, 100)
+    }, 200)
 
   }
 
@@ -34,11 +34,11 @@ class Benchmarks extends React.Component {
 
   renderBenchmarks() {
 
-    const {resolutions, dateLastUpdate, totalRecords, expanded} = this.props
+    const {resolutions, dateLastUpdate, totalRecords, expanded, currentSystem} = this.props
 
     var resolutionEntries = resolutions && resolutions.map(function(resolution, i) {
 
-      const data = Object.assign({}, resolution, {totalRecords, expanded})
+      const data = Object.assign({}, resolution, {totalRecords, expanded, currentSystem})
 
       return (<Resolution data={data} key={data.resolution}/>)
     }, this)

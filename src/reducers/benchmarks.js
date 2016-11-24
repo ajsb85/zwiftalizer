@@ -4,7 +4,8 @@ const _cloneDeep = require('lodash/cloneDeep')
 
 import {
   SET_BENCHMARKS_DATA,
-  TOGGLE_PROFILE_PANEL
+  TOGGLE_PROFILE_PANEL,
+  SET_CURRENT_SYSTEM_BENCHMARK
 } from '../actions/benchmarks'
 
 function benchmarks(state = {
@@ -12,17 +13,24 @@ function benchmarks(state = {
   expanded: [],
   resolutions: [],
   dateLastUpdate: null,
-  totalRecords: 0
+  totalRecords: 0,
+  currentSystem: null
 }, action) {
 
   switch (action.type) {
 
     case SET_BENCHMARKS_DATA:
+
       return Object.assign({}, state, {
         isLoaded: true,
         resolutions: action.data.resolutions,
         dateLastUpdate: action.data.dateLastUpdate,
         totalRecords: action.data.totalRecords
+      })
+
+    case SET_CURRENT_SYSTEM_BENCHMARK:
+      return Object.assign({}, state, {
+        currentSystem: action.data
       })
 
     case TOGGLE_PROFILE_PANEL:

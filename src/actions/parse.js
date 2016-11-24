@@ -21,14 +21,14 @@ export const SET_ACTIVITY_DATA = 'SET_ACTIVITY_DATA'
 export const SET_GRAPHICS_DATA = 'SET_GRAPHICS_DATA'
 export const SET_ANT_DATA = 'SET_ANT_DATA'
 export const SET_NETWORK_DATA = 'SET_NETWORK_DATA'
-
 export const FILE_LOADED = 'FILE_LOADED'
 export const FILE_LOADING = 'FILE_LOADING'
 export const RESET = 'RESET'
 export const UPDATE_PROGRESS = 'UPDATE_PROGRESS'
 
 import {
-  TOGGLE_PROFILE_PANEL
+  TOGGLE_PROFILE_PANEL,
+  SET_CURRENT_SYSTEM_BENCHMARK
 } from './benchmarks'
 
 function parseFileContents(log, isDemo = false, share = true) {
@@ -95,47 +95,31 @@ function parseFileContents(log, isDemo = false, share = true) {
 
       let profileId = 0;
 
-      if (profileName !== '') {
+      switch (profileName) {
 
-        switch (profileName) {
-
-          case ('ultra'):
-            {
-              profileId = 3
-            }
-            break;
-
-          case ('high'):
-            {
-              profileId = 2
-            }
-            break;
-
-          case ('medium'):
-            {
-              profileId = 1
-            }
-            break;
-
-          default:
-            profileId = 0
-            break;
-        }
-
-        const panelKey = (systemData.resolution ? systemData.resolution : '') + '-' + profileId
-
-        // this dispatch is to write which benchmarks panel to expanded
-        // based on the current system
-        // using local storage to persist this state
-        // of which panels are toggled
-        dispatch({
-          type: TOGGLE_PROFILE_PANEL,
-          data: {
-            'key': panelKey
+        case ('ultra'):
+          {
+            profileId = 3
           }
-        })
+          break;
 
+        case ('high'):
+          {
+            profileId = 2
+          }
+          break;
+
+        case ('medium'):
+          {
+            profileId = 1
+          }
+          break;
+
+        default:
+          profileId = 0
+          break;
       }
+
       dispatch({
         type: SET_ANT_DATA,
         data: {
@@ -150,64 +134,69 @@ function parseFileContents(log, isDemo = false, share = true) {
         }
       })
 
-      dispatch(fileLoaded())
-
       if (!isDemo && graphicsData.fpsData.count) {
 
-        let profileId = '0'
-
-        switch (systemData.profile) {
-
-          case ('medium'):
-            {
-              profileId = '1'
-              break;
-            }
-          case ('high'):
-            {
-              profileId = '2'
-              break;
-            }
-          case ('ultra'):
-            {
-              profileId = '3'
-              break;
-            }
+        const systemSummary = {
+          'logId': uuid.v4(),
+          'timestamp': activityData.startTimestamp,
+          'duration': activityData.duration + '',
+          'specs': {
+            'resolution': systemData.resolution,
+            'profileId': profileId + '',
+            'profile': systemData.profile,
+            'minFps': Math.round(graphicsData.fpsData.min()) + '',
+            'maxFps': Math.round(graphicsData.fpsData.max()) + '',
+            'avgFps': Math.round(graphicsData.fpsData.avg()) + '',
+            'stdev': Math.round(graphicsData.fpsData.stdev()) + '',
+            'samples': graphicsData.fpsSamples + '',
+            'platform': systemData.platform,
+            'cpuVendor': systemData.cpuVendor,
+            'cpuDetails': systemData.cpuDetails,
+            'ram': systemData.ram,
+            'gpuVendor': systemData.gpuVendor,
+            'gpuDetails': systemData.gpuDetails,
+            'shadowres': systemData.shadowres,
+            'openglMajor': systemData.openglMajor
+          }
         }
+
+        const systemId = systemData.platform + ' / ' + systemData.cpuVendor + ' ' + systemData.cpuDetails + ' / ' + systemData.gpuVendor + ' ' + systemData.gpuDetails;
+
+        const currentSystemBenchmark = {
+          'resolution': parseInt(systemData.resolution),
+          'profileId': parseInt(profileId),
+          'panelKey': panelKey,
+          'specs': Object.assign({}, systemSummary.specs, {
+            'systemId': systemId
+          })
+        }
+
+        dispatch({
+          type: SET_CURRENT_SYSTEM_BENCHMARK,
+          data: {
+            ...currentSystemBenchmark
+          }
+        })
+
+        const panelKey = systemData.resolution + '-' + profileId
+
+        // this dispatch is to write which benchmarks panel to expanded
+        // based on the current system
+        // using local storage to persist this state
+        // of which panels are toggled
+        dispatch({
+          type: TOGGLE_PROFILE_PANEL,
+          data: {
+            'key': panelKey
+          }
+        })
 
         if (share) {
-
-          //console.log('uploading to API gateway')
-
-          const summaryData = {
-            'logId': uuid.v4(),
-            'timestamp': activityData.startTimestamp,
-            'duration': activityData.duration + '',
-            'specs': {
-              'resolution': systemData.resolution,
-              'profileId': profileId + '',
-              'profile': systemData.profile,
-              'minFps': Math.round(graphicsData.fpsData.min()) + '',
-              'maxFps': Math.round(graphicsData.fpsData.max()) + '',
-              'avgFps': Math.round(graphicsData.fpsData.avg()) + '',
-              'stdev': Math.round(graphicsData.fpsData.stdev()) + '',
-              'samples': graphicsData.fpsSamples + '',
-              'platform': systemData.platform,
-              'cpuVendor': systemData.cpuVendor,
-              'cpuDetails': systemData.cpuDetails,
-              'ram': systemData.ram,
-              'gpuVendor': systemData.gpuVendor,
-              'gpuDetails': systemData.gpuDetails,
-              'shadowres': systemData.shadowres,
-              'openglMajor': systemData.openglMajor
-            }
-          }
-
-          dispatch(uploadResults(summaryData))
-
+          dispatch(uploadResults(systemSummary))
         }
-
       }
+
+      dispatch(fileLoaded())
 
     }, delay)
   }
