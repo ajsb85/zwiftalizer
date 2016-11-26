@@ -1,7 +1,6 @@
   .root {
     margin: 2rem 0 0 0;
   }
-
   .dropbox {
     /* prevents flicker to gray when clicking on text in webkits */
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -19,44 +18,37 @@
     align-items: center;
     justify-content: center;
   }
-
   .dropboxInner {
     width: 82%;
     margin: 0 auto;
   }
-
   .default {
     composes: dropbox;
     border-color: #666;
     border-style: dashed;
   }
-
   .active {
     composes: dropbox;
     border-style: solid;
     background-color: #ddffdd;
   }
-
   .reject {
     composes: dropbox;
     border-style: none;
     background-color: #ffdddd;
   }
-
   .loading {
     height: 20rem;
     composes: dropbox;
     border-style: solid;
     border-color: #ddd;
   }
-
   .done {
     composes: dropbox;
     height: 8rem;
     border-style: none;
     background-color: #fff;
   }
-
   .headingIcon {
     width: 7rem;
     float: left;
@@ -64,7 +56,6 @@
     font-size: 4.8rem;
     color: #178acc;
   }
-
   .heading {
     text-align: center;
     font-weight: 600;
@@ -72,14 +63,12 @@
     color: #555;
     padding-top: 1.5rem;
   }
-
   .subHeading {
     text-align: center;
     font-weight: 400;
     font-size: 1.2rem;
     color: #555;
   }
-
   .spinner {
     position: absolute;
     top: 10rem;
@@ -96,13 +85,11 @@
     -webkit-animation: load8 1.1s infinite linear;
     animation: load8 1.1s infinite linear;
   }
-
   .spinner, .spinner:after {
     border-radius: 50%;
     width: 8rem;
     height: 8rem;
   }
-
   @-webkit-keyframes load8 {
     0% {
       -webkit-transform: rotate(0deg);
@@ -113,7 +100,6 @@
       transform: rotate(360deg);
     }
   }
-
   @keyframes load8 {
     0% {
       -webkit-transform: rotate(0deg);
@@ -124,7 +110,6 @@
       transform: rotate(360deg);
     }
   }
-
   .messageContainer {
     margin-top: 7rem;
     text-align: center;
@@ -133,7 +118,6 @@
     font-size: 3.4rem;
     color: #999;
   }
-
   .checkboxWrapper {
     height: 6rem;
     min-height: 6rem;
@@ -142,27 +126,27 @@
     align-items: center;
     justify-content: center;
   }
-
   .consentWrapper {
     height: 6rem;
     min-height: 6rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     justify-content: center;
   }
-
+  .consentWrapper p {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
   .checkbox {
     display: block;
     position: absolute;
     left: 1rem;
     top: 1rem;
   }
-
   .checkbox label {
     position: relative;
   }
-
   .checkbox label::before {
     content: "";
     display: inline-block;
@@ -178,7 +162,6 @@
     -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
     transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
   }
-
   .checkbox label::after {
     display: inline-block;
     position: absolute;
@@ -192,45 +175,35 @@
     font-size: 3rem;
     color: #555555;
   }
-
   .checkbox input[type="checkbox"] {
     opacity: 0;
   }
-
   .checkbox input[type="checkbox"]:focus+label::before {
     outline: thin dotted;
     outline: 0.5rem auto -webkit-focus-ring-color;
     outline-offset: -0.2rem;
   }
-
   .checkbox input[type="checkbox"]:checked+label::after {
     font-family: 'FontAwesome';
     content: "\f00c";
   }
-
   .checkbox input[type="checkbox"]:checked+label::before {
     background-color: #5cb85c;
     border-color: #5cb85c;
   }
-
   .checkbox input[type="checkbox"]:checked+label::after {
     color: #fff;
   }
-
   .checkboxLabel {
     font-weight: 400;
     font-size: 2.0rem;
-    line-height: 2.8rem;
-    height: 6rem;
-    min-height: 6rem;
+    line-height: 1;
     letter-spacing: -0.05rem;
     padding-top: 1.5rem;
   }
-
   .checkboxLabelStrong {
     font-weight: 700;
   }
-
   @media(max-width:991px) {
     .checkbox {
       display: block;
@@ -248,5 +221,9 @@
     .consentWrapper {
       height: 12rem;
       min-height: 12rem;
+    }
+    .consentWrapper p {
+      font-size: 1.2rem;
+      line-height: 1.6rem;
     }
   }

@@ -12,7 +12,7 @@ const intelSuffixes = {
   Q: 'Quad-core',
   R: 'Desktop processor based on BGA1364 (mobile) package with high performance graphics (possibly iMac or other all-in-one)',
   S: 'Performance-optimized lifestyle (possibly iMac or other all-in-one)',
-  T: 'Power-optimized lifestyle (Alienware Alpha)',
+  T: 'Power-optimized lifestyle (Alienware Alpha or possibly IBM ThinkStation)',
   U: 'Ultra-low power (laptop, mini-pc, all-in-one)',
   X: 'Extreme edition',
   Y: 'Extremely low power (laptop, notebook, mini-pc, all-in-one)'

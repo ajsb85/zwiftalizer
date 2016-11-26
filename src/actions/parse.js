@@ -14,7 +14,7 @@ var uuid = require('node-uuid')
 
 import * as Parser from '../parser/index.js'
 
-const delay = 250
+const delay = 200
 
 export const SET_SYSTEM_DATA = 'SET_SYSTEM_DATA'
 export const SET_ACTIVITY_DATA = 'SET_ACTIVITY_DATA'
@@ -134,7 +134,7 @@ function parseFileContents(log, isDemo = false, share = true) {
         }
       })
 
-      if (!isDemo && graphicsData.fpsData.count) {
+      if (graphicsData.fpsData.count) {
 
         const systemSummary = {
           'logId': uuid.v4(),
@@ -162,6 +162,8 @@ function parseFileContents(log, isDemo = false, share = true) {
 
         const systemId = systemData.platform + ' / ' + systemData.cpuVendor + ' ' + systemData.cpuDetails + ' / ' + systemData.gpuVendor + ' ' + systemData.gpuDetails;
 
+        const panelKey = systemData.resolution + '-' + profileId
+
         const currentSystemBenchmark = {
           'resolution': parseInt(systemData.resolution),
           'profileId': parseInt(profileId),
@@ -178,8 +180,6 @@ function parseFileContents(log, isDemo = false, share = true) {
           }
         })
 
-        const panelKey = systemData.resolution + '-' + profileId
-
         // this dispatch is to write which benchmarks panel to expanded
         // based on the current system
         // using local storage to persist this state
@@ -191,7 +191,7 @@ function parseFileContents(log, isDemo = false, share = true) {
           }
         })
 
-        if (share) {
+        if (!isDemo && share) {
           dispatch(uploadResults(systemSummary))
         }
       }

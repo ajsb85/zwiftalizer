@@ -78,24 +78,8 @@
   height: 9rem;
   min-height: 9rem;
 }
-.badge {
-  display: inline-block;
-  min-width: 6rem;
-  padding: 0.3rem 0.7rem;
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #454545;
-  text-shadow: 0.1rem 0.1rem 1px #ddd;
-  line-height: 1;
-  vertical-align: middle;
-  white-space: nowrap;
-  text-align: center;
-  background-color: #eee;
-  border-radius: 1.5rem;
-  border: 0.2rem solid #1580BD;
-}
 .systemsCountBadge {
-  composes: badge;
+  composes: badge from '../badge/styles.css';
   color: #178acc;
   border: 0.2rem solid #1580BD;
 }
@@ -109,6 +93,11 @@
 }
 .systemsCount {
   float: right;
+}
+.rightAlignControls {
+  float: right;
+  margin: 0;
+  padding: 0.5rem 0;
 }
 @media only screen and (max-width: 480px) {
   [class*="col-"] {
@@ -127,6 +116,12 @@
   .systemsCount {
     text-align: left;
     float: none;
+  }
+  .rightAlignControls {
+    text-align: left;
+    float: none;
+    margin: 0;
+    padding: 0.5rem 0;
   }
 }
 @media only screen and (min-width: 767px) and (max-width:991px) {

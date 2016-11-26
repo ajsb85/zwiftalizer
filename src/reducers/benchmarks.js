@@ -5,7 +5,9 @@ const _cloneDeep = require('lodash/cloneDeep')
 import {
   SET_BENCHMARKS_DATA,
   TOGGLE_PROFILE_PANEL,
-  SET_CURRENT_SYSTEM_BENCHMARK
+  OPEN_PROFILE_PANEL,
+  SET_CURRENT_SYSTEM_BENCHMARK,
+  RESET_ALL
 } from '../actions/benchmarks'
 
 function benchmarks(state = {
@@ -20,7 +22,6 @@ function benchmarks(state = {
   switch (action.type) {
 
     case SET_BENCHMARKS_DATA:
-
       return Object.assign({}, state, {
         isLoaded: true,
         resolutions: action.data.resolutions,
@@ -29,38 +30,100 @@ function benchmarks(state = {
       })
 
     case SET_CURRENT_SYSTEM_BENCHMARK:
-      return Object.assign({}, state, {
-        currentSystem: action.data
-      })
+      {
+        const currentSystemState = {
+          currentSystem: action.data
+        }
 
+        const nextState = Object.assign({}, state, currentSystemState)
+
+        // persist the last parsed system to local storage
+        // so that we can insert it into the benchmarks again
+        // the next time the user browses the benchmarks
+        if (!localStorage.preferences) {
+          localStorage.preferences = JSON.stringify(currentSystemState)
+        } else {
+          const preferences = JSON.parse(localStorage.preferences)
+          const nextPreferences = Object.assign({}, preferences, currentSystemState)
+          localStorage.preferences = JSON.stringify(nextPreferences)
+        }
+
+        return nextState
+      }
     case TOGGLE_PROFILE_PANEL:
+      {
+        let nextState = _cloneDeep(state)
 
-      let nextState = _cloneDeep(state)
+        var alreadyExpanded = _find(state.expanded, function(panel) {
+          return panel === action.data.key
+        })
 
-      var alreadyExpanded = _find(state.expanded, function(panel) {
-        return panel === action.data.key
-      })
+        if (alreadyExpanded) {
+          // collapse
+          nextState.expanded = _without(state.expanded, action.data.key)
+        } else {
+          nextState.expanded.push(action.data.key)
+        }
 
-      if (alreadyExpanded) {
-        // collapse
-        nextState.expanded = _without(state.expanded, action.data.key)
-      } else {
+        const prefs = {
+          'expanded': nextState.expanded
+        }
+
+        if (!localStorage.preferences) {
+          localStorage.preferences = JSON.stringify(prefs)
+        } else {
+          const preferences = JSON.parse(localStorage.preferences)
+          const nextPreferences = Object.assign({}, preferences, prefs)
+          localStorage.preferences = JSON.stringify(nextPreferences)
+        }
+
+        return nextState
+      }
+
+    case OPEN_PROFILE_PANEL:
+      {
+        var alreadyExpanded = _find(state.expanded, function(panel) {
+          return panel === action.data.key
+        })
+
+        if (alreadyExpanded) {
+          return state;
+        }
+
+        let nextState = _cloneDeep(state)
+
         nextState.expanded.push(action.data.key)
+
+        const prefs = {
+          'expanded': nextState.expanded
+        }
+
+        if (!localStorage.preferences) {
+          localStorage.preferences = JSON.stringify(prefs)
+        } else {
+          const preferences = JSON.parse(localStorage.preferences)
+          const nextPreferences = Object.assign({}, preferences, prefs)
+          localStorage.preferences = JSON.stringify(nextPreferences)
+        }
+
+        return nextState
       }
 
-      const prefs = {
-        'expanded': nextState.expanded
-      }
+    case RESET_ALL:
+      {
+        const currentSystemState = {
+          currentSystem: null,
+          expanded: []
+        }
 
-      if (!localStorage.preferences) {
-        localStorage.preferences = JSON.stringify(prefs)
-      } else {
-        const preferences = JSON.parse(localStorage.preferences)
-        let nextPreferences = Object.assign({}, preferences, prefs)
-        localStorage.preferences = JSON.stringify(nextPreferences)
+        if (!localStorage.preferences) {
+          localStorage.preferences = JSON.stringify(currentSystemState)
+        } else {
+          const preferences = JSON.parse(localStorage.preferences)
+          const nextPreferences = Object.assign({}, preferences, currentSystemState)
+          localStorage.preferences = JSON.stringify(nextPreferences)
+        }
       }
-
-      return nextState
 
     default:
       return state

@@ -2,8 +2,9 @@ var _ = require('underscore');
 const _find = require('lodash/find');
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
-import {toggleProfilePanel} from '../../actions/benchmarks'
+import {toggleProfilePanel, getPerformanceScore} from '../../actions/benchmarks'
 import System from './system.jsx'
+import Badge from '../badge'
 import structure from '../../styles/structure.css'
 import styles from './styles.css'
 import {colors} from '../../styles/colors'
@@ -37,33 +38,25 @@ class Profile extends React.Component {
 
   renderPanel(isExpanded) {
 
-    if (!isExpanded) {
-      return null
-    }
-
     const {resolution, totalRecords, profileId, currentSystem} = this.props.data
 
-    let {results} = this.props.data
+    let results = _.clone(this.props.data.results);
 
     // hot insert current system if exists
-
     if (currentSystem && (currentSystem.resolution === resolution && currentSystem.profileId === profileId)) {
 
-      // if currentSystem res & profile are equal to res & profile then insert into the correct node in results and sort current results
-
-      const currentHighlighted = Object.assign({}, currentSystem.specs, {'highlighted': true})
-
-      console.log('hot insert')
-      console.log(currentHighlighted)
+      const currentHighlighted = Object.assign({}, currentSystem.specs, {'current': true})
 
       results.push(currentHighlighted)
 
+      // sort again because we added the current sytem to the end of the array
       results = (_.sortBy(results, (o) => {
         return o.avgFps;
       })).reverse()
+    }
 
-      console.log(results)
-
+    if (!isExpanded) {
+      return null
     }
 
     var systemWithBestAvg = results && _.max(results, _.property('avgFps'))
@@ -183,39 +176,6 @@ class Profile extends React.Component {
         break;
     }
 
-    // a 'score' for the current resolution and profile combination works out as a scale of 3/10 to 10/10
-    var performanceScore = Math.round(resolution / 395) + profileId + 2;
-
-    // ultra 1080 is pretty awesome, so fudge this one
-    if (profileId === 3 && resolution === 1080) {
-      performanceScore = 9
-    }
-
-    const maxScore = 10;
-
-    var performanceScoreStyle = {
-      background: colors.green,
-      border: '0.2rem solid ' + colors.greenBorder
-    }
-
-    var opinion = 'Unicorns and rainbows!'
-
-    if (performanceScore <= 8) {
-      opinion = 'Sweet spot!'
-      performanceScoreStyle = {
-        background: colors.tacxblueMuted,
-        border: '0.2rem solid ' + colors.tacxblueBorder
-      }
-    }
-
-    if (performanceScore <= 5) {
-      opinion = 'Gets the job done!'
-      performanceScoreStyle = {
-        background: colors.yellow,
-        border: '0.2rem solid ' + colors.yellowBorder
-      }
-    }
-
     const totalSystems = results && results.length
       ? results.length
       : 0;
@@ -225,6 +185,8 @@ class Profile extends React.Component {
     const isExpanded = _find(expanded, function(panel) {
       return panel === panelKey
     })
+
+    var performanceScore = getPerformanceScore(resolution, profileId)
 
     return (
 
@@ -241,7 +203,7 @@ class Profile extends React.Component {
                 {resolution}&nbsp;{name}
               </div>
               <div className="hidden-xs hidden-sm col-md-6">
-                <span className={styles.badge} style={performanceScoreStyle}>{performanceScore}/{maxScore}</span>&nbsp;<span className={styles.thumbs}>{this.getPerformanceScoreMarkup(performanceScore)}</span>&nbsp;<span className={styles.opinion}>{opinion}</span>
+                <Badge data={performanceScore}/>&nbsp;<span className={styles.thumbs}>{this.getPerformanceScoreMarkup(performanceScore.value)}</span>&nbsp;<span className={styles.opinion}>{performanceScore.opinion}</span>
               </div>
               <div className="col-xs-offset-1 col-xs-11 col-sm-offset-0 col-sm-8 col-md-offset-0 col-md-3">
                 <div className={styles.systemsCount}>

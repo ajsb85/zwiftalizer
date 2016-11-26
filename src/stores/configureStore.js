@@ -28,11 +28,14 @@ export default function configureStore() {
   let localStoragePreferences = getPreferencesFromLocalStorage() || null
 
   // default sharing to the benchmarks is on
-  let share = true;
+  let share = true
 
   // default expanded benchmarks panel - none
   let expanded = []
 
+  let currentSystem = null
+
+  // retrieve cached objects from previous runs from local storage
   if (localStoragePreferences !== null) {
 
     if (!_.isUndefined(localStoragePreferences.share)) {
@@ -43,6 +46,9 @@ export default function configureStore() {
       expanded = localStoragePreferences.expanded
     }
 
+    if (!_.isUndefined(localStoragePreferences.currentSystem)) {
+      currentSystem = localStoragePreferences.currentSystem
+    }
   }
 
   initialState.preferences = {
@@ -50,7 +56,8 @@ export default function configureStore() {
   }
 
   initialState.benchmarks = {
-    expanded: expanded
+    expanded: expanded,
+    currentSystem: currentSystem
   }
 
   const store = createStore(

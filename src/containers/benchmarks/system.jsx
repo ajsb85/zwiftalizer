@@ -60,7 +60,7 @@ class System extends React.Component {
       samples,
       maxAvgResolutionProfile,
       maxMaxResolutionProfile,
-      highlighted
+      current
     } = this.props.data
 
     var relativeMaxWidth = 100
@@ -204,54 +204,61 @@ class System extends React.Component {
       minWidth: '0.2rem'
     }
 
-    const rowStyle = highlighted
+    const rowStyle = current
       ? {
-        background: '#FFD04C',
+        background: '#FDDF8B',
         paddingTop: '1.5rem',
-        marginBottom: '1.5rem'
+        marginBottom: '3rem'
       }
       : {}
 
     return (
-      <div className="row" style={rowStyle}>
-        <div className="col-xs-12 col-sm-2">
-          <div className={styles.iconsWrapper}>
-            <div className={styles.icon}>
-              <div className={platformClass} data-label={platformClass}></div>
-            </div>
-            <div className={styles.icon}>
-              <div className={cpuClass} data-label={cpuClass}></div>
-            </div>
-            <div className={styles.icon}>
-              <div className={gpuClass} data-label={gpuClass}></div>
-            </div>
-          </div>
-        </div>
-        <div className="col-xs-12 col-sm-5">
-          <div className={styles.systemName}>
-            {systemIdVariable}
-          </div>
-          {cpuDetailMarkup}
-        </div>
-        <div className="col-xs-12 col-sm-5">
-          <div className={styles.barsOuter}>
-            <div className="progress" style={barStyle}>
-              <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow={relativeMaxWidth} aria-valuemin="0" aria-valuemax="100" style={maxWidthStyle}>
-                {maxFps}
-              </div>
-            </div>
-            <div className="progress" style={barStyle}>
-              <div className="progress-bar" role="progressbar" aria-valuenow={relativeAvgWidth} aria-valuemin="0" aria-valuemax="100" style={avgWidthStyle}>
-                {avgFps}
-              </div>
-            </div>
-            <div className="progress" style={barStyle}>
-              <div className="progress-bar progress-bar-warning" role="progressbar" aria-valuenow={relativeMinWidth} aria-valuemin="0" aria-valuemax="100" style={minWidthStyle}>
-                {minFps}
-              </div>
-            </div>
-          </div>
+      <div>
 
+        {current
+          ? <a id='current'></a>
+          : null
+}
+        <div className="row" style={rowStyle}>
+          <div className="col-xs-12 col-sm-2">
+            <div className={styles.iconsWrapper}>
+              <div className={styles.icon}>
+                <div className={platformClass} data-label={platformClass}></div>
+              </div>
+              <div className={styles.icon}>
+                <div className={cpuClass} data-label={cpuClass}></div>
+              </div>
+              <div className={styles.icon}>
+                <div className={gpuClass} data-label={gpuClass}></div>
+              </div>
+            </div>
+          </div>
+          <div className="col-xs-12 col-sm-5">
+            <div className={styles.systemName}>
+              {systemIdVariable}
+            </div>
+            {cpuDetailMarkup}
+          </div>
+          <div className="col-xs-12 col-sm-5">
+            <div className={styles.barsOuter}>
+              <div className="progress" style={barStyle}>
+                <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow={relativeMaxWidth} aria-valuemin="0" aria-valuemax="100" style={maxWidthStyle}>
+                  {maxFps}
+                </div>
+              </div>
+              <div className="progress" style={barStyle}>
+                <div className="progress-bar" role="progressbar" aria-valuenow={relativeAvgWidth} aria-valuemin="0" aria-valuemax="100" style={avgWidthStyle}>
+                  {avgFps}
+                </div>
+              </div>
+              <div className="progress" style={barStyle}>
+                <div className="progress-bar progress-bar-warning" role="progressbar" aria-valuenow={relativeMinWidth} aria-valuemin="0" aria-valuemax="100" style={minWidthStyle}>
+                  {minFps}
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     )

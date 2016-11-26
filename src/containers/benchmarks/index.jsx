@@ -2,7 +2,7 @@ var moment = require('moment');
 import React, {Component, PropTypes} from 'react'
 import {withRouter} from 'react-router'
 import {connect} from 'react-redux'
-import {load} from '../../actions/benchmarks'
+import {load, openProfilePanel} from '../../actions/benchmarks'
 import Resolution from './resolution.jsx'
 
 import structure from '../../styles/structure.css'
@@ -17,10 +17,31 @@ class Benchmarks extends React.Component {
 
     const {dispatch} = this.props
 
+    this.findMySystemClicked = this.findMySystemClicked.bind(this)
+
     setTimeout(() => {
       dispatch(load())
     }, 200)
 
+  }
+
+  findMySystemClicked(e) {
+
+    e.preventDefault()
+
+    const {currentSystem, dispatch} = this.props
+
+    if (!currentSystem) {
+      return;
+    }
+
+    // force open the panel that contains the current system before scrolling incase the user closed it
+    dispatch(openProfilePanel(currentSystem.panelKey))
+
+    setTimeout(() => {
+      const anchorToScrollTo = document.getElementById('current')
+      anchorToScrollTo && anchorToScrollTo.scrollIntoView(true/* align top */)
+    }, 200)
   }
 
   render() {
@@ -30,6 +51,25 @@ class Benchmarks extends React.Component {
     return isLoaded
       ? this.renderBenchmarks()
       : null
+  }
+
+  renderFindMySystemControls() {
+
+    const {currentSystem} = this.props
+
+    if (!currentSystem) {
+      return null;
+    }
+
+    return (
+      <div className="row">
+        <div className="col-xs-12 col-sm-offset-8 col-sm-4">
+          <div className={styles.rightAlignControls}>
+            <button type="button" className="btn btn-primary btn-sm" onClick={this.findMySystemClicked}>Find mine</button>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   renderBenchmarks() {
@@ -57,6 +97,7 @@ class Benchmarks extends React.Component {
               </div>
               <div className={editorialStyles.editorialBoxContent}>
                 <div className="container-fluid">
+
                   <div className="row">
                     <div className="col-xs-12 col-sm-8">
                       <div className={styles.lastUpdateTime}>
@@ -69,6 +110,7 @@ class Benchmarks extends React.Component {
                       </div>
                     </div>
                   </div>
+                  {this.renderFindMySystemControls(currentSystem)}
                 </div>
               </div>
             </div>

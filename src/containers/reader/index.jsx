@@ -84,7 +84,7 @@ class Reader extends React.Component {
 
                 <div className="container-fluid">
                   <div className="row">
-                    <div className="col-sm-12 col-md-2">
+                    <div className="col-xs-12 col-sm-1">
                       <form>
                         <div className="form-group">
                           <div className={styles.checkboxWrapper}>
@@ -97,11 +97,12 @@ class Reader extends React.Component {
                       </form>
 
                     </div>
-                    <div className="col-sm-12 col-md-10">
+                    <div className="col-xs-12 col-sm-11">
                       <div className={styles.consentWrapper}>
                         <h2 className={styles.checkboxLabel}>
                           <span className={styles.checkboxLabelStrong}>I agree</span>&nbsp;to my system summary being included in the benchmarks database.
                         </h2>
+                        <p>You can still see where your system stands relative to others in the benchmarks even if you disagree to it being included in the database.</p>
                       </div>
                     </div>
                   </div>
