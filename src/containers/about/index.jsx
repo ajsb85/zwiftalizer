@@ -61,7 +61,7 @@ class About extends React.Component {
                       </p>
 
                       <h3>
-                        How are the systems identified in the Benchmarks report
+                        How the systems are identified in the Benchmarks report
                       </h3>
                       <p>
                         A system is identified by its OS, CPU and GPU 'signature'. A system appears no more than once in each resolution-profile table. When a user uploads a log from a system that already

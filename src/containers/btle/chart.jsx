@@ -140,7 +140,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-offset-1 col-sm-9">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>BTLE Messages</h4>
-              <h5 className={structure.infoHeading}>Peaks around 4 and 5 is expected. Irregular peaks and troughs are bad. Dips to zero are very bad. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
+              <h5 className={structure.infoHeading}>Higher is better. Irregular peaks and troughs are bad. Dips to zero are very bad. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
             </div>
           </div>
           <div className="col-xs-12 col-sm-2">
@@ -163,7 +163,7 @@ class Chart extends React.Component {
             minTime={this.state.initialRange.begin()}
             showGrid={false}>
             <ChartRow height="150" debug={false}>
-              <YAxis id="messages1" label="Messages" min={0} max={maxMessages} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
+              <YAxis id="messages1" label="Messages/s" min={0} max={maxMessages} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
               <Charts>
                 <AreaChart axis="messages1" series={this.state.messages} style={messagesStyle} columns={{
                   up: ['value']
@@ -196,7 +196,7 @@ class Chart extends React.Component {
           <ChartContainer timeRange={this.state.initialRange} format="HH:mm:ss" padding={0} trackerPosition={this.state.tracker}>
             <ChartRow height={chartHeight} debug={false}>
               <Brush timeRange={this.state.brushrange} allowSelectionClear={true} onTimeRangeChanged={this.handleTimeRangeChange}></Brush>
-              <YAxis id="messages1" label="Messages" min={0} max={maxMessages} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"></YAxis>
+              <YAxis id="messages1" label="Messages/s" min={0} max={maxMessages} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"></YAxis>
               <Charts>
                 <AreaChart axis="messages1" series={this.state.messages} style={messagesStyle} columns={{
                   up: ['value']
