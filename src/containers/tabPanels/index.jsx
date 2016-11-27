@@ -5,7 +5,9 @@ var _ = require('underscore')
   import {Tab, Tabs, TabList, TabPanel} from 'react-tabs'
   import Graphics from '../graphics'
   import Ant from '../ant'
+  import Btle from '../btle'
   import Network from '../network'
+  import Analysis from '../analysis'
   import structure from '../../styles/structure.css'
   import styles from './styles.css'
 
@@ -47,8 +49,10 @@ var _ = require('underscore')
                 }}>
                   <TabList>
                     <Tab>Graphics</Tab>
-                    <Tab>Devices</Tab>
+                    <Tab>ANT+ Devices</Tab>
+                    <Tab>BTLE Devices</Tab>
                     <Tab>Network</Tab>
+                    <Tab>Analysis</Tab>
                   </TabList>
 
                   <TabPanel>
@@ -60,7 +64,15 @@ var _ = require('underscore')
                   </TabPanel>
 
                   <TabPanel>
+                    <Btle/>
+                  </TabPanel>
+
+                  <TabPanel>
                     <Network/>
+                  </TabPanel>
+
+                  <TabPanel>
+                    <Analysis/>
                   </TabPanel>
 
                 </Tabs>

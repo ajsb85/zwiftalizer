@@ -7,7 +7,7 @@ export const TOGGLE_PROFILE_PANEL = 'TOGGLE_PROFILE_PANEL'
 export const OPEN_PROFILE_PANEL = 'OPEN_PROFILE_PANEL'
 export const RESET_ALL = 'RESET_ALL'
 
-export function load() {
+export function load(callback) {
 
   return dispatch => {
     //request.get('http://data.zwiftalizer.com', null, {
@@ -15,12 +15,16 @@ export function load() {
       cache: false,
       dataType: 'json'
     }).then((xhr, data) => {
+
       dispatch({
         type: SET_BENCHMARKS_DATA,
         data: {
           ...data
         }
       })
+
+      callback && callback()
+
     }).catch((e, xhr, response) => {
       console.log('failed to load benchmarks json')
       console.log(e)

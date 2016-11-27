@@ -1,16 +1,14 @@
 import {
-  SET_NETWORK_DATA
+  SET_BTLE_DATA
 } from '../actions/parse'
 
-function network(state = {
-  reconnects: null,
-  errors: null,
-  phoneConnectionAttempts: null
+function btle(state = {
+  messages: null,
 }, action) {
 
   switch (action.type) {
 
-    case SET_NETWORK_DATA:
+    case SET_BTLE_DATA:
       return Object.assign({}, state, {
         ...action.data
       })
@@ -21,4 +19,4 @@ function network(state = {
 
 }
 
-export default network
+export default btle

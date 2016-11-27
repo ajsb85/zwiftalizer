@@ -9,10 +9,10 @@
 
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
-import {Specs} from './specs.jsx'
+import structure from '../../styles/structure.css'
 import {Chart} from './chart.jsx'
 
-class Graphics extends React.Component {
+class Btle extends React.Component {
 
   constructor(props) {
     super(props)
@@ -27,29 +27,33 @@ class Graphics extends React.Component {
 
   renderChart() {
 
-    // fpsData, fpsSamples, specs come from ...graphics spread operator
-    const {fpsData, fpsSamples, specs} = this.props;
-
     return (
-      <div>
-        <Specs specs={specs}/>
-        <Chart data={fpsData} samples={fpsSamples} specs={specs}/>
+
+      <div className="container">
+        <div className={structure.boxesWrapOuter}>
+          <div className={structure.boxesWrapInner}>
+            <div className={structure.boxFirstLast}>
+              <div className={structure.chartsBoxContent}>
+                <Chart data={this.props}/></div>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
 }
 
 function mapStateToProps(state) {
-  const {reader, graphics} = state
+  const {reader, btle} = state
   return {
     ...reader,
-    ...graphics
+    ...btle
   }
 }
 
-Graphics.propTypes = {
+Btle.propTypes = {
   reader: PropTypes.object,
-  graphics: PropTypes.object
+  btle: PropTypes.object
 }
 
-export default connect(mapStateToProps)(Graphics)
+export default connect(mapStateToProps)(Btle)

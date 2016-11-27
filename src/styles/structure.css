@@ -52,13 +52,14 @@
 .boxHeading {
   text-align: center;
   letter-spacing: 0.1rem;
-  text-transform: lowercase;
+  vertical-align: baseline;
+  text-transform: uppercase;
   vertical-align: baseline;
   color: #fff;
   height: 2.6rem;
-  padding: 0.15rem 1.5rem;
-  font-size: 1.6rem;
-  font-weight: 600;
+  padding: 0.12rem 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
   overflow: hidden;
   background: #178acc;
 }

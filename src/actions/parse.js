@@ -21,6 +21,7 @@ export const SET_ACTIVITY_DATA = 'SET_ACTIVITY_DATA'
 export const SET_GRAPHICS_DATA = 'SET_GRAPHICS_DATA'
 export const SET_ANT_DATA = 'SET_ANT_DATA'
 export const SET_NETWORK_DATA = 'SET_NETWORK_DATA'
+export const SET_BTLE_DATA = 'SET_BTLE_DATA'
 export const FILE_LOADED = 'FILE_LOADED'
 export const FILE_LOADING = 'FILE_LOADING'
 export const RESET = 'RESET'
@@ -64,6 +65,8 @@ function parseFileContents(log, isDemo = false, share = true) {
       const logWithoutFpsAntLines = Parser.normalize(Parser.stripAntLines(logWithoutFpsLines))
 
       const networkData = parseNetwork(logWithoutFpsAntLines, activityData.timeAxisTimeSeries)
+
+      const btleMessages = parseBtle(logWithoutFpsAntLines, activityData.timeAxisTimeSeries)
 
       dispatch({
         type: SET_SYSTEM_DATA,
@@ -131,6 +134,13 @@ function parseFileContents(log, isDemo = false, share = true) {
         type: SET_NETWORK_DATA,
         data: {
           ...networkData
+        }
+      })
+
+      dispatch({
+        type: SET_BTLE_DATA,
+        data: {
+          ...btleMessages
         }
       })
 
@@ -338,7 +348,9 @@ function parseGraphics(log, duration = 0) {
 }
 
 function parseAnt(log, timeAxisTimeSeries) {
+
   const antData = Parser.antData(log, timeAxisTimeSeries)
+
   return antData
 }
 
@@ -356,6 +368,17 @@ function parseNetwork(log, timeAxisTimeSeries) {
     reconnects,
     errors,
     phoneConnectionAttempts
+  }
+}
+
+function parseBtle(log, timeAxisTimeSeries) {
+
+  const btleLines = Parser.mapBTLELines(log)
+
+  const messages = Parser.mapBTLEMessages(btleLines, timeAxisTimeSeries)
+
+  return {
+    messages
   }
 }
 

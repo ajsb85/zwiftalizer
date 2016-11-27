@@ -1,0 +1,52 @@
+[7:56:54] Log Time: 7:56:54 2016-11-10
+[7:56:54] BLE: TACX queuing grade change to 0.01
+[7:56:54] FPS  35, 153678, 15610, -242785
+[7:56:54] ANT  : BLE: Tacx set road texture 5 (time=487261412)
+[7:56:55] Wheel Rev: 20275   Wheel Time: 9697
+[7:56:55] Crank Rev: 9556   Crank Time: 19765
+[7:56:55] BLE: TACX queuing grade change to 0.01
+[7:56:55] Unknown BLE Mobile peripheral attached
+[7:56:56] Wheel Rev: 20276   Wheel Time: 10250
+[7:56:56] Crank Rev: 9558   Crank Time: 21419
+[7:56:56] BLE: TACX queuing grade change to 0.01
+[7:56:56] Unknown BLE Mobile peripheral attached
+[7:56:56] NETCLIENT:Renew server lease period reached...
+[7:56:57] Wheel Rev: 20278   Wheel Time: 11380
+[7:56:57] Crank Rev: 9559   Crank Time: 22251
+[7:56:57] FPS  35, 155104, 15622, -244691
+[7:56:57] BLE: TACX queuing grade change to 0.00
+[7:56:57] Unknown BLE Mobile peripheral attached
+[7:56:58] Wheel Rev: 20280   Wheel Time: 12486
+[7:56:58] Crank Rev: 9560   Crank Time: 23081
+[7:56:58] BLE: TACX queuing grade change to 0.00
+[7:56:58] Unknown BLE Mobile peripheral attached
+[7:56:59] Wheel Rev: 20283   Wheel Time: 14122
+[7:56:59] Crank Rev: 9561   Crank Time: 23911
+[7:56:59] BLE: TACX queuing grade change to 0.00
+[7:56:59] Unknown BLE Mobile peripheral attached
+[7:56:59] ANT  : BLE: Tacx set road texture 5 (time=487266422)
+[7:56:59] NETWORK:Player 187184 joined the world
+[7:57:00] FPS  34, 156479, 15634, -246549
+[7:57:00] BLE: TACX queuing grade change to 0.00
+[7:57:00] Wheel Rev: 20284   Wheel Time: 14667
+[7:57:00] Crank Rev: 9563   Crank Time: 25546
+[7:57:00] Unknown BLE Mobile peripheral attached
+[7:57:01] BLE: TACX queuing grade change to 0.00
+[7:57:01] Wheel Rev: 20286   Wheel Time: 15750
+[7:57:01] Crank Rev: 9564   Crank Time: 26364
+[7:57:02] BLE: TACX queuing grade change to 0.00
+[7:57:02] NETWORK:Player 169570 joined the world
+[7:57:02] Wheel Rev: 20288   Wheel Time: 16826
+[7:57:02] Crank Rev: 9565   Crank Time: 27183
+[7:57:03] FPS  34, 157911, 15645, -248454
+[7:57:03] Unknown BLE Mobile peripheral attached
+[7:57:03] BLE: TACX queuing grade change to 0.00
+[7:57:04] Wheel Rev: 20292   Wheel Time: 19023
+[7:57:04] Crank Rev: 9568   Crank Time: 29655
+[7:57:04] Unknown BLE Mobile peripheral attached
+[7:57:04] BLE: TACX queuing grade change to 0.00
+[7:57:04] ANT  : BLE: Tacx set road texture 5 (time=487271434)
+[7:57:04] Wheel Rev: 20293   Wheel Time: 19576
+[7:57:04] Crank Rev: 9569   Crank Time: 30484
+[7:57:05] Unknown BLE Mobile peripheral attached
+[7:57:05] BLE: TACX queuing grade change to 0.00

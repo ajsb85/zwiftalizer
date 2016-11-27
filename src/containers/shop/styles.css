@@ -28,11 +28,12 @@ p.massiveText {
   padding: 1.5rem;
 }
 .accessorizeProduct h2 {
-  font-size: 2.4rem;
-  line-height: 3.0rem;
   font-weight: 600;
-  color: #666;
-  margin-bottom: 1.6rem;
+  font-size: 2.2rem;
+  line-height: 2.6rem;
+  margin: 0 0 1rem 0;
+  text-align: left;
+  color: #777;
 }
 .accessorizeProduct ul {
   font-weight: normal;

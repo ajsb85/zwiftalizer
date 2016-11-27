@@ -21,7 +21,7 @@ class Benchmarks extends React.Component {
 
     setTimeout(() => {
       dispatch(load())
-    }, 200)
+    }, 100)
 
   }
 

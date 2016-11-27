@@ -10,7 +10,7 @@ var _ = require('underscore');
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
-import {getPerformanceScore, openProfilePanel} from '../../actions/benchmarks'
+import {load, getPerformanceScore, openProfilePanel} from '../../actions/benchmarks'
 import Badge from '../badge'
 import structure from '../../styles/structure.css'
 import images from '../../styles/images.css'
@@ -37,14 +37,22 @@ class Analysis extends React.Component {
     // loads)
     dispatch(openProfilePanel(currentSystem.panelKey))
 
-    // scroll to the current systme, with a long time out to allow the benchmarks page to render first (hopefully it will have loaded, yikes!)
-    setTimeout(() => {
-      const anchorToScrollTo = document.getElementById('current')
-      anchorToScrollTo && anchorToScrollTo.scrollIntoView(true/* align top */)
-    }, 1500)
+    var callback = () => {
 
-    // route to the benchmarks page
-    this.props.router.push('/benchmarks')
+      // route to the benchmarks page
+      this.props.router.push('/benchmarks')
+
+      // scroll to the current system, with enough delay to wait for the router redirect to benchmarks to complete rendering
+      setTimeout(() => {
+        const anchorToScrollTo = document.getElementById('current')
+        anchorToScrollTo && anchorToScrollTo.scrollIntoView(true/* align top */)
+      }, 500)
+
+    }
+
+    setTimeout(() => {
+      dispatch(load(callback))
+    }, 100)
 
   }
 
@@ -65,8 +73,8 @@ class Analysis extends React.Component {
     if (!_.isUndefined(currentSystem.profileId)) {
       profileComment += 'Your graphics profile (realism) is ' + this.getProfileOpinion(currentSystem.profileId) + ' level. The levels are Basic, Medium, High and Ultra. '
       profileComment += 'Integrated GPUs use the Basic profile. '
-      profileComment += 'The Medium and High profiles use higher resolution image maps for increased realism. '
-      profileComment += 'The Ultra profile adds further realism by using higher resolution models, and nicer lighting and shadows. '
+      profileComment += 'The Medium and High profiles use higher quality textures (skin, clothing, road surface, building, etc) for increased realism. '
+      profileComment += 'The Ultra profile adds further realism by using more detailed models, and nicer lighting and shadows. '
       profileComment += 'Graphics profile is automatically set by the game engine according to the capabilities of your graphics processing unit. You can not set it yourself. '
       profileComment += 'A low end discrete GPU, such as the Nvidia GeForce GT 650 or AMD Radeon R7 360 Series, is necessary to get the Medium profile. '
       profileComment += 'A mid level discrete GPU, such as the Nvidia GeForce GTX 750 Ti or AMD Radeon R9 200, is necessary to get the High profile. '
