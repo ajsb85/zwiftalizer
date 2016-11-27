@@ -11,6 +11,7 @@ import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {Specs} from './specs.jsx'
 import {Chart} from './chart.jsx'
+import Analysis from './analysis.jsx'
 
 class Graphics extends React.Component {
 
@@ -30,11 +31,11 @@ class Graphics extends React.Component {
     // fpsData, fpsSamples, specs come from ...graphics spread operator
     const {fpsData, fpsSamples, specs} = this.props;
 
-
     return (
       <div>
         <Specs specs={specs}/>
         <Chart data={fpsData} samples={fpsSamples} specs={specs}/>
+        <Analysis/>
       </div>
     )
   }

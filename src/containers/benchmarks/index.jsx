@@ -65,7 +65,7 @@ class Benchmarks extends React.Component {
       <div className="row">
         <div className="col-xs-12 col-sm-offset-8 col-sm-4">
           <div className={styles.rightAlignControls}>
-            <button type="button" className="btn btn-primary btn-sm" onClick={this.findMySystemClicked}>Find mine</button>
+            <button type="button" className="btn btn-primary btn-sm" onClick={this.findMySystemClicked}>Find my system</button>
           </div>
         </div>
       </div>

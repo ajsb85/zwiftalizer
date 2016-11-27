@@ -9,13 +9,8 @@
 var _ = require('underscore');
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
-import {getPerformanceScore} from '../../actions/benchmarks'
-import Badge from '../badge'
 import structure from '../../styles/structure.css'
 import images from '../../styles/images.css'
-import styles from './styles.css'
-import editorial from '../../styles/editorial.css'
-import {colors} from '../../styles/colors'
 
 class System extends React.Component {
 
@@ -29,44 +24,6 @@ class System extends React.Component {
     return isLoaded
       ? this.renderSystemSpecs()
       : null
-  }
-
-  getFpsOpinion(fps) {
-
-    if (fps <= 15) {
-      return 'very low'
-    } else if (fps <= 20) {
-      return 'low'
-    } else if (fps <= 30) {
-      return 'reasonable'
-    } else if (fps <= 45) {
-      return 'good'
-    } else if (fps < 60) {
-      return 'very good'
-    } else {
-      return 'excellent'
-    }
-  }
-
-  getProfileOpinion(profileId) {
-
-    switch (profileId) {
-
-      case(0):
-        return 'Basic, which is the lowest'
-
-      case(1):
-        return 'Medium, which is one level above the lowest'
-
-      case(2):
-        return 'High, which is one level below the highest'
-
-      case(3):
-        return 'Ultra, which is the highest'
-
-      default:
-        return 'at an unknown'
-    }
   }
 
   renderSystemSpecs() {
@@ -121,40 +78,7 @@ class System extends React.Component {
       }
     }
 
-    var profileComment = ''
-
-    if (!_.isUndefined(currentSystem.profileId)) {
-      profileComment += 'Your graphics profile (realism) is ' + this.getProfileOpinion(currentSystem.profileId) + ' level. The levels are Basic, Medium, High, Ultra. '
-      profileComment += 'The Medium and High profiles use higher resolution image maps for increased realism. '
-      profileComment += 'The Ultra profile adds even further realism by using higher resolution models, and nicer lighting and shadows. '
-      profileComment += 'Graphics profile is automatically set by the game engine, according to the capabilities of your graphics processing unit, and cannot be set manually. '
-      profileComment += 'Integrated Intel and AMD graphics are limited to the Basic profile. '
-      profileComment += 'A low end discrete GPU, such as the Nvidia GeForce GT 650 or AMD Radeon R7 360 Series, is needed to get the Medium profile. '
-      profileComment += 'A mid level discrete GPU, such as the Nvidia GeForce GTX 750 Ti or AMD Radeon R9 200, is needed to get the High profile. '
-      profileComment += 'A high end discrete GPU, such as the Nvidia GeForce GTX 960 or AMD Radeon RX 480, is needed to get the Ultra profile. '
-
-    }
-
-    var performanceScore = getPerformanceScore(currentSystem.resolution, currentSystem.profileId)
-
-    var minFpsComment = ''
-    var avgFpsComment = ''
-    var maxFpsComment = ''
-
-    if (!_.isUndefined(currentSystem.specs.minFps)) {
-      minFpsComment = 'Your minimum frame rate is ' + this.getFpsOpinion(currentSystem.specs.minFps) + '. '
-    }
-
-    if (!_.isUndefined(currentSystem.specs.avgFps)) {
-      avgFpsComment = 'Your average frame rate is ' + this.getFpsOpinion(currentSystem.specs.avgFps) + '. '
-    }
-
-    if (!_.isUndefined(currentSystem.specs.maxFps)) {
-      maxFpsComment = 'Your maximum frame rate is ' + this.getFpsOpinion(currentSystem.specs.maxFps) + '. '
-    }
-
     return (
-
       <div className="container">
         <div className="row">
           <div className="col-xs-12">
@@ -190,22 +114,6 @@ class System extends React.Component {
                         {ram}
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-xs-12">
-            <div className={structure.boxesWrapOuter}>
-              <div className={structure.boxesWrapInner}>
-                <div className={structure.boxFirstLast}>
-                  <div className={structure.boxHeadingLast}>Summary</div>
-                  <div className={editorial.editorialBoxContent}>
-                    <span className={styles.opinion}>This system is a &nbsp;</span><Badge data={performanceScore}/>&nbsp;
-                    <p>{minFpsComment}{avgFpsComment}{maxFpsComment}</p>
-                    <p>{profileComment}</p>
                   </div>
                 </div>
               </div>
