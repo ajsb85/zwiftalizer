@@ -27,19 +27,35 @@ class Btle extends React.Component {
 
   renderChart() {
 
-    return (
+    const {messages} = this.props
 
-      <div className="container">
-        <div className={structure.boxesWrapOuter}>
-          <div className={structure.boxesWrapInner}>
-            <div className={structure.boxFirstLast}>
-              <div className={structure.chartsBoxContent}>
-                <Chart data={this.props}/></div>
+    console.log(messages.count)
+
+    if (messages && messages.count) {
+      return (
+        <div className="container">
+          <div className={structure.boxesWrapOuter}>
+            <div className={structure.boxesWrapInner}>
+              <div className={structure.boxFirstLast}>
+                <div className={structure.chartsBoxContent}>
+                  <Chart data={this.props}/></div>
+              </div>
             </div>
+          </div>
+        </div>
+      )
+    }
+
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-12">
+            <h3 className={structure.sectionSubHeading}>No devices found</h3>
           </div>
         </div>
       </div>
     )
+
   }
 }
 

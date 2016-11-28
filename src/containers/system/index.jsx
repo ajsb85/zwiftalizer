@@ -28,14 +28,7 @@ class System extends React.Component {
 
   renderSystemSpecs() {
 
-    const {
-      platform,
-      cpuVendor,
-      cpuDetails,
-      ram,
-      specs,
-      currentSystem
-    } = this.props;
+    const {platform, cpuVendor, cpuDetails, ram} = this.props;
 
     let platformClass,
       cpuClass = null
@@ -127,12 +120,10 @@ class System extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const {reader, system, graphics, benchmarks} = state
+  const {reader, system} = state
   return {
     ...reader,
-    ...system,
-    ...graphics,
-    ...benchmarks
+    ...system
   }
 }
 

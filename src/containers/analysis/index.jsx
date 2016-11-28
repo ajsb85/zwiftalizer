@@ -74,7 +74,7 @@ class Analysis extends React.Component {
       profileComment += 'Your graphics profile (realism) is ' + this.getProfileOpinion(currentSystem.profileId) + ' level. The levels are Basic, Medium, High and Ultra. '
       profileComment += 'Integrated GPUs use the Basic profile. '
       profileComment += 'The Medium and High profiles use higher quality textures (skin, clothing, road surface, building, etc) for increased realism. '
-      profileComment += 'The Ultra profile adds further realism by using more detailed models, and nicer lighting and shadows. '
+      profileComment += 'The Ultra profile adds further realism by using nicer lighting, nicer shadows and additional polygons to give things more detail. '
       profileComment += 'Graphics profile is automatically set by the game engine according to the capabilities of your graphics processing unit. You can not set it yourself. '
       profileComment += 'A low end discrete GPU, such as the Nvidia GeForce GT 650 or AMD Radeon R7 360 Series, is necessary to get the Medium profile. '
       profileComment += 'A mid level discrete GPU, such as the Nvidia GeForce GTX 750 Ti or AMD Radeon R9 200, is necessary to get the High profile. '
@@ -154,9 +154,25 @@ class Analysis extends React.Component {
                         </div>
                       </div>
                       <div className="row">
+                        <div className="col-xs-12">
+                          <h3>&nbsp;</h3>
+                        </div>
+                      </div>
+                      <div className="row">
                         <div className="col-xs-12 col-sm-offset-1 col-sm-10">
-                          <p>The score is based on your graphics profile and resolution. Frame rate is not considered in the score because it is very subjective (some people do not mind 15 FPS, others
-                            demand a minimum of 60 FPS).</p>
+                          <h3>
+                            DISCLAIMER
+                          </h3>
+                          <p>
+                            The opinions expressed below, are the those of one member of the Zwift community and do not represent the opinions of Zwift LLC in any way. Questions about the information
+                            presented here should be directed to&nbsp;<a href="https://twitter.com/zwiftalizer">@zwiftalizer</a>, or posted in the&nbsp;<a href="https://www.facebook.com/groups/zwiftCoders/">Zwift Coders Facebook group</a>.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-xs-12 col-sm-offset-1 col-sm-10">
+                          <p>The score is based on your graphics profile and resolution. Frame rate is not factored into in the score because it is very subjective. Some people do not mind 15 FPS. Others
+                            prefer a minimum of 60 FPS.</p>
                           <h3>Graphics profile</h3>
                           <p>{profileComment}</p>
                           <h3>Graphics resolution</h3>

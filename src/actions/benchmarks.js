@@ -10,8 +10,8 @@ export const RESET_ALL = 'RESET_ALL'
 export function load(callback) {
 
   return dispatch => {
-    //request.get('http://data.zwiftalizer.com', null, {
-    request.get('testbenchmarks.json', null, {
+    request.get('http://data.zwiftalizer.com', null, {
+      //request.get('testbenchmarks.json', null, {
       cache: false,
       dataType: 'json'
     }).then((xhr, data) => {

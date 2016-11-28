@@ -36,11 +36,11 @@ class App extends React.Component {
     // load home route and allow to render
     setTimeout(() => {
       this.props.router.push('/')
-    }, 100)
+    }, 250)
 
     setTimeout(() => {
       dispatch(loadDemo())
-    }, 100)
+    }, 250)
 
   }
 

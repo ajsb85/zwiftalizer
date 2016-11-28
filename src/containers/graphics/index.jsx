@@ -9,7 +9,7 @@
 
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
-import {Specs} from './specs.jsx'
+import Specs from './specs.jsx'
 import {Chart} from './chart.jsx'
 
 class Graphics extends React.Component {
