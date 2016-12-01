@@ -36,10 +36,24 @@ class Badge extends React.Component {
       }
     }
 
-    if (value <= 5) {
+    if (value <= 6) {
       badgeStyle = {
         background: colors.yellow,
         border: '0.2rem solid ' + colors.yellowBorder
+      }
+    }
+
+    if (value <= 5) {
+      badgeStyle = {
+        background: colors.salmonpink,
+        border: '0.2rem solid ' + colors.salmonpinkBorder
+      }
+    }
+
+    if (value <= 3) {
+      badgeStyle = {
+        background: colors.fiestared,
+        border: '0.2rem solid ' + colors.fiestaredBorder
       }
     }
 

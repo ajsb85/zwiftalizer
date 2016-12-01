@@ -29,9 +29,7 @@ class Btle extends React.Component {
 
     const {messages} = this.props
 
-    console.log(messages.count)
-
-    if (messages && messages.count) {
+    if (messages && messages.count()) {
       return (
         <div className="container">
           <div className={structure.boxesWrapOuter}>

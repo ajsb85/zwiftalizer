@@ -1,5 +1,5 @@
-var request = require('qwest')
-var _ = require('underscore')
+const request = require('qwest')
+const _ = require('underscore')
 
 export const SET_BENCHMARKS_DATA = 'SET_BENCHMARKS_DATA'
 export const SET_CURRENT_SYSTEM_BENCHMARK = 'SET_CURRENT_SYSTEM_BENCHMARK'
@@ -10,8 +10,8 @@ export const RESET_ALL = 'RESET_ALL'
 export function load(callback) {
 
   return dispatch => {
-    request.get('http://data.zwiftalizer.com', null, {
-      //request.get('testbenchmarks.json', null, {
+    //request.get('http://data.zwiftalizer.com', null, {
+    request.get('testbenchmarks.json', null, {
       cache: false,
       dataType: 'json'
     }).then((xhr, data) => {
@@ -84,9 +84,12 @@ export function getPerformanceScore(resolution, profileId) {
 
   const maxScore = 10;
 
-  var opinion = 'Unicorns and rainbows!'
+  var opinion = 'Ride On!'
 
-  // a 'score' for the current resolution and profile combination works out as a scale of 3/10 to 10/10
+  // A 'score' for the current resolution and profile combination works out as a scale of 3/10 to 10/10
+  //
+  // Carol Vordeman, eat your heart out.
+  //
   var value = Math.round(resolution / 395) + profileId + 2;
 
   // ultra 1080 is pretty awesome, so fudge this one
@@ -98,8 +101,16 @@ export function getPerformanceScore(resolution, profileId) {
     opinion = 'Sweet spot!'
   }
 
+  if (value <= 6) {
+    opinion = 'Nice!'
+  }
+
   if (value <= 5) {
-    opinion = 'Gets the job done!'
+    opinion = 'Average!'
+  }
+
+  if (value <= 3) {
+    opinion = 'It works!'
   }
 
   const label = value + '/' + maxScore

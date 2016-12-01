@@ -561,7 +561,7 @@ class Chart extends React.Component {
     const categories = [
       {
         key: 'value',
-        label: 'Searches',
+        label: 'Drop outs',
         disabled: false
       }
     ]

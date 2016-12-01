@@ -6,8 +6,8 @@
  *  This source code is licensed under the MIT-style license found in the
  *  LICENSE file in the root directory of this source tree.
  */
-var _ = require('underscore')
-var moment = require('moment')
+const _ = require('underscore')
+const moment = require('moment')
 
 import React from 'react'
 
@@ -169,6 +169,7 @@ class Chart extends React.Component {
                   up: ['value']
                 }}/>
               </Charts>
+              <YAxis id="messages2" label="Messages" min={0} max={maxMessages} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
             </ChartRow>
           </ChartContainer>
         </Resizable>
@@ -202,6 +203,7 @@ class Chart extends React.Component {
                   up: ['value']
                 }}/>
               </Charts>
+              <YAxis id="messages2" label="Messages" min={0} max={maxMessages} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"></YAxis>
             </ChartRow>
           </ChartContainer>
         </Resizable>

@@ -33,6 +33,10 @@ export default function mapBTLEMessages(lines, timeAxisTimeSeries) {
 
   const ts = new TimeSeries(result);
 
+  if (!ts.count()) {
+    return null;
+  }
+
   const reducedSeries = TimeSeries.timeSeriesListSum({
     name: 'messages',
     fieldSpec: ['time', 'value'],
