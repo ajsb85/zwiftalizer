@@ -73,7 +73,7 @@ class Analysis extends React.Component {
     if (!_.isUndefined(currentSystem.profileId)) {
       profileComment += 'Your graphics profile (realism) is ' + this.getProfileOpinion(currentSystem.profileId) + ' level. The levels are Basic, Medium, High and Ultra. '
       profileComment += 'Integrated GPUs use the Basic profile. '
-      profileComment += 'The Medium and High profiles use higher quality textures (skin, clothing, road surface, building, etc) for increased realism. '
+      profileComment += 'The Medium and High profiles use higher quality effects for increased realism. '
       profileComment += 'The Ultra profile adds further realism by using nicer lighting, nicer shadows and additional polygons to give things more detail. '
       profileComment += 'Graphics profile is automatically set by the game engine according to the capabilities of your graphics processing unit. You can not set it yourself. '
       profileComment += 'A low end discrete GPU, such as the Nvidia GeForce GT 650 or AMD Radeon R7 360 Series, is necessary to get the Medium profile. '
