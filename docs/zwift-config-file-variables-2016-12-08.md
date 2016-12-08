@@ -13,7 +13,7 @@ basic, medium, high
 res 1280x720(0x)
 ```
 
-ultra, 1920x1080 = 720(2x)
+ultra
 
 ```
 res 1920x1080(0x)
