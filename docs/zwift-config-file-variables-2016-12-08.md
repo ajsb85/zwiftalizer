@@ -73,7 +73,7 @@ Dependent on GPU.
 
 Might require discrete GPU and OpenGL 3.1 or higher.
 
-On increase realism but decrease FPS.
+On increases realism but decreases FPS.
 
 
 ### Examples
@@ -95,7 +95,7 @@ set gSSAO=0
 
 Enables or disables smoothing of model edges
 
-On increase realism but decrease FPS
+On increases realism but decreases FPS
 
 ### Examples
 
@@ -134,7 +134,7 @@ set gShowFPS=0
 
 Enables or disables fancy sun rays.
 
-On increase realism but decrease FPS.
+On increases realism but decreases FPS.
 
 Might require discrete GPU and OpenGL 3.1 or higher.
 
@@ -183,7 +183,7 @@ A number between 0 and 1 is normal.
 
 Higher number increases scenery density / realism but decrease FPS.
 
-Higher number decreases scenery density / realism but increases FPS.
+Lower number decreases scenery density / realism but increases FPS.
 
 Examples:
 * 0 = 0%
@@ -219,7 +219,7 @@ set gFoliagePercent=5
 
 Enables or disables simple reflections on water, glass, metal, carbon, cobbles, etc.
 
-Off increases realism but decrease FPS.
+Off increases realism but decreases FPS.
 
 Might require discrete GPU and OpenGL 3.1 or higher.
 
