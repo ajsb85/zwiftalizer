@@ -366,7 +366,7 @@ Follow these steps to make a custom config file.
   On Windows, the logs are located under:
 
   ```
-  %USERNAME%\Documents\Zwift\Logs
+  %HOMEPATH%\Documents\Zwift\Logs
   ```
 
 1. As an Administrator, Edit the contents of the config file that matches the profile your system was given.
