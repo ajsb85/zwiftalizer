@@ -330,7 +330,7 @@ set gFXAA=1
 set gSimpleReflections=0
 set gSunRays=1
 set gHeadlight=1
-set gFoliagePercent=2.5
+set gFoliagePercent=2
 set gLODBias=0
 set gShowFPS=1
 
