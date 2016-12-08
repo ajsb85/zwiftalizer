@@ -309,7 +309,7 @@ set gSimpleReflections=0
 
 ### Ultra
 ```
-res 1920x720(2x)
+res 1920x1080(0x)
 sres 2048x2048
 aniso 4
 set gSSAO=1
