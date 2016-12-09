@@ -359,8 +359,8 @@ set gFXAA=1
 
 Follow these steps to make a custom config file.
 
-1. backup `C:\Program Files (x86)\Zwift\data\configs` or, on Mac OS `~/Library/Application Support/Zwift/data/configs/`
-```
+1. backup `C:\Program Files (x86)\Zwift\data\configs` 
+   on Mac OS `~/Library/Application Support/Zwift/data/configs/`
 
 1. find out which profile Zwift gives you by dropping your log.txt on http://zwiftalizer.com
 
