@@ -476,7 +476,7 @@ Change the USER_RESOLUTION_PREF to your preferred display resolution
 
 ## To Do
 
-Document these
+### Document these
 
 g_bEnableOculus=0
 gBloom=1 
@@ -484,3 +484,19 @@ bloomStrength=0.08
 gVignette=1
 gColorCorrection=1 
 gSSR=0 
+
+### Document Radeon Control Panel Optimizations
+
+AA: 8x, Standard, Supersampling, Morphological off
+AF 16x, High
+Surface Format Optimisation on
+VSync On
+Target Frame Rate 60
+
+
+### Document GeForce Control Panel Optimizations
+
+VSync On
+Target Frame Rate 60
+
+
