@@ -406,7 +406,28 @@ set gSimpleReflections=1
 set gLODBias=3
 
 ```
+### Basic overrides for increased realism on late 2013 iMac 21.5" 1920x1080 with Intel Iris Pro Graphics 1536 MB VRAM
 
+Intel Iris Pro is a fairly decent integrated GPU. It can handle some increased resolution and lighting effects.
+
+Edit basic.txt.
+
+* Higher world graphics resolution
+* Higher quality lighting & shadows (gSSAO on)
+* Sun Rays On
+* Higher polygon count models (gLODBias=1.5)
+* 30-40 FPS at 1080
+
+res 1280x720(0x)
+sres 512x512
+set gSSAO=1
+set gFXAA=1
+set gSunRays=1
+set gHeadlight=0
+set gFoliagePercent=0.5
+set gSimpleReflections=1
+set gLODBias=1.5
+set gShowFPS=1   
 
 ### Ultra override for medium to high end Radeon and Nvidia cards that don't get Ultra by default.
 
