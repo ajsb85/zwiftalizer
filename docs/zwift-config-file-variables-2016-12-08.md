@@ -473,3 +473,14 @@ Change the USER_RESOLUTION_PREF to your preferred display resolution
 <USER_RESOLUTION_PREF>3840×2160</USER_RESOLUTION_PREF>
 
 ```
+
+## To Do
+
+Document these
+
+g_bEnableOculus=0
+gBloom=1 
+bloomStrength=0.08
+gVignette=1
+gColorCorrection=1 
+gSSR=0 
