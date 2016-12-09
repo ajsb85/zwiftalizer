@@ -418,6 +418,7 @@ Edit basic.txt.
 * Higher polygon count models (gLODBias=1.5)
 * 30-40 FPS at 1080
 
+```
 res 1280x720(0x)
 sres 512x512
 set gSSAO=1
@@ -428,6 +429,7 @@ set gFoliagePercent=0.5
 set gSimpleReflections=1
 set gLODBias=1.5
 set gShowFPS=1   
+```
 
 ### Ultra override for medium to high end Radeon and Nvidia cards that don't get Ultra by default.
 
