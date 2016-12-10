@@ -6,7 +6,7 @@ import removeTrademarksAndCopyrights from './removeTrademarksAndCopyrights'
  */
 export default function cpuDetails(str) {
 
-  const regex = /^\[[^\]]*\]\s+?cpu:\s*[\w]*\s*(.*)$/im
+  const regex = /^\[[^\]]*\]\s+?cpu:\s*([\w\d]*)\s*(.*)$/im
 
   const match = regex.exec(str)
 
@@ -14,7 +14,9 @@ export default function cpuDetails(str) {
     return undefined
   }
 
-  const cleaned = removeTrademarksAndCopyrights(match[1].replace(/\s+?cpu\s?/i, ' '))
+  if (match[1] && match[1].toLowerCase() === 'arm64') {
+    return match[1]
+  }
 
-  return cleaned
+  return removeTrademarksAndCopyrights(match[2].replace(/\s+?cpu\s?/i, ' '))
 }

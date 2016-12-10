@@ -7,7 +7,7 @@ import removeTrademarksAndCopyrights from './removeTrademarksAndCopyrights'
  */
 export default function cpuVendor(str) {
 
-  const regex = /^\[[^\]]*\]\s+?cpu:\s+([\w]*).*$/im
+  const regex = /^\[[^\]]*\]\s+?cpu:\s+([\w\d]*).*$/im
 
   const match = regex.exec(str)
 

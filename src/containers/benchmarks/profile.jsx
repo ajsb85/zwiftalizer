@@ -106,7 +106,7 @@ class Profile extends React.Component {
 
     return (
       <div className={styles.benchmarksBoxContent} style={panelStyle}>
-        <div className="container-fluid">
+        <div className="container">
           <div className="row">
             <div className="hidden-xs col-sm-offset-2 col-sm-5">
               <h3>System</h3>
@@ -192,7 +192,7 @@ class Profile extends React.Component {
 
       <div className={styles.benchmarksWrapOuter}>
         <div onClick={this.togglePanel} className={styles.benchmarksBoxHeading} data-panel-key={panelKey}>
-          <div className="container-fluid">
+          <div className="container">
             <div className="row">
               <div className="col-xs-1 col-sm-1 col-md-1">
                 {isExpanded

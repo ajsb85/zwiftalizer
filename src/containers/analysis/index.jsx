@@ -107,7 +107,7 @@ class Analysis extends React.Component {
 
     if (currentSystem.specs.avgFps <= 15 && currentSystem.resolution > 576) {
       additionalFpsComment = 'Lower your resolution to 576 to increase your average frame rate. '
-    } else if (currentSystem.specs.avgFps <= 30 && currentSystem.resolution > 720 && currentSystem.resolution < 1440) {
+    } else if (currentSystem.specs.avgFps <= 30 && currentSystem.resolution > 750 && currentSystem.resolution < 1440) {
       additionalFpsComment = 'Lower your resolution to 720 to increase your average frame rate. '
     } else if (currentSystem.specs.avgFps <= 30 && currentSystem.resolution > 1080 && currentSystem.resolution < 1440) {
       additionalFpsComment = 'Lower your resolution to 1080 to increase your average frame rate. '
@@ -118,8 +118,8 @@ class Analysis extends React.Component {
     var resolutionComment = ''
 
     if (!_.isUndefined(currentSystem.resolution)) {
-      resolutionComment += 'Your resolution (picture frame size measured in the number of pixels in the vertical axis) is ' + this.getResolutionOpinion(currentSystem.resolution)
-      resolutionComment += 'The levels are 576 standard definition (SD), 720 high definition (HD), 1080 full high definition (FHD), '
+      resolutionComment += 'Your resolution (picture frame size measured in the number of pixels in the vertical axis) is ' + this.getResolutionOpinion(currentSystem.resolution) + '. '
+      resolutionComment += 'The levels are 576 standard definition (SD), 750 iOS, 720 high definition (HD), 1080 full high definition (FHD), '
       resolutionComment += '1440 wide quad high definition (WQHD - 4 times as many pixels as 720 HD), '
       resolutionComment += '2160 ultra high definition (4K - 4 times as many pixels as 1080 FHD). '
       resolutionComment += 'Unlike graphics profile, you can change the graphics resolution to whatever you want. '
@@ -135,7 +135,7 @@ class Analysis extends React.Component {
                 <div className={structure.boxFirstLast}>
                   <div className={structure.boxHeadingLast}>Graphics Analysis</div>
                   <div className={editorial.editorialBoxContent}>
-                    <div className="container-fluid">
+                    <div className="container">
                       <div className="row">
                         <div className="col-xs-12">
                           <h3>&nbsp;</h3>
@@ -195,11 +195,11 @@ class Analysis extends React.Component {
   getFpsOpinion(fps) {
 
     if (fps <= 15) {
-      return 'very low'
-    } else if (fps <= 20) {
       return 'low'
+    } else if (fps <= 20) {
+      return 'ok'
     } else if (fps <= 30) {
-      return 'reasonable'
+      return 'average'
     } else if (fps <= 45) {
       return 'good'
     } else if (fps < 60) {
@@ -235,19 +235,22 @@ class Analysis extends React.Component {
     switch (resolution) {
 
       case(576):
-        return '576 standard definition (SD), which is the same as a 1980s television. This is the lowest setting. '
+        return '576 standard definition (SD), which is the same as a 1980s television. This is the lowest setting'
 
       case(720):
-        return '720 high definition (HD), which is the same as a 1990s HD television. This is one level above the lowest setting. '
+        return '720 high definition (HD), which is the same as a 1990s HD television. This is one level above the lowest setting'
+
+      case(750):
+        return '750 high definition (HD) iOS'
 
       case(1080):
-        return '1080 full high definition (FHD), which is the same as full HD television. This is the middle setting. '
+        return '1080 full high definition (FHD), which is the same as full HD television. This is the middle setting'
 
       case(1440):
-        return '1440 wide quad high definition (WQHD), which 4 times as many pixels as 720 HD, which is one level below the highest setting. '
+        return '1440 wide quad high definition (WQHD), which 4 times as many pixels as 720 HD, which is one level below the highest setting'
 
       case(2160):
-        return '2160 ultra high definition (4K), 4 times as many pixels as 1080 FHD, which is the highest setting. '
+        return '2160 ultra high definition (4K), 4 times as many pixels as 1080 FHD, which is the highest setting'
 
       default:
         return 'at an unknown'

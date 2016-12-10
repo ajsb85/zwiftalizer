@@ -32,50 +32,51 @@ var _ = require('underscore')
 
       return (
         <div className={styles.root}>
+          <div className='container-fluid'>
+            <div className='row'>
+              <div className='center-block'>
+                <div className='text-center'>
+                  <Tabs
+                    onSelect={this.handleSelect}
+                    selectedIndex={0}
+                    style={{
+                    margin: 0,
+                    padding: 0,
+                    marginBefore: 0,
+                    marginAfter: 0,
+                    marginStart: 0,
+                    marginEnd: 0
+                  }}>
+                    <TabList>
+                      <Tab>Graphics</Tab>
+                      <Tab>ANT+ Devices</Tab>
+                      <Tab>BTLE Devices</Tab>
+                      <Tab>Network</Tab>
+                      <Tab>Analysis</Tab>
+                    </TabList>
 
-          <div className='row'>
-            <div className='center-block'>
-              <div className='text-center'>
-                <Tabs
-                  onSelect={this.handleSelect}
-                  selectedIndex={0}
-                  style={{
-                  margin: 0,
-                  padding: 0,
-                  marginBefore: 0,
-                  marginAfter: 0,
-                  marginStart: 0,
-                  marginEnd: 0
-                }}>
-                  <TabList>
-                    <Tab>Graphics</Tab>
-                    <Tab>ANT+ Devices</Tab>
-                    <Tab>BTLE Devices</Tab>
-                    <Tab>Network</Tab>
-                    <Tab>Analysis</Tab>
-                  </TabList>
+                    <TabPanel>
+                      <Graphics/>
+                    </TabPanel>
 
-                  <TabPanel>
-                    <Graphics/>
-                  </TabPanel>
+                    <TabPanel>
+                      <Ant/>
+                    </TabPanel>
 
-                  <TabPanel>
-                    <Ant/>
-                  </TabPanel>
+                    <TabPanel>
+                      <Btle/>
+                    </TabPanel>
 
-                  <TabPanel>
-                    <Btle/>
-                  </TabPanel>
+                    <TabPanel>
+                      <Network/>
+                    </TabPanel>
 
-                  <TabPanel>
-                    <Network/>
-                  </TabPanel>
+                    <TabPanel>
+                      <Analysis/>
+                    </TabPanel>
 
-                  <TabPanel>
-                    <Analysis/>
-                  </TabPanel>
-
-                </Tabs>
+                  </Tabs>
+                </div>
               </div>
             </div>
           </div>

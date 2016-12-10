@@ -8,17 +8,17 @@ class Support extends React.Component {
   render() {
 
     return (
-      <div className="container-fluid">
+      <div className="container">
         <div className={editorial.boxesWrapOuter}>
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxLast}>
               <div className={editorial.editorialBoxHeading}>Support the Zwiftalizer</div>
               <div className={editorial.editorialBoxContent}>
-                <div className="container-fluid">
+                <div className="container">
                   <div className="row">
                     <div className="col-xs-12 col-sm-offset-1 col-sm-10">
 
-                      <div className="container-fluid">
+                      <div className="container">
                         <div className="row">
                           <div className="col-xs-12 col-sm-4">
 

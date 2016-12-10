@@ -37,6 +37,8 @@ class Specs extends React.Component {
 
     if (gpuVendor) {
 
+      console.log(gpuVendor)
+
       switch (gpuVendor.toLowerCase()) {
         case('amd'):
           if (isFire(gpuDetails)) {
@@ -62,6 +64,10 @@ class Specs extends React.Component {
 
         case('nvidia'):
           gpuClass = images.nvidia
+          break
+
+        case('apple'):
+          gpuClass = images.mac
           break
 
           //@todo, add a graphic for unknown
@@ -163,7 +169,7 @@ class Specs extends React.Component {
               <div className={structure.boxesWrapInner}>
                 <div className={structure.boxFirstLast}>
                   <div className={editorial.editorialBoxContent}>
-                    <div className="container-fluid">
+                    <div className="container">
                       <div className="row">
                         <div className="col-xs-12 col-sm-offset-1 col-sm-5">
                           <h3>

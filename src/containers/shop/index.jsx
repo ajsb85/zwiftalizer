@@ -14,13 +14,13 @@ class Shop extends React.Component {
 
     return (
 
-      <div className="container-fluid">
+      <div className="container">
         <div className={editorialStyles.boxesWrapOuter}>
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxLast}>
               <div className={editorialStyles.editorialBoxHeading}>My Tested Best Accessories For Zwift</div>
               <div className={editorialStyles.editorialBoxContent}>
-                <div className="container-fluid">
+                <div className="container">
                   <div className="row">
                     <div className="col-xs-12 col-sm-3">
                       <div className={styles.accessorizeProduct}>
@@ -46,7 +46,7 @@ class Shop extends React.Component {
             <div className={structure.boxLast}>
               <div className={editorialStyles.editorialBoxHeading}>ANT+ USB Dongle</div>
               <div className={editorialStyles.editorialBoxContent}>
-                <div className="container-fluid">
+                <div className="container">
                   <div className="row">
                     <div className="col-xs-12 col-sm-3">
                       <div className={styles.accessorizeProduct}>
@@ -90,7 +90,7 @@ class Shop extends React.Component {
             <div className={structure.boxLast}>
               <div className={editorialStyles.editorialBoxHeading}>Active USB Extension Cable</div>
               <div className={editorialStyles.editorialBoxContent}>
-                <div className="container-fluid">
+                <div className="container">
                   <div className="row">
                     <div className="col-xs-12 col-sm-3">
                       <div className={styles.accessorizeProduct}>
@@ -132,7 +132,7 @@ class Shop extends React.Component {
             <div className={structure.boxLast}>
               <div className={editorialStyles.editorialBoxHeading}>USB WiFi Adapter</div>
               <div className={editorialStyles.editorialBoxContent}>
-                <div className="container-fluid">
+                <div className="container">
                   <div className="row">
                     <div className="col-xs-12 col-sm-3">
                       <div className={styles.accessorizeProduct}>
@@ -172,7 +172,7 @@ class Shop extends React.Component {
             <div className={structure.boxLast}>
               <div className={editorialStyles.editorialBoxHeading}>Cooling Fan</div>
               <div className={editorialStyles.editorialBoxContent}>
-                <div className="container-fluid">
+                <div className="container">
                   <div className="row">
                     <div className="col-xs-12 col-sm-3">
                       <div className={styles.accessorizeProduct}>
@@ -207,7 +207,7 @@ class Shop extends React.Component {
             <div className={structure.boxLast}>
               <div className={editorialStyles.editorialBoxHeading}>20 Pack CR2032 Coin Cell Batteries</div>
               <div className={editorialStyles.editorialBoxContent}>
-                <div className="container-fluid">
+                <div className="container">
                   <div className="row">
                     <div className="col-xs-12 col-sm-3">
                       <div className={styles.accessorizeProduct}>
@@ -247,7 +247,7 @@ class Shop extends React.Component {
             <div className={structure.boxLast}>
               <div className={editorialStyles.editorialBoxHeading}>12 Pack Button Cell Batteries</div>
               <div className={editorialStyles.editorialBoxContent}>
-                <div className="container-fluid">
+                <div className="container">
                   <div className="row">
                     <div className="col-xs-12 col-sm-3">
                       <div className={styles.accessorizeProduct}>
@@ -279,7 +279,7 @@ class Shop extends React.Component {
           </div>
         </div>
 
-        <div className="container-fluid">
+        <div className="container">
           <h1>&nbsp;</h1>
         </div>
 

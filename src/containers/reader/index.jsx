@@ -76,13 +76,13 @@ class Reader extends React.Component {
     return (
       <div className={styles.root}>
 
-        <div className="container-fluid">
+        <div className="container">
           <div className="row">
             <div className="col-xs-12">
 
               <div className="alert alert-warning" role="alert">
 
-                <div className="container-fluid">
+                <div className="container">
                   <div className="row">
                     <div className="col-xs-12 col-sm-1">
                       <form>

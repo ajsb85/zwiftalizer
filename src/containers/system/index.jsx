@@ -30,6 +30,8 @@ class System extends React.Component {
 
     const {platform, cpuVendor, cpuDetails, ram} = this.props;
 
+    console.log(cpuDetails)
+
     let platformClass,
       cpuClass = null
 
@@ -62,6 +64,7 @@ class System extends React.Component {
 
         case('apple'):
         case('arm'):
+        case('arm64'):
           cpuClass = images.mac
           break
 

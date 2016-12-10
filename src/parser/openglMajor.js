@@ -6,7 +6,7 @@ import titleCase from './titleCase'
  */
 export default function openglMajor(str) {
 
-  const regex = /^\[[^\]]*\]\s+?opengl\s+?([\d\.]+?)\s+?.*initialized$/im
+  const regex = /^\[[^\]]*\]\s+?opengl\s+?([\w\s\.\d\.\-]+?)\s+?initialized$/im
 
   const match = regex.exec(str)
 
