@@ -58,6 +58,11 @@ high
 sres 1024x1024
 ```
 
+very high
+```
+sres 1536x1536
+```
+
 ultra
 ```
 sres 2048x2048
@@ -412,9 +417,12 @@ Intel Iris Pro is a fairly decent integrated GPU. It can handle some increased r
 
 Edit basic.txt.
 
-* Higher world graphics resolution
-* Higher quality lighting & shadows (gSSAO on)
+* High world graphics resolution
+* Low shadow resolution
+* High quality lighting & shadows (gSSAO on)
 * Sun Rays On
+* Headlight Off
+* 1/2 x normal auto-generated scenery (gFoliagePercent 50%)
 * Higher polygon count models (gLODBias=1.5)
 * 30-40 FPS at 1080
 
@@ -431,16 +439,42 @@ set gLODBias=1.5
 set gShowFPS=1   
 ```
 
+### Very High, almost Ultra, for overclocked Nvidia GeForce 750 Ti, 860M, 950 or similar
+
+Edit basic.txt or high.txt depending on which profile Zwift gives you by default.
+
+* High world graphics resolution
+* Very high shadow resolution
+* High quality lighting & shadows (gSSAO on)
+* High quality reflections (default in High and Ultra, gSimpleReflections off)
+* Headlight On (default in High and Ultra)
+* 1.5 x normal auto-generated scenery (gFoliagePercent 150%)
+* High polygon count riders and bikes (default in High and Ultra, gLODBias=0)
+
+```
+res 1280x720(0x)
+sres 1536x1536
+set gSSAO=1
+set gFXAA=1
+set gSimpleReflections=0
+set gSunRays=1
+set gHeadlight=1
+set gFoliagePercent=1.5
+set gLODBias=0
+set gShowFPS=1
+
+```
+
 ### Ultra override for medium to high end Radeon and Nvidia cards that don't get Ultra by default.
 
 Edit basic.txt or high.txt depending on which profile Zwift gives you by default.
 
-* Higher world graphics resolution
-* Higher shadow resolution
-* Higher quality lighting & shadows (gSSAO on)
-* Higher quality reflections (default in High and Ultra, gSimpleReflections off)
+* Highest world graphics resolution
+* Highest shadow resolution
+* High quality lighting & shadows (gSSAO on)
+* High quality reflections (default in High and Ultra, gSimpleReflections off)
 * Headlight On (default in High and Ultra)
-* Increased auto-generated scenery (gFoliagePercent 200%)
+* 2 x normal auto-generated scenery (gFoliagePercent 200%)
 * High polygon count riders and bikes (default in High and Ultra, gLODBias=0)
 
 ```
