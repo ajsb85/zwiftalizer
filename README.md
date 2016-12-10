@@ -14,6 +14,10 @@ This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
 The code runs 100% in your web browser on your computer.
 
+## 0.9.8 Changes (2016-12-09)
+* iOS update - parsing of Apple iOS device CPU, GPU and resolutions.
+
+
 ## 0.9.7 Changes (2016-11-27)
 * Benchmarks - Added button to locate & highlight current system in the benchmarks.
 * Graphics - Added opinionated score out of 10 badge and button to locate & highlight current system in the benchmarks.
