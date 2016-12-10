@@ -96,7 +96,7 @@ class Benchmarks extends React.Component {
                 Zwift System Benchmarks (Community Generated)
               </div>
               <div className={editorialStyles.editorialBoxContent}>
-                <div className="container">
+                <div className="container-fluid">
 
                   <div className="row">
                     <div className="col-xs-12 col-sm-8">
