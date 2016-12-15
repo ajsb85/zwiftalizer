@@ -14,11 +14,11 @@ class Support extends React.Component {
             <div className={structure.boxLast}>
               <div className={editorial.editorialBoxHeading}>Support the Zwiftalizer</div>
               <div className={editorial.editorialBoxContent}>
-                <div className="container">
+                <div className="container-fluid">
                   <div className="row">
                     <div className="col-xs-12 col-sm-offset-1 col-sm-10">
 
-                      <div className="container">
+                      <div className="container-fluid">
                         <div className="row">
                           <div className="col-xs-12 col-sm-4">
 
@@ -35,25 +35,26 @@ class Support extends React.Component {
                           </div>
                           <div className="col-xs-12 col-sm-8">
 
-                            <div className="row">
-                              <div className="col-xs-12 col-sm-8">
-                                <h3>
-                                  <i className="fa fa-paypal"></i>&nbsp;Make a donation</h3>
-                              </div>
-                              <div className="col-xs-12 col-sm-4">
-                                <div className={editorial.donateButtonWrapper}>
-                                  <div className="pull-right">
-                                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                      <input type="hidden" name="cmd" value="_s-xclick"/>
-                                      <input type="hidden" name="hosted_button_id" value="WWLZWGPD4JS2G"/>
-                                      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"/>
-                                      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"/>
-                                    </form>
+                            <div className="container-fluid">
+                              <div className="row">
+                                <div className="col-xs-12 col-sm-8">
+                                  <h3>
+                                    <i className="fa fa-paypal"></i>&nbsp;Make a donation</h3>
+                                </div>
+                                <div className="col-xs-12 col-sm-4">
+                                  <div className={editorial.donateButtonWrapper}>
+                                    <div className="pull-right">
+                                      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                        <input type="hidden" name="cmd" value="_s-xclick"/>
+                                        <input type="hidden" name="hosted_button_id" value="WWLZWGPD4JS2G"/>
+                                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"/>
+                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"/>
+                                      </form>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-
                             <p>Your donations fund the hosting and continued development of the Zwiftalizer</p>
                             <div className="table-responsive">
                               <table className="table table-striped">
