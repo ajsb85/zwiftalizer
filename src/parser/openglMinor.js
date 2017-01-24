@@ -6,13 +6,12 @@ import titleCase from './titleCase'
  */
 export default function openglMinor(str) {
 
-  const regex = /^\[[^\]]*\]\s+?opengl\s+?[\d\.]+?\s+?(.+?)\s+?initialized$/im
-
+  const regex = /^\[[^\]]*\]\s+?opengl\s+?([\d\.\-]+?)[\s\-]+([\w\s\.\d\.\-]+?)\s+?initialized$/im
   const match = regex.exec(str)
 
   if (!match) {
     return undefined
   }
 
-  return titleCase(match[1])
+  return titleCase(match[2])
 }

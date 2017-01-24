@@ -58,9 +58,6 @@ class App extends React.Component {
     return (
 
       <div>
-        <div className={styles.ribbonWrapper}>
-          <div className={styles.ribbon}>BETA</div>
-        </div>
         <div className="container" style={{
           marginTop: '2rem'
         }}>
@@ -68,8 +65,8 @@ class App extends React.Component {
             <div className="col-sm-12 col-md-3">
               <div className={styles.brand}>
                 <span className={styles.signal}>
-                  <i className="fa fa-line-chart" aria-hidden="true"></i>
-                </span>&nbsp;<Link to="/">Zwiftalizer 0.9.9</Link>
+                  <i className="fa fa-birthday-cake" aria-hidden="true"></i>
+                </span>&nbsp;<Link to="/">Zwiftalizer 1.0</Link>
               </div>
             </div>
 

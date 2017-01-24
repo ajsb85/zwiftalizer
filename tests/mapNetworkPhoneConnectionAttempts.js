@@ -27,8 +27,7 @@ test('should extract phone connection attempts', (assert) => {
 
   const actual = mapNetworkPhoneConnectionAttempts(mapNetworkLines(log), tAxisTimeSeries)
 
-  // 117 10 second slots
-  const expectedLength = 117
+  const expectedLength = 20
 
   assert.ok(actual)
 

@@ -36,11 +36,3 @@ test('should extract Core i5 CPU details', (assert) => {
   assert.equal(actual, expected)
   assert.end()
 })
-
-test('should extract CPU vendor, new log format', (assert) => {
-  const entry = '[8:56:20] CPU: Intel(R) Core(TM) i3-4170T CPU @ 3.20GHz'
-  const expected = 'Intel'
-  const actual = cpuDetails(entry)
-  assert.equal(actual, expected)
-  assert.end()
-})

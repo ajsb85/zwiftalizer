@@ -27,8 +27,7 @@ test('should extract network reconnect lines', (assert) => {
 
   const actual = mapNetworkReconnects(mapNetworkLines(log), tAxisTimeSeries)
 
-  // 117 10 second slots
-  const expectedLength = 117
+  const expectedLength = 40
 
   assert.ok(actual)
 

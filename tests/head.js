@@ -11,7 +11,7 @@ const log = fs.readFileSync('./testdata/sample.txt', 'utf8')
 const shortlog = fs.readFileSync('./testdata/testlog.txt', 'utf8')
 
 test('should extract head with default length', (assert) => {
-  const expected = Math.pow(2, 14)
+  const expected = Math.pow(2, 16)
   const actual = head(log)
   assert.equal(actual.length, expected)
   assert.end()
@@ -26,9 +26,8 @@ test('should extract head with length specified', (assert) => {
 })
 
 test('result should not exceed contents when len is longer than content length', (assert) => {
-  const len = Math.pow(2, 14)
   const expected = shortlog.length
-  const actual = head(shortlog, len)
+  const actual = head(shortlog)
   assert.equal(actual.length, expected)
   assert.end()
 })

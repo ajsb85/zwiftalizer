@@ -17,7 +17,7 @@ test('should get saris (powertap) calibration value 475', (assert) => {
   const actual = mapCalibrationData(line)
   assert.equal(actual.values[0], expect, 'calibration value should be ' + expect)
   assert.equal(actual.status, true, 'calibration success')
-  assert.equal(actual.autoZero, false, 'autoZero unsupported')
+  assert.equal(actual.autoZero, undefined, 'autoZero unsupported')
   assert.end()
 })
 
@@ -27,7 +27,7 @@ test('should get saris (powertap) calibration value 1', (assert) => {
   const actual = mapCalibrationData(line)
   assert.equal(actual.values[0], expect, 'calibration value should be ' + expect)
   assert.equal(actual.status, true, 'calibration success')
-  assert.equal(actual.autoZero, false, 'autoZero unsupported')
+  assert.equal(actual.autoZero, undefined, 'autoZero unsupported')
   assert.end()
 })
 
@@ -39,7 +39,7 @@ test('should get last saris (powertap) calibration of many', (assert) => {
   const actual = mapCalibrationData(line)
   assert.equal(actual.values[0], expect, 'calibration value should be ' + expect)
   assert.equal(actual.status, true, 'calibration success')
-  assert.equal(actual.autoZero, false, 'autoZero unsupported')
+  assert.equal(actual.autoZero, undefined, 'autoZero unsupported')
   assert.end()
 })
 
@@ -48,7 +48,7 @@ test('should get Quark calibration value 12543', (assert) => {
   const expect = 12543
   const actual = mapCalibrationData(line)
   assert.equal(actual.values[0], expect, 'calibration value should be ' + expect)
-  assert.equal(actual.autoZero, false, 'autoZero unsupported')
+  assert.equal(actual.autoZero, true, 'autoZero supported')
   assert.end()
 })
 

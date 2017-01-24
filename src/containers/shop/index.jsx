@@ -279,6 +279,43 @@ class Shop extends React.Component {
           </div>
         </div>
 
+        <div className={editorialStyles.boxesWrapOuter}>
+          <div className={structure.boxesWrapInner}>
+            <div className={structure.boxLast}>
+              <div className={editorialStyles.editorialBoxHeading}>Nathan Sport Wash Detergent, 42-Ounce</div>
+              <div className={editorialStyles.editorialBoxContent}>
+                <div className="container">
+                  <div className="row">
+                    <div className="col-xs-12 col-sm-3">
+                      <div className={styles.accessorizeProduct}>
+                        <div className={styles.centered}>
+                          <iframe
+                            scrolling="no"
+                            src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=zwiftalizer-20&marketplace=amazon&region=US&placement=B008BL3UFW&asins=B008BL3UFW&linkId=35f6aaee-798a-418a-8ecf-67dfc1779c44&show_border=false&link_opens_in_new_window=true&price_color=333333&title_color=0066c0&bg_color=ffffff"></iframe>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-xs-12 col-sm-8">
+                      <div className={styles.accessorizeProduct}>
+                        <h2>Nathan Sport Wash Detergent, 42-Ounce</h2>
+
+                        <p>Removes the smell from workout clothes.</p>
+
+                        <ul>
+                          <li>The only detergent that does it all for your gear</li>
+                          <li>Gets the odor out of performance gear</li>
+                          <li>Safe for dri-fit</li>
+                          <li>Safe for all fabrics</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="container">
           <h1>&nbsp;</h1>
         </div>

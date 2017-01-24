@@ -24,7 +24,7 @@ test('should get 1st gen core right', (assert) => {
 
 test('should recognise alienware alpha cpu', (assert) => {
   const entry = 'PC / Intel Core i3-4130T @ 2.90GHz / Nvidia GeForce GPU/PCIe/SSE2'
-  const expected = '4th generation Intel Core family processor - Power-optimized lifestyle (Alienware Alpha)'
+  const expected = '4th generation Intel Core family processor - Power-optimized lifestyle (Alienware Alpha or possibly IBM ThinkStation)'
   const actual = cpuClass(entry)
   console.log(actual)
   assert.equals(actual, expected)
@@ -33,7 +33,7 @@ test('should recognise alienware alpha cpu', (assert) => {
 
 test('should recognise alienware alpha R2', (assert) => {
   const entry = 'PC / Intel Core i5-6400T @ 2.20GHz / ATi AMD Radeon R9 M470X'
-  const expected = '6th generation Intel Core family processor - Power-optimized lifestyle (Alienware Alpha)'
+  const expected = '6th generation Intel Core family processor - Power-optimized lifestyle (Alienware Alpha or possibly IBM ThinkStation)'
   const actual = cpuClass(entry)
   console.log(actual)
   assert.equals(actual, expected)

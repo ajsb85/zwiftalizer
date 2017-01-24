@@ -32,11 +32,11 @@ test('should extract network error lines', (assert) => {
 
   assert.ok(actual)
 
-  assert.true(actual.count() > 0)
+  assert.true(actual.generalErrors.count() > 0)
 
-  assert.true(actual.count() === expectedLength)
+  assert.true(actual.generalErrors.count() === expectedLength)
 
-  assert.true(actual.max() === 1)
+  assert.true(actual.generalErrors.max() === 1)
 
   assert.end()
 })
