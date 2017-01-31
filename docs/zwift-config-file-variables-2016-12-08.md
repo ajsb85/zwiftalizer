@@ -471,7 +471,7 @@ Only do this if you are getting the Ultra profile, but would prefer higher FPS t
 
 Edit ultra.txt.
 
-* High world graphics resolution
+* Highest world graphics resolution (ultra)
 * High shadow resolution (not ultra)
 * NOT High quality lighting & shadows (gSSAO off)
 * NOT High quality reflections (gSimpleReflections on)
@@ -481,7 +481,7 @@ Edit ultra.txt.
 * Medium polygon count level of detail bias (gLODBias=1)
 
 ```
-res 1280x720(0x)
+res 1920x1080(0x)
 sres 1024x1024
 set gSSAO=0
 set gFXAA=1
