@@ -465,7 +465,7 @@ set gShowFPS=1
 
 ```
 
-### Ultra downgrade to High to increase FPS by lowering shadows, lighting effects, and foliage and for Nvidia GeForce 960M (Mobile/Laptop) or similar.
+### Ultra downgrade to High to increase FPS by lowering shadows, lighting effects, and foliage for Nvidia GeForce 960M (Mobile/Laptop) or similar.
 
 Only do this if you are getting the Ultra profile, but would prefer higher FPS to image realism. 
 
