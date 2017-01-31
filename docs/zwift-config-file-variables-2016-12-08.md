@@ -465,6 +465,35 @@ set gShowFPS=1
 
 ```
 
+### Ultra downgrade to High to increase FPS by lowering shadows, lighting effects, and foliage and for Nvidia GeForce 960M (Mobile/Laptop) or similar.
+
+Only do this if you are getting the Ultra profile, but would prefer higher FPS to image realism. 
+
+Edit ultra.txt.
+
+* High world graphics resolution
+* High shadow resolution (not ultra)
+* NOT High quality lighting & shadows (gSSAO off)
+* NOT High quality reflections (gSimpleReflections on)
+* SunRays On (default in High and Ultra)
+* Headlight On (default in High and Ultra)
+* 1/2 normal auto-generated scenery (gFoliagePercent 50%)
+* Medium polygon count level of detail bias (gLODBias=1)
+
+```
+res 1280x720(0x)
+sres 1024x1024
+set gSSAO=0
+set gFXAA=1
+set gSimpleReflections=1
+set gSunRays=1
+set gHeadlight=1
+set gFoliagePercent=0.5
+set gLODBias=1
+set gShowFPS=1
+
+```
+
 ### Ultra override for medium to high end Radeon and Nvidia cards that don't get Ultra by default.
 
 Edit basic.txt or high.txt depending on which profile Zwift gives you by default.
