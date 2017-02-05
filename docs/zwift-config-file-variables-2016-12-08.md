@@ -411,6 +411,36 @@ set gSimpleReflections=1
 set gLODBias=3
 
 ```
+
+
+### High overrides to increase FPS for GTX 750 Ti and 2015/16 Alienware Alpha (Nvidia GTX 860M)
+
+Edit high.txt.
+
+* Lower shadow resolution (512x512)
+* Basic lighting & shadows (gSSAO off)
+* Sunrays Off
+* Headlight Off
+* 1/2 x normal auto-generated scenery (gFoliagePercent 50%)
+* Simple reflections (gSimpleReflections on)
+* Lower polygon count models (gLODBias=2)
+
+```
+
+res 1280x720(0x)
+sres 512x512
+aniso 4
+set gSSAO=0
+set gFXAA=1
+set gSunRays=0
+set gHeadlight=0
+set gFoliagePercent=0.5
+set gSimpleReflections=1
+set gLODBias=2
+set gShowFPS=1
+
+```
+
 ### Basic overrides for increased realism on late 2013 iMac 21.5" 1920x1080 with Intel Iris Pro Graphics 1536 MB VRAM
 
 Intel Iris Pro is a fairly decent integrated GPU. It can handle some increased resolution and lighting effects.
@@ -449,7 +479,7 @@ Edit basic.txt or high.txt depending on which profile Zwift gives you by default
 * High quality reflections (default in High and Ultra, gSimpleReflections off)
 * Headlight On (default in High and Ultra)
 * 1.5 x normal auto-generated scenery (gFoliagePercent 150%)
-* High polygon count riders and bikes (default in High and Ultra, gLODBias=0)
+* High polygon count models (default in High and Ultra, gLODBias=0)
 
 ```
 res 1280x720(0x)
@@ -504,7 +534,7 @@ Edit basic.txt or high.txt depending on which profile Zwift gives you by default
 * High quality reflections (default in High and Ultra, gSimpleReflections off)
 * Headlight On (default in High and Ultra)
 * 2 x normal auto-generated scenery (gFoliagePercent 200%)
-* High polygon count riders and bikes (default in High and Ultra, gLODBias=0)
+* High polygon count models (default in High and Ultra, gLODBias=0)
 
 ```
 res 1920x1080(0x)
