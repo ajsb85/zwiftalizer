@@ -413,7 +413,7 @@ set gLODBias=3
 ```
 
 
-### High overrides to increase FPS for GTX 750 Ti and 2015/16 Alienware Alpha (Nvidia GTX 860M)
+### High downgrade to increase FPS for GTX 750 Ti and 2015/16 Alienware Alpha (Nvidia GTX 860M)
 
 Edit high.txt.
 
@@ -421,7 +421,7 @@ Edit high.txt.
 * Basic lighting & shadows (gSSAO off)
 * Sunrays Off
 * Headlight Off
-* 1/2 x normal auto-generated scenery (gFoliagePercent 50%)
+* 30% normal auto-generated scenery (gFoliagePercent 0.3)
 * Simple reflections (gSimpleReflections on)
 * Lower polygon count models (gLODBias=2)
 
@@ -434,7 +434,7 @@ set gSSAO=0
 set gFXAA=1
 set gSunRays=0
 set gHeadlight=0
-set gFoliagePercent=0.5
+set gFoliagePercent=0.3
 set gSimpleReflections=1
 set gLODBias=2
 set gShowFPS=1
