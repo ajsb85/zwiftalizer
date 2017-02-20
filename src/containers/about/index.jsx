@@ -115,8 +115,7 @@ class About extends React.Component {
                         The second Lambda function is triggered by the DynamoDB benchmarks table update and dumps a new benchmarks data file to an S3 bucket in JSON format.
                       </p>
                       <p>
-                        The front end reads the JSON file from S3 via an AJAX get request on page load. The S3 bucket location on the benchmarks JSON is deliberately excluded from the CloudFront CDN so
-                        that it is always up to date. The client never reads from DynamoDB directly.
+                        The front end reads the JSON file from S3 via an AJAX get request on page load. The S3 bucket location of the benchmarks JSON is also behind the CloudFront CDN with a short cache timeout. Results are usually no more than 1 hour old. The client never reads from DynamoDB directly.
                       </p>
                       <p>
                         Something like the first million Lambda invocations per month are free. The DynamoDB usage is tiny and also well under the free tier. Lambda and DynamoDB free tiers do not expire

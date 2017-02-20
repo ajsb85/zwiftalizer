@@ -386,7 +386,7 @@ export function uploadResults(data) {
 
   return function(dispatch) {
 
-    return request.post('https://pmqw53ywng.execute-api.us-west-2.amazonaws.com/dev/logs', data, {
+    return request.post('https://iayslzt1s8.execute-api.us-west-2.amazonaws.com/dev/logs', data, {
       cache: false,
       dataType: 'json'
     }).then((xhr, json) => {

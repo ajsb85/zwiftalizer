@@ -65,7 +65,7 @@ class App extends React.Component {
             <div className="col-sm-12 col-md-3">
               <div className={styles.brand}>
                 <span className={styles.signal}>
-                  <i className="fa fa-birthday-cake" aria-hidden="true"></i>
+                  <i className="fa fa-line-chart" aria-hidden="true"></i>
                 </span>&nbsp;<Link to="/">Zwiftalizer 1.0</Link>
               </div>
             </div>
