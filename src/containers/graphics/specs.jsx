@@ -37,8 +37,6 @@ class Specs extends React.Component {
 
     if (gpuVendor) {
 
-      console.log(gpuVendor)
-
       switch (gpuVendor.toLowerCase()) {
         case('amd'):
           if (isFire(gpuDetails)) {

@@ -5,6 +5,7 @@ import startDateTime from './startDateTime'
 import toArray from './toArray'
 
 const ansiDateFormat = 'YYYY-MM-DD'
+const slashDateFormat = 'YYYY/MM/DD'
 const timeFormat = 'HH:mm:ss'
 const dateTimeFormat = ansiDateFormat + ' ' + timeFormat
 const timeDateFormat = timeFormat + ' ' + ansiDateFormat
@@ -32,7 +33,8 @@ export default function epochify(str, callback) {
   // keep track of what the hour is so that we know when to add 24 hours to the day
   let lastHour = null
 
-  let logDayFormatted = logDay.format(ansiDateFormat)
+  //let logDayFormatted = logDay.format(ansiDateFormat)
+  let logDayFormatted = logDay.format(slashDateFormat)
 
   const convertAll = function () {
 
@@ -68,19 +70,19 @@ export default function epochify(str, callback) {
       if (hour < lastHour) {
         lastHour = hour
         logDay = logDay.add(24, 'hours')
-        logDayFormatted = logDay.format(ansiDateFormat)
+        logDayFormatted = logDay.format(slashDateFormat)
       }
 
       // prefix each time entry with the date then convert to unix timestamp
       // const timestamp = moment(logDayFormatted + ' ' + time, dateTimeFormat).unix() * 1000
 
       // 20% faster
-      const timestamp = Date.parse(logDayFormatted + ' ' + time, dateTimeFormat)
+      const timestamp = Date.parse(logDayFormatted + ' ' + time)
 
       lines.push('[' + timestamp + '] ' + value)
     }
 
-    // batch calls to convertDates to not block the main js thread
+    // batch calls to convertDates so that the js execution thread is not blocked
     var n = 0;
     var max = entries.length;
     var batch = 250;
@@ -91,7 +93,7 @@ export default function epochify(str, callback) {
       }
 
       if (n < max) {
-        setTimeout(nextBatch, 0);
+        setTimeout(nextBatch, 4 /*4ms, the min*/ );
       } else {
         // done, pass the data back to the callback function
         callback(null /* no erro*/ , lines);

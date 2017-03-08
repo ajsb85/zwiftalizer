@@ -30,8 +30,6 @@ class System extends React.Component {
 
     const {platform, cpuVendor, cpuDetails, ram} = this.props;
 
-    console.log(cpuDetails)
-
     let platformClass,
       cpuClass = null
 
