@@ -50,163 +50,174 @@ function parseFileContents(log, isDemo = false, share = true) {
       const systemData = parseHead(head)
 
       // turn all times into continuous epoch unix timestamps, and normalize all the new lines
-      const normalizedLog = Parser.epochify(Parser.normalize(log));
+      // this is by far the most time consuming loop, so it is split into batches, and a callback function
+      // fires when all the timestamps have been converted
+      const normalizedLog = Parser.epochify(Parser.normalize(log), (err, normalizedLog) => {
 
-      const activityData = parseActivity(normalizedLog)
-
-      const graphicsData = parseGraphics(normalizedLog, activityData.duration)
-
-      // now remove all the fps lines to make the next extraction quicker
-      const logWithoutFpsLines = Parser.stripFpsLines(normalizedLog)
-
-      const antData = parseAnt(logWithoutFpsLines, activityData.timeAxisTimeSeries)
-
-      // now remove all the ANT+ lines to make the next extraction quicker
-      const logWithoutFpsAntLines = Parser.normalize(Parser.stripAntLines(logWithoutFpsLines))
-
-      const networkData = parseNetwork(logWithoutFpsAntLines, activityData.timeAxisTimeSeries)
-
-      const btleMessages = parseBtle(logWithoutFpsAntLines, activityData.timeAxisTimeSeries)
-
-      dispatch({
-        type: SET_SYSTEM_DATA,
-        data: {
-          ...systemData
+        if (err) {
+          console.log(err)
+          // @todo, a friendly error message
+          dispatch(fileLoaded())
+          return
         }
-      })
 
-      dispatch({
-        type: SET_ACTIVITY_DATA,
-        data: {
-          ...activityData
-        }
-      })
+        const activityData = parseActivity(normalizedLog)
 
-      // notice how we merge the graphics and system data together here,
-      // the data.systemData spread operator will include CPU details too
-      dispatch({
-        type: SET_GRAPHICS_DATA,
-        data: {
-          ...graphicsData,
-          specs: {
+        const graphicsData = parseGraphics(normalizedLog, activityData.duration)
+
+        // now remove all the fps lines to make the next extraction quicker
+        const logWithoutFpsLines = Parser.stripFpsLines(normalizedLog)
+
+        const antData = parseAnt(logWithoutFpsLines, activityData.timeAxisTimeSeries)
+
+        // now remove all the ANT+ lines to make the next extraction quicker
+        const logWithoutFpsAntLines = Parser.normalize(Parser.stripAntLines(logWithoutFpsLines))
+
+        const networkData = parseNetwork(logWithoutFpsAntLines, activityData.timeAxisTimeSeries)
+
+        const btleMessages = parseBtle(logWithoutFpsAntLines, activityData.timeAxisTimeSeries)
+
+        dispatch({
+          type: SET_SYSTEM_DATA,
+          data: {
             ...systemData
           }
-        }
-      })
+        })
 
-      const profileName = systemData.profile ? systemData.profile.toLowerCase() : '';
-
-      let profileId = 0;
-
-      switch (profileName) {
-
-        case ('ultra'):
-          {
-            profileId = 3
+        dispatch({
+          type: SET_ACTIVITY_DATA,
+          data: {
+            ...activityData
           }
-          break;
+        })
 
-        case ('high'):
-          {
-            profileId = 2
+        // notice how we merge the graphics and system data together here,
+        // the data.systemData spread operator will include CPU details too
+        dispatch({
+          type: SET_GRAPHICS_DATA,
+          data: {
+            ...graphicsData,
+            specs: {
+              ...systemData
+            }
           }
-          break;
+        })
 
-        case ('medium'):
-          {
-            profileId = 1
+        const profileName = systemData.profile ? systemData.profile.toLowerCase() : '';
+
+        let profileId = 0;
+
+        switch (profileName) {
+
+          case ('ultra'):
+            {
+              profileId = 3
+            }
+            break;
+
+          case ('high'):
+            {
+              profileId = 2
+            }
+            break;
+
+          case ('medium'):
+            {
+              profileId = 1
+            }
+            break;
+
+          default:
+            profileId = 0
+            break;
+        }
+
+        dispatch({
+          type: SET_ANT_DATA,
+          data: {
+            ...antData
           }
-          break;
+        })
 
-        default:
-          profileId = 0
-          break;
-      }
-
-      dispatch({
-        type: SET_ANT_DATA,
-        data: {
-          ...antData
-        }
-      })
-
-      dispatch({
-        type: SET_NETWORK_DATA,
-        data: {
-          ...networkData
-        }
-      })
-
-      dispatch({
-        type: SET_BTLE_DATA,
-        data: {
-          ...btleMessages
-        }
-      })
-
-      if (graphicsData.fpsData.count) {
-
-        const systemSummary = {
-          'logId': uuid.v4(),
-          'timestamp': activityData.startTimestamp,
-          'duration': activityData.duration + '',
-          'specs': {
-            'resolution': systemData.resolution,
-            'profileId': profileId + '',
-            'profile': systemData.profile,
-            'minFps': Math.round(graphicsData.fpsData.min()) + '',
-            'maxFps': Math.round(graphicsData.fpsData.max()) + '',
-            'avgFps': Math.round(graphicsData.fpsData.avg()) + '',
-            'stdev': Math.round(graphicsData.fpsData.stdev()) + '',
-            'samples': graphicsData.fpsSamples + '',
-            'platform': systemData.platform,
-            'cpuVendor': systemData.cpuVendor,
-            'cpuDetails': systemData.cpuDetails,
-            'ram': systemData.ram,
-            'gpuVendor': systemData.gpuVendor,
-            'gpuDetails': systemData.gpuDetails,
-            'shadowres': systemData.shadowres,
-            'openglMajor': systemData.openglMajor
+        dispatch({
+          type: SET_NETWORK_DATA,
+          data: {
+            ...networkData
           }
-        }
+        })
 
-        const systemId = systemData.platform + ' / ' + systemData.cpuVendor + ' ' + systemData.cpuDetails + ' / ' + systemData.gpuVendor + ' ' + systemData.gpuDetails;
+        dispatch({
+          type: SET_BTLE_DATA,
+          data: {
+            ...btleMessages
+          }
+        })
 
-        const panelKey = systemData.resolution + '-' + profileId
+        if (graphicsData.fpsData.count) {
 
-        const currentSystemBenchmark = {
-          'resolution': parseInt(systemData.resolution),
-          'profileId': parseInt(profileId),
-          'panelKey': panelKey,
-          'specs': Object.assign({}, systemSummary.specs, {
-            'systemId': systemId
+          const systemSummary = {
+            'logId': uuid.v4(),
+            'timestamp': activityData.startTimestamp,
+            'duration': activityData.duration + '',
+            'specs': {
+              'resolution': systemData.resolution,
+              'profileId': profileId + '',
+              'profile': systemData.profile,
+              'minFps': Math.round(graphicsData.fpsData.min()) + '',
+              'maxFps': Math.round(graphicsData.fpsData.max()) + '',
+              'avgFps': Math.round(graphicsData.fpsData.avg()) + '',
+              'stdev': Math.round(graphicsData.fpsData.stdev()) + '',
+              'samples': graphicsData.fpsSamples + '',
+              'platform': systemData.platform,
+              'cpuVendor': systemData.cpuVendor,
+              'cpuDetails': systemData.cpuDetails,
+              'ram': systemData.ram,
+              'gpuVendor': systemData.gpuVendor,
+              'gpuDetails': systemData.gpuDetails,
+              'shadowres': systemData.shadowres,
+              'openglMajor': systemData.openglMajor
+            }
+          }
+
+          const systemId = systemData.platform + ' / ' + systemData.cpuVendor + ' ' + systemData.cpuDetails + ' / ' + systemData.gpuVendor + ' ' + systemData.gpuDetails;
+
+          const panelKey = systemData.resolution + '-' + profileId
+
+          const currentSystemBenchmark = {
+            'resolution': parseInt(systemData.resolution),
+            'profileId': parseInt(profileId),
+            'panelKey': panelKey,
+            'specs': Object.assign({}, systemSummary.specs, {
+              'systemId': systemId
+            })
+          }
+
+          dispatch({
+            type: SET_CURRENT_SYSTEM_BENCHMARK,
+            data: {
+              ...currentSystemBenchmark
+            }
           })
+
+          // this dispatch is to write which benchmarks panel to expanded
+          // based on the current system
+          // using local storage to persist this state
+          // of which panels are toggled
+          dispatch({
+            type: TOGGLE_PROFILE_PANEL,
+            data: {
+              'key': panelKey
+            }
+          })
+
+          if (!isDemo && share) {
+            dispatch(uploadResults(systemSummary))
+          }
         }
 
-        dispatch({
-          type: SET_CURRENT_SYSTEM_BENCHMARK,
-          data: {
-            ...currentSystemBenchmark
-          }
-        })
+        dispatch(fileLoaded())
 
-        // this dispatch is to write which benchmarks panel to expanded
-        // based on the current system
-        // using local storage to persist this state
-        // of which panels are toggled
-        dispatch({
-          type: TOGGLE_PROFILE_PANEL,
-          data: {
-            'key': panelKey
-          }
-        })
-
-        if (!isDemo && share) {
-          dispatch(uploadResults(systemSummary))
-        }
-      }
-
-      dispatch(fileLoaded())
+      })
 
     }, delay)
   }
@@ -384,7 +395,7 @@ function parseBtle(log, timeAxisTimeSeries) {
 
 export function uploadResults(data) {
 
-  return function(dispatch) {
+  return function (dispatch) {
 
     return request.post('https://iayslzt1s8.execute-api.us-west-2.amazonaws.com/dev/logs', data, {
       cache: false,
@@ -393,7 +404,7 @@ export function uploadResults(data) {
       //console.log('Success uploading results')
       //console.log(xhr)
       //console.log(json)
-    }).catch(function(e, xhr, response) {
+    }).catch(function (e, xhr, response) {
       console.log('Error uploading results')
       console.log(e)
       console.log(xhr)

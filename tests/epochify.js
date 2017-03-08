@@ -14,17 +14,32 @@ test('should convert all time entries to epoch times', (assert) => {
 
   const expected = toArray(log).length
 
-  const converted = epochify(log)
+  console.log('expected')
+  console.log(expected)
 
-  const actual = converted.length
+  epochify(log, (err, converted) => {
 
-  assert.true(actual === expected, 'number of lines after converting times is the same')
+    if (err) {
+      console.log(err)
+      assert.fail()
+      assert.end()
+    }
 
-  const firstEntry = converted[0]
+    const actual = converted.length
 
-  const firstTime = parseInt(firstEntry.replace(/^\[([^\]]*)\].*$/i, '$1'))
+    console.log('actual')
+    console.log(actual)
 
-  assert.ok(Number.isInteger(firstTime), 'first time entry is integer')
+    assert.true(actual === expected, 'number of lines after converting times is the same')
 
-  assert.end()
+    const firstEntry = converted[0]
+
+    const firstTime = parseInt(firstEntry.replace(/^\[([^\]]*)\].*$/i, '$1'))
+
+    assert.ok(Number.isInteger(firstTime), 'first time entry is integer')
+
+    assert.end()
+
+  })
+
 })

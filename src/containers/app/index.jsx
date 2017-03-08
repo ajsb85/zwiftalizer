@@ -66,11 +66,11 @@ class App extends React.Component {
               <div className={styles.brand}>
                 <span className={styles.signal}>
                   <i className="fa fa-line-chart" aria-hidden="true"></i>
-                </span>&nbsp;<Link to="/">Zwiftalizer 1.0</Link>
+                </span>&nbsp;<Link to="/">Zwiftalizer 1.0.1</Link>
               </div>
             </div>
 
-            <div className="col-sm-12 col-md-2">
+            <div className="col-sm-12 col-md-3">
               <div className={styles.navItem}>
                 <a onClick={this.handleDemoClick}>
                   Demo
@@ -78,15 +78,9 @@ class App extends React.Component {
               </div>
             </div>
 
-            <div className="col-sm-12 col-md-2">
+            <div className="col-sm-12 col-md-3">
               <div className={styles.navItem}>
                 <Link to="/benchmarks">Benchmarks</Link>
-              </div>
-            </div>
-
-            <div className="col-sm-12 col-md-2">
-              <div className={styles.navItem}>
-                <Link to="/shop">Shop</Link>
               </div>
             </div>
 

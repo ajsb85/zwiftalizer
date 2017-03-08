@@ -14,8 +14,18 @@ This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
 The code runs 100% in your web browser on your computer.
 
+## 1.0.1 Changes (2017-03-07)
 
-## 0.9.9 Changes (2017-1-20)
+* The Firefox fix: Converting dates no longer blocks the main javascript thread, so it no longer throws warnings on Firefox, and all browsers will be more responsive to events while the long date conversion loop is executing.
+* Removed the Store section
+* Todo - update all the tests :-( to use the callback version of the date conversion loop
+
+## 1.0 Changes (2017-02-14)
+
+* 1 year in beta
+
+
+## 0.9.9 Changes (2017-01-20)
 
 * Enforced HTTPS only
 
