@@ -23,7 +23,6 @@ import {
 } from '../src/parser'
 
 test('should map powermeter lines from wheelpower powermeter', (assert) => {
-
   // note, Powertap sends 1 power entry per second, (averaged internally by the meter)
 
   // this is a perfectly normal pattern for a wheel/hub based powermeter
@@ -47,32 +46,37 @@ test('should map powermeter lines from wheelpower powermeter', (assert) => {
     '[15:16:57] ANT  : Rx Fail on channel 1\n' +
     '[15:16:58] ANT  : Rx Fail on channel 1\n'
 
-  const log = epochify(normalize(entries))
+  epochify(normalize(entries), (err, log) => {
+    if (err) {
+      console.log(err)
+      assert.fail()
+    }
 
-  console.log(startDateTime(log))
+    console.log(startDateTime(log))
 
-  const startTimestamp = moment(startDateTime(log), 'HH:mm:ss YYYY-MM-DD').unix()
+    const startTimestamp = moment(startDateTime(log), 'HH:mm:ss YYYY-MM-DD').unix()
 
-  console.log(startTimestamp)
+    console.log(startTimestamp)
 
-  const trange = timerange(startTimestamp, duration(log))
+    const trange = timerange(startTimestamp, duration(log))
 
-  const tAxis = timeAxis(trange.startMilliseconds, trange.endMilliseconds)
+    const tAxis = timeAxis(trange.startMilliseconds, trange.endMilliseconds)
 
-  const actual = mapPowermeterData(mapAntLines(log), tAxis)
+    const actual = mapPowermeterData(mapAntLines(log), tAxis)
 
-  assert.equal(actual.count(), 2, '2 seconds expected')
+    assert.equal(actual.count(), 2, '2 seconds expected')
 
-  //assert.equal(moment(actual.at(0).timestamp()).unix() * 1000, 1469286986000, 'timestamp 1469286986000')
+    //assert.equal(moment(actual.at(0).timestamp()).unix() * 1000, 1469286986000, 'timestamp 1469286986000')
 
-  assert.equal(actual.at(0).get('value'), 163.17, 'avg power 163.17')
-  assert.equal(actual.at(1).get('value'), 89.085, 'avg power 89.085')
-  assert.end()
+    assert.equal(actual.at(0).get('value'), 163.17, 'avg power 163.17')
+    assert.equal(actual.at(1).get('value'), 89.085, 'avg power 89.085')
+    assert.end()
+  })
+
 })
 
 test('should map powermeter lines from crank powermeter', (assert) => {
-
-  // note, Quark sends 2 power entries per second
+  // note, Quarq sends 2 power entries per second
 
   // this is a perfectly normal pattern for a crank based powermeter
   // 1st second - 4 hits, 4 misses
@@ -95,29 +99,32 @@ test('should map powermeter lines from crank powermeter', (assert) => {
     '[20:01:06] ANT  : Rx Fail on channel 1\n' +
     '[20:01:06] ANT  : Rx Fail on channel 1\n'
 
-  const log = epochify(normalize(entries))
+  epochify(normalize(entries), (err, log) => {
+    if (err) {
+      console.log(err)
+      assert.fail()
+    }
 
-  const startTimestamp = moment(startDateTime(log), 'HH:mm:ss YYYY-MM-DD').unix()
+    const startTimestamp = moment(startDateTime(log), 'HH:mm:ss YYYY-MM-DD').unix()
 
-  const trange = timerange(startTimestamp, duration(log))
+    const trange = timerange(startTimestamp, duration(log))
 
-  const tAxis = timeAxis(trange.startMilliseconds, trange.endMilliseconds)
+    const tAxis = timeAxis(trange.startMilliseconds, trange.endMilliseconds)
 
-  const actual = mapPowermeterData(mapAntLines(log), tAxis)
+    const actual = mapPowermeterData(mapAntLines(log), tAxis)
 
-  assert.equal(actual.count(), 2, '2 seconds expected')
+    assert.equal(actual.count(), 2, '2 seconds expected')
 
-  // console.log(actual.toJSON())
+    // console.log(actual.toJSON())
 
-  assert.equal(actual.at(0).get('value'), 177.65, 'avg power 177.65')
-  assert.equal(actual.at(1).get('value'), 165.4, 'avg power 165.4')
-  assert.end()
+    assert.equal(actual.at(0).get('value'), 177.65, 'avg power 177.65')
+    assert.equal(actual.at(1).get('value'), 165.4, 'avg power 165.4')
+    assert.end()
+  })
 })
 
 test('should map powermeter lines from Kickr powermeter', (assert) => {
-
   // note, Kickr sends 2 power entries per second
-
   const entries = '[15:46:40] Log Time: 15:46:40 2016-07-23\n' +
     '[15:46:40] ANT  : Rx Fail on channel 1\n' +
     '[15:46:40] ANT  : Rx Fail on channel 1\n' +
@@ -171,29 +178,32 @@ test('should map powermeter lines from Kickr powermeter', (assert) => {
     '[15:46:44] ANT  : Rx Fail on channel 1\n' +
     '[15:46:44] ANT  : Rx Fail on channel 1\n'
 
-  const log = epochify(normalize(entries))
+  epochify(normalize(entries), (err, log) => {
+    if (err) {
+      console.log(err)
+      assert.fail()
+    }
 
-  const startTimestamp = moment(startDateTime(log), 'HH:mm:ss YYYY-MM-DD').unix()
+    const startTimestamp = moment(startDateTime(log), 'HH:mm:ss YYYY-MM-DD').unix()
 
-  const trange = timerange(startTimestamp, duration(log))
+    const trange = timerange(startTimestamp, duration(log))
 
-  const tAxis = timeAxis(trange.startMilliseconds, trange.endMilliseconds)
+    const tAxis = timeAxis(trange.startMilliseconds, trange.endMilliseconds)
 
-  const actual = mapPowermeterData(mapAntLines(log), tAxis)
+    const actual = mapPowermeterData(mapAntLines(log), tAxis)
 
-  assert.equal(actual.count(), 2, '2 seconds expected')
-  assert.equal(actual.at(0).get('value'), 247.9, 'avg power 247.9')
-  assert.equal(Math.round(actual.at(1).get('value') * 100) / 100, 247.88, 'avg power 247.88')
+    assert.equal(actual.count(), 2, '2 seconds expected')
+    assert.equal(actual.at(0).get('value'), 247.9, 'avg power 247.9')
+    assert.equal(Math.round(actual.at(1).get('value') * 100) / 100, 247.88, 'avg power 247.88')
 
-  assert.end()
+    assert.end()
+  })
 })
 
 test('should map powermeter lines from Stages powermeter (left arm)', (assert) => {
-
   // this is a perfectly normal pattern for a crank arm based powermeter
   // 1st second - 2 hits, 4 misses
   // 2nd second - 1 hits, 5 misses
-
   const entries = '[13:31:22] Log Time: 13:31:22 2016-07-23\n' +
     '[13:31:22] ANT  : [PowerMeter] CrankPower: EC: 062  WT: 062  Period: 47977  AccumTorque: 03356\n' +
     '[13:31:22] ANT  : [PowerMeter] Vang = 8.88 radians/sec   Tavg: 24.25 nm   Pavg: 215.35 watts\n' +
@@ -212,24 +222,28 @@ test('should map powermeter lines from Stages powermeter (left arm)', (assert) =
     '[13:31:23] ANT  : Rx Fail on channel 2\n' +
     '[13:31:23] ANT  : Rx Fail on channel 2\n'
 
-  const log = epochify(normalize(entries))
+  epochify(normalize(entries), (err, log) => {
+    if (err) {
+      console.log(err)
+      assert.fail()
+    }
 
-  const startTimestamp = moment(startDateTime(log), 'HH:mm:ss YYYY-MM-DD').unix()
+    const startTimestamp = moment(startDateTime(log), 'HH:mm:ss YYYY-MM-DD').unix()
 
-  const trange = timerange(startTimestamp, duration(log))
+    const trange = timerange(startTimestamp, duration(log))
 
-  const tAxis = timeAxis(trange.startMilliseconds, trange.endMilliseconds)
+    const tAxis = timeAxis(trange.startMilliseconds, trange.endMilliseconds)
 
-  const actual = mapPowermeterData(mapAntLines(log), tAxis)
+    const actual = mapPowermeterData(mapAntLines(log), tAxis)
 
-  assert.equal(actual.count(), 1, '1 second expected')
-  assert.equal(actual.at(0).get('value'), 199.505, 'avg power 199.505')
+    assert.equal(actual.count(), 1, '1 second expected')
+    assert.equal(actual.at(0).get('value'), 199.505, 'avg power 199.505')
 
-  assert.end()
+    assert.end()
+  })
 })
 
 test('should map powermeter lines from 4iiii Precision powermeter (left arm)', (assert) => {
-
   const entries = '[22:12:15] Log Time: 22:12:15 2016-07-23\n' +
 
     '[22:12:15] ANT  : Rx Fail on channel 2\n' +
@@ -276,19 +290,24 @@ test('should map powermeter lines from 4iiii Precision powermeter (left arm)', (
     '[22:12:19] ANT  : Rx Fail on channel 2\n' +
     '[22:12:19] ANT  : Rx Fail on channel 2\n'
 
-  const log = epochify(normalize(entries))
+  epochify(normalize(entries), (err, log) => {
+    if (err) {
+      console.log(err)
+      assert.fail()
+    }
 
-  const startTimestamp = moment(startDateTime(log), 'HH:mm:ss YYYY-MM-DD').unix()
+    const startTimestamp = moment(startDateTime(log), 'HH:mm:ss YYYY-MM-DD').unix()
 
-  const trange = timerange(startTimestamp, duration(log))
+    const trange = timerange(startTimestamp, duration(log))
 
-  const tAxis = timeAxis(trange.startMilliseconds, trange.endMilliseconds)
+    const tAxis = timeAxis(trange.startMilliseconds, trange.endMilliseconds)
 
-  const actual = mapPowermeterData(mapAntLines(log), tAxis)
+    const actual = mapPowermeterData(mapAntLines(log), tAxis)
 
-  assert.equal(actual.count(), 2, '2 seconds expected')
-  assert.equal(Math.round(actual.at(0).get('value') * 100) / 100, 167.58, 'avg power 167.58')
-  assert.equal(Math.round(actual.at(1).get('value') * 100) / 100, 99.98, 'avg power 99.98')
+    assert.equal(actual.count(), 2, '2 seconds expected')
+    assert.equal(Math.round(actual.at(0).get('value') * 100) / 100, 167.58, 'avg power 167.58')
+    assert.equal(Math.round(actual.at(1).get('value') * 100) / 100, 99.98, 'avg power 99.98')
 
-  assert.end()
+    assert.end()
+  })
 })

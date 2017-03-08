@@ -52,7 +52,7 @@ function parseFileContents(log, isDemo = false, share = true) {
       // turn all times into continuous epoch unix timestamps, and normalize all the new lines
       // this is by far the most time consuming loop, so it is split into batches, and a callback function
       // fires when all the timestamps have been converted
-      const normalizedLog = Parser.epochify(Parser.normalize(log), (err, normalizedLog) => {
+      Parser.epochify(Parser.normalize(log), (err, normalizedLog) => {
 
         if (err) {
           console.log(err)

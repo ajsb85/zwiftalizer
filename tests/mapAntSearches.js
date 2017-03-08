@@ -15,37 +15,42 @@ import {
 } from '../src/parser'
 
 // path is relative to the root of the project
-const log = epochify(normalize(fs.readFileSync('./testdata/sample.txt', 'utf8')))
+epochify(normalize(fs.readFileSync('./testdata/sample.txt', 'utf8')), (err, log) => {
+  test('should extract ANT+ Searching lines', (assert) => {
+    if (err) {
+      console.log(err)
+      assert.fail()
+    }
 
-test('should extract ANT+ Searching lines', (assert) => {
+    const startTimestamp = moment(startDateTime(log), 'HH:mm:ss YYYY-MM-DD').unix()
 
-  const startTimestamp = moment(startDateTime(log), 'HH:mm:ss YYYY-MM-DD').unix()
+    const trange = timerange(startTimestamp, duration(log))
 
-  const trange = timerange(startTimestamp, duration(log))
+    const tAxisTimeSeries = timeAxis(trange.startMilliseconds, trange.endMilliseconds)
 
-  const tAxisTimeSeries = timeAxis(trange.startMilliseconds, trange.endMilliseconds)
+    const actual = mapAntSearches(mapAntLines(log), tAxisTimeSeries)
 
-  const actual = mapAntSearches(mapAntLines(log), tAxisTimeSeries)
+    // 1 second rollup
+    //const expectedLength = 1227
 
-  // 1 second rollup
-  //const expectedLength = 1227
+    // 10 second rollup
+    const expectedLength = 123
 
-  // 10 second rollup
-  const expectedLength = 123
+    assert.ok(actual)
 
-  assert.ok(actual)
+    assert.true(actual.count() > 0)
 
-  assert.true(actual.count() > 0)
+    console.log('actual.count()')
 
-  console.log('actual.count()')
+    console.log(actual.count())
 
-  console.log(actual.count())
+    assert.true(actual.count() === expectedLength)
 
-  assert.true(actual.count() === expectedLength)
+    const first = actual.atFirst()
 
-  const first = actual.atFirst()
+    assert.true(first.get('value'), 1)
 
-  assert.true(first.get('value'), 1)
+    assert.end()
+  })
 
-  assert.end()
 })

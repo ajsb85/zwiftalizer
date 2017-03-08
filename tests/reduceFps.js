@@ -11,19 +11,20 @@ import {
 } from '../src/parser'
 
 // path is relative to the root of the project
-const log = normalize(fs.readFileSync('./testdata/sample.txt', 'utf8'))
+epochify(normalize(fs.readFileSync('./testdata/sample.txt', 'utf8')), (err, log) => {
+  test('should extract reduced fps data into buckets of 15 second averages', (assert) => {
+    if (err) {
+      console.log(err)
+      assert.fail()
+    }
 
-test('should extract reduced fps data into buckets of 15 second averages', (assert) => {
+    const fpsLines = mapFpsLines(log)
 
-  const epochified = epochify(log)
+    const actual = reduceFps(fpsLines)
 
-  const fpsLines = mapFpsLines(epochified)
+    assert.true(actual.count() > 0, 'reduced fps timeseries count should be greated than zero')
 
-  const actual = reduceFps(fpsLines)
+    assert.end()
+  })
 
-  //console.log(actual.toString())
-
-  assert.true(actual.count() > 0, 'reduced fps timeseries count should be greated than zero')
-
-  assert.end()
 })

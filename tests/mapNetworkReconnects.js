@@ -15,27 +15,30 @@ import {
 } from '../src/parser'
 
 // path is relative to the root of the project
-const log = epochify(normalize(fs.readFileSync('./testdata/network.txt', 'utf8')))
+epochify(normalize(fs.readFileSync('./testdata/network.txt', 'utf8')), (err, log) => {
+  test('should extract network reconnect lines', (assert) => {
+    if (err) {
+      console.log(err)
+      assert.fail()
+    }
+    const startTimestamp = moment(startDateTime(log), 'HH:mm:ss YYYY-MM-DD').unix()
 
-test('should extract network reconnect lines', (assert) => {
+    const trange = timerange(startTimestamp, duration(log))
 
-  const startTimestamp = moment(startDateTime(log), 'HH:mm:ss YYYY-MM-DD').unix()
+    const tAxisTimeSeries = timeAxis(trange.startMilliseconds, trange.endMilliseconds)
 
-  const trange = timerange(startTimestamp, duration(log))
+    const actual = mapNetworkReconnects(mapNetworkLines(log), tAxisTimeSeries)
 
-  const tAxisTimeSeries = timeAxis(trange.startMilliseconds, trange.endMilliseconds)
+    const expectedLength = 40
 
-  const actual = mapNetworkReconnects(mapNetworkLines(log), tAxisTimeSeries)
+    assert.ok(actual)
 
-  const expectedLength = 40
+    assert.true(actual.count() > 0)
 
-  assert.ok(actual)
+    assert.true(actual.count() === expectedLength)
 
-  assert.true(actual.count() > 0)
+    assert.true(actual.max() === 1)
 
-  assert.true(actual.count() === expectedLength)
-
-  assert.true(actual.max() === 1)
-
-  assert.end()
+    assert.end()
+  })
 })

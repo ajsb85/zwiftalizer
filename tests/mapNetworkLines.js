@@ -13,18 +13,24 @@ import {
 } from '../src/parser'
 
 // path is relative to the root of the project
-const log = epochify(normalize(fs.readFileSync('./testdata/network.txt', 'utf8')))
 
-test('should map networking lines', (assert) => {
+epochify(normalize(fs.readFileSync('./testdata/network.txt', 'utf8')), (err, log) => {
 
-  const actual = mapNetworkLines(log)
+  test('should map networking lines', (assert) => {
+    if (err) {
+      console.log(err)
+      assert.fail()
+    }
+    const actual = mapNetworkLines(log)
 
-  const expectedLength = 10
+    const expectedLength = 10
 
-  assert.true(actual.length > 0)
+    assert.true(actual.length > 0)
 
-  assert.true(actual.length === expectedLength)
+    assert.true(actual.length === expectedLength)
 
-  assert.end()
+    assert.end()
+
+  })
 
 })
