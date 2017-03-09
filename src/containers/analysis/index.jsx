@@ -78,7 +78,7 @@ class Analysis extends React.Component {
       profileComment += 'Graphics profile is automatically set by the game engine according to the capabilities of your graphics processing unit. You can not set it yourself. '
       profileComment += 'A low end discrete GPU, such as the Nvidia GeForce GT 650 or AMD Radeon R7 360 Series, is necessary to get the Medium profile. '
       profileComment += 'A mid level discrete GPU, such as the Nvidia GeForce GTX 750 Ti or AMD Radeon R9 200, is necessary to get the High profile. '
-      profileComment += 'A high end discrete GPU, such as the Nvidia GeForce GTX 960 or AMD Radeon RX 480, is necessary to get the Ultra profile. '
+      profileComment += 'A high end discrete GPU, such as the Nvidia GeForce GTX 1050, GTX 960 or AMD Radeon RX 480, is necessary to get the Ultra profile. '
 
     }
 
@@ -123,7 +123,7 @@ class Analysis extends React.Component {
       resolutionComment += '1440 wide quad high definition (WQHD - 4 times as many pixels as 720 HD), '
       resolutionComment += '2160 ultra high definition (4K - 4 times as many pixels as 1080 FHD). '
       resolutionComment += 'Unlike graphics profile, you can change the graphics resolution to whatever you want. '
-      resolutionComment += 'However, a high end discrete GPU, such as the Nvidia GeForce GTX 960 or AMD Radeon RX 480, is necessary to get the 1440 and 2160 (4K) resolution options. '
+      resolutionComment += 'However, a high end discrete GPU, such as the Nvidia GeForce GTX 1050, GTX 960 or AMD Radeon RX 480, is necessary to get the 1440 and 2160 (4K) resolution options. '
     }
 
     return (

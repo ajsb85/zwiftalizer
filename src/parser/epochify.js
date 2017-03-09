@@ -40,6 +40,13 @@ export default function epochify(str, callback) {
 
     var lines = []
 
+    var previousTime = {
+      dateTime: null,
+      unixtimestamp: null
+    }
+
+    var dateTime = null
+
     // for entry at index position n, convert the time to a unixtimestamp,
     // and add the result to the new lines array
 
@@ -57,7 +64,7 @@ export default function epochify(str, callback) {
 
       const hour = (time.split(':')[0]) / 1
 
-      if (_.isNull(lastHour)) {
+      if (!lastHour) {
         lastHour = hour
       }
 
@@ -73,13 +80,18 @@ export default function epochify(str, callback) {
         logDayFormatted = logDay.format(slashDateFormat)
       }
 
-      // prefix each time entry with the date then convert to unix timestamp
-      // const timestamp = moment(logDayFormatted + ' ' + time, dateTimeFormat).unix() * 1000
+      dateTime = logDayFormatted + ' ' + time
 
-      // 20% faster
-      const timestamp = Date.parse(logDayFormatted + ' ' + time)
+      // if time has not changed, use previous to save calling the slow Date.parse function more than neccessary
+      if (previousTime.dateTime && previousTime.dateTime === dateTime) {
+        lines.push('[' + previousTime.unixtimestamp + '] ' + value)
+      } else {
+        const unixtimestamp = Date.parse(dateTime)
+        lines.push('[' + unixtimestamp + '] ' + value)
+        previousTime.dateTime = dateTime
+        previousTime.unixtimestamp = unixtimestamp
+      }
 
-      lines.push('[' + timestamp + '] ' + value)
     }
 
     // batch calls to convertDates so that the js execution thread is not blocked

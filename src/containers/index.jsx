@@ -21,7 +21,6 @@ ReactGA.initialize('UA-2833327-13')
 
 import App from './app'
 import Home from './home'
-import {Shop} from './shop'
 import {About} from './about'
 import {Support} from './support'
 import Benchmarks from './benchmarks'
@@ -41,7 +40,6 @@ function run() {
       <Router onUpdate={logPageView} history={browserHistory}>
         <Route path='/' component={App}>
           <IndexRoute component={Home}/>
-          <Route path='shop' component={Shop}/>
           <Route path='about' component={About}/>
           <Route path='support' component={Support}/>
           <Route path='benchmarks' component={Benchmarks}/>
