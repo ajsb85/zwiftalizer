@@ -12,8 +12,8 @@ const PATHS = {
 
 var plugins = [
   new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-      //'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    'process.env.NODE_ENV': JSON.stringify('production')
+    //'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
   })
 ];
 
@@ -55,10 +55,6 @@ const common = {
         test: /\.css$/,
         loader: 'style-loader!css-loader?modules&localIdentName=[name]-[local]-[hash:base64:5]'
       },
-      // {
-      //   test: /\.less$/,
-      //   loader: 'style-loader!css-loader!less-loader'
-      // },
       {
         test: /\.(png|jpg|gif)$/,
         loader: 'url-loader?limit=65536'

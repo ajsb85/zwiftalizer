@@ -8,6 +8,7 @@ import tacxDevices from '../types/tacx.json'
 import wahooDevices from '../types/wahoo.json'
 import bkoolDevices from '../types/bkool.json'
 import sarisDevices from '../types/saris.json'
+import deviceTypes from '../types/devices.json'
 
 import {
   MAX_DEVICES,
@@ -161,7 +162,8 @@ export default function antManufacturers(lines) {
       manufacturer,
       modelId,
       model,
-      type
+      type,
+      typeName: titleCase(deviceTypes[type])
     }
 
     if (!_.findWhere(manufacturers, entry)) {

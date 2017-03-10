@@ -13,7 +13,7 @@ class Resolution extends React.Component {
 
     var profileData = profiles && profiles.map(function(profile, i) {
 
-      const {profileId, results} = profile;
+      const {profileId, results} = profile
 
       if (results && results.length) {
 

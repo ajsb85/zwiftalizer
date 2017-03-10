@@ -6,6 +6,8 @@ import {
   BASIC_DEVICE
 } from './constants'
 
+import titleCase from './titleCase'
+import deviceTypes from '../types/devices.json'
 import toArray from './toArray'
 
 /**
@@ -73,7 +75,8 @@ export default function antDevices(lines) {
       manufacturer: '',
       modelId: '',
       model: '',
-      type: BASIC_DEVICE
+      type: BASIC_DEVICE,
+      typeName: titleCase(deviceTypes[BASIC_DEVICE])
     }
 
     const exisingDeviceFound = _.find(result, existingDevice => {

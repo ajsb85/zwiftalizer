@@ -76,7 +76,7 @@ export default function antData(log, timeAxisTimeSeries) {
     return (device.type === FEC_DEVICE && device.manufacturerId === WAHOO_MANUFACTURER_ID)
   })
 
-  // can be kickr again
+  // can be kickr again, in fec mode, not ANT+ power meter data mode
   const fecSmartTrainerDevice = _.find(devices, device => {
     return (device.type === FEC_DEVICE)
   })
@@ -88,14 +88,14 @@ export default function antData(log, timeAxisTimeSeries) {
       calibration
     })
   } else if (kickrDevice) {
-    // kickr does not emit calibration offset
+    // kickr does not emit calibration zero offset
     Object.assign(kickrDevice, {
       power
     })
   }
 
   // if power was assigned to powermeter device, then kickrDevice.power will be undefined
-  //  assign a null power timeseries to kickr
+  // assign a null power timeseries to kickr
   if (kickrDevice && !kickrDevice.power) {
 
     const power = new TimeSeries({
