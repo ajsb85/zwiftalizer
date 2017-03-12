@@ -8,6 +8,7 @@ import tacxDevices from '../types/tacx.json'
 import wahooDevices from '../types/wahoo.json'
 import bkoolDevices from '../types/bkool.json'
 import sarisDevices from '../types/saris.json'
+import eliteDevices from '../types/elite.json'
 import deviceTypes from '../types/devices.json'
 
 import {
@@ -22,7 +23,8 @@ import {
   POWERMETER_MANUFACTURERS,
   BASIC_DEVICE,
   POWER_METER_DEVICE,
-  FEC_DEVICE
+  FEC_DEVICE,
+  SARIS_HAMMER_MODEL_ID
 } from './constants'
 
 /**
@@ -89,8 +91,9 @@ export default function antManufacturers(lines) {
 
     // treat kickr as FEC smart trainer, until we know whether or not it is doing its own gradient protocol or FEC standard
 
-    //@todo, need a better way to tell the difference between a saris smart trainer (cycleops hammer, magnus) and powermeter
     if (_.contains(SMART_TRAINER_MANUFACTURERS, manufacturerId)) {
+      // set to FEC_DEVICE (smart trainer), but still could be a Saris power meter
+      // we will switch on SARIS later
       type = FEC_DEVICE
     } else if (_.contains(POWERMETER_MANUFACTURERS, manufacturerId)) {
       type = POWER_METER_DEVICE
@@ -145,10 +148,19 @@ export default function antManufacturers(lines) {
           if (_(sarisDevices).has(modelId)) {
             model = titleCase(sarisDevices[modelId])
           }
+
+          if (modelId === SARIS_HAMMER_MODEL_ID) {
+            // @todo, or MAGNUS, POWERBEAM, POWERSYNC
+            type = POWER_METER_DEVICE
+          }
+
           break;
 
-          //@todo, all the models!
-          //@todo, shouldn't be too difficult to get Elite model ids
+        case (ELITE_MANUFACTURER_ID):
+          if (_(eliteDevices).has(modelId)) {
+            model = titleCase(eliteDevices[modelId])
+          }
+          break;
 
         default:
           break;

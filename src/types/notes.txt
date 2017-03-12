@@ -54,3 +54,61 @@ Zwift is compatible with all ANT+ power meters, including:
   InfoCrank
   PowerCal
   bePRO
+
+
+Accuracy stats
+https://www.dcrainmaker.com/2016/10/annual-winter-2016-2017-bike-smart-trainer-recommendations.html
+
+Max Hill Incline
+https://www.dcrainmaker.com/2016/10/annual-winter-2016-2017-bike-smart-trainer-recommendations.html
+
+Zwiftalizer Recognized Smart Trainer Models
+
+Tacx i-Genius Multiplayer Smart T2010
+Tacx IRONMAN Smart T2060
+Tacx Genius Smart T2080
+Tacx Vortex Smart T2180 +/- 5%, 7% incline
+Tacx Bushido Smart T2780
+Tacx Neo Smart T2800 +/- 1%, 25% incline
+Tacx Flux T2900 +/-5%
+Wahoo Kickr Gen 1 +/- 3%, 20% incline
+Wahoo Kickr Gen 2 +/- 2%, 20% incline
+Wahoo Kickr Snap +/- 5%, 10% incline
+Elite Drivo +/- 1%, 24% incline
+Elite Kura +/- 1%, 0% incline
+Elite QUBO Digital Smart B+
+Elite Rampa +/- 5%, 10% incline
+CycleOps Hammer +/-3%
+Bkool Smart Pro, 20% incline
+
+Smart Trainer Models Not Recognized
+
+CycleOps Magnus +/- 5%, 15% incline
+CycleOps PowerSync
+CycleOps PowerBeam Pro
+Lemond Revolution, +/- 5%
+
+Zwiftalizer Recognized Powermeter Models
+
+CycleOps PowerTap C1 Chainring - confirmed
+CycleOps PowerTap G3 Hub - confirmed +/-2%
+CycleOps PowerTap P1 Pedals - confirmed
+Garmin - confirmed, need specific device Ids
+SRM - confirmed, need specific device Ids
+Quarq - confirmed, need specific device Ids
+4iiii - confirmed
+Stages - confirmed
+Pioneer - confirmed
+Rotor - unconfirmed
+Wattbike - unconfirmed
+Look - unconfirmed
+Watteam - unconfirmed
+Favero - unconfirmed
+Sram - unconfirmed
+iBike - unconfirmed
+Lemond - unconfirmed
+Brim Brothers - unconfirmed
+
+
+Powermeter Models Not Recognized
+Power2Max +/-2%

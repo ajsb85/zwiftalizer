@@ -14,6 +14,8 @@ export const BKOOL_MANUFACTURER_ID = '67'
 
 export const WAHOO_KICKR_MODEL_ID = '1'
 
+export const SARIS_HAMMER_MODEL_ID = '320'
+
 export const SRM_MANUFACTURER_ID = '6'
 export const QUARK_MANUFACTURER_ID = '7'
 export const SARIS_MANUFACTURER_ID = '9'
@@ -30,7 +32,8 @@ export const SMART_TRAINER_MANUFACTURERS = [
   WAHOO_MANUFACTURER_ID,
   TACX_MANUFACTURER_ID,
   ELITE_MANUFACTURER_ID,
-  BKOOL_MANUFACTURER_ID
+  BKOOL_MANUFACTURER_ID,
+  SARIS_MANUFACTURER_ID
 ]
 
 // these are to try and identify ant+ powersources that are not also smart trainers

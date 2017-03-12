@@ -2,7 +2,6 @@ var _ = require('underscore')
 
 import {
   WAHOO_MANUFACTURER_ID,
-  WAHOO_KICKR_MODEL_ID,
   BASIC_DEVICE,
   POWER_METER_DEVICE,
   FEC_DEVICE,
