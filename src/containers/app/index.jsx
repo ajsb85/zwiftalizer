@@ -66,7 +66,7 @@ class App extends React.Component {
               <div className={styles.brand}>
                 <span className={styles.signal}>
                   <i className="fa fa-line-chart" aria-hidden="true"></i>
-                </span>&nbsp;<Link to="/">Zwiftalizer 1.0.2</Link>
+                </span>&nbsp;<Link to="/">Zwiftalizer 1.0.3</Link>
               </div>
             </div>
 
