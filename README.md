@@ -14,6 +14,11 @@ This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
 The code runs 100% in your web browser on your computer.
 
+## 1.0.3 Changes (2017-03-16)
+
+* Recognition of more powermeter and smart trainers. Product codes contributed by [Shane Miller](https://www.youtube.com/user/gplama) (who owns more indoor trainers than shoes).
+* Changed the License so that copying this source code for commercial use is not allowed.
+
 ## 1.0.2 Changes (2017-03-08)
 
 * Faster parsing - reuses the unix timestamp from the previous line conversion if the time in the next line is the same as the previous line.
