@@ -3,7 +3,7 @@
   "description": "Zwift log analyzer web app",
   "version": "1.0.2",
   "build": "1",
-  "license": "MIT",
+  "license": "Prioprietary",
   "repository": "git@github.com:mhanney/zwiftalizer.git",
   "private": false,
   "author": {
