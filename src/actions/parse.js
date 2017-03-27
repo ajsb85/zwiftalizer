@@ -32,6 +32,12 @@ import {
   SET_CURRENT_SYSTEM_BENCHMARK
 } from './benchmarks'
 
+import {
+  POWER_METER_DEVICE,
+  FEC_DEVICE,
+  WAHOO_KICKR_DEVICE
+} from '../parser/constants'
+
 function parseFileContents(log, isDemo = false, share = true) {
 
   return dispatch => {
@@ -154,7 +160,6 @@ function parseFileContents(log, isDemo = false, share = true) {
         })
 
         if (graphicsData.fpsData.count) {
-
           const systemSummary = {
             'logId': uuid.v4(),
             'timestamp': activityData.startTimestamp,
@@ -211,12 +216,52 @@ function parseFileContents(log, isDemo = false, share = true) {
           })
 
           if (!isDemo && share) {
-            dispatch(uploadResults(systemSummary))
+            dispatch(uploadSytemSummary(systemSummary))
+          }
+        }
+
+        if (!isDemo && share && antData.devices) {
+          // extract just the power meter and smart trainer type devicesSummary
+          const powerSourceDevices = _.filter(antData.devices, d => {
+            return (d.type === FEC_DEVICE || d.type === POWER_METER_DEVICE || d.type === WAHOO_KICKR_DEVICE)
+          })
+
+          if (powerSourceDevices && powerSourceDevices.length) {
+
+            const devicesSummaryData = []
+
+            _.each(powerSourceDevices, d => {
+
+              // extract a sub set of the device properties for posting to the central db
+              const deviceSummary = (({
+                extendedDeviceId,
+                manufacturer,
+                manufacturerId,
+                model,
+                modelId,
+                type,
+                typeName
+              }) => ({
+                extendedDeviceId,
+                manufacturer,
+                manufacturerId,
+                model,
+                modelId,
+                type,
+                typeName
+              }))(d)
+
+              devicesSummaryData.push(deviceSummary)
+            })
+
+            console.log('devices summary data for api post')
+            console.log(devicesSummaryData)
+
+            dispatch(uploadDevicesSummary(devicesSummaryData))
           }
         }
 
         dispatch(fileLoaded())
-
       })
 
     }, delay)
@@ -393,24 +438,41 @@ function parseBtle(log, timeAxisTimeSeries) {
   }
 }
 
-export function uploadResults(data) {
-
+export function uploadSytemSummary(data) {
   return function (dispatch) {
-
     return request.post('https://iayslzt1s8.execute-api.us-west-2.amazonaws.com/dev/logs', data, {
       cache: false,
       dataType: 'json'
     }).then((xhr, json) => {
-      //console.log('Success uploading results')
+      //console.log('Success uploading system summary')
       //console.log(xhr)
       //console.log(json)
     }).catch(function (e, xhr, response) {
-      console.log('Error uploading results')
+      console.log('Error uploading system summary')
       console.log(e)
       console.log(xhr)
       console.log(response)
     });
   }
+}
+
+export function uploadDevicesSummary(data) {
+  return function (dispatch) {
+    return request.post('https://btcv4d9x05.execute-api.us-west-2.amazonaws.com/dev/devices', data, {
+      cache: false,
+      dataType: 'json'
+    }).then((xhr, json) => {
+      //console.log('Success uploading deviecs summary')
+      //console.log(xhr)
+      //console.log(json)
+    }).catch(function (e, xhr, response) {
+      console.log('Error uploading deviecs summary')
+      console.log(e)
+      console.log(xhr)
+      console.log(response)
+    });
+  }
+
 }
 
 function fileLoading() {
