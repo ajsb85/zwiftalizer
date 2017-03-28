@@ -14,9 +14,30 @@ This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
 The code runs 100% in your web browser on your computer.
 
+## 1.0.4 Changes
+
+* Recognition of more powermeter and smart trainers.
+* Garmin Vector SS,
+* Garmin Vector CP
+* Garmin Vector S
+* Garmin Vector 2
+* Garmin Vector 2S
+* Power2Max NG
+* Four Eyes Precision
+* Stages Power
+
+
 ## 1.0.3 Changes (2017-03-16)
 
 * Recognition of more powermeter and smart trainers. Product codes contributed by [Shane Miller](https://www.youtube.com/user/gplama) (who owns more indoor trainers than shoes).
+* Elite Drivo
+* Elite Kura
+* Elite Rampa
+* ELite QUBO Digital Smart B+
+* PowerTap P1 Pedals
+* Tacx Flux
+* CycleOps Hammer
+
 * Changed the License so that copying this source code for commercial use is not allowed.
 
 ## 1.0.2 Changes (2017-03-08)
