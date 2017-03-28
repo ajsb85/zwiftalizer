@@ -34,7 +34,7 @@ import {
 
 import {
   POWER_METER_DEVICE,
-  FEC_DEVICE,
+  SMART_TRAINER_DEVICE,
   WAHOO_KICKR_DEVICE
 } from '../parser/constants'
 
@@ -223,7 +223,7 @@ function parseFileContents(log, isDemo = false, share = true) {
         if (!isDemo && share && antData.devices) {
           // extract just the power meter and smart trainer type devicesSummary
           const powerSourceDevices = _.filter(antData.devices, d => {
-            return (d.type === FEC_DEVICE || d.type === POWER_METER_DEVICE || d.type === WAHOO_KICKR_DEVICE)
+            return (d.type === SMART_TRAINER_DEVICE || d.type === POWER_METER_DEVICE || d.type === WAHOO_KICKR_DEVICE)
           })
 
           if (powerSourceDevices && powerSourceDevices.length) {
@@ -255,7 +255,7 @@ function parseFileContents(log, isDemo = false, share = true) {
             })
 
             console.log('devices summary data for api post')
-            console.log(devicesSummaryData)
+            console.log(JSON.stringify(devicesSummaryData))
 
             dispatch(uploadDevicesSummary(devicesSummaryData))
           }

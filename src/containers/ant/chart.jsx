@@ -15,7 +15,7 @@ import {format} from 'd3-format'
 import {timeFormat} from 'd3-time-format'
 import {colors} from '../../styles/colors'
 import {timeAxis} from '../../parser'
-import {BASIC_DEVICE, POWER_METER_DEVICE, FEC_DEVICE, WAHOO_MANUFACTURER_ID} from '../../parser/constants'
+import {BASIC_DEVICE, POWER_METER_DEVICE, SMART_TRAINER_DEVICE, WAHOO_MANUFACTURER_ID} from '../../parser/constants'
 
 import {
   TimeRange,
@@ -612,7 +612,7 @@ class Chart extends React.Component {
       : null
 
     const kickrDevice = _.find(this.state.devices, device => {
-      return (device.type === FEC_DEVICE && device.manufacturerId === WAHOO_MANUFACTURER_ID)
+      return (device.type === SMART_TRAINER_DEVICE && device.manufacturerId === WAHOO_MANUFACTURER_ID)
     })
 
     const kickrChart = kickrDevice
@@ -620,7 +620,7 @@ class Chart extends React.Component {
       : null
 
     const fecDevice = _.find(this.state.devices, device => {
-      return (device.type === FEC_DEVICE)
+      return (device.type === SMART_TRAINER_DEVICE)
     })
 
     const fecChart = fecDevice && !kickrDevice

@@ -4,10 +4,11 @@ import {
   WAHOO_MANUFACTURER_ID,
   BASIC_DEVICE,
   POWER_METER_DEVICE,
-  FEC_DEVICE,
+  SMART_TRAINER_DEVICE,
   WAHOO_KICKR_DEVICE
 } from './constants'
 
+import titleCase from './titleCase'
 import mapAntLines from './mapAntLines'
 import antDevices from './antDevices'
 import antManufacturers from './antManufacturers'
@@ -16,6 +17,7 @@ import mapAntRxFails from './mapAntRxFails'
 import mapPowermeterData from './mapPowermeterData'
 import mapGradientData from './mapGradientData'
 import mapCalibrationData from './mapCalibrationData'
+import deviceTypes from '../types/devices.json'
 
 import {
   TimeSeries,
@@ -56,9 +58,10 @@ export default function antData(log, timeAxisTimeSeries) {
     // last ditch attempt to find the powermeter
     // rxfail pattern does not look like a basic device,
     // is not already detected as being made by a PM manufacturer (could be saris, powertap)
-    // and is not a FEC_DEVICE, or KICKR
+    // and is not a SMART_TRAINER_DEVICE, or KICKR
     if (signal.max() > BASIC_DEVICE_SAMPLE_RATE && device.type === BASIC_DEVICE) {
       device.type = POWER_METER_DEVICE
+      device.typeName = titleCase(deviceTypes[POWER_METER_DEVICE]);
     }
 
     Object.assign(device, {
@@ -72,12 +75,12 @@ export default function antData(log, timeAxisTimeSeries) {
   })
 
   const kickrDevice = _.find(devices, device => {
-    return (device.type === FEC_DEVICE && device.manufacturerId === WAHOO_MANUFACTURER_ID)
+    return (device.type === SMART_TRAINER_DEVICE && device.manufacturerId === WAHOO_MANUFACTURER_ID)
   })
 
   // can be kickr again, in fec mode, not ANT+ power meter data mode
   const fecSmartTrainerDevice = _.find(devices, device => {
-    return (device.type === FEC_DEVICE)
+    return (device.type === SMART_TRAINER_DEVICE)
   })
 
   // assign the power data to the powermeter before the kickr, but never both

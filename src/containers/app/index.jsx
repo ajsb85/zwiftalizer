@@ -70,7 +70,7 @@ class App extends React.Component {
               </div>
             </div>
 
-            <div className="col-sm-12 col-md-3">
+            <div className="col-sm-12 col-md-2">
               <div className={styles.navItem}>
                 <a onClick={this.handleDemoClick}>
                   Demo
@@ -78,9 +78,15 @@ class App extends React.Component {
               </div>
             </div>
 
-            <div className="col-sm-12 col-md-3">
+            <div className="col-sm-12 col-md-2">
               <div className={styles.navItem}>
                 <Link to="/benchmarks">Benchmarks</Link>
+              </div>
+            </div>
+
+            <div className="col-sm-12 col-md-2">
+              <div className={styles.navItem}>
+                <Link to="/trainers">Trainers</Link>
               </div>
             </div>
 

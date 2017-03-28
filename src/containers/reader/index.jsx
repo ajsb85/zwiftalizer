@@ -76,13 +76,13 @@ class Reader extends React.Component {
     return (
       <div className={styles.root}>
 
-        <div className="container">
+        <div className="container-fluid">
           <div className="row">
             <div className="col-xs-12">
 
               <div className="alert alert-warning" role="alert">
 
-                <div className="container">
+                <div className="container-fluid">
                   <div className="row">
                     <div className="col-xs-12 col-sm-1">
                       <form>
@@ -100,9 +100,11 @@ class Reader extends React.Component {
                     <div className="col-xs-12 col-sm-11">
                       <div className={styles.consentWrapper}>
                         <h2 className={styles.checkboxLabel}>
-                          <span className={styles.checkboxLabelStrong}>I agree</span>&nbsp;to my system summary being included in the benchmarks database.
+                          <span className={styles.checkboxLabelStrong}>I agree</span>&nbsp;to my system summary being uploaded to the database.
                         </h2>
-                        <p>You can still see where your system stands relative to others in the benchmarks even if you disagree to it being included in the database.</p>
+                        <p>Uploading your summary data is entirely optional.&nbsp;
+                          <a href="">What does this mean?</a>
+                        </p>
                       </div>
                     </div>
                   </div>

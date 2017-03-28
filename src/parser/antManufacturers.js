@@ -9,6 +9,11 @@ import wahooDevices from '../types/wahoo.json'
 import bkoolDevices from '../types/bkool.json'
 import sarisDevices from '../types/saris.json'
 import eliteDevices from '../types/elite.json'
+import fourEyesDevices from '../types/fourEyes.json'
+import garminDevices from '../types/garmin.json'
+import stagesDevices from '../types/stages.json'
+import saxonarDevices from '../types/saxonar.json'
+
 import deviceTypes from '../types/devices.json'
 
 import {
@@ -18,12 +23,16 @@ import {
   TACX_MANUFACTURER_ID,
   BKOOL_MANUFACTURER_ID,
   ELITE_MANUFACTURER_ID,
+  GARMIN_MANUFACTURER_ID,
   SARIS_MANUFACTURER_ID,
+  SAXONAR_MANUFACTURER_ID,
+  FOUREYES_MANUFACTURER_ID,
+  STAGES_MANUFACTURER_ID,
   SMART_TRAINER_MANUFACTURERS,
   POWERMETER_MANUFACTURERS,
   BASIC_DEVICE,
   POWER_METER_DEVICE,
-  FEC_DEVICE,
+  SMART_TRAINER_DEVICE,
   SARIS_HAMMER_MODEL_ID
 } from './constants'
 
@@ -92,9 +101,9 @@ export default function antManufacturers(lines) {
     // treat kickr as FEC smart trainer, until we know whether or not it is doing its own gradient protocol or FEC standard
 
     if (_.contains(SMART_TRAINER_MANUFACTURERS, manufacturerId)) {
-      // set to FEC_DEVICE (smart trainer), but still could be a Saris power meter
+      // set to SMART_TRAINER_DEVICE (smart trainer), but still could be a Saris power meter
       // we will switch on SARIS later
-      type = FEC_DEVICE
+      type = SMART_TRAINER_DEVICE
     } else if (_.contains(POWERMETER_MANUFACTURERS, manufacturerId)) {
       type = POWER_METER_DEVICE
     }
@@ -144,6 +153,30 @@ export default function antManufacturers(lines) {
           }
           break;
 
+        case (STAGES_MANUFACTURER_ID):
+          if (_(stagesDevices).has(modelId)) {
+            model = titleCase(stagesDevices[modelId])
+          }
+          break;
+
+        case (FOUREYES_MANUFACTURER_ID):
+          if (_(fourEyesDevices).has(modelId)) {
+            model = titleCase(fourEyesDevices[modelId])
+          }
+          break;
+
+        case (GARMIN_MANUFACTURER_ID):
+          if (_(garminDevices).has(modelId)) {
+            model = titleCase(garminDevices[modelId])
+          }
+          break;
+
+        case (SAXONAR_MANUFACTURER_ID):
+          if (_(saxonarDevices).has(modelId)) {
+            model = titleCase(saxonarDevices[modelId])
+          }
+          break;
+
         case (SARIS_MANUFACTURER_ID):
           if (_(sarisDevices).has(modelId)) {
             model = titleCase(sarisDevices[modelId])
@@ -151,7 +184,7 @@ export default function antManufacturers(lines) {
 
           if (modelId === SARIS_HAMMER_MODEL_ID) {
             // @todo, or MAGNUS, POWERBEAM, POWERSYNC
-            type = POWER_METER_DEVICE
+            type = SMART_TRAINER_DEVICE
           }
 
           break;
@@ -174,8 +207,13 @@ export default function antManufacturers(lines) {
       manufacturer,
       modelId,
       model,
-      type,
-      typeName: titleCase(deviceTypes[type])
+      type
+    }
+
+    entry.typeName = titleCase(deviceTypes[type]);
+
+    if (entry.model === '') {
+      entry.model = 'Unknown Model'
     }
 
     if (!_.findWhere(manufacturers, entry)) {
