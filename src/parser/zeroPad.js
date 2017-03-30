@@ -4,15 +4,14 @@
  * @param {string} timeOfDay - The log timeOfDay as a string
  */
 export default function zeroPad(timeOfDay) {
+  let result = timeOfDay;
 
-  let result = timeOfDay
-
-  let hour = result.replace(/^(\d*):\d*:\d*$/, '$1')
+  let hour = result.replace(/^(\d*):\d*:\d*$/, '$1');
 
   // hour will get cast to int in comparison function
   if (hour <= 9) {
-    result = '0' + result
+    result = '0' + result;
   }
 
-  return result
+  return result;
 }

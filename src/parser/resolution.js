@@ -3,15 +3,14 @@
  * @param {string} str - The string
  */
 export default function resolution(str) {
-
   // gim = global, case insensitive multiline
-  const regex = /^\[[^\]]*\]\s+?changed\s+?resolution\s+?to\s+?\d*\sx\s(\d*)\s+?.*$/gim
+  const regex = /^\[[^\]]*\]\s+?changed\s+?resolution\s+?to\s+?\d*\sx\s(\d*)\s+?.*$/gim;
 
-  const matches = str.match(regex)
+  const matches = str.match(regex);
 
   if (!matches) {
-    return undefined
+    return undefined;
   }
 
-  return matches[matches.length - 1].replace(regex, '$1')
+  return matches[matches.length - 1].replace(regex, '$1');
 }

@@ -10,7 +10,7 @@ const timeFormat = 'HH:mm:ss';
 const dateTimeFormat = ansiDateFormat + ' ' + timeFormat;
 const timeDateFormat = timeFormat + ' ' + ansiDateFormat;
 
-export default function epochify(str, callback) {
+export default async function epochify(str, callback) {
   if (!str) {
     callback('empty string', []);
   }

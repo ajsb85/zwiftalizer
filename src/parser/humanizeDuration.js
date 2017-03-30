@@ -1,4 +1,4 @@
-var moment = require('moment')
+var moment = require('moment');
 
 /**
  * Convert hours:minutes:seconds into a humanly readable format
@@ -6,24 +6,31 @@ var moment = require('moment')
  */
 
 export default function humanizeDuration(str) {
+  const m = moment.duration(str);
+  const hours = m.hours();
+  const mins = m.minutes();
+  const seconds = m.seconds();
 
-  const m = moment.duration(str)
-
-  const hours = m.hours()
-
-  const mins = m.minutes()
-
-  const seconds = m.seconds()
-
-  let humanizedDuration = ''
+  let humanizedDuration = '';
 
   if (hours > 0) {
-    humanizedDuration = hours + ' hr' + (hours > 1 ? 's' : '') + ' ' + mins + ' min' + (mins > 1 ? 's' : '')
+    humanizedDuration = hours +
+      ' hr' +
+      (hours > 1 ? 's' : '') +
+      ' ' +
+      mins +
+      ' min' +
+      (mins > 1 ? 's' : '');
   } else if (mins > 0) {
-    humanizedDuration = mins + ' min' + (mins > 1 ? 's' : '') + ' ' + seconds + ' sec'
+    humanizedDuration = mins +
+      ' min' +
+      (mins > 1 ? 's' : '') +
+      ' ' +
+      seconds +
+      ' sec';
   } else if (seconds > 0) {
-    humanizedDuration = seconds + ' sec'
+    humanizedDuration = seconds + ' sec';
   }
 
-  return humanizedDuration
+  return humanizedDuration;
 }

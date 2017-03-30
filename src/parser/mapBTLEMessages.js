@@ -1,35 +1,30 @@
-var _ = require('underscore')
+var _ = require('underscore');
 
-import {
-  TimeSeries,
-  sum
-} from 'pondjs'
+import { TimeSeries, sum } from 'pondjs';
 
-import toArray from './toArray'
+import toArray from './toArray';
 
 // lines is assumed to be BTLE lines only, as an array, with times already in unix format using epochify
 export default function mapBTLEMessages(lines, timeAxisTimeSeries) {
-
   const result = {
     name: 'messages',
     columns: ['time', 'value'],
     points: []
   };
 
-  const btleLines = Array.isArray(lines) ? lines : toArray(lines)
+  const btleLines = Array.isArray(lines) ? lines : toArray(lines);
 
   _.each(btleLines, line => {
-
-    const matches = line.match(/^\[([^\]]*)\].*$/i)
+    const matches = line.match(/^\[([^\]]*)\].*$/i);
 
     if (!matches) {
-      return
+      return;
     }
 
-    const timestamp = parseInt(matches[1])
+    const timestamp = parseInt(matches[1]);
 
-    result.points.push([timestamp, 1])
-  })
+    result.points.push([timestamp, 1]);
+  });
 
   const ts = new TimeSeries(result);
 
@@ -41,7 +36,7 @@ export default function mapBTLEMessages(lines, timeAxisTimeSeries) {
     name: 'messages',
     fieldSpec: ['time', 'value'],
     seriesList: [timeAxisTimeSeries, ts]
-  })
+  });
 
   // plot sum of all btle signals per second
   const rollup = reducedSeries.fixedWindowRollup({
@@ -51,7 +46,7 @@ export default function mapBTLEMessages(lines, timeAxisTimeSeries) {
         value: sum()
       }
     }
-  })
+  });
 
-  return rollup
+  return rollup;
 }

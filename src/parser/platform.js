@@ -8,5 +8,5 @@ export default function platform(str) {
   // regex says, match one or more chars that are NOT carriage (r)eturn or li(n)e feed (? non greedy), followed by a li(n)e feed
   // Returns first match (no /g modifier).
   //if (str.match(/\n\r\n/)) {
-  return (str.match(/([^\r]+?)\n/)) ? 'Mac' : 'PC'
+  return str.match(/([^\r]+?)\n/) ? 'Mac' : 'PC';
 }

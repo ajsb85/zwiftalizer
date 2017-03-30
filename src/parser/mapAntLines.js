@@ -1,8 +1,7 @@
-import getAllMatches from './getAllMatches'
+import getAllMatches from './getAllMatches';
 
 export default function mapAntLines(str) {
+  const regex = /^\[[^\]]*\]\s+(ant|calibration)\s+.*$/gim;
 
-  const regex = /^\[[^\]]*\]\s+(ant|calibration)\s+.*$/gim
-
-  return getAllMatches(str, regex)
+  return getAllMatches(str, regex);
 }

@@ -86,7 +86,7 @@ class App extends React.Component {
 
             <div className="col-sm-12 col-md-2">
               <div className={styles.navItem}>
-                <Link to="/trainers">Trainers</Link>
+                <Link to="/trainers">Kickr v Neo</Link>
               </div>
             </div>
 

@@ -3,5 +3,5 @@
  * @param {string} str - The string
  */
 export default function removeTrademarksAndCopyrights(str) {
-  return str.replace(/\(r\)|\(c\)|\(tm\)/gi, '').replace(/\s+/g, ' ').trim()
+  return str.replace(/\(r\)|\(c\)|\(tm\)/gi, '').replace(/\s+/g, ' ').trim();
 }

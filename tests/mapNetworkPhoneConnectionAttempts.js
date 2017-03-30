@@ -1,7 +1,7 @@
-var _ = require('underscore')
-var test = require('tape')
-var fs = require('fs')
-var moment = require('moment')
+var _ = require('underscore');
+var test = require('tape');
+var fs = require('fs');
+var moment = require('moment');
 
 import {
   normalize,
@@ -12,36 +12,47 @@ import {
   timerange,
   timeAxis,
   duration
-} from '../src/parser'
+} from '../src/parser';
 
 // path is relative to the root of the project
 
-epochify(normalize(fs.readFileSync('./testdata/network.txt', 'utf8')), (err, log) => {
-  test('should extract phone connection attempts', (assert) => {
-    if (err) {
-      console.log(err)
-      assert.fail()
-    }
-    
-    const startTimestamp = moment(startDateTime(log), 'HH:mm:ss YYYY-MM-DD').unix()
+epochify(
+  normalize(fs.readFileSync('./testdata/network.txt', 'utf8')),
+  (err, log) => {
+    test('should extract phone connection attempts', assert => {
+      if (err) {
+        console.log(err);
+        assert.fail();
+      }
 
-    const trange = timerange(startTimestamp, duration(log))
+      const startTimestamp = moment(
+        startDateTime(log),
+        'HH:mm:ss YYYY-MM-DD'
+      ).unix();
 
-    const tAxisTimeSeries = timeAxis(trange.startMilliseconds, trange.endMilliseconds)
+      const trange = timerange(startTimestamp, duration(log));
 
-    const actual = mapNetworkPhoneConnectionAttempts(mapNetworkLines(log), tAxisTimeSeries)
+      const tAxisTimeSeries = timeAxis(
+        trange.startMilliseconds,
+        trange.endMilliseconds
+      );
 
-    const expectedLength = 20
+      const actual = mapNetworkPhoneConnectionAttempts(
+        mapNetworkLines(log),
+        tAxisTimeSeries
+      );
 
-    assert.ok(actual)
+      const expectedLength = 20;
 
-    assert.true(actual.count() > 0)
+      assert.ok(actual);
 
-    assert.true(actual.count() === expectedLength)
+      assert.true(actual.count() > 0);
 
-    assert.true(actual.max() === 1)
+      assert.true(actual.count() === expectedLength);
 
-    assert.end()
-  })
+      assert.true(actual.max() === 1);
 
-})
+      assert.end();
+    });
+  }
+);

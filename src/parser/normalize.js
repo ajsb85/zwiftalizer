@@ -5,5 +5,5 @@
  * @param {string} str - The string
  */
 export default function normalize(str) {
-  return str.replace(/[\r|\n]+/g, '\n').replace(/^\n$/gm, '')
+  return str.replace(/[\r|\n]+/g, '\n').replace(/^\n$/gm, '');
 }

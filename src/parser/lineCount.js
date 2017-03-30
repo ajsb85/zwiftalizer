@@ -4,14 +4,13 @@
  * @param {string} str - The string
  */
 export default function lineCount(str) {
-
   if (!str) {
-    return 0
+    return 0;
   }
 
   if (typeof str !== 'string') {
-    return 0
+    return 0;
   }
 
-  return (str.trim().split('\n')).length;
+  return str.trim().split('\n').length;
 }

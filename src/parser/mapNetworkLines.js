@@ -1,8 +1,7 @@
-import getAllMatches from './getAllMatches'
+import getAllMatches from './getAllMatches';
 
 export default function mapNetworkLines(str) {
+  const regex = /^\[[^\]]*\]\s+(netclient|network|warn)\s*:.*$/gim;
 
-  const regex = /^\[[^\]]*\]\s+(netclient|network|warn)\s*:.*$/gim
-
-  return getAllMatches(str, regex)
+  return getAllMatches(str, regex);
 }

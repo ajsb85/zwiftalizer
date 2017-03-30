@@ -1,10 +1,8 @@
-var test = require('tape')
+var test = require('tape');
 
-import {
-  normalize
-} from '../src/parser'
+import { normalize } from '../src/parser';
 
-test('should normalize line endings', (assert) => {
+test('should normalize line endings', assert => {
   const entries = 'A\r\n' +
     '\r' +
     '\r\n' +
@@ -12,12 +10,12 @@ test('should normalize line endings', (assert) => {
     '\r\n' +
     'C\r' +
     '\n' +
-    'D\n\n'
-  '\r\n'
+    'D\n\n';
+  ('\r\n');
 
-  const expected = 'A\nB\nC\nD\n'
-  const actual = normalize(entries)
+  const expected = 'A\nB\nC\nD\n';
+  const actual = normalize(entries);
 
-  assert.equal(actual, expected)
-  assert.end()
-})
+  assert.equal(actual, expected);
+  assert.end();
+});

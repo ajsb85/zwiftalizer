@@ -1,43 +1,38 @@
-var _ = require('underscore')
+var _ = require('underscore');
 
-import {
-  TimeSeries,
-  max
-} from 'pondjs'
+import { TimeSeries, max } from 'pondjs';
 
-import toArray from './toArray'
+import toArray from './toArray';
 
 // lines is assumed to be ANT lines only, as an array, with times already in unix format using epochify
 export default function mapAntSearches(lines, timeAxisTimeSeries) {
-
   const result = {
     name: 'searches',
     columns: ['time', 'value'],
     points: []
   };
 
-  const antLines = Array.isArray(lines) ? lines : toArray(lines)
+  const antLines = Array.isArray(lines) ? lines : toArray(lines);
 
-  const searchesRegex = /^\[[^\]]*\]\s+?ant\s+?:\s+?(goto\ssearch.|ant\s+?usb\s+?receiver\s+?found)$/i
+  const searchesRegex = /^\[[^\]]*\]\s+?ant\s+?:\s+?(goto\ssearch.|ant\s+?usb\s+?receiver\s+?found)$/i;
 
-  const searches = []
+  const searches = [];
 
   _.each(antLines, line => {
-    searchesRegex.test(line) && searches.push(line)
-  })
+    searchesRegex.test(line) && searches.push(line);
+  });
 
   _.each(searches, line => {
-
-    const matches = line.match(/^\[([^\]]*)\].*$/i)
+    const matches = line.match(/^\[([^\]]*)\].*$/i);
 
     if (!matches) {
-      return
+      return;
     }
 
-    const timestamp = parseInt(matches[1])
+    const timestamp = parseInt(matches[1]);
 
-    result.points.push([timestamp, 1])
-  })
+    result.points.push([timestamp, 1]);
+  });
 
   const ts = new TimeSeries(result);
 
@@ -45,7 +40,7 @@ export default function mapAntSearches(lines, timeAxisTimeSeries) {
     name: 'searches',
     fieldSpec: ['time', 'value'],
     seriesList: [timeAxisTimeSeries, ts]
-  })
+  });
 
   // rollup max to exaggerate the search bars
   const rollup = reducedSeries.fixedWindowRollup({
@@ -55,7 +50,7 @@ export default function mapAntSearches(lines, timeAxisTimeSeries) {
         value: max()
       }
     }
-  })
+  });
 
-  return rollup
+  return rollup;
 }

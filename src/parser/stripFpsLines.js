@@ -1,8 +1,7 @@
-import normalize from './normalize'
+import normalize from './normalize';
 
 export default function stripFpsLines(input) {
+  const lines = Array.isArray(input) ? input.join('\n') : input;
 
-  const lines = Array.isArray(input) ? input.join('\n') : input
-
-  return normalize(lines.replace(/^\[[^\]]*\]\s+?fps[\s\S]*?$/gim, '\n'))
+  return normalize(lines.replace(/^\[[^\]]*\]\s+?fps[\s\S]*?$/gim, '\n'));
 }

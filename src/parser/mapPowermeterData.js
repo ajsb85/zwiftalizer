@@ -1,72 +1,60 @@
-var _ = require('underscore')
+var _ = require('underscore');
 var sprintf = require('sprintf-js').sprintf;
-import toArray from './toArray'
+import toArray from './toArray';
 
-var moment = require('moment')
+var moment = require('moment');
 
-import {
-  Event,
-  Collection,
-  EventOut,
-  Pipeline,
-  TimeSeries,
-  avg
-} from 'pondjs'
+import { Event, Collection, EventOut, Pipeline, TimeSeries, avg } from 'pondjs';
 
-import {
-  nonZeroAvgReducer
-} from './functions'
+import { nonZeroAvgReducer } from './functions';
 
-export const powerEntryRegex = /^\[[^\]]*\]\s+?ant\s+?:\s+?\[powermeter\]\s+?.*pavg:.*$/i
+export const powerEntryRegex = /^\[[^\]]*\]\s+?ant\s+?:\s+?\[powermeter\]\s+?.*pavg:.*$/i;
 
 // lines is assumed to be ANT lines only, as an array, with times already in unix format using epochify
 export default function mapPowermeterData(lines, timeAxisTimeSeries) {
-
   const result = {
     name: 'power',
     columns: ['time', 'value'],
     points: []
   };
 
-  const antLines = Array.isArray(lines) ? lines : toArray(lines)
+  const antLines = Array.isArray(lines) ? lines : toArray(lines);
 
   // map out all the power lines containing 'Pavg' first
-  const powerLines = []
+  const powerLines = [];
 
   _.each(antLines, line => {
-    powerEntryRegex.test(line) && powerLines.push(line)
-  })
+    powerEntryRegex.test(line) && powerLines.push(line);
+  });
 
   if (!powerLines.length) {
-    return new TimeSeries(result)
+    return new TimeSeries(result);
   }
 
   // now capture the time and the avg power reading
   _.each(powerLines, line => {
-
-    const matches = line.match(/^\[([^\]]*)\]\s+?ant\s+?:\s+?\[powermeter\]\s+?.*pavg:\s+?([\d\.]*)\s+?watts.*$/i)
+    const matches = line.match(
+      /^\[([^\]]*)\]\s+?ant\s+?:\s+?\[powermeter\]\s+?.*pavg:\s+?([\d\.]*)\s+?watts.*$/i
+    );
 
     if (!matches) {
-      console.log('Failed to extract power entry')
-      return
+      console.log('Failed to extract power entry');
+      return;
     }
 
     try {
+      const timestamp = parseInt(matches[1]);
 
-      const timestamp = parseInt(matches[1])
+      const value = Math.round(matches[2] * 100) / 100;
 
-      const value = Math.round(matches[2] * 100) / 100
-
-      result.points.push([timestamp, value])
-
+      result.points.push([timestamp, value]);
     } catch (e) {
-      console.log('Failed to parse ant avg power entry', e)
+      console.log('Failed to parse ant avg power entry', e);
     }
-
-  })
+  });
 
   if (result.points.length === 0) {
-    return new TimeSeries(result)
+    return new TimeSeries(result);
   }
 
   const powerTimeSeries = new TimeSeries(result);
@@ -86,8 +74,7 @@ export default function mapPowermeterData(lines, timeAxisTimeSeries) {
         value: avg()
       }
     }
-  })
+  });
 
-  return rollup
-
+  return rollup;
 }
