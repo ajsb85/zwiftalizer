@@ -2,7 +2,7 @@ var _ = require('underscore')
 
 export default function titleCase(str) {
 
-  const exceptions = ['PC', 'AMD', 'ATi', 'OpenGL', 'SRM', 'iBike', 'MiPulse', 'Saris/CycleOps/PowerTap', 'QUBO', 'Drivo/Kura']
+  const exceptions = ['PC', 'AMD', 'ATi', 'OpenGL', 'SRM', 'iBike', 'MiPulse', 'CycleOps/PowerTap', 'QUBO', 'Drivo/Kura']
 
   var titleCaseStr = str.replace(/([^\W_]+[^\s-]*) */g, s => {
     return s.charAt(0).toUpperCase() + s.substr(1).toLowerCase()

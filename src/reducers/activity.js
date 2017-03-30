@@ -1,32 +1,30 @@
-import {
-  SET_ACTIVITY_DATA
-} from '../actions/parse'
+import { SET_ACTIVITY_DATA } from '../actions/parse';
 
-const unknown = '--'
+const unknown = '--';
 
-function activity(state = {
-  startDate: unknown,
-  startTime: unknown,
-  startDateTime: unknown,
-  startTimestamp: 0,
-  endTimestamp: 0,
-  duration: unknown,
-  durationFormatted: unknown,
-  humanizedDuration: unknown,
-  timeAxis: null
-}, action) {
-
+function activity(
+  state = {
+    startDate: unknown,
+    startTime: unknown,
+    startDateTime: unknown,
+    startTimestamp: 0,
+    endTimestamp: 0,
+    duration: unknown,
+    durationFormatted: unknown,
+    humanizedDuration: unknown,
+    timeAxis: null
+  },
+  action
+) {
   switch (action.type) {
-
     case SET_ACTIVITY_DATA:
       return Object.assign({}, state, {
         ...action.data
-      })
+      });
 
     default:
-      return state
+      return state;
   }
-
 }
 
-export default activity
+export default activity;

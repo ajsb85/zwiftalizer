@@ -1,24 +1,22 @@
-import {
-  SET_NETWORK_DATA
-} from '../actions/parse'
+import { SET_NETWORK_DATA } from '../actions/parse';
 
-function network(state = {
-  reconnects: null,
-  errors: null,
-  phoneConnectionAttempts: null
-}, action) {
-
+function network(
+  state = {
+    reconnects: null,
+    errors: null,
+    phoneConnectionAttempts: null
+  },
+  action
+) {
   switch (action.type) {
-
     case SET_NETWORK_DATA:
       return Object.assign({}, state, {
         ...action.data
-      })
+      });
 
     default:
-      return state
+      return state;
   }
-
 }
 
-export default network
+export default network;

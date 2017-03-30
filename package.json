@@ -16,7 +16,7 @@
     "lint": "eslint src/js/*.jsx",
     "posttest": "rm .babelrc",
     "pretest": "cp .testbabelrc .babelrc",
-    "release": "webpack",
+    "release": "webpack --progress --profile --colors",
     "test": "babel-tape-runner tests/epochify.js"
   },
   "optionalDependencies": {
@@ -60,6 +60,7 @@
     "d3-transition": "^0.2.8",
     "es5-shim": "^4.5.9",
     "es6-shim": "^0.35.1",
+    "eslint": "^3.18.0",
     "exports-loader": "^0.6.3",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.7.2",
@@ -99,9 +100,9 @@
     "underscore": "^1.8.3",
     "url-loader": "^0.5.7",
     "uuid": "^2.0.1",
-    "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1",
-    "webpack-merge": "^0.14.1"
+    "webpack": "^1.14.0",
+    "webpack-cleanup-plugin": "^0.4.1",
+    "webpack-dev-server": "^1.16.3"
   },
   "dependencies": {
     "react-ga": "^2.1.2"

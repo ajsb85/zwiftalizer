@@ -1,4 +1,4 @@
-var _ = require('underscore')
+var _ = require('underscore');
 
 // http://www.intel.com/content/www/us/en/processors/processor-numbers.html
 
@@ -16,32 +16,30 @@ const intelSuffixes = {
   U: 'Ultra-low power (laptop, mini-pc, all-in-one)',
   X: 'Extreme edition',
   Y: 'Extremely low power (laptop, notebook, mini-pc, all-in-one)'
-}
+};
 
 function isNumeric(obj) {
-  return !isNaN(obj - parseFloat(obj))
+  return !isNaN(obj - parseFloat(obj));
 }
 
 function humanizeGeneration(num, family) {
-
-  if (typeof(num) === 'undefined') {
-    return ''
+  if (typeof num === 'undefined') {
+    return '';
   }
 
   if (!isNumeric(num)) {
-
     if (family && family.toLowerCase() === 'pentium' && num === 'G3258') {
-      return '4th generation (Haswell) unlocked'
+      return '4th generation (Haswell) unlocked';
     }
 
     //@todo, parse Xeon generation number
-    return 'Unknown generation'
+    return 'Unknown generation';
   }
 
   // is all numeric, safe to cast 1st number to int
-  const gen = ' generation'
+  const gen = ' generation';
 
-  const genNumber = parseInt(num[0])
+  const genNumber = parseInt(num[0]);
 
   if (genNumber % 100 >= 11 && genNumber % 100 <= 13) {
     return genNumber + 'th' + gen;
@@ -62,61 +60,61 @@ function humanizeGeneration(num, family) {
 // @todo, refactor ito 3 functions - core, core 2 (which came before core), and pentium/celeron family regexes
 
 export default function cpuClass(str) {
+  var systemRegex = /\w+\s+\/\s+([^\/]*)\s+\/\s+[^\s]*.*/;
 
-  var systemRegex = /\w+\s+\/\s+([^\/]*)\s+\/\s+[^\s]*.*/
-
-  const match = systemRegex.exec(str)
+  const match = systemRegex.exec(str);
 
   if (!match) {
-    return undefined
+    return undefined;
   }
 
-  const cpuSpec = match[1]
+  const cpuSpec = match[1];
 
   // const cpuRegex = /^(intel)?\s(\w*)\s(i\d)([-\s]?)(\d+)(\w)?(\w)?\s\@.*/i
 
-  const cpuRegex = /^(intel|pentium)\s?([\-\w]*)\s?(i\d)?([-\s]?)([\w\d]+\d+)(\w)?(\w)?\s\@.*/i
+  const cpuRegex = /^(intel|pentium)\s?([\-\w]*)\s?(i\d)?([-\s]?)([\w\d]+\d+)(\w)?(\w)?\s\@.*/i;
 
-  const matches = cpuRegex.exec(cpuSpec)
+  const matches = cpuRegex.exec(cpuSpec);
 
   if (!matches) {
-    return undefined
+    return undefined;
   }
 
-  const model = matches[1]
+  const model = matches[1];
 
-  const family = matches[2]
+  const family = matches[2];
 
-  const brandModifier = matches[3]
+  const brandModifier = matches[3];
 
-  const generation = (matches[5] + '').length === 3 ? '1st generation' : humanizeGeneration(matches[5], family)
+  const generation = (matches[5] + '').length === 3
+    ? '1st generation'
+    : humanizeGeneration(matches[5], family);
 
-  const letterSuffix = matches[6]
+  const letterSuffix = matches[6];
 
-  const productLineSuffix = matches[7]
+  const productLineSuffix = matches[7];
 
-  let letterSuffixValue = undefined
+  let letterSuffixValue = undefined;
 
-  let productLineSuffixValue = undefined
+  let productLineSuffixValue = undefined;
 
   if (letterSuffix && _(intelSuffixes).has(letterSuffix)) {
-    letterSuffixValue = intelSuffixes[letterSuffix]
+    letterSuffixValue = intelSuffixes[letterSuffix];
   }
 
   if (productLineSuffix && _(intelSuffixes).has(productLineSuffix)) {
-    productLineSuffixValue = intelSuffixes[productLineSuffix]
+    productLineSuffixValue = intelSuffixes[productLineSuffix];
   }
 
   let description = generation + ' Intel ' + family + ' family processor';
 
   if (letterSuffixValue) {
-    description += ' - ' + letterSuffixValue
+    description += ' - ' + letterSuffixValue;
   }
 
   if (productLineSuffixValue) {
-    description += ' ' + productLineSuffixValue
+    description += ' ' + productLineSuffixValue;
   }
 
-  return description.trim()
-
+  return description.trim();
 }

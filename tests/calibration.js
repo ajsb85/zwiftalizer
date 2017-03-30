@@ -43,7 +43,7 @@ test('should get last saris (powertap) calibration of many', (assert) => {
   assert.end()
 })
 
-test('should get Quark calibration value 12543', (assert) => {
+test('should get Quarq calibration value 12543', (assert) => {
   const line = '[14:35:27] Calibration data [1] [18] [3] [57] [48] [57] [48] [255]'
   const expect = 12543
   const actual = mapCalibrationData(line)
@@ -52,7 +52,7 @@ test('should get Quark calibration value 12543', (assert) => {
   assert.end()
 })
 
-test('should get Quark calibration value 65279', (assert) => {
+test('should get Quarq calibration value 65279', (assert) => {
   const line = '[19:52:17] Calibration data [1] [18] [3] [255] [255] [11] [254] [255]\n' +
     '[19:52:17] NEW Calibration offset = 65279 stdDeviation = 0.00'
   const expect = 65279
@@ -61,7 +61,7 @@ test('should get Quark calibration value 65279', (assert) => {
   assert.end()
 })
 
-test('should get Quark calibration value 64511', (assert) => {
+test('should get Quarq calibration value 64511', (assert) => {
   const line = '[10:58:59] Calibration data [1] [18] [3] [255] [255] [9] [251] [255]\n' +
     '[10:58:59] NEW Calibration offset = 64511 stdDeviation = 0.00'
   const expect = 64511
@@ -70,7 +70,7 @@ test('should get Quark calibration value 64511', (assert) => {
   assert.end()
 })
 
-test('should get Quark calibration value 65023', (assert) => {
+test('should get Quarq calibration value 65023', (assert) => {
   const line = '[21:44:35] Calibration data [1] [18] [3] [255] [255] [209] [253] [255]\n'
   '[21:44:35] NEW Calibration offset = 65023 stdDeviation = 0.00'
   const expect = 65023
@@ -79,7 +79,7 @@ test('should get Quark calibration value 65023', (assert) => {
   assert.end()
 })
 
-test('should get Quark calibration value 38656', (assert) => {
+test('should get Quarq calibration value 38656', (assert) => {
   const line = '[2:09:19] Calibration data [1] [172] [1] [81] [0] [0] [151] [0]\n' +
     '[2:09:19] NEW Calibration offset = 38656 stdDeviation = 0.00'
 

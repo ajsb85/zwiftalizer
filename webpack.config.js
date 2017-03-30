@@ -119,7 +119,7 @@ if (TARGET === 'dev' || !TARGET) {
       port: process.env.PORT
     },
     plugins: [
-      //new webpack.HotModuleReplacementPlugin()
+      //new webpack.HotModuleReplacementPlugin()      
     ]
 
   });

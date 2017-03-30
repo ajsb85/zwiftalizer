@@ -1,27 +1,25 @@
-import {
-  SET_SYSTEM_DATA
-} from '../actions/parse'
+import { SET_SYSTEM_DATA } from '../actions/parse';
 
-const unknown = '--'
+const unknown = '--';
 
-function system(state = {
-  platform: unknown,
-  cpuVendor: unknown,
-  cpuDetails: unknown,
-  ram: unknown
-}, action) {
-
+function system(
+  state = {
+    platform: unknown,
+    cpuVendor: unknown,
+    cpuDetails: unknown,
+    ram: unknown
+  },
+  action
+) {
   switch (action.type) {
-
     case SET_SYSTEM_DATA:
       return Object.assign({}, state, {
         ...action.data
-      })
+      });
 
     default:
-      return state
+      return state;
   }
-
 }
 
-export default system
+export default system;

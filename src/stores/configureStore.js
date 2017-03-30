@@ -1,64 +1,57 @@
 const _ = require('underscore');
 
-import {
-  createStore,
-  compose,
-  applyMiddleware
-} from 'redux'
+import { createStore, compose, applyMiddleware } from 'redux';
 
-import thunkMiddleware from 'redux-thunk'
-import createLogger from 'redux-logger'
-import rootReducer from '../reducers'
+import thunkMiddleware from 'redux-thunk';
+import createLogger from 'redux-logger';
+import rootReducer from '../reducers';
 
-const loggerMiddleware = createLogger()
+const loggerMiddleware = createLogger();
 
 export function getPreferencesFromLocalStorage() {
-
   if (!localStorage.preferences) {
     return undefined;
   }
 
-  return JSON.parse(localStorage.preferences)
+  return JSON.parse(localStorage.preferences);
 }
 
 export default function configureStore() {
+  const initialState = {};
 
-  const initialState = {}
-
-  let localStoragePreferences = getPreferencesFromLocalStorage() || null
+  let localStoragePreferences = getPreferencesFromLocalStorage() || null;
 
   // default sharing to the benchmarks is on
-  let share = true
+  let share = true;
 
   // default expanded benchmarks panel - none
-  let expanded = []
+  let expanded = [];
 
-  let currentSystem = null
+  let currentSystem = null;
 
   // retrieve cached objects from previous runs from local storage
   if (localStoragePreferences !== null) {
-
     if (!_.isUndefined(localStoragePreferences.share)) {
-      share = localStoragePreferences.share
+      share = localStoragePreferences.share;
     }
 
     if (!_.isUndefined(localStoragePreferences.expanded)) {
-      expanded = localStoragePreferences.expanded
+      expanded = localStoragePreferences.expanded;
     }
 
     if (!_.isUndefined(localStoragePreferences.currentSystem)) {
-      currentSystem = localStoragePreferences.currentSystem
+      currentSystem = localStoragePreferences.currentSystem;
     }
   }
 
   initialState.preferences = {
     share: share
-  }
+  };
 
   initialState.benchmarks = {
     expanded: expanded,
     currentSystem: currentSystem
-  }
+  };
 
   const store = createStore(
     rootReducer,
@@ -72,7 +65,7 @@ export default function configureStore() {
       // enables redux chrome dev tools extension
       window.devToolsExtension ? window.devToolsExtension() : f => f
     )
-  )
+  );
 
-  return store
+  return store;
 }

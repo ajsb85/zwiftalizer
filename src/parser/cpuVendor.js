@@ -1,19 +1,18 @@
-import titleCase from './titleCase'
-import removeTrademarksAndCopyrights from './removeTrademarksAndCopyrights'
+import titleCase from './titleCase';
+import removeTrademarksAndCopyrights from './removeTrademarksAndCopyrights';
 
 /**
  * Returns the brand name in the cpu string, usually Intel or AMD
  * @param {string} str - The string
  */
 export default function cpuVendor(str) {
+  const regex = /^\[[^\]]*\]\s+?cpu:\s+([\w\d]*).*$/im;
 
-  const regex = /^\[[^\]]*\]\s+?cpu:\s+([\w\d]*).*$/im
-
-  const match = regex.exec(str)
+  const match = regex.exec(str);
 
   if (!match) {
-    return undefined
+    return undefined;
   }
 
-  return titleCase(removeTrademarksAndCopyrights(match[1]))
+  return titleCase(removeTrademarksAndCopyrights(match[1]));
 }

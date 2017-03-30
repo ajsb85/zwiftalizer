@@ -14,7 +14,7 @@ const calibrationLineRegex = /^\[[^\]]*\]\s+calibration\s+?data\s+.*$/i;
 
 const doubleByteToUint16 = function(bytes, endianness = LITTLE_ENDIAN) {
 
-  // Quark is bigendian (and maybe SRM) (most significant byte comes first)
+  // Quarq is bigendian (and maybe SRM) (most significant byte comes first)
   if (endianness === BIG_ENDIAN) {
     return (parseInt(bytes[0]) << 8) + parseInt(bytes[1])
   }

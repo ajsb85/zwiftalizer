@@ -1,7 +1,7 @@
 // There are two methods used by bicycle power sensors for information updates:
 
 // Event-Synchronous Update e.g. the power information is updated each time the power sensor detects a new crank rotation.
-// (Quark, SRM, 4iiii, Power2Max, Pioneer, Stages, Garmin Vector, Powertap P1)
+// (Quarq, SRM, 4iiii, Power2Max, Pioneer, Stages, Garmin Vector, Powertap P1)
 
 // Time-Synchronous Update e.g. the power information is updated at 1Hz.
 // (Powertap Hubs)

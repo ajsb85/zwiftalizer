@@ -1,35 +1,32 @@
-import {
-  SET_GRAPHICS_DATA
-} from '../actions/parse'
+import { SET_GRAPHICS_DATA } from '../actions/parse';
 
-const unknown = '--'
+const unknown = '--';
 
-function graphics(state = {
-  fpsData: [],
-  fpsSamples: 0,
-  specs: {
-    gpuVendor: unknown,
-    gpuDetails: unknown,
-    openglMajor: unknown,
-    openglMinor: unknown,
-    profile: unknown,
-    resolution: unknown,
-    shadowres: unknown
-  }
-}, action) {
-
+function graphics(
+  state = {
+    fpsData: [],
+    fpsSamples: 0,
+    specs: {
+      gpuVendor: unknown,
+      gpuDetails: unknown,
+      openglMajor: unknown,
+      openglMinor: unknown,
+      profile: unknown,
+      resolution: unknown,
+      shadowres: unknown
+    }
+  },
+  action
+) {
   switch (action.type) {
-
     case SET_GRAPHICS_DATA:
-
       return Object.assign({}, state, {
         ...action.data
-      })
+      });
 
     default:
-      return state
+      return state;
   }
-
 }
 
-export default graphics
+export default graphics;

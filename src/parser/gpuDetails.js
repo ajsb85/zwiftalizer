@@ -1,20 +1,19 @@
-import removeTrademarksAndCopyrights from './removeTrademarksAndCopyrights'
+import removeTrademarksAndCopyrights from './removeTrademarksAndCopyrights';
 
 /**
  * Returns the gpu specs from the gpu renderer string
  * @param {string} str - The string
  */
 export default function gpuDetails(str) {
+  const regex = /^\[[^\]]*\]\s+?graphics\s+?renderer:\s+?(.*)$/im;
 
-  const regex = /^\[[^\]]*\]\s+?graphics\s+?renderer:\s+?(.*)$/im
-
-  const match = regex.exec(str)
+  const match = regex.exec(str);
 
   if (!match) {
-    return undefined
+    return undefined;
   }
 
-  const cleaned = removeTrademarksAndCopyrights(match[1])
+  const cleaned = removeTrademarksAndCopyrights(match[1]);
 
-  return cleaned
+  return cleaned;
 }
