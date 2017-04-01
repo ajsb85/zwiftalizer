@@ -24,7 +24,7 @@ import Home from './home'
 import {About} from './about'
 import {Support} from './support'
 import Benchmarks from './benchmarks'
-import Trainers from './trainers'
+import PowerSources from './powersources'
 
 function logPageView() {
   ReactGA.set({page: window.location.pathname})
@@ -44,7 +44,7 @@ function run() {
           <Route path='about' component={About}/>
           <Route path='support' component={Support}/>
           <Route path='benchmarks' component={Benchmarks}/>
-          <Route path='trainers' component={Trainers}/>
+          <Route path='powersources' component={PowerSources}/>
         </Route>
       </Router>
     </div>

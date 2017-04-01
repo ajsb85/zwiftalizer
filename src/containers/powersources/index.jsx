@@ -2,7 +2,7 @@ import React from 'react'
 import structure from '../../styles/structure.css'
 import editorial from '../../styles/editorial.css'
 
-class Trainers extends React.Component {
+class PowerSources extends React.Component {
 
   render() {
     return (
@@ -29,4 +29,4 @@ class Trainers extends React.Component {
   }
 }
 
-export {Trainers}
+export {PowerSources}

@@ -229,9 +229,9 @@
     "@state-danger-text": "#a94442",
     "@state-danger-bg": "#f2dede",
     "@state-danger-border": "darken(spin(@state-danger-bg, -10), 5%)",
-    "@tooltip-max-width": "200px",
+    "@tooltip-max-width": "250px",
     "@tooltip-color": "#fff",
-    "@tooltip-bg": "#000",
+    "@tooltip-bg": "#178acc",
     "@tooltip-opacity": ".9",
     "@tooltip-arrow-width": "5px",
     "@tooltip-arrow-color": "@tooltip-bg",
@@ -383,6 +383,7 @@
   },
   "css": [
     "type.less",
+    "code.less",
     "grid.less",
     "tables.less",
     "forms.less",
@@ -392,8 +393,13 @@
     "input-groups.less",
     "badges.less",
     "alerts.less",
-    "progress-bars.less"
+    "progress-bars.less",
+    "panels.less",
+    "close.less",
+    "tooltip.less",
+    "popovers.less",
+    "modals.less"
   ],
   "js": [],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=0505eba1fad624e97b40793e0760012c"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=2b09f3a4890782364c2da1f706275392"
 }

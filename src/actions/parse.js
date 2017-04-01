@@ -253,21 +253,19 @@ function parseFileContents(log, isDemo = false, share = true) {
                 const deviceSummary = ((
                   {
                     extendedDeviceId,
-                    manufacturer,
                     manufacturerId,
-                    model,
+                    manufacturer,
                     modelId,
-                    type,
-                    typeName
+                    model,
+                    type
                   }
                 ) => ({
                   extendedDeviceId,
-                  manufacturer,
                   manufacturerId,
-                  model,
+                  manufacturer,
                   modelId,
-                  type,
-                  typeName
+                  model,
+                  type
                 }))(d);
 
                 devicesSummaryData.push(deviceSummary);

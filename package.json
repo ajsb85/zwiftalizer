@@ -81,6 +81,7 @@
     "qwest": "^4.1.1",
     "raw-loader": "^0.5.1",
     "react": "^15.3.2",
+    "react-bootstrap": "^0.30.8",
     "react-dom": "^15.3.2",
     "react-dropzone": "^3.5.3",
     "react-easy-chart": "^0.1.12",

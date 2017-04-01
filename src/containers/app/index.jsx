@@ -84,13 +84,16 @@ class App extends React.Component {
               </div>
             </div>
 
-            <div className="col-sm-12 col-md-2">
+            <div className="col-sm-12 col-md-3">
               <div className={styles.navItem}>
-                <Link to="/trainers">Kickr v Neo</Link>
+                <span className={styles.signal}>
+                <i className="fa fa-bolt" aria-hidden="true"></i>
+                </span>&nbsp;
+                <Link to="/powersources">Power Sources</Link>
               </div>
             </div>
 
-            <div className="col-sm-12 col-md-3">
+            <div className="col-sm-12 col-md-2">
 
               <div className={styles.navPills}>
                 <Link to="/about">
