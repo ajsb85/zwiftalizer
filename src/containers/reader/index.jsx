@@ -93,57 +93,28 @@ class Reader extends React.Component {
 
         <div className="container">
           <div className="row">
-            <div className="col-xs-12">
-
-              <div className="alert alert-warning" role="alert">
-
-                <div className="container-fluid">
-                  <div className="row">
-                    <div className="col-xs-12 col-sm-1">
-                      <form>
-                        <div className="form-group">
-                          <div className={styles.checkboxWrapper}>
-                            <div className={styles.checkbox}>
-                              <input
-                                id="shareCheckbox"
-                                type="checkbox"
-                                onChange={this.handleCheckboxChange}
-                                checked={shareStatus}
-                              />
-                              <label htmlFor="shareCheckbox" />
-                            </div>
-                          </div>
-                        </div>
-                      </form>
-
-                    </div>
-                    <div className="col-xs-12 col-sm-11">
-                      <div className={styles.consentWrapper}>
-                        <h2 className={styles.checkboxLabel}>
-                          <span className={styles.checkboxLabelStrong}>
-                            I agree
-                          </span>
-                          &nbsp;to my system summary being uploaded to the database.&nbsp;
-                          <a
-                            href=""
-                            onClick={this.openDbUploadExplanationModal}
-                          >
-                            <span className={styles.infoCircle}>
-                              <i
-                                className="fa fa-question-circle"
-                                aria-hidden="true"
-                              />
-                            </span>
-                          </a>
-                        </h2>
-                        <p>
-                          Uploading your summary data is entirely optional.&nbsp;                          
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+            <div className="hidden-xs col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+              <div className={styles.checkboxWrapper}>
+                <div className={styles.checkbox}>
+                  <input
+                    id="shareCheckbox"
+                    type="checkbox"
+                    onChange={this.handleCheckboxChange}
+                    checked={shareStatus}
+                  />
+                  <label htmlFor="shareCheckbox" />
                 </div>
-              </div>
+              </div>                                  
+              <h2 className={styles.checkboxLabel}>                
+                  Include my results in the database &nbsp;<a href="" onClick={this.openDbUploadExplanationModal}>
+                    <span className={styles.infoCircle}>
+                    <i
+                      className="fa fa-question-circle"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </a>
+              </h2>                                      
             </div>
           </div>
 
@@ -184,7 +155,14 @@ class Reader extends React.Component {
                 <div className="col-xs-12">
                  
                   <h4>
-                    By checking the box, you consent to the following data being stored
+                    Your logfile is never uploaded to the server.
+                  </h4>
+                  <p>
+                    The logfile is read by javascript running in your web browser. The results are uploaded to the server for making the benchmarks and power sources reports. Sharing is optional. 
+                  </p>
+
+                  <h4>
+                    By checking the box, you consent to the following data points being stored
                   </h4>
 
                   <ul>
@@ -218,7 +196,7 @@ class Reader extends React.Component {
                     <li>Your IP Address - used only to report power source usage by country</li>                      
                   </ul>
 
-                  <p>* - The ANT+ device id is a unique number given to your Smart Trainer or Powermeter by the device manufacturer. By storing this number, each power source is counted once only in the usage report.
+                  <p>* - The ANT+ device id is a unique number given to your Smart Trainer or Powermeter by the device manufacturer. By storing this number in the database, your smart trainer and/or powermeter is counted only once in the power sources report regardless of how many times you use this tool.
                   </p>
                   
                   <h4>

@@ -124,7 +124,6 @@ class App extends React.Component {
       </div>
     )
   }
-
 }
 
 function mapStateToProps(state) {

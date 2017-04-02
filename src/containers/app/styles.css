@@ -3,12 +3,12 @@
     right: 0;
     left: 0;
     z-index: 1030;
-    padding: 2.5rem 0;
+    padding: 2.25rem 0;
     background: #178acc;
 }
 
 .appBody {
-  padding-top: 8rem;
+  padding-top: 6rem;
 }
 
 .navItem {
