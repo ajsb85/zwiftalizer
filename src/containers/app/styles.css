@@ -8,7 +8,7 @@
 }
 
 .appBody {
-  padding-top: 6rem;
+  padding-top: 7rem;
 }
 
 .navItem {
@@ -55,7 +55,7 @@
     height: 4rem;
   }
   .appBody {
-  padding-top: 26rem;
+  padding-top: 25rem;
   }
 }
 @media(min-width:768px) {}
