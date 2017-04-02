@@ -58,62 +58,69 @@ class App extends React.Component {
     return (
 
       <div>
-        <div className="container" style={{
-          marginTop: '2rem'
-        }}>
-          <div className="row">
-            <div className="col-sm-12 col-md-3">
-              <div className={styles.brand}>
-                <span className={styles.signal}>
-                  <i className="fa fa-line-chart" aria-hidden="true"></i>
-                </span>&nbsp;<Link to="/">Zwiftalizer 1.0.3</Link>
-              </div>
-            </div>
-
-            <div className="col-sm-12 col-md-2">
-              <div className={styles.navItem}>
-                <a onClick={this.handleDemoClick}>
-                  Demo
-                </a>
-              </div>
-            </div>
-
-            <div className="col-sm-12 col-md-2">
-              <div className={styles.navItem}>
-                <Link to="/benchmarks">Benchmarks</Link>
-              </div>
-            </div>
-
-            <div className="col-sm-12 col-md-3">
-              <div className={styles.navItem}>
-                <span className={styles.signal}>
-                <i className="fa fa-bolt" aria-hidden="true"></i>
-                </span>&nbsp;
-                <Link to="/powersources">Power Sources</Link>
-              </div>
-            </div>
-
-            <div className="col-sm-12 col-md-2">
-
-              <div className={styles.navPills}>
-                <Link to="/about">
-                  <i className='fa fa-info-circle'></i>
-                </Link>&nbsp;
-                <a onClick={this.handleTwitterClick}>
-                  <i className='fa fa-twitter-square'></i>
-                </a>&nbsp;
-                <Link to="/support">
-                  <i className='fa fa-paypal'></i>
-                </Link>&nbsp;
-                <a onClick={this.handleGithubClick}>
-                  <i className='fa fa-github'></i>
-                </a>
+        <div className={styles.stickyHeader}>
+          <div className="container">         
+            <div className="row">
+              <div className="col-sm-12 col-md-3">
+                <div className={styles.brand}>
+                  <span className={styles.signal}>
+                    <i className="fa fa-line-chart" aria-hidden="true"></i>
+                  </span>&nbsp;<Link to="/">Zwiftalizer 1.0.3</Link>
+                </div>
               </div>
 
+              <div className="col-sm-12 col-md-2">
+                <div className={styles.navItem}>
+                  <span className={styles.signal}>
+                    <i className="fa fa-play" aria-hidden="true"></i>
+                  </span>&nbsp;
+                  <a onClick={this.handleDemoClick}>
+                    Demo
+                  </a>
+                </div>
+              </div>
+
+              <div className="col-sm-12 col-md-2">
+                <div className={styles.navItem}>
+                  <span className={styles.signal}>
+                    <i className="fa fa-align-left" aria-hidden="true"></i>
+                  </span>&nbsp;
+                  <Link to="/benchmarks">Benchmarks</Link>
+                </div>
+              </div>
+
+              <div className="col-sm-12 col-md-3">
+                <div className={styles.navItem}>
+                  <span className={styles.signal}>
+                    <i className="fa fa-bolt" aria-hidden="true"></i>
+                  </span>&nbsp;
+                  <Link to="/powersources">Power Sources</Link>
+                </div>
+              </div>
+
+              <div className="col-sm-12 col-md-2">
+
+                <div className={styles.navPills}>
+                  <Link to="/about">
+                    <i className='fa fa-info-circle'></i>
+                  </Link>&nbsp;
+                  <a onClick={this.handleTwitterClick}>
+                    <i className='fa fa-twitter-square'></i>
+                  </a>&nbsp;
+                  <Link to="/support">
+                    <i className='fa fa-paypal'></i>
+                  </Link>&nbsp;
+                  <a onClick={this.handleGithubClick}>
+                    <i className='fa fa-github'></i>
+                  </a>
+                </div>
+              </div>
+              </div>
             </div>
           </div>
+        <div className={styles.appBody}>         
           {this.props.children}
-        </div>
+        </div>      
       </div>
     )
   }

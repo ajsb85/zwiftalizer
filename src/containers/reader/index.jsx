@@ -91,7 +91,7 @@ class Reader extends React.Component {
     return (
       <div className={styles.root}>
 
-        <div className="container-fluid">
+        <div className="container">
           <div className="row">
             <div className="col-xs-12">
 
@@ -130,20 +130,14 @@ class Reader extends React.Component {
                           >
                             <span className={styles.infoCircle}>
                               <i
-                                className="fa fa-info-circle"
+                                className="fa fa-question-circle"
                                 aria-hidden="true"
                               />
                             </span>
                           </a>
                         </h2>
                         <p>
-                          Uploading your summary data is entirely optional.&nbsp;
-                          <a
-                            href=""
-                            onClick={this.openDbUploadExplanationModal}
-                          >
-                            What the heck?
-                          </a>
+                          Uploading your summary data is entirely optional.&nbsp;                          
                         </p>
                       </div>
                     </div>

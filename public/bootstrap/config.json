@@ -16,7 +16,7 @@
     "@link-color": "@brand-primary",
     "@link-hover-color": "darken(@link-color, 15%)",
     "@link-hover-decoration": "underline",
-    "@font-family-sans-serif": "\"Open Sans\", \"Segoe UI\", Arial, Helvetica, sans-serif",
+    "@font-family-sans-serif": "\"Proxima Nova\", \"Open Sans\", \"Segoe UI\", Arial, Helvetica, sans-serif",
     "@font-family-serif": "Georgia, \"Times New Roman\", Times, serif",
     "@font-family-monospace": "Menlo, Monaco, Consolas, \"Courier New\", monospace",
     "@font-family-base": "@font-family-sans-serif",
@@ -401,5 +401,5 @@
     "modals.less"
   ],
   "js": [],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=2b09f3a4890782364c2da1f706275392"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=e818db0c614bb33b398af1f119aa843d"
 }

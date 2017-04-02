@@ -1,0 +1,6 @@
+@font-face{
+	font-family:"Proxima Nova Bold";
+	src:url("/fonts/proxima-nova-bold.woff") format("woff");	
+	font-style:normal;
+    font-weight: 700;
+}

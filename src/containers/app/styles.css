@@ -1,27 +1,44 @@
+.stickyHeader {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    padding: 2.5rem 0;
+    background: #178acc;
+}
+
+.appBody {
+  padding-top: 8rem;
+}
+
 .navItem {
   display: flex;
   align-items: center;
   justify-content: center;
-  /*text-transform: uppercase;*/
+  text-transform: uppercase;
   vertical-align: baseline;
-  color: #178acc;
+  /*color: #178acc;*/
+  color: #fff;
   height: 2.6rem;
-  padding: 0.2rem 0.2rem 0.8rem 0.2rem;
+  padding: 1.2rem 0.2rem 0.8rem 0.2rem;
   width: 100%;
   white-space: normal;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.8rem;
+  letter-spacing: 0.1rem;
   text-align: center;
+  font-family: "Proxima Nova Bold";  
 }
 .navItem>a {
   text-decoration: none;
+  color: #fff;
 }
 .navItem>a:hover {
-  color: #f9672b;
+  color: #F9852B;
   cursor: pointer;
 }
 .signal {
-  color: #f9672b;
+  color: #F9852B;
 }
 .brand {
   composes: navItem;
@@ -35,7 +52,10 @@
 @media(max-width:991px) {
   .navItem, .brand, .navPills {
     justify-content: center;
-    height: 4.0rem;
+    height: 4rem;
+  }
+  .appBody {
+  padding-top: 26rem;
   }
 }
 @media(min-width:768px) {}

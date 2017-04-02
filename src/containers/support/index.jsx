@@ -25,7 +25,7 @@ class Support extends React.Component {
                             <h3>
                               <i className="fa fa-github"></i>&nbsp;Open Source</h3>
                             <p>The Zwiftalizer is free, open source software. You are welcome to checkout the source from GitHub and contribute changes.</p>
-                            <p>You do not have to be a coder to make a valuable contribution.
+                            <p>But you do not have to be a coder to make a valuable contribution.
                             </p>
                             <p>
                               <a href="https://github.com/mhanney/zwiftalizer/issues" target="_blank">You can submit an bug report, feature request</a>&nbsp;or simply "star" the project on&nbsp;<a href="https://github.com/mhanney/zwiftalizer" target="_blank">GitHub</a>
