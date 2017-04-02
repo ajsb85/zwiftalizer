@@ -99,7 +99,6 @@ class App extends React.Component {
               </div>
 
               <div className="col-sm-12 col-md-2">
-
                 <div className={styles.navPills}>
                   <Link to="/about">
                     <i className='fa fa-info-circle'></i>

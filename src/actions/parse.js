@@ -268,13 +268,15 @@ function parseFileContents(log, isDemo = false, share = true) {
                   type
                 }))(d);
 
+               //@todo, check for empty values, particularly in modelId and model name
+
                 devicesSummaryData.push(deviceSummary);
               });
 
               console.log('devices summary data for api post');
               console.log(JSON.stringify(devicesSummaryData));
 
-              dispatch(uploadDevicesSummary(devicesSummaryData));
+              dispatch(uploadDevicesSummary({devices:devicesSummaryData}));
             }
           }
 
@@ -477,7 +479,7 @@ export function uploadDevicesSummary(data) {
   return function(dispatch) {
     return request
       .post(
-        'https://btcv4d9x05.execute-api.us-west-2.amazonaws.com/dev/devices',
+        'https://zkt5wkylqf.execute-api.us-west-2.amazonaws.com/dev/devices',
         data,
         {
           cache: false,
