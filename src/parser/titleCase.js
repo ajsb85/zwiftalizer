@@ -11,7 +11,8 @@ export default function titleCase(str) {
     'MiPulse',
     'CycleOps/PowerTap',
     'QUBO',
-    'Drivo/Kura'
+    'Drivo/Kura',
+    'Power2Max'
   ];
 
   var titleCaseStr = str.replace(/([^\W_]+[^\s-]*) */g, s => {
