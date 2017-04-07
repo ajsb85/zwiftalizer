@@ -1,57 +1,50 @@
-import React from 'react'
-import styles from './styles.css'
-import images from '../../styles/images.css'
-import * as Parser from '../../parser/index.js'
+import React from 'react';
+import styles from './styles.css';
+import images from '../../styles/images.css';
+import * as Parser from '../../parser/index.js';
 
 class System extends React.Component {
-
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   platform(str) {
-    return (str.match(/^Mac.*/))
-      ? 'Mac'
-      : 'PC'
+    return str.match(/^Mac.*/) ? 'Mac' : 'PC';
   }
 
   cpuVendor(str) {
-    var regex = /.*\s+\/\s+([^\s]*).*\s+\/\s+[^\s]*.*/
+    var regex = /.*\s+\/\s+([^\s]*).*\s+\/\s+[^\s]*.*/;
 
-    const match = regex.exec(str)
+    const match = regex.exec(str);
 
     if (!match) {
-      return undefined
+      return undefined;
     }
 
-    return match[1]
-
+    return match[1];
   }
 
   gpuVendor(str) {
-    var regex = /.*\s+\/\s+[^\s]*.*\s+\/\s+([^\s]*).*/
+    var regex = /.*\s+\/\s+[^\s]*.*\s+\/\s+([^\s]*).*/;
 
-    const match = regex.exec(str)
+    const match = regex.exec(str);
 
     if (!match) {
-      return undefined
+      return undefined;
     }
 
-    return match[1]
+    return match[1];
   }
 
   renderCpuDetail(cpuDetail) {
     if (!cpuDetail) {
-      return null
+      return null;
     }
 
-    return (
-      <h4 className={styles.cpuDetail}>{cpuDetail}</h4>
-    )
+    return <h4 className={styles.cpuDetail}>{cpuDetail}</h4>;
   }
 
   render() {
-
     const {
       systemId,
       minFps,
@@ -61,16 +54,16 @@ class System extends React.Component {
       maxAvgResolutionProfile,
       maxMaxResolutionProfile,
       current
-    } = this.props.data
+    } = this.props.data;
 
-    var relativeMaxWidth = 100
-    var relativeAvgWidth = 100
-    var relativeMinWidth = 100
+    var relativeMaxWidth = 100;
+    var relativeAvgWidth = 100;
+    var relativeMinWidth = 100;
 
     if (maxMaxResolutionProfile > 0) {
-      relativeMaxWidth = Math.round((maxFps / maxMaxResolutionProfile) * 100)
-      relativeAvgWidth = Math.round((avgFps / maxMaxResolutionProfile) * 100)
-      relativeMinWidth = Math.round((minFps / maxMaxResolutionProfile) * 100)
+      relativeMaxWidth = Math.round(maxFps / maxMaxResolutionProfile * 100);
+      relativeAvgWidth = Math.round(avgFps / maxMaxResolutionProfile * 100);
+      relativeMinWidth = Math.round(minFps / maxMaxResolutionProfile * 100);
     }
 
     let platform = this.platform(systemId);
@@ -84,152 +77,152 @@ class System extends React.Component {
     let systemIdVariable = systemId;
 
     // crude iOS detection
-    if (platform === 'Mac' && cpuVendor && cpuVendor.toLowerCase() === 'arm64') {
-      platform = 'iOS',
-      gpuVendor = 'arm64',
-      cpuVendor = 'arm64'
-      systemIdVariable = systemIdVariable.replace('Mac /', 'iOS /')
+    if (
+      platform === 'Mac' && cpuVendor && cpuVendor.toLowerCase() === 'arm64'
+    ) {
+      (platform = 'iOS'), (gpuVendor = 'arm64'), (cpuVendor = 'arm64');
+      systemIdVariable = systemIdVariable.replace('Mac /', 'iOS /');
     }
 
     // crude Alienware detection, checks for a T series intel CPU and (Nvidia or AMD GPU).
-    if (platform === 'PC' && cpuDetail && (cpuDetail.toLowerCase().indexOf('alienware') !== -1) && gpuVendor && (gpuVendor.toLowerCase() === 'nvidia' || gpuVendor.toLowerCase() === 'ati')) {
-      platform = 'Alienware',
-      systemIdVariable = systemIdVariable.replace('PC /', 'Alienware /')
+    if (
+      platform === 'PC' &&
+      cpuDetail &&
+      cpuDetail.toLowerCase().indexOf('alienware') !== -1 &&
+      gpuVendor &&
+      (gpuVendor.toLowerCase() === 'nvidia' ||
+        gpuVendor.toLowerCase() === 'ati')
+    ) {
+      (platform = 'Alienware'), (systemIdVariable = systemIdVariable.replace(
+        'PC /',
+        'Alienware /'
+      ));
     }
 
-    let platformClass,
-      cpuClass,
-      gpuClass = null;
+    let platformClass, cpuClass, gpuClass = null;
 
     if (platform) {
-
       switch (platform.toLowerCase()) {
+        case 'alienware':
+          platformClass = images.alienware;
+          break;
 
-        case('alienware'):
-          platformClass = images.alienware
-          break
+        case 'pc':
+          platformClass = images.pc;
+          break;
 
-        case('pc'):
-          platformClass = images.pc
-          break
+        case 'mac':
+          platformClass = images.mac;
+          break;
 
-        case('mac'):
-          platformClass = images.mac
-          break
-
-        case('ios'):
-          platformClass = images.arm64
-          break
+        case 'ios':
+          platformClass = images.arm64;
+          break;
 
         default:
-          platformClass = null
-          break
+          platformClass = null;
+          break;
       }
     }
 
     if (cpuVendor) {
       switch (cpuVendor.toLowerCase()) {
-        case('amd'):
-          cpuClass = images.amd
-          break
+        case 'amd':
+          cpuClass = images.amd;
+          break;
 
-        case('intel'):
-        case('pentium'):
-          cpuClass = images.intel
-          break
+        case 'intel':
+        case 'pentium':
+          cpuClass = images.intel;
+          break;
 
-        case('apple'):
-          cpuClass = images.mac
-          break
+        case 'apple':
+          cpuClass = images.mac;
+          break;
 
-        case('arm64'):
-          cpuClass = images.arm64
-          break
+        case 'arm64':
+          cpuClass = images.arm64;
+          break;
 
         default:
-          cpuClass = null
-          break
+          cpuClass = null;
+          break;
       }
     }
 
     if (gpuVendor) {
       switch (gpuVendor.toLowerCase()) {
-        case('amd'):
-        case('ati'):
-          gpuClass = images.amd
-          break
+        case 'amd':
+        case 'ati':
+          gpuClass = images.amd;
+          break;
 
-        case('nvidia'):
-          gpuClass = images.nvidia
-          break
+        case 'nvidia':
+          gpuClass = images.nvidia;
+          break;
 
-        case('intel'):
-          gpuClass = images.intel
-          break
+        case 'intel':
+          gpuClass = images.intel;
+          break;
 
-        case('apple'):
-          gpuClass = images.mac
-          break
+        case 'apple':
+          gpuClass = images.mac;
+          break;
 
-        case('arm64'):
-          gpuClass = images.arm64
-          break
+        case 'arm64':
+          gpuClass = images.arm64;
+          break;
 
         default:
-          gpuClass = null
-          break
+          gpuClass = null;
+          break;
       }
     }
 
-    const cpuDetailMarkup = cpuDetail
-      ? this.renderCpuDetail(cpuDetail)
-      : null;
+    const cpuDetailMarkup = cpuDetail ? this.renderCpuDetail(cpuDetail) : null;
 
     const barStyle = {
       marginBottom: '0.2rem'
-    }
+    };
 
     const maxWidthStyle = {
       width: relativeMaxWidth + '%',
       minWidth: '0.2rem'
-    }
+    };
 
     const avgWidthStyle = {
       width: relativeAvgWidth + '%',
       minWidth: '0.2rem'
-    }
+    };
 
     const minWidthStyle = {
       width: relativeMinWidth + '%',
       minWidth: '0.2rem'
-    }
+    };
 
     const rowStyle = current
       ? {
-        background: '#FDDF8B',
-        paddingTop: '1.5rem',
-        marginBottom: '3rem'
-      }
-      : {}
+          background: '#FDDF8B',
+          paddingTop: '1.5rem',
+          marginBottom: '3rem'
+        }
+      : {};
 
     return (
       <div>
 
-        {current
-          ? <a id='current'></a>
-          : null
-}
+        {current ? <a id="current" /> : null}
         <div className="row" style={rowStyle}>
           <div className="col-xs-12 col-sm-2">
             <div className={styles.iconsWrapper}>
               <div className={styles.icon}>
-                <div className={platformClass} data-label={platformClass}></div>
+                <div className={platformClass} data-label={platformClass} />
               </div>
               <div className={styles.icon}>
-                <div className={cpuClass} data-label={cpuClass}></div>
+                <div className={cpuClass} data-label={cpuClass} />
               </div>
               <div className={styles.icon}>
-                <div className={gpuClass} data-label={gpuClass}></div>
+                <div className={gpuClass} data-label={gpuClass} />
               </div>
             </div>
           </div>
@@ -242,17 +235,38 @@ class System extends React.Component {
           <div className="col-xs-12 col-sm-5">
             <div className={styles.barsOuter}>
               <div className="progress" style={barStyle}>
-                <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow={relativeMaxWidth} aria-valuemin="0" aria-valuemax="100" style={maxWidthStyle}>
+                <div
+                  className="progress-bar progress-bar-success"
+                  role="progressbar"
+                  aria-valuenow={relativeMaxWidth}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style={maxWidthStyle}
+                >
                   {maxFps}
                 </div>
               </div>
               <div className="progress" style={barStyle}>
-                <div className="progress-bar" role="progressbar" aria-valuenow={relativeAvgWidth} aria-valuemin="0" aria-valuemax="100" style={avgWidthStyle}>
+                <div
+                  className="progress-bar"
+                  role="progressbar"
+                  aria-valuenow={relativeAvgWidth}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style={avgWidthStyle}
+                >
                   {avgFps}
                 </div>
               </div>
               <div className="progress" style={barStyle}>
-                <div className="progress-bar progress-bar-warning" role="progressbar" aria-valuenow={relativeMinWidth} aria-valuemin="0" aria-valuemax="100" style={minWidthStyle}>
+                <div
+                  className="progress-bar progress-bar-warning"
+                  role="progressbar"
+                  aria-valuenow={relativeMinWidth}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style={minWidthStyle}
+                >
                   {minFps}
                 </div>
               </div>
@@ -261,9 +275,8 @@ class System extends React.Component {
           </div>
         </div>
       </div>
-    )
-
+    );
   }
 }
 
-export default System
+export default System;

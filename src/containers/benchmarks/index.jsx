@@ -1,61 +1,60 @@
 var moment = require('moment');
-import React, {Component, PropTypes} from 'react'
-import {withRouter} from 'react-router'
-import {connect} from 'react-redux'
-import {load, openProfilePanel} from '../../actions/benchmarks'
-import Resolution from './resolution.jsx'
+import React, { Component, PropTypes } from 'react';
+import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
+import { load, openProfilePanel } from '../../actions/benchmarks';
+import Resolution from './resolution.jsx';
 
-import structure from '../../styles/structure.css'
-import editorialStyles from '../../styles/editorial.css'
-import styles from './styles.css'
+import structure from '../../styles/structure.css';
+import editorialStyles from '../../styles/editorial.css';
+import styles from './styles.css';
 
 class Benchmarks extends React.Component {
-
   constructor(props) {
+    super(props);
 
-    super(props)
+    const { dispatch } = this.props;
 
-    const {dispatch} = this.props
+    this.findMySystemClicked = this.findMySystemClicked.bind(this);
 
-    this.findMySystemClicked = this.findMySystemClicked.bind(this)
-
-    setTimeout(() => {
-      dispatch(load())
-    }, 100)
-
+    setTimeout(
+      () => {
+        dispatch(load());
+      },
+      100
+    );
   }
 
   findMySystemClicked(e) {
+    e.preventDefault();
 
-    e.preventDefault()
-
-    const {currentSystem, dispatch} = this.props
+    const { currentSystem, dispatch } = this.props;
 
     if (!currentSystem) {
       return;
     }
 
     // force open the panel that contains the current system before scrolling incase the user closed it
-    dispatch(openProfilePanel(currentSystem.panelKey))
+    dispatch(openProfilePanel(currentSystem.panelKey));
 
-    setTimeout(() => {
-      const anchorToScrollTo = document.getElementById('current')
-      anchorToScrollTo && anchorToScrollTo.scrollIntoView(true/* align top */)
-    }, 200)
+    setTimeout(
+      () => {
+        const anchorToScrollTo = document.getElementById('current');
+        anchorToScrollTo &&
+          anchorToScrollTo.scrollIntoView(true /* align top */);
+      },
+      200
+    );
   }
 
   render() {
+    const { isLoaded } = this.props;
 
-    const {isLoaded} = this.props
-
-    return isLoaded
-      ? this.renderBenchmarks()
-      : null
+    return isLoaded ? this.renderBenchmarks() : null;
   }
 
   renderFindMySystemControls() {
-
-    const {currentSystem} = this.props
+    const { currentSystem } = this.props;
 
     if (!currentSystem) {
       return null;
@@ -65,28 +64,45 @@ class Benchmarks extends React.Component {
       <div className="row">
         <div className="col-xs-12 col-sm-offset-8 col-sm-4">
           <div className={styles.rightAlignControls}>
-            <button type="button" className="btn btn-primary btn-sm" onClick={this.findMySystemClicked}>Find my system</button>
+            <button
+              type="button"
+              className="btn btn-primary btn-sm"
+              onClick={this.findMySystemClicked}
+            >
+              Find my system
+            </button>
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   renderBenchmarks() {
+    const {
+      resolutions,
+      dateLastUpdate,
+      totalRecords,
+      expanded,
+      currentSystem
+    } = this.props;
 
-    const {resolutions, dateLastUpdate, totalRecords, expanded, currentSystem} = this.props
+    var resolutionEntries = resolutions &&
+      resolutions.map(
+        function(resolution, i) {
+          const data = Object.assign({}, resolution, {
+            totalRecords,
+            expanded,
+            currentSystem
+          });
 
-    var resolutionEntries = resolutions && resolutions.map(function(resolution, i) {
+          return <Resolution data={data} key={data.resolution} />;
+        },
+        this
+      );
 
-      const data = Object.assign({}, resolution, {totalRecords, expanded, currentSystem})
-
-      return (<Resolution data={data} key={data.resolution}/>)
-    }, this)
-
-    const dateLastUpdateHuman = moment(dateLastUpdate).format()
+    const dateLastUpdateHuman = moment(dateLastUpdate).format();
 
     return (
-
       <div className="container">
 
         <div className={editorialStyles.boxesWrapOuter}>
@@ -106,7 +122,10 @@ class Benchmarks extends React.Component {
                     </div>
                     <div className="col-xs-12 col-sm-4">
                       <div className={styles.systemsCount}>
-                        Total systems&nbsp;<span className={styles.systemsCountBadge}>{totalRecords}</span>
+                        Total systems&nbsp;
+                        <span className={styles.systemsCountBadge}>
+                          {totalRecords}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -120,19 +139,19 @@ class Benchmarks extends React.Component {
         {resolutionEntries}
 
       </div>
-    )
+    );
   }
 }
 
 function mapStateToProps(state) {
-  const {benchmarks} = state
+  const { benchmarks } = state;
   return {
     ...benchmarks
-  }
+  };
 }
 
 Benchmarks.propTypes = {
   benchmarks: PropTypes.object
-}
+};
 
-export default connect(mapStateToProps)(Benchmarks)
+export default connect(mapStateToProps)(Benchmarks);
