@@ -1,8 +1,23 @@
-import React from 'react'
+import { load } from '../../actions/powerSources';
+import React, { Component, PropTypes } from 'react';
+import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
 import structure from '../../styles/structure.css'
 import editorial from '../../styles/editorial.css'
 
 class PowerSources extends React.Component {
+ constructor(props) {
+    super(props);
+
+    const { dispatch } = this.props;
+    
+    setTimeout(
+      () => {
+        dispatch(load());
+      },
+      100
+    );
+  }
 
   render() {
     return (
@@ -29,4 +44,15 @@ class PowerSources extends React.Component {
   }
 }
 
-export {PowerSources}
+function mapStateToProps(state) {
+  const { powerSources } = state;
+  return {
+    ...powerSources
+  };
+}
+
+PowerSources.propTypes = {
+  powerSources: PropTypes.object
+};
+
+export default connect(mapStateToProps)(PowerSources);

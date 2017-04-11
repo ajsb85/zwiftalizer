@@ -99,10 +99,7 @@ class App extends React.Component {
               </div>
 
               <div className="col-sm-12 col-md-2">
-                <div className={styles.navPills}>
-                  <Link to="/about">
-                    <i className='fa fa-info-circle'></i>
-                  </Link>&nbsp;
+                <div className={styles.navPills}>                  
                   <a onClick={this.handleTwitterClick}>
                     <i className='fa fa-twitter-square'></i>
                   </a>&nbsp;

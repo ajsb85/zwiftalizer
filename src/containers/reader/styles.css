@@ -18,10 +18,7 @@
   align-items: center;
   justify-content: center;
 }
-.dropboxInner {
-  width: 82%;
-  margin: 0 auto;
-}
+
 .default {
   composes: dropbox;
   border-color: #666;
@@ -49,14 +46,19 @@
   border-style: none;
   background-color: #fff;
 }
+.dropboxInner {  
+  margin: 0 auto;
+      overflow: hidden;
+}
 .headingIcon {
-  width: 7rem;
-  float: left;
+  display: block;  
+  text-align: center;
   font-weight: 600;
   font-size: 4.8rem;
   color: #178acc;
 }
 .heading {
+  display: block;
   text-align: center;
   font-weight: 600;
   font-size: 1.6rem;
@@ -64,6 +66,7 @@
   padding-top: 1.5rem;
 }
 .subHeading {
+  display: block;
   text-align: center;
   font-weight: 400;
   font-size: 1.2rem;
@@ -119,20 +122,15 @@
   color: #999;
 }
 .checkboxWrapper {
-  height: 7rem;
-  min-height: 7rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  float: left;
-  padding-right: 5.5rem;
+  height: 6rem;
+  min-height: 6rem;
+  display: inline-block;      
 }
 .checkbox {
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
+  display: inline;
+  position: relative;    
+  top: -2.3rem;    
+  left: -5.3rem;
 }
 .checkbox label {
   position: relative;
@@ -186,11 +184,10 @@
   color: #fff;
 }
 .checkboxLabel {
-    font-weight: 400;
-    font-size: 2.2rem;
+    display: inline-block;
+    font-weight: normal;
+    font-size: 2.4rem;
     line-height: 1;
-    padding-top: 0.2rem;
-    letter-spacing: 0.02rem;
 }
 .infoCircle {  
   color: #178acc;

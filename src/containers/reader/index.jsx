@@ -94,28 +94,32 @@ class Reader extends React.Component {
 
         <div className="container">
           <div className="row">
-            <div className="hidden-xs col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-              <div className={styles.checkboxWrapper}>
-                <div className={styles.checkbox}>
-                  <input
-                    id="shareCheckbox"
-                    type="checkbox"
-                    onChange={this.handleCheckboxChange}
-                    checked={shareStatus}
-                  />
-                  <label htmlFor="shareCheckbox" />
-                </div>
-              </div>                                  
-              <h2 className={styles.checkboxLabel}>                
-                  Include my results in the database &nbsp;<a href="" onClick={this.openDbUploadExplanationModal}>
-                    <span className={styles.infoCircle}>
-                    <i
-                      className="fa fa-question-circle"
-                      aria-hidden="true"
-                    />
-                  </span>
-                </a>
-              </h2>                                      
+            <div className="hidden-xs col-sm-12">
+              <div className="center-block">     
+                <div className="text-center">     
+                  <div className={styles.checkboxWrapper}>
+                    <div className={styles.checkbox}>
+                      <input
+                        id="shareCheckbox"
+                        type="checkbox"
+                        onChange={this.handleCheckboxChange}
+                        checked={shareStatus}
+                      />
+                      <label htmlFor="shareCheckbox" />
+                    </div>
+                  </div>                                  
+                  <h2 className={styles.checkboxLabel}>                
+                      Include my results in the database &nbsp;<a href="" onClick={this.openDbUploadExplanationModal}>
+                        <span className={styles.infoCircle}>
+                        <i
+                          className="fa fa-question-circle"
+                          aria-hidden="true"
+                        />
+                      </span>
+                    </a>
+                  </h2>                                      
+                </div>  
+              </div>
             </div>
           </div>
 
@@ -161,14 +165,15 @@ class Reader extends React.Component {
                         <div className="col-xs-12">
                         
                           <h4>
-                            Your log file is never uploaded to the server. Log files are never stored.
+                            Log files are never uploaded.
                           </h4>
+
                           <p>
-                            The log file is read by javascript running in your web browser. Optionally, the results are uploaded to the database for inclusion in the benchmarks and power sources reports. Uploading is entirely optional.
+                            The log file is read by javascript running in your web browser. Optionally, the results are uploaded to the database for inclusion in the benchmarks and power sources reports.
                           </p>
 
                           <h4>
-                            By checking the box, you are allowing the following data points to be uploaded to the database:
+                            By checking the box you are allowing the following data points to be uploaded to the database:
                           </h4>
 
                           <div className="row">
@@ -195,16 +200,17 @@ class Reader extends React.Component {
                               <ul>
                                 <li>FPS Standard Deviation</li>
                                 <li>Number of FPS samples</li>
-                                <li>Smart Trainer Manufacturer Id, if available</li>  
-                                <li>Smart Trainer Manufacturer Name, if available</li>  
-                                <li>Smart Trainer Model Id, if available</li>  
-                                <li>Smart Trainer Model Name, if available</li>  
-                                <li>Smart Trainer ANT+ device id, if available <sup>*</sup></li>  
-                                <li>Powermeter Manufacturer Id, if available</li>  
-                                <li>Powermeter Manufacturer Name, if available</li>  
-                                <li>Powermeter Model Id, if available</li>  
-                                <li>Powermeter Model Name, if available</li>  
-                                <li>Powermeter ANT+ device id, if available <sup>*</sup></li>  
+                                <li>If available: </li>  
+                                <li>Smart Trainer ANT+ Manufacturer Id</li>  
+                                <li>Smart Trainer ANT+ Manufacturer Name</li>  
+                                <li>Smart Trainer ANT+ Model Id</li>  
+                                <li>Smart Trainer ANT+ Model Name</li>  
+                                <li>Smart Trainer ANT+ device id <sup>*</sup></li>  
+                                <li>Powermeter ANT+ Manufacturer Id</li>  
+                                <li>Powermeter ANT+ Manufacturer Name</li>  
+                                <li>Powermeter ANT+ Model Id</li>  
+                                <li>Powermeter ANT+ Model Name</li>  
+                                <li>Powermeter ANT+ device id <sup>*</sup></li>  
                                 <li>Your IP Address - used only to report power source usage by country</li>                      
                               </ul>
                             </div>

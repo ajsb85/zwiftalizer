@@ -32,7 +32,7 @@ var _ = require('underscore')
 
       return (
         <div className={styles.root}>
-          <div className='container-fluid'>
+          <div className='container'>
             <div className='row'>
               <div className='center-block'>
                 <div className='text-center'>

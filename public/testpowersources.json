@@ -1,0 +1,312 @@
+{
+    "powerSources": {
+        "regions": [
+            {
+                "countryCode": "US",
+                "countryName": "United States",
+                "powerMeters": [
+                    {
+                        "manId": "29",
+                        "man": "Power2max",
+                        "modId": "1031",
+                        "mod": "power2max NG",
+                        "sum": 16.67,
+                        "color": "#b4cc64",
+                        "controllable": null,
+                        "maxIncline": null,
+                        "accuracy": 0.02,
+                        "type": 1
+                    },
+                    {
+                        "manId": "7",
+                        "man": "Quarq",
+                        "modId": "0",
+                        "mod": "Powermeter",
+                        "sum": 16.67,
+                        "color": "#d0112b",
+                        "controllable": null,
+                        "maxIncline": null,
+                        "accuracy": 0.015,
+                        "type": 1
+                    },
+                    {
+                        "manId": "1",
+                        "man": "Garmin",
+                        "modId": "2161",
+                        "mod": "Vector 2",
+                        "sum": 16.67,
+                        "color": "#1285c7",
+                        "controllable": null,
+                        "maxIncline": null,
+                        "accuracy": 0.02,
+                        "type": 1
+                    },
+                    {
+                        "manId": "7",
+                        "man": "Quarq",
+                        "modId": "0",
+                        "mod": "Powermeter",
+                        "sum": 16.67,
+                        "color": "#d0112b",
+                        "controllable": null,
+                        "maxIncline": null,
+                        "accuracy": 0.015,
+                        "type": 1
+                    },
+                    {
+                        "manId": "69",
+                        "man": "Stages",
+                        "modId": "1",
+                        "mod": "Powermeter",
+                        "sum": 16.67,
+                        "color": "#0079c1",
+                        "controllable": null,
+                        "maxIncline": null,
+                        "accuracy": 0.02,
+                        "type": 1
+                    },
+                    {
+                        "manId": "51",
+                        "man": "4iiii",
+                        "modId": "7",
+                        "mod": "Precision",
+                        "sum": 16.67,
+                        "color": "#e32525",
+                        "controllable": null,
+                        "maxIncline": null,
+                        "accuracy": 0.02,
+                        "type": 1
+                    }
+                ],
+                "smartTrainers": [
+                    {
+                        "manId": "67",
+                        "man": "Bkool",
+                        "modId": "22",
+                        "mod": "Smart Pro",
+                        "sum": 12.5,
+                        "color": "#1d1d1d",
+                        "controllable": true,
+                        "maxIncline": 0.2,
+                        "accuracy": 0.05,
+                        "type": 2
+                    },
+                    {
+                        "manId": "89",
+                        "man": "Tacx",
+                        "modId": "1",
+                        "mod": "NEO Smart",
+                        "sum": 12.5,
+                        "color": "#62b5e5",
+                        "controllable": true,
+                        "maxIncline": 0.25,
+                        "accuracy": 0.02,
+                        "maxPower": 2200,
+                        "type": 2
+                    },
+                    {
+                        "manId": "9",
+                        "man": "CycleOps/PowerTap",
+                        "modId": "320",
+                        "mod": "Hammer",
+                        "sum": 25,
+                        "color": "#ffd403",
+                        "controllable": true,
+                        "maxIncline": 0.25,
+                        "accuracy": 0.03,
+                        "type": 2
+                    },
+                    {
+                        "manId": "89",
+                        "man": "Tacx",
+                        "modId": "2780",
+                        "mod": "Bushido Smart",
+                        "sum": 12.5,
+                        "color": "#62b5e5",
+                        "controllable": true,
+                        "maxIncline": 0.15,
+                        "accuracy": 0.1,
+                        "maxPower": 1400,
+                        "type": 2
+                    },
+                    {
+                        "manId": "32",
+                        "man": "Wahoo",
+                        "modId": "1",
+                        "mod": "Kickr",
+                        "sum": 25,
+                        "color": "#003479",
+                        "controllable": true,
+                        "maxIncline": 0.2,
+                        "accuracy": 0.03,
+                        "maxPower": 2500,
+                        "type": 2
+                    },
+                    {
+                        "manId": "86",
+                        "man": "Elite",
+                        "modId": "0",
+                        "mod": "Drivo/Kura (non controllable)",
+                        "sum": 12.5,
+                        "color": "#dc1f1f",
+                        "controllable": true,
+                        "maxIncline": 0.24,
+                        "accuracy": 0.01,
+                        "maxPower": 2000,
+                        "type": 2
+                    }
+                ]
+            },
+            {
+                "countryCode": "00",
+                "countryName": "Worldwide",
+                "powerMeters": [
+                    {
+                        "manId": "29",
+                        "man": "Power2max",
+                        "modId": "1031",
+                        "mod": "power2max NG",
+                        "sum": 16.67,
+                        "color": "#b4cc64",
+                        "controllable": null,
+                        "maxIncline": null,
+                        "accuracy": 0.02,
+                        "type": 1
+                    },
+                    {
+                        "manId": "7",
+                        "man": "Quarq",
+                        "modId": "1",
+                        "mod": "Unknown Model",
+                        "sum": 16.67,
+                        "color": "#d0112b"
+                    },
+                    {
+                        "manId": "1",
+                        "man": "Garmin",
+                        "modId": "2161",
+                        "mod": "Vector 2",
+                        "sum": 16.67,
+                        "color": "#1285c7",
+                        "controllable": null,
+                        "maxIncline": null,
+                        "accuracy": 0.02,
+                        "type": 1
+                    },
+                    {
+                        "manId": "7",
+                        "man": "Quarq",
+                        "modId": "9092",
+                        "mod": "Unknown Model",
+                        "sum": 16.67,
+                        "color": "#d0112b"
+                    },
+                    {
+                        "manId": "69",
+                        "man": "Stages",
+                        "modId": "1",
+                        "mod": "Powermeter",
+                        "sum": 16.67,
+                        "color": "#0079c1",
+                        "controllable": null,
+                        "maxIncline": null,
+                        "accuracy": 0.02,
+                        "type": 1
+                    },
+                    {
+                        "manId": "51",
+                        "man": "4iiii",
+                        "modId": "7",
+                        "mod": "Precision",
+                        "sum": 16.67,
+                        "color": "#e32525",
+                        "controllable": null,
+                        "maxIncline": null,
+                        "accuracy": 0.02,
+                        "type": 1
+                    }
+                ],
+                "smartTrainers": [
+                    {
+                        "manId": "67",
+                        "man": "Bkool",
+                        "modId": "22",
+                        "mod": "Smart Pro",
+                        "sum": 12.5,
+                        "color": "#1d1d1d",
+                        "controllable": true,
+                        "maxIncline": 0.2,
+                        "accuracy": 0.05,
+                        "type": 2
+                    },
+                    {
+                        "manId": "89",
+                        "man": "Tacx",
+                        "modId": "1",
+                        "mod": "NEO Smart",
+                        "sum": 12.5,
+                        "color": "#62b5e5",
+                        "controllable": true,
+                        "maxIncline": 0.25,
+                        "accuracy": 0.02,
+                        "maxPower": 2200,
+                        "type": 2
+                    },
+                    {
+                        "manId": "9",
+                        "man": "CycleOps/PowerTap",
+                        "modId": "320",
+                        "mod": "Hammer",
+                        "sum": 25,
+                        "color": "#ffd403",
+                        "controllable": true,
+                        "maxIncline": 0.25,
+                        "accuracy": 0.03,
+                        "type": 2
+                    },
+                    {
+                        "manId": "89",
+                        "man": "Tacx",
+                        "modId": "2780",
+                        "mod": "Bushido Smart",
+                        "sum": 12.5,
+                        "color": "#62b5e5",
+                        "controllable": true,
+                        "maxIncline": 0.15,
+                        "accuracy": 0.1,
+                        "maxPower": 1400,
+                        "type": 2
+                    },
+                    {
+                        "manId": "32",
+                        "man": "Wahoo",
+                        "modId": "1",
+                        "mod": "Kickr",
+                        "sum": 25,
+                        "color": "#003479",
+                        "controllable": true,
+                        "maxIncline": 0.2,
+                        "accuracy": 0.03,
+                        "maxPower": 2500,
+                        "type": 2
+                    },
+                    {
+                        "manId": "86",
+                        "man": "Elite",
+                        "modId": "0",
+                        "mod": "Drivo/Kura (non controllable)",
+                        "sum": 12.5,
+                        "color": "#dc1f1f",
+                        "controllable": true,
+                        "maxIncline": 0.24,
+                        "accuracy": 0.01,
+                        "maxPower": 2000,
+                        "type": 2
+                    }
+                ]
+            }
+        ]
+    },
+    "dateLastUpdate": 1491867114319,
+    "totalRecords": 12
+}

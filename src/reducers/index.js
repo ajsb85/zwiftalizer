@@ -11,6 +11,7 @@ import btle from './btle'
 import network from './network'
 import benchmarks from './benchmarks'
 import preferences from './preferences'
+import powerSources from './powerSources'
 
 const reducers = {
   reader,
@@ -21,7 +22,8 @@ const reducers = {
   btle,
   network,
   benchmarks,
-  preferences
+  preferences,
+  powerSources
 }
 
 const combinedReducers = combineReducers(reducers)
