@@ -4,7 +4,6 @@ export const MAX_MANUFACTURER_ID = 273;
 export const BASIC_DEVICE = 0;
 export const POWER_METER_DEVICE = 1;
 export const SMART_TRAINER_DEVICE = 2;
-export const WAHOO_KICKR_DEVICE = 3;
 
 // known smart trainer manufacturers
 export const WAHOO_MANUFACTURER_ID = '32';
