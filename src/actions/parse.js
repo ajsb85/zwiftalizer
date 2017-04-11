@@ -34,8 +34,7 @@ import {
 
 import {
   POWER_METER_DEVICE,
-  SMART_TRAINER_DEVICE,
-  WAHOO_KICKR_DEVICE
+  SMART_TRAINER_DEVICE
 } from '../parser/constants';
 
 function parseFileContents(log, isDemo = false, share = true) {
@@ -241,8 +240,7 @@ function parseFileContents(log, isDemo = false, share = true) {
             // extract just the power meter and smart trainer type devicesSummary
             const powerSourceDevices = _.filter(antData.devices, d => {
               return d.type === SMART_TRAINER_DEVICE ||
-                d.type === POWER_METER_DEVICE ||
-                d.type === WAHOO_KICKR_DEVICE;
+                d.type === POWER_METER_DEVICE;
             });
 
             if (powerSourceDevices && powerSourceDevices.length) {
@@ -414,7 +412,6 @@ function parseGraphics(log, duration = 0) {
 
 function parseAnt(log, timeAxisTimeSeries) {
   const antData = Parser.antData(log, timeAxisTimeSeries);
-
   return antData;
 }
 

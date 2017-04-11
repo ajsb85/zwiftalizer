@@ -50,10 +50,10 @@ import {
 const antManufacturersRegex = /^\[[^\]]*\]\s+?ant\s+?:\s+?did\s+?([\d]*)\s+?mfg.*$/i;
 
 export default function antManufacturers(lines) {
-  const manufacturers = [];
+  const manufacturerModelItems = [];
 
   if (!lines) {
-    return manufacturers;
+    return manufacturerModelItems;
   }
 
   const antLines = Array.isArray(lines) ? lines : toArray(lines);
@@ -66,7 +66,7 @@ export default function antManufacturers(lines) {
 
   if (!mfgLines.length) {
     console.log('no ant manufacturer lines found');
-    return manufacturers;
+    return manufacturerModelItems;
   }
 
   _.some(mfgLines, m => {
@@ -134,6 +134,8 @@ export default function antManufacturers(lines) {
 
     if (modelId) {
       const manufacturerIdSting = '' + manufacturerId;
+
+      // @todo, refactor to use the same data source as the reporting lambdas
 
       // try and get model strings for the manufacturers that do this type of thing
       switch (manufacturerIdSting) {
@@ -215,19 +217,19 @@ export default function antManufacturers(lines) {
     entry.typeName = titleCase(deviceTypes[type]);
 
     if (entry.model === '') {
-      entry.model = 'Unknown Model';
+      entry.model = 'Unknown';
     }
 
-    if (!_.findWhere(manufacturers, entry)) {
-      manufacturers.push(entry);
+    if (!_.findWhere(manufacturerModelItems, entry)) {
+      manufacturerModelItems.push(entry);
     }
 
     // _.some(array, f(x)) breaks if f(x) returns true
     // this is the predeciate that says 'we have some' devices
-    if (manufacturers.length === MAX_DEVICES) {
+    if (manufacturerModelItems.length === MAX_DEVICES) {
       return true;
     }
   });
 
-  return manufacturers;
+  return manufacturerModelItems;
 }

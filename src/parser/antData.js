@@ -4,8 +4,7 @@ import {
   WAHOO_MANUFACTURER_ID,
   BASIC_DEVICE,
   POWER_METER_DEVICE,
-  SMART_TRAINER_DEVICE,
-  WAHOO_KICKR_DEVICE
+  SMART_TRAINER_DEVICE  
 } from './constants';
 
 import titleCase from './titleCase';
@@ -28,7 +27,7 @@ export default function antData(log, timeAxisTimeSeries) {
 
   const devices = antDevices(antLines);
 
-  const manufacturers = antManufacturers(antLines);
+  const manufacturerModelItems = antManufacturers(antLines);
 
   const searches = mapAntSearches(antLines, timeAxisTimeSeries);
 
@@ -38,7 +37,7 @@ export default function antData(log, timeAxisTimeSeries) {
 
   // get failures for each device, and map in the manufacturer, if known
   _.each(devices, device => {
-    const manufacturer = _.find(manufacturers, m => {
+    const manufacturer = _.find(manufacturerModelItems, m => {
       return m.deviceId === device.deviceId;
     });
 
