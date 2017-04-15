@@ -24,6 +24,7 @@
   letter-spacing: -0.01rem;
   min-height: 4.5rem;
   padding: 1.2rem 0 0 0;
+  font-family: Montserrat, 'Proxima Nova', Arial, Helvetica, sans-serif;
 }
 .lastUpdateTime {
   text-align: left;
@@ -81,7 +82,7 @@
 }
 .systemsCountBadge {
   composes: badge from '../badge/styles.css';
-  color: #178acc;
+  color: #666;
   border: 0.2rem solid #1580BD;
 }
 .thumbs {

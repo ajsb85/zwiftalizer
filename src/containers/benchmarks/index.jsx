@@ -4,7 +4,6 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { load, openProfilePanel } from '../../actions/benchmarks';
 import Resolution from './resolution.jsx';
-
 import structure from '../../styles/structure.css';
 import editorialStyles from '../../styles/editorial.css';
 import styles from './styles.css';

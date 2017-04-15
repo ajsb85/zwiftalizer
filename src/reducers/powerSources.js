@@ -5,9 +5,8 @@ import {
 function powerSources(
   state = {
     isLoaded: false,    
-    data: {},
-    dateLastUpdate: null,
-    totalRecords: 0
+    regions: {},
+    dateLastUpdate: null,    
   },
   action
 ) {
@@ -15,9 +14,8 @@ function powerSources(
     case SET_POWERSOURCES_DATA:
       return Object.assign({}, state, {
         isLoaded: true,
-        data: action.data.powerSources,
-        dateLastUpdate: action.data.dateLastUpdate,
-        totalRecords: action.data.totalRecords
+        data: action.data.data,
+        dateLastUpdate: action.data.dateLastUpdate        
       });
    
     default:

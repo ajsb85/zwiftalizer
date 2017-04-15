@@ -99,7 +99,7 @@ class Profile extends React.Component {
 
     const panelStyle = isExpanded
       ? {
-          maxHeight: '5000rem'
+          maxHeight: '100rem'
         }
       : {
           maxHeight: 0,

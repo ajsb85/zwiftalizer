@@ -1,0 +1,35 @@
+
+.powerSourcesWrapOuter {
+  width: 100%;
+  margin: 1.5rem 0 1.5rem 0;
+}
+
+.powerSourcesBoxHeading {
+  composes: boxHeadingLast from '../../styles/structure.css';
+  text-align: left;
+  border-top-right-radius: 2.5rem;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.01rem;
+  min-height: 4.5rem;
+  padding: 1.2rem 0 0 0;
+  font-family: Montserrat, 'Proxima Nova', Arial, Helvetica, sans-serif;
+}
+
+.powerSourcesBoxContent {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: #f6f6f6;
+  padding: 1rem 0.2rem 1rem 0.2rem;
+  width: 100%;
+  border-bottom-left-radius: 2.5rem;
+  text-align: left;
+}
+.powerSourcesBoxContent h3 {
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 4rem;
+  margin: 0 0 1rem 0;
+  text-align: left;
+}

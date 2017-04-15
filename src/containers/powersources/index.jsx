@@ -2,15 +2,16 @@ import { load } from '../../actions/powerSources';
 import React, { Component, PropTypes } from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import structure from '../../styles/structure.css'
-import editorial from '../../styles/editorial.css'
+import Region from './region.jsx';
+import structure from '../../styles/structure.css';
+import editorial from '../../styles/editorial.css';
 
 class PowerSources extends React.Component {
- constructor(props) {
+  constructor(props) {
     super(props);
 
     const { dispatch } = this.props;
-    
+
     setTimeout(
       () => {
         dispatch(load());
@@ -20,18 +21,41 @@ class PowerSources extends React.Component {
   }
 
   render() {
+    const { isLoaded } = this.props;
+
+    return isLoaded ? this.renderPowersources() : null;
+  }
+
+  renderPowersources() {
+    const {
+      data,
+      dateLastUpdate
+    } = this.props;
+
+    var regionEntries = data.regions &&
+      data.regions.map(
+        function(region, i) {
+          return <Region data={region} key={region.countryCode} />;
+        },
+        this
+      );
+
     return (
       <div className="container">
+
         <div className={editorial.boxesWrapOuter}>
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxLast}>
-              <div className={editorial.editorialBoxHeading}>Smart Trainer and Powermeter Usage</div>
+              <div className={editorial.editorialBoxHeading}>
+                Smart Trainer and Powermeter distribution by region
+              </div>
               <div className={editorial.editorialBoxContent}>
-                <div className="container">
+                <div className="container-fluid">
                   <div className="row">
-                    <div className="col-xs-12 col-sm-offset-1 col-sm-10">
-                      <h3>Smart Trainer and Powermeter Usage</h3>
-                      <p></p>
+                    <div className="col-xs-offset-1 col-xs-10">
+                      <p>
+                        Count of Smart Trainers and Powermeters, identified by unique ANT+ ID, grouped by make, model and geographical region.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -39,8 +63,9 @@ class PowerSources extends React.Component {
             </div>
           </div>
         </div>
+        {regionEntries}
       </div>
-    )
+    );
   }
 }
 
