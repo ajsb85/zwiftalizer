@@ -92,7 +92,7 @@ if (TARGET === 'dev' || !TARGET) {
   module.exports = merge(common, {
 
     // enable sourcemaps for debugging js
-    devtool: (process.env.DEBUG ? 'eval-source-map' : 'cheap-source-map'),
+    //devtool: (process.env.DEBUG ? 'eval-source-map' : 'cheap-source-map'),
 
     devServer: {
       contentBase: PATHS.build,

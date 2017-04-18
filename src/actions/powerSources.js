@@ -6,8 +6,8 @@ export const SET_POWERSOURCES_DATA = 'SET_POWERSOURCES_DATA';
 export function load(callback) {
   return dispatch => {
     request
-      //.get('https://data.zwiftalizer.com/powerSources.json', null, {
-        .get('testpowersources.json', null, {
+        .get('https://data.zwiftalizer.com/powerSources.json', null, {
+        //.get('testpowersources.json', null, {
         cache: false,
         dataType: 'json'
       })

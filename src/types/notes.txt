@@ -25,7 +25,6 @@ Zwift also works with the ANT+ versions of the following:
   Elite RealTour (including B+) - see known issues
   Elite Real E-motion smart rollers (including B+)
 
-
 The following smart trainers work with Zwift, but don't change resistance:
 
   Elite Turbo Muin Smart B+ (with the Misuro B+sensor)
@@ -54,7 +53,6 @@ Zwift is compatible with all ANT+ power meters, including:
   InfoCrank
   PowerCal
   bePRO
-
 
 Accuracy stats
 https://www.dcrainmaker.com/2016/10/annual-winter-2016-2017-bike-smart-trainer-recommendations.html

@@ -108,6 +108,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "react-ga": "^2.1.2"
+    "react-ga": "^2.1.2",
+    "zwiftalizer-antplus-devices": "file:../zwiftalizer-antplus-devices"
   }
 }

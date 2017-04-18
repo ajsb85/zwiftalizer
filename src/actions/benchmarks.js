@@ -78,9 +78,6 @@ export function getPerformanceScore(resolution, profileId) {
   var opinion = 'Ride On!';
 
   // A 'score' for the current resolution and profile combination works out as a scale of 3/10 to 10/10
-  //
-  // Carol Vordeman, eat your heart out.
-  //
   var value = Math.round(resolution / 395) + profileId + 2;
 
   // ultra 1080 is pretty awesome, so fudge this one
@@ -93,11 +90,11 @@ export function getPerformanceScore(resolution, profileId) {
   }
 
   if (value <= 6) {
-    opinion = 'Nice!';
+    opinion = 'Niiiice!';
   }
 
   if (value <= 5) {
-    opinion = 'Average!';
+    opinion = 'Good!';
   }
 
   if (value <= 3) {
