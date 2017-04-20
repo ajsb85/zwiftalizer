@@ -75,14 +75,20 @@ export default function antManufacturers(lines) {
     if (matches) {
       const extendedDeviceId = parseInt(matches[1]);
       const manufacturerId = parseInt(matches[2]);
-      const modelId = parseInt(matches[3]);
+      var modelId = parseInt(matches[3]);
 
       if (
-        matches[1] === 0 ||
-        matches[2] === 0 ||
-        matches[2] >= MAX_MANUFACTURER_ID
+        extendedDeviceId === 0 ||
+        manufacturerId === 0 ||
+        modelId >= MAX_MANUFACTURER_ID
       ) {
         continue;
+      }
+
+      // The special case of the Tacx Neo, says it's Model 1 and Model 2800, take Model 2800
+      // Be sure to check we are not couting model 2800 twice because of this conversion.
+      if (manufacturerId === TACX_MANUFACTURER_ID && modelId === 1) {
+        modelId = 2800;
       }
 
       const entry = {
@@ -100,7 +106,7 @@ export default function antManufacturers(lines) {
   _.each(distinctMfgModelEntries, m => {
     let type = BASIC_DEVICE;
     const manufacturerIdString = '' + m.manufacturerId;
-    const modelIdString = '' + m.modelId;
+    var modelIdString = '' + m.modelId;
 
     // treat kickr as FEC smart trainer, until we know whether or not it is doing its own gradient protocol or FEC standard
     if (_.contains(SMART_TRAINER_MANUFACTURERS, manufacturerIdString)) {
@@ -121,8 +127,9 @@ export default function antManufacturers(lines) {
       console.log('Failed to extract short deviceId from extended deviceId');
     }
 
-    // try and differentiate CycleOps from Powertap devices (both  have manufacturer 9)
+    // try and differentiate between CycleOps and Powertap devices (both  have manufacturer 9)
     if (m.manufacturerId === SARIS_MANUFACTURER_ID) {
+      // does not take Pro+, SL+ models into account (discontinued around 2013 anyway)
       if (_.contains(POWERTAP_MODELS, modelIdString)) {
         type = POWER_METER_DEVICE;
       }

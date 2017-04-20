@@ -47,7 +47,7 @@ class PowerSources extends React.Component {
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxLast}>
               <div className={editorial.editorialBoxHeading}>
-                Smart Trainer and Powermeter distribution by region
+                Smart Trainer and Powermeter usage per country
               </div>
               <div className={editorial.editorialBoxContent}>
                 <div className="container-fluid">

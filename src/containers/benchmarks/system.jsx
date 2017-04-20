@@ -77,13 +77,12 @@ class System extends React.Component {
     let systemIdVariable = systemId;
 
     // crude iOS detection
-    if (
-      platform === 'Mac' && cpuVendor && cpuVendor.toLowerCase() === 'arm64'
-    ) {
-      (platform = 'iOS'), (gpuVendor = 'arm64'), (cpuVendor = 'arm64');
-      systemIdVariable = systemIdVariable.replace('Mac /', 'iOS /');
+    if (gpuVendor === 'arm64' || gpuVendor.toLowerCase().indexOf('apple') >= 0) {
+      platform === 'iOS';
+      // oddly some logs from iOS devices have PC line endings, so replace both Mac and PC system ID variables with iOS
+      systemIdVariable = systemIdVariable.replace('Mac /', 'iOS /').replace('PC /', 'iOS /');
     }
-
+    
     // crude Alienware detection, checks for a T series intel CPU and (Nvidia or AMD GPU).
     if (
       platform === 'PC' &&

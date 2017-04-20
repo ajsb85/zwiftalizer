@@ -1,21 +1,16 @@
 var _ = require('underscore');
 import React from 'react';
+import Powermeters from './powermeters.jsx';
+import SmartTrainers from './smartTrainers.jsx';
 import structure from '../../styles/structure.css';
 import styles from './styles.css';
-import { colors } from '../../styles/colors';
 
 class Region extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  isObject = val => {
-    if (val === null) {
-      return false;
-    }
-    return typeof val === 'function' || typeof val === 'object';
-  };
-
+  //@todo, implement panel expand/collapse with persistent state in local storage
   renderPanel(isExpanded) {
     if (!isExpanded) {
       return null;
@@ -23,147 +18,19 @@ class Region extends React.Component {
 
     console.log(this.props.data);
 
-    const {
-      powermeters,
-      smartTrainers,
-      countryCode
-    } = this.props.data;
-
     const panelStyle = isExpanded
       ? {
-          maxHeight: '100rem'
+          maxHeight: '500rem'
         }
       : {
           maxHeight: 0,
           overflow: 'hidden'
         };
 
-    const orderedSmartTrianers = _.sortBy(smartTrainers.data, t => {
-      return t.percent;
-    }).reverse();
-
-    var smartTrainersMarkup = orderedSmartTrianers.map(
-      function(smartTrainer, i) {
-        const key = `${countryCode}-${smartTrainer.manufacturerId}-${smartTrainer.modelId}`;
-
-        const accuracy = smartTrainer.accuracy
-          ? '+/- ' + smartTrainer.accuracy * 100 + '%'
-          : 'Unknown';
-
-        const controllable = smartTrainer.controllable ? 'Yes' : 'No';
-
-        const maxIncline = smartTrainer.maxIncline
-          ? smartTrainer.maxIncline * 100 + ' %'
-          : 'Unknown';
-
-        const keyStyle = {
-        color: smartTrainer.color
-        };
-
-        return (
-          <tr key={key}>
-            <td><span style={keyStyle}><i className="fa fa-square" aria-hidden="true"></i></span></td>
-            <td>{smartTrainer.manufacturerName}</td>
-            <td>{smartTrainer.modelName}</td>
-            <td>{accuracy}</td>
-            <td>{controllable}</td>
-            <td>{maxIncline}</td>
-            <td>{smartTrainer.percent} %</td>
-          </tr>
-        );
-      },
-      this
-    );
-
-    // need to make these separate React components
-    if (!this.isObject(powermeters) || !powermeters.data) {
-      return null;
-    }
-
-    const orderedPowermeters = _.sortBy(powermeters.data, t => {
-      return t.percent;
-    }).reverse();
-
-    var powermetersMarkup = orderedPowermeters.map(
-      function(powermeter, i) {
-        const key = `${countryCode}-${powermeter.manufacturerId}-${powermeter.modelId}`;
-
-        const accuracy = powermeter.accuracy
-          ? '+/- ' + powermeter.accuracy * 100 + '%'
-          : 'Unknown';
-
-        const keyStyle = {
-            color: powermeter.color
-        };
-
-        return (
-          <tr key={key}>
-            <td><span style={keyStyle}><i className="fa fa-square" aria-hidden="true"></i></span></td>
-            <td>{powermeter.manufacturerName}</td>
-            <td>{powermeter.modelName}</td>
-            <td>{accuracy}</td>
-            <td>{powermeter.percent} %</td>
-          </tr>
-        );
-      },
-      this
-    );
-
     return (
       <div className={styles.powerSourcesBoxContent} style={panelStyle}>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-xs-12 col-sm-7">
-              <h3 className="">Smart Trainers</h3>
-              <div className="table-responsive">
-                <table
-                  className="table table-bordered table-striped"
-                  cellSpacing="0"
-                  width="100%"
-                >
-                  <thead>
-                    <tr>
-                      <th>Key</th>
-                      <th>Make</th>
-                      <th>Model</th>
-                      <th>Accuracy</th>
-                      <th>Interactive</th>
-                      <th>Max Incline</th>
-                      <th>Distribution</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {smartTrainersMarkup}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div className="col-xs-12 col-sm-5">
-              <h3 className="">Powermeters</h3>
-              <div className="table-responsive">
-                <table
-                  className="table table-bordered table-striped"
-                  cellSpacing="0"
-                  width="100%"
-                >
-                  <thead>
-                    <tr>
-                      <th>Key</th>
-                      <th>Make</th>
-                      <th>Model</th>
-                      <th>Accuracy</th>
-                      <th>Distribution</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {powermetersMarkup}
-                  </tbody>
-                </table>
-              </div>
-
-            </div>
-          </div>
-        </div>
+        <SmartTrainers {...this.props.data} />
+        <Powermeters {...this.props.data} />
       </div>
     );
   }
