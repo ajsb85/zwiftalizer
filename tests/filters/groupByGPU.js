@@ -17,13 +17,13 @@ test('should get benchmarks file', assert => {
 });
 
 test('should get benchmarks resolutions collection length', assert => {
-  const expected = 1;
+  const expected = 5;
 
   const filtered = groupByGPU(data)
+  
+  console.log(filtered);
 
   assert.equal(filtered.resolutions.length, expected);
-
-  console.log(filtered);
 
   assert.end();
 });
