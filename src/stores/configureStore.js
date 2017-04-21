@@ -70,7 +70,7 @@ export default function configureStore() {
         //loggerMiddleware // neat middleware that logs actions
       ),
       // enables redux chrome dev tools extension
-      // window.devToolsExtension ? window.devToolsExtension() : f => f
+      //window.devToolsExtension ? window.devToolsExtension() : f => f
     )
   )
 

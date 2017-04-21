@@ -255,3 +255,8 @@ export {
   default as mapNetworkPhoneConnectionAttempts
 }
 from './mapNetworkPhoneConnectionAttempts'
+
+export {
+  default as getBTLEDeviceManufacturer
+}
+from './getBTLEDeviceManufacturer'

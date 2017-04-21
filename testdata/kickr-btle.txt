@@ -1,6 +1,11 @@
 [5:54:54] Log Time: 5:54:54 2017-04-20
 [5:54:54] Game Version: 1.0.17200
 [5:54:54] Launcher Version : 1.0.11
+[5:55:32] FE-C 26 received
+[5:55:33] NETWORK:error (4) sending player state
+[5:55:33] FE-C 26 received
+[5:55:33] FPS 122, -372284, 48932, 190112
+[5:55:33] FE-C 17 received
 [5:56:24] BLEM: KICKR queuing grade change to -0.01
 [5:56:28] BLEM: KICKR queuing grade change to 0.02
 [5:57:08] BLEM: KICKR queuing grade change to 0.03

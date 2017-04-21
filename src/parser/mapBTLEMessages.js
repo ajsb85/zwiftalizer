@@ -43,9 +43,9 @@ export default function mapBTLEMessages(lines, timeAxisTimeSeries) {
     seriesList: [timeAxisTimeSeries, ts]
   })
 
-  // plot sum of all btle signals per second
+  // plot sum of all btle signals per 5 seconds
   const rollup = reducedSeries.fixedWindowRollup({
-    windowSize: '1s',
+    windowSize: '5s',
     aggregation: {
       value: {
         value: sum()
