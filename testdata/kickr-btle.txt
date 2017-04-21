@@ -1,0 +1,6 @@
+[5:54:54] Log Time: 5:54:54 2017-04-20
+[5:54:54] Game Version: 1.0.17200
+[5:54:54] Launcher Version : 1.0.11
+[5:56:24] BLEM: KICKR queuing grade change to -0.01
+[5:56:28] BLEM: KICKR queuing grade change to 0.02
+[5:57:08] BLEM: KICKR queuing grade change to 0.03
