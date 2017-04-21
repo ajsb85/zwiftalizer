@@ -110,3 +110,7 @@ export { default as mapNetworkErrors } from './mapNetworkErrors';
 export {
   default as mapNetworkPhoneConnectionAttempts
 } from './mapNetworkPhoneConnectionAttempts';
+
+export {
+  default as getBTLEDeviceManufacturer
+} from './getBTLEDeviceManufacturer';
