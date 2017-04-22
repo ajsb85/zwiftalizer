@@ -23,10 +23,13 @@ export default function resolution(profile, data) {
       resolution.profiles
     );
 
-    results.push({
-      resolution: resolution,
-      profiles: filteredProfiles
-    });
+    // omit the resolution if it has no profiles
+    if (filteredProfiles && filteredProfiles.length) {
+      results.push({
+        resolution: resolution,
+        profiles: filteredProfiles
+      });
+    }
   });
 
   return { resolutions: results };
