@@ -12,9 +12,8 @@ export default function resolution(resolution, data) {
   const filteredResolutions = R.filter(
     R.whereEq({
       resolution: resolution
-    }),
-    data.resolutions
-  );
+    })
+  )(data.resolutions);
 
   return { resolutions: filteredResolutions };
 }

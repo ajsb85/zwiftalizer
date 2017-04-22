@@ -17,7 +17,7 @@
     "posttest": "rm .babelrc",
     "pretest": "cp .testbabelrc .babelrc",
     "release": "webpack --progress --profile --colors",
-    "test": "babel-tape-runner tests/filters/whereResults.js"
+    "test": "babel-tape-runner tests/filters/*.js"
   },
   "optionalDependencies": {
     "fsevents": "^1.0.12"
