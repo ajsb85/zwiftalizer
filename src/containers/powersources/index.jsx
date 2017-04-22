@@ -47,15 +47,20 @@ class PowerSources extends React.Component {
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxLast}>
               <div className={editorial.editorialBoxHeading}>
-                Smart Trainer and Powermeter usage per country
+                Proportion of Smart Trainers and Powermeters
               </div>
               <div className={editorial.editorialBoxContent}>
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-xs-offset-1 col-xs-10">
-                      <p>
-                        Count of Smart Trainers and Powermeters, identified by unique ANT+ ID, grouped by make, model and geographical region.
-                      </p>
+                      <h3>Caveats</h3>
+                      <ul>
+                        <li>Only devices paired using ANT+ are included.</li>
+                        <li>Sampling started on May 1st 2017.</li>
+                        <li>A power source is identified by its unique ANT+ ID, manufacturer ID, and model ID.</li>
+                        <li>A power source is counted only once regardless of how many times its owner uses this tool.</li>
+                        <li>Country is identified by the IP address of the user of this tool.</li>
+                      </ul>                      
                     </div>
                   </div>
                 </div>

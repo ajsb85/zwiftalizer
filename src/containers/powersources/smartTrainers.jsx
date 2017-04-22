@@ -49,10 +49,24 @@ class SmartTrainers extends React.Component {
           : 'Unknown';
 
         const keyStyle = {
-          color: smartTrainer.color
+          display: 'inline-block',
+          minWidth: '6rem',
+          padding: '0.3rem 0.7rem',
+          fontSize: '1.6rem',
+          fontWeight: '600',
+          color: '#FFF',          
+          lineHeight: '1',
+          verticalAlign: 'middle',
+          whiteSpace: 'nowrap',
+          textAlign: 'center',  
+          backgroundColor: smartTrainer.color,
+          borderRadius: '1.5rem',
+          border: '0.2rem solid #1580BD',
+          fontFamily: "'Proxima Nova', Arial, Helvetica, sans-serif",
+          fontWeight: '600'
         };
-
-        const pieKey = `${smartTrainer.manufacturerName} ${smartTrainer.modelName} - ${smartTrainer.percent}%`;
+        
+        const pieKey = `${i+1}`;
 
         pieData.push({
           key: pieKey,
@@ -62,18 +76,18 @@ class SmartTrainers extends React.Component {
 
         return (
           <tr key={key}>
-            <td>
+            <td style={{textAlign:'center'}}>
               <span style={keyStyle}>
-                <i className="fa fa-square" aria-hidden="true" />
+                 {pieKey}
               </span>
             </td>
             <td>{smartTrainer.percent} %</td>
-            <td className="hidden-xs">{smartTrainer.manufacturerName}</td>
+            <td className="hidden-xs hidden-sm hidden-md">{smartTrainer.manufacturerName}</td>
             <td>{smartTrainer.modelName}</td>
-            <td className="hidden-xs">{accuracy}</td>
-            <td className="hidden-xs">{controllable}</td>
-            <td className="hidden-xs">{maxIncline}</td>
-            <td className="hidden-xs">{smartTrainer.maxPower}</td>
+            <td>{accuracy}</td>
+            <td className="hidden-xs hidden-sm hidden-md">{controllable}</td>
+            <td className="hidden-xs hidden-sm hidden-md">{maxIncline}</td>
+            <td className="hidden-xs hidden-sm hidden-md">{smartTrainer.maxPower}</td>
           </tr>
         );
       },
@@ -83,15 +97,20 @@ class SmartTrainers extends React.Component {
     return (
       <div className="container-fluid">
         <div className="row">
-          <div className="col-xs-12">
+          <div className="col-xs-12 col-sm-offset-5 col-sm-7 col-md-offset-4 col-md-8 ">
             <h3>Smart Trainers</h3>
-
+          </div>
+        </div>
+          <div className="row">
+          <div className="col-xs-12 col-sm-5 col-md-4">
             <div className={styles.pieChartContainer}>
+              <span className={styles.totalBadge}>n= {smartTrainers.total}</span>
               <PieChart
                 labels
-                size={500}
+                size={275}
+                innerHoleSize={135}
                 data={pieData}
-                padding={50}
+                padding={10}
                 styles={{
                   '.pie-chart-label': {
                     fontFamily: 'Montserrat, Arial, Helvetica, sans-serif',
@@ -99,32 +118,31 @@ class SmartTrainers extends React.Component {
                     fill: '#fff'
                   }
                 }}
-              />
-            </div>
-
-            <div className="table-responsive">
+              />              
+            </div>            
+          </div>            
+          <div className="col-xs-12 col-sm-7 col-md-8">
               <table
                 className="table table-bordered table-striped"
                 cellSpacing="0"
                 width="100%"
               >
-                <thead>
-                  <tr>
-                    <th>Key</th>
-                    <th>Usage</th>
-                    <th className="hidden-xs">Make</th>
-                    <th>Model</th>
-                    <th className="hidden-xs">Accuracy</th>
-                    <th className="hidden-xs">Interactive</th>
-                    <th className="hidden-xs">Max Incline</th>
-                    <th className="hidden-xs">Max Power</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {smartTrainerRows}
-                </tbody>
-              </table>
-            </div>
+              <thead>
+                <tr>
+                  <th>Key</th>
+                  <th>Usage</th>
+                  <th className="hidden-xs hidden-sm hidden-md">Make</th>
+                  <th>Model</th>
+                  <th>Accuracy</th>
+                  <th className="hidden-xs hidden-sm hidden-md">Interactive</th>
+                  <th className="hidden-xs hidden-sm hidden-md">Max Incline</th>
+                  <th className="hidden-xs hidden-sm hidden-md">Max Power</th>
+                </tr>
+              </thead>
+              <tbody>
+                {smartTrainerRows}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
