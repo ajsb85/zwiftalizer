@@ -1,12 +1,20 @@
 const R = require('ramda');
 
-export default function resolution(resolution, data) {  
-   const result = R.filter(
+export default function resolution(resolution, data) {
+  if (!data) {
+    return {};
+  }
+
+  if (!data.resolutions) {
+    return data;
+  }
+
+  const filteredResolutions = R.filter(
     R.whereEq({
-      resolution: resolution     
+      resolution: resolution
     }),
     data.resolutions
   );
 
-  return {resolutions: result};
+  return { resolutions: filteredResolutions };
 }

@@ -1,7 +1,5 @@
 var test = require('tape');
-
 var data = require('../../testdata/benchmarks');
-
 import resolution from '../../src/filters/resolution';
 
 test('should filter to one resolution', assert => {
@@ -11,7 +9,7 @@ test('should filter to one resolution', assert => {
 
   assert.equal(filtered.resolutions.length, expected);
 
-  console.log(filtered);
+  //console.log(filtered);
   
   assert.end();
 });
