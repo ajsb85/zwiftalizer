@@ -10,13 +10,15 @@ export const WAHOO_MANUFACTURER_ID = '32';
 export const TACX_MANUFACTURER_ID = '89';
 export const ELITE_MANUFACTURER_ID = '86';
 export const BKOOL_MANUFACTURER_ID = '67';
+export const WATTBIKE_MANUFACTURER_ID = '73';
 
 export const SMART_TRAINER_MANUFACTURERS = [
   WAHOO_MANUFACTURER_ID,
   TACX_MANUFACTURER_ID,
   ELITE_MANUFACTURER_ID,
   BKOOL_MANUFACTURER_ID,
-  SARIS_MANUFACTURER_ID
+  SARIS_MANUFACTURER_ID,
+  WATTBIKE_MANUFACTURER_ID
 ];
 
 export const WAHOO_KICKR_MODEL_ID = '1';
@@ -53,9 +55,7 @@ export const POWERMETER_MANUFACTURERS = [
 ];
 
 export const CYCLEOPS_HAMMER_MODEL_ID = '320';
-// export const CYCLEOPS_MAGNUS_MODEL_ID = '';
-// export const CYCLEOPS_POWERBEAM_MODEL_ID = '';
-// export const CYCLEOPS_POWERSYNC_MODEL_ID = '';
+export const CYCLEOPS_MAGNUS_MODEL_ID = '328';
 
 // SARIS makes both CycleOps and PowerTap products so
 // this collection is to try and tell them apart
@@ -69,4 +69,9 @@ export const POWERTAP_MODELS = [
   POWERTAP_C1_MODEL_ID,
   POWERTAP_P1_MODEL_ID,
   POWERTAP_G3_MODEL_ID
+]
+
+export const CYCLEOPS_TRAINER_MODELS = [
+  CYCLEOPS_HAMMER_MODEL_ID,
+  CYCLEOPS_MAGNUS_MODEL_ID
 ]

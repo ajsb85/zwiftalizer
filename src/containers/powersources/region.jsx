@@ -43,12 +43,6 @@ class Region extends React.Component {
 
     const panelKey = this.props.keyName;
 
-    //   const isExpanded = _find(expanded, function(panel) {
-    //       return panel === panelKey;
-    //     });
-
-    const isExpanded = true;
-
     let flagClass = countryCode === '00' ? '' : `flag flag-${countryCode.toLowerCase()}`;
 
     return (
@@ -59,12 +53,7 @@ class Region extends React.Component {
         >
           <div className="container-fluid">
             <div className="row">
-              <div className="col-xs-1 col-sm-1 col-md-1">
-                {isExpanded
-                  ? <i className="fa fa-minus" />
-                  : <i className="fa fa-plus" />}
-              </div>
-              <div className="col-xs-11 col-sm-11 col-md-11">
+              <div className="col-xs-12">
               <span className={flagClass}></span>
                 <h3>{countryName}</h3>
               </div>

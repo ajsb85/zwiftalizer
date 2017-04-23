@@ -40,7 +40,12 @@ export default function antDevices(lines) {
     return result;
   }
 
-  _.some(pairings, d => {
+ const j = pairings.length;
+
+  // stop when we have found at least MAX_DEVICES or looked at all pairings
+  for (let i = 0; (i < j) || result.length === MAX_DEVICES; i++) {
+    const d = pairings[i];
+
     // not using the mfg or ant network id anymore
     const matches = d.match(
       /^\[[^\]]*\]\s+?ant\s+?:\s+?pairing\sdeviceid\s([\d]*)\sto\schannel\s([\d]*).*$/i
@@ -50,7 +55,7 @@ export default function antDevices(lines) {
       console.log(
         'Failed to extract deviceId and channel from ant pairing deviceId line'
       );
-      return;
+      break;
     }
 
     let deviceId = 0;
@@ -87,14 +92,7 @@ export default function antDevices(lines) {
       result.push(device);
     }
 
-    // _.some(array, f(x)) breaks if f(x) returns true
-    // this is the predeciate that says 'we have some/enough'
+  };
 
-    if (result.length === MAX_DEVICES) {
-      return true;
-    }
-  });
-
-  // return immutable array
   return Object.freeze(result);
 }

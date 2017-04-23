@@ -1,10 +1,12 @@
 var _ = require('underscore');
+const AntplusDevices = require('zwiftalizer-antplus-devices');
 
 import {
   WAHOO_MANUFACTURER_ID,
   BASIC_DEVICE,
   POWER_METER_DEVICE,
-  SMART_TRAINER_DEVICE  
+  SMART_TRAINER_DEVICE,
+  SARIS_MANUFACTURER_ID
 } from './constants';
 
 import titleCase from './titleCase';
@@ -50,15 +52,31 @@ export default function antData(log, timeAxisTimeSeries) {
     // if a device is being sampled at a high rate (probably a power source)
     const signal = mapAntRxFails(antLines, device, timeAxisTimeSeries);
 
-    // last ditch attempt to find the powermeter
+    // attempt to find powermeters that do not broadcast manufacturer and modelIds (pro+, sl+, PowerBeam, PowerSync, Phantom 5, Phantom 3)
     // rxfail pattern does not look like a basic device,
-    // is not already detected as being made by a PM manufacturer (could be saris, powertap)
+    // is not already detected as being made by a known PM manufacturer (could be saris, powertap)
     // and is not a SMART_TRAINER_DEVICE, or KICKR
+
+    //@todo, only do the following if we definitely have power readings
+
+    //@todo, check we are not attributing a kickr ANT+ powermeter to cycleops, shoudn't be as 
+    // device.manufacturerId should be set for Wahoo Kickr
+
     if (
-      signal.max() > BASIC_DEVICE_SAMPLE_RATE && device.type === BASIC_DEVICE
+      signal.max() > BASIC_DEVICE_SAMPLE_RATE &&
+      device.type === BASIC_DEVICE &&
+      device.manufacturerId === ''
     ) {
       device.type = POWER_METER_DEVICE;
       device.typeName = titleCase(deviceTypes[POWER_METER_DEVICE]);
+
+      // out of all the known power meters, saris/powertap/cycleops is the only one we know of that
+      // does not broadcast manufacturerId, modelId. Going to take a big risk here and attribute the
+      // power data source to cycleops
+      device.manufacturerId = SARIS_MANUFACTURER_ID;
+      device.modelId = 0; /* generic */
+      device.manufacturer = 'PowerTap';
+      device.model = 'Generic';
     }
 
     Object.assign(device, {

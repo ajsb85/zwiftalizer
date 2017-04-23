@@ -10,20 +10,16 @@ import {
   MAX_MANUFACTURER_ID,
   WAHOO_MANUFACTURER_ID,
   TACX_MANUFACTURER_ID,
-  BKOOL_MANUFACTURER_ID,
-  ELITE_MANUFACTURER_ID,
-  GARMIN_MANUFACTURER_ID,
   SARIS_MANUFACTURER_ID,
-  SAXONAR_MANUFACTURER_ID,
-  FOUREYES_MANUFACTURER_ID,
-  STAGES_MANUFACTURER_ID,
+  WATTBIKE_MANUFACTURER_ID,
+  WATTTEAM_MANUFACTURER_ID,
   SMART_TRAINER_MANUFACTURERS,
   POWERMETER_MANUFACTURERS,
   BASIC_DEVICE,
   POWER_METER_DEVICE,
   SMART_TRAINER_DEVICE,
-  SARIS_HAMMER_MODEL_ID,
-  POWERTAP_MODELS
+  POWERTAP_MODELS,
+  CYCLEOPS_TRAINER_MODELS
 } from './constants';
 
 /**
@@ -70,20 +66,29 @@ export default function antManufacturers(lines) {
       /^\[[^\]]*\]\s+?ant\s+?:\s+?did\s+?([\d]*)\s+?mfg\s+?([\d]*)\s+?model\s+?([\d]*)$/i
     );
 
-    // saris/cycleops powertap pro+ wireless blurts out all kinds of manufacturer id junk
-    // ignore manufacturerIds that a are out of the range of the lookup table
     if (matches) {
       const extendedDeviceId = parseInt(matches[1]);
       const manufacturerId = parseInt(matches[2]);
+
+      // var because we default some modelsIds to zero, for known manufacturers that have only one device - like wattbike
       var modelId = parseInt(matches[3]);
 
-      if (
-        extendedDeviceId === 0 ||
-        manufacturerId === 0 ||
-        modelId >= MAX_MANUFACTURER_ID
-      ) {
+      if (extendedDeviceId === 0 || manufacturerId === 0) {
+        // allow model zero
         continue;
       }
+
+      // saris/cycleops powertap pro+ wireless blurts out all kinds of manufacturer id junk
+      // ignore manufacturerIds that a are out of the range of the lookup table
+      // if (
+      //   extendedDeviceId === 0 ||
+      //   manufacturerId === 0 ||
+      //   modelId >= MAX_MANUFACTURER_ID
+      // ) {
+      //   continue;
+      // }
+
+      // April 2017, allowing any modelId now so that we get manufacturer code
 
       // The special case of the Tacx Neo, says it's Model 1 and Model 2800, take Model 2800
       // Be sure to check we are not couting model 2800 twice because of this conversion.
@@ -105,8 +110,8 @@ export default function antManufacturers(lines) {
 
   _.each(distinctMfgModelEntries, m => {
     let type = BASIC_DEVICE;
+
     const manufacturerIdString = '' + m.manufacturerId;
-    var modelIdString = '' + m.modelId;
 
     // treat kickr as FEC smart trainer, until we know whether or not it is doing its own gradient protocol or FEC standard
     if (_.contains(SMART_TRAINER_MANUFACTURERS, manufacturerIdString)) {
@@ -115,8 +120,6 @@ export default function antManufacturers(lines) {
     } else if (_.contains(POWERMETER_MANUFACTURERS, manufacturerIdString)) {
       type = POWER_METER_DEVICE;
     }
-    // could still be an old powertap that doesn't broadcast manufacturer properly
-    // in which case, type will still be BASIC_DEVICE
 
     let deviceId = 0;
 
@@ -129,11 +132,29 @@ export default function antManufacturers(lines) {
 
     // try and differentiate between CycleOps and Powertap devices (both  have manufacturer 9)
     if (m.manufacturerId === SARIS_MANUFACTURER_ID) {
-      // does not take Pro+, SL+ models into account (discontinued around 2013 anyway)
       if (_.contains(POWERTAP_MODELS, modelIdString)) {
         type = POWER_METER_DEVICE;
+      } else if (_.contains(CYCLEOPS_TRAINER_MODELS, modelIdString)) {
+        type = SMART_TRAINER_DEVICE;
+      } else {
+        // Generic powertap device
+        type = POWER_METER_DEVICE;
+        m.modelId = 0;
       }
     }
+
+    if (m.manufacturerId === WATTTEAM_MANUFACTURER_ID) {
+      // PowerBeat
+      type = POWER_METER_DEVICE;
+      m.modelId = 0;
+    }
+
+    if (m.manufacturerId === WATTBIKE_MANUFACTURER_ID) {
+      // PowerBeat
+      m.modelId = 0;
+    }
+
+    var modelIdString = '' + m.modelId;
 
     // returns undefined if manufacturer not found
     const makeAndModel = AntplusDevices.find(

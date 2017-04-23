@@ -81,7 +81,7 @@ class Powermeters extends React.Component {
 
         const keyStyle = {
           display: 'inline-block',
-          minWidth: '6rem',
+          minWidth: '8rem',
           padding: '0.3rem 0.7rem',
           fontSize: '1.6rem',
           fontWeight: '600',
@@ -97,7 +97,9 @@ class Powermeters extends React.Component {
           fontWeight: '600'
         };
 
-        const pieKey = `${i + 1}`;
+        // const pieKey = `${i + 1}`;
+
+        const pieKey = `${powermeter.percent}%`
 
         pieData.push({
           key: pieKey,
@@ -119,8 +121,7 @@ class Powermeters extends React.Component {
               <span style={keyStyle}>
                 {pieKey}
               </span>
-            </td>
-            <td>{powermeter.percent} %</td>
+            </td>            
             <td>{powermeter.manufacturerName}</td>
             <td className="hidden-xs hidden-sm hidden-md">
               {powermeter.modelName}
@@ -146,7 +147,7 @@ class Powermeters extends React.Component {
           </div>
           <div className="row">
             <div className="col-xs-12 col-sm-5 col-md-4">
-              <span className={styles.totalBadge}>n= {powermeters.total}</span>
+              <span className={styles.totalBadge}>Sample size {powermeters.total}</span>
               <div className={styles.pieChartContainer}>
                 <PieChart
                   pieKey={`${countryCode}-powermeters`}
@@ -181,9 +182,8 @@ class Powermeters extends React.Component {
                 width="100%"
               >
                 <thead>
-                  <tr>
-                    <th>Key</th>
-                    <th>Proportion</th>
+                  <tr>                    
+                    <th>Share</th>
                     <th>Make</th>
                     <th className="hidden-xs hidden-sm hidden-md">Model</th>
                     <th>Accuracy</th>

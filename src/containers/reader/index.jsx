@@ -158,23 +158,49 @@ class Reader extends React.Component {
           <div className={editorial.boxesWrapOuter}>
             <div className={structure.boxesWrapInner}>
               <div className={structure.boxLast}>
-                <div className={editorial.editorialBoxHeading}>What data do you collect?</div>
+                <div className={editorial.editorialBoxHeading}>What happens when the box is checked?</div>
                   <div className={editorial.editorialBoxContent}>
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-xs-12">
-                        
-                          <h4>
-                            Log files are never uploaded.
-                          </h4>
-
+                       
                           <p>
-                            The log file is read by javascript running in your web browser. Optionally, the results are uploaded to the database for inclusion in the benchmarks and power sources reports.
+                            Check the box if you want to upload the <strong>results</strong> of reading your log file to the database.
                           </p>
 
-                          <h4>
-                            By checking the box you are allowing the following data points to be uploaded to the database:
-                          </h4>
+                          <p>
+                           <strong>Why would I do that?</strong> <br/>
+                           Uploads <strong>create reports</strong> to help the community make informed purchasing decisions.
+                          </p>
+
+                          <p>
+                            <strong>Do you keep my full log?</strong> <br/>
+                            <strong>No. Never. Absolutely not.</strong> Two words - plausible deniability.
+                          </p>
+
+                          <p>
+                            <strong>Is the data anonymous?</strong> <br/>
+                            <strong>Yes.</strong> Personally Identifiable Information (PII) is <strong>NOT</strong> used or stored in the database.
+                          </p>
+
+                          <ul>                 
+                            <li>
+                              Your Zwift userid is <strong>NEVER</strong> read or stored.
+                            </li>
+                            <li>
+                              The email address you use with Zwift is <strong>NEVER</strong> read or stored.
+                            </li>                                               
+                            <li>
+                              Your IP address is used to do an approximate location lookup for grouping the power sources report by country.
+                            </li>                    
+                             <li>
+                              The Zwiftalizer will <strong>NEVER</strong> ask for your Zwift username or password.
+                            </li>        
+                          </ul>                        
+
+                          <p>
+                            The following data is uploaded:
+                          </p>
 
                           <div className="row">
                             <div className="col-xs-12 col-sm-6">
@@ -217,23 +243,7 @@ class Reader extends React.Component {
                           </div>
                           <p>* The ANT+ device id is a unique number given to your Smart Trainer or Powermeter by the device manufacturer. By storing this number in the database, your smart trainer and/or powermeter is counted only once in the power sources report regardless of how many times you use this tool.
                           </p>
-                          
-                          <h4>
-                            Personally Identifiable Information (PII) is <strong>NOT</strong> used or stored in the database.
-                          </h4>
-
-                          <ul>                 
-                            <li>
-                              Your Zwift userid is <strong>NOT</strong> used or stored in the database.
-                            </li>
-                            <li>
-                              The email address you use with Zwift is <strong>NOT</strong> used or stored in the database.
-                            </li>                    
-                            <li>
-                              The Zwiftalizer will <strong>NEVER</strong> ask for your Zwift username or password.
-                            </li>                              
-                          </ul>
-
+                                                   
                         </div>
                       </div>
                     </div>

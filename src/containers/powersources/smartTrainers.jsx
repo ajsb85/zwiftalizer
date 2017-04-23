@@ -91,7 +91,7 @@ class SmartTrainers extends React.Component {
 
         const keyStyle = {
           display: 'inline-block',
-          minWidth: '6rem',
+          minWidth: '8rem',
           padding: '0.3rem 0.7rem',
           fontSize: '1.6rem',
           fontWeight: '600',
@@ -103,11 +103,13 @@ class SmartTrainers extends React.Component {
           backgroundColor: keyColor,
           borderRadius: '1.5rem',
           border: '0.2rem solid #1580BD',
-          fontFamily: "'Proxima Nova', Arial, Helvetica, sans-serif",
+          fontFamily: 'Montserrat, Arial, Helvetica, sans-serif',
           fontWeight: '600'
         };
 
-        const pieKey = `${i + 1}`;
+        //const pieKey = `${i + 1}`;
+
+        const pieKey = `${smartTrainer.percent}%`
 
         pieData.push({
           key: pieKey,
@@ -129,8 +131,7 @@ class SmartTrainers extends React.Component {
               <span style={keyStyle}>
                 {pieKey}
               </span>
-            </td>
-            <td>{smartTrainer.percent} %</td>
+            </td>          
             <td className="hidden-xs hidden-sm hidden-md">
               {smartTrainer.manufacturerName}
             </td>
@@ -160,8 +161,7 @@ class SmartTrainers extends React.Component {
           <div className="row">
             <div className="col-xs-12 col-sm-5 col-md-4">
               <div className={styles.pieChartContainer}>
-                <span className={styles.totalBadge}>
-                  n= {smartTrainers.total}
+                <span className={styles.totalBadge}> Sample size {smartTrainers.total}
                 </span>
                 <PieChart
                   pieKey={`${countryCode}-powermeters`}
@@ -195,9 +195,8 @@ class SmartTrainers extends React.Component {
                 width="100%"
               >
                 <thead>
-                  <tr>
-                    <th>Key</th>
-                    <th>Proportion</th>
+                  <tr>                    
+                    <th>Share</th>
                     <th className="hidden-xs hidden-sm hidden-md">Make</th>
                     <th>Model</th>
                     <th>Accuracy</th>

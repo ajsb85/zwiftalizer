@@ -61,7 +61,7 @@ class PowerSources extends React.Component {
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxLast}>
               <div className={editorial.editorialBoxHeading}>
-                Proportion of Smart Trainers and Power Meters
+                Proportion of Power Sources
               </div>
               <div className={editorial.editorialBoxContent}>
                 <div className="container-fluid">
@@ -69,19 +69,22 @@ class PowerSources extends React.Component {
                     <div className="col-xs-offset-1 col-xs-10">
                       <h3>Caveats</h3>
                       <ul>
-                        <li>Includes devices paired using ANT+ only.</li>
+                        <li>Only devices paired using ANT+ are included.</li>
                         <li>Sampling started on May 1st 2017.</li>
                         <li>
-                          A power source is identified by its unique ANT+ device ID, manufacturer ID, and model ID.
+                          A power source is identified by its unique manufacturer ID, model ID and ANT+ device ID compound key.
                         </li>
                         <li>
-                          A power source is counted once only regardless of how many times it is seen by this tool.
+                          A power source is never counted more than once regardless of how many times it is seen by this tool.
                         </li>
                         <li>
-                          Country is identified by the IP address of the user of this tool.
+                          Country is identified by the IP address of the user that examined a log using this tool.
                         </li>
                         <li>
                           Personal identifiable information is never used.
+                        </li>
+                        <li>
+                          CycleOps PowerBeam, PowerSync, Phantom 3, Phantom 5, and PowertTap Pro+ and SL+ are grouped together as 'Generic' PowertTap power meters.
                         </li>
                       </ul>
                     </div>
