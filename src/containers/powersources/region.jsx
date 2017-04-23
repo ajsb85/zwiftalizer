@@ -49,6 +49,8 @@ class Region extends React.Component {
 
     const isExpanded = true;
 
+    let flagClass = countryCode === '00' ? '' : `flag flag-${countryCode.toLowerCase()}`;
+
     return (
       <div className={styles.powerSourcesWrapOuter}>
         <div
@@ -63,7 +65,8 @@ class Region extends React.Component {
                   : <i className="fa fa-plus" />}
               </div>
               <div className="col-xs-11 col-sm-11 col-md-11">
-                {countryName}
+              <span className={flagClass}></span>
+                <h3>{countryName}</h3>
               </div>
             </div>
           </div>
