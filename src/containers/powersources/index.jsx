@@ -2,6 +2,7 @@ import { load } from '../../actions/powerSources';
 import React, { Component, PropTypes } from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
+const R = require('ramda');
 import Region from './region.jsx';
 import structure from '../../styles/structure.css';
 import editorial from '../../styles/editorial.css';
@@ -32,13 +33,26 @@ class PowerSources extends React.Component {
       dateLastUpdate
     } = this.props;
 
-    var regionEntries = data.regions &&
+    let regionNodes = [];
+
+    const worldwideCode = '00';
+
+    if (data.regions) {
+      const worldwide = R.find(R.propEq('countryCode', worldwideCode))(data.regions);
+
+      if (worldwide) {
+        regionNodes.push(<Region data={worldwide} key={worldwide.countryCode} />);
+      }
+
       data.regions.map(
         function(region, i) {
-          return <Region data={region} key={region.countryCode} />;
+          if (region.countryCode !== worldwideCode) {
+            regionNodes.push(<Region data={region} key={region.countryCode} />);
+          }
         },
         this
       );
+    }
 
     return (
       <div className="container">
@@ -55,12 +69,21 @@ class PowerSources extends React.Component {
                     <div className="col-xs-offset-1 col-xs-10">
                       <h3>Caveats</h3>
                       <ul>
-                        <li>Only devices paired using ANT+ are included.</li>
+                        <li>Includes devices paired using ANT+ only.</li>
                         <li>Sampling started on May 1st 2017.</li>
-                        <li>A power source is identified by its unique ANT+ ID, manufacturer ID, and model ID.</li>
-                        <li>A power source is counted only once regardless of how many times its owner uses this tool.</li>
-                        <li>Country is identified by the IP address of the user of this tool.</li>
-                      </ul>                      
+                        <li>
+                          A power source is identified by its unique ANT+ device ID, manufacturer ID, and model ID.
+                        </li>
+                        <li>
+                          A power source is counted once only regardless of how many times it is seen by this tool.
+                        </li>
+                        <li>
+                          Country is identified by the IP address of the user of this tool.
+                        </li>
+                        <li>
+                          Personal identifiable information is never used.
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -68,7 +91,7 @@ class PowerSources extends React.Component {
             </div>
           </div>
         </div>
-        {regionEntries}
+        {regionNodes}
       </div>
     );
   }

@@ -14,7 +14,7 @@
   letter-spacing: -0.01rem;
   min-height: 4.5rem;
   padding: 1.2rem 0 0 0;
-  font-family: Montserrat, 'Proxima Nova', Arial, Helvetica, sans-serif;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
 }
 
 .powerSourcesBoxContent {
@@ -52,16 +52,21 @@
     text-align: center;
 } 
 
-.powerSourcesBoxContent table tbody tr td,
-.powerSourcesBoxContent table thead tr td {
-    padding: 0.3rem;
-    vertical-align: middle;    
+.powerSourcesBoxContent table tbody tr td {
+    border: none;
 }
 
-.powerSourcesBoxContent tr td {
+.powerSourcesBoxContent table >tbody>tr:nth-of-type(odd) {
+    background-color: #fff;
+}
+
+.powerSourcesBoxContent table tbody tr td,
+.powerSourcesBoxContent table thead tr td {
+    padding: 0.6rem;
+    vertical-align: middle;   
     font-weight: 600;
     font-size: 1.4rem;
-    font-family: 'Proxima Nova', Arial, Helvetica, sans-serif;    
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;  
 }
 
 .pieChartContainer {

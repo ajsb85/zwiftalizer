@@ -3,8 +3,9 @@ import React from 'react';
 import structure from '../../styles/structure.css';
 import styles from './styles.css';
 import { colors } from '../../styles/colors';
-import { PieChart, ToolTip } from 'react-easy-chart';
-import shadeColor, {shadeFactor} from './shadeColor.js';
+import { PieChart } from 'react-easy-chart';
+import ToolTip from '../toolTip/toolTip.jsx';
+import shadeColor, { shadeFactor } from './shadeColor.js';
 
 class Powermeters extends React.Component {
   constructor(props) {
@@ -12,6 +13,9 @@ class Powermeters extends React.Component {
     this.state = {
       showToolTip: false
     };
+    this.mouseOverHandler = this.mouseOverHandler.bind(this);
+    this.mouseOutHandler = this.mouseOutHandler.bind(this);
+    this.mouseMoveHandler = this.mouseMoveHandler.bind(this);
   }
 
   isObject = val => {
@@ -20,41 +24,37 @@ class Powermeters extends React.Component {
     }
     return typeof val === 'function' || typeof val === 'object';
   };
-
+  
   mouseOverHandler(d, e) {
-    console.log(d);
     this.setState({
       showToolTip: true,
-      top: e.y,
-      left: e.x,
-      value: d.value,
-      key: d.data.key});
+      top: `${e.screenY}px`,
+      left: `${e.screenX}px`,
+      label: d.data.label,
+      rowKey: d.data.rowKey,
+    });
   }
 
   mouseMoveHandler(e) {
     if (this.state.showToolTip) {
-      this.setState({top: e.y, left: e.x});
+      this.setState({ top: `${e.y}px`, left: `${e.x}px` });
     }
   }
 
   mouseOutHandler() {
-    this.setState({showToolTip: false});
+    this.setState({ showToolTip: false });
   }
 
   createTooltip() {
     if (this.state.showToolTip) {
       return (
-        <ToolTip
-          top={this.state.top}
-          left={this.state.left}
-        >
-        {this.state.key} is {this.state.value}
+        <ToolTip top={this.state.top} left={this.state.left}>
+          {this.state.label}
         </ToolTip>
       );
     }
-    return false;
+    return false;    
   }
-
 
   render() {
     const { countryCode, powermeters } = this.props;
@@ -71,7 +71,7 @@ class Powermeters extends React.Component {
 
     var powermeterRows = orderedPowermeters.map(
       function(powermeter, i) {
-        const key = `${countryCode}-${powermeter.manufacturerId}-${powermeter.modelId}`;
+        const rowKey = `${countryCode}-${powermeter.manufacturerId}-${powermeter.modelId}`;
 
         const keyColor = shadeColor(powermeter.color, shadeFactor);
 
@@ -85,11 +85,11 @@ class Powermeters extends React.Component {
           padding: '0.3rem 0.7rem',
           fontSize: '1.6rem',
           fontWeight: '600',
-          color: '#fff',          
+          color: '#fff',
           lineHeight: '1',
           verticalAlign: 'middle',
           whiteSpace: 'nowrap',
-          textAlign: 'center',  
+          textAlign: 'center',
           backgroundColor: keyColor,
           borderRadius: '1.5rem',
           border: '0.2rem solid #555',
@@ -97,24 +97,34 @@ class Powermeters extends React.Component {
           fontWeight: '600'
         };
 
-        const pieKey = `${i+1}`;
+        const pieKey = `${i + 1}`;
 
         pieData.push({
           key: pieKey,
+          rowKey: rowKey,
           value: powermeter.percent,
-          color: keyColor
+          color: keyColor,
+          label: `${powermeter.manufacturerName} - ${powermeter.modelName}`
         });
 
+        let highlightStyle = {}
+        
+        if (this.state.showToolTip && this.state.rowKey === rowKey) {          
+          highlightStyle = {backgroundColor: '#FF0'};
+        }
+
         return (
-          <tr key={key}>
-            <td style={{textAlign:'center'}}>
+          <tr key={rowKey} style={highlightStyle}>
+            <td style={{ textAlign: 'center' }}>
               <span style={keyStyle}>
                 {pieKey}
               </span>
             </td>
             <td>{powermeter.percent} %</td>
             <td>{powermeter.manufacturerName}</td>
-            <td className="hidden-xs hidden-sm hidden-md">{powermeter.modelName}</td>
+            <td className="hidden-xs hidden-sm hidden-md">
+              {powermeter.modelName}
+            </td>
             <td>{accuracy}</td>
           </tr>
         );
@@ -123,15 +133,17 @@ class Powermeters extends React.Component {
     );
 
     return (
-      <div>
-       {this.createTooltip()}
+      <div>        
         <div className="container-fluid">
           <div className="row">
-            <div className="col-xs-12 col-sm-offset-5 col-sm-7 col-md-offset-4 col-md-8 ">
-              <h3>Power Meters            
+            <div
+              className="col-xs-12 col-sm-offset-5 col-sm-7 col-md-offset-4 col-md-8 "
+            >
+              <h3>
+                Power Meters
               </h3>
             </div>
-          </div>          
+          </div>
           <div className="row">
             <div className="col-xs-12 col-sm-5 col-md-4">
               <span className={styles.totalBadge}>n= {powermeters.total}</span>
@@ -151,40 +163,41 @@ class Powermeters extends React.Component {
                       fill: '#fff'
                     },
                     '.pie-chart-slice': {
-                        stroke: '#fff',
-                        strokeWidth: '3',
-                        opacity: '1'
+                      stroke: '#fff',
+                      strokeWidth: '3',
+                      opacity: '1'
                     }
                   }}
-                  mouseOverHandler={this.mouseOverHandler.bind(this)}
-                  mouseOutHandler={this.mouseOutHandler.bind(this)}
-                  mouseMoveHandler={this.mouseMoveHandler.bind(this)}
-                />              
-              </div>                        
-            </div>            
+                  mouseOverHandler={this.mouseOverHandler}
+                  mouseOutHandler={this.mouseOutHandler}
+                  mouseMoveHandler={this.mouseMoveHandler}
+                />
+              </div>
+            </div>
             <div className="col-xs-12 col-sm-7 col-md-8">
               <table
                 className="table table-bordered table-striped"
                 cellSpacing="0"
                 width="100%"
               >
-              <thead>
-                <tr>
-                  <th>Key</th>
-                  <th>Usage</th>
-                  <th>Make</th>
-                  <th className="hidden-xs hidden-sm hidden-md">Model</th>
-                  <th>Accuracy</th>
-                </tr>
-              </thead>
-              <tbody>
-                {powermeterRows}
-              </tbody>
-            </table>    
-          </div>              
-        </div>                                          
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Proportion</th>
+                    <th>Make</th>
+                    <th className="hidden-xs hidden-sm hidden-md">Model</th>
+                    <th>Accuracy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {powermeterRows}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        {this.createTooltip()}        
       </div>
-    </div>      
     );
   }
 }
