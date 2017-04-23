@@ -3,11 +3,15 @@ import React from 'react';
 import structure from '../../styles/structure.css';
 import styles from './styles.css';
 import { colors } from '../../styles/colors';
-import { PieChart } from 'react-easy-chart';
+import { PieChart, ToolTip } from 'react-easy-chart';
+import shadeColor, {shadeFactor} from './shadeColor.js';
 
 class Powermeters extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showToolTip: false
+    };
   }
 
   isObject = val => {
@@ -16,6 +20,41 @@ class Powermeters extends React.Component {
     }
     return typeof val === 'function' || typeof val === 'object';
   };
+
+  mouseOverHandler(d, e) {
+    console.log(d);
+    this.setState({
+      showToolTip: true,
+      top: e.y,
+      left: e.x,
+      value: d.value,
+      key: d.data.key});
+  }
+
+  mouseMoveHandler(e) {
+    if (this.state.showToolTip) {
+      this.setState({top: e.y, left: e.x});
+    }
+  }
+
+  mouseOutHandler() {
+    this.setState({showToolTip: false});
+  }
+
+  createTooltip() {
+    if (this.state.showToolTip) {
+      return (
+        <ToolTip
+          top={this.state.top}
+          left={this.state.left}
+        >
+        {this.state.key} is {this.state.value}
+        </ToolTip>
+      );
+    }
+    return false;
+  }
+
 
   render() {
     const { countryCode, powermeters } = this.props;
@@ -34,6 +73,8 @@ class Powermeters extends React.Component {
       function(powermeter, i) {
         const key = `${countryCode}-${powermeter.manufacturerId}-${powermeter.modelId}`;
 
+        const keyColor = shadeColor(powermeter.color, shadeFactor);
+
         const accuracy = powermeter.accuracy
           ? '+/- ' + powermeter.accuracy * 100 + '%'
           : 'Unknown';
@@ -44,15 +85,15 @@ class Powermeters extends React.Component {
           padding: '0.3rem 0.7rem',
           fontSize: '1.6rem',
           fontWeight: '600',
-          color: '#FFF',          
+          color: '#fff',          
           lineHeight: '1',
           verticalAlign: 'middle',
           whiteSpace: 'nowrap',
           textAlign: 'center',  
-          backgroundColor: powermeter.color,
+          backgroundColor: keyColor,
           borderRadius: '1.5rem',
           border: '0.2rem solid #555',
-          fontFamily: "'Proxima Nova', Arial, Helvetica, sans-serif",
+          fontFamily: 'Montserrat, Arial, Helvetica, sans-serif',
           fontWeight: '600'
         };
 
@@ -61,7 +102,7 @@ class Powermeters extends React.Component {
         pieData.push({
           key: pieKey,
           value: powermeter.percent,
-          color: powermeter.color
+          color: keyColor
         });
 
         return (
@@ -82,54 +123,67 @@ class Powermeters extends React.Component {
     );
 
     return (
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-xs-12 col-sm-offset-5 col-sm-7 col-md-offset-4 col-md-8 ">
-            <h3>Powermeters            
-             </h3>
-          </div>
-        </div>          
-        <div className="row">
-          <div className="col-xs-12 col-sm-5 col-md-4">
-            <span className={styles.totalBadge}>n= {powermeters.total}</span>
-            <div className={styles.pieChartContainer}>
-              <PieChart
-                labels
-                size={275}
-                innerHoleSize={135}
-                data={pieData}
-                padding={10}
-                styles={{
-                  '.pie-chart-label': {
-                    fontFamily: 'Montserrat, Arial, Helvetica, sans-serif',
-                    fontSize: '1.6rem',
-                    fill: '#fff'
-                  }
-                }}
-              />              
-            </div>                        
-          </div>            
-          <div className="col-xs-12 col-sm-7 col-md-8">
-            <table
-              className="table table-bordered table-striped"
-              cellSpacing="0"
-              width="100%"
-            >
-            <thead>
-              <tr>
-                <th>Key</th>
-                <th>Usage</th>
-                <th>Make</th>
-                <th className="hidden-xs hidden-sm hidden-md">Model</th>
-                <th>Accuracy</th>
-              </tr>
-            </thead>
-            <tbody>
-              {powermeterRows}
-            </tbody>
-          </table>    
-        </div>              
-      </div>                                          
+      <div>
+       {this.createTooltip()}
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-xs-12 col-sm-offset-5 col-sm-7 col-md-offset-4 col-md-8 ">
+              <h3>Power Meters            
+              </h3>
+            </div>
+          </div>          
+          <div className="row">
+            <div className="col-xs-12 col-sm-5 col-md-4">
+              <span className={styles.totalBadge}>n= {powermeters.total}</span>
+              <div className={styles.pieChartContainer}>
+                <PieChart
+                  pieKey={`${countryCode}-powermeters`}
+                  labels
+                  size={275}
+                  innerHoleSize={100}
+                  data={pieData}
+                  padding={10}
+                  styles={{
+                    '.pie-chart-label': {
+                      fontFamily: 'Montserrat, Arial, Helvetica, sans-serif',
+                      fontSize: '1.6rem',
+                      fontWeight: '600',
+                      fill: '#fff'
+                    },
+                    '.pie-chart-slice': {
+                        stroke: '#fff',
+                        strokeWidth: '3',
+                        opacity: '1'
+                    }
+                  }}
+                  mouseOverHandler={this.mouseOverHandler.bind(this)}
+                  mouseOutHandler={this.mouseOutHandler.bind(this)}
+                  mouseMoveHandler={this.mouseMoveHandler.bind(this)}
+                />              
+              </div>                        
+            </div>            
+            <div className="col-xs-12 col-sm-7 col-md-8">
+              <table
+                className="table table-bordered table-striped"
+                cellSpacing="0"
+                width="100%"
+              >
+              <thead>
+                <tr>
+                  <th>Key</th>
+                  <th>Usage</th>
+                  <th>Make</th>
+                  <th className="hidden-xs hidden-sm hidden-md">Model</th>
+                  <th>Accuracy</th>
+                </tr>
+              </thead>
+              <tbody>
+                {powermeterRows}
+              </tbody>
+            </table>    
+          </div>              
+        </div>                                          
+      </div>
     </div>      
     );
   }

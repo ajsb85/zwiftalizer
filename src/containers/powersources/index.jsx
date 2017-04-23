@@ -47,7 +47,7 @@ class PowerSources extends React.Component {
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxLast}>
               <div className={editorial.editorialBoxHeading}>
-                Proportion of Smart Trainers and Powermeters
+                Proportion of Smart Trainers and Power Meters
               </div>
               <div className={editorial.editorialBoxContent}>
                 <div className="container-fluid">

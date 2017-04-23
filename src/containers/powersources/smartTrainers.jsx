@@ -4,6 +4,7 @@ import structure from '../../styles/structure.css';
 import styles from './styles.css';
 import { colors } from '../../styles/colors';
 import { PieChart } from 'react-easy-chart';
+import shadeColor, {shadeFactor} from './shadeColor.js';
 
 class SmartTrainers extends React.Component {
   constructor(props) {
@@ -33,6 +34,8 @@ class SmartTrainers extends React.Component {
     var smartTrainerRows = orderedSmartTrainers.map(
       function(smartTrainer, i) {
         const key = `${countryCode}-${smartTrainer.manufacturerId}-${smartTrainer.modelId}`;
+        
+        const keyColor = shadeColor(smartTrainer.color, shadeFactor);
 
         const accuracy = smartTrainer.accuracy
           ? '+/- ' + smartTrainer.accuracy * 100 + '%'
@@ -59,7 +62,7 @@ class SmartTrainers extends React.Component {
           verticalAlign: 'middle',
           whiteSpace: 'nowrap',
           textAlign: 'center',  
-          backgroundColor: smartTrainer.color,
+          backgroundColor: keyColor,
           borderRadius: '1.5rem',
           border: '0.2rem solid #1580BD',
           fontFamily: "'Proxima Nova', Arial, Helvetica, sans-serif",
@@ -71,7 +74,7 @@ class SmartTrainers extends React.Component {
         pieData.push({
           key: pieKey,
           value: smartTrainer.percent,
-          color: smartTrainer.color
+          color: keyColor
         });
 
         return (
@@ -106,9 +109,10 @@ class SmartTrainers extends React.Component {
             <div className={styles.pieChartContainer}>
               <span className={styles.totalBadge}>n= {smartTrainers.total}</span>
               <PieChart
+                pieKey={`${countryCode}-powermeters`}
                 labels
                 size={275}
-                innerHoleSize={135}
+                innerHoleSize={100}
                 data={pieData}
                 padding={10}
                 styles={{
@@ -116,6 +120,11 @@ class SmartTrainers extends React.Component {
                     fontFamily: 'Montserrat, Arial, Helvetica, sans-serif',
                     fontSize: '1.6rem',
                     fill: '#fff'
+                  },
+                  '.pie-chart-slice': {
+                      stroke: '#fff',
+                      strokeWidth: '3',
+                      opacity: '1'
                   }
                 }}
               />              
