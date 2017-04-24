@@ -80,15 +80,13 @@ export default function antManufacturers(lines) {
 
       // saris/cycleops powertap pro+ wireless blurts out all kinds of manufacturer id junk
       // ignore manufacturerIds that a are out of the range of the lookup table
-      // if (
-      //   extendedDeviceId === 0 ||
-      //   manufacturerId === 0 ||
-      //   modelId >= MAX_MANUFACTURER_ID
-      // ) {
-      //   continue;
-      // }
-
-      // April 2017, allowing any modelId now so that we get manufacturer code
+      if (
+        extendedDeviceId === 0 ||
+        manufacturerId === 0 ||
+        manufacturerId >= MAX_MANUFACTURER_ID
+      ) {
+        continue;
+      }
 
       // The special case of the Tacx Neo, says it's Model 1 and Model 2800, take Model 2800
       // Be sure to check we are not couting model 2800 twice because of this conversion.

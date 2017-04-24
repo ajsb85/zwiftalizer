@@ -107,7 +107,8 @@ export default function mapAntRxFails(lines, device, timeAxisTimeSeries) {
   // assumption 2 - advanced devices, like powermeters are sampled 8 times a second
 
   let sampleRate = BASIC_DEVICE_SAMPLE_RATE;
-  let dropOutThreshold = BASIC_DEVICE_SAMPLE_RATE * 0.3;
+  let lowSignalThreshold = BASIC_DEVICE_SAMPLE_RATE * 0.0;
+  let highSignalThreshold = BASIC_DEVICE_SAMPLE_RATE * 1;
 
   // this is sketch, says - it is a basic device if the max rxfail per second is equal to or less than
   // the basic sample rate (assumed to be 4hz).
@@ -122,8 +123,9 @@ export default function mapAntRxFails(lines, device, timeAxisTimeSeries) {
     console.log('advanced device');
 
     sampleRate = ADVANCED_DEVICE_SAMPLE_RATE;
-    dropOutThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.3;
-  }
+    lowSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.3;
+    highSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.8;
+ }
 
   // make each 10 second avg value equal to the full, assumed sample rate (based on avg # of fails) minus the avg of RxFails in that 10 seconds
   // what we are trying to do here is get the SUCCESSES by
@@ -135,19 +137,18 @@ export default function mapAntRxFails(lines, device, timeAxisTimeSeries) {
   // e.g. 40 - 30 =  10 successful message received ---> weak signal, possibly an indication of drop outs
   // e.g. 40 - 40 =  0 successful message received ----> a drop out - problem is - when a device is completely lost, there are no rxfails at all, so it appears to be a strong signal
 
-  // const ninetiethPercentile = rollup.percentile(90);
-  // console.log('ninetiethPercentile');
-  // console.log(ninetiethPercentile);
+  const ninetiethPercentile = rollup.percentile(90);
+  console.log('ninetiethPercentile');
+  console.log(ninetiethPercentile);
 
   const filteredRollup = rollup.map(e => 
     e.setData({
-      value: (sampleRate - e.get('value')) < dropOutThreshold
+      value: (sampleRate - e.get('value') < lowSignalThreshold) ||
+      (sampleRate - e.get('value') > highSignalThreshold )
         ? 0
         : sampleRate - e.get('value')
     })
   );
 
   return filteredRollup;
-
-  
 }
