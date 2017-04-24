@@ -5,6 +5,8 @@ import timeAxis from './timeAxis';
 
 var moment = require('moment');
 
+import { nonZeroAvgReducer } from './functions';
+
 // Speed/Cadence sensor can transmit at these rates
 //
 // 1. 8102 counts (~4.04Hz, 4 messages/second)
@@ -15,9 +17,13 @@ var moment = require('moment');
 // D00001163_-_ANT+_Device_Profile_-_Bicycle_Speed_and_Cadence_2.0.pdf
 // Page 29
 
+const ROLLUP_SPAN_IN_SECONDS = 10;
+
 const BASIC_DEVICE_SAMPLE_RATE = 4;
 
-const BASIC_DEVICE_THRESHOLD = 5;
+// const BASIC_DEVICE_THRESHOLD = 5;
+
+const BASIC_DEVICE_THRESHOLD_MAX_FAILS = BASIC_DEVICE_SAMPLE_RATE;
 
 // ANT+ Powermeter
 // Data is transmitted from the bike power sensor every 8182/32768 seconds
@@ -27,9 +33,6 @@ const BASIC_DEVICE_THRESHOLD = 5;
 //
 // D00001086_-_ANT+_Device_Profile_-_Bicycle_Power_-_Rev4.2.pdf
 // Page 19
-
-// Q: So why is Zwift sampling higher than 4 times a second?
-// A: Kickr :-p - to get ANT+ power and FE-C
 
 const ADVANCED_DEVICE_SAMPLE_RATE = 8;
 
@@ -88,49 +91,63 @@ export default function mapAntRxFails(lines, device, timeAxisTimeSeries) {
     seriesList: [timeAxisTimeSeries, ts]
   });
 
+  // 10 second avg of fails
   const rollup = mergedSeries.fixedWindowRollup({
-    windowSize: '1s',
+    windowSize: '10s',
     aggregation: {
       value: {
-        value: sum()
+        value: avg()
       }
     }
   });
 
   const maxValue = rollup.max();
+  
+  // assumption 1 - basic devices (HR, Cadence, Speed) are sampled no more than 4 times a second
+  // assumption 2 - advanced devices, like powermeters are sampled 8 times a second
+
+  let sampleRate = BASIC_DEVICE_SAMPLE_RATE;
+  let dropOutThreshold = BASIC_DEVICE_SAMPLE_RATE * 0.3;
 
   // this is sketch, says - it is a basic device if the max rxfail per second is equal to or less than
   // the basic sample rate (assumed to be 4hz).
 
-  const basic = maxValue <= BASIC_DEVICE_THRESHOLD;
+  const isBasic = maxValue <= BASIC_DEVICE_THRESHOLD_MAX_FAILS;
 
-  // assumption 1 - basic devices (HR, Cadence, Speed) are sampled no more than 4 times a second
-  // assumption 2 - advanced devices, like powermeters are sampled 8 times a second
-  // this logic is a bit flawed because there could be a very reliable basic device that ever has a max value above 4
+  console.log('maxValue');
+  console.log(maxValue);
 
-  const sampleRate = basic
-    ? BASIC_DEVICE_SAMPLE_RATE
-    : ADVANCED_DEVICE_SAMPLE_RATE;
+  if (!isBasic) {
 
-  // make each 1 second value equal to the full, assumed sample rate (based on avg # of fails) minus the sum of RxFails
+    console.log('advanced device');
+
+    sampleRate = ADVANCED_DEVICE_SAMPLE_RATE;
+    dropOutThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.3;
+  }
+
+  // make each 10 second avg value equal to the full, assumed sample rate (based on avg # of fails) minus the avg of RxFails in that 10 seconds
   // what we are trying to do here is get the SUCCESSES by
   // subtracting the fails from the sample rate
 
-  // e.g. 4 - 0 =  4 successful message received
-  // e.g. 4 - 1 =  3 successful message received
-  // e.g. 4 - 2 =  2 successful message received
-  // e.g. 4 - 3 =  1 successful message received
-  // e.g. 4 - 4 =  0 successful message received ----> a gap
+  // e.g. 40 - 0 =  40 successful message received
+  // e.g. 40 - 10 =  30 successful message received
+  // e.g. 40 - 20 =  20 successful message received
+  // e.g. 40 - 30 =  10 successful message received ---> weak signal, possibly an indication of drop outs
+  // e.g. 40 - 40 =  0 successful message received ----> a drop out - problem is - when a device is completely lost, there are no rxfails at all, so it appears to be a strong signal
 
-  const filteredRollup = rollup.map(e =>
-  // powermeters almost never have 8 messages in 1 second
-  // so if rxfail count is zero, and sample rate is 8,
-  // then assume no signal was emitted at all.
+  // const ninetiethPercentile = rollup.percentile(90);
+  // console.log('ninetiethPercentile');
+  // console.log(ninetiethPercentile);
+
+  const filteredRollup = rollup.map(e => 
     e.setData({
-      value: sampleRate - e.get('value') === ADVANCED_DEVICE_SAMPLE_RATE
+      value: (sampleRate - e.get('value')) < dropOutThreshold
         ? 0
         : sampleRate - e.get('value')
-    }));
+    })
+  );
 
   return filteredRollup;
+
+  
 }

@@ -253,9 +253,7 @@ class Chart extends React.Component {
             <ChartRow height={largeChartHeight} debug={false}>
               <YAxis id="powerAxis" label="Watts" min={minPower} max={maxPower} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
               <Charts>
-                <AreaChart axis="powerSignal" series={device.signal} style={style} columns={{
-                  up: ['value']
-                }}/>
+                <BarChart axis="powerSignal" series={device.signal} style={style} columns={["value"]}/>
                 <LineChart axis="powerAxis" breakLine={true} series={device.power} style={powerStyle} smooth={true} interpolation="curveBasis"/>
                 <Baseline axis="powerAxis" style={baselineStyle} value={maxPower} label="Max Pwr" position="left"/>
                 <Baseline axis="powerAxis" style={baselineStyle} value={avgPower} label="Avg Pwr" position="left"/>
@@ -346,9 +344,7 @@ class Chart extends React.Component {
             <ChartRow height={largeChartHeight} debug={false}>
               <YAxis id="gradientAxis" label="Resistance" min={minGrad} max={maxGrad} absolute={true} width={leftAxisLabelWidth} type="linear" format=",.2f"/>
               <Charts>
-                <AreaChart axis="fecSignal" series={device.signal} style={style} columns={{
-                  up: ['value']
-                }}/>
+                <BarChart axis="fecSignal" series={device.signal} style={style} columns={["value"]}/>
                 <LineChart axis="gradientAxis" breakLine={true} series={device.gradient} style={resistanceStyle} smooth={true} interpolation="curveBasis"/>
               </Charts>
               <YAxis id="fecSignal" label="Signal" min={0} max={maxSignal} absolute={true} width={rightAxisLabelWidth} type="linear" format="d"/>
@@ -418,9 +414,7 @@ class Chart extends React.Component {
             <ChartRow height={chartHeight} debug={false}>
               <YAxis id={leftAxisId} label="Signal" min={0} max={max} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
               <Charts>
-                <AreaChart axis={leftAxisId} series={device.signal} style={style} columns={{
-                  up: ['value']
-                }}/>
+                <BarChart axis={leftAxisId} series={device.signal} style={style} columns={["value"]}/>
               </Charts>
               <YAxis id={rightAxisId} label="Signal" min={0} max={max} absolute={true} width={rightAxisLabelWidth} type="linear" format="d"/>
             </ChartRow>
@@ -533,9 +527,7 @@ class Chart extends React.Component {
               <YAxis id="powerAxis" label="Power" min={minPower} max={maxPower} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
               <YAxis id="gradientAxis" label="Resistance" min={minGrad} max={maxGrad} absolute={true} width={leftAxisLabelWidth} type="linear" format=",.2f"/>
               <Charts>
-                <AreaChart axis="powerSignal" series={device.signal} style={style} columns={{
-                  up: ['value']
-                }}/>
+                <BarChart axis="powerSignal" series={device.signal} style={style} columns={["value"]}/>
                 <LineChart axis="gradientAxis" breakLine={true} series={device.gradient} style={resistanceStyle} smooth={true} interpolation="curveBasis"/>
                 <LineChart axis="powerAxis" breakLine={true} series={device.power} style={powerStyle} smooth={true} interpolation="curveBasis"/>
                 <Baseline axis="powerAxis" style={baselineStyle} value={maxPower} label="Max" position="left"/>

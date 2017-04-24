@@ -57,26 +57,30 @@ export default function antData(log, timeAxisTimeSeries) {
     // is not already detected as being made by a known PM manufacturer (could be saris, powertap)
     // and is not a SMART_TRAINER_DEVICE, or KICKR
 
-    //@todo, only do the following if we definitely have power readings
+    
 
     //@todo, check we are not attributing a kickr ANT+ powermeter to cycleops, shoudn't be as 
     // device.manufacturerId should be set for Wahoo Kickr
-
+    
     if (
-      signal.max() > BASIC_DEVICE_SAMPLE_RATE &&
+      // if we have power data, and the device appears to be sampled at 
+      // a rate highe than the basic sample rate
+      // and the device has neither been identified as a 
+      // smart trainer or power meter, 
+      // and we have no manufacturerId then it's very likely to be a power tap
+      power.count() && signal.max() > BASIC_DEVICE_SAMPLE_RATE &&
       device.type === BASIC_DEVICE &&
       device.manufacturerId === ''
     ) {
       device.type = POWER_METER_DEVICE;
       device.typeName = titleCase(deviceTypes[POWER_METER_DEVICE]);
-
       // out of all the known power meters, saris/powertap/cycleops is the only one we know of that
       // does not broadcast manufacturerId, modelId. Going to take a big risk here and attribute the
       // power data source to cycleops
       device.manufacturerId = SARIS_MANUFACTURER_ID;
       device.modelId = 0; /* generic */
       device.manufacturer = 'PowerTap';
-      device.model = 'Generic';
+      device.model = 'Discontinued';
     }
 
     Object.assign(device, {
