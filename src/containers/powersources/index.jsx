@@ -72,7 +72,7 @@ class PowerSources extends React.Component {
                         <li>Only devices paired using ANT+ are included.</li>
                         <li>Sampling started on May 1st 2017.</li>
                         <li>
-                          A power source is identified by its unique manufacturer ID, model ID and ANT+ device ID compound key.
+                          A power source is identified by its unique manufacturer ID, model ID and device ID compound key.
                         </li>
                         <li>
                           A power source is never counted more than once regardless of how many times it is seen by this tool.
@@ -84,7 +84,7 @@ class PowerSources extends React.Component {
                           Personal identifiable information is never used.
                         </li>
                         <li>
-                          CycleOps PowerBeam, PowerSync, Phantom 3, Phantom 5, and PowertTap Pro+ and SL+ are grouped together as 'Generic' PowertTap power meters.
+                          CycleOps PowerBeam, PowerSync, Phantom 3, Phantom 5, PowertTap Pro+ and PowertTap SL+ are grouped together as 'Wireless' PowertTap power meters (Id not available).
                         </li>
                       </ul>
                     </div>

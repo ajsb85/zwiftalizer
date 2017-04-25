@@ -26,6 +26,7 @@ export const FILE_LOADED = 'FILE_LOADED';
 export const FILE_LOADING = 'FILE_LOADING';
 export const RESET = 'RESET';
 export const UPDATE_PROGRESS = 'UPDATE_PROGRESS';
+export const SHOW_UNKNOWN_POWERMETER_MODEL_MODAL = 'SHOW_UNKNOWN_POWERMETER_MODEL_MODAL';
 
 import {
   TOGGLE_PROFILE_PANEL,
@@ -512,5 +513,14 @@ function fileLoaded() {
 export function reset() {
   return {
     type: RESET
+  };
+}
+
+export function closeUnknownPowermeterModelModal() {
+ return dispatch => {
+    dispatch({
+      type: SHOW_UNKNOWN_POWERMETER_MODEL_MODAL,
+      data: false      
+    });
   };
 }

@@ -93,7 +93,7 @@ class Powermeters extends React.Component {
           backgroundColor: keyColor,
           borderRadius: '1.5rem',
           border: '0.2rem solid #555',
-          fontFamily: 'Montserrat, Arial, Helvetica, sans-serif',
+          fontFamily: '"Open Sans", Arial, Helvetica, sans-serif',
           fontWeight: '600'
         };
 
@@ -158,7 +158,7 @@ class Powermeters extends React.Component {
                   padding={10}
                   styles={{
                     '.pie-chart-label': {
-                      fontFamily: 'Montserrat, Arial, Helvetica, sans-serif',
+                      fontFamily: '"Open Sans", Arial, Helvetica, sans-serif',
                       fontSize: '1.6rem',
                       fontWeight: '600',
                       fill: '#fff'

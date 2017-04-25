@@ -80,7 +80,7 @@ export default function antData(log, timeAxisTimeSeries) {
       device.manufacturerId = SARIS_MANUFACTURER_ID;
       device.modelId = 0; /* generic */
       device.manufacturer = 'PowerTap';
-      device.model = 'Discontinued';
+      device.model = 'Wireless';
     }
 
     Object.assign(device, {
@@ -103,6 +103,8 @@ export default function antData(log, timeAxisTimeSeries) {
   });
 
   // assign the power data to the powermeter before the kickr, but never both
+  // Does not work for Paul Holmgren who uses a stages PM as a cadence meter and kickr for power because of ERG mode
+  // Would be interesting to see if we can detect ERG mode is engaged
   if (powerDevice) {
     Object.assign(powerDevice, {
       power,
@@ -142,8 +144,18 @@ export default function antData(log, timeAxisTimeSeries) {
     });
   }
 
+  // showUnknownPowermeterModelModal is the state variable used to trigger
+  // opening a modal windows to prompt the user to supply
+  // the name of the power meter model.
+  let showUnknownPowermeterModelModal = false;
+
+  if (powerDevice && powerDevice.manufacturerId !== 0 && powerDevice.model === 'Unknown'){
+    showUnknownPowermeterModelModal = true;
+  }
+
   return Object.freeze({
     devices,
-    searches
+    searches,
+    showUnknownPowermeterModelModal
   });
 }

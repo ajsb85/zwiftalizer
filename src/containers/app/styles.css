@@ -12,22 +12,22 @@
 }
 
 .navItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: uppercase;
-  vertical-align: baseline;
-  /*color: #178acc;*/
-  color: #fff;
-  height: 2.6rem;
-  padding: 1.2rem 0.2rem 0.8rem 0.2rem;
-  width: 100%;
-  white-space: normal;
-  font-weight: 700;
-  font-size: 1.8rem;
-  letter-spacing: 0.1rem;
-  text-align: center;
-  font-family: "Proxima Nova Bold";  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    vertical-align: baseline;
+    /* color: #178acc; */
+    color: #fff;
+    /* height: 2.6rem; */
+    padding: 0;
+    width: 100%;
+    white-space: normal;
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: 0.05rem;
+    text-align: center;
+    font-family: "Montserrat"; 
 }
 .navItem>a {
   text-decoration: none;

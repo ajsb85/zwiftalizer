@@ -192,3 +192,9 @@
 .infoCircle {  
   color: #178acc;
 }
+.confettiContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+};

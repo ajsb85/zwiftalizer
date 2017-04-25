@@ -11,10 +11,11 @@ import React, { Component, PropTypes } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
+import Confetti from 'react-dom-confetti';
 import { readFile, reset } from '../../actions/parse';
 import structure from '../../styles/structure.css';
 import styles from './styles.css';
-import editorial from '../../styles/editorial.css'
+import editorial from '../../styles/editorial.css';
 
 import { setPreferences } from '../../actions/preferences';
 
@@ -28,9 +29,10 @@ class Reader extends React.Component {
     this.closeDbUploadExplanationModal = this.closeDbUploadExplanationModal.bind(
       this
     );
+   
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.state = {
-      showDbUploadExplanationModal: false
+      showDbUploadExplanationModal: false      
     };
   }
 
@@ -89,14 +91,23 @@ class Reader extends React.Component {
 
     const shareStatus = share ? 'checked' : '';
 
+    const showConfetti = isLoaded && share;
+
+    const confettiConfig = {
+      angle: 90,
+      spread: 90,
+      startVelocity: 26,
+      elementCount: 76,
+      decay: 0.95
+    };
+
     return (
       <div className={styles.root}>
-
         <div className="container">
           <div className="row">
             <div className="hidden-xs col-sm-12">
-              <div className="center-block">     
-                <div className="text-center">     
+              <div className="center-block">
+                <div className="text-center">
                   <div className={styles.checkboxWrapper}>
                     <div className={styles.checkbox}>
                       <input
@@ -107,18 +118,21 @@ class Reader extends React.Component {
                       />
                       <label htmlFor="shareCheckbox" />
                     </div>
-                  </div>                                  
-                  <h2 className={styles.checkboxLabel}>                
-                      Include my results in the database &nbsp;<a href="" onClick={this.openDbUploadExplanationModal}>
-                        <span className={styles.infoCircle}>
+                  </div>
+                  <h2 className={styles.checkboxLabel}>                    
+                    Include my results in the database &nbsp;<a
+                      href=""
+                      onClick={this.openDbUploadExplanationModal}
+                    >
+                      <span className={styles.infoCircle}>
                         <i
                           className="fa fa-question-circle"
                           aria-hidden="true"
                         />
                       </span>
                     </a>
-                  </h2>                                      
-                </div>  
+                  </h2>
+                </div>
               </div>
             </div>
           </div>
@@ -140,13 +154,16 @@ class Reader extends React.Component {
                   {messageDiv}
                 </div>
               </Dropzone>
+              <div className={styles.confettiContainer}>
+                <Confetti active={showConfetti} config={confettiConfig} />
+              </div>
             </div>
           </div>
         </div>
 
         <Modal
           show={this.state.showDbUploadExplanationModal}
-          onHide={this.closeDbUploadExplanationModal}          
+          onHide={this.closeDbUploadExplanationModal}
         >
           <Modal.Header closeButton>
             <Modal.Title>
@@ -155,48 +172,78 @@ class Reader extends React.Component {
           </Modal.Header>
           <Modal.Body>
 
-          <div className={editorial.boxesWrapOuter}>
-            <div className={structure.boxesWrapInner}>
-              <div className={structure.boxLast}>
-                <div className={editorial.editorialBoxHeading}>What happens when the box is checked?</div>
+            <div className={editorial.boxesWrapOuter}>
+              <div className={structure.boxesWrapInner}>
+                <div className={structure.boxLast}>
+                  <div className={editorial.editorialBoxHeading}>
+                    What happens when the box is checked?
+                  </div>
                   <div className={editorial.editorialBoxContent}>
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-xs-12">
-                       
+
                           <p>
-                            Check the box if you want to upload the <strong>results</strong> of reading your log file to the database.
+                            Check the box if you want to upload the
+
+                            <strong>results</strong>
+
+                            of reading your log file to the database.
                           </p>
 
                           <p>
-                           <strong>Why would I do that?</strong> <br/>
-                           Uploads <strong>create reports</strong> to help the community make informed purchasing decisions.
+                            <strong>Why would I do that?</strong> <br />
+                            Uploads
+
+                            <strong>create reports</strong>
+
+                            to help the community make informed purchasing decisions.
                           </p>
 
                           <p>
-                            <strong>Do you keep my full log?</strong> <br/>
-                            <strong>No. Never. Absolutely not.</strong> Two words - plausible deniability.
+                            <strong>Do you keep my full log?</strong> <br />
+                            <strong>No. Never. Absolutely not.</strong>
+
+                            It isn't necessary and I don't want the responsibility of securing personally identifiable information (plausible deniability).
                           </p>
 
                           <p>
-                            <strong>Is the data anonymous?</strong> <br/>
-                            <strong>Yes.</strong> Personally Identifiable Information (PII) is <strong>NOT</strong> used or stored in the database.
+                            <strong>Is the data anonymous?</strong> <br />
+                            <strong>Yes.</strong>
+
+                            Personally Identifiable Information (PII) is
+
+                            <strong>NOT</strong>
+
+                            used or stored in the database.
                           </p>
 
-                          <ul>                 
+                          <ul>
                             <li>
-                              Your Zwift userid is <strong>NEVER</strong> read or stored.
+                              Your Zwift userid is
+
+                              <strong>NEVER</strong>
+
+                              read or stored.
                             </li>
                             <li>
-                              The email address you use with Zwift is <strong>NEVER</strong> read or stored.
-                            </li>                                               
+                              The email address you use with Zwift is
+
+                              <strong>NEVER</strong>
+
+                              read or stored.
+                            </li>
                             <li>
                               Your IP address is used to do an approximate location lookup for grouping the power sources report by country.
-                            </li>                    
-                             <li>
-                              The Zwiftalizer will <strong>NEVER</strong> ask for your Zwift username or password.
-                            </li>        
-                          </ul>                        
+                            </li>
+                            <li>
+                              The Zwiftalizer will
+
+                              <strong>NEVER</strong>
+
+                              ask for your Zwift username or password.
+                            </li>
+                          </ul>
 
                           <p>
                             The following data is uploaded:
@@ -207,16 +254,26 @@ class Reader extends React.Component {
                               <ul>
                                 <li>Platform - PC, Mac or iOS</li>
                                 <li>CPU Vendor - Intel, AMD or ARM</li>
-                                <li>CPU Details - e.g. Core i5 4690K @ 3.5GHz</li>
-                                <li>GPU Vendor - e.g. Nvidia, AMD, Intel, ARM</li>
-                                <li>GPU Details - e.g. GeForce GTX 970/PCIe/SSE2</li>
+                                <li>
+                                  CPU Details - e.g. Core i5 4690K @ 3.5GHz
+                                </li>
+                                <li>
+                                  GPU Vendor - e.g. Nvidia, AMD, Intel, ARM
+                                </li>
+                                <li>
+                                  GPU Details - e.g. GeForce GTX 970/PCIe/SSE2
+                                </li>
                                 <li>OpenGl Major Version - e.g. 3.1.0</li>
                                 <li>RAM - e.g. 8 GB</li>
-                                <li>Graphics Resolution - 2160, 1080, 720 or 576</li>
+                                <li>
+                                  Graphics Resolution - 2160, 1080, 720 or 576
+                                </li>
                                 <li>
                                   Shadow Resolution - 2048, 1024 or 512
                                 </li>
-                                <li>Graphics Profile - Ultra, High, Medium or Basic</li>
+                                <li>
+                                  Graphics Profile - Ultra, High, Medium or Basic
+                                </li>
                                 <li>Maximum FPS</li>
                                 <li>Average FPS</li>
                                 <li>Minimum FPS</li>
@@ -226,24 +283,29 @@ class Reader extends React.Component {
                               <ul>
                                 <li>FPS Standard Deviation</li>
                                 <li>Number of FPS samples</li>
-                                <li>If available: </li>  
-                                <li>Smart Trainer ANT+ Manufacturer Id</li>  
-                                <li>Smart Trainer ANT+ Manufacturer Name</li>  
-                                <li>Smart Trainer ANT+ Model Id</li>  
-                                <li>Smart Trainer ANT+ Model Name</li>  
-                                <li>Smart Trainer ANT+ device id <sup>*</sup></li>  
-                                <li>Powermeter ANT+ Manufacturer Id</li>  
-                                <li>Powermeter ANT+ Manufacturer Name</li>  
-                                <li>Powermeter ANT+ Model Id</li>  
-                                <li>Powermeter ANT+ Model Name</li>  
-                                <li>Powermeter ANT+ device id <sup>*</sup></li>  
-                                <li>Your IP Address - used only to report power source usage by country</li>                      
+                                <li>If available: </li>
+                                <li>Smart Trainer ANT+ Manufacturer Id</li>
+                                <li>Smart Trainer ANT+ Manufacturer Name</li>
+                                <li>Smart Trainer ANT+ Model Id</li>
+                                <li>Smart Trainer ANT+ Model Name</li>
+                                <li>
+                                  Smart Trainer ANT+ device id <sup>*</sup>
+                                </li>
+                                <li>Powermeter ANT+ Manufacturer Id</li>
+                                <li>Powermeter ANT+ Manufacturer Name</li>
+                                <li>Powermeter ANT+ Model Id</li>
+                                <li>Powermeter ANT+ Model Name</li>
+                                <li>Powermeter ANT+ device id <sup>*</sup></li>
+                                <li>
+                                  Your IP Address - used only to report power source usage by country
+                                </li>
                               </ul>
                             </div>
                           </div>
-                          <p>* The ANT+ device id is a unique number given to your Smart Trainer or Powermeter by the device manufacturer. By storing this number in the database, your smart trainer and/or powermeter is counted only once in the power sources report regardless of how many times you use this tool.
+                          <p>
+                            * The ANT+ device id is a unique number given to your Smart Trainer or Powermeter by the device manufacturer. By storing this number in the database, your smart trainer and/or powermeter is counted only once in the power sources report regardless of how many times you use this tool.
                           </p>
-                                                   
+
                         </div>
                       </div>
                     </div>
@@ -255,12 +317,11 @@ class Reader extends React.Component {
           <Modal.Footer>
             <Button
               bsStyle="primary"
-              onClick={this.closeDbUploadExplanationModal}
-            >
+              onClick={this.closeDbUploadExplanationModal}>
               Close
             </Button>
           </Modal.Footer>
-        </Modal>
+        </Modal>       
       </div>
     );
   }
