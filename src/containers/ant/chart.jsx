@@ -229,7 +229,7 @@ class Chart extends React.Component {
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>{label}</h4>
               {calibrationMessage}
-              <h5 className={structure.infoHeading}>Denser area is better. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
+              <h5 className={structure.infoHeading}>4 to 6 is normal. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
             </div>
           </div>
           <div className="col-xs-12 col-sm-3">
@@ -320,7 +320,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>{label}</h4>
-              <h5 className={structure.infoHeading}>Denser area is better. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
+              <h5 className={structure.infoHeading}>4 to 6 is normal. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
             </div>
           </div>
           <div className="col-xs-12 col-sm-3">
@@ -390,7 +390,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>{label}</h4>
-              <h5 className={structure.infoHeading}>Denser area is better. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
+              <h5 className={structure.infoHeading}>4 to 6 is normal. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
             </div>
           </div>
           <div className="col-xs-12 col-sm-3">
@@ -501,7 +501,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>{label}</h4>
-              <h5 className={structure.infoHeading}>Denser area is better. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
+              <h5 className={structure.infoHeading}>4 to 6 is normal. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
             </div>
           </div>
           <div className="col-xs-12 col-sm-3">
@@ -553,7 +553,7 @@ class Chart extends React.Component {
     const categories = [
       {
         key: 'value',
-        label: 'Drop outs',
+        label: 'Searches',
         disabled: false
       }
     ]
@@ -563,8 +563,8 @@ class Chart extends React.Component {
         <div className="row" style={headingRowStyle}>
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
-              <h4 className={structure.heading}>ANT+ drop outs</h4>
-              <h5 className={structure.infoHeading}>Fewer is better. One bar at the beginning is normal.</h5>
+              <h4 className={structure.heading}>ANT+ device searches</h4>
+              <h5 className={structure.infoHeading}>Fewer is better. Expect one at the start. Lots of bars here indicates a very weak signal.</h5>
             </div>
           </div>
           <div className="col-xs-12 col-sm-3">
@@ -579,11 +579,11 @@ class Chart extends React.Component {
           <ChartContainer timeRange={this.state.initialRange} format="HH:mm:ss" padding={0} trackerPosition={this.state.tracker}>
             <ChartRow height={75} debug={false}>
               <Brush timeRange={this.state.brushrange} allowSelectionClear={true} onTimeRangeChanged={this.handleTimeRangeChange}></Brush>
-              <YAxis id="searchesBrushAxis" label="Drop outs" min={0} max={1} width={leftAxisLabelWidth} type="linear" format="d"></YAxis>
+              <YAxis id="searchesBrushAxis" label="Searches" min={0} max={1} width={leftAxisLabelWidth} type="linear" format="d"></YAxis>
               <Charts>
                 <BarChart axis="searchesBrushAxis" series={this.state.searches} style={style} columns={["value"]}/>
               </Charts>
-              <YAxis id="searchesBrushAxis2" label="Drop outs" min={0} max={1} width={rightAxisLabelWidth} type="linear" format="d"></YAxis>
+              <YAxis id="searchesBrushAxis2" label="Searches" min={0} max={1} width={rightAxisLabelWidth} type="linear" format="d"></YAxis>
             </ChartRow>
           </ChartContainer>
         </Resizable>

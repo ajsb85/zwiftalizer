@@ -105,7 +105,7 @@ export default function mapAntRxFails(lines, device, timeAxisTimeSeries) {
   // assumption 2 - advanced devices, like powermeters are sampled 8 times a second
 
   let sampleRate = BASIC_DEVICE_SAMPLE_RATE;
-  let lowSignalThreshold = BASIC_DEVICE_SAMPLE_RATE * 0.02;
+  let lowSignalThreshold = BASIC_DEVICE_SAMPLE_RATE;
   let highSignalThreshold = BASIC_DEVICE_SAMPLE_RATE;
 
   // this could be unreliable, it says - it is a basic device if the max rxfail per second is less than
@@ -115,7 +115,7 @@ export default function mapAntRxFails(lines, device, timeAxisTimeSeries) {
 
   if (!isBasic) {
     sampleRate = ADVANCED_DEVICE_SAMPLE_RATE;
-    lowSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.25;
+    lowSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.2;
     highSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.8;
   }
 
@@ -141,8 +141,8 @@ export default function mapAntRxFails(lines, device, timeAxisTimeSeries) {
 
   const filteredRollup = rollup.map(e =>
     e.setData({
-      value: sampleRate - e.get('value') <= lowSignalThreshold ||
-        sampleRate - e.get('value') >= highSignalThreshold
+      value: sampleRate - e.get('value') < lowSignalThreshold ||
+        sampleRate - e.get('value') > highSignalThreshold
         ? 0
         : sampleRate - e.get('value')
     }));

@@ -21,12 +21,17 @@ class Ant extends React.Component {
     this.closeUnknownPowerSourceModal = this.closeUnknownPowerSourceModal.bind(
       this
     );
+    this.submitPowerSourceForm = this.submitPowerSourceForm.bind(this);
   }
 
   closeUnknownPowerSourceModal() {
     // this.setState({ unknownPowermeterModel: false });
     const { dispatch } = this.props;
     dispatch(closeUnknownPowermeterModelModal());
+  }
+
+  submitPowerSourceForm() {
+    console.log('submit form');
   }
 
   render() {
@@ -55,38 +60,44 @@ class Ant extends React.Component {
         >
           <Modal.Header closeButton>
             <Modal.Title>
-              Unknown Power Source Model Name
+              What's the model name of your power meter?
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-
-            <div className={editorial.boxesWrapOuter}>
-              <div className={structure.boxesWrapInner}>
-                <div className={structure.boxLast}>
-                  <div className={editorial.editorialBoxHeading}>
-                    What's the model name of your power meter?
-                  </div>
-                  <div className={editorial.editorialBoxContent}>
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-xs-12">
-                          Hello World
-                        </div>
-                      </div>
+            <form>
+              <div className="container-fluid">
+                <div className="row">
+                  <div className="col-xs-offset-1 col-xs-10">            
+                    <div className="form-group">
+                      <label htmlFor="manufacturerReadOnly">Manufacturer</label>
+                      <input id="manufacturerReadOnly" type="text" placeholder="Quarq" className="form-control" readOnly="readonly" disabled="disabled"></input>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+                <div className="row">
+                  <div className="col-xs-offset-1 col-xs-10">            
+                    <div className="form-group">
+                      <label htmlFor="model">Model</label>
+                      <input id="model" type="text" className="form-control"></input>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-xs-offset-1 col-xs-10">            
+                    <div className="form-group pull-right">
+                      <Button
+                        bsStyle="primary"
+                        onClick={this.submitPowerSourceForm}
+                      >
+                        Submit
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>      
+            </form>             
           </Modal.Body>
-          <Modal.Footer>
-            <Button
-              bsStyle="primary"
-              onClick={this.closeUnknownPowerSourceModal}
-            >
-              Close
-            </Button>
-          </Modal.Footer>
+          
         </Modal>
       </div>
     );

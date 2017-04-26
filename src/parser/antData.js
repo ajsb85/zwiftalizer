@@ -153,6 +153,9 @@ export default function antData(log, timeAxisTimeSeries) {
     showUnknownPowermeterModelModal = true;
   }
 
+  // for testing the modal
+  showUnknownPowermeterModelModal = true;
+  
   return Object.freeze({
     devices,
     searches,
