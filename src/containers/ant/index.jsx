@@ -13,25 +13,11 @@ import { connect } from 'react-redux';
 import structure from '../../styles/structure.css';
 import { Chart } from './chart.jsx';
 import editorial from '../../styles/editorial.css';
-import { closeUnknownPowermeterModelModal } from '../../actions/parse.js';
+import PowermeterNameModal from './powermeterNameModal.jsx';
 
 class Ant extends React.Component {
   constructor(props) {
     super(props);
-    this.closeUnknownPowerSourceModal = this.closeUnknownPowerSourceModal.bind(
-      this
-    );
-    this.submitPowerSourceForm = this.submitPowerSourceForm.bind(this);
-  }
-
-  closeUnknownPowerSourceModal() {
-    // this.setState({ unknownPowermeterModel: false });
-    const { dispatch } = this.props;
-    dispatch(closeUnknownPowermeterModelModal());
-  }
-
-  submitPowerSourceForm() {
-    console.log('submit form');
   }
 
   render() {
@@ -41,7 +27,7 @@ class Ant extends React.Component {
   }
 
   renderDevices() {
-    const { devices, searches, showUnknownPowermeterModelModal } = this.props;
+    const { devices, searches } = this.props;
 
     const markup = devices && devices.length
       ? <Chart devices={devices} searches={searches} />
@@ -53,52 +39,8 @@ class Ant extends React.Component {
 
     return (
       <div className="container">
-        {markup}
-        <Modal
-          show={showUnknownPowermeterModelModal}
-          onHide={this.closeUnknownPowerSourceModal}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>
-              What's the model name of your power meter?
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <form>
-              <div className="container-fluid">
-                <div className="row">
-                  <div className="col-xs-offset-1 col-xs-10">            
-                    <div className="form-group">
-                      <label htmlFor="manufacturerReadOnly">Manufacturer</label>
-                      <input id="manufacturerReadOnly" type="text" placeholder="Quarq" className="form-control" readOnly="readonly" disabled="disabled"></input>
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-xs-offset-1 col-xs-10">            
-                    <div className="form-group">
-                      <label htmlFor="model">Model</label>
-                      <input id="model" type="text" className="form-control"></input>
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-xs-offset-1 col-xs-10">            
-                    <div className="form-group pull-right">
-                      <Button
-                        bsStyle="primary"
-                        onClick={this.submitPowerSourceForm}
-                      >
-                        Submit
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>      
-            </form>             
-          </Modal.Body>
-          
-        </Modal>
+        {markup}       
+        <PowermeterNameModal/> 
       </div>
     );
   }
