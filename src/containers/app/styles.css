@@ -1,5 +1,6 @@
 .stickyHeader {
     position: fixed;
+    top:0;
     right: 0;
     left: 0;
     z-index: 1030;
@@ -7,8 +8,58 @@
     background: #178acc;
 }
 
+.stickySubHeader {
+    position: fixed;
+    top: 7rem;
+    right: 0;
+    left: 0;
+    z-index: 1030;    
+    background: #F9852B;    
+    height: 3rem;
+    max-height: 3rem;
+}
+
+.stickySubHeader p,
+.stickySubHeader p a,
+.stickySubHeader p a:active,
+.stickySubHeader p a:visited,
+.stickySubHeader p a:hover {
+    margin: 0;    
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    color: #dcdcdc;
+    text-align: center;
+    padding-top: 0.7rem;
+}
+
+.footer {
+    display: block;
+    margin: 2rem auto;
+    z-index: 1030;    
+    background:transparent;    
+    height: 3rem;
+    max-height: 3rem;
+    padding: 0.7rem;
+}
+
+.footer p,
+.footer p a,
+.footer p a:active,
+.footer p a:visited,
+.footer p a:hover {
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    color: #666;
+    text-align: center;    
+}
+
+
 .appBody {
-  padding-top: 7rem;
+  padding-top: 10rem;
 }
 
 .navItem {
@@ -54,43 +105,26 @@
     justify-content: center;
     height: 4rem;
   }
+  .stickySubHeader {
+    top: 24rem;
+    height: 6rem;
+    max-height: 6rem;
+  }
+
+  .stickySubHeader p {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    color: #fff;
+    text-align: center;
+    padding: 0.7rem;
+  }
+
   .appBody {
-  padding-top: 25rem;
+    padding-top: 34rem;
   }
 }
 @media(min-width:768px) {}
 @media(min-width:992px) {}
 @media(min-width:1200px) {}
-.ribbonWrapper {
-  width: 85px;
-  height: 88px;
-  overflow: hidden;
-  position: absolute;
-  top: -3px;
-  right: -3px;
-}
-.ribbon {
-  font: bold 15px Sans-Serif;
-  color: #333;
-  text-align: center;
-  text-shadow: rgba(255, 255, 255, 0.5) 0px 1px 0px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  position: relative;
-  padding: 7px 0;
-  left: -5px;
-  top: 15px;
-  width: 120px;
-  background-color: #BFDC7A;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45));
-  background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45);
-  background-image: -moz-linear-gradient(top, #BFDC7A, #8EBF45);
-  background-image: -ms-linear-gradient(top, #BFDC7A, #8EBF45);
-  background-image: -o-linear-gradient(top, #BFDC7A, #8EBF45);
-  color: #6a6340;
-  -webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
-}
+

@@ -74,7 +74,7 @@ class Support extends React.Component {
                                       <p>$5</p>
                                     </td>
                                     <td>
-                                      <p>Global hosting at 29 locations in North America, South America, Europe, Asia and Australia for 2 months</p>
+                                      <p>Hosting at 70 mirror locations wordlwide for 2 months</p>
                                     </td>
                                   </tr>
                                   <tr>

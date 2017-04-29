@@ -21,4 +21,21 @@
     line-height: 1;
     font-family: Montserrat, Arial, Helvetica, sans-serif;
     color: #fff;
+    text-align: center;
 }
+
+.modal-body p {
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 1.6;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+ @media(min-width:768px) {
+      .modal-dialog {
+        width: 800px;
+      }
+    }

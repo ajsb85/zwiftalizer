@@ -87,7 +87,7 @@
     "@btn-border-radius-small": "@border-radius-small",
     "@input-bg": "#fff",
     "@input-bg-disabled": "@gray-lighter",
-    "@input-color": "@gray",
+    "@input-color": "@gray-base",
     "@input-border": "#ccc",
     "@input-border-radius": "@border-radius-base",
     "@input-border-radius-large": "@border-radius-large",
@@ -389,8 +389,10 @@
     "forms.less",
     "buttons.less",
     "responsive-utilities.less",
+    "glyphicons.less",
     "button-groups.less",
     "input-groups.less",
+    "labels.less",
     "badges.less",
     "alerts.less",
     "progress-bars.less",
@@ -401,5 +403,5 @@
     "modals.less"
   ],
   "js": [],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=899ddbdbf27cf30cd930b44fecdaeb1b"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=179f9c7b343cb79f21889b70ae7e4496"
 }
