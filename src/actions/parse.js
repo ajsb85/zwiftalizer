@@ -20,6 +20,7 @@ export const SET_SYSTEM_DATA = 'SET_SYSTEM_DATA';
 export const SET_ACTIVITY_DATA = 'SET_ACTIVITY_DATA';
 export const SET_GRAPHICS_DATA = 'SET_GRAPHICS_DATA';
 export const SET_ANT_DATA = 'SET_ANT_DATA';
+export const SET_ANT_DEVICES = 'SET_ANT_DEVICES';
 export const SET_NETWORK_DATA = 'SET_NETWORK_DATA';
 export const SET_BTLE_DATA = 'SET_BTLE_DATA';
 export const FILE_LOADED = 'FILE_LOADED';
@@ -33,10 +34,7 @@ import {
   SET_CURRENT_SYSTEM_BENCHMARK
 } from './benchmarks';
 
-import {
-  POWER_METER_DEVICE,
-  SMART_TRAINER_DEVICE
-} from '../parser/constants';
+import { POWER_METER_DEVICE, SMART_TRAINER_DEVICE } from '../parser/constants';
 
 function parseFileContents(log, isDemo = false, share = true) {
   return dispatch => {
@@ -267,7 +265,7 @@ function parseFileContents(log, isDemo = false, share = true) {
                   type
                 }))(d);
 
-               //@todo, check for empty values, particularly in modelId and model name
+                //@todo, check for empty values, particularly in modelId and model name
 
                 devicesSummaryData.push(deviceSummary);
               });
@@ -275,7 +273,7 @@ function parseFileContents(log, isDemo = false, share = true) {
               console.log('devices summary data for api post');
               console.log(JSON.stringify(devicesSummaryData));
 
-              dispatch(uploadDevicesSummary({devices:devicesSummaryData}));
+              dispatch(uploadDevicesSummary({ devices: devicesSummaryData }));
             }
           }
 
@@ -517,10 +515,71 @@ export function reset() {
 }
 
 export function closeUnknownPowermeterModelModal() {
- return dispatch => {
+  return dispatch => {
     dispatch({
       type: SHOW_UNKNOWN_POWERMETER_MODEL_MODAL,
-      data: false      
+      data: false
+    });
+  };
+}
+
+export function postAntDevice(device) {
+  // submit the powermeter device details
+  // to the API gateway which will trigger a lambda
+  // to email the details to the maintainer of the zwiftalizer-antplus-devices module
+
+  // extract a sub set of the device properties for posting to the API
+  const deviceSummary = ((
+    {
+      type,
+      typeName,
+      deviceId,
+      extendedDeviceId,
+      manufacturerId,
+      manufacturer,
+      modelId,
+      model
+    }
+  ) => ({
+    type,
+    typeName,
+    deviceId,
+    extendedDeviceId,
+    manufacturerId,
+    manufacturer,
+    modelId,
+    model
+  }))(device);
+
+  return function(dispatch) {
+    return request
+      .post(
+        'https://5jhhymcz61.execute-api.us-west-2.amazonaws.com/dev/send',
+        deviceSummary,
+        {
+          cache: false,
+          dataType: 'json'
+        }
+      )
+      .then((xhr, json) => {
+        console.log('Success uploading ant+ device');
+        console.log(xhr);
+        console.log(json);
+      })
+      .catch(function(e, xhr, response) {
+        console.log('Error uploading ant+ device');
+        console.log(e);
+        console.log(xhr);
+        console.log(response);
+      });
+  };
+}
+
+export function setAntDevices(devices) {
+  return dispatch => {
+    dispatch({
+      type: SET_ANT_DEVICES,
+      data: devices
     });
   };
 }

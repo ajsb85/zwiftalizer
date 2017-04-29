@@ -1,5 +1,6 @@
 import {
   SET_ANT_DATA,
+  SET_ANT_DEVICES,
   SHOW_UNKNOWN_POWERMETER_MODEL_MODAL
 } from '../actions/parse';
 
@@ -21,6 +22,11 @@ function ant(
     case SHOW_UNKNOWN_POWERMETER_MODEL_MODAL:
       return Object.assign({}, state, {
         showUnknownPowermeterModelModal: action.data
+      });
+
+    case SET_ANT_DEVICES:
+      return Object.assign({}, state, {
+        devices: action.data
       });
 
     default:

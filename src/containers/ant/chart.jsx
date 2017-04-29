@@ -229,7 +229,7 @@ class Chart extends React.Component {
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>{label}</h4>
               {calibrationMessage}
-              <h5 className={structure.infoHeading}>4 to 6 is normal. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
+              <h5 className={structure.infoHeading}>4 to 7 is normal. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
             </div>
           </div>
           <div className="col-xs-12 col-sm-3">
@@ -320,7 +320,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>{label}</h4>
-              <h5 className={structure.infoHeading}>4 to 6 is normal. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
+              <h5 className={structure.infoHeading}>4 to 7 is normal. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
             </div>
           </div>
           <div className="col-xs-12 col-sm-3">
@@ -390,7 +390,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>{label}</h4>
-              <h5 className={structure.infoHeading}>4 to 6 is normal. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
+              <h5 className={structure.infoHeading}>1 to 4 is normal. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
             </div>
           </div>
           <div className="col-xs-12 col-sm-3">
@@ -501,7 +501,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>{label}</h4>
-              <h5 className={structure.infoHeading}>4 to 6 is normal. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
+              <h5 className={structure.infoHeading}>4 to 7 is normal. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
             </div>
           </div>
           <div className="col-xs-12 col-sm-3">
@@ -564,7 +564,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>ANT+ device searches</h4>
-              <h5 className={structure.infoHeading}>Fewer is better. Expect one at the start. Lots of bars here indicates a very weak signal.</h5>
+              <h5 className={structure.infoHeading}>Fewer is better. Expect one at the start. Lots of bars here indicates a weak signal.</h5>
             </div>
           </div>
           <div className="col-xs-12 col-sm-3">

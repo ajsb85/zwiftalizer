@@ -19,7 +19,7 @@ import { nonZeroAvgReducer } from './functions';
 
 const ROLLUP_SPAN_IN_SECONDS = 10;
 
-const BASIC_DEVICE_SAMPLE_RATE = 4;
+const BASIC_DEVICE_SAMPLE_RATE = 4.0;
 
 const BASIC_DEVICE_THRESHOLD_MAX_FAILS = BASIC_DEVICE_SAMPLE_RATE;
 
@@ -32,7 +32,7 @@ const BASIC_DEVICE_THRESHOLD_MAX_FAILS = BASIC_DEVICE_SAMPLE_RATE;
 // D00001086_-_ANT+_Device_Profile_-_Bicycle_Power_-_Rev4.2.pdf
 // Page 19
 
-const ADVANCED_DEVICE_SAMPLE_RATE = 8;
+const ADVANCED_DEVICE_SAMPLE_RATE = 8.0;
 
 import {
   Event,
@@ -105,8 +105,8 @@ export default function mapAntRxFails(lines, device, timeAxisTimeSeries) {
   // assumption 2 - advanced devices, like powermeters are sampled 8 times a second
 
   let sampleRate = BASIC_DEVICE_SAMPLE_RATE;
-  let lowSignalThreshold = BASIC_DEVICE_SAMPLE_RATE;
-  let highSignalThreshold = BASIC_DEVICE_SAMPLE_RATE;
+  let lowSignalThreshold = BASIC_DEVICE_SAMPLE_RATE * 0.025;
+  let highSignalThreshold = BASIC_DEVICE_SAMPLE_RATE * 0.95; /* removes the 4s and 5s - overspills */
 
   // this could be unreliable, it says - it is a basic device if the max rxfail per second is less than
   // or equal to the basic sample rate (assumed to be 4hz).
@@ -115,8 +115,8 @@ export default function mapAntRxFails(lines, device, timeAxisTimeSeries) {
 
   if (!isBasic) {
     sampleRate = ADVANCED_DEVICE_SAMPLE_RATE;
-    lowSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.2;
-    highSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.8;
+    lowSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.15;
+    highSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.95; /* removes the 8s - the real zeros (8-0) - due to no RxFails at all because of completely lost device */
   }
 
   // make each 10 second avg value equal to the full, assumed sample rate (based on avg # of fails) minus the avg of RxFails in that 10 seconds
@@ -129,6 +129,9 @@ export default function mapAntRxFails(lines, device, timeAxisTimeSeries) {
   // e.g. 40 - 30 =  10 successful message received ---> weak signal, possibly an indication of drop outs
   // e.g. 40 - 40 =  0 successful message received ----> a drop out - problem is - when a device is completely lost, there are no rxfails at all, so it appears to be a strong signal
 
+  // the logging of the sampling is not exact seconds, there could be some overspil into the next second, so the 10s averages smooth things out
+
+  // this would be an interesting stat in the charts
   // const ninetiethPercentile = rollup.percentile(90);
   // console.log('ninetiethPercentile');
   // console.log(ninetiethPercentile);
@@ -141,8 +144,8 @@ export default function mapAntRxFails(lines, device, timeAxisTimeSeries) {
 
   const filteredRollup = rollup.map(e =>
     e.setData({
-      value: sampleRate - e.get('value') < lowSignalThreshold ||
-        sampleRate - e.get('value') > highSignalThreshold
+      value: sampleRate - e.get('value') >= highSignalThreshold ||
+        sampleRate - e.get('value') < lowSignalThreshold
         ? 0
         : sampleRate - e.get('value')
     }));
