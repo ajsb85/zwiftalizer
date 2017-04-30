@@ -57,26 +57,8 @@ export default function antData(log, timeAxisTimeSeries) {
   // gets the timestamps of goto searches
   for (let event of searches.collection().events()) {
     const e = JSON.parse(event);
-
-    if (e.data && e.data.value > 0) {
-      
-      // const entryTimestamp = indexToUnixTime(e.index);
-
-      // if (entryTimestamp) {
-      //   const paddingBeforeEntry = entryTimestamp - reconnectSpread;
-      //   if (!_.contains(searchesTimestamps, paddingBeforeEntry)) {
-      //     searchesTimestamps.push(paddingBeforeEntry);
-      //   }
-      // }
-
+    if (e.data && e.data.value > 0) {           
       searchesTimestamps.push(indexToUnixTime(e.index));
-      
-      // if (entryTimestamp) {
-      //   const paddingAfterEntry = entryTimestamp + reconnectSpread;
-      //   if (!_.contains(searchesTimestamps, paddingAfterEntry)) {
-      //     searchesTimestamps.push(paddingAfterEntry);
-      //   }
-      // }
     }
   }
 
@@ -86,8 +68,6 @@ export default function antData(log, timeAxisTimeSeries) {
       return `10s-${Math.round(t / SECONDS_TO_ROUND_RECONNECT_TIME) * SECONDS_TO_ROUND_RECONNECT_TIME}`;
     })
   );
-
-  console.log(searchesTimestampsRounded);
 
   const power = mapPowermeterData(antLines, timeAxisTimeSeries);
 
