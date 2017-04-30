@@ -6,7 +6,8 @@ import {
   BASIC_DEVICE,
   POWER_METER_DEVICE,
   SMART_TRAINER_DEVICE,
-  SARIS_MANUFACTURER_ID
+  SARIS_MANUFACTURER_ID,
+  SECONDS_TO_ROUND_RECONNECT_TIME
 } from './constants';
 
 import titleCase from './titleCase';
@@ -51,39 +52,42 @@ export default function antData(log, timeAxisTimeSeries) {
 
   const searchesTimestamps = [];
 
-  const reconnectSpread = 10000; /*milliseconds before and after a goto search to zero out if the signal value is the sample rate */
+  const reconnectSpread = SECONDS_TO_ROUND_RECONNECT_TIME * 1000; /*buffer before and after a goto search to zero out if the signal value is the sample rate */
 
   // gets the timestamps of goto searches
-
   for (let event of searches.collection().events()) {
     const e = JSON.parse(event);
 
     if (e.data && e.data.value > 0) {
-      // insert value at the previous 10 second
-      const entryTimestamp = indexToUnixTime(e.index);
+      
+      // const entryTimestamp = indexToUnixTime(e.index);
 
-      if (entryTimestamp) {
-        const paddingBeforeEntry = entryTimestamp - reconnectSpread;
-        if (!_.contains(searchesTimestamps, paddingBeforeEntry)) {
-          searchesTimestamps.push(paddingBeforeEntry);
-        }
-      }
+      // if (entryTimestamp) {
+      //   const paddingBeforeEntry = entryTimestamp - reconnectSpread;
+      //   if (!_.contains(searchesTimestamps, paddingBeforeEntry)) {
+      //     searchesTimestamps.push(paddingBeforeEntry);
+      //   }
+      // }
 
       searchesTimestamps.push(indexToUnixTime(e.index));
-
-      if (entryTimestamp) {
-        const paddingAfterEntry = entryTimestamp + reconnectSpread;
-        if (!_.contains(searchesTimestamps, paddingAfterEntry)) {
-          searchesTimestamps.push(paddingAfterEntry);
-        }
-      }
+      
+      // if (entryTimestamp) {
+      //   const paddingAfterEntry = entryTimestamp + reconnectSpread;
+      //   if (!_.contains(searchesTimestamps, paddingAfterEntry)) {
+      //     searchesTimestamps.push(paddingAfterEntry);
+      //   }
+      // }
     }
   }
 
-  // rounding to nearest second
-  const searchesTimestampsRounded = searchesTimestamps.map(t => {
-    return `10s-${Math.round(t / 60) * 60}`;
-  });
+  // rounding to nearest SECONDS_TO_ROUND_RECONNECT_TIME
+  const searchesTimestampsRounded = _.uniq(
+    searchesTimestamps.map(t => {
+      return `10s-${Math.round(t / SECONDS_TO_ROUND_RECONNECT_TIME) * SECONDS_TO_ROUND_RECONNECT_TIME}`;
+    })
+  );
+
+  console.log(searchesTimestampsRounded);
 
   const power = mapPowermeterData(antLines, timeAxisTimeSeries);
 
@@ -219,6 +223,7 @@ export default function antData(log, timeAxisTimeSeries) {
   return Object.freeze({
     devices,
     searches,
-    showUnknownPowermeterModelModal
+    showUnknownPowermeterModelModal,
+    searchesTimestampsRounded
   });
 }

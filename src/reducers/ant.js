@@ -9,7 +9,12 @@ function ant(
     devices: [],
     searches: null,
     /* don't show the modal that prompts for power meter model name by default */
-    showUnknownPowermeterModelModal: false
+    showUnknownPowermeterModelModal: false,
+    /* we can use the length of this array to report how much time was spent */
+    /* searching for devices compared to the duration of the activity */
+    /* total duration is length * 10 in seconds)
+    /* lenght of array is how many times devices had to be paired */
+    searchesTimestampsRounded: []
   },
   action
 ) {

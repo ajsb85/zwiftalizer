@@ -5,6 +5,8 @@ export const BASIC_DEVICE = 0;
 export const POWER_METER_DEVICE = 1;
 export const SMART_TRAINER_DEVICE = 2;
 
+export const SECONDS_TO_ROUND_RECONNECT_TIME = 10;
+
 // known smart trainer manufacturers
 export const WAHOO_MANUFACTURER_ID = '32';
 export const TACX_MANUFACTURER_ID = '89';

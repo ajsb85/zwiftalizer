@@ -7,6 +7,8 @@ var moment = require('moment');
 
 import { nonZeroAvgReducer } from './functions';
 
+import {SECONDS_TO_ROUND_RECONNECT_TIME} from './constants';
+
 // Speed/Cadence sensor can transmit at these rates
 //
 // 1. 8102 counts (~4.04Hz, 4 messages/second)
@@ -126,7 +128,7 @@ export default function mapAntRxFails(
   // assumption 2 - advanced devices, like powermeters are sampled 8 times a second
 
   let sampleRate = BASIC_DEVICE_SAMPLE_RATE;
-  let lowSignalThreshold = BASIC_DEVICE_SAMPLE_RATE * 0.125;
+  let highSignalThreshold = BASIC_DEVICE_SAMPLE_RATE;
 
   // this could be unreliable, it says - it is a basic device if the max rxfail per second is less than
   // or equal to the basic sample rate (assumed to be 4hz).
@@ -135,7 +137,7 @@ export default function mapAntRxFails(
 
   if (!isBasic) {
     sampleRate = ADVANCED_DEVICE_SAMPLE_RATE;
-    lowSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.125;
+    highSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.9;
   }
 
   // make each 10 second avg value equal to the full, assumed sample rate (based on avg # of fails) minus the avg of RxFails in that 10 seconds
@@ -164,42 +166,31 @@ export default function mapAntRxFails(
   const filteredRollup = rollup.map(e => {
     const event = JSON.parse(e);
 
-    // console.log('e.index');
-    // console.log(event.index);
-
     // if the 10 second bucket aligns with a
-    // goto search entry, and no RxFails at all were seen, and this
-    // bucket is likely NOT a perfect sample, but no valid sample at all
-    // set it to 0 signals
+    // `goto search` entry, and no RxFails at all were seen, then this
+    // bucket is likely NOT a perfect sample, but rather - no valid sample at all
+    // set it to 0 signal
 
     const timestamp = indexToUnixTime(event.index);
 
-    const roundedTimeStamp = `10s-${Math.round(timestamp / 60) * 60}`;
-
-    // if (event.data.value > 6) {
-    //   console.log(JSON.stringify(event), ' is unlikely a perfect signal');
-    //   console.log(roundedTimeStamp);
-    // }
+    const roundedTimeStamp = `10s-${Math.round(timestamp / SECONDS_TO_ROUND_RECONNECT_TIME) * SECONDS_TO_ROUND_RECONNECT_TIME}`;
 
     if (
       searchesTimestamps &&
       searchesTimestamps.length &&
-      searchesTimestamps.includes(roundedTimeStamp) &&
-      event.data.value === 0
+      searchesTimestamps.includes(roundedTimeStamp)
+      && event.data.value < 1 /* low 10 second average rx fails, not because the device is good, but becuase it's gone!*/
     ) {
-      // console.log(JSON.stringify(event), ' is likely a drop out');
-      // e set data returns a new event
+      // console.log(JSON.stringify(event), ' is likely the cause of the re-pairing / goto search');
       return e.setData(0);
-    } else {
+    } else {      
+      // set to 0 any signal that is not in range of a searchesTimestamps
+      // but is sort of perfect, which is highly unlikely
       return e.setData({
-        value: sampleRate - e.get('value')
+        value: sampleRate - e.get('value') > highSignalThreshold
+          ? 0
+          : sampleRate - e.get('value')
       });     
-
-      // return e.setData({
-      //   value: sampleRate - e.get('value') < lowSignalThreshold
-      //     ? 0
-      //     : sampleRate - e.get('value')
-      // });     
     }    
   });
 
