@@ -134,7 +134,7 @@ class App extends React.Component {
         <div className={styles.footer}>
          <div className="container">
             <div className="row">
-              <p>&copy; {year} Mike Hanney. <a href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md" target="_blank">License.</a> Follow <a href="https://twitter.com/zwiftalizer" target="_blank">@zwiftalizer</a> on Twitter for project news.</p>
+              <p>&copy; {year} Mike Hanney | <a href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md" target="_blank">License</a> | Follow <a href="https://twitter.com/zwiftalizer" target="_blank">@zwiftalizer</a> on Twitter for project news.</p>
             </div>   
           </div>
         </div>

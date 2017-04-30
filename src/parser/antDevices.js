@@ -43,8 +43,17 @@ export default function antDevices(lines) {
  const j = pairings.length;
 
   // stop when we have found at least MAX_DEVICES or looked at all pairings
-  for (let i = 0; (i < j) || result.length === MAX_DEVICES; i++) {
+  for (let i = 0; i <= MAX_DEVICES; i++) {
+
+    if (i > j) {
+      break;
+    }
+
     const d = pairings[i];
+
+    if (!d) {
+      continue;
+    }
 
     // not using the mfg or ant network id anymore
     const matches = d.match(

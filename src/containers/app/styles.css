@@ -15,8 +15,9 @@
     left: 0;
     z-index: 1030;    
     background: #F9852B;    
-    height: 3rem;
-    max-height: 3rem;
+    height: 3.5rem;
+    max-height: 3.5rem;
+    border-bottom: 2px solid #fff;
 }
 
 .stickySubHeader p,
@@ -27,9 +28,9 @@
     margin: 0;    
     font-weight: 400;
     font-size: 1.5rem;
-    line-height: 1.5rem;
+    line-height: 2rem;
     font-family: Montserrat, Arial, Helvetica, sans-serif;
-    color: #dcdcdc;
+    color: #eee;
     text-align: center;
     padding-top: 0.7rem;
 }
@@ -51,12 +52,10 @@
 .footer p a:hover {
     font-weight: 600;
     font-size: 1.5rem;
-    line-height: 1.5rem;
+    line-height: 2rem;
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
-    color: #666;
     text-align: center;    
 }
-
 
 .appBody {
   padding-top: 10rem;
@@ -107,8 +106,8 @@
   }
   .stickySubHeader {
     top: 24rem;
-    height: 6rem;
-    max-height: 6rem;
+    height: 6.5rem;
+    max-height: 6.5rem;
   }
 
   .stickySubHeader p {
@@ -121,7 +120,7 @@
   }
 
   .appBody {
-    padding-top: 34rem;
+    padding-top: 30rem;
   }
 }
 @media(min-width:768px) {}

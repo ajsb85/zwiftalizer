@@ -22,30 +22,43 @@
   justify-content: center;
   flex-direction: column;
 }
-.editorialBoxContent {
+.editorialBoxContent {  
   background: #f6f6f6;
   padding: 1rem 0.2rem 1rem 0.2rem;
   width: 100%;
   overflow: hidden;
   border-bottom-left-radius: 2.5rem;
 }
-.editorialBoxContent p {
-  font-weight: normal;
-  font-size: 1.6rem;
-  color: #666;
-  text-align: left;
-  margin: 0 0 3rem 0;
-  line-height: 2.6rem;
+.editorialBoxContentTransparent {
+  composes: editorialBoxContent;
+   background: transparent;
 }
 
-.editorialBoxContent li {
+.editorialBoxContent p {
     font-weight: normal;
     font-size: 1.4rem;
     color: #666;
     text-align: left;
-    margin: 0;
+    margin: 0 0 2rem 0;
     line-height: 2rem;
-    margin-left: 1rem;
+}
+
+.editorialBoxContent p.footnote {
+    font-weight: normal;
+    font-size: 1.2rem;
+    color: #666;
+    text-align: left;
+    margin: 0;
+    line-height: 1.8rem;
+}
+
+.editorialBoxContent li {
+    font-weight: normal;
+    font-size: 1.1rem;
+    color: #666;
+    text-align: left;
+    margin: 0;
+    line-height: 1.6rem;
 }
 
 .editorialBoxContent h3 {
@@ -55,6 +68,7 @@
   margin: 0 0 1rem 0;
   text-align: left;
   color: #777;
+      font-family: Montserrat, Arial, Helvetica, sans-ser
 }
 .editorialBoxContent h4 {
   font-weight: 600;

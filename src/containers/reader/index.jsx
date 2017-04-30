@@ -29,10 +29,10 @@ class Reader extends React.Component {
     this.closeDbUploadExplanationModal = this.closeDbUploadExplanationModal.bind(
       this
     );
-   
+
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.state = {
-      showDbUploadExplanationModal: false      
+      showDbUploadExplanationModal: false
     };
   }
 
@@ -58,7 +58,7 @@ class Reader extends React.Component {
           height: '7rem'
         }
       : {
-          height: '50rem'
+          height: '40rem'
         };
 
     const dropBoxInnerStyle = isLoaded
@@ -119,8 +119,9 @@ class Reader extends React.Component {
                       <label htmlFor="shareCheckbox" />
                     </div>
                   </div>
-                  <h2 className={styles.checkboxLabel}>                    
-                    Include my results in the database &nbsp;<a
+                  <h2 className={styles.checkboxLabel}>
+                    {' '}
+                    Include my stats in the database &nbsp;<a
                       href=""
                       onClick={this.openDbUploadExplanationModal}
                     >
@@ -167,161 +168,106 @@ class Reader extends React.Component {
         >
           <Modal.Header closeButton>
             <Modal.Title>
-              Data Collection and Privacy Policy
+              What happens when the box is checked?
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
 
-            <div className={editorial.boxesWrapOuter}>
-              <div className={structure.boxesWrapInner}>
-                <div className={structure.boxLast}>
-                  <div className={editorial.editorialBoxHeading}>
-                    What happens when the box is checked?
-                  </div>
-                  <div className={editorial.editorialBoxContent}>
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-xs-12">
+            <div className={editorial.editorialBoxContentTransparent}>
+              <div className="container-fluid">
+                <div className="row">
+                  <div className="col-xs-12">
+                    <h3>
+                      Check the box to upload your system specs to the database.
+                    </h3>
+                    <p />
+                    <h3>Why would I want to do that?</h3>
+                    <p>
+                      Uploads contribute to the reports that help the community make informed purchasing decisions.
+                    </p>
 
-                          <p>
-                            Check the box if you want to upload the
+                    <h3>Is my log sent to a server?</h3>
+                    <p>
+                      No. I don't need them and I don't want the responsibility of securing personally identifiable information. All processing is done by JavaScript running in your web browser. The results are sent to a database over secure HTTPS.
+                    </p>
 
-                            <strong>results</strong>
+                    <h3>Is the data anonymous?</h3>
+                    <p>
+                      Yes. Personally Identifiable Information is NOT used or stored in the database. Your IP address is used to do an approximate location lookup for grouping the power sources report by country.   Your Zwift userid is NEVER read. The email address you use with Zwift is NEVER read. The Zwiftalizer will NEVER ask for your Zwift username or password.
+                    </p>
+                    <p>
+                      The following data is uploaded:
+                    </p>
 
-                            of reading your log file to the database.
-                          </p>
-
-                          <p>
-                            <strong>Why would I do that?</strong> <br />
-                            Uploads
-
-                            <strong>create reports</strong>
-
-                            to help the community make informed purchasing decisions.
-                          </p>
-
-                          <p>
-                            <strong>Do you keep my full log?</strong> <br />
-                            <strong>No. Never. Absolutely not.</strong>
-
-                            It isn't necessary and I don't want the responsibility of securing personally identifiable information (plausible deniability).
-                          </p>
-
-                          <p>
-                            <strong>Is the data anonymous?</strong> <br />
-                            <strong>Yes.</strong>
-
-                            Personally Identifiable Information (PII) is
-
-                            <strong>NOT</strong>
-
-                            used or stored in the database.
-                          </p>
-
-                          <ul>
-                            <li>
-                              Your Zwift userid is
-
-                              <strong>NEVER</strong>
-
-                              read or stored.
-                            </li>
-                            <li>
-                              The email address you use with Zwift is
-
-                              <strong>NEVER</strong>
-
-                              read or stored.
-                            </li>
-                            <li>
-                              Your IP address is used to do an approximate location lookup for grouping the power sources report by country.
-                            </li>
-                            <li>
-                              The Zwiftalizer will
-
-                              <strong>NEVER</strong>
-
-                              ask for your Zwift username or password.
-                            </li>
-                          </ul>
-
-                          <p>
-                            The following data is uploaded:
-                          </p>
-
-                          <div className="row">
-                            <div className="col-xs-12 col-sm-6">
-                              <ul>
-                                <li>Platform - PC, Mac or iOS</li>
-                                <li>CPU Vendor - Intel, AMD or ARM</li>
-                                <li>
-                                  CPU Details - e.g. Core i5 4690K @ 3.5GHz
-                                </li>
-                                <li>
-                                  GPU Vendor - e.g. Nvidia, AMD, Intel, ARM
-                                </li>
-                                <li>
-                                  GPU Details - e.g. GeForce GTX 970/PCIe/SSE2
-                                </li>
-                                <li>OpenGl Major Version - e.g. 3.1.0</li>
-                                <li>RAM - e.g. 8 GB</li>
-                                <li>
-                                  Graphics Resolution - 2160, 1080, 720 or 576
-                                </li>
-                                <li>
-                                  Shadow Resolution - 2048, 1024 or 512
-                                </li>
-                                <li>
-                                  Graphics Profile - Ultra, High, Medium or Basic
-                                </li>
-                                <li>Maximum FPS</li>
-                                <li>Average FPS</li>
-                                <li>Minimum FPS</li>
-                              </ul>
-                            </div>
-                            <div className="col-xs-12 col-sm-6">
-                              <ul>
-                                <li>FPS Standard Deviation</li>
-                                <li>Number of FPS samples</li>
-                                <li>If available: </li>
-                                <li>Smart Trainer ANT+ Manufacturer Id</li>
-                                <li>Smart Trainer ANT+ Manufacturer Name</li>
-                                <li>Smart Trainer ANT+ Model Id</li>
-                                <li>Smart Trainer ANT+ Model Name</li>
-                                <li>
-                                  Smart Trainer ANT+ device id <sup>*</sup>
-                                </li>
-                                <li>Powermeter ANT+ Manufacturer Id</li>
-                                <li>Powermeter ANT+ Manufacturer Name</li>
-                                <li>Powermeter ANT+ Model Id</li>
-                                <li>Powermeter ANT+ Model Name</li>
-                                <li>Powermeter ANT+ device id <sup>*</sup></li>
-                                <li>
-                                  Your IP Address - used only to report power source usage by country
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <p>
-                            * The ANT+ device id is a unique number given to your Smart Trainer or Powermeter by the device manufacturer. By storing this number in the database, your smart trainer and/or powermeter is counted only once in the power sources report regardless of how many times you use this tool.
-                          </p>
-
-                        </div>
+                    <div className="row">
+                      <div className="col-xs-12 col-sm-6">
+                        <ul>
+                          <li>Platform - PC, Mac or iOS</li>
+                          <li>CPU Vendor - Intel, AMD or ARM</li>
+                          <li>
+                            CPU Details - e.g. Core i5 4690K @ 3.5GHz
+                          </li>
+                          <li>
+                            GPU Vendor - e.g. Nvidia, AMD, Intel, ARM
+                          </li>
+                          <li>
+                            GPU Details - e.g. GeForce GTX 970/PCIe/SSE2
+                          </li>
+                          <li>OpenGl Major Version - e.g. 3.1.0</li>
+                          <li>RAM - e.g. 8 GB</li>
+                          <li>
+                            Graphics Resolution - 2160, 1080, 720 or 576
+                          </li>
+                          <li>
+                            Shadow Resolution - 2048, 1024 or 512
+                          </li>
+                          <li>
+                            Graphics Profile - Ultra, High, Medium or Basic
+                          </li>
+                          <li>Maximum FPS</li>
+                          <li>Average FPS</li>
+                          <li>Minimum FPS</li>
+                        </ul>
+                      </div>
+                      <div className="col-xs-12 col-sm-6">
+                        <ul>
+                          <li>FPS Standard Deviation</li>
+                          <li>Number of FPS samples</li>
+                          <li>If available: </li>
+                          <li>Smart Trainer ANT+ Manufacturer Id</li>
+                          <li>Smart Trainer ANT+ Manufacturer Name</li>
+                          <li>Smart Trainer ANT+ Model Id</li>
+                          <li>Smart Trainer ANT+ Model Name</li>
+                          <li>
+                            Smart Trainer ANT+ device id <sup>*</sup>
+                          </li>
+                          <li>Powermeter ANT+ Manufacturer Id</li>
+                          <li>Powermeter ANT+ Manufacturer Name</li>
+                          <li>Powermeter ANT+ Model Id</li>
+                          <li>Powermeter ANT+ Model Name</li>
+                          <li>Powermeter ANT+ device id <sup>*</sup></li>
+                          <li>IP Address</li>
+                        </ul>
                       </div>
                     </div>
+                    <p className={editorial.footnote}>
+                      * The ANT+ device id is a unique number given to your Smart Trainer or Power meter by the device manufacturer. By storing this number in the database, your smart trainer or powermeter is counted only once in the power sources report regardless of how many times you use this tool.
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
+
           </Modal.Body>
           <Modal.Footer>
             <Button
               bsStyle="primary"
-              onClick={this.closeDbUploadExplanationModal}>
+              onClick={this.closeDbUploadExplanationModal}
+            >
               Close
             </Button>
           </Modal.Footer>
-        </Modal>       
+        </Modal>
       </div>
     );
   }

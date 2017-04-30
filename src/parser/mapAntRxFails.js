@@ -46,8 +46,29 @@ import {
 
 const antRxFailFmt = '^\\[[^\\]]*\\]\\s+?ant\\s+?:\\s+?rx\\s+?fail\\s+?on\\s+?channel\\s+?%s$';
 
+function indexToUnixTime(index) {
+  if (!index) {
+    return undefined;
+  }
+
+  const tokens = index.split('-');
+
+  if (!tokens || !tokens.length || !tokens[1]) {
+    return undefined;
+  }
+
+  const t = parseInt(tokens[1]);
+
+  return t;
+}
+
 // lines is assumed to be ANT lines only, as an array, with times already in unix format using epochify
-export default function mapAntRxFails(lines, device, timeAxisTimeSeries) {
+export default function mapAntRxFails(
+  lines,
+  device,
+  timeAxisTimeSeries,
+  searchesTimestamps
+) {
   const result = {
     name: 'signal',
     columns: ['time', 'value'],
@@ -105,8 +126,7 @@ export default function mapAntRxFails(lines, device, timeAxisTimeSeries) {
   // assumption 2 - advanced devices, like powermeters are sampled 8 times a second
 
   let sampleRate = BASIC_DEVICE_SAMPLE_RATE;
-  let lowSignalThreshold = BASIC_DEVICE_SAMPLE_RATE * 0.025;
-  let highSignalThreshold = BASIC_DEVICE_SAMPLE_RATE * 0.95; /* removes the 4s and 5s - overspills */
+  let lowSignalThreshold = BASIC_DEVICE_SAMPLE_RATE * 0.125;
 
   // this could be unreliable, it says - it is a basic device if the max rxfail per second is less than
   // or equal to the basic sample rate (assumed to be 4hz).
@@ -115,8 +135,7 @@ export default function mapAntRxFails(lines, device, timeAxisTimeSeries) {
 
   if (!isBasic) {
     sampleRate = ADVANCED_DEVICE_SAMPLE_RATE;
-    lowSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.15;
-    highSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.95; /* removes the 8s - the real zeros (8-0) - due to no RxFails at all because of completely lost device */
+    lowSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.125;
   }
 
   // make each 10 second avg value equal to the full, assumed sample rate (based on avg # of fails) minus the avg of RxFails in that 10 seconds
@@ -142,13 +161,47 @@ export default function mapAntRxFails(lines, device, timeAxisTimeSeries) {
   // when there are absolutely no rxfails in 10 seconds -
   // usually means a device is completely lost and did not re-pair.
 
-  const filteredRollup = rollup.map(e =>
-    e.setData({
-      value: sampleRate - e.get('value') >= highSignalThreshold ||
-        sampleRate - e.get('value') < lowSignalThreshold
-        ? 0
-        : sampleRate - e.get('value')
-    }));
+  const filteredRollup = rollup.map(e => {
+    const event = JSON.parse(e);
+
+    // console.log('e.index');
+    // console.log(event.index);
+
+    // if the 10 second bucket aligns with a
+    // goto search entry, and no RxFails at all were seen, and this
+    // bucket is likely NOT a perfect sample, but no valid sample at all
+    // set it to 0 signals
+
+    const timestamp = indexToUnixTime(event.index);
+
+    const roundedTimeStamp = `10s-${Math.round(timestamp / 60) * 60}`;
+
+    // if (event.data.value > 6) {
+    //   console.log(JSON.stringify(event), ' is unlikely a perfect signal');
+    //   console.log(roundedTimeStamp);
+    // }
+
+    if (
+      searchesTimestamps &&
+      searchesTimestamps.length &&
+      searchesTimestamps.includes(roundedTimeStamp) &&
+      event.data.value === 0
+    ) {
+      // console.log(JSON.stringify(event), ' is likely a drop out');
+      // e set data returns a new event
+      return e.setData(0);
+    } else {
+      return e.setData({
+        value: sampleRate - e.get('value')
+      });     
+
+      // return e.setData({
+      //   value: sampleRate - e.get('value') < lowSignalThreshold
+      //     ? 0
+      //     : sampleRate - e.get('value')
+      // });     
+    }    
+  });
 
   return filteredRollup;
 }

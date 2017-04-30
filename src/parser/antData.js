@@ -24,6 +24,22 @@ import { TimeSeries } from 'pondjs';
 
 const BASIC_DEVICE_SAMPLE_RATE = 4;
 
+function indexToUnixTime(index) {
+  if (!index) {
+    return undefined;
+  }
+
+  const tokens = index.split('-');
+
+  if (!tokens || !tokens.length || !tokens[1]) {
+    return undefined;
+  }
+
+  const t = parseInt(tokens[1]);
+
+  return t;
+}
+
 export default function antData(log, timeAxisTimeSeries) {
   const antLines = mapAntLines(log);
 
@@ -32,6 +48,42 @@ export default function antData(log, timeAxisTimeSeries) {
   const manufacturerModelItems = antManufacturers(antLines);
 
   const searches = mapAntSearches(antLines, timeAxisTimeSeries);
+
+  const searchesTimestamps = [];
+
+  const reconnectSpread = 10000; /*milliseconds before and after a goto search to zero out if the signal value is the sample rate */
+
+  // gets the timestamps of goto searches
+
+  for (let event of searches.collection().events()) {
+    const e = JSON.parse(event);
+
+    if (e.data && e.data.value > 0) {
+      // insert value at the previous 10 second
+      const entryTimestamp = indexToUnixTime(e.index);
+
+      if (entryTimestamp) {
+        const paddingBeforeEntry = entryTimestamp - reconnectSpread;
+        if (!_.contains(searchesTimestamps, paddingBeforeEntry)) {
+          searchesTimestamps.push(paddingBeforeEntry);
+        }
+      }
+
+      searchesTimestamps.push(indexToUnixTime(e.index));
+
+      if (entryTimestamp) {
+        const paddingAfterEntry = entryTimestamp + reconnectSpread;
+        if (!_.contains(searchesTimestamps, paddingAfterEntry)) {
+          searchesTimestamps.push(paddingAfterEntry);
+        }
+      }
+    }
+  }
+
+  // rounding to nearest second
+  const searchesTimestampsRounded = searchesTimestamps.map(t => {
+    return `10s-${Math.round(t / 60) * 60}`;
+  });
 
   const power = mapPowermeterData(antLines, timeAxisTimeSeries);
 
@@ -50,25 +102,29 @@ export default function antData(log, timeAxisTimeSeries) {
 
     // always get rxfails for the channel because it can reveal
     // if a device is being sampled at a high rate (probably a power source)
-    const signal = mapAntRxFails(antLines, device, timeAxisTimeSeries);
+    const signal = mapAntRxFails(
+      antLines,
+      device,
+      timeAxisTimeSeries,
+      searchesTimestampsRounded
+    );
 
     // attempt to find powermeters that do not broadcast manufacturer and modelIds (pro+, sl+, PowerBeam, PowerSync, Phantom 5, Phantom 3)
     // rxfail pattern does not look like a basic device,
     // is not already detected as being made by a known PM manufacturer (could be saris, powertap)
     // and is not a SMART_TRAINER_DEVICE, or KICKR
 
-    
-
-    //@todo, check we are not attributing a kickr ANT+ powermeter to cycleops, shoudn't be as 
+    //@todo, check we are not attributing a kickr ANT+ powermeter to cycleops, shoudn't be as
     // device.manufacturerId should be set for Wahoo Kickr
-    
+
     if (
-      // if we have power data, and the device appears to be sampled at 
+      // if we have power data, and the device appears to be sampled at
       // a rate highe than the basic sample rate
-      // and the device has neither been identified as a 
-      // smart trainer or power meter, 
+      // and the device has neither been identified as a
+      // smart trainer or power meter,
       // and we have no manufacturerId then it's very likely to be a power tap
-      power.count() && signal.max() > BASIC_DEVICE_SAMPLE_RATE &&
+      power.count() &&
+      signal.max() > BASIC_DEVICE_SAMPLE_RATE &&
       device.type === BASIC_DEVICE &&
       device.manufacturerId === ''
     ) {
@@ -149,13 +205,17 @@ export default function antData(log, timeAxisTimeSeries) {
   // the name of the power meter model.
   let showUnknownPowermeterModelModal = false;
 
-  if (powerDevice && powerDevice.manufacturerId !== 0 && powerDevice.model === 'Unknown'){
+  if (
+    powerDevice &&
+    powerDevice.manufacturerId !== 0 &&
+    powerDevice.model === 'Unknown'
+  ) {
     showUnknownPowermeterModelModal = true;
   }
 
   // for testing the modal
   showUnknownPowermeterModelModal = true;
-  
+
   return Object.freeze({
     devices,
     searches,

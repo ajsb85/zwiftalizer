@@ -54,7 +54,7 @@ const baselineStyle = {
 
 const chartHeight = 85
 
-const largeChartHeight = 175
+const largeChartHeight = 200
 
 const leftLabelAxisLabelWidth = 110
 
