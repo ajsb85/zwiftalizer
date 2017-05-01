@@ -111,6 +111,8 @@ export default function antManufacturers(lines) {
 
     const manufacturerIdString = '' + m.manufacturerId;
 
+    var modelIdString = '' + m.modelId;
+
     // treat kickr as FEC smart trainer, until we know whether or not it is doing its own gradient protocol or FEC standard
     if (_.contains(SMART_TRAINER_MANUFACTURERS, manufacturerIdString)) {
       // set to SMART_TRAINER_DEVICE (smart trainer), but still could be a Saris power meter
@@ -129,7 +131,7 @@ export default function antManufacturers(lines) {
     }
 
     // try and differentiate between CycleOps and Powertap devices (both  have manufacturer 9)
-    if (m.manufacturerId === SARIS_MANUFACTURER_ID) {
+    if (manufacturerIdString === SARIS_MANUFACTURER_ID) {
       if (_.contains(POWERTAP_MODELS, modelIdString)) {
         type = POWER_METER_DEVICE;
       } else if (_.contains(CYCLEOPS_TRAINER_MODELS, modelIdString)) {
@@ -141,18 +143,17 @@ export default function antManufacturers(lines) {
       }
     }
 
-    if (m.manufacturerId === WATTTEAM_MANUFACTURER_ID) {
+    if (manufacturerIdString=== WATTTEAM_MANUFACTURER_ID) {
       // PowerBeat
       type = POWER_METER_DEVICE;
       m.modelId = 0;
     }
 
-    if (m.manufacturerId === WATTBIKE_MANUFACTURER_ID) {
-      // PowerBeat
+    if (manufacturerIdString === WATTBIKE_MANUFACTURER_ID) {
+      // wattbike
+      type = SMART_TRAINER_DEVICE;
       m.modelId = 0;
     }
-
-    var modelIdString = '' + m.modelId;
 
     // returns undefined if manufacturer not found
     const makeAndModel = AntplusDevices.find(

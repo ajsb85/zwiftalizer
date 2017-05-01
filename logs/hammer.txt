@@ -2123,8 +2123,6 @@
 
 [15:21:59] ANT  : FET grade set successfully
 
-[15:22:00] ANT  : dID 1119539 MFG 89 Model 2800
-
 [15:22:00] ANT  : Rx Fail on channel 1
 
 [15:22:00] NETCLIENT:Auxiliar Controller: TCP
@@ -2142,8 +2140,6 @@
 [15:22:00] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
 
 [15:22:00] ANT  : FET changing grade to 0.68
-
-[15:22:00] ANT  : dID 1119539 MFG 89 Model 2800
 
 [15:22:00] ANT  : Transfer Failed.
 
@@ -3317,13 +3313,11 @@
 
 [15:22:32] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
 
-[15:22:33] ANT  : dID 1119539 MFG 89 Model 2800
+[15:22:33] ANT  : dID 726323 MFG 9 Model 320
 
 [15:22:33] ANT  : Rx Fail on channel 1
 
 [15:22:33] ANT  : FET changing grade to 0.53
-
-[15:22:33] ANT  : dID 1119539 MFG 89 Model 2800
 
 [15:22:33] ANT  : Transfer Completed.
 
@@ -4377,7 +4371,7 @@
 
 [15:23:06] ANT  : Rx Fail on channel 1
 
-[15:23:06] ANT  : dID 1119539 MFG 89 Model 2800
+[15:23:06] ANT  : dID 726323 MFG 9 Model 320
 
 [15:23:06] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
 
@@ -4401,7 +4395,7 @@
 
 [15:23:06] ANT  : FET changing grade to 0.51
 
-[15:23:06] ANT  : dID 1119539 MFG 89 Model 2800
+[15:23:06] ANT  : dID 726323 MFG 9 Model 320
 
 [15:23:06] ANT  : Transfer Completed.
 
@@ -5371,15 +5365,13 @@
 
 [15:23:39] Creating new nameplate for "F.Ingraham"
 
-[15:23:39] ANT  : dID 1119539 MFG 89 Model 2800
+[15:23:39] ANT  : dID 726323 MFG 9 Model 320
 
 [15:23:39] ANT  : Transfer Completed.
 
 [15:23:39] ANT  : FET grade set successfully
 
 [15:23:39] ANT  : Rx Fail on channel 1
-
-[15:23:39] ANT  : dID 1119539 MFG 89 Model 2800
 
 [15:23:39] ANT  : FET changing grade to 0.51
 
@@ -6403,7 +6395,7 @@
 
 [15:24:12] ANT  : FET changing grade to 0.51
 
-[15:24:12] ANT  : dID 1119539 MFG 89 Model 2800
+[15:24:12] ANT  : dID 726323 MFG 9 Model 320
 
 [15:24:12] ANT  : Transfer Completed.
 
@@ -6414,8 +6406,6 @@
 [15:24:12] NETCLIENT:send player state sequence number: 801
 
 [15:24:12] ANT  : Rx Fail on channel 1
-
-[15:24:12] ANT  : dID 1119539 MFG 89 Model 2800
 
 [15:24:12] ANT  : Rx Fail on channel 1
 
@@ -7401,7 +7391,7 @@
 
 [15:24:45] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
 
-[15:24:45] ANT  : dID 1119539 MFG 89 Model 2800
+[15:24:45] ANT  : dID 726323 MFG 9 Model 320
 
 [15:24:45] ANT  : FET changing grade to 0.51
 
@@ -7409,7 +7399,7 @@
 
 [15:24:45] ANT  : Rx Fail on channel 1
 
-[15:24:45] ANT  : dID 1119539 MFG 89 Model 2800
+[15:24:45] ANT  : dID 726323 MFG 9 Model 320
 
 [15:24:45] ANT  : Transfer Completed.
 
@@ -9497,7 +9487,7 @@
 
 [15:25:50] ANT  : FET changing grade to 0.51
 
-[15:25:51] ANT  : dID 1119539 MFG 89 Model 2800
+[15:25:51] ANT  : dID 726323 MFG 9 Model 320
 
 [15:25:51] ANT  : Transfer Completed.
 
@@ -9510,8 +9500,6 @@
 [15:25:51] NETCLIENT:Auxiliary Controller: async_connect handler called
 
 [15:25:51] NETCLIENT:ERROR: Auxiliary Controller: Error connecting socket: The I/O operation has been aborted because of either a thread exit or an application request. 614462544
-
-[15:25:51] ANT  : dID 1119539 MFG 89 Model 2800
 
 [15:25:51] Creating new nameplate for "M.Clemens"
 
@@ -11575,7 +11563,7 @@
 
 [15:26:56] ANT  : Rx Fail on channel 1
 
-[15:26:57] ANT  : dID 1119539 MFG 89 Model 2800
+[15:26:57] ANT  : dID 726323 MFG 9 Model 320
 
 [15:26:57] ANT  : FET changing grade to 0.51
 
@@ -11583,7 +11571,7 @@
 
 [15:26:57] FPS  53, -9074, 14641, 12905
 
-[15:26:57] ANT  : dID 1119539 MFG 89 Model 2800
+[15:26:57] ANT  : dID 726323 MFG 9 Model 320
 
 [15:26:57] ANT  : Transfer Completed.
 
@@ -12775,7 +12763,7 @@
 
 [15:27:29] ANT  : Rx Fail on channel 1
 
-[15:27:30] ANT  : dID 1119539 MFG 89 Model 2800
+[15:27:30] ANT  : dID 726323 MFG 9 Model 320
 
 [15:27:30] ANT  : Rx Fail on channel 3
 
@@ -13843,7 +13831,7 @@
 
 [15:28:03] ANT  : Rx Fail on channel 1
 
-[15:28:03] ANT  : dID 1119539 MFG 89 Model 2800
+[15:28:03] ANT  : dID 726323 MFG 9 Model 320
 
 [15:28:03] ANT  : Transfer Completed.
 
@@ -13851,7 +13839,7 @@
 
 [15:28:03] ANT  : Rx Fail on channel 1
 
-[15:28:03] ANT  : dID 1119539 MFG 89 Model 2800
+[15:28:03] ANT  : dID 726323 MFG 9 Model 320
 
 [15:28:03] ANT  : Rx Fail on channel 1
 
@@ -14849,7 +14837,7 @@
 
 [15:28:35] ANT  : Rx Fail on channel 1
 
-[15:28:36] ANT  : dID 1119539 MFG 89 Model 2800
+[15:28:36] ANT  : dID 726323 MFG 9 Model 320
 
 [15:28:36] ANT  : Rx Fail on channel 1
 
@@ -15841,7 +15829,7 @@
 
 [15:29:09] Creating new nameplate for "w.fullen"
 
-[15:29:09] ANT  : dID 1119539 MFG 89 Model 2800
+[15:29:09] ANT  : dID 726323 MFG 9 Model 320
 
 [15:29:09] ANT  : Rx Fail on channel 1
 
@@ -16941,7 +16929,7 @@
 
 [15:29:42] ANT  : Rx Fail on channel 1
 
-[15:29:42] ANT  : dID 1119539 MFG 89 Model 2800
+[15:29:42] ANT  : dID 726323 MFG 9 Model 320
 
 [15:29:42] ANT  : Transfer Completed.
 
@@ -18019,7 +18007,7 @@
 
 [15:30:15] ANT  : Rx Fail on channel 1
 
-[15:30:15] ANT  : dID 1119539 MFG 89 Model 2800
+[15:30:15] ANT  : dID 726323 MFG 9 Model 320
 
 [15:30:15] ANT  : FET changing grade to 0.51
 
@@ -18965,7 +18953,7 @@
 
 [15:30:47] ANT  : Rx Fail on channel 1
 
-[15:30:48] ANT  : dID 1119539 MFG 89 Model 2800
+[15:30:48] ANT  : dID 726323 MFG 9 Model 320
 
 [15:30:48] ANT  : Transfer Completed.
 
@@ -18973,7 +18961,7 @@
 
 [15:30:48] ANT  : Rx Fail on channel 1
 
-[15:30:48] ANT  : dID 1119539 MFG 89 Model 2800
+[15:30:48] ANT  : dID 726323 MFG 9 Model 320
 
 [15:30:48] ANT  : FET changing grade to -0.72
 
@@ -20001,13 +19989,13 @@
 
 [15:31:20] ANT  : Rx Fail on channel 1
 
-[15:31:21] ANT  : dID 1119539 MFG 89 Model 2800
+[15:31:21] ANT  : dID 726323 MFG 9 Model 320
 
 [15:31:21] ANT  : Rx Fail on channel 1
 
 [15:31:21] ANT  : FET changing grade to 0.03
 
-[15:31:21] ANT  : dID 1119539 MFG 89 Model 2800
+[15:31:21] ANT  : dID 726323 MFG 9 Model 320
 
 [15:31:21] ANT  : Transfer Completed.
 
@@ -21081,7 +21069,7 @@
 
 [15:31:53] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
 
-[15:31:54] ANT  : dID 1119539 MFG 89 Model 2800
+[15:31:54] ANT  : dID 726323 MFG 9 Model 320
 
 [15:31:54] ANT  : FET changing grade to 0.06
 
@@ -21099,7 +21087,7 @@
 
 [15:31:54] NETCLIENT:Auxiliary Controller: running io_service
 
-[15:31:54] ANT  : dID 1119539 MFG 89 Model 2800
+[15:31:54] ANT  : dID 726323 MFG 9 Model 320
 
 [15:31:54] ANT  : Transfer Completed.
 
@@ -22111,7 +22099,7 @@
 
 [15:32:27] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
 
-[15:32:27] ANT  : dID 1119539 MFG 89 Model 2800
+[15:32:27] ANT  : dID 726323 MFG 9 Model 320
 
 [15:32:27] ANT  : Transfer Completed.
 
@@ -22127,7 +22115,7 @@
 
 [15:32:27] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
 
-[15:32:27] ANT  : dID 1119539 MFG 89 Model 2800
+[15:32:27] ANT  : dID 726323 MFG 9 Model 320
 
 [15:32:27] ANT  : FET changing grade to 0.30
 
@@ -23127,7 +23115,7 @@
 
 [15:33:00] ANT  : Rx Fail on channel 1
 
-[15:33:00] ANT  : dID 1119539 MFG 89 Model 2800
+[15:33:00] ANT  : dID 726323 MFG 9 Model 320
 
 [15:33:00] ANT  : Transfer Completed.
 
@@ -23135,7 +23123,7 @@
 
 [15:33:00] ANT  : Rx Fail on channel 1
 
-[15:33:00] ANT  : dID 1119539 MFG 89 Model 2800
+[15:33:00] ANT  : dID 726323 MFG 9 Model 320
 
 [15:33:00] ANT  : FET changing grade to 2.21
 
@@ -24079,7 +24067,7 @@
 
 [15:33:33] ANT  : Rx Fail on channel 1
 
-[15:33:33] ANT  : dID 1119539 MFG 89 Model 2800
+[15:33:33] ANT  : dID 726323 MFG 9 Model 320
 
 [15:33:33] ANT  : Rx Fail on channel 1
 
@@ -25005,7 +24993,7 @@
 
 [15:34:05] ANT  : Rx Fail on channel 1
 
-[15:34:06] ANT  : dID 1119539 MFG 89 Model 2800
+[15:34:06] ANT  : dID 726323 MFG 9 Model 320
 
 [15:34:06] ANT  : Transfer Completed.
 
@@ -25013,7 +25001,7 @@
 
 [15:34:06] ANT  : Rx Fail on channel 1
 
-[15:34:06] ANT  : dID 1119539 MFG 89 Model 2800
+[15:34:06] ANT  : dID 726323 MFG 9 Model 320
 
 [15:34:06] ANT  : FET changing grade to 0.23
 
@@ -25989,7 +25977,7 @@
 
 [15:34:39] ANT  : Rx Fail on channel 1
 
-[15:34:39] ANT  : dID 1119539 MFG 89 Model 2800
+[15:34:39] ANT  : dID 726323 MFG 9 Model 320
 
 [15:34:39] ANT  : Transfer Completed.
 
@@ -27051,7 +27039,7 @@
 
 [15:35:12] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
 
-[15:35:12] ANT  : dID 1119539 MFG 89 Model 2800
+[15:35:12] ANT  : dID 726323 MFG 9 Model 320
 
 [15:35:12] NETWORK:Delayed packet detected: Delay=476.01, Meters=155.0 networkID=52571, rider name=A
 
@@ -27061,7 +27049,7 @@
 
 [15:35:12] ANT  : FET changing grade to 0.10
 
-[15:35:12] ANT  : dID 1119539 MFG 89 Model 2800
+[15:35:12] ANT  : dID 726323 MFG 9 Model 320
 
 [15:35:12] ANT  : Transfer Completed.
 
@@ -28163,7 +28151,7 @@
 
 [15:35:44] NETWORK:Heard area message from 54068 (8)
 
-[15:35:45] ANT  : dID 1119539 MFG 89 Model 2800
+[15:35:45] ANT  : dID 726323 MFG 9 Model 320
 
 [15:35:45] ANT  : Transfer Completed.
 
@@ -28173,7 +28161,7 @@
 
 [15:35:45] ANT  : dID 726323 MFG 9 Model 320
 
-[15:35:45] ANT  : dID 1119539 MFG 89 Model 2800
+[15:35:45] ANT  : dID 726323 MFG 9 Model 320
 
 [15:35:45] ANT  : Rx Fail on channel 1
 
@@ -29301,7 +29289,7 @@
 
 [15:36:17] ANT  : Rx Fail on channel 2
 
-[15:36:18] ANT  : dID 1119539 MFG 89 Model 2800
+[15:36:18] ANT  : dID 726323 MFG 9 Model 320
 
 [15:36:18] ANT  : Transfer Completed.
 
@@ -30411,7 +30399,7 @@
 
 [15:36:51] ANT  : Rx Fail on channel 1
 
-[15:36:51] ANT  : dID 1119539 MFG 89 Model 2800
+[15:36:51] ANT  : dID 726323 MFG 9 Model 320
 
 [15:36:51] ANT  : Transfer Completed.
 
@@ -30423,7 +30411,7 @@
 
 [15:36:51] ANT  : Rx Fail on channel 1
 
-[15:36:51] ANT  : dID 1119539 MFG 89 Model 2800
+[15:36:51] ANT  : dID 726323 MFG 9 Model 320
 
 [15:36:51] ANT  : Rx Fail on channel 3
 
@@ -31531,7 +31519,7 @@
 
 [15:37:23] FPS  40, 139274, 15541, -228309
 
-[15:37:24] ANT  : dID 1119539 MFG 89 Model 2800
+[15:37:24] ANT  : dID 726323 MFG 9 Model 320
 
 [15:37:24] ANT  : Rx Fail on channel 3
 
@@ -32775,7 +32763,7 @@
 
 [15:37:57] ANT  : Rx Fail on channel 1
 
-[15:37:57] ANT  : dID 1119539 MFG 89 Model 2800
+[15:37:57] ANT  : dID 726323 MFG 9 Model 320
 
 [15:37:57] ANT  : Transfer Completed.
 
@@ -33887,7 +33875,7 @@
 
 [15:38:29] ANT  : Rx Fail on channel 1
 
-[15:38:30] ANT  : dID 1119539 MFG 89 Model 2800
+[15:38:30] ANT  : dID 726323 MFG 9 Model 320
 
 [15:38:30] ANT  : Transfer Completed.
 
@@ -33897,7 +33885,7 @@
 
 [15:38:30] ANT  : Rx Fail on channel 1
 
-[15:38:30] ANT  : dID 1119539 MFG 89 Model 2800
+[15:38:30] ANT  : dID 726323 MFG 9 Model 320
 
 [15:38:30] ANT  : FET changing grade to 0.04
 
@@ -34805,7 +34793,7 @@
 
 [15:39:03] NETWORK:Player 12505 joined the world
 
-[15:39:03] ANT  : dID 1119539 MFG 89 Model 2800
+[15:39:03] ANT  : dID 726323 MFG 9 Model 320
 
 [15:39:03] ANT  : Transfer Completed.
 
@@ -34815,7 +34803,7 @@
 
 [15:39:03] ANT  : FET changing grade to -0.23
 
-[15:39:03] ANT  : dID 1119539 MFG 89 Model 2800
+[15:39:03] ANT  : dID 726323 MFG 9 Model 320
 
 [15:39:03] ANT  : Transfer Completed.
 
@@ -35725,7 +35713,7 @@
 
 [15:39:35] ANT  : FET changing grade to -0.76
 
-[15:39:36] ANT  : dID 1119539 MFG 89 Model 2800
+[15:39:36] ANT  : dID 726323 MFG 9 Model 320
 
 [15:39:36] ANT  : Transfer Completed.
 
@@ -35733,7 +35721,7 @@
 
 [15:39:36] ANT  : Rx Fail on channel 1
 
-[15:39:36] ANT  : dID 1119539 MFG 89 Model 2800
+[15:39:36] ANT  : dID 726323 MFG 9 Model 320
 
 [15:39:36] ANT  : Rx Fail on channel 1
 
@@ -36611,13 +36599,13 @@
 
 [15:40:09] ANT  : Rx Fail on channel 1
 
-[15:40:09] ANT  : dID 1119539 MFG 89 Model 2800
+[15:40:09] ANT  : dID 726323 MFG 9 Model 320
 
 [15:40:09] ANT  : Rx Fail on channel 1
 
 [15:40:09] ANT  : FET changing grade to 0.19
 
-[15:40:09] ANT  : dID 1119539 MFG 89 Model 2800
+[15:40:09] ANT  : dID 726323 MFG 9 Model 320
 
 [15:40:09] ANT  : Transfer Completed.
 
@@ -38689,13 +38677,13 @@
 
 [15:41:14] ANT  : Rx Fail on channel 1
 
-[15:41:15] ANT  : dID 1119539 MFG 89 Model 2800
+[15:41:15] ANT  : dID 726323 MFG 9 Model 320
 
 [15:41:15] ANT  : FET changing grade to -0.29
 
 [15:41:15] ANT  : Rx Fail on channel 1
 
-[15:41:15] ANT  : dID 1119539 MFG 89 Model 2800
+[15:41:15] ANT  : dID 726323 MFG 9 Model 320
 
 [15:41:15] ANT  : Transfer Completed.
 
@@ -39747,7 +39735,7 @@
 
 [15:41:48] ANT  : dID 726323 SW Revision 768 SerialNum 5427
 
-[15:41:48] ANT  : dID 1119539 MFG 89 Model 2800
+[15:41:48] ANT  : dID 726323 MFG 9 Model 320
 
 [15:41:48] ANT  : Transfer Completed.
 
@@ -39755,7 +39743,7 @@
 
 [15:41:48] ANT  : Rx Fail on channel 1
 
-[15:41:48] ANT  : dID 1119539 MFG 89 Model 2800
+[15:41:48] ANT  : dID 726323 MFG 9 Model 320
 
 [15:41:48] ANT  : FET changing grade to -0.11
 
@@ -40797,13 +40785,13 @@
 
 [15:42:20] ANT  : Rx Fail on channel 1
 
-[15:42:21] ANT  : dID 1119539 MFG 89 Model 2800
+[15:42:21] ANT  : dID 726323 MFG 9 Model 320
 
 [15:42:21] ANT  : Rx Fail on channel 1
 
 [15:42:21] ANT  : FET changing grade to 0.30
 
-[15:42:21] ANT  : dID 1119539 MFG 89 Model 2800
+[15:42:21] ANT  : dID 726323 MFG 9 Model 320
 
 [15:42:21] ANT  : Transfer Failed.
 
@@ -41729,7 +41717,7 @@
 
 [15:42:54] ANT  : FET changing grade to 0.11
 
-[15:42:54] ANT  : dID 1119539 MFG 89 Model 2800
+[15:42:54] ANT  : dID 726323 MFG 9 Model 320
 
 [15:42:54] ANT  : Transfer Completed.
 
@@ -41739,7 +41727,7 @@
 
 [15:42:54] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
 
-[15:42:54] ANT  : dID 1119539 MFG 89 Model 2800
+[15:42:54] ANT  : dID 726323 MFG 9 Model 320
 
 [15:42:54] ANT  : Rx Fail on channel 1
 
@@ -42807,7 +42795,7 @@
 
 [15:43:27] ANT  : Rx Fail on channel 1
 
-[15:43:27] ANT  : dID 1119539 MFG 89 Model 2800
+[15:43:27] ANT  : dID 726323 MFG 9 Model 320
 
 [15:43:27] ANT  : Transfer Completed.
 
@@ -42829,7 +42817,7 @@
 
 [15:43:27] Creating new nameplate for "B.Volkman"
 
-[15:43:27] ANT  : dID 1119539 MFG 89 Model 2800
+[15:43:27] ANT  : dID 726323 MFG 9 Model 320
 
 [15:43:27] ANT  : FET changing grade to -2.02
 
@@ -43969,7 +43957,7 @@
 
 [15:43:59] ANT  : Rx Fail on channel 1
 
-[15:44:00] ANT  : dID 1119539 MFG 89 Model 2800
+[15:44:00] ANT  : dID 726323 MFG 9 Model 320
 
 [15:44:00] ANT  : Transfer Completed.
 
@@ -43977,7 +43965,7 @@
 
 [15:44:00] ANT  : Rx Fail on channel 1
 
-[15:44:00] ANT  : dID 1119539 MFG 89 Model 2800
+[15:44:00] ANT  : dID 726323 MFG 9 Model 320
 
 [15:44:00] FPS  35, -82682, 10797, 47409
 
@@ -45863,13 +45851,13 @@
 
 [15:45:05] ANT  : Rx Fail on channel 1
 
-[15:45:06] ANT  : dID 1119539 MFG 89 Model 2800
+[15:45:06] ANT  : dID 726323 MFG 9 Model 320
 
 [15:45:06] ANT  : Rx Fail on channel 1
 
 [15:45:06] ANT  : FET changing grade to -0.02
 
-[15:45:06] ANT  : dID 1119539 MFG 89 Model 2800
+[15:45:06] ANT  : dID 726323 MFG 9 Model 320
 
 [15:45:06] ANT  : Transfer Completed.
 
@@ -46791,7 +46779,7 @@
 
 [15:45:38] ANT  : Rx Fail on channel 1
 
-[15:45:39] ANT  : dID 1119539 MFG 89 Model 2800
+[15:45:39] ANT  : dID 726323 MFG 9 Model 320
 
 [15:45:39] ANT  : Rx Fail on channel 1
 
@@ -46799,7 +46787,7 @@
 
 [15:45:39] ANT  : Rx Fail on channel 1
 
-[15:45:39] ANT  : dID 1119539 MFG 89 Model 2800
+[15:45:39] ANT  : dID 726323 MFG 9 Model 320
 
 [15:45:39] ANT  : Transfer Completed.
 
@@ -47777,7 +47765,7 @@
 
 [15:46:12] ANT  : FET changing grade to -0.03
 
-[15:46:12] ANT  : dID 1119539 MFG 89 Model 2800
+[15:46:12] ANT  : dID 726323 MFG 9 Model 320
 
 [15:46:12] ANT  : Transfer Completed.
 
@@ -47785,7 +47773,7 @@
 
 [15:46:12] ANT  : Rx Fail on channel 1
 
-[15:46:12] ANT  : dID 1119539 MFG 89 Model 2800
+[15:46:12] ANT  : dID 726323 MFG 9 Model 320
 
 [15:46:12] ANT  : Rx Fail on channel 1
 
@@ -48681,7 +48669,7 @@
 
 [15:46:45] ANT  : Rx Fail on channel 1
 
-[15:46:45] ANT  : dID 1119539 MFG 89 Model 2800
+[15:46:45] ANT  : dID 726323 MFG 9 Model 320
 
 [15:46:45] ANT  : FET changing grade to -2.02
 
@@ -49621,7 +49609,7 @@
 
 [15:47:17] ANT  : Rx Fail on channel 1
 
-[15:47:18] ANT  : dID 1119539 MFG 89 Model 2800
+[15:47:18] ANT  : dID 726323 MFG 9 Model 320
 
 [15:47:18] ANT  : Transfer Completed.
 
@@ -49629,7 +49617,7 @@
 
 [15:47:18] ANT  : Rx Fail on channel 1
 
-[15:47:18] ANT  : dID 1119539 MFG 89 Model 2800
+[15:47:18] ANT  : dID 726323 MFG 9 Model 320
 
 [15:47:18] ANT  : Rx Fail on channel 3
 
@@ -50539,7 +50527,7 @@
 
 [15:47:50] ANT  : Rx Fail on channel 1
 
-[15:47:51] ANT  : dID 1119539 MFG 89 Model 2800
+[15:47:51] ANT  : dID 726323 MFG 9 Model 320
 
 [15:47:51] ANT  : Transfer Completed.
 
@@ -51503,7 +51491,7 @@
 
 [15:48:24] ANT  : dID 726323 MFG 9 Model 320
 
-[15:48:24] ANT  : dID 1119539 MFG 89 Model 2800
+[15:48:24] ANT  : dID 726323 MFG 9 Model 320
 
 [15:48:24] ANT  : Transfer Completed.
 
@@ -51513,7 +51501,7 @@
 
 [15:48:24] ANT  : dID 726323 MFG 9 Model 320
 
-[15:48:24] ANT  : dID 1119539 MFG 89 Model 2800
+[15:48:24] ANT  : dID 726323 MFG 9 Model 320
 
 [15:48:24] ANT  : Rx Fail on channel 1
 
@@ -52563,7 +52551,7 @@
 
 [15:48:57] NETWORK:Delayed packet detected: Delay=6.97, Meters=105.4 networkID=38133, rider name=G
 
-[15:48:57] ANT  : dID 1119539 MFG 89 Model 2800
+[15:48:57] ANT  : dID 726323 MFG 9 Model 320
 
 [15:48:57] NETWORK:Delayed packet detected: Delay=5.64, Meters=104.6 networkID=49396, rider name=F
 
@@ -52595,7 +52583,7 @@
 
 [15:48:57] ANT  : dID 726323 MFG 9 Model 320
 
-[15:48:57] ANT  : dID 1119539 MFG 89 Model 2800
+[15:48:57] ANT  : dID 726323 MFG 9 Model 320
 
 [15:48:57] ANT  : Transfer Completed.
 
@@ -53583,7 +53571,7 @@
 
 [15:49:30] NETCLIENT:Auxiliary Controller: running io_service
 
-[15:49:30] ANT  : dID 1119539 MFG 89 Model 2800
+[15:49:30] ANT  : dID 726323 MFG 9 Model 320
 
 [15:49:30] ANT  : Transfer Failed.
 
@@ -54563,7 +54551,7 @@
 
 [15:50:03] ANT  : Rx Fail on channel 1
 
-[15:50:03] ANT  : dID 1119539 MFG 89 Model 2800
+[15:50:03] ANT  : dID 726323 MFG 9 Model 320
 
 [15:50:03] ANT  : Transfer Completed.
 
@@ -55595,7 +55583,7 @@
 
 [15:50:36] ANT  : FET changing grade to -0.99
 
-[15:50:36] ANT  : dID 1119539 MFG 89 Model 2800
+[15:50:36] ANT  : dID 726323 MFG 9 Model 320
 
 [15:50:36] ANT  : Transfer Completed.
 
@@ -55605,7 +55593,7 @@
 
 [15:50:36] ANT  : Rx Fail on channel 1
 
-[15:50:36] ANT  : dID 1119539 MFG 89 Model 2800
+[15:50:36] ANT  : dID 726323 MFG 9 Model 320
 
 [15:50:36] ANT  : Rx Fail on channel 1
 
@@ -56567,7 +56555,7 @@
 
 [15:51:08] ANT  : Rx Fail on channel 1
 
-[15:51:09] ANT  : dID 1119539 MFG 89 Model 2800
+[15:51:09] ANT  : dID 726323 MFG 9 Model 320
 
 [15:51:09] ANT  : Transfer Completed.
 
@@ -57517,7 +57505,7 @@
 
 [15:51:41] ANT  : Rx Fail on channel 1
 
-[15:51:42] ANT  : dID 1119539 MFG 89 Model 2800
+[15:51:42] ANT  : dID 726323 MFG 9 Model 320
 
 [15:51:42] ANT  : Transfer Completed.
 
@@ -58387,7 +58375,7 @@
 
 [15:52:15] ANT  : Rx Fail on channel 1
 
-[15:52:15] ANT  : dID 1119539 MFG 89 Model 2800
+[15:52:15] ANT  : dID 726323 MFG 9 Model 320
 
 [15:52:15] ANT  : Transfer Completed.
 
@@ -58395,7 +58383,7 @@
 
 [15:52:15] ANT  : Rx Fail on channel 1
 
-[15:52:15] ANT  : dID 1119539 MFG 89 Model 2800
+[15:52:15] ANT  : dID 726323 MFG 9 Model 320
 
 [15:52:15] ANT  : Rx Fail on channel 3
 
@@ -59241,7 +59229,7 @@
 
 [15:52:48] ANT  : FET changing grade to -3.72
 
-[15:52:48] ANT  : dID 1119539 MFG 89 Model 2800
+[15:52:48] ANT  : dID 726323 MFG 9 Model 320
 
 [15:52:48] ANT  : Transfer Completed.
 
@@ -60191,7 +60179,7 @@
 
 [15:53:21] ANT  : Rx Fail on channel 1
 
-[15:53:21] ANT  : dID 1119539 MFG 89 Model 2800
+[15:53:21] ANT  : dID 726323 MFG 9 Model 320
 
 [15:53:21] ANT  : Transfer Completed.
 
@@ -60199,7 +60187,7 @@
 
 [15:53:21] ANT  : Rx Fail on channel 1
 
-[15:53:21] ANT  : dID 1119539 MFG 89 Model 2800
+[15:53:21] ANT  : dID 726323 MFG 9 Model 320
 
 [15:53:21] ANT  : FET changing grade to -0.80
 
@@ -61093,7 +61081,7 @@
 
 [15:53:54] ANT  : Rx Fail on channel 1
 
-[15:53:54] ANT  : dID 1119539 MFG 89 Model 2800
+[15:53:54] ANT  : dID 726323 MFG 9 Model 320
 
 [15:53:54] ANT  : Transfer Completed.
 
@@ -62071,7 +62059,7 @@
 
 [15:54:27] ANT  : FET changing grade to 4.08
 
-[15:54:27] ANT  : dID 1119539 MFG 89 Model 2800
+[15:54:27] ANT  : dID 726323 MFG 9 Model 320
 
 [15:54:27] ANT  : Transfer Completed.
 
@@ -62081,7 +62069,7 @@
 
 [15:54:27] ANT  : Rx Fail on channel 1
 
-[15:54:27] ANT  : dID 1119539 MFG 89 Model 2800
+[15:54:27] ANT  : dID 726323 MFG 9 Model 320
 
 [15:54:27] ANT  : Rx Fail on channel 1
 
@@ -64027,13 +64015,13 @@
 
 [15:55:32] ANT  : Rx Fail on channel 1
 
-[15:55:33] ANT  : dID 1119539 MFG 89 Model 2800
+[15:55:33] ANT  : dID 726323 MFG 9 Model 320
 
 [15:55:33] ANT  : FET changing grade to 3.95
 
 [15:55:33] ANT  : Rx Fail on channel 1
 
-[15:55:33] ANT  : dID 1119539 MFG 89 Model 2800
+[15:55:33] ANT  : dID 726323 MFG 9 Model 320
 
 [15:55:33] ANT  : Transfer Completed.
 
@@ -65047,7 +65035,7 @@
 
 [15:56:05] ANT  : Rx Fail on channel 1
 
-[15:56:06] ANT  : dID 1119539 MFG 89 Model 2800
+[15:56:06] ANT  : dID 726323 MFG 9 Model 320
 
 [15:56:06] ANT  : Rx Fail on channel 1
 
@@ -65055,7 +65043,7 @@
 
 [15:56:06] ANT  : Rx Fail on channel 1
 
-[15:56:06] ANT  : dID 1119539 MFG 89 Model 2800
+[15:56:06] ANT  : dID 726323 MFG 9 Model 320
 
 [15:56:06] ANT  : Transfer Completed.
 
@@ -66075,11 +66063,11 @@
 
 [15:56:38] ANT  : ----------------------
 
-[15:56:39] ANT  : dID 1119539 MFG 89 Model 2800
+[15:56:39] ANT  : dID 726323 MFG 9 Model 320
 
 [15:56:39] ANT  : FET changing grade to 0.63
 
-[15:56:39] ANT  : dID 1119539 MFG 89 Model 2800
+[15:56:39] ANT  : dID 726323 MFG 9 Model 320
 
 [15:56:39] ANT  : Transfer Completed.
 
@@ -67035,7 +67023,7 @@
 
 [15:57:12] ANT  : Rx Fail on channel 1
 
-[15:57:12] ANT  : dID 1119539 MFG 89 Model 2800
+[15:57:12] ANT  : dID 726323 MFG 9 Model 320
 
 [15:57:12] ANT  : FET changing grade to -0.91
 
@@ -68025,7 +68013,7 @@
 
 [15:57:45] ANT  : Rx Fail on channel 1
 
-[15:57:45] ANT  : dID 1119539 MFG 89 Model 2800
+[15:57:45] ANT  : dID 726323 MFG 9 Model 320
 
 [15:57:45] ANT  : Transfer Completed.
 
@@ -69061,7 +69049,7 @@
 
 [15:58:18] ANT  : Rx Fail on channel 3
 
-[15:58:18] ANT  : dID 1119539 MFG 89 Model 2800
+[15:58:18] ANT  : dID 726323 MFG 9 Model 320
 
 [15:58:18] ANT  : Transfer Completed.
 
@@ -70005,7 +69993,7 @@
 
 [15:58:51] ANT  : Rx Fail on channel 1
 
-[15:58:51] ANT  : dID 1119539 MFG 89 Model 2800
+[15:58:51] ANT  : dID 726323 MFG 9 Model 320
 
 [15:58:51] ANT  : Transfer Completed.
 
@@ -70951,7 +70939,7 @@
 
 [15:59:23] ANT  : Rx Fail on channel 1
 
-[15:59:24] ANT  : dID 1119539 MFG 89 Model 2800
+[15:59:24] ANT  : dID 726323 MFG 9 Model 320
 
 [15:59:24] ANT  : Transfer Completed.
 
@@ -70963,7 +70951,7 @@
 
 [15:59:24] Creating new nameplate for "D.Williger"
 
-[15:59:24] ANT  : dID 1119539 MFG 89 Model 2800
+[15:59:24] ANT  : dID 726323 MFG 9 Model 320
 
 [15:59:24] ANT  : Transfer Failed.
 
@@ -72757,7 +72745,7 @@
 
 [16:00:30] ANT  : Rx Fail on channel 1
 
-[16:00:30] ANT  : dID 1119539 MFG 89 Model 2800
+[16:00:30] ANT  : dID 726323 MFG 9 Model 320
 
 [16:00:30] ANT  : Transfer Completed.
 
@@ -72767,7 +72755,7 @@
 
 [16:00:30] ANT  : Rx Fail on channel 1
 
-[16:00:30] ANT  : dID 1119539 MFG 89 Model 2800
+[16:00:30] ANT  : dID 726323 MFG 9 Model 320
 
 [16:00:30] ANT  : FET changing grade to 0.60
 
@@ -73765,7 +73753,7 @@
 
 [16:01:03] ANT  : Rx Fail on channel 3
 
-[16:01:03] ANT  : dID 1119539 MFG 89 Model 2800
+[16:01:03] ANT  : dID 726323 MFG 9 Model 320
 
 [16:01:03] ANT  : Transfer Completed.
 
@@ -73777,7 +73765,7 @@
 
 [16:01:03] ANT  : Rx Fail on channel 1
 
-[16:01:03] ANT  : dID 1119539 MFG 89 Model 2800
+[16:01:03] ANT  : dID 726323 MFG 9 Model 320
 
 [16:01:03] ANT  : FET changing grade to 0.04
 
@@ -74861,7 +74849,7 @@
 
 [16:01:36] ANT  : FET changing grade to 0.10
 
-[16:01:36] ANT  : dID 1119539 MFG 89 Model 2800
+[16:01:36] ANT  : dID 726323 MFG 9 Model 320
 
 [16:01:36] NETWORK:Delayed packet detected: Delay=927.88, Meters=170.7 networkID=15682, rider name=S
 
@@ -74871,7 +74859,7 @@
 
 [16:01:36] ANT  : Rx Fail on channel 1
 
-[16:01:36] ANT  : dID 1119539 MFG 89 Model 2800
+[16:01:36] ANT  : dID 726323 MFG 9 Model 320
 
 [16:01:36] ANT  : Rx Fail on channel 1
 
@@ -75845,7 +75833,7 @@
 
 [16:02:08] ANT  : Rx Fail on channel 1
 
-[16:02:09] ANT  : dID 1119539 MFG 89 Model 2800
+[16:02:09] ANT  : dID 726323 MFG 9 Model 320
 
 [16:02:09] ANT  : Transfer Completed.
 
@@ -75855,7 +75843,7 @@
 
 [16:02:09] ANT  : FET changing grade to 0.14
 
-[16:02:09] ANT  : dID 1119539 MFG 89 Model 2800
+[16:02:09] ANT  : dID 726323 MFG 9 Model 320
 
 [16:02:09] ANT  : Transfer Completed.
 
@@ -76723,13 +76711,13 @@
 
 [16:02:41] ANT  : Rx Fail on channel 1
 
-[16:02:42] ANT  : dID 1119539 MFG 89 Model 2800
+[16:02:42] ANT  : dID 726323 MFG 9 Model 320
 
 [16:02:42] ANT  : FET changing grade to -0.23
 
 [16:02:42] ANT  : Rx Fail on channel 1
 
-[16:02:42] ANT  : dID 1119539 MFG 89 Model 2800
+[16:02:42] ANT  : dID 726323 MFG 9 Model 320
 
 [16:02:42] ANT  : Transfer Completed.
 
@@ -77749,13 +77737,13 @@
 
 [16:03:14] ANT  : Rx Fail on channel 1
 
-[16:03:15] ANT  : dID 1119539 MFG 89 Model 2800
+[16:03:15] ANT  : dID 726323 MFG 9 Model 320
 
 [16:03:15] ANT  : Rx Fail on channel 1
 
 [16:03:15] ANT  : FET changing grade to 0.08
 
-[16:03:15] ANT  : dID 1119539 MFG 89 Model 2800
+[16:03:15] ANT  : dID 726323 MFG 9 Model 320
 
 [16:03:15] ANT  : Rx Fail on channel 1
 
@@ -79767,7 +79755,7 @@
 
 [16:04:21] ANT  : Rx Fail on channel 1
 
-[16:04:21] ANT  : dID 1119539 MFG 89 Model 2800
+[16:04:21] ANT  : dID 726323 MFG 9 Model 320
 
 [16:04:21] ANT  : FET changing grade to -0.14
 
@@ -79775,7 +79763,7 @@
 
 [16:04:21] ANT  : Rx Fail on channel 3
 
-[16:04:21] ANT  : dID 1119539 MFG 89 Model 2800
+[16:04:21] ANT  : dID 726323 MFG 9 Model 320
 
 [16:04:21] ANT  : Transfer Completed.
 
@@ -80635,7 +80623,7 @@
 
 [16:04:53] ANT  : Rx Fail on channel 1
 
-[16:04:54] ANT  : dID 1119539 MFG 89 Model 2800
+[16:04:54] ANT  : dID 726323 MFG 9 Model 320
 
 [16:04:54] ANT  : Rx Fail on channel 1
 
@@ -81539,7 +81527,7 @@
 
 [16:05:27] ANT  : Rx Fail on channel 1
 
-[16:05:27] ANT  : dID 1119539 MFG 89 Model 2800
+[16:05:27] ANT  : dID 726323 MFG 9 Model 320
 
 [16:05:27] ANT  : Transfer Completed.
 
@@ -81547,7 +81535,7 @@
 
 [16:05:27] ANT  : Rx Fail on channel 1
 
-[16:05:27] ANT  : dID 1119539 MFG 89 Model 2800
+[16:05:27] ANT  : dID 726323 MFG 9 Model 320
 
 [16:05:27] ANT  : Rx Fail on channel 1
 
@@ -82493,7 +82481,7 @@
 
 [16:06:00] ANT  : Rx Fail on channel 3
 
-[16:06:00] ANT  : dID 1119539 MFG 89 Model 2800
+[16:06:00] ANT  : dID 726323 MFG 9 Model 320
 
 [16:06:00] ANT  : Transfer Completed.
 
@@ -82503,7 +82491,7 @@
 
 [16:06:00] ANT  : FET changing grade to -1.45
 
-[16:06:00] ANT  : dID 1119539 MFG 89 Model 2800
+[16:06:00] ANT  : dID 726323 MFG 9 Model 320
 
 [16:06:00] ANT  : Transfer Completed.
 
@@ -83507,13 +83495,13 @@
 
 [16:06:32] ANT  : Rx Fail on channel 1
 
-[16:06:33] ANT  : dID 1119539 MFG 89 Model 2800
+[16:06:33] ANT  : dID 726323 MFG 9 Model 320
 
 [16:06:33] ANT  : Rx Fail on channel 1
 
 [16:06:33] ANT  : FET changing grade to 0.06
 
-[16:06:33] ANT  : dID 1119539 MFG 89 Model 2800
+[16:06:33] ANT  : dID 726323 MFG 9 Model 320
 
 [16:06:33] ANT  : Transfer Completed.
 
@@ -84397,7 +84385,7 @@
 
 [16:07:06] ANT  : Rx Fail on channel 1
 
-[16:07:06] ANT  : dID 1119539 MFG 89 Model 2800
+[16:07:06] ANT  : dID 726323 MFG 9 Model 320
 
 [16:07:06] NETCLIENT:Auxiliar Controller: TCP
 
@@ -84415,7 +84403,7 @@
 
 [16:07:06] ANT  : FET changing grade to 0.45
 
-[16:07:06] ANT  : dID 1119539 MFG 89 Model 2800
+[16:07:06] ANT  : dID 726323 MFG 9 Model 320
 
 [16:07:06] ANT  : Transfer Completed.
 
@@ -85368,7 +85356,7 @@
 
 [16:07:39] ANT  : Rx Fail on channel 1
 
-[16:07:39] ANT  : dID 1119539 MFG 89 Model 2800
+[16:07:39] ANT  : dID 726323 MFG 9 Model 320
 
 [16:07:39] ANT  : Transfer Completed.
 
@@ -85380,7 +85368,7 @@
 
 [16:07:39] ANT  : Rx Fail on channel 1
 
-[16:07:39] ANT  : dID 1119539 MFG 89 Model 2800
+[16:07:39] ANT  : dID 726323 MFG 9 Model 320
 
 [16:07:39] ANT  : dID 726323 SW Revision 768 SerialNum 5427
 
@@ -86316,7 +86304,7 @@
 
 [16:08:12] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
 
-[16:08:12] ANT  : dID 1119539 MFG 89 Model 2800
+[16:08:12] ANT  : dID 726323 MFG 9 Model 320
 
 [16:08:12] ANT  : Rx Fail on channel 1
 
@@ -86324,7 +86312,7 @@
 
 [16:08:12] ANT  : FET changing grade to -0.73
 
-[16:08:12] ANT  : dID 1119539 MFG 89 Model 2800
+[16:08:12] ANT  : dID 726323 MFG 9 Model 320
 
 [16:08:12] ANT  : Rx Fail on channel 1
 
@@ -87338,7 +87326,7 @@
 
 [16:08:45] ANT  : FET changing grade to -2.91
 
-[16:08:45] ANT  : dID 1119539 MFG 89 Model 2800
+[16:08:45] ANT  : dID 726323 MFG 9 Model 320
 
 [16:08:45] ANT  : Transfer Completed.
 
@@ -87346,7 +87334,7 @@
 
 [16:08:45] ANT  : Rx Fail on channel 1
 
-[16:08:45] ANT  : dID 1119539 MFG 89 Model 2800
+[16:08:45] ANT  : dID 726323 MFG 9 Model 320
 
 [16:08:45] ANT  : Rx Fail on channel 1
 
@@ -88430,7 +88418,7 @@
 
 [16:09:17] NETWORK:Delayed packet detected: Delay=0.00, Meters=151.0 networkID=53072, rider name=
 
-[16:09:18] ANT  : dID 1119539 MFG 89 Model 2800
+[16:09:18] ANT  : dID 726323 MFG 9 Model 320
 
 [16:09:18] ANT  : Transfer Completed.
 
@@ -88438,7 +88426,7 @@
 
 [16:09:18] ANT  : Rx Fail on channel 1
 
-[16:09:18] ANT  : dID 1119539 MFG 89 Model 2800
+[16:09:18] ANT  : dID 726323 MFG 9 Model 320
 
 [16:09:18] ANT  : FET changing grade to -2.52
 
@@ -89350,7 +89338,7 @@
 
 [16:09:50] ANT  : Rx Fail on channel 1
 
-[16:09:51] ANT  : dID 1119539 MFG 89 Model 2800
+[16:09:51] ANT  : dID 726323 MFG 9 Model 320
 
 [16:09:51] ANT  : Transfer Completed.
 
@@ -89358,7 +89346,7 @@
 
 [16:09:51] ANT  : Rx Fail on channel 1
 
-[16:09:51] ANT  : dID 1119539 MFG 89 Model 2800
+[16:09:51] ANT  : dID 726323 MFG 9 Model 320
 
 [16:09:51] ANT  : Rx Fail on channel 1
 
@@ -90238,7 +90226,7 @@
 
 [16:10:24] ANT  : Rx Fail on channel 1
 
-[16:10:24] ANT  : dID 1119539 MFG 89 Model 2800
+[16:10:24] ANT  : dID 726323 MFG 9 Model 320
 
 [16:10:24] ANT  : Transfer Completed.
 
@@ -90248,7 +90236,7 @@
 
 [16:10:24] ANT  : Rx Fail on channel 1
 
-[16:10:24] ANT  : dID 1119539 MFG 89 Model 2800
+[16:10:24] ANT  : dID 726323 MFG 9 Model 320
 
 [16:10:24] ANT  : FET changing grade to -0.16
 
@@ -91168,13 +91156,13 @@
 
 [16:10:57] ANT  : Rx Fail on channel 1
 
-[16:10:57] ANT  : dID 1119539 MFG 89 Model 2800
+[16:10:57] ANT  : dID 726323 MFG 9 Model 320
 
 [16:10:57] ANT  : FET changing grade to 4.36
 
 [16:10:57] ANT  : Rx Fail on channel 1
 
-[16:10:57] ANT  : dID 1119539 MFG 89 Model 2800
+[16:10:57] ANT  : dID 726323 MFG 9 Model 320
 
 [16:10:57] ANT  : Transfer Completed.
 
@@ -92134,13 +92122,13 @@
 
 [16:11:29] ANT  : Rx Fail on channel 1
 
-[16:11:30] ANT  : dID 1119539 MFG 89 Model 2800
+[16:11:30] ANT  : dID 726323 MFG 9 Model 320
 
 [16:11:30] ANT  : FET changing grade to -0.07
 
 [16:11:30] ANT  : Rx Fail on channel 1
 
-[16:11:30] ANT  : dID 1119539 MFG 89 Model 2800
+[16:11:30] ANT  : dID 726323 MFG 9 Model 320
 
 [16:11:30] ANT  : Transfer Completed.
 
@@ -93100,7 +93088,7 @@
 
 [16:12:03] ANT  : Rx Fail on channel 1
 
-[16:12:03] ANT  : dID 1119539 MFG 89 Model 2800
+[16:12:03] ANT  : dID 726323 MFG 9 Model 320
 
 [16:12:03] ANT  : Rx Fail on channel 1
 
@@ -93110,7 +93098,7 @@
 
 [16:12:03] ANT  : Rx Fail on channel 3
 
-[16:12:03] ANT  : dID 1119539 MFG 89 Model 2800
+[16:12:03] ANT  : dID 726323 MFG 9 Model 320
 
 [16:12:03] ANT  : Transfer Completed.
 
@@ -94042,7 +94030,7 @@
 
 [16:12:35] ANT  : FET changing grade to -0.14
 
-[16:12:36] ANT  : dID 1119539 MFG 89 Model 2800
+[16:12:36] ANT  : dID 726323 MFG 9 Model 320
 
 [16:12:36] ANT  : Transfer Completed.
 
@@ -94050,7 +94038,7 @@
 
 [16:12:36] ANT  : Rx Fail on channel 1
 
-[16:12:36] ANT  : dID 1119539 MFG 89 Model 2800
+[16:12:36] ANT  : dID 726323 MFG 9 Model 320
 
 [16:12:36] ANT  : Rx Fail on channel 1
 
@@ -94946,13 +94934,13 @@
 
 [16:13:08] ANT  : Rx Fail on channel 1
 
-[16:13:09] ANT  : dID 1119539 MFG 89 Model 2800
+[16:13:09] ANT  : dID 726323 MFG 9 Model 320
 
 [16:13:09] ANT  : Rx Fail on channel 1
 
 [16:13:09] ANT  : Rx Fail on channel 3
 
-[16:13:09] ANT  : dID 1119539 MFG 89 Model 2800
+[16:13:09] ANT  : dID 726323 MFG 9 Model 320
 
 [16:13:09] ANT  : FET changing grade to -4.07
 
@@ -95826,7 +95814,7 @@
 
 [16:13:42] ANT  : Rx Fail on channel 1
 
-[16:13:42] ANT  : dID 1119539 MFG 89 Model 2800
+[16:13:42] ANT  : dID 726323 MFG 9 Model 320
 
 [16:13:42] ANT  : FET changing grade to 3.31
 
@@ -96834,7 +96822,7 @@
 
 [16:14:15] ANT  : Rx Fail on channel 1
 
-[16:14:15] ANT  : dID 1119539 MFG 89 Model 2800
+[16:14:15] ANT  : dID 726323 MFG 9 Model 320
 
 [16:14:15] FPS  26, -178229, 11747, 164510
 
@@ -96842,7 +96830,7 @@
 
 [16:14:15] ANT  : Rx Fail on channel 1
 
-[16:14:15] ANT  : dID 1119539 MFG 89 Model 2800
+[16:14:15] ANT  : dID 726323 MFG 9 Model 320
 
 [16:14:15] ANT  : Transfer Completed.
 
@@ -97790,7 +97778,7 @@
 
 [16:14:48] NETWORK:Delayed packet detected: Delay=18.39, Meters=91.6 networkID=7785, rider name=C
 
-[16:14:48] ANT  : dID 1119539 MFG 89 Model 2800
+[16:14:48] ANT  : dID 726323 MFG 9 Model 320
 
 [16:14:48] ANT  : Transfer Completed.
 
@@ -99798,7 +99786,7 @@
 
 [16:15:53] ANT  : Rx Fail on channel 1
 
-[16:15:54] ANT  : dID 1119539 MFG 89 Model 2800
+[16:15:54] ANT  : dID 726323 MFG 9 Model 320
 
 [16:15:54] ANT  : Rx Fail on channel 1
 
@@ -99818,7 +99806,7 @@
 
 [16:15:54] ANT  : Rx Fail on channel 3
 
-[16:15:54] ANT  : dID 1119539 MFG 89 Model 2800
+[16:15:54] ANT  : dID 726323 MFG 9 Model 320
 
 [16:15:54] ANT  : Transfer Completed.
 
@@ -100730,13 +100718,13 @@
 
 [16:16:27] FPS  31, -147927, 12040, 146824
 
-[16:16:27] ANT  : dID 1119539 MFG 89 Model 2800
+[16:16:27] ANT  : dID 726323 MFG 9 Model 320
 
 [16:16:27] ANT  : Rx Fail on channel 1
 
 [16:16:27] ANT  : FET changing grade to -3.51
 
-[16:16:27] ANT  : dID 1119539 MFG 89 Model 2800
+[16:16:27] ANT  : dID 726323 MFG 9 Model 320
 
 [16:16:27] ANT  : Transfer Completed.
 
@@ -101632,7 +101620,7 @@
 
 [16:16:59] FPS  32, -128024, 13227, 138026
 
-[16:17:00] ANT  : dID 1119539 MFG 89 Model 2800
+[16:17:00] ANT  : dID 726323 MFG 9 Model 320
 
 [16:17:00] ANT  : FET changing grade to 5.92
 
@@ -103436,7 +103424,7 @@
 
 [16:18:06] ANT  : FET changing grade to -1.44
 
-[16:18:06] ANT  : dID 1119539 MFG 89 Model 2800
+[16:18:06] ANT  : dID 726323 MFG 9 Model 320
 
 [16:18:06] ANT  : Transfer Completed.
 
@@ -103444,7 +103432,7 @@
 
 [16:18:06] ANT  : Rx Fail on channel 1
 
-[16:18:06] ANT  : dID 1119539 MFG 89 Model 2800
+[16:18:06] ANT  : dID 726323 MFG 9 Model 320
 
 [16:18:06] ANT  : Rx Fail on channel 1
 
@@ -104368,7 +104356,7 @@
 
 [16:18:39] ANT  : Rx Fail on channel 1
 
-[16:18:39] ANT  : dID 1119539 MFG 89 Model 2800
+[16:18:39] ANT  : dID 726323 MFG 9 Model 320
 
 [16:18:39] ANT  : Rx Fail on channel 1
 
@@ -105266,7 +105254,7 @@
 
 [16:19:11] ANT  : FET changing grade to 2.91
 
-[16:19:12] ANT  : dID 1119539 MFG 89 Model 2800
+[16:19:12] ANT  : dID 726323 MFG 9 Model 320
 
 [16:19:12] ANT  : Transfer Completed.
 
@@ -105274,7 +105262,7 @@
 
 [16:19:12] ANT  : Rx Fail on channel 1
 
-[16:19:12] ANT  : dID 1119539 MFG 89 Model 2800
+[16:19:12] ANT  : dID 726323 MFG 9 Model 320
 
 [16:19:12] ANT  : Rx Fail on channel 1
 
@@ -106194,7 +106182,7 @@
 
 [16:19:45] FPS  30, -69358, 11845, 41240
 
-[16:19:45] ANT  : dID 1119539 MFG 89 Model 2800
+[16:19:45] ANT  : dID 726323 MFG 9 Model 320
 
 [16:19:45] ANT  : Transfer Completed.
 
@@ -107156,7 +107144,7 @@
 
 [16:20:17] ANT  : FET changing grade to 3.69
 
-[16:20:18] ANT  : dID 1119539 MFG 89 Model 2800
+[16:20:18] ANT  : dID 726323 MFG 9 Model 320
 
 [16:20:18] ANT  : Transfer Completed.
 
@@ -107164,7 +107152,7 @@
 
 [16:20:18] ANT  : Rx Fail on channel 1
 
-[16:20:18] ANT  : dID 1119539 MFG 89 Model 2800
+[16:20:18] ANT  : dID 726323 MFG 9 Model 320
 
 [16:20:18] ANT  : Rx Fail on channel 1
 
@@ -108032,7 +108020,7 @@
 
 [16:20:51] NETWORK:Heard area message from 649 (RGR LEADERS EASE IT OFF)
 
-[16:20:51] ANT  : dID 1119539 MFG 89 Model 2800
+[16:20:51] ANT  : dID 726323 MFG 9 Model 320
 
 [16:20:51] ANT  : Transfer Completed.
 
@@ -108040,7 +108028,7 @@
 
 [16:20:51] ANT  : Rx Fail on channel 1
 
-[16:20:51] ANT  : dID 1119539 MFG 89 Model 2800
+[16:20:51] ANT  : dID 726323 MFG 9 Model 320
 
 [16:20:51] ANT  : FET changing grade to 2.70
 
@@ -109968,7 +109956,7 @@
 
 [16:21:57] ANT  : Rx Fail on channel 1
 
-[16:21:57] ANT  : dID 1119539 MFG 89 Model 2800
+[16:21:57] ANT  : dID 726323 MFG 9 Model 320
 
 [16:21:57] ANT  : FET changing grade to 0.49
 
@@ -110858,7 +110846,7 @@
 
 [16:22:29] ANT  : Rx Fail on channel 1
 
-[16:22:30] ANT  : dID 1119539 MFG 89 Model 2800
+[16:22:30] ANT  : dID 726323 MFG 9 Model 320
 
 [16:22:30] ANT  : Rx Fail on channel 1
 
@@ -111800,7 +111788,7 @@
 
 [16:23:03] ANT  : Rx Fail on channel 1
 
-[16:23:03] ANT  : dID 1119539 MFG 89 Model 2800
+[16:23:03] ANT  : dID 726323 MFG 9 Model 320
 
 [16:23:03] ANT  : FET changing grade to 0.03
 
@@ -111808,7 +111796,7 @@
 
 [16:23:03] ANT  : Rx Fail on channel 3
 
-[16:23:03] ANT  : dID 1119539 MFG 89 Model 2800
+[16:23:03] ANT  : dID 726323 MFG 9 Model 320
 
 [16:23:03] ANT  : Transfer Completed.
 
@@ -112722,7 +112710,7 @@
 
 [16:23:36] ANT  : Rx Fail on channel 3
 
-[16:23:36] ANT  : dID 1119539 MFG 89 Model 2800
+[16:23:36] ANT  : dID 726323 MFG 9 Model 320
 
 [16:23:36] ANT  : Transfer Completed.
 
@@ -112730,7 +112718,7 @@
 
 [16:23:36] ANT  : Rx Fail on channel 1
 
-[16:23:36] ANT  : dID 1119539 MFG 89 Model 2800
+[16:23:36] ANT  : dID 726323 MFG 9 Model 320
 
 [16:23:36] ANT  : Rx Fail on channel 1
 
@@ -113612,7 +113600,7 @@
 
 [16:24:09] ANT  : Rx Fail on channel 1
 
-[16:24:09] ANT  : dID 1119539 MFG 89 Model 2800
+[16:24:09] ANT  : dID 726323 MFG 9 Model 320
 
 [16:24:09] ANT  : Transfer Completed.
 
@@ -113624,7 +113612,7 @@
 
 [16:24:09] ANT  : Rx Fail on channel 1
 
-[16:24:09] ANT  : dID 1119539 MFG 89 Model 2800
+[16:24:09] ANT  : dID 726323 MFG 9 Model 320
 
 [16:24:09] ANT  : Transfer Completed.
 
@@ -114542,7 +114530,7 @@
 
 [16:24:42] ANT  : Rx Fail on channel 3
 
-[16:24:42] ANT  : dID 1119539 MFG 89 Model 2800
+[16:24:42] ANT  : dID 726323 MFG 9 Model 320
 
 [16:24:42] ANT  : Transfer Completed.
 
@@ -114564,7 +114552,7 @@
 
 [16:24:42] ANT  : Rx Fail on channel 1
 
-[16:24:42] ANT  : dID 1119539 MFG 89 Model 2800
+[16:24:42] ANT  : dID 726323 MFG 9 Model 320
 
 [16:24:42] ANT  : Rx Fail on channel 1
 
@@ -115488,7 +115476,7 @@
 
 [16:25:14] ANT  : Rx Fail on channel 1
 
-[16:25:15] ANT  : dID 1119539 MFG 89 Model 2800
+[16:25:15] ANT  : dID 726323 MFG 9 Model 320
 
 [16:25:15] ANT  : Transfer Completed.
 
@@ -115496,7 +115484,7 @@
 
 [16:25:15] ANT  : Rx Fail on channel 1
 
-[16:25:15] ANT  : dID 1119539 MFG 89 Model 2800
+[16:25:15] ANT  : dID 726323 MFG 9 Model 320
 
 [16:25:15] ANT  : FET changing grade to 1.24
 
@@ -116464,7 +116452,7 @@
 
 [16:25:48] NETWORK:Heard area message from 649 (RGR LEADERS AT STATUE)
 
-[16:25:48] ANT  : dID 1119539 MFG 89 Model 2800
+[16:25:48] ANT  : dID 726323 MFG 9 Model 320
 
 [16:25:48] ANT  : Transfer Completed.
 
@@ -116472,7 +116460,7 @@
 
 [16:25:48] ANT  : Rx Fail on channel 1
 
-[16:25:48] ANT  : dID 1119539 MFG 89 Model 2800
+[16:25:48] ANT  : dID 726323 MFG 9 Model 320
 
 [16:25:48] ANT  : Rx Fail on channel 1
 
@@ -117536,7 +117524,7 @@
 
 [16:26:21] ANT  : dID 726323 MFG 9 Model 320
 
-[16:26:21] ANT  : dID 1119539 MFG 89 Model 2800
+[16:26:21] ANT  : dID 726323 MFG 9 Model 320
 
 [16:26:21] ANT  : Transfer Completed.
 
@@ -118540,7 +118528,7 @@
 
 [16:26:53] ANT  : Rx Fail on channel 1
 
-[16:26:54] ANT  : dID 1119539 MFG 89 Model 2800
+[16:26:54] ANT  : dID 726323 MFG 9 Model 320
 
 [16:26:54] ANT  : Rx Fail on channel 1
 
@@ -119512,13 +119500,13 @@
 
 [16:27:27] ANT  : Rx Fail on channel 1
 
-[16:27:27] ANT  : dID 1119539 MFG 89 Model 2800
+[16:27:27] ANT  : dID 726323 MFG 9 Model 320
 
 [16:27:27] ANT  : FET changing grade to -0.00
 
 [16:27:27] ANT  : Rx Fail on channel 1
 
-[16:27:27] ANT  : dID 1119539 MFG 89 Model 2800
+[16:27:27] ANT  : dID 726323 MFG 9 Model 320
 
 [16:27:27] ANT  : Transfer Completed.
 
@@ -120394,7 +120382,7 @@
 
 [16:28:00] ANT  : Rx Fail on channel 3
 
-[16:28:00] ANT  : dID 1119539 MFG 89 Model 2800
+[16:28:00] ANT  : dID 726323 MFG 9 Model 320
 
 [16:28:00] FPS  30, 147520, 15587, -239300
 
@@ -120402,7 +120390,7 @@
 
 [16:28:00] ANT  : Rx Fail on channel 1
 
-[16:28:00] ANT  : dID 1119539 MFG 89 Model 2800
+[16:28:00] ANT  : dID 726323 MFG 9 Model 320
 
 [16:28:00] ANT  : Transfer Completed.
 
@@ -121364,7 +121352,7 @@
 
 [16:28:32] ANT  : Rx Fail on channel 1
 
-[16:28:33] ANT  : dID 1119539 MFG 89 Model 2800
+[16:28:33] ANT  : dID 726323 MFG 9 Model 320
 
 [16:28:33] ANT  : Transfer Completed.
 
@@ -122464,7 +122452,7 @@
 
 [16:29:06] NETWORK:Delayed packet detected: Delay=433.61, Meters=183.0 networkID=94261, rider name=S
 
-[16:29:06] ANT  : dID 1119539 MFG 89 Model 2800
+[16:29:06] ANT  : dID 726323 MFG 9 Model 320
 
 [16:29:06] FPS  31, 98688, 15485, -184345
 
@@ -122476,7 +122464,7 @@
 
 [16:29:06] ANT  : Rx Fail on channel 1
 
-[16:29:06] ANT  : dID 1119539 MFG 89 Model 2800
+[16:29:06] ANT  : dID 726323 MFG 9 Model 320
 
 [16:29:06] ANT  : Transfer Completed.
 
@@ -123402,7 +123390,7 @@
 
 [16:29:38] ANT  : Rx Fail on channel 1
 
-[16:29:39] ANT  : dID 1119539 MFG 89 Model 2800
+[16:29:39] ANT  : dID 726323 MFG 9 Model 320
 
 [16:29:39] ANT  : Transfer Completed.
 
@@ -123412,7 +123400,7 @@
 
 [16:29:39] ANT  : FET changing grade to -0.46
 
-[16:29:39] ANT  : dID 1119539 MFG 89 Model 2800
+[16:29:39] ANT  : dID 726323 MFG 9 Model 320
 
 [16:29:39] ANT  : Transfer Completed.
 
@@ -124296,13 +124284,13 @@
 
 [16:30:11] ANT  : Rx Fail on channel 1
 
-[16:30:12] ANT  : dID 1119539 MFG 89 Model 2800
+[16:30:12] ANT  : dID 726323 MFG 9 Model 320
 
 [16:30:12] ANT  : Rx Fail on channel 1
 
 [16:30:12] ANT  : FET changing grade to -0.19
 
-[16:30:12] ANT  : dID 1119539 MFG 89 Model 2800
+[16:30:12] ANT  : dID 726323 MFG 9 Model 320
 
 [16:30:12] ANT  : Transfer Failed.
 
@@ -125120,7 +125108,7 @@
 
 [16:30:45] ANT  : Rx Fail on channel 1
 
-[16:30:45] ANT  : dID 1119539 MFG 89 Model 2800
+[16:30:45] ANT  : dID 726323 MFG 9 Model 320
 
 [16:30:45] ANT  : Transfer Completed.
 
@@ -125132,7 +125120,7 @@
 
 [16:30:45] ANT  : Rx Fail on channel 1
 
-[16:30:45] ANT  : dID 1119539 MFG 89 Model 2800
+[16:30:45] ANT  : dID 726323 MFG 9 Model 320
 
 [16:30:45] ANT  : FET changing grade to 1.12
 
@@ -126058,13 +126046,13 @@
 
 [16:31:18] ANT  : Rx Fail on channel 3
 
-[16:31:18] ANT  : dID 1119539 MFG 89 Model 2800
+[16:31:18] ANT  : dID 726323 MFG 9 Model 320
 
 [16:31:18] ANT  : Rx Fail on channel 1
 
 [16:31:18] ANT  : FET changing grade to -1.53
 
-[16:31:18] ANT  : dID 1119539 MFG 89 Model 2800
+[16:31:18] ANT  : dID 726323 MFG 9 Model 320
 
 [16:31:18] ANT  : Transfer Completed.
 
@@ -127064,7 +127052,7 @@
 
 [16:31:51] ANT  : Rx Fail on channel 1
 
-[16:31:51] ANT  : dID 1119539 MFG 89 Model 2800
+[16:31:51] ANT  : dID 726323 MFG 9 Model 320
 
 [16:31:51] ANT  : Transfer Completed.
 
@@ -128018,7 +128006,7 @@
 
 [16:32:24] ANT  : dID 726323 SW Revision 768 SerialNum 5427
 
-[16:32:24] ANT  : dID 1119539 MFG 89 Model 2800
+[16:32:24] ANT  : dID 726323 MFG 9 Model 320
 
 [16:32:24] ANT  : Transfer Completed.
 
@@ -128026,7 +128014,7 @@
 
 [16:32:24] ANT  : Rx Fail on channel 1
 
-[16:32:24] ANT  : dID 1119539 MFG 89 Model 2800
+[16:32:24] ANT  : dID 726323 MFG 9 Model 320
 
 [16:32:24] ANT  : FET changing grade to -0.13
 
@@ -128996,7 +128984,7 @@
 
 [16:32:57] ANT  : Rx Fail on channel 1
 
-[16:32:57] ANT  : dID 1119539 MFG 89 Model 2800
+[16:32:57] ANT  : dID 726323 MFG 9 Model 320
 
 [16:32:57] ANT  : Transfer Completed.
 
@@ -129884,7 +129872,7 @@
 
 [16:33:29] ANT  : Rx Fail on channel 1
 
-[16:33:30] ANT  : dID 1119539 MFG 89 Model 2800
+[16:33:30] ANT  : dID 726323 MFG 9 Model 320
 
 [16:33:30] ANT  : Rx Fail on channel 1
 
@@ -129904,7 +129892,7 @@
 
 [16:33:30] Creating new nameplate for "D.Preischel"
 
-[16:33:30] ANT  : dID 1119539 MFG 89 Model 2800
+[16:33:30] ANT  : dID 726323 MFG 9 Model 320
 
 [16:33:30] ANT  : FET changing grade to 0.21
 
@@ -130852,7 +130840,7 @@
 
 [16:34:03] ANT  : Rx Fail on channel 1
 
-[16:34:03] ANT  : dID 1119539 MFG 89 Model 2800
+[16:34:03] ANT  : dID 726323 MFG 9 Model 320
 
 [16:34:03] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
 
@@ -130860,7 +130848,7 @@
 
 [16:34:03] ANT  : Rx Fail on channel 1
 
-[16:34:03] ANT  : dID 1119539 MFG 89 Model 2800
+[16:34:03] ANT  : dID 726323 MFG 9 Model 320
 
 [16:34:03] Creating new nameplate for "M.Cosman"
 
@@ -131758,7 +131746,7 @@
 
 [16:34:36] ANT  : Rx Fail on channel 1
 
-[16:34:36] ANT  : dID 1119539 MFG 89 Model 2800
+[16:34:36] ANT  : dID 726323 MFG 9 Model 320
 
 [16:34:36] ANT  : Transfer Completed.
 
@@ -131772,7 +131760,7 @@
 
 [16:34:36] NETCLIENT:server to client popped count: 219001
 
-[16:34:36] ANT  : dID 1119539 MFG 89 Model 2800
+[16:34:36] ANT  : dID 726323 MFG 9 Model 320
 
 [16:34:36] ANT  : FET changing grade to -2.50
 
@@ -132638,7 +132626,7 @@
 
 [16:35:09] ANT  : FET changing grade to -0.28
 
-[16:35:09] ANT  : dID 1119539 MFG 89 Model 2800
+[16:35:09] ANT  : dID 726323 MFG 9 Model 320
 
 [16:35:09] ANT  : Transfer Completed.
 
@@ -132646,7 +132634,7 @@
 
 [16:35:09] ANT  : Rx Fail on channel 1
 
-[16:35:09] ANT  : dID 1119539 MFG 89 Model 2800
+[16:35:09] ANT  : dID 726323 MFG 9 Model 320
 
 [16:35:09] ANT  : Rx Fail on channel 1
 
@@ -133528,7 +133516,7 @@
 
 [16:35:41] ANT  : Rx Fail on channel 1
 
-[16:35:42] ANT  : dID 1119539 MFG 89 Model 2800
+[16:35:42] ANT  : dID 726323 MFG 9 Model 320
 
 [16:35:42] ANT  : Rx Fail on channel 1
 
@@ -133536,7 +133524,7 @@
 
 [16:35:42] ANT  : Rx Fail on channel 1
 
-[16:35:42] ANT  : dID 1119539 MFG 89 Model 2800
+[16:35:42] ANT  : dID 726323 MFG 9 Model 320
 
 [16:35:42] ANT  : Transfer Completed.
 
@@ -134390,7 +134378,7 @@
 
 [16:36:14] ANT  : Rx Fail on channel 1
 
-[16:36:15] ANT  : dID 1119539 MFG 89 Model 2800
+[16:36:15] ANT  : dID 726323 MFG 9 Model 320
 
 [16:36:15] ANT  : Transfer Completed.
 
@@ -134402,7 +134390,7 @@
 
 [16:36:15] NETCLIENT:ERROR: Auxiliary Controller: Error connecting socket: The I/O operation has been aborted because of either a thread exit or an application request. 1037039136
 
-[16:36:15] ANT  : dID 1119539 MFG 89 Model 2800
+[16:36:15] ANT  : dID 726323 MFG 9 Model 320
 
 [16:36:15] ANT  : Rx Fail on channel 1
 
@@ -135324,7 +135312,7 @@
 
 [16:36:47] ANT  : FET changing grade to 0.03
 
-[16:36:48] ANT  : dID 1119539 MFG 89 Model 2800
+[16:36:48] ANT  : dID 726323 MFG 9 Model 320
 
 [16:36:48] ANT  : Transfer Completed.
 
@@ -135336,7 +135324,7 @@
 
 [16:36:48] Creating new nameplate for "..Barrie - Aged 77 Ride On!"
 
-[16:36:48] ANT  : dID 1119539 MFG 89 Model 2800
+[16:36:48] ANT  : dID 726323 MFG 9 Model 320
 
 [16:36:48] ANT  : Rx Fail on channel 1
 
@@ -136232,7 +136220,7 @@
 
 [16:37:21] ANT  : Rx Fail on channel 1
 
-[16:37:21] ANT  : dID 1119539 MFG 89 Model 2800
+[16:37:21] ANT  : dID 726323 MFG 9 Model 320
 
 [16:37:21] ANT  : Transfer Completed.
 
@@ -136242,7 +136230,7 @@
 
 [16:37:21] ANT  : Rx Fail on channel 1
 
-[16:37:21] ANT  : dID 1119539 MFG 89 Model 2800
+[16:37:21] ANT  : dID 726323 MFG 9 Model 320
 
 [16:37:21] ANT  : Transfer Completed.
 
@@ -137122,7 +137110,7 @@
 
 [16:37:54] ANT  : Rx Fail on channel 1
 
-[16:37:54] ANT  : dID 1119539 MFG 89 Model 2800
+[16:37:54] ANT  : dID 726323 MFG 9 Model 320
 
 [16:37:54] ANT  : Transfer Completed.
 
@@ -137986,13 +137974,13 @@
 
 [16:38:27] NETWORK:Player 80543 joined the world
 
-[16:38:27] ANT  : dID 1119539 MFG 89 Model 2800
+[16:38:27] ANT  : dID 726323 MFG 9 Model 320
 
 [16:38:27] ANT  : FET changing grade to 0.07
 
 [16:38:27] ANT  : Rx Fail on channel 1
 
-[16:38:27] ANT  : dID 1119539 MFG 89 Model 2800
+[16:38:27] ANT  : dID 726323 MFG 9 Model 320
 
 [16:38:27] ANT  : Transfer Completed.
 
@@ -139886,7 +139874,7 @@
 
 [16:39:33] FPS  30, -179474, 11671, 164803
 
-[16:39:33] ANT  : dID 1119539 MFG 89 Model 2800
+[16:39:33] ANT  : dID 726323 MFG 9 Model 320
 
 [16:39:33] ANT  : Transfer Completed.
 
@@ -139896,7 +139884,7 @@
 
 [16:39:33] NETWORK:Delayed packet detected: Delay=20.78, Meters=139.7 networkID=331, rider name=L
 
-[16:39:33] ANT  : dID 1119539 MFG 89 Model 2800
+[16:39:33] ANT  : dID 726323 MFG 9 Model 320
 
 [16:39:33] NETWORK:Delayed packet detected: Delay=129.42, Meters=142.2 networkID=66044, rider name=E
 
@@ -140840,7 +140828,7 @@
 
 [16:40:06] ANT  : FET changing grade to 4.61
 
-[16:40:06] ANT  : dID 1119539 MFG 89 Model 2800
+[16:40:06] ANT  : dID 726323 MFG 9 Model 320
 
 [16:40:06] ANT  : Transfer Completed.
 
@@ -140854,7 +140842,7 @@
 
 [16:40:06] ANT  : Rx Fail on channel 1
 
-[16:40:06] ANT  : dID 1119539 MFG 89 Model 2800
+[16:40:06] ANT  : dID 726323 MFG 9 Model 320
 
 [16:40:06] ANT  : Rx Fail on channel 1
 
@@ -141722,7 +141710,7 @@
 
 [16:40:39] ANT  : Rx Fail on channel 1
 
-[16:40:39] ANT  : dID 1119539 MFG 89 Model 2800
+[16:40:39] ANT  : dID 726323 MFG 9 Model 320
 
 [16:40:39] ANT  : Transfer Completed.
 
@@ -142700,7 +142688,7 @@
 
 [16:41:12] ANT  : Rx Fail on channel 1
 
-[16:41:12] ANT  : dID 1119539 MFG 89 Model 2800
+[16:41:12] ANT  : dID 726323 MFG 9 Model 320
 
 [16:41:12] ANT  : Transfer Completed.
 
@@ -142710,7 +142698,7 @@
 
 [16:41:12] ANT  : Rx Fail on channel 1
 
-[16:41:12] ANT  : dID 1119539 MFG 89 Model 2800
+[16:41:12] ANT  : dID 726323 MFG 9 Model 320
 
 [16:41:12] ANT  : Transfer Completed.
 
@@ -143616,13 +143604,13 @@
 
 [16:41:45] ANT  : Rx Fail on channel 1
 
-[16:41:45] ANT  : dID 1119539 MFG 89 Model 2800
+[16:41:45] ANT  : dID 726323 MFG 9 Model 320
 
 [16:41:45] ANT  : FET changing grade to -0.75
 
 [16:41:45] ANT  : Rx Fail on channel 1
 
-[16:41:45] ANT  : dID 1119539 MFG 89 Model 2800
+[16:41:45] ANT  : dID 726323 MFG 9 Model 320
 
 [16:41:45] ANT  : Transfer Completed.
 
@@ -144530,7 +144518,7 @@
 
 [16:42:18] ANT  : FET changing grade to -4.98
 
-[16:42:18] ANT  : dID 1119539 MFG 89 Model 2800
+[16:42:18] ANT  : dID 726323 MFG 9 Model 320
 
 [16:42:18] ANT  : Transfer Completed.
 
@@ -144556,7 +144544,7 @@
 
 [16:42:18] ANT  : FET changing grade to -5.39
 
-[16:42:18] ANT  : dID 1119539 MFG 89 Model 2800
+[16:42:18] ANT  : dID 726323 MFG 9 Model 320
 
 [16:42:18] ANT  : Transfer Completed.
 
@@ -145458,7 +145446,7 @@
 
 [16:42:51] ANT  : Transfer in progress
 
-[16:42:51] ANT  : dID 1119539 MFG 89 Model 2800
+[16:42:51] ANT  : dID 726323 MFG 9 Model 320
 
 [16:42:51] ANT  : Transfer Completed.
 
@@ -145466,7 +145454,7 @@
 
 [16:42:51] ANT  : Rx Fail on channel 1
 
-[16:42:51] ANT  : dID 1119539 MFG 89 Model 2800
+[16:42:51] ANT  : dID 726323 MFG 9 Model 320
 
 [16:42:51] ANT  : Rx Fail on channel 1
 
@@ -146408,7 +146396,7 @@
 
 [16:43:24] ANT  : Rx Fail on channel 1
 
-[16:43:24] ANT  : dID 1119539 MFG 89 Model 2800
+[16:43:24] ANT  : dID 726323 MFG 9 Model 320
 
 [16:43:24] ANT  : Transfer Completed.
 
@@ -147332,7 +147320,7 @@
 
 [16:43:57] NETWORK:Player 76899 joined the world
 
-[16:43:57] ANT  : dID 1119539 MFG 89 Model 2800
+[16:43:57] ANT  : dID 726323 MFG 9 Model 320
 
 [16:43:57] ANT  : Transfer Completed.
 
@@ -147342,7 +147330,7 @@
 
 [16:43:57] ANT  : Rx Fail on channel 1
 
-[16:43:57] ANT  : dID 1119539 MFG 89 Model 2800
+[16:43:57] ANT  : dID 726323 MFG 9 Model 320
 
 [16:43:57] ANT  : Rx Fail on channel 1
 
@@ -148206,7 +148194,7 @@
 
 [16:44:30] ANT  : Rx Fail on channel 1
 
-[16:44:30] ANT  : dID 1119539 MFG 89 Model 2800
+[16:44:30] ANT  : dID 726323 MFG 9 Model 320
 
 [16:44:30] ANT  : Transfer Completed.
 
@@ -149112,7 +149100,7 @@
 
 [16:45:02] ANT  : FET changing grade to 0.94
 
-[16:45:03] ANT  : dID 1119539 MFG 89 Model 2800
+[16:45:03] ANT  : dID 726323 MFG 9 Model 320
 
 [16:45:03] ANT  : Transfer Completed.
 
@@ -149126,7 +149114,7 @@
 
 [16:45:03] ANT  : Rx Fail on channel 1
 
-[16:45:03] ANT  : dID 1119539 MFG 89 Model 2800
+[16:45:03] ANT  : dID 726323 MFG 9 Model 320
 
 [16:45:03] ANT  : FET changing grade to 0.99
 
@@ -150010,7 +149998,7 @@
 
 [16:45:35] ANT  : Rx Fail on channel 1
 
-[16:45:36] ANT  : dID 1119539 MFG 89 Model 2800
+[16:45:36] ANT  : dID 726323 MFG 9 Model 320
 
 [16:45:36] ANT  : Transfer Completed.
 
@@ -150018,7 +150006,7 @@
 
 [16:45:36] ANT  : Rx Fail on channel 1
 
-[16:45:36] ANT  : dID 1119539 MFG 89 Model 2800
+[16:45:36] ANT  : dID 726323 MFG 9 Model 320
 
 [16:45:36] ANT  : FET changing grade to 2.90
 
@@ -150956,7 +150944,7 @@
 
 [16:46:09] ANT  : FET changing grade to 3.87
 
-[16:46:09] ANT  : dID 1119539 MFG 89 Model 2800
+[16:46:09] ANT  : dID 726323 MFG 9 Model 320
 
 [16:46:09] ANT  : Transfer Completed.
 
@@ -150966,7 +150954,7 @@
 
 [16:46:09] ANT  : Rx Fail on channel 1
 
-[16:46:09] ANT  : dID 1119539 MFG 89 Model 2800
+[16:46:09] ANT  : dID 726323 MFG 9 Model 320
 
 [16:46:09] ANT  : Rx Fail on channel 1
 
@@ -151916,7 +151904,7 @@
 
 [16:46:42] WARN : Invalid Road Time in GetCourseDistanceAtSplineTime. Road Time :  0.0000000
 
-[16:46:42] ANT  : dID 1119539 MFG 89 Model 2800
+[16:46:42] ANT  : dID 726323 MFG 9 Model 320
 
 [16:46:42] ANT  : Transfer Failed.
 
@@ -152854,7 +152842,7 @@
 
 [16:47:15] ANT  : FET changing grade to 1.26
 
-[16:47:15] ANT  : dID 1119539 MFG 89 Model 2800
+[16:47:15] ANT  : dID 726323 MFG 9 Model 320
 
 [16:47:15] ANT  : Transfer Completed.
 
@@ -153802,7 +153790,7 @@
 
 [16:47:48] ANT  : Rx Fail on channel 1
 
-[16:47:48] ANT  : dID 1119539 MFG 89 Model 2800
+[16:47:48] ANT  : dID 726323 MFG 9 Model 320
 
 [16:47:48] ANT  : FET changing grade to 0.52
 
@@ -154772,13 +154760,13 @@
 
 [16:48:21] NETWORK:Heard area message from 90683 (Eh, a bit.  Initially there were a few others, probably remaining from the morning group ride.)
 
-[16:48:21] ANT  : dID 1119539 MFG 89 Model 2800
+[16:48:21] ANT  : dID 726323 MFG 9 Model 320
 
 [16:48:21] ANT  : FET changing grade to 0.45
 
 [16:48:21] ANT  : Rx Fail on channel 1
 
-[16:48:21] ANT  : dID 1119539 MFG 89 Model 2800
+[16:48:21] ANT  : dID 726323 MFG 9 Model 320
 
 [16:48:21] ANT  : Transfer Completed.
 
@@ -155686,13 +155674,13 @@
 
 [16:48:53] ANT  : Rx Fail on channel 1
 
-[16:48:54] ANT  : dID 1119539 MFG 89 Model 2800
+[16:48:54] ANT  : dID 726323 MFG 9 Model 320
 
 [16:48:54] ANT  : Rx Fail on channel 1
 
 [16:48:54] ANT  : FET changing grade to 0.20
 
-[16:48:54] ANT  : dID 1119539 MFG 89 Model 2800
+[16:48:54] ANT  : dID 726323 MFG 9 Model 320
 
 [16:48:54] ANT  : Transfer Completed.
 
@@ -156584,7 +156572,7 @@
 
 [16:49:26] ANT  : Rx Fail on channel 1
 
-[16:49:27] ANT  : dID 1119539 MFG 89 Model 2800
+[16:49:27] ANT  : dID 726323 MFG 9 Model 320
 
 [16:49:27] ANT  : Transfer Completed.
 
@@ -156592,7 +156580,7 @@
 
 [16:49:27] ANT  : Rx Fail on channel 1
 
-[16:49:27] ANT  : dID 1119539 MFG 89 Model 2800
+[16:49:27] ANT  : dID 726323 MFG 9 Model 320
 
 [16:49:27] ANT  : FET changing grade to 0.24
 

@@ -2,12 +2,9 @@ var _ = require('underscore');
 var sprintf = require('sprintf-js').sprintf;
 import toArray from './toArray';
 import timeAxis from './timeAxis';
-
-var moment = require('moment');
-
 import { nonZeroAvgReducer } from './functions';
-
-import {SECONDS_TO_ROUND_RECONNECT_TIME} from './constants';
+import indexToUnixTime from './indexToUnixTime.js';
+import { SECONDS_TO_ROUND_RECONNECT_TIME } from './constants';
 
 // Speed/Cadence sensor can transmit at these rates
 //
@@ -48,22 +45,6 @@ import {
 
 const antRxFailFmt = '^\\[[^\\]]*\\]\\s+?ant\\s+?:\\s+?rx\\s+?fail\\s+?on\\s+?channel\\s+?%s$';
 
-function indexToUnixTime(index) {
-  if (!index) {
-    return undefined;
-  }
-
-  const tokens = index.split('-');
-
-  if (!tokens || !tokens.length || !tokens[1]) {
-    return undefined;
-  }
-
-  const t = parseInt(tokens[1]);
-
-  return t;
-}
-
 // lines is assumed to be ANT lines only, as an array, with times already in unix format using epochify
 export default function mapAntRxFails(
   lines,
@@ -71,6 +52,8 @@ export default function mapAntRxFails(
   timeAxisTimeSeries,
   searchesTimestamps
 ) {
+  const dropouts = [];
+
   const result = {
     name: 'signal',
     columns: ['time', 'value'],
@@ -123,6 +106,9 @@ export default function mapAntRxFails(
   });
 
   const maxValue = rollup.max();
+
+  // console.log('device rxFail max value');
+  // console.log(maxValue);
 
   // assumption 1 - basic devices (HR, Cadence, Speed) are sampled no more than 4 times a second
   // assumption 2 - advanced devices, like powermeters are sampled 8 times a second
@@ -178,21 +164,29 @@ export default function mapAntRxFails(
     if (
       searchesTimestamps &&
       searchesTimestamps.length &&
-      searchesTimestamps.includes(roundedTimeStamp)
-      && event.data.value < 1 /* low 10 second average rx fails, not because the device is good, but becuase it's gone!*/
+      searchesTimestamps.includes(roundedTimeStamp) &&
+      event.data.value <
+        1 /* low 10 second average rx fails, not because the device is good, but becuase it's gone!*/
     ) {
+      // return the suspected drop out seconds for surfacing in the charts and textual analysis
+      dropouts.push(roundedTimeStamp);
       // console.log(JSON.stringify(event), ' is likely the cause of the re-pairing / goto search');
+      // @todo, set a flag that says this device had at least one suspected drop out in a 10 second period
       return e.setData(0);
-    } else {      
+    } else {
       // set to 0 any signal that is not in range of a searchesTimestamps
       // but is sort of perfect, which is highly unlikely
       return e.setData({
         value: sampleRate - e.get('value') > highSignalThreshold
           ? 0
           : sampleRate - e.get('value')
-      });     
-    }    
+      });
+    }
   });
 
-  return filteredRollup;
+  return {
+    timeseries: filteredRollup,
+    dropouts,
+    isBasic
+  };
 }

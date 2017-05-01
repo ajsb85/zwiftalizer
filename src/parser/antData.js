@@ -20,41 +20,19 @@ import mapPowermeterData from './mapPowermeterData';
 import mapGradientData from './mapGradientData';
 import mapCalibrationData from './mapCalibrationData';
 import deviceTypes from '../types/devices.json';
-
 import { TimeSeries } from 'pondjs';
-
-const BASIC_DEVICE_SAMPLE_RATE = 4;
-
-function indexToUnixTime(index) {
-  if (!index) {
-    return undefined;
-  }
-
-  const tokens = index.split('-');
-
-  if (!tokens || !tokens.length || !tokens[1]) {
-    return undefined;
-  }
-
-  const t = parseInt(tokens[1]);
-
-  return t;
-}
+import indexToUnixTime from './indexToUnixTime.js'
 
 export default function antData(log, timeAxisTimeSeries) {
   const antLines = mapAntLines(log);
-
   const devices = antDevices(antLines);
-
   const manufacturerModelItems = antManufacturers(antLines);
-
   const searches = mapAntSearches(antLines, timeAxisTimeSeries);
-
   const searchesTimestamps = [];
 
-  const reconnectSpread = SECONDS_TO_ROUND_RECONNECT_TIME * 1000; /*buffer before and after a goto search to zero out if the signal value is the sample rate */
-
   // gets the timestamps of goto searches
+  // for correlating with the times in each device channel that `might` 
+  // be low because of re-pairings
   for (let event of searches.collection().events()) {
     const e = JSON.parse(event);
     if (e.data && e.data.value > 0) {           
@@ -71,9 +49,10 @@ export default function antData(log, timeAxisTimeSeries) {
 
   const power = mapPowermeterData(antLines, timeAxisTimeSeries);
 
+  // this is kinda useless, just prints info
   const calibration = mapCalibrationData(antLines);
 
-  // get failures for each device, and map in the manufacturer, if known
+  // get failures for each device, and map in the manufacturer if known
   _.each(devices, device => {
     const manufacturer = _.find(manufacturerModelItems, m => {
       return m.deviceId === device.deviceId;
@@ -98,20 +77,21 @@ export default function antData(log, timeAxisTimeSeries) {
     // is not already detected as being made by a known PM manufacturer (could be saris, powertap)
     // and is not a SMART_TRAINER_DEVICE, or KICKR
 
-    //@todo, check we are not attributing a kickr ANT+ powermeter to cycleops, shoudn't be as
-    // device.manufacturerId should be set for Wahoo Kickr
+    // @todo, check we are not attributing a kickr ANT+ powermeter to cycleops, shoudn't be as
+    // device.manufacturerId should be set for Wahoo Kickr and Wahoo Kickr Snap
 
     if (
       // if we have power data, and the device appears to be sampled at
-      // a rate highe than the basic sample rate
+      // a rate higher than the basic sample rate
       // and the device has neither been identified as a
       // smart trainer or power meter,
       // and we have no manufacturerId then it's very likely to be a power tap
-      power.count() &&
-      signal.max() > BASIC_DEVICE_SAMPLE_RATE &&
+      // (or a power meter using the standard power profile)
+      power.count() &&    
+      !signal.isBasic &&
       device.type === BASIC_DEVICE &&
       device.manufacturerId === ''
-    ) {
+    ) {      
       device.type = POWER_METER_DEVICE;
       device.typeName = titleCase(deviceTypes[POWER_METER_DEVICE]);
       // out of all the known power meters, saris/powertap/cycleops is the only one we know of that
@@ -124,7 +104,9 @@ export default function antData(log, timeAxisTimeSeries) {
     }
 
     Object.assign(device, {
-      signal
+      signal: signal.timeseries,
+      dropouts: signal.dropouts,
+      isBasic: signal.isBasic
     });
   });
 
@@ -134,7 +116,7 @@ export default function antData(log, timeAxisTimeSeries) {
 
   const kickrDevice = _.find(devices, device => {
     return device.type === SMART_TRAINER_DEVICE &&
-      device.manufacturerId === WAHOO_MANUFACTURER_ID;
+      device.manufacturerId + '' === WAHOO_MANUFACTURER_ID;
   });
 
   // can be kickr again, in fec mode, not ANT+ power meter data mode
