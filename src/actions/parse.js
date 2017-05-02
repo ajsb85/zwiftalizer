@@ -28,6 +28,7 @@ export const FILE_LOADING = 'FILE_LOADING';
 export const RESET = 'RESET';
 export const UPDATE_PROGRESS = 'UPDATE_PROGRESS';
 export const SHOW_UNKNOWN_POWERMETER_MODEL_MODAL = 'SHOW_UNKNOWN_POWERMETER_MODEL_MODAL';
+export const SHOW_UNKNOWN_SMART_TRAINER_MODEL_MODAL = 'SHOW_UNKNOWN_SMART_TRAINER_MODEL_MODAL';
 
 import {
   TOGGLE_PROFILE_PANEL,
@@ -514,10 +515,19 @@ export function reset() {
   };
 }
 
-export function closeUnknownPowermeterModelModal() {
+export function closeUnknownPowerMeterModelModal() {
   return dispatch => {
     dispatch({
       type: SHOW_UNKNOWN_POWERMETER_MODEL_MODAL,
+      data: false
+    });
+  };
+}
+
+export function closeUnknownSmartTrainerModelModal() {
+  return dispatch => {
+    dispatch({
+      type: SHOW_UNKNOWN_SMART_TRAINER_MODEL_MODAL,
       data: false
     });
   };

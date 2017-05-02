@@ -131,11 +131,11 @@ class Profile extends React.Component {
                 <div className="col-xs-6">
                   <div className="progress" style={progressStyle}>
                     <div
-                      className="progress-bar progress-bar-success"
+                      className="progress-bar progress-bar-warning"
                       role="progressbar"
                       style={barStyle}
                     >
-                      Max
+                      Min
                     </div>
                     <div
                       className="progress-bar"
@@ -145,12 +145,12 @@ class Profile extends React.Component {
                       Avg
                     </div>
                     <div
-                      className="progress-bar progress-bar-warning"
+                      className="progress-bar progress-bar-success"
                       role="progressbar"
                       style={barStyle}
                     >
-                      Min
-                    </div>
+                      Max
+                    </div>                    
                   </div>
                 </div>
               </div>
@@ -159,7 +159,7 @@ class Profile extends React.Component {
           <div className="row">
             <div className="hidden-xs col-sm-offset-7 col-sm-5">
               <p>
-                Ordered by average FPS (Frames Per Second) descending. Longer bars are better.
+                Ordered by average FPS (Frames Per Second) descending. <br/>Longer bars are better.
               </p>
             </div>
           </div>

@@ -3,19 +3,17 @@ import React from 'react';
 import structure from '../../styles/structure.css';
 import styles from './styles.css';
 import { colors } from '../../styles/colors';
-import { PieChart } from 'react-easy-chart';
-import ToolTip from '../toolTip/toolTip.jsx';
+import { BarChart } from 'react-easy-chart';
 import shadeColor, { shadeFactor } from './shadeColor.js';
 
 class SmartTrainers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showToolTip: false
+      highlightRow: false
     };
     this.mouseOverHandler = this.mouseOverHandler.bind(this);
-    this.mouseOutHandler = this.mouseOutHandler.bind(this);
-    this.mouseMoveHandler = this.mouseMoveHandler.bind(this);
+    this.mouseOutHandler = this.mouseOutHandler.bind(this);    
   }
 
   isObject = val => {
@@ -27,33 +25,13 @@ class SmartTrainers extends React.Component {
 
   mouseOverHandler(d, e) {
     this.setState({
-      showToolTip: true,
-      top: `${e.screenY}px`,
-      left: `${e.screenX}px`,
-      label: d.data.label,
-      rowKey: d.data.rowKey
+      highlightRow: true,
+      rowKey: d.rowKey
     });
   }
 
-  mouseMoveHandler(e) {
-    if (this.state.showToolTip) {
-      this.setState({ top: `${e.y}px`, left: `${e.x}px` });
-    }
-  }
-
   mouseOutHandler() {
-    this.setState({ showToolTip: false });
-  }
-
-  createTooltip() {
-    if (this.state.showToolTip) {
-      return (
-        <ToolTip top={this.state.top} left={this.state.left}>
-          {this.state.label}
-        </ToolTip>
-      );
-    }
-    return false;
+    this.setState({ highlightRow: false });
   }
 
   render() {
@@ -67,7 +45,7 @@ class SmartTrainers extends React.Component {
       return t.percent;
     }).reverse();
 
-    const pieData = [];
+    const chartData = [];
 
     var smartTrainerRows = orderedSmartTrainers.map(
       function(smartTrainer, i) {
@@ -107,21 +85,21 @@ class SmartTrainers extends React.Component {
           fontWeight: '600'
         };
 
-        //const pieKey = `${i + 1}`;
+        //const chartKey = `${i + 1}`;
 
-        const pieKey = `${smartTrainer.percent}%`
+        const chartKey = `${smartTrainer.percent}%`
 
-        pieData.push({
-          key: pieKey,
+        chartData.push({
+          key: chartKey,
           rowKey: rowKey,
-          value: smartTrainer.percent,
+          y: smartTrainer.percent,
           color: keyColor,
-          label: `${smartTrainer.manufacturerName} - ${smartTrainer.modelName}`
+          x: `${smartTrainer.modelName}`
         });
 
         let highlightStyle = {};
 
-        if (this.state.showToolTip && this.state.rowKey === rowKey) {
+        if (this.state.highlightRow && this.state.rowKey === rowKey) {
           highlightStyle = { backgroundColor: '#FF0' };
         }
 
@@ -129,7 +107,7 @@ class SmartTrainers extends React.Component {
           <tr key={rowKey} style={highlightStyle}>
             <td style={{ textAlign: 'center' }}>
               <span style={keyStyle}>
-                {pieKey}
+                {chartKey}
               </span>
             </td>          
             <td className="hidden-xs hidden-sm hidden-md">
@@ -158,38 +136,28 @@ class SmartTrainers extends React.Component {
               <h3>Smart Trainers</h3>
             </div>
           </div>
-          <div className="row">
-            <div className="col-xs-12 col-sm-5 col-md-4">
-              <div className={styles.pieChartContainer}>
+          <div className="row hidden-xs hidden-sm hidden-md">
+            <div className="col-xs-12">
+              <div className={styles.chartContainer}>
                 <span className={styles.totalBadge}> Sample size {smartTrainers.total}
                 </span>
-                <PieChart
-                  pieKey={`${countryCode}-powermeters`}
-                  labels
-                  size={275}
-                  innerHoleSize={100}
-                  data={pieData}
-                  padding={10}
-                  styles={{
-                    '.pie-chart-label': {
-                      fontFamily: '"Open Sans", Arial, Helvetica, sans-serif',
-                      fontSize: '1.6rem',
-                      fontWeight: '600',
-                      fill: '#fff'
-                    },
-                    '.pie-chart-slice': {
-                      stroke: '#fff',
-                      strokeWidth: '3',
-                      opacity: '1'
-                    }
-                  }}
+                <BarChart
+                  chartKey={`${countryCode}-smarttrainers`}
+                  axisLabels={{x: 'Model', y: 'Percent'}}
+                  axes
+                  grid
+                  height={250}
+                  width={860}    
+                  data={chartData}
+                  padding={10}                 
                   mouseOverHandler={this.mouseOverHandler}
-                  mouseOutHandler={this.mouseOutHandler}
-                  mouseMoveHandler={this.mouseMoveHandler}
-                />
+                  mouseOutHandler={this.mouseOutHandler}                  
+                />                
               </div>
             </div>
-            <div className="col-xs-12 col-sm-7 col-md-8">
+          </div>
+          <div className="row">
+            <div className="col-xs-12">
               <table
                 className="table table-bordered table-striped"
                 cellSpacing="0"
@@ -212,8 +180,7 @@ class SmartTrainers extends React.Component {
               </table>
             </div>
           </div>
-        </div>
-        {this.createTooltip()} 
+        </div>        
       </div>
     );
   }

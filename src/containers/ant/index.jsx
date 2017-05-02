@@ -13,7 +13,8 @@ import { connect } from 'react-redux';
 import structure from '../../styles/structure.css';
 import { Chart } from './chart.jsx';
 import editorial from '../../styles/editorial.css';
-import PowermeterNameModal from './powermeterNameModal.jsx';
+import PowerMeterNameModal from './powerMeterNameModal.jsx';
+import SmartTrainerNameModal from './smartTrainerNameModal.jsx';
 
 class Ant extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class Ant extends React.Component {
 
     const markup = devices && devices.length
       ? <Chart devices={devices} searches={searches} />
-      : <div className="row">
+      : <div className="row" style={{height:"30rem"}}>
           <div className="col-sm-12">
             <h3 className={structure.sectionSubHeading}>No devices found</h3>
           </div>
@@ -40,7 +41,8 @@ class Ant extends React.Component {
     return (
       <div className="container">
         {markup}       
-        <PowermeterNameModal/> 
+        <PowerMeterNameModal/> 
+        <SmartTrainerNameModal/>
       </div>
     );
   }

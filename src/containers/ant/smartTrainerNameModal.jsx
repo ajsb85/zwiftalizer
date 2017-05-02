@@ -5,27 +5,27 @@ import { connect } from 'react-redux';
 import structure from '../../styles/structure.css';
 import editorial from '../../styles/editorial.css';
 import {
-  closeUnknownPowerMeterModelModal,
+  closeUnknownSmartTrainerModelModal,
   postAntDevice,
   setAntDevices
 } from '../../actions/parse.js';
 
-import { POWER_METER_DEVICE } from '../../parser/constants';
+import { SMART_TRAINER_DEVICE } from '../../parser/constants';
 
-class PowerMeterNameModal extends React.Component {
+class SmartTrainerNameModal extends React.Component {
   constructor(props) {
     super(props);
 
     const { devices } = this.props;
 
-    const powerDevice = _.find(devices, device => {
-      return device.type === POWER_METER_DEVICE;
+    const smartTrainerDevice = _.find(devices, device => {
+      return device.type === SMART_TRAINER_DEVICE;
     });
 
     this.state = {
-      manufacturerName: powerDevice ? powerDevice.manufacturer : '',
-      modelName: powerDevice ? powerDevice.model : '',
-      powerDevice: powerDevice,
+      manufacturerName: smartTrainerDevice ? smartTrainerDevice.manufacturer : '',
+      modelName: smartTrainerDevice ? smartTrainerDevice.model : '',
+      smartTrainerDevice: smartTrainerDevice,
       devices: devices,
       manufacturerHasError: false,
       modelHasError: false
@@ -42,7 +42,7 @@ class PowerMeterNameModal extends React.Component {
   closeModal() {
     // this.setState({ unknownPowermeterModel: false });
     const { dispatch } = this.props;
-    dispatch(closeUnknownPowerMeterModelModal());
+    dispatch(closeUnknownSmartTrainerModelModal());
   }
 
   handleManufacturerNameChange(e) {
@@ -65,8 +65,8 @@ class PowerMeterNameModal extends React.Component {
     //prevent the default form submit behavior
     e.preventDefault();
 
-    // probably unreachable
-    if (!this.state.powerDevice) {
+    // probably unreachable, except for in testing
+    if (!this.state.smartTrainerDevice) {
       return;
     }
 
@@ -76,13 +76,13 @@ class PowerMeterNameModal extends React.Component {
       return;
     }
 
-    this.state.powerDevice.manufacturer = this.state.manufacturerName;
+    this.state.smartTrainerDevice.manufacturer = this.state.manufacturerName;
 
-    this.state.powerDevice.model = this.state.modelName;
+    this.state.smartTrainerDevice.model = this.state.modelName;
 
     // This posts the device details to AWS Lambda which get emailed to the maintainer
     // of the zwitalizer-antplus-devices device lookups.
-    dispatch(postAntDevice(this.state.powerDevice));
+    dispatch(postAntDevice(this.state.smartTrainerDevice));
 
     // This will update the charts UI with the values the user entered.
     // Also, gives the current module's managed state.devices back to redux's
@@ -94,7 +94,7 @@ class PowerMeterNameModal extends React.Component {
     // (so that the device name is already there when the modal closes, no flicker)
     setTimeout(
       () => {
-        dispatch(closeUnknownPowerMeterModelModal());
+        dispatch(closeUnknownSmartTrainerModelModal());
       },
       150
     );
@@ -102,13 +102,13 @@ class PowerMeterNameModal extends React.Component {
 
   render() {
     // probably unreachable, except for in testing
-    if (!this.state.powerDevice) {
+    if (!this.state.smartTrainerDevice) {
       return null;
     }
 
     const marginTopAndBottom = {marginTop:'2rem',marginBottom:'2rem'};
 
-    const { showUnknownPowerMeterModelModal } = this.props;
+    const { showUnknownSmartTrainerModelModal } = this.props;
 
     let manufacturerFormGroupClassName = 'form-group has-feedback';
 
@@ -153,10 +153,10 @@ class PowerMeterNameModal extends React.Component {
     }
 
     return (
-      <Modal show={showUnknownPowerMeterModelModal} onHide={this.closeModal} backdrop="static">
+      <Modal show={showUnknownSmartTrainerModelModal} onHide={this.closeModal} backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>
-            What's the make and model of your power meter?
+            What's the make and model of your smart trainer?
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -165,7 +165,7 @@ class PowerMeterNameModal extends React.Component {
               <div className="row" style={marginTopAndBottom}>
                 <div className="col-xs-offset-1 col-xs-10">
                   <p>
-                    We were unable to identify your power meter.
+                    We were unable to identify your smart trainer.
                   </p>
                    <p>
                     Can you help fix the Zwiftalizer by typing its name?
@@ -180,14 +180,14 @@ class PowerMeterNameModal extends React.Component {
                       id="manufacturerName"
                       type="text"
                       maxLength="64"
-                      placeholder="Example: Quarq, SRM, PowerTap, Favero, Stages, etc"
+                      placeholder="Example: Tacx, Wahoo, Elite, CycleOps, etc"
                       className="form-control"
                       onChange={this.handleManufacturerNameChange}
                       value={this.state.manufacturerName}
                     />
                     {manufacturerNameTick}
                     <span id="manufacturerNameHelp" className="help-block">
-                      The brand name of your power meter - Quarq, SRM, PowerTap, Favero, Stages, etc
+                      The brand name of your smart trainer - Tacx, Wahoo, Elite, CycleOps, etc
                     </span>
                   </div>
                 </div>
@@ -200,14 +200,14 @@ class PowerMeterNameModal extends React.Component {
                       id="model"
                       type="text"
                       maxLength="64"
-                      placeholder="Example: G3, DZero, Riken R, BePro, etc"
+                      placeholder="Example: Neo, Kickr, Drivo, Hammer, etc"
                       className="form-control"
                       onChange={this.handleModelNameChange}
                       value={this.state.modelName}
                     />
                     {modelNameTick}
                     <span id="modelNameHelp" className="help-block">
-                      The model name of your power meter - G3, DZero, Riken R, BePro, etc
+                      The model name of your smart trainer - Neo, Kickr, Drivo, Hammer, etc
                     </span>
                   </div>
                 </div>
@@ -244,8 +244,8 @@ function mapStateToProps(state) {
   };
 }
 
-PowerMeterNameModal.propTypes = {
+SmartTrainerNameModal.propTypes = {
   ant: PropTypes.object
 };
 
-export default connect(mapStateToProps)(PowerMeterNameModal);
+export default connect(mapStateToProps)(SmartTrainerNameModal);

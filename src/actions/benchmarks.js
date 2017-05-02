@@ -90,7 +90,7 @@ export function getPerformanceScore(resolution, profileId) {
   }
 
   if (value <= 6) {
-    opinion = 'Niiiice!';
+    opinion = 'Nice!';
   }
 
   if (value <= 5) {

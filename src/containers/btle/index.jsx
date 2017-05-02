@@ -46,7 +46,7 @@ class Btle extends React.Component {
 
     return (
       <div className="container">
-        <div className="row">
+        <div className="row" style={{height:"30rem"}}>
           <div className="col-sm-12">
             <h3 className={structure.sectionSubHeading}>No devices found</h3>
           </div>

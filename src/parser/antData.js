@@ -21,7 +21,7 @@ import mapGradientData from './mapGradientData';
 import mapCalibrationData from './mapCalibrationData';
 import deviceTypes from '../types/devices.json';
 import { TimeSeries } from 'pondjs';
-import indexToUnixTime from './indexToUnixTime.js'
+import indexToUnixTime from './indexToUnixTime.js';
 
 export default function antData(log, timeAxisTimeSeries) {
   const antLines = mapAntLines(log);
@@ -31,11 +31,11 @@ export default function antData(log, timeAxisTimeSeries) {
   const searchesTimestamps = [];
 
   // gets the timestamps of goto searches
-  // for correlating with the times in each device channel that `might` 
+  // for correlating with the times in each device channel that `might`
   // be low because of re-pairings
   for (let event of searches.collection().events()) {
     const e = JSON.parse(event);
-    if (e.data && e.data.value > 0) {           
+    if (e.data && e.data.value > 0) {
       searchesTimestamps.push(indexToUnixTime(e.index));
     }
   }
@@ -87,11 +87,11 @@ export default function antData(log, timeAxisTimeSeries) {
       // smart trainer or power meter,
       // and we have no manufacturerId then it's very likely to be a power tap
       // (or a power meter using the standard power profile)
-      power.count() &&    
+      power.count() &&
       !signal.isBasic &&
       device.type === BASIC_DEVICE &&
       device.manufacturerId === ''
-    ) {      
+    ) {
       device.type = POWER_METER_DEVICE;
       device.typeName = titleCase(deviceTypes[POWER_METER_DEVICE]);
       // out of all the known power meters, saris/powertap/cycleops is the only one we know of that
@@ -166,26 +166,43 @@ export default function antData(log, timeAxisTimeSeries) {
     });
   }
 
-  // showUnknownPowermeterModelModal is the state variable used to trigger
+  // The state variable used to trigger
   // opening a modal windows to prompt the user to supply
   // the name of the power meter model.
-  let showUnknownPowermeterModelModal = false;
+  let showUnknownPowerMeterModelModal = false;
+
+  // The state variable used to trigger
+  // opening a modal windows to prompt the user to supply
+  // the name of the smart trainer model.
+  let showUnknownSmartTrainerModelModal = false;
 
   if (
     powerDevice &&
     powerDevice.manufacturerId !== 0 &&
     powerDevice.model === 'Unknown'
   ) {
-    showUnknownPowermeterModelModal = true;
+    showUnknownPowerMeterModelModal = true;
   }
 
   // for testing the modal
-  showUnknownPowermeterModelModal = true;
+  // showUnknownPowerMeterModelModal = true;
+
+  if (
+    fecSmartTrainerDevice &&
+    fecSmartTrainerDevice.manufacturerId !== 0 &&
+    fecSmartTrainerDevice.model === 'Unknown'
+  ) {
+    showUnknownSmartTrainerModelModal = true;
+  }
+
+  // for testing the modal
+  showUnknownSmartTrainerModelModal = true;
 
   return Object.freeze({
     devices,
     searches,
-    showUnknownPowermeterModelModal,
+    showUnknownPowerMeterModelModal,
+    showUnknownSmartTrainerModelModal,
     searchesTimestampsRounded
   });
 }

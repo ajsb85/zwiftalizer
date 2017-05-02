@@ -1,7 +1,7 @@
 .badge {
   display: inline-block;
   min-width: 6rem;
-  padding: 0.3rem 0.7rem;
+  padding: 0.4rem 0.7rem 0.2rem 0.7rem;
   font-size: 1.6rem;
   font-weight: 600;
   color: #454545;
