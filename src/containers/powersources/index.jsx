@@ -56,12 +56,11 @@ class PowerSources extends React.Component {
 
     return (
       <div className="container">
-
         <div className={editorial.boxesWrapOuter}>
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxLast}>
               <div className={editorial.editorialBoxHeading}>
-                Proportion of Power Sources
+                Smart Trainer and Power Meter Model Usage
               </div>
               <div className={editorial.editorialBoxContent}>
                 <div className="container-fluid">

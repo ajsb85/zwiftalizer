@@ -27,7 +27,8 @@
   font-family: Montserrat, 'Proxima Nova', Arial, Helvetica, sans-serif;
 }
 .lastUpdateTime {
-  text-align: left;
+    text-align: left;
+    margin-top: 1.2rem;
 }
 .opinion {
   text-transform: capitalize;
@@ -80,11 +81,6 @@
   height: 9rem;
   min-height: 9rem;
 }
-.systemsCountBadge {
-  composes: badge from '../badge/styles.css';
-  color: #666;
-  border: 0.2rem solid #1580BD;
-}
 .thumbs {
   display: inline-block;
   color: #5CA9E3;
@@ -93,14 +89,109 @@
   font-size: 1.6rem;
   letter-spacing: 0.1rem;
 }
-.systemsCount {
-  float: right;
+.systemsCountContainer {
+    float:right;
+}
+.systemsCount {  
+    font-size: 6rem;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    text-align: center;
+    line-height: 6rem;
+}
+.systemsCountSubheading{
+  font-size: 2rem;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  text-align: center;
+}
+.systemsCountBadge {
+  composes: badge from '../badge/styles.css';
+  color: #666;
+  border: 0.2rem solid #1580BD;
 }
 .rightAlignControls {
   float: right;
   margin: 0;
   padding: 0.5rem 0;
 }
+
+.stickyFilters {
+    position: fixed;
+    top: 10.3rem;
+    right: 0;
+    left: 0;
+    z-index: 1020;
+    background: #ddd;
+    height: 22rem;
+    max-height: 22rem;
+    border-bottom: 2px solid #aaa;
+}
+
+.stickyFilters h2 {
+    font-size: 2.8rem;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    text-align: center;
+    margin: 1rem 0 0;
+}
+
+.stickyFilters h3 {
+    font-size: 2rem;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    text-align: left;
+}
+
+.formContainer {
+  margin-left: 0.2rem;
+}
+
+input[type=radio].withfont,
+input[type=checkbox].withfont {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+    
+input[type=radio].withfont ~ label:before,
+input[type=checkbox].withfont ~ label:before {
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f1db";
+    letter-spacing: 10px;
+    font-size: 1.2em;
+    color: #535353;
+    width: 1.4em;
+}
+
+input[type=radio].withfont:checked ~ label:before,
+input[type=checkbox].withfont:checked ~ label:before  {
+    content: "\f00c";
+    font-size: 1.2em;
+    color: darkgreen;
+    letter-spacing: 5px;
+}
+input[type=checkbox].withfont ~ label:before {        
+    content: "\f096";
+}
+input[type=checkbox].withfont:checked ~ label:before {
+    content: "\f046";        
+    color: darkgreen;
+}
+input[type=radio].withfont:focus ~ label:before,
+input[type=checkbox].withfont:focus ~ label:before,
+input[type=radio].withfont:focus ~ label,
+input[type=checkbox].withfont:focus ~ label
+{                
+    color: green;
+}
+
 @media only screen and (max-width: 480px) {
   [class*="col-"] {
     padding-left: 5px !important;
@@ -115,15 +206,26 @@
     font-size: 1.8rem;
     line-height: 3.2rem;
   }
+  .systemsCountContainer {
+    float: none;
+  }
   .systemsCount {
-    text-align: left;
+    text-align: center;
+    float: none;
+  }
+  .systemsCountSubheading {
+    text-align: center;
     float: none;
   }
   .rightAlignControls {
-    text-align: left;
+    text-align: center;
     float: none;
     margin: 0;
     padding: 0.5rem 0;
+  }
+  .lastUpdateTime {
+    text-align: center;
+    margin-top: 1.2rem;
   }
 }
 @media only screen and (min-width: 767px) and (max-width:991px) {

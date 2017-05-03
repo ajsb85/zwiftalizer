@@ -116,6 +116,8 @@ class Profile extends React.Component {
       minWidth: '0.2rem'
     };
 
+    const fomGroupKey = `${resolution}-${profileId}`;
+
     return (
       <div className={styles.benchmarksBoxContent} style={panelStyle}>
         <div className="container-fluid">
@@ -150,16 +152,18 @@ class Profile extends React.Component {
                       style={barStyle}
                     >
                       Max
-                    </div>                    
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </div>          
           <div className="row">
             <div className="hidden-xs col-sm-offset-7 col-sm-5">
               <p>
-                Ordered by average FPS (Frames Per Second) descending. <br/>Longer bars are better.
+                Ordered by average FPS (Frames Per Second) descending.                
+                <br />
+                Longer bars are better.
               </p>
             </div>
           </div>
@@ -244,7 +248,7 @@ class Profile extends React.Component {
               <div
                 className="col-xs-offset-1 col-xs-11 col-sm-offset-0 col-sm-8 col-md-offset-0 col-md-3"
               >
-                <div className={styles.systemsCount}>
+                <div className={styles.systemsCountContainer}>
                   <span className={styles.systemsCountBadge}>
                     {totalSystems}/{totalRecords}
                   </span>

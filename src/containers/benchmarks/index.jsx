@@ -52,6 +52,65 @@ class Benchmarks extends React.Component {
     return isLoaded ? this.renderBenchmarks() : null;
   }
 
+  renderFilters() {
+    return (
+      <div className={styles.stickyFilters}>
+        <div className="container">
+          <div className="row">            
+              <h2>Filter where</h2>            
+          </div>
+          <div className="row">          
+            <div className="col-xs-12 col-sm-3">
+              <h3>min fps</h3>
+              <div className={styles.formContainer}>
+                <div>
+                  <input
+                    id="fps0"
+                    name="fpsFilter"
+                    type="radio"
+                    className={styles.withfont}
+                    value="0"
+                  />
+                  <label htmlFor="fps0">&gt; 0</label>
+                </div>
+                <div>
+                  <input
+                    id="fps1"
+                    name="fpsFilter"
+                    type="radio"
+                    className={styles.withfont}
+                    value="1"
+                  />
+                  <label htmlFor="fps1">&gt; 15</label>
+                </div>
+                <div>
+                  <input
+                    id="fps2"
+                    name="fpsFilter"
+                    type="radio"
+                    className={styles.withfont}
+                    value="2"
+                  />
+                  <label htmlFor="fps2">&gt; 30</label>
+                </div>
+                <div>
+                  <input
+                    id="fps3"
+                    name="fpsFilter"
+                    type="radio"
+                    className={styles.withfont}
+                    value="3"
+                  />
+                  <label htmlFor="fps3">&gt; 60</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   renderFindMySystemControls() {
     const { currentSystem } = this.props;
 
@@ -60,18 +119,14 @@ class Benchmarks extends React.Component {
     }
 
     return (
-      <div className="row">
-        <div className="col-xs-12 col-sm-offset-8 col-sm-4">
-          <div className={styles.rightAlignControls}>
-            <button
-              type="button"
-              className="btn btn-primary btn-sm"
-              onClick={this.findMySystemClicked}
-            >
-              Find my system
-            </button>
-          </div>
-        </div>
+      <div className={styles.rightAlignControls}>
+        <button
+          type="button"
+          className="btn btn-primary btn-sm"
+          onClick={this.findMySystemClicked}
+        >
+          Find my system
+        </button>
       </div>
     );
   }
@@ -102,41 +157,45 @@ class Benchmarks extends React.Component {
     const dateLastUpdateHuman = moment(dateLastUpdate).format();
 
     return (
-      <div className="container">
-
-        <div className={editorialStyles.boxesWrapOuter}>
-          <div className={structure.boxesWrapInner}>
-            <div className={structure.boxLast}>
-              <div className={editorialStyles.editorialBoxHeading}>
-                Zwift System Benchmarks (Community Generated)
-              </div>
-              <div className={editorialStyles.editorialBoxContent}>
-                <div className="container-fluid">
-
-                  <div className="row">
-                    <div className="col-xs-12 col-sm-8">
-                      <div className={styles.lastUpdateTime}>
-                        Last Updated: {dateLastUpdateHuman}
+      <div>
+        {this.renderFilters()}
+        <div className="container">
+          <div className={editorialStyles.boxesWrapOuter}>
+            <div className={structure.boxesWrapInner}>
+              <div className={structure.boxLast}>
+                <div className={editorialStyles.editorialBoxHeading}>
+                  Zwift System Benchmarks (Community Generated)
+                </div>
+                <div className={editorialStyles.editorialBoxContent}>
+                  <div className="container-fluid">
+                    <div className="row">
+                      <div className="col-xs-12">
+                        <div className={styles.systemsCount}>
+                          {totalRecords}
+                        </div>
+                        <div className={styles.systemsCountSubheading}>
+                          Total Systems
+                        </div>
                       </div>
                     </div>
-                    <div className="col-xs-12 col-sm-4">
-                      <div className={styles.systemsCount}>
-                        Total systems&nbsp;
-                        <span className={styles.systemsCountBadge}>
-                          {totalRecords}
-                        </span>
+                    <div className="row">
+                      <div className="col-xs-12 col-sm-6">
+                        <div className={styles.lastUpdateTime}>
+                          Last Updated: {dateLastUpdateHuman}
+                        </div>
+                      </div>
+                      <div className="col-xs-12 col-sm-6">
+                        {this.renderFindMySystemControls(currentSystem)}
                       </div>
                     </div>
                   </div>
-                  {this.renderFindMySystemControls(currentSystem)}
                 </div>
+
               </div>
             </div>
           </div>
+          {resolutionEntries}
         </div>
-
-        {resolutionEntries}
-
       </div>
     );
   }
