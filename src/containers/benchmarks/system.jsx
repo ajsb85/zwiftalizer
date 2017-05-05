@@ -78,7 +78,7 @@ class System extends React.Component {
 
     // crude iOS detection
     if (gpuVendor === 'arm64' || gpuVendor.toLowerCase().indexOf('apple') >= 0) {
-      platform === 'iOS';
+      platform = 'iOS';
       // oddly some logs from iOS devices have PC line endings, so replace both Mac and PC system ID variables with iOS
       systemIdVariable = systemIdVariable.replace('Mac /', 'iOS /').replace('PC /', 'iOS /');
     }
