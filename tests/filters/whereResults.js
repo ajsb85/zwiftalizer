@@ -1,10 +1,10 @@
 var test = require('tape');
 const R = require('ramda');
-var data = require('../../testdata/benchmarks');
+var data = require('../../testdata/benchmarks-v2');
 import whereResults from '../../src/filters/whereResults';
 
 test('should filter to min fps greater than 60 fps', assert => {
-  const expectedResolutions = 4;
+  const expectedResolutions = 3;
 
   const threshold = 60.0;
 
@@ -100,7 +100,7 @@ test('should filter to avg fps greater than 60 fps', assert => {
 });
 
 test('should filter to avg fps greater than 60 fps and min fps greater than 60', assert => {
-  const expectedResolutions = 4;
+  const expectedResolutions = 3;
 
   const threshold = 60.0;
 
