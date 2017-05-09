@@ -1,42 +1,13 @@
 import React from 'react';
 import styles from './styles.css';
 import images from '../../styles/images.css';
-import * as Parser from '../../parser/index.js';
 
 class System extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  platform(str) {
-    return str.match(/^Mac.*/) ? 'Mac' : 'PC';
-  }
-
-  cpuVendor(str) {
-    var regex = /.*\s+\/\s+([^\s]*).*\s+\/\s+[^\s]*.*/;
-
-    const match = regex.exec(str);
-
-    if (!match) {
-      return undefined;
-    }
-
-    return match[1];
-  }
-
-  gpuVendor(str) {
-    var regex = /.*\s+\/\s+[^\s]*.*\s+\/\s+([^\s]*).*/;
-
-    const match = regex.exec(str);
-
-    if (!match) {
-      return undefined;
-    }
-
-    return match[1];
-  }
-
-  renderCpuDetail(cpuDetail) {
+  renderDetails(cpuDetail) {
     if (!cpuDetail) {
       return null;
     }
@@ -53,7 +24,11 @@ class System extends React.Component {
       samples,
       maxAvgResolutionProfile,
       maxMaxResolutionProfile,
-      current
+      current,
+      platform,
+      cpuVendor,
+      gpuVendor,
+      details      
     } = this.props.data;
 
     var relativeMaxWidth = 100;
@@ -64,38 +39,6 @@ class System extends React.Component {
       relativeMaxWidth = Math.round(maxFps / maxMaxResolutionProfile * 100);
       relativeAvgWidth = Math.round(avgFps / maxMaxResolutionProfile * 100);
       relativeMinWidth = Math.round(minFps / maxMaxResolutionProfile * 100);
-    }
-
-    let platform = this.platform(systemId);
-
-    let cpuVendor = this.cpuVendor(systemId);
-
-    let gpuVendor = this.gpuVendor(systemId);
-
-    const cpuDetail = Parser.cpuClass(systemId);
-
-    let systemIdVariable = systemId;
-
-    // crude iOS detection
-    if (gpuVendor === 'arm64' || gpuVendor.toLowerCase().indexOf('apple') >= 0) {
-      platform = 'iOS';
-      // oddly some logs from iOS devices have PC line endings, so replace both Mac and PC system ID variables with iOS
-      systemIdVariable = systemIdVariable.replace('Mac /', 'iOS /').replace('PC /', 'iOS /');
-    }
-    
-    // crude Alienware detection, checks for a T series intel CPU and (Nvidia or AMD GPU).
-    if (
-      platform === 'PC' &&
-      cpuDetail &&
-      cpuDetail.toLowerCase().indexOf('alienware') !== -1 &&
-      gpuVendor &&
-      (gpuVendor.toLowerCase() === 'nvidia' ||
-        gpuVendor.toLowerCase() === 'ati')
-    ) {
-      (platform = 'Alienware'), (systemIdVariable = systemIdVariable.replace(
-        'PC /',
-        'Alienware /'
-      ));
     }
 
     let platformClass, cpuClass, gpuClass = null;
@@ -164,10 +107,7 @@ class System extends React.Component {
           gpuClass = images.intel;
           break;
 
-        case 'apple':
-          gpuClass = images.mac;
-          break;
-
+        case 'apple':          
         case 'arm64':
           gpuClass = images.arm64;
           break;
@@ -178,7 +118,7 @@ class System extends React.Component {
       }
     }
 
-    const cpuDetailMarkup = cpuDetail ? this.renderCpuDetail(cpuDetail) : null;
+    const detailsMarkup = details ? this.renderDetails(details) : null;
 
     const barStyle = {
       marginBottom: '0.2rem'
@@ -209,7 +149,6 @@ class System extends React.Component {
 
     return (
       <div>
-
         {current ? <a id="current" /> : null}
         <div className="row" style={rowStyle}>
           <div className="col-xs-12 col-sm-2">
@@ -227,11 +166,16 @@ class System extends React.Component {
           </div>
           <div className="col-xs-12 col-sm-5">
             <div className={styles.systemName}>
-              {systemIdVariable}
+              {systemId}
             </div>
-            {cpuDetailMarkup}
+            {detailsMarkup}
           </div>
           <div className="col-xs-12 col-sm-5">
+            <div className={styles.samplesOuter}>
+              <div className={styles.samplesInner}>
+              {samples}<br/>Logs
+              </div>
+            </div>
             <div className={styles.barsOuter}>
               <div className="progress" style={barStyle}>
                 <div

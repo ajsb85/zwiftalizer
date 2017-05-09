@@ -1,7 +1,47 @@
-.benchmarksWrapOuter {
+
+
+.filters {
+    position: fixed;
+    top: 10.3rem;
+    right: 0;
+    left: 0;
+    z-index: 1020;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e2e2e2+0,fefefe+40,dbdbdb+81,d1d1d1+100 */
+    background: #e2e2e2; /* Old browsers */
+    background: -moz-linear-gradient(top,  #e2e2e2 0%, #fefefe 40%, #dbdbdb 81%, #d1d1d1 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #e2e2e2 0%,#fefefe 40%,#dbdbdb 81%,#d1d1d1 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #e2e2e2 0%,#fefefe 40%,#dbdbdb 81%,#d1d1d1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#d1d1d1',GradientType=0 ); /* IE6-9 */
+    height: 29rem;
+    max-height: 29rem;
+    border-bottom: 2px solid #aaa;  
+}
+
+.toggleFiltersHandle {
+  text-align: center;
+  background: #d1d1d1;
+  border-bottom: 2px solid #aaa;
+  border-left: 2px solid #aaa;
+  border-right: 2px solid #aaa;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  height: 3rem;
+  max-height: 3rem;
+  z-index: 1030;
+}
+
+.benchmarksContainer {
+    position: absolute;
+    top: 32rem;
+    right: 0;
+    left: 0;
+}
+
+.benchmarksOuter {
   width: 100%;
   margin: 1.5rem 0 1.5rem 0;
 }
+
 .iconsWrapper {
   display: flex;
   align-items: center;
@@ -24,7 +64,7 @@
   letter-spacing: -0.01rem;
   min-height: 4.5rem;
   padding: 1.2rem 0 0 0;
-  font-family: Montserrat, 'Proxima Nova', Arial, Helvetica, sans-serif;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
 }
 .lastUpdateTime {
     text-align: left;
@@ -81,6 +121,24 @@
   height: 9rem;
   min-height: 9rem;
 }
+
+.samplesOuter{
+    height: 9rem;
+    min-height: 9rem;
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    float: left;
+    width: 8rem;
+}
+
+.samplesInner {
+    text-align: center;
+    font-weight: 600;
+    padding: 1.3rem 0 0 0;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
+
 .thumbs {
   display: inline-block;
   color: #5CA9E3;
@@ -116,19 +174,8 @@
   padding: 0.5rem 0;
 }
 
-.stickyFilters {
-    position: fixed;
-    top: 10.3rem;
-    right: 0;
-    left: 0;
-    z-index: 1020;
-    background: #ddd;
-    height: 22rem;
-    max-height: 22rem;
-    border-bottom: 2px solid #aaa;
-}
 
-.stickyFilters h2 {
+.filters h2 {
     font-size: 2.8rem;
     font-family: Montserrat, Arial, Helvetica, sans-serif;
     font-weight: 600;
@@ -136,7 +183,7 @@
     margin: 1rem 0 0;
 }
 
-.stickyFilters h3 {
+.filters h3 {
     font-size: 2rem;
     font-family: Montserrat, Arial, Helvetica, sans-serif;
     font-weight: 600;
@@ -198,6 +245,9 @@ input[type=checkbox].withfont:focus ~ label
     padding-right: 5px !important;
   }
 }
+
+
+
 @media only screen and (max-width: 768px) {
   .benchmarksBoxHeading {
     height: 8.5rem;
@@ -244,3 +294,5 @@ input[type=checkbox].withfont:focus ~ label
     display: none !important;
   }
 }
+
+

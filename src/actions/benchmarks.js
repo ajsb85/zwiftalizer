@@ -10,8 +10,8 @@ export const RESET_ALL = 'RESET_ALL';
 export function load(callback) {
   return dispatch => {
     request
-      .get('https://data.zwiftalizer.com', null, {
-        //  .get('testbenchmarks-2499.json', null, {
+      //.get('https://data.zwiftalizer.com', null, {
+      .get('benchmarks-v2.json', null, {
         cache: false,
         dataType: 'json'
       })
@@ -94,7 +94,7 @@ export function getPerformanceScore(resolution, profileId) {
   }
 
   if (value <= 5) {
-    opinion = 'Good!';
+    opinion = 'OK!';
   }
 
   if (value <= 3) {

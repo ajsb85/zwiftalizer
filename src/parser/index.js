@@ -34,8 +34,6 @@ export { default as cpuVendor } from './cpuVendor';
 
 export { default as cpuDetails } from './cpuDetails';
 
-export { default as cpuClass } from './cpuClass';
-
 export { default as gpuVendor } from './gpuVendor';
 
 export { default as gpuDetails } from './gpuDetails';

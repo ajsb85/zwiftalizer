@@ -124,7 +124,7 @@ class App extends React.Component {
         <div className={styles.stickySubHeader}>
          <div className="container">
             <div className="row">
-              <p>zwiftalizer.com is a free open source project by the Zwift community and is not affiliated with <a href="http://zwift.com" target="_blank">Zwift.com</a> in any way.</p>
+              <p>zwiftalizer.com is a free open source project neither affiliated with nor endorsed by <a href="http://zwift.com" target="_blank">Zwift Inc</a>.</p>
             </div>   
           </div>
         </div>

@@ -218,7 +218,7 @@ class Profile extends React.Component {
     var performanceScore = getPerformanceScore(resolution, profileId);
 
     return (
-      <div className={styles.benchmarksWrapOuter}>
+      <div className={styles.benchmarksOuter}>
         <div
           onClick={this.togglePanel}
           className={styles.benchmarksBoxHeading}
