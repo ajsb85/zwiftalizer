@@ -1,18 +1,36 @@
 var moment = require('moment');
+const R = require('ramda');
 import React, { Component, PropTypes } from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { load, openProfilePanel } from '../../actions/benchmarks';
+import whereResults from '../../filters/whereResults';
 import Resolution from './resolution.jsx';
 import structure from '../../styles/structure.css';
 import editorialStyles from '../../styles/editorial.css';
 import styles from './styles.css';
+
+const ALL = 'All';
 
 class Benchmarks extends React.Component {
   constructor(props) {
     super(props);
 
     const { dispatch } = this.props;
+
+    this.state = {
+      platformFilter: ALL,
+      resolutionFilter: ALL,
+      profileFilter: ALL
+    };
+
+    this.handlePlatformFilterChange = this.handlePlatformFilterChange.bind(
+      this
+    );
+    this.handleResolutionFilterChange = this.handleResolutionFilterChange.bind(
+      this
+    );
+    this.handleProfileFilterChange = this.handleProfileFilterChange.bind(this);
 
     this.findMySystemClicked = this.findMySystemClicked.bind(this);
 
@@ -22,6 +40,18 @@ class Benchmarks extends React.Component {
       },
       100
     );
+  }
+
+  handlePlatformFilterChange(e) {
+    this.setState({ platformFilter: e.target.value });
+  }
+
+  handleResolutionFilterChange(e) {
+    this.setState({ resolutionFilter: e.target.value });
+  }
+
+  handleProfileFilterChange(e) {
+    this.setState({ profileFilter: e.target.value });
   }
 
   findMySystemClicked(e) {
@@ -39,8 +69,9 @@ class Benchmarks extends React.Component {
     setTimeout(
       () => {
         const anchorToScrollTo = document.getElementById('current');
-        anchorToScrollTo &&
+        if (anchorToScrollTo) {
           anchorToScrollTo.scrollIntoView(true /* align top */);
+        }
       },
       200
     );
@@ -56,20 +87,22 @@ class Benchmarks extends React.Component {
     return (
       <div className={styles.filters}>
         <div className="container">
-          <div className="row">            
-              <h2>Filter by</h2>            
+          <div className="row">
+            <h2>Filter by</h2>
           </div>
-          <div className="row">             
-             <div className="col-xs-12 col-sm-2">
+          <div className="row">
+            <div className="col-xs-12 col-sm-2">
               <h3>Platform</h3>
               <div className={styles.formContainer}>
-               <div>
+                <div>
                   <input
                     id="platform0"
                     name="platformFilter"
                     type="radio"
                     className={styles.withfont}
-                    value="-1"
+                    value={ALL}
+                    checked={this.state.platformFilter === ALL}
+                    onChange={this.handlePlatformFilterChange}
                   />
                   <label htmlFor="platform0">All</label>
                 </div>
@@ -80,6 +113,8 @@ class Benchmarks extends React.Component {
                     type="radio"
                     className={styles.withfont}
                     value="PC"
+                    checked={this.state.platformFilter === 'PC'}
+                    onChange={this.handlePlatformFilterChange}
                   />
                   <label htmlFor="platform1">PC</label>
                 </div>
@@ -90,6 +125,8 @@ class Benchmarks extends React.Component {
                     type="radio"
                     className={styles.withfont}
                     value="Mac"
+                    checked={this.state.platformFilter === 'Mac'}
+                    onChange={this.handlePlatformFilterChange}
                   />
                   <label htmlFor="platform2">Mac</label>
                 </div>
@@ -100,6 +137,8 @@ class Benchmarks extends React.Component {
                     type="radio"
                     className={styles.withfont}
                     value="iOS"
+                    checked={this.state.platformFilter === 'iOS'}
+                    onChange={this.handlePlatformFilterChange}
                   />
                   <label htmlFor="platform3">iOS</label>
                 </div>
@@ -109,22 +148,26 @@ class Benchmarks extends React.Component {
                     name="platformFilter"
                     type="radio"
                     className={styles.withfont}
-                    value="Aliens"
+                    value="Alienware"
+                    checked={this.state.platformFilter === 'Alienware'}
+                    onChange={this.handlePlatformFilterChange}
                   />
                   <label htmlFor="platform4">Alienware</label>
-                </div>                
+                </div>
               </div>
             </div>
             <div className="col-xs-12 col-sm-2">
               <h3>Resolution</h3>
               <div className={styles.formContainer}>
-               <div>
+                <div>
                   <input
                     id="resolution0"
                     name="resolutionFilter"
                     type="radio"
                     className={styles.withfont}
-                    value="-1"
+                    value={ALL}
+                    checked={this.state.resolutionFilter === ALL}
+                    onChange={this.handleResolutionFilterChange}
                   />
                   <label htmlFor="resolution0">All</label>
                 </div>
@@ -135,6 +178,8 @@ class Benchmarks extends React.Component {
                     type="radio"
                     className={styles.withfont}
                     value="2160"
+                    checked={this.state.resolutionFilter === '2160'}
+                    onChange={this.handleResolutionFilterChange}
                   />
                   <label htmlFor="resolution1">2160 (4K)</label>
                 </div>
@@ -145,6 +190,8 @@ class Benchmarks extends React.Component {
                     type="radio"
                     className={styles.withfont}
                     value="1440"
+                    checked={this.state.resolutionFilter === '1440'}
+                    onChange={this.handleResolutionFilterChange}
                   />
                   <label htmlFor="resolution2">1440 (WQHD)</label>
                 </div>
@@ -155,6 +202,8 @@ class Benchmarks extends React.Component {
                     type="radio"
                     className={styles.withfont}
                     value="1080"
+                    checked={this.state.resolutionFilter === '1080'}
+                    onChange={this.handleResolutionFilterChange}
                   />
                   <label htmlFor="resolution3">1080 (FHD)</label>
                 </div>
@@ -165,6 +214,8 @@ class Benchmarks extends React.Component {
                     type="radio"
                     className={styles.withfont}
                     value="750"
+                    checked={this.state.resolutionFilter === '750'}
+                    onChange={this.handleResolutionFilterChange}
                   />
                   <label htmlFor="resolution4">750</label>
                 </div>
@@ -175,6 +226,8 @@ class Benchmarks extends React.Component {
                     type="radio"
                     className={styles.withfont}
                     value="720"
+                    checked={this.state.resolutionFilter === '720'}
+                    onChange={this.handleResolutionFilterChange}
                   />
                   <label htmlFor="resolution5">720 (HD)</label>
                 </div>
@@ -185,11 +238,13 @@ class Benchmarks extends React.Component {
                     type="radio"
                     className={styles.withfont}
                     value="576"
+                    checked={this.state.resolutionFilter === '576'}
+                    onChange={this.handleResolutionFilterChange}
                   />
                   <label htmlFor="resolution6">576 (SD)</label>
                 </div>
               </div>
-            </div>          
+            </div>
             <div className="col-xs-12 col-sm-2">
               <h3>Profile</h3>
               <div className={styles.formContainer}>
@@ -199,7 +254,9 @@ class Benchmarks extends React.Component {
                     name="profileFilter"
                     type="radio"
                     className={styles.withfont}
-                    value="-1"
+                    value={ALL}
+                    checked={this.state.profileFilter === ALL}
+                    onChange={this.handleProfileFilterChange}
                   />
                   <label htmlFor="profile0">All</label>
                 </div>
@@ -210,6 +267,8 @@ class Benchmarks extends React.Component {
                     type="radio"
                     className={styles.withfont}
                     value="3"
+                    checked={this.state.profileFilter === '3'}
+                    onChange={this.handleProfileFilterChange}
                   />
                   <label htmlFor="profile1">Ultra</label>
                 </div>
@@ -220,6 +279,8 @@ class Benchmarks extends React.Component {
                     type="radio"
                     className={styles.withfont}
                     value="2"
+                    checked={this.state.profileFilter === '2'}
+                    onChange={this.handleProfileFilterChange}
                   />
                   <label htmlFor="profile2">High</label>
                 </div>
@@ -230,6 +291,8 @@ class Benchmarks extends React.Component {
                     type="radio"
                     className={styles.withfont}
                     value="1"
+                    checked={this.state.profileFilter === '1'}
+                    onChange={this.handleProfileFilterChange}
                   />
                   <label htmlFor="profile3">Medium</label>
                 </div>
@@ -240,11 +303,13 @@ class Benchmarks extends React.Component {
                     type="radio"
                     className={styles.withfont}
                     value="0"
+                    checked={this.state.profileFilter === '0'}
+                    onChange={this.handleProfileFilterChange}
                   />
                   <label htmlFor="profile4">Basic</label>
                 </div>
               </div>
-            </div> 
+            </div>
             <div className="col-xs-12 col-sm-2">
               <h3>CPU Brand</h3>
               <div className={styles.formContainer}>
@@ -287,9 +352,9 @@ class Benchmarks extends React.Component {
                     value="arm64"
                   />
                   <label htmlFor="cpu3">ARM</label>
-                </div>                
+                </div>
               </div>
-            </div>          
+            </div>
             <div className="col-xs-12 col-sm-2">
               <h3>GPU Brand</h3>
               <div className={styles.formContainer}>
@@ -344,7 +409,7 @@ class Benchmarks extends React.Component {
                   <label htmlFor="gpu4">Intel</label>
                 </div>
               </div>
-            </div>          
+            </div>
             <div className="col-xs-12 col-sm-2">
               <h3>Min fps</h3>
               <div className={styles.formContainer}>
@@ -366,9 +431,9 @@ class Benchmarks extends React.Component {
                     className={styles.withfont}
                     value="60"
                   />
-                  <label htmlFor="fps1">&ge; 60</label>
+                  <label htmlFor="fps1">≥ 60</label>
                 </div>
-                 <div>
+                <div>
                   <input
                     id="fps2"
                     name="fpsFilter"
@@ -376,7 +441,7 @@ class Benchmarks extends React.Component {
                     className={styles.withfont}
                     value="45"
                   />
-                  <label htmlFor="fps2">&ge; 45</label>
+                  <label htmlFor="fps2">≥ 45</label>
                 </div>
                 <div>
                   <input
@@ -386,7 +451,7 @@ class Benchmarks extends React.Component {
                     className={styles.withfont}
                     value="30"
                   />
-                  <label htmlFor="fps3">&ge; 30</label>
+                  <label htmlFor="fps3">≥ 30</label>
                 </div>
                 <div>
                   <input
@@ -396,7 +461,7 @@ class Benchmarks extends React.Component {
                     className={styles.withfont}
                     value="15"
                   />
-                  <label htmlFor="fps4">&ge; 15</label>
+                  <label htmlFor="fps4">≥ 15</label>
                 </div>
               </div>
             </div>
@@ -404,12 +469,12 @@ class Benchmarks extends React.Component {
           <div className="row">
             <div className="col-xs-offset-5 col-xs-2">
               <div className={styles.toggleFiltersHandle}>
-                <i className="fa fa-align-justify" aria-hidden="true"></i>
+                <i className="fa fa-align-justify" aria-hidden="true" />
               </div>
             </div>
           </div>
+        </div>
       </div>
-    </div>      
     );
   }
 
@@ -442,8 +507,44 @@ class Benchmarks extends React.Component {
       currentSystem
     } = this.props;
 
-    var resolutionEntries = resolutions &&
-      resolutions.map(
+    console.log(`platform filter is ${this.state.platformFilter}`);
+    console.log(`resolution filter is ${this.state.resoltuionFilter}`);
+
+    let resolutionEntries;
+    let filtered;
+    let predicates = {};
+
+    if (this.state.platformFilter !== ALL) {
+      predicates.platform = R.equals(this.state.platformFilter);
+    }
+
+    if (this.state.resolutionFilter !== ALL) {
+      predicates.resolution = R.equals(
+        parseInt(this.state.resolutionFilter, 10)
+      );
+    }
+
+    if (this.state.profileFilter !== ALL) {
+      predicates.profileId = R.equals(parseInt(this.state.profileFilter, 10));
+    }
+
+    console.log('predicates');
+    console.log(predicates);
+    console.log(Object.keys(predicates));
+    console.log(Object.keys(predicates).length);
+
+    if (Object.keys(predicates).length) {
+      const filteredResolutions = whereResults(predicates, this.props);
+      if (filteredResolutions && filteredResolutions.resolutions) {
+        filtered = filteredResolutions.resolutions;
+      }
+      console.log(filtered);
+    } else {
+      filtered = resolutions;
+    }
+
+    if (filtered) {
+      resolutionEntries = filtered.map(
         function(resolution, i) {
           const data = Object.assign({}, resolution, {
             totalRecords,
@@ -455,11 +556,12 @@ class Benchmarks extends React.Component {
         },
         this
       );
+    }
 
     const dateLastUpdateHuman = moment(dateLastUpdate).format();
 
     return (
-      <div className={styles.benchmarksOuter}>        
+      <div className={styles.benchmarksOuter}>
         {this.renderFilters()}
         <div className={styles.benchmarksContainer}>
           <div className="container">
