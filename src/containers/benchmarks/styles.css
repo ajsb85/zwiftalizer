@@ -89,27 +89,27 @@
   text-align: left;
 }
 .systemName {
-  display: block;
-  /*white-space: nowrap;*/
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-weight: 600;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  margin-top: 0rem;
-  color: #666;
-  letter-spacing: -0.05rem;
+    display: block;
+    /* white-space: nowrap; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    margin-top: 0rem;
+    color: #666;
+    letter-spacing: -0.07rem;
 }
 .cpuDetail {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-weight: normal;
-  font-size: 1.3rem;
-  line-height: 1.8rem;
-  margin-top: 0rem;
-  color: #666;
-  letter-spacing: -0.05rem;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: normal;
+    font-size: 1.3rem;
+    line-height: 1.6rem;
+    margin-top: 0rem;
+    color: #666;
+    letter-spacing: -0.05rem;
 }
 .barsOuter {
   height: 9rem;

@@ -11,7 +11,8 @@ export function load(callback) {
   return dispatch => {
     request
       //.get('https://data.zwiftalizer.com', null, {
-      .get('benchmarks-v2.json', null, {
+      .get('https://data.zwiftalizer.com/index-v2.json', null, {
+      //.get('benchmarks-v2.json', null, {
         cache: false,
         dataType: 'json'
       })
