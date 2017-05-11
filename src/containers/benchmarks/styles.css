@@ -1,25 +1,21 @@
-
-
 .filters {
     position: fixed;
-    top: 10.3rem;
+    top: -10.3rem;
     right: 0;
     left: 0;
     z-index: 1020;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e2e2e2+0,fefefe+40,dbdbdb+81,d1d1d1+100 */
-    background: #e2e2e2; /* Old browsers */
-    background: -moz-linear-gradient(top,  #e2e2e2 0%, #fefefe 40%, #dbdbdb 81%, #d1d1d1 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top,  #e2e2e2 0%,#fefefe 40%,#dbdbdb 81%,#d1d1d1 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom,  #e2e2e2 0%,#fefefe 40%,#dbdbdb 81%,#d1d1d1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#d1d1d1',GradientType=0 ); /* IE6-9 */
-    height: 29rem;
-    max-height: 29rem;
-    border-bottom: 2px solid #aaa;  
+    background: #e2e2e2;
+    border-bottom: 0.2rem solid #aaa;
+    transition: all 0.25s; 
+    height: 22rem;
+    max-height: 22rem
 }
 
 .toggleFiltersHandle {
+  position: relative;
+  top: 1.1rem;
   text-align: center;
-  background: #d1d1d1;
+  background: #e2e2e2;
   border-bottom: 2px solid #aaa;
   border-left: 2px solid #aaa;
   border-right: 2px solid #aaa;
@@ -28,13 +24,11 @@
   height: 3rem;
   max-height: 3rem;
   z-index: 1030;
+  cursor: pointer;
 }
 
-.benchmarksContainer {
-    position: absolute;
-    top: 32rem;
-    right: 0;
-    left: 0;
+.benchmarksWrapper {  
+  margin: 4rem 0;
 }
 
 .benchmarksOuter {
@@ -174,24 +168,23 @@
   padding: 0.5rem 0;
 }
 
-
-.filters h2 {
-    font-size: 2.8rem;
-    font-family: Montserrat, Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    text-align: center;
-    margin: 1rem 0 0;
-}
-
 .filters h3 {
-    font-size: 2rem;
+    font-size: 1.4rem;
     font-family: Montserrat, Arial, Helvetica, sans-serif;
     font-weight: 600;
     text-align: left;
+    margin-top: 1.6rem;
+    margin-bottom: 0.8rem;
+    color: #aaa;
 }
 
 .formContainer {
   margin-left: 0.2rem;
+}
+
+.formContainer label {  
+    margin-bottom: 0.1rem;
+    cursor: pointer;  
 }
 
 input[type=radio].withfont,
@@ -215,6 +208,7 @@ input[type=checkbox].withfont ~ label:before {
     font-size: 1.2em;
     color: #535353;
     width: 1.4em;
+    cursor: pointer;
 }
 
 input[type=radio].withfont:checked ~ label:before,
@@ -223,13 +217,16 @@ input[type=checkbox].withfont:checked ~ label:before  {
     font-size: 1.2em;
     color: darkgreen;
     letter-spacing: 5px;
+    cursor: pointer;
 }
 input[type=checkbox].withfont ~ label:before {        
     content: "\f096";
+    cursor: pointer;    
 }
 input[type=checkbox].withfont:checked ~ label:before {
     content: "\f046";        
     color: darkgreen;
+    cursor: pointer;
 }
 input[type=radio].withfont:focus ~ label:before,
 input[type=checkbox].withfont:focus ~ label:before,
@@ -237,6 +234,7 @@ input[type=radio].withfont:focus ~ label,
 input[type=checkbox].withfont:focus ~ label
 {                
     color: green;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 480px) {
@@ -245,7 +243,6 @@ input[type=checkbox].withfont:focus ~ label
     padding-right: 5px !important;
   }
 }
-
 
 
 @media only screen and (max-width: 768px) {

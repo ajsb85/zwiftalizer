@@ -21,7 +21,11 @@ class Benchmarks extends React.Component {
     this.state = {
       platformFilter: ALL,
       resolutionFilter: ALL,
-      profileFilter: ALL
+      profileFilter: ALL,
+      cpuFilter: ALL,
+      gpuFilter: ALL,
+      minFpsFilter: ALL,
+      showFiltersPanel: false
     };
 
     this.handlePlatformFilterChange = this.handlePlatformFilterChange.bind(
@@ -31,8 +35,11 @@ class Benchmarks extends React.Component {
       this
     );
     this.handleProfileFilterChange = this.handleProfileFilterChange.bind(this);
-
+    this.handleCpuFilterChange = this.handleCpuFilterChange.bind(this);
+    this.handleGpuFilterChange = this.handleGpuFilterChange.bind(this);
+    this.handleMinFpsFilterChange = this.handleMinFpsFilterChange.bind(this);
     this.findMySystemClicked = this.findMySystemClicked.bind(this);
+    this.toggleFiltersPanelClicked = this.toggleFiltersPanelClicked.bind(this);
 
     setTimeout(
       () => {
@@ -52,6 +59,18 @@ class Benchmarks extends React.Component {
 
   handleProfileFilterChange(e) {
     this.setState({ profileFilter: e.target.value });
+  }
+
+  handleCpuFilterChange(e) {
+    this.setState({ cpuFilter: e.target.value });
+  }
+
+  handleGpuFilterChange(e) {
+    this.setState({ gpuFilter: e.target.value });
+  }
+
+  handleMinFpsFilterChange(e) {
+    this.setState({ minFpsFilter: e.target.value });
   }
 
   findMySystemClicked(e) {
@@ -77,6 +96,11 @@ class Benchmarks extends React.Component {
     );
   }
 
+  toggleFiltersPanelClicked(e) {
+    e.preventDefault();
+    this.setState({ showFiltersPanel: !this.state.showFiltersPanel });
+  }
+
   render() {
     const { isLoaded } = this.props;
 
@@ -84,392 +108,430 @@ class Benchmarks extends React.Component {
   }
 
   renderFilters() {
+    const filterPanelStyle = this.state.showFiltersPanel
+      ? {
+        top: '10.3rem'          
+        }
+      : {
+          top: '-10.3rem'          
+        };
+
     return (
-      <div className={styles.filters}>
-        <div className="container">
-          <div className="row">
-            <h2>Filter by</h2>
-          </div>
-          <div className="row">
-            <div className="col-xs-12 col-sm-2">
-              <h3>Platform</h3>
-              <div className={styles.formContainer}>
-                <div>
-                  <input
-                    id="platform0"
-                    name="platformFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value={ALL}
-                    checked={this.state.platformFilter === ALL}
-                    onChange={this.handlePlatformFilterChange}
-                  />
-                  <label htmlFor="platform0">All</label>
+      <div className="hidden-xs">
+        <div className={styles.filters} style={filterPanelStyle}>
+          <div className="container">
+            <div className="row">
+              <div className="col-xs-12 col-sm-2">
+                <h3>Platform</h3>
+                <div className={styles.formContainer}>
+                  <div>
+                    <input
+                      id="platform0"
+                      name="platformFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value={ALL}
+                      checked={this.state.platformFilter === ALL}
+                      onChange={this.handlePlatformFilterChange}
+                    />
+                    <label htmlFor="platform0">All</label>
+                  </div>
+                  <div>
+                    <input
+                      id="platform1"
+                      name="platformFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="PC"
+                      checked={this.state.platformFilter === 'PC'}
+                      onChange={this.handlePlatformFilterChange}
+                    />
+                    <label htmlFor="platform1">PC</label>
+                  </div>
+                  <div>
+                    <input
+                      id="platform2"
+                      name="platformFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="Mac"
+                      checked={this.state.platformFilter === 'Mac'}
+                      onChange={this.handlePlatformFilterChange}
+                    />
+                    <label htmlFor="platform2">Mac</label>
+                  </div>
+                  <div>
+                    <input
+                      id="platform3"
+                      name="platformFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="iOS"
+                      checked={this.state.platformFilter === 'iOS'}
+                      onChange={this.handlePlatformFilterChange}
+                    />
+                    <label htmlFor="platform3">iOS</label>
+                  </div>
+                  <div>
+                    <input
+                      id="platform4"
+                      name="platformFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="Alienware"
+                      checked={this.state.platformFilter === 'Alienware'}
+                      onChange={this.handlePlatformFilterChange}
+                    />
+                    <label htmlFor="platform4">Alienware</label>
+                  </div>
                 </div>
-                <div>
-                  <input
-                    id="platform1"
-                    name="platformFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="PC"
-                    checked={this.state.platformFilter === 'PC'}
-                    onChange={this.handlePlatformFilterChange}
-                  />
-                  <label htmlFor="platform1">PC</label>
+              </div>
+              <div className="col-xs-12 col-sm-2">
+                <h3>Resolution</h3>
+                <div className={styles.formContainer}>
+                  <div>
+                    <input
+                      id="resolution0"
+                      name="resolutionFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value={ALL}
+                      checked={this.state.resolutionFilter === ALL}
+                      onChange={this.handleResolutionFilterChange}
+                    />
+                    <label htmlFor="resolution0">All</label>
+                  </div>
+                  <div>
+                    <input
+                      id="resolution1"
+                      name="resolutionFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="2160"
+                      checked={this.state.resolutionFilter === '2160'}
+                      onChange={this.handleResolutionFilterChange}
+                    />
+                    <label htmlFor="resolution1">2160 (4K)</label>
+                  </div>
+                  <div>
+                    <input
+                      id="resolution2"
+                      name="resolutionFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="1440"
+                      checked={this.state.resolutionFilter === '1440'}
+                      onChange={this.handleResolutionFilterChange}
+                    />
+                    <label htmlFor="resolution2">1440 (WQHD)</label>
+                  </div>
+                  <div>
+                    <input
+                      id="resolution3"
+                      name="resolutionFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="1080"
+                      checked={this.state.resolutionFilter === '1080'}
+                      onChange={this.handleResolutionFilterChange}
+                    />
+                    <label htmlFor="resolution3">1080 (FHD)</label>
+                  </div>
+                  <div>
+                    <input
+                      id="resolution4"
+                      name="resolutionFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="750"
+                      checked={this.state.resolutionFilter === '750'}
+                      onChange={this.handleResolutionFilterChange}
+                    />
+                    <label htmlFor="resolution4">750 (iPhone 7)</label>
+                  </div>
+                  <div>
+                    <input
+                      id="resolution5"
+                      name="resolutionFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="720"
+                      checked={this.state.resolutionFilter === '720'}
+                      onChange={this.handleResolutionFilterChange}
+                    />
+                    <label htmlFor="resolution5">720 (HD)</label>
+                  </div>
+                  <div>
+                    <input
+                      id="resolution6"
+                      name="resolutionFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="576"
+                      checked={this.state.resolutionFilter === '576'}
+                      onChange={this.handleResolutionFilterChange}
+                    />
+                    <label htmlFor="resolution6">576 (SD)</label>
+                  </div>
                 </div>
-                <div>
-                  <input
-                    id="platform2"
-                    name="platformFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="Mac"
-                    checked={this.state.platformFilter === 'Mac'}
-                    onChange={this.handlePlatformFilterChange}
-                  />
-                  <label htmlFor="platform2">Mac</label>
+              </div>
+              <div className="col-xs-12 col-sm-2">
+                <h3>Profile</h3>
+                <div className={styles.formContainer}>
+                  <div>
+                    <input
+                      id="profile0"
+                      name="profileFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value={ALL}
+                      checked={this.state.profileFilter === ALL}
+                      onChange={this.handleProfileFilterChange}
+                    />
+                    <label htmlFor="profile0">All</label>
+                  </div>
+                  <div>
+                    <input
+                      id="profile1"
+                      name="profileFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="3"
+                      checked={this.state.profileFilter === '3'}
+                      onChange={this.handleProfileFilterChange}
+                    />
+                    <label htmlFor="profile1">Ultra</label>
+                  </div>
+                  <div>
+                    <input
+                      id="profile2"
+                      name="profileFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="2"
+                      checked={this.state.profileFilter === '2'}
+                      onChange={this.handleProfileFilterChange}
+                    />
+                    <label htmlFor="profile2">High</label>
+                  </div>
+                  <div>
+                    <input
+                      id="profile3"
+                      name="profileFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="1"
+                      checked={this.state.profileFilter === '1'}
+                      onChange={this.handleProfileFilterChange}
+                    />
+                    <label htmlFor="profile3">Medium</label>
+                  </div>
+                  <div>
+                    <input
+                      id="profile4"
+                      name="profileFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="0"
+                      checked={this.state.profileFilter === '0'}
+                      onChange={this.handleProfileFilterChange}
+                    />
+                    <label htmlFor="profile4">Basic</label>
+                  </div>
                 </div>
-                <div>
-                  <input
-                    id="platform3"
-                    name="platformFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="iOS"
-                    checked={this.state.platformFilter === 'iOS'}
-                    onChange={this.handlePlatformFilterChange}
-                  />
-                  <label htmlFor="platform3">iOS</label>
+              </div>
+              <div className="col-xs-12 col-sm-2">
+                <h3>CPU Make</h3>
+                <div className={styles.formContainer}>
+                  <div>
+                    <input
+                      id="cpu0"
+                      name="cpuFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value={ALL}
+                      checked={this.state.cpuFilter === ALL}
+                      onChange={this.handleCpuFilterChange}
+                    />
+                    <label htmlFor="cpu0">All</label>
+                  </div>
+                  <div>
+                    <input
+                      id="cpu1"
+                      name="cpuFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="intel"
+                      checked={this.state.cpuFilter === 'intel'}
+                      onChange={this.handleCpuFilterChange}
+                    />
+                    <label htmlFor="cpu1">Intel</label>
+                  </div>
+                  <div>
+                    <input
+                      id="cpu2"
+                      name="cpuFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="amd"
+                      checked={this.state.cpuFilter === 'amd'}
+                      onChange={this.handleCpuFilterChange}
+                    />
+                    <label htmlFor="cpu2">AMD</label>
+                  </div>
+                  <div>
+                    <input
+                      id="cpu3"
+                      name="cpuFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="arm64"
+                      checked={this.state.cpuFilter === 'arm64'}
+                      onChange={this.handleCpuFilterChange}
+                    />
+                    <label htmlFor="cpu3">ARM</label>
+                  </div>
                 </div>
-                <div>
-                  <input
-                    id="platform4"
-                    name="platformFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="Alienware"
-                    checked={this.state.platformFilter === 'Alienware'}
-                    onChange={this.handlePlatformFilterChange}
-                  />
-                  <label htmlFor="platform4">Alienware</label>
+              </div>
+              <div className="col-xs-12 col-sm-2">
+                <h3>GPU Make</h3>
+                <div className={styles.formContainer}>
+                  <div>
+                    <input
+                      id="gpu0"
+                      name="gpuFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value={ALL}
+                      checked={this.state.gpuFilter === ALL}
+                      onChange={this.handleGpuFilterChange}
+                    />
+                    <label htmlFor="gpu0">All</label>
+                  </div>
+                  <div>
+                    <input
+                      id="gpu1"
+                      name="gpuFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="nvidia"
+                      checked={this.state.gpuFilter === 'nvidia'}
+                      onChange={this.handleGpuFilterChange}
+                    />
+                    <label htmlFor="gpu1">Nvidia</label>
+                  </div>
+                  <div>
+                    <input
+                      id="gpu2"
+                      name="gpuFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="ati"
+                      checked={this.state.gpuFilter === 'ati'}
+                      onChange={this.handleGpuFilterChange}
+                    />
+                    <label htmlFor="gpu2">AMD/ATI</label>
+                  </div>
+                  <div>
+                    <input
+                      id="gpu3"
+                      name="gpuFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="apple"
+                      checked={this.state.gpuFilter === 'apple'}
+                      onChange={this.handleGpuFilterChange}
+                    />
+                    <label htmlFor="gpu3">Apple</label>
+                  </div>
+                  <div>
+                    <input
+                      id="gpu4"
+                      name="gpuFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="intel"
+                      checked={this.state.gpuFilter === 'intel'}
+                      onChange={this.handleGpuFilterChange}
+                    />
+                    <label htmlFor="gpu4">Intel</label>
+                  </div>
+                </div>
+              </div>
+              <div className="col-xs-12 col-sm-2">
+                <h3>Min fps</h3>
+                <div className={styles.formContainer}>
+                  <div>
+                    <input
+                      id="fps0"
+                      name="fpsFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value={ALL}
+                      checked={this.state.minFpsFilter === ALL}
+                      onChange={this.handleMinFpsFilterChange}
+                    />
+                    <label htmlFor="fps0">All</label>
+                  </div>
+                  <div>
+                    <input
+                      id="fps1"
+                      name="fpsFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="60"
+                      checked={this.state.minFpsFilter === '60'}
+                      onChange={this.handleMinFpsFilterChange}
+                    />
+                    <label htmlFor="fps1">≥ 60</label>
+                  </div>
+                  <div>
+                    <input
+                      id="fps2"
+                      name="fpsFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="45"
+                      checked={this.state.minFpsFilter === '45'}
+                      onChange={this.handleMinFpsFilterChange}
+                    />
+                    <label htmlFor="fps2">≥ 45</label>
+                  </div>
+                  <div>
+                    <input
+                      id="fps3"
+                      name="fpsFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="30"
+                      checked={this.state.minFpsFilter === '30'}
+                      onChange={this.handleMinFpsFilterChange}
+                    />
+                    <label htmlFor="fps3">≥ 30</label>
+                  </div>
+                  <div>
+                    <input
+                      id="fps4"
+                      name="fpsFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="15"
+                      checked={this.state.minFpsFilter === '15'}
+                      onChange={this.handleMinFpsFilterChange}
+                    />
+                    <label htmlFor="fps4">≥ 15</label>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="col-xs-12 col-sm-2">
-              <h3>Resolution</h3>
-              <div className={styles.formContainer}>
-                <div>
-                  <input
-                    id="resolution0"
-                    name="resolutionFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value={ALL}
-                    checked={this.state.resolutionFilter === ALL}
-                    onChange={this.handleResolutionFilterChange}
-                  />
-                  <label htmlFor="resolution0">All</label>
+            <div className="row">
+              <div className="col-xs-offset-5 col-xs-2">
+                <div
+                  className={styles.toggleFiltersHandle}
+                  onClick={this.toggleFiltersPanelClicked}
+                >
+                  <i className="fa fa-align-justify" aria-hidden="true" />
                 </div>
-                <div>
-                  <input
-                    id="resolution1"
-                    name="resolutionFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="2160"
-                    checked={this.state.resolutionFilter === '2160'}
-                    onChange={this.handleResolutionFilterChange}
-                  />
-                  <label htmlFor="resolution1">2160 (4K)</label>
-                </div>
-                <div>
-                  <input
-                    id="resolution2"
-                    name="resolutionFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="1440"
-                    checked={this.state.resolutionFilter === '1440'}
-                    onChange={this.handleResolutionFilterChange}
-                  />
-                  <label htmlFor="resolution2">1440 (WQHD)</label>
-                </div>
-                <div>
-                  <input
-                    id="resolution3"
-                    name="resolutionFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="1080"
-                    checked={this.state.resolutionFilter === '1080'}
-                    onChange={this.handleResolutionFilterChange}
-                  />
-                  <label htmlFor="resolution3">1080 (FHD)</label>
-                </div>
-                <div>
-                  <input
-                    id="resolution4"
-                    name="resolutionFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="750"
-                    checked={this.state.resolutionFilter === '750'}
-                    onChange={this.handleResolutionFilterChange}
-                  />
-                  <label htmlFor="resolution4">750</label>
-                </div>
-                <div>
-                  <input
-                    id="resolution5"
-                    name="resolutionFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="720"
-                    checked={this.state.resolutionFilter === '720'}
-                    onChange={this.handleResolutionFilterChange}
-                  />
-                  <label htmlFor="resolution5">720 (HD)</label>
-                </div>
-                <div>
-                  <input
-                    id="resolution6"
-                    name="resolutionFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="576"
-                    checked={this.state.resolutionFilter === '576'}
-                    onChange={this.handleResolutionFilterChange}
-                  />
-                  <label htmlFor="resolution6">576 (SD)</label>
-                </div>
-              </div>
-            </div>
-            <div className="col-xs-12 col-sm-2">
-              <h3>Profile</h3>
-              <div className={styles.formContainer}>
-                <div>
-                  <input
-                    id="profile0"
-                    name="profileFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value={ALL}
-                    checked={this.state.profileFilter === ALL}
-                    onChange={this.handleProfileFilterChange}
-                  />
-                  <label htmlFor="profile0">All</label>
-                </div>
-                <div>
-                  <input
-                    id="profile1"
-                    name="profileFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="3"
-                    checked={this.state.profileFilter === '3'}
-                    onChange={this.handleProfileFilterChange}
-                  />
-                  <label htmlFor="profile1">Ultra</label>
-                </div>
-                <div>
-                  <input
-                    id="profile2"
-                    name="profileFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="2"
-                    checked={this.state.profileFilter === '2'}
-                    onChange={this.handleProfileFilterChange}
-                  />
-                  <label htmlFor="profile2">High</label>
-                </div>
-                <div>
-                  <input
-                    id="profile3"
-                    name="profileFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="1"
-                    checked={this.state.profileFilter === '1'}
-                    onChange={this.handleProfileFilterChange}
-                  />
-                  <label htmlFor="profile3">Medium</label>
-                </div>
-                <div>
-                  <input
-                    id="profile4"
-                    name="profileFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="0"
-                    checked={this.state.profileFilter === '0'}
-                    onChange={this.handleProfileFilterChange}
-                  />
-                  <label htmlFor="profile4">Basic</label>
-                </div>
-              </div>
-            </div>
-            <div className="col-xs-12 col-sm-2">
-              <h3>CPU Brand</h3>
-              <div className={styles.formContainer}>
-                <div>
-                  <input
-                    id="cpu0"
-                    name="cpuFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="-1"
-                  />
-                  <label htmlFor="cpu0">All</label>
-                </div>
-                <div>
-                  <input
-                    id="cpu1"
-                    name="cpuFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="intel"
-                  />
-                  <label htmlFor="cpu1">Intel</label>
-                </div>
-                <div>
-                  <input
-                    id="cpu2"
-                    name="cpuFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="amd"
-                  />
-                  <label htmlFor="cpu2">AMD</label>
-                </div>
-                <div>
-                  <input
-                    id="cpu3"
-                    name="cpuFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="arm64"
-                  />
-                  <label htmlFor="cpu3">ARM</label>
-                </div>
-              </div>
-            </div>
-            <div className="col-xs-12 col-sm-2">
-              <h3>GPU Brand</h3>
-              <div className={styles.formContainer}>
-                <div>
-                  <input
-                    id="gpu0"
-                    name="gpuFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="-1"
-                  />
-                  <label htmlFor="gpu0">All</label>
-                </div>
-                <div>
-                  <input
-                    id="gpu1"
-                    name="gpuFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="nvidia"
-                  />
-                  <label htmlFor="gpu1">Nvidia</label>
-                </div>
-                <div>
-                  <input
-                    id="gpu2"
-                    name="gpuFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="amd"
-                  />
-                  <label htmlFor="gpu2">AMD</label>
-                </div>
-                <div>
-                  <input
-                    id="gpu3"
-                    name="gpuFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="apple"
-                  />
-                  <label htmlFor="gpu3">Apple</label>
-                </div>
-                <div>
-                  <input
-                    id="gpu4"
-                    name="gpuFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="intel"
-                  />
-                  <label htmlFor="gpu4">Intel</label>
-                </div>
-              </div>
-            </div>
-            <div className="col-xs-12 col-sm-2">
-              <h3>Min fps</h3>
-              <div className={styles.formContainer}>
-                <div>
-                  <input
-                    id="fps0"
-                    name="fpsFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="0"
-                  />
-                  <label htmlFor="fps0">All</label>
-                </div>
-                <div>
-                  <input
-                    id="fps1"
-                    name="fpsFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="60"
-                  />
-                  <label htmlFor="fps1">≥ 60</label>
-                </div>
-                <div>
-                  <input
-                    id="fps2"
-                    name="fpsFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="45"
-                  />
-                  <label htmlFor="fps2">≥ 45</label>
-                </div>
-                <div>
-                  <input
-                    id="fps3"
-                    name="fpsFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="30"
-                  />
-                  <label htmlFor="fps3">≥ 30</label>
-                </div>
-                <div>
-                  <input
-                    id="fps4"
-                    name="fpsFilter"
-                    type="radio"
-                    className={styles.withfont}
-                    value="15"
-                  />
-                  <label htmlFor="fps4">≥ 15</label>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-xs-offset-5 col-xs-2">
-              <div className={styles.toggleFiltersHandle}>
-                <i className="fa fa-align-justify" aria-hidden="true" />
               </div>
             </div>
           </div>
@@ -507,9 +569,6 @@ class Benchmarks extends React.Component {
       currentSystem
     } = this.props;
 
-    console.log(`platform filter is ${this.state.platformFilter}`);
-    console.log(`resolution filter is ${this.state.resoltuionFilter}`);
-
     let resolutionEntries;
     let filtered;
     let predicates = {};
@@ -528,17 +587,28 @@ class Benchmarks extends React.Component {
       predicates.profileId = R.equals(parseInt(this.state.profileFilter, 10));
     }
 
-    console.log('predicates');
-    console.log(predicates);
-    console.log(Object.keys(predicates));
-    console.log(Object.keys(predicates).length);
+    if (this.state.cpuFilter !== ALL) {
+      predicates.cpuVendor = R.equals(this.state.cpuFilter);
+    }
+
+    if (this.state.gpuFilter !== ALL) {
+      predicates.gpuVendor = R.equals(this.state.gpuFilter);
+    }
+
+    if (this.state.minFpsFilter !== ALL) {
+      predicates.minFps = R.gte(R.__, parseInt(this.state.minFpsFilter, 10));
+    }
+
+    // console.log('predicates');
+    // console.log(predicates);
+    // console.log(Object.keys(predicates));
+    // console.log(Object.keys(predicates).length);
 
     if (Object.keys(predicates).length) {
       const filteredResolutions = whereResults(predicates, this.props);
       if (filteredResolutions && filteredResolutions.resolutions) {
         filtered = filteredResolutions.resolutions;
       }
-      console.log(filtered);
     } else {
       filtered = resolutions;
     }
@@ -561,9 +631,9 @@ class Benchmarks extends React.Component {
     const dateLastUpdateHuman = moment(dateLastUpdate).format();
 
     return (
-      <div className={styles.benchmarksOuter}>
+      <div className={styles.benchmarksWrapper}>
         {this.renderFilters()}
-        <div className={styles.benchmarksContainer}>
+        <div>
           <div className="container">
             <div className={editorialStyles.boxesWrapOuter}>
               <div className={structure.boxesWrapInner}>
@@ -579,7 +649,7 @@ class Benchmarks extends React.Component {
                             {totalRecords}
                           </div>
                           <div className={styles.systemsCountSubheading}>
-                            Systems (with 7+ logs)
+                            Systems (with 5+ logs &amp; min FPS >= 10)
                           </div>
                         </div>
                       </div>

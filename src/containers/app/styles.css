@@ -17,7 +17,7 @@
     background: #F9852B;    
     height: 3.5rem;
     max-height: 3.5rem;
-    border-bottom: 2px solid #fff;
+    /*border-bottom: 2px solid #fff;*/
 }
 
 .stickySubHeader p,
