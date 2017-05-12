@@ -3,7 +3,13 @@
 
 ## Zwiftalizer
 
-Copyright (c) 2016 Michael Hanney
+Copyright (c) 2017 Michael Hanney
+
+# Preamble 
+
+Zwiftalizer is not affiliated with Zwift Inc nor is it supported or endorsed by Zwift Inc in any way. 
+
+PondJS and React Timeseries Charts are copyright of ESnet and The Regents of the University of California, through Lawrence Berkeley National Laboratory.
 
 # License Summary
 
