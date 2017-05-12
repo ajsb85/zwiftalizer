@@ -1,5 +1,7 @@
 var moment = require('moment');
 const R = require('ramda');
+// const Ru = require('@panosoft/ramda-utils');
+const _ = require('underscore');
 import React, { Component, PropTypes } from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
@@ -21,7 +23,7 @@ class Benchmarks extends React.Component {
     this.state = {
       platformFilter: ALL,
       resolutionFilter: ALL,
-      profileFilter: ALL,      
+      profileFilter: ALL,
       cpuFilter: ALL,
       gpuFilter: ALL,
       minFpsFilter: ALL,
@@ -50,11 +52,11 @@ class Benchmarks extends React.Component {
   }
 
   handlePlatformFilterChange(e) {
-    this.setState({ platformFilter: e.target.value });    
+    this.setState({ platformFilter: e.target.value });
   }
 
   handleResolutionFilterChange(e) {
-    this.setState({ resolutionFilter: e.target.value });    
+    this.setState({ resolutionFilter: e.target.value });
   }
 
   handleProfileFilterChange(e) {
@@ -76,7 +78,7 @@ class Benchmarks extends React.Component {
   findMySystemClicked(e) {
     e.preventDefault();
 
-    const { currentSystem, dispatch } = this.props;
+    const { currentSystem, resolutions, dispatch } = this.props;
 
     if (!currentSystem) {
       return;
@@ -117,7 +119,7 @@ class Benchmarks extends React.Component {
         };
 
     return (
-      <div className="hidden-xs">
+      <div className="hidden-xs hidden-sm">
         <div className={styles.filters} style={filterPanelStyle}>
           <div className="container">
             <div className="row">
@@ -622,6 +624,60 @@ class Benchmarks extends React.Component {
     }
 
     if (filtered) {
+      // If find my system clicked && currentSystem exists,
+      // the panel to which the current system belongs might not
+      // exist because it has been removed by filtering.
+      // Create the resolution and empty profiles collection
+      // so that the current system has somewhere to go.
+      if (currentSystem) {
+        console.log(currentSystem);
+
+        const existingResolutionNode = _.findWhere(filtered, {
+          resolution: currentSystem.resolution
+        });
+
+        if (!existingResolutionNode) {
+          const resolution = {
+            resolution: currentSystem.resolution,
+            profiles: [{ profileId: currentSystem.profileId, results: [] }]
+          };
+
+          // the Resolution component will
+          // add the current system to this resolution node
+          filtered.push(resolution);
+        } else {
+          // do we have the resolution panel, but not the profile?
+
+          if (!existingResolutionNode.profiles) {
+            existingResolutionNode.profiles = [];
+          }
+
+          const existingProfileNode = _.findWhere(
+            existingResolutionNode.profiles,
+            {
+              profileId: currentSystem.profileId
+            }
+          );
+
+          if (!existingProfileNode) {
+            existingResolutionNode.profiles.push({
+              profileId: currentSystem.profileId,
+              results: []
+            });
+          }
+        }
+
+        console.log('filtered');
+        console.log(filtered);
+      }
+
+  // // sort by average frames per second descending, in each profile-resolution group
+  //   const props = ['-resolution'];
+
+  //   const comparator = Ru.compareProps(props);
+
+  //   filtered = R.sort(comparator,filtered);
+
       resolutionEntries = filtered.map(
         function(resolution, i) {
           const data = Object.assign({}, resolution, {

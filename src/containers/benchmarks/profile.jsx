@@ -47,7 +47,7 @@ class Profile extends React.Component {
 
     let results = _.clone(this.props.data.results);
 
-    // hot insert current system if exists
+    // hot insert current system if exists    
     if (
       currentSystem &&
       (currentSystem.resolution === resolution &&
@@ -157,11 +157,11 @@ class Profile extends React.Component {
                 </div>
               </div>
             </div>
-          </div>          
+          </div>
           <div className="row">
             <div className="hidden-xs col-sm-offset-7 col-sm-5">
               <p>
-                Ordered by average FPS (Frames Per Second) descending.                
+                Ordered by average FPS (Frames Per Second) descending.
                 <br />
                 Longer bars are better.
               </p>

@@ -1,29 +1,23 @@
-import React, {Component, PropTypes} from 'react'
-import {connect} from 'react-redux'
-import structure from '../../styles/structure.css'
-import styles from './styles.css'
-var moment = require('moment')
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import structure from '../../styles/structure.css';
+import styles from './styles.css';
+var moment = require('moment');
 
 class Activity extends React.Component {
-
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   render() {
-    const {isLoaded} = this.props
-    return isLoaded
-      ? this.renderActivity()
-      : null
+    const { isLoaded } = this.props;
+    return isLoaded ? this.renderActivity() : null;
   }
 
   renderActivity() {
+    const { startDate, startTime, humanizedDuration } = this.props;
 
-    const {startDate, startTime, humanizedDuration} = this.props;
-
-    const friendlyDate = moment(startDate, 'YYYY-MM-DD').format('MMM Do YYYY')
-
-    // <div className="row">   <div className="col-sm-12">     <h2 className={structure.sectionHeading}>Activity</h2>   </div> </div>
+    const friendlyDate = moment(startDate, 'YYYY-MM-DD').format('MMM Do YYYY');
 
     return (
       <div className="container">
@@ -39,26 +33,28 @@ class Activity extends React.Component {
             </div>
             <div className={structure.boxLast}>
               <div className={structure.boxHeadingLast}>Duration</div>
-              <div className={styles.activityBoxContent}>{humanizedDuration}</div>
+              <div className={styles.activityBoxContent}>
+                {humanizedDuration}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 function mapStateToProps(state) {
-  const {reader, activity} = state
+  const { reader, activity } = state;
   return {
     ...reader,
     ...activity
-  }
+  };
 }
 
 Activity.propTypes = {
   reader: PropTypes.object,
   activity: PropTypes.object
-}
+};
 
-export default connect(mapStateToProps)(Activity)
+export default connect(mapStateToProps)(Activity);

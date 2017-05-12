@@ -15,8 +15,8 @@ class Resolution extends React.Component {
 
       const {profileId, results} = profile
 
-      if (results && results.length) {
-
+      // is allowed to be empty array
+      if (typeof(results) === 'object') {           
         const data = {
           resolution,
           totalRecords,

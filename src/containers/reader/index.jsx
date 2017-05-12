@@ -120,8 +120,7 @@ class Reader extends React.Component {
                     </div>
                   </div>
                   <h2 className={styles.checkboxLabel}>
-                    {' '}
-                    Include my stats in the database &nbsp;<a
+                    Upload my system specs &nbsp;<a
                       href=""
                       onClick={this.openDbUploadExplanationModal}
                     >
@@ -193,7 +192,7 @@ class Reader extends React.Component {
 
                     <h3>Is the data anonymous?</h3>
                     <p>
-                      Yes. Personally Identifiable Information is NOT used or stored in the database. Your IP address is used to do an approximate location lookup for grouping the power sources report by country.   Your Zwift userid is NEVER read. The email address you use with Zwift is NEVER read. The Zwiftalizer will NEVER ask for your Zwift username or password.
+                      Yes. PII (Personally Identifiable Information) is NOT used or stored in the database. Your IP address is used to do an approximate location lookup for grouping the power sources report by country. Your Zwift userid is NEVER read. The email address you use with Zwift is NEVER read. The Zwiftalizer will NEVER ask for your Zwift username or password.
                     </p>
                     <p>
                       The following data is uploaded:
@@ -216,10 +215,10 @@ class Reader extends React.Component {
                           <li>OpenGl Major Version - e.g. 3.1.0</li>
                           <li>RAM - e.g. 8 GB</li>
                           <li>
-                            Graphics Resolution - 2160, 1080, 720 or 576
+                            Graphics Resolution - 2160, 1440, 1080, etc
                           </li>
                           <li>
-                            Shadow Resolution - 2048, 1024 or 512
+                            Shadow Resolution - 2048, 1024, 512, etc
                           </li>
                           <li>
                             Graphics Profile - Ultra, High, Medium or Basic
