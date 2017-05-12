@@ -68,23 +68,23 @@ class PowerSources extends React.Component {
                     <div className="col-xs-offset-1 col-xs-10">
                       <h3>Caveats</h3>
                       <ul>
-                        <li>Only devices paired using ANT+ are included.</li>
-                        <li>Sampling started on May 1st 2017.</li>
+                        <li>Only devices paired using ANT+ are included.</li>                        
                         <li>
-                          A power source is identified by its unique manufacturer ID, model ID and device ID compound key.
+                          A power source is identified by its unique manufacturer ID, model ID and device ID combined key.
                         </li>
                         <li>
                           A power source is never counted more than once regardless of how many times it is seen by this tool.
                         </li>
                         <li>
-                          Country is identified by the IP address of the user that examined a log using this tool.
+                          Country is identified by the IP address of the user who uploaded a log using this tool.
                         </li>
                         <li>
                           Personal identifiable information is never used.
                         </li>
                         <li>
-                          CycleOps PowerBeam, PowerSync, Phantom 3, Phantom 5, PowertTap Pro+ and PowertTap SL+ are grouped together as 'Wireless' PowertTap power meters (Id not available).
+                          CycleOps PowerBeam, PowerSync, Phantom 3, Phantom 5, PowertTap Pro+ and PowertTap SL+ are grouped together as 'Wireless' PowertTap power meters.
                         </li>
+                        <li>Sampling started June 2017.</li>
                       </ul>
                     </div>
                   </div>

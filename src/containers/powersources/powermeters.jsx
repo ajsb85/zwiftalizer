@@ -77,12 +77,14 @@ class Powermeters extends React.Component {
 
         // const chartKey = `${i + 1}`;
 
-        const chartKey = `${powermeter.percent}%`
+        const powerPercenntRounded = Math.round(powermeter.percent);
+
+        const chartKey = `${powerPercenntRounded}%`
 
         chartData.push({
           key: chartKey,
           rowKey: rowKey,
-          y: powermeter.percent,
+          y: powerPercenntRounded,
           color: keyColor,
           x: `${powermeter.modelName}`
         });

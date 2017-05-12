@@ -87,12 +87,14 @@ class SmartTrainers extends React.Component {
 
         //const chartKey = `${i + 1}`;
 
-        const chartKey = `${smartTrainer.percent}%`
+        const smartTrainerPercentRounded = Math.round(smartTrainer.percent);
+
+        const chartKey = `${smartTrainerPercentRounded}%`
 
         chartData.push({
           key: chartKey,
           rowKey: rowKey,
-          y: smartTrainer.percent,
+          y: Math.round(smartTrainerPercentRounded),
           color: keyColor,
           x: `${smartTrainer.modelName}`
         });

@@ -21,7 +21,7 @@ class Benchmarks extends React.Component {
     this.state = {
       platformFilter: ALL,
       resolutionFilter: ALL,
-      profileFilter: ALL,
+      profileFilter: ALL,      
       cpuFilter: ALL,
       gpuFilter: ALL,
       minFpsFilter: ALL,
@@ -50,11 +50,11 @@ class Benchmarks extends React.Component {
   }
 
   handlePlatformFilterChange(e) {
-    this.setState({ platformFilter: e.target.value });
+    this.setState({ platformFilter: e.target.value });    
   }
 
   handleResolutionFilterChange(e) {
-    this.setState({ resolutionFilter: e.target.value });
+    this.setState({ resolutionFilter: e.target.value });    
   }
 
   handleProfileFilterChange(e) {
@@ -110,10 +110,10 @@ class Benchmarks extends React.Component {
   renderFilters() {
     const filterPanelStyle = this.state.showFiltersPanel
       ? {
-        top: '10.3rem'          
+          top: '10.3rem'
         }
       : {
-          top: '-10.3rem'          
+          top: '-10.3rem'
         };
 
     return (
@@ -288,7 +288,9 @@ class Benchmarks extends React.Component {
                       checked={this.state.profileFilter === ALL}
                       onChange={this.handleProfileFilterChange}
                     />
-                    <label htmlFor="profile0">All</label>
+                    <label htmlFor="profile0">
+                      All
+                    </label>
                   </div>
                   <div>
                     <input
@@ -300,7 +302,9 @@ class Benchmarks extends React.Component {
                       checked={this.state.profileFilter === '3'}
                       onChange={this.handleProfileFilterChange}
                     />
-                    <label htmlFor="profile1">Ultra</label>
+                    <label htmlFor="profile1">
+                      Ultra
+                    </label>
                   </div>
                   <div>
                     <input
@@ -312,7 +316,9 @@ class Benchmarks extends React.Component {
                       checked={this.state.profileFilter === '2'}
                       onChange={this.handleProfileFilterChange}
                     />
-                    <label htmlFor="profile2">High</label>
+                    <label htmlFor="profile2">
+                      High
+                    </label>
                   </div>
                   <div>
                     <input
@@ -336,7 +342,9 @@ class Benchmarks extends React.Component {
                       checked={this.state.profileFilter === '0'}
                       onChange={this.handleProfileFilterChange}
                     />
-                    <label htmlFor="profile4">Basic</label>
+                    <label htmlFor="profile4">
+                      Basic
+                    </label>
                   </div>
                 </div>
               </div>
@@ -649,7 +657,7 @@ class Benchmarks extends React.Component {
                             {totalRecords}
                           </div>
                           <div className={styles.systemsCountSubheading}>
-                            Systems (with 5+ logs &amp; min FPS >= 10)
+                            Systems (with 5+ logs & min FPS &gt;= 10)
                           </div>
                         </div>
                       </div>
