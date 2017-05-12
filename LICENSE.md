@@ -45,9 +45,9 @@ For more information on the license summary topics
 
 Preamble: This Agreement, signed on Mar 16, 2017 (hereinafter: Effective Date) governs the relationship between Not-for-profit individuals, a Business
 
-Entity, (hereinafter: Licensee) and Michael Hanney, a private person whose principal place of business is {location} (hereinafter: Licensor). This
+Entity, (hereinafter: Licensee) and Michael Hanney, a private person whose principal place of business is Washington, USA (hereinafter: Licensor). 
 
-Agreement sets the terms, rights, restrictions and obligations on using Zwiftalizer (hereinafter: The Software) created and owned by Licensor, as detailed herein
+This Agreement sets the terms, rights, restrictions and obligations on using Zwiftalizer (hereinafter: The Software) created and owned by Licensor, as detailed herein.
 
 License Grant: Licensor hereby grants Licensee a Sublicensable, Non-assignable & non-transferable, Pepetual, Commercial with terms, Including the rights to distribute derivative works, Non-exclusive license, all with accordance with the terms set forth and other legal restrictions set forth in 3rd party software used while running Software.
 
@@ -67,7 +67,11 @@ This license is granted perpetually, as long as you do not materially breach it.
 
 Non Assignable & Non-Transferable: Licensee may not assign or transfer his rights and duties under this license.
 
-Commercial use not allowed. Commercial use of derivative works not allowed. Non-commercial use allowed.
+### Commercial use not allowed. 
+
+### Commercial use of derivative works not allowed. 
+
+### Non-commercial use allowed.
 
 Including the right to Distribute Derivative Works: Licensee may create and distribute derivative works based on Software, including amending Software’s source code, modifying it, integrating it into a larger work or removing portions of Software, as long as credit to the Licensor is granted and that redistribution is made under the terms of this license.
 
