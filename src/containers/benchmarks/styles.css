@@ -110,6 +110,7 @@
     margin-top: 0rem;
     color: #666;
     letter-spacing: -0.05rem;
+    margin-bottom:0.5rem;
 }
 .barsOuter {
   height: 9rem;
@@ -291,5 +292,31 @@ input[type=checkbox].withfont:focus ~ label
     display: none !important;
   }
 }
+
+.shoplinksLabel,
+ul.shoplinks {
+    font-weight: normal;
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+}
+.shoplinksLabel {
+  display: block;
+  float: left;
+  font-weight: 800;
+}
+
+ul.shoplinks {
+    list-style:none;
+    padding-left:0;
+}
+
+ul.shoplinks li {
+  display: inline;
+  list-style-type: none;
+  padding-right: 0.3rem;
+  line-height: 1.6rem;
+}
+
+ul.shoplinks li+li { padding-left: 0.3rem; border-left: 1px solid #178acc }
 
 

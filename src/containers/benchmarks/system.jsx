@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './styles.css';
 import images from '../../styles/images.css';
 
-const PRICEWATCH_LABEL = 'Discounts (US)';
-const TWEAKERS_LABEL = 'Discounts (EU)';
+const PRICEWATCH_LABEL = 'Deals (US)';
+const TWEAKERS_LABEL = 'Deals (EU)';
 const NEWEGG_LABEL = 'Newegg (US)';
 
 const AMAZON_US_LABEL = 'US';
@@ -33,6 +33,103 @@ class System extends React.Component {
     }
 
     return <h4 className={styles.cpuDetail}>{cpuDetail}</h4>;
+  }
+
+  renderShopLinks(){
+    const {
+      platform,
+      gpuVendor,
+      gpuTerms,
+      cpuVendor,
+      cpuTerms
+    } = this.props.data;
+    
+    const cpuShopLinks = [];
+    const gpuShopLinks = [];
+
+    let gpuLinks;
+    let gpuLinksMarkup;
+
+    console.log(platform);
+
+    if (platform !== 'alienware' && platform !== 'iOS' && (gpuVendor === 'nvidia' || gpuVendor === 'ati') && gpuTerms && gpuTerms.length) {
+      const queryStringTerms = gpuTerms.join('+');
+
+      const pricewatchLink = `http://www.pricewatch.com/search?q=${queryStringTerms}&gallery=1&sortby=price&condition=new&discounted=1`;
+      gpuShopLinks.push({
+        tag: PRICEWATCH_LABEL,
+        href: pricewatchLink
+      });
+
+      const tweakersLink = `https://tweakers.net/pricewatch/zoeken/?keyword=${queryStringTerms}`;
+      gpuShopLinks.push({
+        tag: TWEAKERS_LABEL,
+        href: tweakersLink
+      });
+
+      const neweggLink = `https://www.newegg.com/Product/ProductList.aspx?Submit=ENE&DEPA=0&Order=PRICE&PageSize=36&Description=${queryStringTerms}`;
+      gpuShopLinks.push({
+        tag: NEWEGG_LABEL,
+        href: neweggLink
+      });
+
+      const amazonUsLink = `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${queryStringTerms}`
+      gpuShopLinks.push({
+        tag: AMAZON_US_LABEL,
+        href: amazonUsLink
+      });
+
+      const amazonUkLink = `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${queryStringTerms}`
+      gpuShopLinks.push({
+        tag: AMAZON_UK_LABEL,
+        href: amazonUkLink
+      });
+
+      const amazonCaLink = `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${queryStringTerms}`
+      gpuShopLinks.push({
+        tag: AMAZON_CA_LABEL,
+        href: amazonCaLink
+      });
+
+      const amazonFrLink = `https://www.amazon.fr/s/?tag=${AMAZON_UK_TAG}&field-keywords=${queryStringTerms}`
+      gpuShopLinks.push({
+        tag: AMAZON_FR_LABEL,
+        href: amazonFrLink
+      });
+
+      const amazonEsLink = `https://www.amazon.es/s/?tag=${AMAZON_UK_TAG}&field-keywords=${queryStringTerms}`
+      gpuShopLinks.push({
+        tag: AMAZON_ES_LABEL,
+        href: amazonEsLink
+      });
+
+      const amazonDeLink = `https://www.amazon.de/s/?tag=${AMAZON_UK_TAG}&field-keywords=${queryStringTerms}`
+      gpuShopLinks.push({
+        tag: AMAZON_DE_LABEL,
+        href: amazonEsLink
+      });
+
+      const amazonItLink = `https://www.amazon.it/s/?tag=${AMAZON_UK_TAG}&field-keywords=${queryStringTerms}`
+      gpuShopLinks.push({
+        tag: AMAZON_IT_LABEL,
+        href: amazonEsLink
+      });
+
+      gpuLinksMarkup = gpuShopLinks.map(
+        function(link, i) {
+          return <li><a href={link.href}>{link.tag}</a></li>;
+        },
+        this
+      );
+
+      gpuLinks = <div><span className={styles.shoplinksLabel}>GPU:&nbsp;</span><ul className={styles.shoplinks}>{gpuLinksMarkup}</ul></div>
+          
+    }
+    
+    return <div>
+    {gpuLinks}
+    </div>;
+
   }
 
   render() {
@@ -143,40 +240,8 @@ class System extends React.Component {
     const detailsMarkup = details ? this.renderDetails(details) : null;
 
     //@todo, shop links for CPU and GPU
-
-    const gpuShopLinks = [];
-
-    if (gpuTerms && gpuTerms.length) {
-      const queryStringTerms = gpuTerms.join('+');
-
-      const pricewatchLink = `http://www.pricewatch.com/search?q=${queryStringTerms}&gallery=1&sortby=price&condition=new&discounted=1`;
-      gpuShopLinks.push({
-        tag: PRICEWATCH_LABEL,
-        href: pricewatchLink
-      });
-
-      const tweakersLink = `https://tweakers.net/pricewatch/zoeken/?keyword=${queryStringTerms}`;
-      gpuShopLinks.push({
-        tag: PRICEWATCH_LABEL,
-        href: tweakersLink
-      });
-
-      const neweggLink = 'https://www.newegg.com/Product/ProductList.aspx?Submit=ENE&DEPA=0&Order=PRICE&PageSize=36&Description=${queryStringTerms}';
-      gpuShopLinks.push({
-        tag: NEWEGG_LABEL,
-        href: neweggLink
-      });
-
-      const amazonUsLink = `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${queryStringTerms}`
-
-      const amazonCaLink = `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${queryStringTerms}`
-
-      const amazonUkLink = `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${queryStringTerms}`
-
-      // https://www.amazon.co.uk/s/?tag=zwiftalizer-21&field-keywords=gtx+960
-
-    }
-
+    const shopLinksMarkup = this.renderShopLinks();
+    
     const barStyle = {
       marginBottom: '0.2rem'
     };
@@ -226,6 +291,7 @@ class System extends React.Component {
               {systemId}
             </div>
             {detailsMarkup}
+            {shopLinksMarkup}
           </div>
           <div className="col-xs-12 col-sm-5">
             <div className={styles.samplesOuter}>
