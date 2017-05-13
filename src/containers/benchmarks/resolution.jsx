@@ -16,7 +16,9 @@ class Resolution extends React.Component {
       const {profileId, results} = profile
 
       // is allowed to be empty array
-      if (typeof(results) === 'object') {           
+      if (typeof(results) === 'object' && (results.length || 
+        // it would otherwise be empty if we didn't have to render it to contain the current hot inserted system
+       currentSystem && currentSystem.resolution === resolution && currentSystem.profileId === profileId)) {           
         const data = {
           resolution,
           totalRecords,

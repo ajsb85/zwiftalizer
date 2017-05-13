@@ -91,6 +91,7 @@ class Benchmarks extends React.Component {
         const anchorToScrollTo = document.getElementById('current');
         if (anchorToScrollTo) {
           anchorToScrollTo.scrollIntoView(true /* align top */);
+          window.scrollBy(0, -300); // scroll 300 px because of sticky header
         }
       },
       200
@@ -608,11 +609,6 @@ class Benchmarks extends React.Component {
       predicates.minFps = R.gte(R.__, parseInt(this.state.minFpsFilter, 10));
     }
 
-    // console.log('predicates');
-    // console.log(predicates);
-    // console.log(Object.keys(predicates));
-    // console.log(Object.keys(predicates).length);
-
     if (Object.keys(predicates).length) {
       const filteredResolutions = whereResults(predicates, this.props);
       if (filteredResolutions && filteredResolutions.resolutions) {
@@ -629,8 +625,7 @@ class Benchmarks extends React.Component {
       // Create the resolution and empty profiles collection
       // so that the current system has somewhere to go.
       if (currentSystem) {
-        console.log(currentSystem);
-
+        
         const existingResolutionNode = _.findWhere(filtered, {
           resolution: currentSystem.resolution
         });
@@ -671,9 +666,6 @@ class Benchmarks extends React.Component {
             });
           }
         }
-
-        console.log('filtered');
-        console.log(filtered);
       }
 
       resolutionEntries = filtered.map(
@@ -711,7 +703,7 @@ class Benchmarks extends React.Component {
                             {totalRecords}
                           </div>
                           <div className={styles.systemsCountSubheading}>
-                            Systems (with 5+ logs & min FPS &gt;= 10)
+                            Systems with 5+ logs where min FPS >= 10)
                           </div>
                         </div>
                       </div>
