@@ -53,6 +53,13 @@ class Profile extends React.Component {
       (currentSystem.resolution === resolution &&
         currentSystem.profileId === profileId)
     ) {
+
+      // Hack, darn, we use samples as the name of 
+      // the key that holds the number of logs averaged for this system, AND
+      // the number of FPS samples taken for an individual system.
+      // Set the samples to 1 here to represent N=1 log for the current system.
+      currentSystem.specs.samples = 1;
+
       const currentHighlighted = Object.assign({}, currentSystem.specs, {
         current: true
       });

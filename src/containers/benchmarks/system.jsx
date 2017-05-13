@@ -2,6 +2,26 @@ import React from 'react';
 import styles from './styles.css';
 import images from '../../styles/images.css';
 
+const PRICEWATCH_LABEL = 'Discounts (US)';
+const TWEAKERS_LABEL = 'Discounts (EU)';
+const NEWEGG_LABEL = 'Newegg (US)';
+
+const AMAZON_US_LABEL = 'US';
+const AMAZON_CA_LABEL = 'CA';
+const AMAZON_UK_LABEL = 'UK';
+const AMAZON_DE_LABEL = 'DE';
+const AMAZON_ES_LABEL = 'ES';
+const AMAZON_FR_LABEL = 'FR';
+const AMAZON_IT_LABEL = 'IT';
+
+const AMAZON_US_TAG = 'zwiftalizer-20';
+const AMAZON_CA_TAG = 'zwiftalizer07-20';
+const AMAZON_UK_TAG = 'zwiftalizer-21';
+const AMAZON_DE_TAG = 'zwiftalizer0c-21';
+const AMAZON_ES_TAG = 'zwiftalizer02-21';
+const AMAZON_FR_TAG = 'zwiftalizer06-21';
+const AMAZON_IT_TAG = 'zwiftalizer0f-21';
+
 class System extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +48,9 @@ class System extends React.Component {
       platform,
       cpuVendor,
       gpuVendor,
-      details      
+      details,
+      gpuTerms,
+      cpuTerms
     } = this.props.data;
 
     var relativeMaxWidth = 100;
@@ -107,7 +129,7 @@ class System extends React.Component {
           gpuClass = images.intel;
           break;
 
-        case 'apple':          
+        case 'apple':
         case 'arm64':
           gpuClass = images.arm64;
           break;
@@ -119,6 +141,41 @@ class System extends React.Component {
     }
 
     const detailsMarkup = details ? this.renderDetails(details) : null;
+
+    //@todo, shop links for CPU and GPU
+
+    const gpuShopLinks = [];
+
+    if (gpuTerms && gpuTerms.length) {
+      const queryStringTerms = gpuTerms.join('+');
+
+      const pricewatchLink = `http://www.pricewatch.com/search?q=${queryStringTerms}&gallery=1&sortby=price&condition=new&discounted=1`;
+      gpuShopLinks.push({
+        tag: PRICEWATCH_LABEL,
+        href: pricewatchLink
+      });
+
+      const tweakersLink = `https://tweakers.net/pricewatch/zoeken/?keyword=${queryStringTerms}`;
+      gpuShopLinks.push({
+        tag: PRICEWATCH_LABEL,
+        href: tweakersLink
+      });
+
+      const neweggLink = 'https://www.newegg.com/Product/ProductList.aspx?Submit=ENE&DEPA=0&Order=PRICE&PageSize=36&Description=${queryStringTerms}';
+      gpuShopLinks.push({
+        tag: NEWEGG_LABEL,
+        href: neweggLink
+      });
+
+      const amazonUsLink = `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${queryStringTerms}`
+
+      const amazonCaLink = `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${queryStringTerms}`
+
+      const amazonUkLink = `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${queryStringTerms}`
+
+      // https://www.amazon.co.uk/s/?tag=zwiftalizer-21&field-keywords=gtx+960
+
+    }
 
     const barStyle = {
       marginBottom: '0.2rem'
@@ -173,7 +230,7 @@ class System extends React.Component {
           <div className="col-xs-12 col-sm-5">
             <div className={styles.samplesOuter}>
               <div className={styles.samplesInner}>
-              {samples}<br/>Logs
+                {samples}<br />Logs
               </div>
             </div>
             <div className={styles.barsOuter}>

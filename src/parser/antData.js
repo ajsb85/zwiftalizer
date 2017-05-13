@@ -196,7 +196,7 @@ export default function antData(log, timeAxisTimeSeries) {
   }
 
   // for testing the modal
-  showUnknownSmartTrainerModelModal = true;
+  // showUnknownSmartTrainerModelModal = true;
 
   return Object.freeze({
     devices,

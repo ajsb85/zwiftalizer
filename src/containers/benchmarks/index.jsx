@@ -1,6 +1,5 @@
 var moment = require('moment');
 const R = require('ramda');
-// const Ru = require('@panosoft/ramda-utils');
 const _ = require('underscore');
 import React, { Component, PropTypes } from 'react';
 import { withRouter } from 'react-router';
@@ -645,6 +644,12 @@ class Benchmarks extends React.Component {
           // the Resolution component will
           // add the current system to this resolution node
           filtered.push(resolution);
+
+          // sort again because we added the missing resolution to the end of the array
+          filtered = _.sortBy(filtered, f => {
+            return f.resolution;
+          }).reverse();
+
         } else {
           // do we have the resolution panel, but not the profile?
 
@@ -670,13 +675,6 @@ class Benchmarks extends React.Component {
         console.log('filtered');
         console.log(filtered);
       }
-
-  // // sort by average frames per second descending, in each profile-resolution group
-  //   const props = ['-resolution'];
-
-  //   const comparator = Ru.compareProps(props);
-
-  //   filtered = R.sort(comparator,filtered);
 
       resolutionEntries = filtered.map(
         function(resolution, i) {

@@ -35,8 +35,9 @@ class Analysis extends React.Component {
       return;
     }
 
-    // force open the panel that contains the current system before scrolling incase the user closed it (this just sets up the preference for opening the panel after the bench marks
-    // loads)
+    // force open the panel that contains the current system before scrolling 
+    // incase the user closed it (this just sets up the preference for opening 
+    // the panel after the bench marks loads)
     dispatch(openProfilePanel(currentSystem.panelKey));
 
     var callback = () => {
@@ -64,7 +65,6 @@ class Analysis extends React.Component {
 
   render() {
     const { isLoaded } = this.props;
-
     return isLoaded ? this.renderAnalysis() : null;
   }
 
@@ -74,16 +74,13 @@ class Analysis extends React.Component {
     var profileComment = '';
 
     if (!_.isUndefined(currentSystem.profileId)) {
-      profileComment += 'Your graphics profile (realism) is ' +
+      profileComment += 'Your graphics profile (level of realism and detail) is ' +
         this.getProfileOpinion(currentSystem.profileId) +
         ' level. The levels are Basic, Medium, High and Ultra. ';
       profileComment += 'Integrated GPUs use the Basic profile. ';
       profileComment += 'The Medium and High profiles use higher quality effects for increased realism. ';
-      profileComment += 'The Ultra profile adds further realism by using nicer lighting, nicer shadows and additional polygons to give things more detail. ';
-      profileComment += 'Graphics profile is automatically set by the game engine according to the capabilities of your graphics processing unit. You can not set it yourself. ';
-      profileComment += 'A low end discrete GPU, such as the Nvidia GeForce GT 650 or AMD Radeon R7 360 Series, is necessary to get the Medium profile. ';
-      profileComment += 'A mid level discrete GPU, such as the Nvidia GeForce GTX 750 Ti or AMD Radeon R9 200, is necessary to get the High profile. ';
-      profileComment += 'A high end discrete GPU, such as the Nvidia GeForce GTX 1050, GTX 960 or AMD Radeon RX 480, is necessary to get the Ultra profile. ';
+      profileComment += 'The Ultra profile gives the highest level of realism by using more sophisticated lighting, shadows and additional polygons. ';
+      profileComment += 'Graphics profile is automatically set by the game engine according to the capabilities of your graphics processing unit. You can not set it yourself. ';      
     }
 
     var performanceScore = getPerformanceScore(
@@ -142,15 +139,43 @@ class Analysis extends React.Component {
       resolutionComment += 'Your resolution (picture frame size measured in the number of pixels in the vertical axis) is ' +
         this.getResolutionOpinion(currentSystem.resolution) +
         '. ';
-      resolutionComment += 'The levels are 576 standard definition (SD), 750 iOS, 720 high definition (HD), 1080 full high definition (FHD), ';
+      resolutionComment += 'The levels are 576 standard definition (SD), 750 iOS (iPhone 7), 720 high definition (HD), 1080 full high definition (FHD), ';
       resolutionComment += '1440 wide quad high definition (WQHD - 4 times as many pixels as 720 HD), ';
       resolutionComment += '2160 ultra high definition (4K - 4 times as many pixels as 1080 FHD). ';
-      resolutionComment += 'Unlike graphics profile, you can change the graphics resolution to whatever you want. ';
-      resolutionComment += 'However, a high end discrete GPU, such as the Nvidia GeForce GTX 1050, GTX 960 or AMD Radeon RX 480, is necessary to get the 1440 and 2160 (4K) resolution options. ';
+      resolutionComment += 'You can change the graphics resolution to whatever you want. ';
+      resolutionComment += 'However, a high end discrete GPU, such as the Nvidia GeForce GTX 1050, GTX 960 or AMD Radeon RX 480, is necessary to unlock the 1440 and 2160 (4K) resolution options. ';
     }
 
     return (
       <div className="container">
+        <div className="row">
+          <div className="col-xs-12">
+            <div className={structure.boxesWrapOuter}>
+              <div className={structure.boxesWrapInner}>
+                <div className={structure.boxFirstLast}>
+                  <div className={structure.boxHeadingLast}>
+                    ANT+ Analysis
+                  </div>
+                  <div className={editorial.editorialBoxContent}>
+                    <div className="container">
+                      <div className="row">
+                        <div className="col-xs-12">
+                          <h3>&nbsp;</h3>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-xs-12">
+                          <h3></h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="row">
           <div className="col-xs-12">
             <div className={structure.boxesWrapOuter}>
@@ -216,8 +241,7 @@ class Analysis extends React.Component {
                       <div className="row">
                         <div className="col-xs-12 col-sm-offset-1 col-sm-10">
                           <p>
-                            The score is based on your graphics profile and resolution. Frame rate is not factored into in the score because it is very subjective. Some people do not mind 15 FPS. Others
-                            prefer a minimum of 60 FPS.
+                            The score is based on your graphics profile and resolution. Frame rate is not factored into in the score because it is very subjective, although, most people agree more is better.
                           </p>
                           <h3>Graphics profile</h3>
                           <p>{profileComment}</p>
@@ -287,7 +311,7 @@ class Analysis extends React.Component {
         return '720 high definition (HD), which is the same as a 1990s HD television. This is one level above the lowest setting';
 
       case 750:
-        return '750 high definition (HD) iOS';
+        return '750 high definition (HD) iOS (iPhone 7)';
 
       case 1080:
         return '1080 full high definition (FHD), which is the same as full HD television. This is the middle setting';
