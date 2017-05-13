@@ -58,7 +58,7 @@ class Reader extends React.Component {
           height: '7rem'
         }
       : {
-          height: '40rem'
+          height: '50rem'
         };
 
     const dropBoxInnerStyle = isLoaded

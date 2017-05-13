@@ -59,6 +59,8 @@
 
 .appBody {
   padding-top: 10rem;
+  height: 72rem;
+  min-height: 72rem;
 }
 
 .navItem {

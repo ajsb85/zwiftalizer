@@ -540,7 +540,7 @@ class Benchmarks extends React.Component {
                   className={styles.toggleFiltersHandle}
                   onClick={this.toggleFiltersPanelClicked}
                 >
-                  <i className="fa fa-align-justify" aria-hidden="true" />
+                  <p>FITLERS</p>
                 </div>
               </div>
             </div>
