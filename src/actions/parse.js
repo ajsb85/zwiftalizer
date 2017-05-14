@@ -271,8 +271,8 @@ function parseFileContents(log, isDemo = false, share = true) {
                 devicesSummaryData.push(deviceSummary);
               });
 
-              console.log('devices summary data for api post');
-              console.log(JSON.stringify(devicesSummaryData));
+              // console.log('devices summary data for api post');
+              // console.log(JSON.stringify(devicesSummaryData));
 
               dispatch(uploadDevicesSummary({ devices: devicesSummaryData }));
             }

@@ -693,7 +693,7 @@ class Benchmarks extends React.Component {
               <div className={structure.boxesWrapInner}>
                 <div className={structure.boxLast}>
                   <div className={editorialStyles.editorialBoxHeading}>
-                    Zwift System Benchmarks
+                    System Benchmarks
                   </div>
                   <div className={editorialStyles.editorialBoxContent}>
                     <div className="container-fluid">

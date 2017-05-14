@@ -22,45 +22,7 @@ import editorial from '../../styles/editorial.css';
 
 class Analysis extends React.Component {
   constructor(props) {
-    super(props);
-    this.seeInBenchMarksClicked = this.seeInBenchMarksClicked.bind(this);
-  }
-
-  seeInBenchMarksClicked(e) {
-    e.preventDefault();
-
-    const { currentSystem, dispatch } = this.props;
-
-    if (!currentSystem) {
-      return;
-    }
-
-    // force open the panel that contains the current system before scrolling 
-    // incase the user closed it (this just sets up the preference for opening 
-    // the panel after the bench marks loads)
-    dispatch(openProfilePanel(currentSystem.panelKey));
-
-    var callback = () => {
-      // route to the benchmarks page
-      this.props.router.push('/benchmarks');
-
-      // scroll to the current system, with enough delay to wait for the router redirect to benchmarks to complete rendering
-      setTimeout(
-        () => {
-          const anchorToScrollTo = document.getElementById('current');
-          anchorToScrollTo &&
-            anchorToScrollTo.scrollIntoView(true /* align top */);
-        },
-        500
-      );
-    };
-
-    setTimeout(
-      () => {
-        dispatch(load(callback));
-      },
-      100
-    );
+    super(props);    
   }
 
   render() {
@@ -69,7 +31,23 @@ class Analysis extends React.Component {
   }
 
   renderAnalysis() {
-    const { currentSystem } = this.props;
+    const { currentSystem, devices, searches, searchesTimestampsRounded } = this.props;
+
+    let antPlusAnalysis = null
+
+    let antPlusRecommendations = null;
+
+    const countSearchesTimestamps = searchesTimestampsRounded && searchesTimestampsRounded.length;
+
+    // const countSearches = searches && searches.size();
+
+    if (countSearchesTimestamps) {            
+       antPlusAnalysis = this.getAntSearchesOpinion(countSearchesTimestamps);
+
+       if (countSearchesTimestamps > 1) {
+         antPlusRecommendations = this.getAntPlusSignalRecommendations();
+       }
+    }
 
     var profileComment = '';
 
@@ -89,6 +67,8 @@ class Analysis extends React.Component {
     );
 
     var mutation = performanceScore.value === 8 ? 'n' : '';
+
+    var fpsAlertClass = this.getFpsClass(currentSystem.specs.avgFps);
 
     var avgFpsComment = '';
     var minFpsComment = '';
@@ -148,24 +128,41 @@ class Analysis extends React.Component {
 
     return (
       <div className="container">
+       <div className="row">
+          <div className="col-xs-12 col-sm-offset-1 col-sm-10">
+            <h3>
+              DISCLAIMER
+            </h3>
+            <p>
+              The opinions expressed below are the those of one member of the Zwift community and do not represent the opinions of Zwift Inc in any way.
+            </p>
+          </div>
+        </div>        
+        
         <div className="row">
           <div className="col-xs-12">
             <div className={structure.boxesWrapOuter}>
               <div className={structure.boxesWrapInner}>
                 <div className={structure.boxFirstLast}>
                   <div className={structure.boxHeadingLast}>
-                    ANT+ Analysis
+                    Graphics Analysis
                   </div>
                   <div className={editorial.editorialBoxContent}>
                     <div className="container">
                       <div className="row">
-                        <div className="col-xs-12">
-                          <h3>&nbsp;</h3>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-xs-12">
-                          <h3></h3>
+                        <div className="col-xs-12 col-sm-offset-1 col-sm-10">
+                        <div className={fpsAlertClass}>                          
+                            <p>
+                              {avgFpsComment}
+                              {minFpsComment}
+                              {maxFpsComment}
+                              {additionalFpsComment}
+                            </p>
+                          </div>
+                          <h3>Graphics profile</h3>
+                          <p>{profileComment}</p>
+                          <h3>Graphics resolution</h3>
+                          <p>{resolutionComment}</p>                          
                         </div>
                       </div>
                     </div>
@@ -182,78 +179,14 @@ class Analysis extends React.Component {
               <div className={structure.boxesWrapInner}>
                 <div className={structure.boxFirstLast}>
                   <div className={structure.boxHeadingLast}>
-                    Graphics Analysis
+                    ANT+ Analysis
                   </div>
                   <div className={editorial.editorialBoxContent}>
                     <div className="container">
                       <div className="row">
-                        <div className="col-xs-12">
-                          <h3>&nbsp;</h3>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-xs-12 col-sm-offset-1 col-sm-5">
-                          <h3>
-                            This system is a
-                            {mutation}
-                            &nbsp;
-                            <Badge data={performanceScore} />
-                          </h3>
-                        </div>
-                        <div className="col-xs-12 col-sm-5">
-                          <div className="pull-right">
-                            <button
-                              type="button"
-                              className="btn btn-primary"
-                              onClick={this.seeInBenchMarksClicked}
-                            >
-                              See standing in benchmarks
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-xs-12">
-                          <h3>&nbsp;</h3>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-xs-12 col-sm-offset-1 col-sm-10">
-                          <h3>
-                            DISCLAIMER
-                          </h3>
-                          <p>
-                            The opinions expressed below, are the those of one member of the Zwift community and do not represent the opinions of Zwift LLC in any way. Questions about the information
-                            presented here should be directed to&nbsp;
-                            <a href="https://twitter.com/zwiftalizer">
-                              @zwiftalizer
-                            </a>
-                            , or posted in the&nbsp;
-                            <a
-                              href="https://www.facebook.com/groups/zwiftCoders/"
-                            >
-                              Zwift Coders Facebook group
-                            </a>
-                            .
-                          </p>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-xs-12 col-sm-offset-1 col-sm-10">
-                          <p>
-                            The score is based on your graphics profile and resolution. Frame rate is not factored into in the score because it is very subjective, although, most people agree more is better.
-                          </p>
-                          <h3>Graphics profile</h3>
-                          <p>{profileComment}</p>
-                          <h3>Graphics resolution</h3>
-                          <p>{resolutionComment}</p>
-                          <h3>Frame rate</h3>
-                          <p>
-                            {avgFpsComment}
-                            {minFpsComment}
-                            {maxFpsComment}
-                            {additionalFpsComment}
-                          </p>
+                        <div className="col-xs-12 col-sm-offset-1 col-sm-10">                              
+                            {antPlusAnalysis}                          
+                            {antPlusRecommendations}                          
                         </div>
                       </div>
                     </div>
@@ -263,6 +196,56 @@ class Analysis extends React.Component {
             </div>
           </div>
         </div>
+
+      </div>
+    );
+  }
+
+  getAntSearchesOpinion(n) {
+    if (n === 1) {
+      return <div className="alert alert-success"><p><strong>Perfect!</strong> There was only one search for your ANT+ devices which means there were no dropouts after you started riding. It does not get any better than that.</p></div>
+    } else if (n <= 3) {
+      return <div className="alert alert-info"><p><strong>Pretty good.</strong> Your ANT+ devices were searched for just a couple of times. Probably nothing to worry about but you should zoom in on the ANT+ charts to check for dropouts in one or more device signals anyway.</p></div>
+    } else if (n <= 5) {
+      return <div className="alert alert-warning"><p><strong>Ah.</strong> Your ANT+ devices were searched for between three and five times. You should probably try to improve your signal and you might also want to zoom in on the ANT+ charts to check for dropouts in one or more device signals.</p></div>
+    } else if (n <= 10) {
+      return <div className="alert alert-warning"><p><strong>Hmm.</strong> Your ANT+ devices were searched for between five and ten times. That might indicate your signal needs improving.</p></div>
+    } else if (n <= 20) {
+      return <div className="alert alert-danger"><p><strong>Oh dear.</strong> Your ANT+ devices were searched for between ten and twenty times. Your signal almost certainly needs improving.</p></div>
+    } else {
+      return <div className="alert alert-danger"><p><strong>Yikes!</strong> Your signal is up and down like a fiddlers elbow. Your signal definitely needs improving.</p></div>
+    }
+  }
+
+  getAntPlusSignalRecommendations() {
+    return (
+
+      <div>
+        <h3>ANT+ Recommendations</h3>
+
+        <h3>Read this before getting a USB extension cable!</h3>
+        <p>ANT+ works up to 30 meters. Moving the dongle closer to the devices is often completely unnecessary and could even make things worse because over a passive cable the dongle will lose some voltage.</p>
+
+        <h3>1. Check your batteries & push everything in</h3>
+        <p>Let's check the easy things first. Are your batteries fresh in your devices? Change them anyway if you don't know. Is the dongle firmly pushed in? Check again.</p>
+
+        <h3>2. Stop Garmin ANT Agent / Garmin Connect</h3>
+        <p>Check for Garmin ANT Agent in the system tray. Stop it if it is running so that it does not try to read the dongle at the same time as Zwift.</p>
+
+        <h3>3. Check your WiFi router channel</h3>
+        <p>This is a very common cause of drop outs. If you have a 2.4 GHz WiFi router, check that its channel is not set to auto or channel 10. 
+        ANT+ works on the same frequency as channel 10 (2457MHz) and while the wireless transport has mechanisms built in to avoid conflicts, many routers are not up to spec and can still cause interference. 
+        This is still an issue even if the computer you use for Zwift has a hard wired network connection because other devices nearby that use WiFi - your phone, or someone watching Netflix on a Roku next door, could fill the airwaves with interference.
+        </p>
+        
+        <h3>4. Get a 5GHz WiFi Router</h3>
+        <p>If changing the channel on your 2.4 GHz WiFi router didn't help, then buy a 5GHz router because it operates on a completely different set of frequencies from ANT+.</p>
+        
+        <h3>5. Use a different USB port</h3>
+        <p>Some USB ports run at lower voltages than others, particularly in laptops where power saving is often enabled when running on batteries. Setting your computer's power management to 'high performance' will give the USB ports maximum power. It might improve your graphics performance too. Always set power managment to 'high performance' for gaming and if you are using a laptop, always plug it in.</p>
+
+        <h3>6. Don't sweat on your dongle</h3>
+        <p>OK, so you're using an extension cable. If your dongle is on the floor, or anywhere else where sweat falls, put it in a plastic bag with an elastic band around it. Sweat kills electronics.</p>
       </div>
     );
   }
@@ -283,6 +266,18 @@ class Analysis extends React.Component {
     }
   }
 
+  getFpsClass(fps) {
+    if (fps <= 20) {
+      return 'alert alert-danger';
+    } else if (fps <= 30) {
+      return 'alert alert-warning';
+    } else if (fps <= 45) {
+      return 'alert alert-info';
+    } else {
+      return 'alert alert-success';    
+    }
+  }
+   
   getProfileOpinion(profileId) {
     switch (profileId) {
       case 0:
@@ -329,18 +324,20 @@ class Analysis extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { reader, system, graphics, benchmarks } = state;
+  const { reader, system, graphics, benchmarks, ant } = state;
   return {
     ...reader,
     ...system,
     ...graphics,
-    ...benchmarks
+    ...benchmarks,
+    ...ant
   };
 }
 
 Analysis.propTypes = {
   //reader: PropTypes.object,
   system: PropTypes.object,
+  ant: PropTypes.object,
   router: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired
   }).isRequired
