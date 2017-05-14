@@ -16,7 +16,7 @@ class Powermeters extends React.Component {
     this.mouseOutHandler = this.mouseOutHandler.bind(this);
   }
 
-  isObject = val => {
+  isObject(val) {
     if (val === null) {
       return false;
     }

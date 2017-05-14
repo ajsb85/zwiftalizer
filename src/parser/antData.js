@@ -1,5 +1,5 @@
 var _ = require('underscore');
-const AntplusDevices = require('zwiftalizer-antplus-devices');
+const AntplusDevices = require('../../local_modules/node_modules/zwiftalizer-antplus-devices');
 
 import {
   WAHOO_MANUFACTURER_ID,

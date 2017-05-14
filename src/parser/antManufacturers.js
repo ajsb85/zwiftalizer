@@ -3,7 +3,7 @@ var _ = require('underscore');
 import toArray from './toArray';
 import titleCase from './titleCase';
 import deviceTypes from '../types/devices.json';
-const AntplusDevices = require('zwiftalizer-antplus-devices');
+const AntplusDevices = require('../../local_modules/node_modules/zwiftalizer-antplus-devices');
 
 import {
   MAX_DEVICES,
