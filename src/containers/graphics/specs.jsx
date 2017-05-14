@@ -117,13 +117,42 @@ class Specs extends React.Component {
 
   render() {
 
-    const {currentSystem} = this.props
+    const {currentSystem, fpsData} = this.props
 
     var performanceScore = getPerformanceScore(currentSystem.resolution, currentSystem.profileId)
 
     var mutation = performanceScore.value === 8
       ? 'n'
       : ''
+
+    const conditionalMarkup = fpsData && fpsData.size()
+      ? <div className="row">
+          <div className="col-xs-12">
+            <div className={structure.boxesWrapOuter}>
+              <div className={structure.boxesWrapInner}>
+                <div className={structure.boxFirstLast}>
+                  <div className={editorial.editorialBoxContent}>
+                    <div className="container">
+                      <div className="row">
+                        <div className="col-xs-12 col-sm-offset-1 col-sm-5">
+                          <h3>
+                            This system is a{mutation}&nbsp;<Badge data={performanceScore}/>
+                          </h3>
+                        </div>
+                        <div className="col-xs-12 col-sm-5">
+                          <div className="pull-right">
+                            <button type="button" className="btn btn-primary" onClick={this.seeInBenchMarksClicked}>See standing in benchmarks</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         :  null;
 
     return (
       <div className="container">
@@ -160,35 +189,8 @@ class Specs extends React.Component {
             </div>
           </div>
         </div>
-
-        <div className="row">
-          <div className="col-xs-12">
-            <div className={structure.boxesWrapOuter}>
-              <div className={structure.boxesWrapInner}>
-                <div className={structure.boxFirstLast}>
-                  <div className={editorial.editorialBoxContent}>
-                    <div className="container">
-                      <div className="row">
-                        <div className="col-xs-12 col-sm-offset-1 col-sm-5">
-                          <h3>
-                            This system is a{mutation}&nbsp;<Badge data={performanceScore}/>
-                          </h3>
-                        </div>
-                        <div className="col-xs-12 col-sm-5">
-                          <div className="pull-right">
-                            <button type="button" className="btn btn-primary" onClick={this.seeInBenchMarksClicked}>See standing in benchmarks</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {conditionalMarkup}
       </div>
-
     )
   }
 }

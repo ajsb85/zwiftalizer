@@ -540,7 +540,7 @@ class Benchmarks extends React.Component {
                   className={styles.toggleFiltersHandle}
                   onClick={this.toggleFiltersPanelClicked}
                 >
-                  <p>FITLERS</p>
+                  <p>FILTERS</p>
                 </div>
               </div>
             </div>

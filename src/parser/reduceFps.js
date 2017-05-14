@@ -19,7 +19,7 @@ export default function reduceFps(lines, sampleWindow = '15s') {
   const fpsLines = Array.isArray(lines) ? lines : toArray(lines);
 
   if (!fpsLines || !fpsLines.length) {
-    return result;
+    return new TimeSeries(result);
   }
 
   _.each(fpsLines, line => {
@@ -49,7 +49,7 @@ export default function reduceFps(lines, sampleWindow = '15s') {
   });
 
   if (result.points.length === 0) {
-    return result;
+    return new TimeSeries(result);
   }
 
   const timeseries = new TimeSeries(result);

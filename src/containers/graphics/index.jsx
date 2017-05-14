@@ -9,6 +9,7 @@
 
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
+import structure from '../../styles/structure.css';
 import Specs from './specs.jsx'
 import {Chart} from './chart.jsx'
 
@@ -30,10 +31,18 @@ class Graphics extends React.Component {
     // fpsData, fpsSamples, specs come from ...graphics spread operator
     const {fpsData, fpsSamples, specs} = this.props;
 
-    return (
+    const markup = fpsData && fpsData.size()
+      ?  <Chart data={fpsData} samples={fpsSamples} specs={specs}/>
+      :  <div className="row" style={{height:"30rem"}}>
+          <div className="col-sm-12">
+            <h3 className={structure.sectionSubHeading}>No graphics performance data found</h3>
+          </div>
+        </div>;
+    
+  return (
       <div>
         <Specs specs={specs}/>
-        <Chart data={fpsData} samples={fpsSamples} specs={specs}/>
+        {markup}
       </div>
     )
   }

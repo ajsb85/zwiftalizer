@@ -19,8 +19,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleDemoClick = this.handleDemoClick.bind(this);
-    this.handleGithubClick = this.handleGithubClick.bind(this);
-    this.handleTwitterClick = this.handleTwitterClick.bind(this);
   }
 
   handleDemoClick(e) {
@@ -46,16 +44,6 @@ class App extends React.Component {
       },
       250
     );
-  }
-
-  handleTwitterClick(e) {
-    e.preventDefault();
-    window.location.href = 'https://twitter.com/zwiftalizer';
-  }
-
-  handleGithubClick(e) {
-    e.preventDefault();
-    window.location.href = 'https://github.com/mhanney/zwiftalizer';
   }
 
   render() {
@@ -107,13 +95,13 @@ class App extends React.Component {
 
               <div className="col-sm-12 col-md-2">
                 <div className={styles.navPills}>
-                  <a onClick={this.handleTwitterClick}>
+                  <a href="https://twitter.com/zwiftalizer" target="_blank">
                     <i className="fa fa-twitter-square" />
                   </a>&nbsp;
                   <Link to="/support">
                     <i className="fa fa-paypal" />
                   </Link>&nbsp;
-                  <a onClick={this.handleGithubClick}>
+                  <a href="https://github.com/mhanney/zwiftalizer" target="_blank">
                     <i className="fa fa-github" />
                   </a>
                 </div>
@@ -134,7 +122,7 @@ class App extends React.Component {
         <div className={styles.footer}>
          <div className="container">
             <div className="row">
-              <p>&copy; {year} Mike Hanney | <a href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md" target="_blank">License</a> | Follow <a href="https://twitter.com/zwiftalizer" target="_blank">@zwiftalizer</a> on Twitter for project news.</p>
+              <p>&copy; {year} Mike Hanney | <a href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md" target="_blank">License</a> | Follow <a href="https://twitter.com/zwiftalizer" target="_blank">@zwiftalizer</a> <a href="https://twitter.com/zwiftalizer" target="_blank"><i className="fa fa-twitter" /></a></p>
             </div>   
           </div>
         </div>
