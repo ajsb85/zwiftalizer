@@ -11,7 +11,6 @@ import React, { Component, PropTypes } from 'react';
 import { Link, withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { loadDemo, reset } from '../../actions/parse.js';
-
 import structure from '../../styles/structure.css';
 import styles from './styles.css';
 
@@ -75,21 +74,12 @@ class App extends React.Component {
                 </div>
               </div>
 
-              <div className="col-sm-12 col-md-2">
+              <div className="col-sm-12 col-md-5">
                 <div className={styles.navItem}>
                   <span className={styles.signal}>
                     <i className="fa fa-align-left" aria-hidden="true" />
                   </span>&nbsp;
                   <Link to="/benchmarks">Benchmarks</Link>
-                </div>
-              </div>
-
-              <div className="col-sm-12 col-md-3">
-                <div className={styles.navItem}>
-                  <span className={styles.signal}>
-                    <i className="fa fa-bolt" aria-hidden="true" />
-                  </span>&nbsp;
-                  <Link to="/powersources">Power Sources</Link>
                 </div>
               </div>
 
