@@ -96,7 +96,7 @@ class App extends React.Component {
               <div className="col-sm-12 col-md-2">
                 <div className={styles.navPills}>
                   <a href="https://twitter.com/zwiftalizer" target="_blank">
-                    <i className="fa fa-twitter-square" />
+                    <i className="fa fa-twitter" />
                   </a>&nbsp;
                   <Link to="/support">
                     <i className="fa fa-paypal" />
@@ -113,7 +113,7 @@ class App extends React.Component {
          <div className="container">
             <div className="row">
               <p>
-                Zwiftalizer is a community supported open source project neither endorsed by nor affiliated with <a href="http://zwift.com" target="_blank">Zwift Inc</a>
+                Zwiftalizer is an open source, community supported project neither endorsed by nor affiliated with <a href="http://zwift.com" target="_blank">Zwift Inc</a>
               </p>              
             </div>   
           </div>
@@ -124,7 +124,7 @@ class App extends React.Component {
         <div className={styles.footer}>
          <div className="container">
             <div className="row">
-              <p>&copy; {year} Mike Hanney | <a href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md" target="_blank">License</a> | Follow <a href="https://twitter.com/zwiftalizer" target="_blank">@zwiftalizer</a> <a href="https://twitter.com/zwiftalizer" target="_blank"><i className="fa fa-twitter" /></a></p>
+              <p>By Mike Hanney | <a href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md" target="_blank">License</a> | Follow <a href="https://twitter.com/zwiftalizer" target="_blank">@zwiftalizer</a> <a href="https://twitter.com/zwiftalizer" target="_blank"><i className="fa fa-twitter" /></a></p>
             </div>   
           </div>
         </div>

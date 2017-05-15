@@ -112,10 +112,10 @@ class Benchmarks extends React.Component {
   renderFilters() {
     const filterPanelStyle = this.state.showFiltersPanel
       ? {
-          top: '10.3rem'
+          top: '9.5rem'
         }
       : {
-          top: '-10.3rem'
+          top: '-11.5rem'
         };
 
     return (

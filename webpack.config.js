@@ -41,9 +41,9 @@ const common = {
         include: [PATHS.local_modules, PATHS.app],
 
         // to be absolute sure we aren't babelizing node_modules, exclude that dir explicitly
-        //exclude: [
-        //  path.resolve(PATHS.node_modules)
-        //],
+        exclude: [
+          path.resolve(PATHS.node_modules)
+        ],
 
         // Options to configure babel with
         query: {
@@ -115,6 +115,7 @@ if (TARGET === 'dev' || !TARGET) {
       //
       // 0.0.0.0 is available to all network devices unlike default
       // localhost
+      disableHostCheck: true,   // for using local host headers
       host: process.env.HOST,
       port: process.env.PORT
     },

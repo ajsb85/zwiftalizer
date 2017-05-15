@@ -6,11 +6,12 @@
     z-index: 1030;
     padding: 2.25rem 0;
     background: #178acc;
+    min-height: 6.3rem;
 }
 
 .stickySubHeader {
     position: fixed;
-    top: 7rem;
+    top: 6.3rem;
     right: 0;
     left: 0;
     z-index: 1030;    
@@ -27,9 +28,9 @@
 .stickySubHeader p a:hover {
     margin: 0;    
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     line-height: 2rem;
-    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;    
     color: #fefefe;
     text-align: center;
     padding-top: 0.7rem;
@@ -37,7 +38,7 @@
 
 .footer {
     display: block;
-    margin: 2rem auto;
+    margin: 0 auto;
     z-index: 1030;    
     background:transparent;    
     height: 3rem;
@@ -50,7 +51,7 @@
 .footer p a:active,
 .footer p a:visited,
 .footer p a:hover {
-    font-weight: 600;
+    font-weight: 400;
     font-size: 1.3rem;
     line-height: 2rem;
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
@@ -74,22 +75,22 @@
     padding: 0;
     width: 100%;
     white-space: normal;
-    font-weight: 700;
-    font-size: 2rem;
+    font-weight: 600;
+    font-size: 1.6rem;
     letter-spacing: 0.05rem;
     text-align: center;
-    font-family: "Montserrat"; 
+    font-family: "Montserrat", Arial, Helvetica, sans-serif; 
 }
 .navItem>a {
   text-decoration: none;
   color: #fff;
 }
 .navItem>a:hover {
-  color: #F9852B;
+  color: #F9A32D;
   cursor: pointer;
 }
 .signal {
-  color: #F9852B;
+  color: #F9C033;
 }
 .brand {
   composes: navItem;
@@ -99,16 +100,39 @@
 .navPills {
   composes: navItem;
   justify-content: flex-end;
+  font-weight: normal;
+  font-size: 2rem;
+  letter-spacing: 0.4rem;
+  margin-top: -0.5rem;
 }
-@media(max-width:991px) {
+
+@media only screen and (max-width:991px) {
+
+  .appBody {
+    padding-top:0;
+  }
+
   .navItem, .brand, .navPills {
     justify-content: center;
     height: 4rem;
   }
+
+  .stickyHeader {
+      position: relative;
+      top:0;
+      right: 0;
+      left: 0;
+      z-index: 1030;    
+  }
+
+  .stickySubHeader {
+      display: none;
+  }
+
   .stickySubHeader {
     top: 24rem;
-    height: 6.5rem;
-    max-height: 6.5rem;
+    height: 5.2rem;
+    max-height: 5.2rem;
   }
 
   .stickySubHeader p {
@@ -120,9 +144,7 @@
     padding: 0.7rem;
   }
 
-  .appBody {
-    padding-top: 30rem;
-  }
+
 }
 @media(min-width:768px) {}
 @media(min-width:992px) {}

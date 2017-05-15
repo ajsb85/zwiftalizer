@@ -1,6 +1,6 @@
 .filters {
     position: fixed;
-    top: -10.3rem;
+    top: -11.5rem;
     right: 0;
     left: 0;
     z-index: 1020;
@@ -255,8 +255,12 @@ input[type=checkbox].withfont:focus ~ label
   }
 }
 
-
 @media only screen and (max-width: 768px) {
+
+  .benchmarksWrapper {
+    margin: 0;
+  }
+
   .benchmarksBoxHeading {
     height: 8.5rem;
     min-height: 8.5rem;
@@ -286,7 +290,13 @@ input[type=checkbox].withfont:focus ~ label
     margin-top: 1.2rem;
   }
 }
+
 @media only screen and (min-width: 767px) and (max-width:991px) {
+
+  .benchmarksWrapper {
+    margin: 0;
+  }
+
   .benchmarksBoxHeading {
     height: 5.75rem;
     min-height: 5.75rem;

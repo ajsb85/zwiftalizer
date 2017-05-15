@@ -16,8 +16,6 @@ class Region extends React.Component {
       return null;
     }
 
-    console.log(this.props.data);
-
     const panelStyle = isExpanded
       ? {
           maxHeight: '500rem'

@@ -242,7 +242,7 @@ class Analysis extends React.Component {
         <p>If changing the channel on your 2.4 GHz WiFi router didn't help, then buy a 5GHz router because it operates on a completely different set of frequencies from ANT+.</p>
         
         <h3>5. Use a different USB port</h3>
-        <p>Some USB ports run at lower voltages than others, particularly in laptops where power saving is often enabled when running on batteries. Setting your computer's power management to 'high performance' will give the USB ports maximum power. It might improve your graphics performance too. Always set power managment to 'high performance' for gaming and if you are using a laptop, always plug it in.</p>
+        <p>Some USB ports run at lower voltages than others, particularly in laptops where power saving is often enabled when running on batteries. Setting your computer's power management to 'high performance' will give the USB ports maximum power. It might improve your graphics performance too. Always set power management to 'high performance' for gaming and if you are using a laptop, always plug it in.</p>
 
         <h3>6. Don't sweat on your dongle</h3>
         <p>OK, so you're using an extension cable. If your dongle is on the floor, or anywhere else where sweat falls, put it in a plastic bag with an elastic band around it. Sweat kills electronics.</p>

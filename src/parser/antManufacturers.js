@@ -162,9 +162,6 @@ export default function antManufacturers(lines) {
       type
     );
 
-    console.log('makeAndModel');
-    console.log(makeAndModel);
-
     const entry = {
       extendedDeviceId: m.extendedDeviceId,
       deviceId,
