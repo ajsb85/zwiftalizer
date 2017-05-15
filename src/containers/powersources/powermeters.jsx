@@ -54,7 +54,7 @@ class Powermeters extends React.Component {
         const keyColor = shadeColor(powermeter.color, shadeFactor);
 
         const accuracy = powermeter.accuracy
-          ? '+/- ' + powermeter.accuracy * 100 + '%'
+          ? '+/- ' + (Math.round(powermeter.accuracy * 10000) / 100) + '%'
           : 'Unknown';
 
         const keyStyle = {

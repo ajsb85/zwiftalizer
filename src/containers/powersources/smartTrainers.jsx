@@ -54,7 +54,7 @@ class SmartTrainers extends React.Component {
         const keyColor = shadeColor(smartTrainer.color, shadeFactor);
 
         const accuracy = smartTrainer.accuracy
-          ? '+/- ' + smartTrainer.accuracy * 100 + '%'
+          ? '+/- ' + (Math.round(smartTrainer.accuracy * 10000) / 100) + '%'
           : 'Unknown';
 
         var controllable = smartTrainer.controllable ? 'Yes' : 'No';
@@ -64,7 +64,7 @@ class SmartTrainers extends React.Component {
         }
 
         const maxIncline = smartTrainer.maxIncline
-          ? smartTrainer.maxIncline * 100 + ' %'
+          ? + (Math.round(smartTrainer.maxIncline * 10000) / 100) + ' %'
           : 'Unknown';
 
         const keyStyle = {

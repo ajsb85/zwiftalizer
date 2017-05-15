@@ -74,12 +74,21 @@ class App extends React.Component {
                 </div>
               </div>
 
-              <div className="col-sm-12 col-md-5">
+              <div className="col-sm-12 col-md-2">
                 <div className={styles.navItem}>
                   <span className={styles.signal}>
                     <i className="fa fa-align-left" aria-hidden="true" />
                   </span>&nbsp;
                   <Link to="/benchmarks">Benchmarks</Link>
+                </div>
+              </div>
+
+              <div className="col-sm-12 col-md-3">
+                <div className={styles.navItem}>
+                  <span className={styles.signal}>
+                    <i className="fa fa-bolt" aria-hidden="true" />
+                  </span>&nbsp;
+                  <Link to="/powersources">Power Sources</Link>
                 </div>
               </div>
 
