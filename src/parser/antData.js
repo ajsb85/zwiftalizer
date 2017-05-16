@@ -7,7 +7,8 @@ import {
   POWER_METER_DEVICE,
   SMART_TRAINER_DEVICE,
   SARIS_MANUFACTURER_ID,
-  SECONDS_TO_ROUND_RECONNECT_TIME
+  SECONDS_TO_ROUND_RECONNECT_TIME,
+  ANT_AVERAGES_WINDOW_IN_SEC
 } from './constants';
 
 import titleCase from './titleCase';
@@ -40,10 +41,10 @@ export default function antData(log, timeAxisTimeSeries) {
     }
   }
 
-  // rounding to nearest SECONDS_TO_ROUND_RECONNECT_TIME
+  // rounding to nearest ANT_AVERAGES_WINDOW_IN_SEC
   const searchesTimestampsRounded = _.uniq(
     searchesTimestamps.map(t => {
-      return `10s-${Math.round(t / SECONDS_TO_ROUND_RECONNECT_TIME) * SECONDS_TO_ROUND_RECONNECT_TIME}`;
+      return `${ANT_AVERAGES_WINDOW_IN_SEC}s-${Math.round(t / ANT_AVERAGES_WINDOW_IN_SEC) * ANT_AVERAGES_WINDOW_IN_SEC}`;
     })
   );
 
