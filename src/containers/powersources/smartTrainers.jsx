@@ -132,17 +132,14 @@ class SmartTrainers extends React.Component {
       <div>
         <div className="container-fluid">
           <div className="row">
-            <div
-              className="col-xs-12 col-sm-offset-5 col-sm-7 col-md-offset-4 col-md-8 "
-            >
+            <div className="col-xs-12">
               <h3>Smart Trainers</h3>
+              <span className={styles.totalBadge}> Sample size {smartTrainers.total}</span>
             </div>
           </div>
           <div className="row hidden-xs hidden-sm hidden-md">
             <div className="col-xs-12">
-              <div className={styles.chartContainer}>
-                <span className={styles.totalBadge}> Sample size {smartTrainers.total}
-                </span>
+              <div className={styles.chartContainer}>                
                 <BarChart
                   chartKey={`${countryCode}-smarttrainers`}
                   axisLabels={{x: 'Model', y: 'Percent'}}
