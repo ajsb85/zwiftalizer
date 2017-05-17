@@ -17,7 +17,8 @@
     "posttest": "rm .babelrc",
     "pretest": "cp .testbabelrc .babelrc",
     "release": "webpack --progress --profile --colors",
-    "test": "babel-tape-runner tests/filters/*.js"
+    "test": "babel-tape-runner tests/filters/*.js",
+    "install-local-modules": "npm install --prefix local_modules file:../zwiftalizer-antplus-devices"
   },
   "optionalDependencies": {
     "fsevents": "^1.0.12"
