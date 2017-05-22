@@ -119,6 +119,9 @@ export default function mapAntRxFails(
   // this could be unreliable, it says - it is a basic device if the max rxfail per second is less than
   // or equal to the basic sample rate (assumed to be 4hz).
 
+  // @todo, try to use device manufacturerId and modelId to make a better guess
+  // at whether the device is sampled at 4HZ or 8HZ
+
   const isBasic = maxValue <= BASIC_DEVICE_THRESHOLD_MAX_FAILS;
 
   if (!isBasic) {
@@ -126,7 +129,8 @@ export default function mapAntRxFails(
     highSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.9;
   }
 
-  // make each 10 second avg value equal to the full, assumed sample rate (based on avg # of fails) minus the avg of RxFails in that 10 seconds
+  // make each 10 second avg value equal to the full, assumed sample rate (based on avg # of fails) minus the 
+  // avg of RxFails in that 10 seconds
   // what we are trying to do here is get the SUCCESSES by
   // subtracting the fails from the sample rate
 
@@ -142,6 +146,8 @@ export default function mapAntRxFails(
   // const ninetiethPercentile = rollup.percentile(90);
   // console.log('ninetiethPercentile');
   // console.log(ninetiethPercentile);
+
+  // @todo, get the median RxFails per manufacturerId modelId key
 
   // zero out the 10s averages that are below the threshold we `think`
   // triggers a re-pairig (goto search).

@@ -147,8 +147,7 @@ export default function antManufacturers(lines) {
         m.modelId = 0;
       }
     }
-
-    debugger;
+    
     if (manufacturerIdString === WATTTEAM_MANUFACTURER_ID) {
       // PowerBeat
       type = POWER_METER_DEVICE;

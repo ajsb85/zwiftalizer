@@ -19,10 +19,7 @@ export default function mapAntSearches(lines, timeAxisTimeSeries) {
 
   const antLines = Array.isArray(lines) ? lines : toArray(lines);
 
-  //const searchesRegex = /^\[[^\]]*\]\s+?ant\s+?:\s+?(goto\ssearch.|ant\s+?usb\s+?receiver\s+?found)$/i;
-
-  // goto search, or reset_cmd, which could be followed by a space before the new line 
-  const searchesRegex = /^\[[^\]]*\]\s+?ant\s+?:\s+?(goto\ssearch.|reset_cmd)\s*$/i;
+  const searchesRegex = /^\[[^\]]*\]\s+?ant\s+?:\s+?(goto\ssearch.|tx\s+?\power\s+?\id)\s*$/i;
 
   const searches = [];
 
@@ -50,8 +47,7 @@ export default function mapAntSearches(lines, timeAxisTimeSeries) {
     seriesList: [timeAxisTimeSeries, ts]
   });
 
-  // rollup max to exaggerate the search bars
-  // use SECONDS_TO_ROUND_RECONNECT_TIME for consistency with the
+  // rollup max to SECONDS_TO_ROUND_RECONNECT_TIME slots for consistency with the
   // ANT+ devices charts resolution
   const rollup = reducedSeries.fixedWindowRollup({
     windowSize: `${SECONDS_TO_ROUND_RECONNECT_TIME}s`,
