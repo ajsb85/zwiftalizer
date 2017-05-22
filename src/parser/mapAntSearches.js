@@ -4,6 +4,11 @@ import { TimeSeries, max } from 'pondjs';
 
 import toArray from './toArray';
 
+import {
+  SECONDS_TO_ROUND_RECONNECT_TIME
+} from './constants';
+
+
 // lines is assumed to be ANT lines only, as an array, with times already in unix format using epochify
 export default function mapAntSearches(lines, timeAxisTimeSeries) {
   const result = {
@@ -14,7 +19,10 @@ export default function mapAntSearches(lines, timeAxisTimeSeries) {
 
   const antLines = Array.isArray(lines) ? lines : toArray(lines);
 
-  const searchesRegex = /^\[[^\]]*\]\s+?ant\s+?:\s+?(goto\ssearch.|ant\s+?usb\s+?receiver\s+?found)$/i;
+  //const searchesRegex = /^\[[^\]]*\]\s+?ant\s+?:\s+?(goto\ssearch.|ant\s+?usb\s+?receiver\s+?found)$/i;
+
+  // goto search, or reset_cmd, which could be followed by a space before the new line 
+  const searchesRegex = /^\[[^\]]*\]\s+?ant\s+?:\s+?(goto\ssearch.|reset_cmd)\s*$/i;
 
   const searches = [];
 
@@ -43,8 +51,10 @@ export default function mapAntSearches(lines, timeAxisTimeSeries) {
   });
 
   // rollup max to exaggerate the search bars
+  // use SECONDS_TO_ROUND_RECONNECT_TIME for consistency with the
+  // ANT+ devices charts resolution
   const rollup = reducedSeries.fixedWindowRollup({
-    windowSize: '10s',
+    windowSize: `${SECONDS_TO_ROUND_RECONNECT_TIME}s`,
     aggregation: {
       value: {
         value: max()

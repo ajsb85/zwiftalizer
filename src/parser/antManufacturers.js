@@ -90,7 +90,11 @@ export default function antManufacturers(lines) {
 
       // The special case of the Tacx Neo, says it's Model 1 and Model 2800, take Model 2800
       // Be sure to check we are not couting model 2800 twice because of this conversion.
-      if (manufacturerId === TACX_MANUFACTURER_ID && modelId === 1) {
+
+      // 2017-05-22, bug, manufacturerId is int but TACX_MANUFACTURER_ID is string. Comparison fails.
+      const manufacturerIdString = manufacturerId +'';
+
+      if (manufacturerIdString === TACX_MANUFACTURER_ID && modelId === 1) {
         modelId = 2800;
       }
 
@@ -125,6 +129,7 @@ export default function antManufacturers(lines) {
 
     try {
       // get lower 16 bits of the 20 bit number
+      // this is critical for lining which channel a device is on when we look at rxfails
       deviceId = parseInt(m.extendedDeviceId) & 0xffff;
     } catch (e) {
       console.log('Failed to extract short deviceId from extended deviceId');
@@ -143,7 +148,8 @@ export default function antManufacturers(lines) {
       }
     }
 
-    if (manufacturerIdString=== WATTTEAM_MANUFACTURER_ID) {
+    debugger;
+    if (manufacturerIdString === WATTTEAM_MANUFACTURER_ID) {
       // PowerBeat
       type = POWER_METER_DEVICE;
       m.modelId = 0;

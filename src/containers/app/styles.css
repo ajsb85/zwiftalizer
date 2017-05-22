@@ -29,7 +29,7 @@
     font-weight: 400;
     font-size: 1.5rem;
     line-height: 2rem;
-    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    font-family: Montserrat, "Open Sans", "Segoe UI", Arial, Helvetica, sans-serif;
     color: #fefefe;
     text-align: center;
     padding-top: 0.7rem;
@@ -53,7 +53,7 @@
     font-weight: 600;
     font-size: 1.3rem;
     line-height: 2rem;
-    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-family: "Open Sans", "Segoe UI", Arial, Helvetica, sans-serif;
     text-align: center;    
 }
 
@@ -78,7 +78,7 @@
     font-size: 2rem;
     letter-spacing: 0.05rem;
     text-align: center;
-    font-family: "Montserrat"; 
+    font-family: Montserrat, "Open Sans", "Segoe UI", Arial, Helvetica, sans-serif;
 }
 .navItem>a {
   text-decoration: none;
