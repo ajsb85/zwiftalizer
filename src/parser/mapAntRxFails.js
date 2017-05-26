@@ -16,6 +16,11 @@ import { SECONDS_TO_ROUND_RECONNECT_TIME } from './constants';
 // D00001163_-_ANT+_Device_Profile_-_Bicycle_Speed_and_Cadence_2.0.pdf
 // Page 29
 
+<<<<<<< HEAD
+=======
+import {ANT_AVERAGES_WINDOW_IN_SEC} from './constants';
+
+>>>>>>> master
 const BASIC_DEVICE_SAMPLE_RATE = 4.0;
 
 const BASIC_DEVICE_THRESHOLD_MAX_FAILS = BASIC_DEVICE_SAMPLE_RATE;
@@ -93,9 +98,9 @@ export default function mapAntRxFails(
     seriesList: [timeAxisTimeSeries, ts]
   });
 
-  // SECONDS_TO_ROUND_RECONNECT_TIME avg of fails
+  // N second avg of fails
   const rollup = mergedSeries.fixedWindowRollup({
-    windowSize: `${SECONDS_TO_ROUND_RECONNECT_TIME}s`,
+    windowSize: `${ANT_AVERAGES_WINDOW_IN_SEC}s`,
     aggregation: {
       value: {
         value: avg()
@@ -122,10 +127,8 @@ export default function mapAntRxFails(
 
   // this could be unreliable, it says - it is a basic device if the max rxfail per second is less than
   // or equal to the basic sample rate (assumed to be 4hz).
-
   // @todo, try to use device manufacturerId and modelId to make a better guess
   // at whether the device is sampled at 4HZ or 8HZ
-
   const isBasic = maxValue <= BASIC_DEVICE_THRESHOLD_MAX_FAILS;
 
   if (!isBasic) {
@@ -133,8 +136,7 @@ export default function mapAntRxFails(
     //highSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.95;
   }
 
-  // make each 10 second avg value equal to the full, assumed sample rate (based on avg # of fails) minus the 
-  // avg of RxFails in that 10 seconds
+  // make each N second avg value equal to the full, assumed sample rate (based on avg # of fails) minus the avg of RxFails in that N seconds
   // what we are trying to do here is get the SUCCESSES by
   // subtracting the fails from the sample rate
 
@@ -144,7 +146,7 @@ export default function mapAntRxFails(
   // e.g. 40 - 30 =  10 successful message received ---> weak signal, possibly an indication of drop outs
   // e.g. 40 - 40 =  0 successful message received ----> a drop out - problem is - when a device is completely lost, there are no rxfails at all, so it appears to be a strong signal
 
-  // the logging of the sampling is not exact seconds, there could be some overspil into the next second, so the 10s averages smooth things out
+  // the logging of the sampling is not exact seconds, there could be some overspil into the next second, so the 2s averages smooth things out
 
   // these might be interesting stats to add to the reports
   
@@ -174,12 +176,12 @@ export default function mapAntRxFails(
 
     const timestamp = indexToUnixTime(event.index);
 
-    const roundedTimeStamp = `${SECONDS_TO_ROUND_RECONNECT_TIME}s-${Math.round(timestamp / SECONDS_TO_ROUND_RECONNECT_TIME) * SECONDS_TO_ROUND_RECONNECT_TIME}`;
+    const roundedTimeStamp = `${ANT_AVERAGES_WINDOW_IN_SEC}s-${Math.round(timestamp / SECONDS_TO_ROUND_RECONNECT_TIME) * SECONDS_TO_ROUND_RECONNECT_TIME}`;
 
     if (
       searchesTimestamps &&
       searchesTimestamps.length &&
-      searchesTimestamps.includes(roundedTimeStamp) &&
+      _.contains(searchesTimestamps, roundedTimeStamp) &&      
       event.data.value <
         1 /* low SECONDS_TO_ROUND_RECONNECT_TIME second average rx fails, not because the device is good, but becuase it's gone!*/
     ) {

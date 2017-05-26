@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './styles.css';
 import images from '../../styles/images.css';
-var uuid = require('node-uuid');
 
 const PRICEWATCH_LABEL = 'Pricewatch';
 const TWEAKERS_LABEL = 'Tweakers';
@@ -129,7 +128,7 @@ class System extends React.Component {
 
       cpuLinksMarkup = cpuShopLinks.map(
         function(link, i) {
-          return <li key={uuid.v4()}><a target="_blank" href={link.href}>{link.tag}</a></li>;
+          return <li key={i}><a target="_blank" href={link.href}>{link.tag}</a></li>;
         },
         this
       );
@@ -213,7 +212,7 @@ class System extends React.Component {
 
       gpuLinksMarkup = gpuShopLinks.map(
         function(link, i) {
-          return <li key={uuid.v4()}><a target="_blank" href={link.href}>{link.tag}</a></li>;
+          return <li key={i}><a target="_blank" href={link.href}>{link.tag}</a></li>;
         },
         this
       );

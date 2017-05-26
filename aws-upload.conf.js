@@ -4,6 +4,7 @@ module.exports = {
   patterns: [
     'public/bootstrap/*.*',
     'public/fonts/*.*',
+    'public/flags/*.*',
     'public/bundle.js',
     'public/favicon.ico',
     'public/demolog.txt',

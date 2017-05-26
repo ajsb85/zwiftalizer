@@ -84,7 +84,7 @@ class PowerSources extends React.Component {
                         <li>
                           CycleOps PowerBeam, PowerSync, Phantom 3, Phantom 5, PowertTap Pro+ and PowertTap SL+ are grouped together as 'Wireless' PowertTap power meters.
                         </li>
-                        <li>Sampling started June 2017.</li>
+                        <li>Sampling started May 15th 2017.</li>
                       </ul>
                     </div>
                   </div>

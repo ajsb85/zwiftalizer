@@ -14,8 +14,17 @@ This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
 The code runs 100% in your web browser on your computer.
 
-## 1.0.4 Changes
+## 1.1.0 Changes (2017-05-13)
 
+* Filters added to the Benchmarks report
+* More detailed computer specs in the Benchmarks report, especially for Apple Mac and iOS models.
+* Links to search Pricewatch, Tweakers, eBay and Amazon for each system in the Benchmarks report (not Apple products).
+* Improved charting of ANT+ signals
+* Power meter and smart trainer usage per country report added
+* More power meter and smart trainer models recognized for improved labeling of the ANT+ charts
+* Plain English opinion of ANT+ signal strength in the 'Analysis' tab with tips on how to improve signal strength
+* BTLE signal plot now recognizes Kickr Snap and more Tacx trainers
+* Added flare
 * Recognition of more powermeter and smart trainers.
 * Garmin Vector SS,
 * Garmin Vector CP
@@ -25,7 +34,6 @@ The code runs 100% in your web browser on your computer.
 * Power2Max NG
 * Four Eyes Precision
 * Stages Power
-
 
 ## 1.0.3 Changes (2017-03-16)
 

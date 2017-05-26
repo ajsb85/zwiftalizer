@@ -7,7 +7,7 @@ export function load(callback) {
   return dispatch => {
     request
         .get('https://data.zwiftalizer.com/powerSources.json', null, {
-        //.get('testpowersources.json', null, {
+        //.get('powerSourcesTest.json', null, {
         cache: false,
         dataType: 'json'
       })

@@ -4,13 +4,11 @@ import { TimeSeries, max } from 'pondjs';
 
 import toArray from './toArray';
 
-import {
-  SECONDS_TO_ROUND_RECONNECT_TIME
-} from './constants';
-
+import {ANT_AVERAGES_WINDOW_IN_SEC} from './constants';
 
 // lines is assumed to be ANT lines only, as an array, with times already in unix format using epochify
 export default function mapAntSearches(lines, timeAxisTimeSeries) {
+
   const result = {
     name: 'searches',
     columns: ['time', 'value'],
@@ -51,7 +49,7 @@ export default function mapAntSearches(lines, timeAxisTimeSeries) {
   // rollup max to SECONDS_TO_ROUND_RECONNECT_TIME slots for consistency with the
   // ANT+ devices charts resolution
   const rollup = reducedSeries.fixedWindowRollup({
-    windowSize: `${SECONDS_TO_ROUND_RECONNECT_TIME}s`,
+    windowSize: `${ANT_AVERAGES_WINDOW_IN_SEC}s`,
     aggregation: {
       value: {
         value: max()

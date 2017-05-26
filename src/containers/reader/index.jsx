@@ -97,7 +97,7 @@ class Reader extends React.Component {
       angle: 90,
       spread: 90,
       startVelocity: 26,
-      elementCount: 76,
+      elementCount: 100,
       decay: 0.95
     };
 

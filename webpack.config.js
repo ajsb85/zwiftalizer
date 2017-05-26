@@ -8,12 +8,13 @@ const PATHS = {
   app: path.join(__dirname, 'src'),
   build: path.join(__dirname, 'public'),
   node_modules: path.join(__dirname, 'node_modules'),
+  local_modules: path.join(__dirname, 'local_modules'),
 };
 
 var plugins = [
   new webpack.DefinePlugin({
-    //'process.env.NODE_ENV': JSON.stringify('production')
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    'process.env.NODE_ENV': JSON.stringify('production')
+    //'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
   })
 ];
 
@@ -33,12 +34,11 @@ const common = {
   module: {
     loaders: [{
         test: /\.(js|jsx)$/,
-
+        
         loader: 'babel-loader',
-
         // Parse only app files! Without this it will go through entire project.
         // In addition to being slow, that will most likely result in an error.
-        include: PATHS.app,
+        include: [PATHS.local_modules, PATHS.app],
 
         // to be absolute sure we aren't babelizing node_modules, exclude that dir explicitly
         exclude: [
@@ -47,8 +47,8 @@ const common = {
 
         // Options to configure babel with
         query: {
-          plugins: ['transform-runtime'],
-          presets: ['es2015', 'stage-0', 'react'],
+          plugins: ['transform-runtime', 'transform-object-rest-spread'],
+          presets: ['es2015', 'env', 'react'],
         }
 
       }, {
@@ -79,7 +79,7 @@ const common = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json']
   },
 
   plugins: plugins
@@ -103,7 +103,7 @@ if (TARGET === 'dev' || !TARGET) {
       historyApiFallback: true,
       //hot: true,
       //inline: true,
-      progress: true,
+      //progress: true,
 
       // Display only errors to reduce the amount of output.
       //stats: 'errors-only',
@@ -115,6 +115,7 @@ if (TARGET === 'dev' || !TARGET) {
       //
       // 0.0.0.0 is available to all network devices unlike default
       // localhost
+      disableHostCheck: true,   // for using local host headers
       host: process.env.HOST,
       port: process.env.PORT
     },

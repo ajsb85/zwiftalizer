@@ -250,7 +250,7 @@ class Chart extends React.Component {
               <h4 className={structure.heading}>{label}</h4>
               {calibrationMessage}
               <h5 className={structure.infoHeading}>
-                4 to 7 is normal. Use the mouse wheel to zoom in. Click and drag to pan.
+                Use the mouse wheel to zoom in. Click and drag to pan.
               </h5>
             </div>
           </div>
@@ -393,7 +393,7 @@ class Chart extends React.Component {
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>{label}</h4>
               <h5 className={structure.infoHeading}>
-                4 to 7 is normal. Use the mouse wheel to zoom in. Click and drag to pan.
+                Use the mouse wheel to zoom in. Click and drag to pan.
               </h5>
             </div>
           </div>
@@ -646,7 +646,7 @@ class Chart extends React.Component {
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>{label}</h4>
               <h5 className={structure.infoHeading}>
-                4 to 7 is normal. Use the mouse wheel to zoom in. Click and drag to pan.
+                Use the mouse wheel to zoom in. Click and drag to pan.
               </h5>
             </div>
           </div>

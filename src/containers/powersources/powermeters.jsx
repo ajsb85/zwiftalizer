@@ -16,7 +16,7 @@ class Powermeters extends React.Component {
     this.mouseOutHandler = this.mouseOutHandler.bind(this);
   }
 
-  isObject = val => {
+  isObject(val) {
     if (val === null) {
       return false;
     }
@@ -54,7 +54,7 @@ class Powermeters extends React.Component {
         const keyColor = shadeColor(powermeter.color, shadeFactor);
 
         const accuracy = powermeter.accuracy
-          ? '+/- ' + powermeter.accuracy * 100 + '%'
+          ? '+/- ' + (Math.round(powermeter.accuracy * 10000) / 100) + '%'
           : 'Unknown';
 
         const keyStyle = {
@@ -117,17 +117,15 @@ class Powermeters extends React.Component {
       <div>        
         <div className="container-fluid">
           <div className="row">
-            <div
-              className="col-xs-12 col-sm-offset-5 col-sm-7 col-md-offset-4 col-md-8 "
-            >
+            <div className="col-xs-12">
               <h3>
                 Power Meters
               </h3>
+              <span className={styles.totalBadge}>Sample size {powermeters.total}</span>
             </div>
           </div>
           <div className="row hidden-xs hidden-sm hidden-md">
-            <div className="col-xs-12">
-              <span className={styles.totalBadge}>Sample size {powermeters.total}</span>
+            <div className="col-xs-12">              
               <div className={styles.chartContainer}>                
                 <BarChart
                   chartKey={`${countryCode}-powermeters`}

@@ -64,14 +64,14 @@ function benchmarks(
       if (alreadyExpanded) {
         // collapse
         // commented out because we now collapse all panels for better performance
-        // nextState.expanded = _without(state.expanded, action.data.key);
+        nextState.expanded = _without(state.expanded, action.data.key);
         // collapse all panels
-        nextState.expanded = [];
+        //nextState.expanded = [];
       } else {
         // open only one panel at a time for performance reasons
-        nextState.expanded = [action.data.key];
+        //nextState.expanded = [action.data.key];
         // commented out because we now only allow one panel open at a time
-        //nextState.expanded.push(action.data.key);
+        nextState.expanded.push(action.data.key);
       }
 
       const prefs = {
