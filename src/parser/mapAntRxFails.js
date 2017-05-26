@@ -16,8 +16,6 @@ import { SECONDS_TO_ROUND_RECONNECT_TIME } from './constants';
 // D00001163_-_ANT+_Device_Profile_-_Bicycle_Speed_and_Cadence_2.0.pdf
 // Page 29
 
-const ROLLUP_SPAN_IN_SECONDS = 10;
-
 const BASIC_DEVICE_SAMPLE_RATE = 4.0;
 
 const BASIC_DEVICE_THRESHOLD_MAX_FAILS = BASIC_DEVICE_SAMPLE_RATE;
@@ -95,9 +93,9 @@ export default function mapAntRxFails(
     seriesList: [timeAxisTimeSeries, ts]
   });
 
-  // 10 second avg of fails
+  // SECONDS_TO_ROUND_RECONNECT_TIME avg of fails
   const rollup = mergedSeries.fixedWindowRollup({
-    windowSize: '10s',
+    windowSize: `${SECONDS_TO_ROUND_RECONNECT_TIME}s`,
     aggregation: {
       value: {
         value: avg()
@@ -106,6 +104,12 @@ export default function mapAntRxFails(
   });
 
   const maxValue = rollup.max();
+  console.log('maxValue');
+  console.log(maxValue);
+
+  const medianValue = sampleRate - rollup.median();
+  console.log('medianValue');
+  console.log(medianValue);
 
   // console.log('device rxFail max value');
   // console.log(maxValue);
@@ -114,7 +118,7 @@ export default function mapAntRxFails(
   // assumption 2 - advanced devices, like powermeters are sampled 8 times a second
 
   let sampleRate = BASIC_DEVICE_SAMPLE_RATE;
-  let highSignalThreshold = BASIC_DEVICE_SAMPLE_RATE;
+  //let highSignalThreshold = BASIC_DEVICE_SAMPLE_RATE;
 
   // this could be unreliable, it says - it is a basic device if the max rxfail per second is less than
   // or equal to the basic sample rate (assumed to be 4hz).
@@ -126,7 +130,7 @@ export default function mapAntRxFails(
 
   if (!isBasic) {
     sampleRate = ADVANCED_DEVICE_SAMPLE_RATE;
-    highSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.9;
+    //highSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.95;
   }
 
   // make each 10 second avg value equal to the full, assumed sample rate (based on avg # of fails) minus the 
@@ -142,16 +146,21 @@ export default function mapAntRxFails(
 
   // the logging of the sampling is not exact seconds, there could be some overspil into the next second, so the 10s averages smooth things out
 
-  // this would be an interesting stat in the charts
-  // const ninetiethPercentile = rollup.percentile(90);
-  // console.log('ninetiethPercentile');
-  // console.log(ninetiethPercentile);
+  // these might be interesting stats to add to the reports
+  
+  const seventyFifthPercentile = sampleRate - rollup.percentile(75);
+  console.log('seventyFifthPercentile');
+  console.log(seventyFifthPercentile);
+
+  const ninetiethPercentile = sampleRate - rollup.percentile(90);
+  console.log('ninetiethPercentile');
+  console.log(ninetiethPercentile);
 
   // @todo, get the median RxFails per manufacturerId modelId key
 
-  // zero out the 10s averages that are below the threshold we `think`
+  // zero out the SECONDS_TO_ROUND_RECONNECT_TIME averages that are below the threshold we `think`
   // triggers a re-pairig (goto search).
-  // Also zero out the 10s averages that are impossibly high -
+  // Also zero out the SECONDS_TO_ROUND_RECONNECT_TIME averages that are impossibly high -
   // when there are absolutely no rxfails in 10 seconds -
   // usually means a device is completely lost and did not re-pair.
 
@@ -165,14 +174,14 @@ export default function mapAntRxFails(
 
     const timestamp = indexToUnixTime(event.index);
 
-    const roundedTimeStamp = `10s-${Math.round(timestamp / SECONDS_TO_ROUND_RECONNECT_TIME) * SECONDS_TO_ROUND_RECONNECT_TIME}`;
+    const roundedTimeStamp = `${SECONDS_TO_ROUND_RECONNECT_TIME}s-${Math.round(timestamp / SECONDS_TO_ROUND_RECONNECT_TIME) * SECONDS_TO_ROUND_RECONNECT_TIME}`;
 
     if (
       searchesTimestamps &&
       searchesTimestamps.length &&
       searchesTimestamps.includes(roundedTimeStamp) &&
       event.data.value <
-        1 /* low 10 second average rx fails, not because the device is good, but becuase it's gone!*/
+        1 /* low SECONDS_TO_ROUND_RECONNECT_TIME second average rx fails, not because the device is good, but becuase it's gone!*/
     ) {
       // return the suspected drop out seconds for surfacing in the charts and textual analysis
       dropouts.push(roundedTimeStamp);
@@ -182,11 +191,12 @@ export default function mapAntRxFails(
     } else {
       // set to 0 any signal that is not in range of a searchesTimestamps
       // but is sort of perfect, which is highly unlikely
-      return e.setData({
-        value: sampleRate - e.get('value') > highSignalThreshold
-          ? 0
-          : sampleRate - e.get('value')
-      });
+      // return e.setData({
+      //   value: sampleRate - e.get('value') > highSignalThreshold
+      //     ? 0
+      //     : sampleRate - e.get('value')
+      // });
+      return e.setData({value: sampleRate - e.get('value')})
     }
   });
 

@@ -26,7 +26,7 @@ export default function getBTLEDeviceManufacturer(lines) {
     return ELITE_MANUFACTURER_ID
   }
 
-  if (lines.match(/ble[m]+\s+?:\saris/gim)) {
+  if (lines.match(/ble[m]+\s+?:\ssaris/gim)) {
     return SARIS_MANUFACTURER_ID
   }
 

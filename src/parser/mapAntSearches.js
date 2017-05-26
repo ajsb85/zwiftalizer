@@ -19,6 +19,7 @@ export default function mapAntSearches(lines, timeAxisTimeSeries) {
 
   const antLines = Array.isArray(lines) ? lines : toArray(lines);
 
+  // go to search, or TX POWER ID indicates device pairing or re-synching 
   const searchesRegex = /^\[[^\]]*\]\s+?ant\s+?:\s+?(goto\ssearch.|tx\s+?\power\s+?\id)\s*$/i;
 
   const searches = [];

@@ -1,5 +1,4 @@
 var _ = require('underscore');
-const AntplusDevices = require('zwiftalizer-antplus-devices');
 
 import {
   WAHOO_MANUFACTURER_ID,
@@ -43,10 +42,11 @@ export default function antData(log, timeAxisTimeSeries) {
   // rounding to nearest SECONDS_TO_ROUND_RECONNECT_TIME
   const searchesTimestampsRounded = _.uniq(
     searchesTimestamps.map(t => {
-      return `10s-${Math.round(t / SECONDS_TO_ROUND_RECONNECT_TIME) * SECONDS_TO_ROUND_RECONNECT_TIME}`;
+      return `${SECONDS_TO_ROUND_RECONNECT_TIME}s-${Math.round(t / SECONDS_TO_ROUND_RECONNECT_TIME) * SECONDS_TO_ROUND_RECONNECT_TIME}`;
     })
   );
 
+  // gets the power data, but we can not tell which device / channel is producing it
   const power = mapPowermeterData(antLines, timeAxisTimeSeries);
 
   // this is kinda useless, just prints info
@@ -63,6 +63,15 @@ export default function antData(log, timeAxisTimeSeries) {
       Object.assign(device, manufacturer);
     }
 
+    // @todo, use the manufacturer information (if known) to make
+    // a better guess at the the sample rate for the device
+    // For example, if the manufacturer is SRM, Quarq, Stages, 4iiii, or
+    // any other power meter manufacturer then assume 8HZ.
+    // Actually, it might be true that if a manufacturer id exists at all
+    // in the log then the device is a power meter or smart trainer (8HZ)
+    // and if no manufacturer id exists, then the device is a 'basic'
+    // speed, cadence or heart rate monitor (4HZ).
+    
     // always get rxfails for the channel because it can reveal
     // if a device is being sampled at a high rate (probably a power source)
     const signal = mapAntRxFails(
@@ -72,33 +81,37 @@ export default function antData(log, timeAxisTimeSeries) {
       searchesTimestampsRounded
     );
 
-    // attempt to find powermeters that do not broadcast manufacturer and modelIds (pro+, sl+, PowerBeam, PowerSync, Phantom 5, Phantom 3)
-    // rxfail pattern does not look like a basic device,
+    // attempt to find powermeters that do not broadcast manufacturer and modelIds
+    // (pro+, sl+, PowerBeam, PowerSync, Phantom 5, Phantom 3)
+    // RxFail pattern does not look like a basic device,
     // is not already detected as being made by a known PM manufacturer (could be saris, powertap)
     // and is not a SMART_TRAINER_DEVICE, or KICKR
 
-    // @todo, check we are not attributing a kickr ANT+ powermeter to cycleops, shoudn't be as
-    // device.manufacturerId should be set for Wahoo Kickr and Wahoo Kickr Snap
+    // @todo, check we are not attributing a kickr ANT+ powermeter to cycleops.
+    // We shoud not be as device.manufacturerId should be set 
+    // correctly for Wahoo Kickr and Wahoo Kickr Snap
 
+    // If we have power data, and the device appears to be sampled at
+    // a rate higher than the basic sample rate
+    // and the device has neither been identified as a
+    // smart trainer or power meter,
+    // and we have no manufacturerId, 
+    // then it's very likely to be a power tap
+    // (or a power meter using the standard power profile).
+    // Out of all the known power meters, saris/powertap/cycleops is the only one we know of that
+    // does not broadcast manufacturerId, modelId. Going to take a big risk here and attribute the
+    // power data source to cycleops  
     if (
-      // if we have power data, and the device appears to be sampled at
-      // a rate higher than the basic sample rate
-      // and the device has neither been identified as a
-      // smart trainer or power meter,
-      // and we have no manufacturerId then it's very likely to be a power tap
-      // (or a power meter using the standard power profile)
       power.count() &&
       !signal.isBasic &&
       device.type === BASIC_DEVICE &&
+      // device.manufacturerId is a string 
       device.manufacturerId === ''
     ) {
       device.type = POWER_METER_DEVICE;
       device.typeName = titleCase(deviceTypes[POWER_METER_DEVICE]);
-      // out of all the known power meters, saris/powertap/cycleops is the only one we know of that
-      // does not broadcast manufacturerId, modelId. Going to take a big risk here and attribute the
-      // power data source to cycleops
       device.manufacturerId = SARIS_MANUFACTURER_ID;
-      device.modelId = 0; /* generic */
+      device.modelId = '0'; /* generic */
       device.manufacturer = 'PowerTap';
       device.model = 'Wireless';
     }
@@ -124,9 +137,9 @@ export default function antData(log, timeAxisTimeSeries) {
     return device.type === SMART_TRAINER_DEVICE;
   });
 
-  // assign the power data to the powermeter before the kickr, but never both
-  // Does not work for Paul Holmgren who uses a stages PM as a cadence meter and kickr for power because of ERG mode
-  // Would be interesting to see if we can detect ERG mode is engaged
+  // Assign the power data to the powermeter before the kickr, but never both.
+  // Does not work for Paul Holmgren who uses a stages PM as a cadence meter and kickr for power because of ERG mode.
+  // Would be interesting to see if we can detect ERG mode is engaged.
   if (powerDevice) {
     Object.assign(powerDevice, {
       power,

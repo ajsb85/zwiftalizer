@@ -23,7 +23,7 @@ import {
 } from './constants';
 
 /**
- * Returns an array of ant+ device manufacturer Ids
+ * Returns an array of ant+ device manufacturers
  * where each element of the array is an object with the following properties
  * {
  *  extendedDeviceId: <string>,
@@ -98,12 +98,21 @@ export default function antManufacturers(lines) {
         modelId = 2800;
       }
 
+      // 2017-05-25, possible bug, Elite Drivo might be model 0 or model 20.
+      // We might have to group them together as model 0, like we are doing for Neos that have two 
+      // possible model numbers.
+      // if (manufacturerIdString === ELITE_MANUFACTURER_ID && modelId === 20) {
+      //   modelId = 0;
+      // }
+
       const entry = {
         extendedDeviceId,
         manufacturerId,
         modelId
       };
 
+      // @todo, it might be a bit quicker to always push devices
+      // onto the array, then call uniq to get the distinct list
       if (!_.findWhere(distinctMfgModelEntries, entry)) {
         distinctMfgModelEntries.push(entry);
       }
@@ -112,10 +121,8 @@ export default function antManufacturers(lines) {
 
   _.each(distinctMfgModelEntries, m => {
     let type = BASIC_DEVICE;
-
     const manufacturerIdString = '' + m.manufacturerId;
-
-    var modelIdString = '' + m.modelId;
+    let modelIdString = '' + m.modelId;
 
     // treat kickr as FEC smart trainer, until we know whether or not it is doing its own gradient protocol or FEC standard
     if (_.contains(SMART_TRAINER_MANUFACTURERS, manufacturerIdString)) {
@@ -128,8 +135,8 @@ export default function antManufacturers(lines) {
     let deviceId = 0;
 
     try {
-      // get lower 16 bits of the 20 bit number
-      // this is critical for lining which channel a device is on when we look at rxfails
+      // Get lower 16 bits of the 20 bit number.
+      // This is critical for matching up channels with devices when we look at rxfails.
       deviceId = parseInt(m.extendedDeviceId) & 0xffff;
     } catch (e) {
       console.log('Failed to extract short deviceId from extended deviceId');
@@ -160,15 +167,15 @@ export default function antManufacturers(lines) {
       m.modelId = 0;
     }
 
+    // Always use strings for AntplusDevice lookup.
+    // 2017-05-25, this should fix the bug
+    // where Wattbike trigges the unknown device modal, when it should not.
     // returns undefined if manufacturer not found
     const makeAndModel = AntplusDevices.find(
       manufacturerIdString,
-      modelIdString,
+      '' + m.modelId,
       type
     );
-
-    console.log('makeAndModel');
-    console.log(makeAndModel);
 
     const entry = {
       extendedDeviceId: m.extendedDeviceId,
