@@ -26,8 +26,7 @@ import {
   LabelAxis,
   ValueAxis,
   LineChart,
-  AreaChart,
-  BarChart,
+  BarChart,  
   Legend,
   Resizable,
   Baseline,
@@ -165,9 +164,7 @@ class Chart extends React.Component {
             <ChartRow height="150" debug={false}>
               <YAxis id="messages1" label="Messages" min={0} max={maxMessages} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
               <Charts>
-                <AreaChart axis="messages1" series={this.state.messages} style={messagesStyle} columns={{
-                  up: ['value']
-                }}/>
+                <BarChart axis="messages1" series={this.state.messages} style={messagesStyle} columns={['value']}/>
               </Charts>
               <YAxis id="messages2" label="Messages" min={0} max={maxMessages} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
             </ChartRow>
@@ -199,9 +196,7 @@ class Chart extends React.Component {
               <Brush timeRange={this.state.brushrange} allowSelectionClear={true} onTimeRangeChanged={this.handleTimeRangeChange}></Brush>
               <YAxis id="messages1" label="Messages" min={0} max={maxMessages} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"></YAxis>
               <Charts>
-                <AreaChart axis="messages1" series={this.state.messages} style={messagesStyle} columns={{
-                  up: ['value']
-                }}/>
+                <BarChart axis="messages1" series={this.state.messages} style={messagesStyle} columns={['value']}/>
               </Charts>
               <YAxis id="messages2" label="Messages" min={0} max={maxMessages} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"></YAxis>
             </ChartRow>

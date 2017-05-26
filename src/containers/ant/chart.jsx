@@ -501,7 +501,7 @@ class Chart extends React.Component {
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>{label}</h4>
               <h5 className={structure.infoHeading}>
-                1 to 4 is normal. Use the mouse wheel to zoom in. Click and drag to pan.
+                Use the mouse wheel to zoom in. Click and drag to pan.
               </h5>
             </div>
           </div>

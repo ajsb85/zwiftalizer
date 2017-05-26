@@ -224,7 +224,7 @@ class Analysis extends React.Component {
         <h3>ANT+ Recommendations</h3>
 
         <h3>Read this before getting a USB extension cable!</h3>
-        <p>ANT+ works up to 30 meters. Moving the dongle closer to the devices is often completely unnecessary and could even make things worse because over a passive cable the dongle will lose some voltage.</p>
+        <p>ANT+ works up to 30 meters. Moving the dongle closer to the devices is often unnecessary and could even make things worse because over a passive cable the dongle will lose some voltage.</p>
 
         <h3>1. Check your batteries & push everything in</h3>
         <p>Let's check the easy things first. Are your batteries fresh in your devices? Change them anyway if you don't know. Is the dongle firmly pushed in? Check again.</p>
@@ -233,18 +233,15 @@ class Analysis extends React.Component {
         <p>Check for Garmin ANT Agent in the system tray. Stop it if it is running so that it does not try to read the dongle at the same time as Zwift.</p>
 
         <h3>3. Check your WiFi router channel</h3>
-        <p>This is a very common cause of drop outs. If you have a 2.4 GHz WiFi router, check that its channel is not set to auto or channel 10. 
+        <p>This is a very common cause of interference. If you have a 2.4 GHz WiFi router, check that its channel is not set to auto or channel 10. Use channels 1 to 5 instead.
         ANT+ works on the same frequency as channel 10 (2457MHz) and while the wireless transport has mechanisms built in to avoid conflicts, many routers are not up to spec and can still cause interference. 
         This is still an issue even if the computer you use for Zwift has a hard wired network connection because other devices nearby that use WiFi - your phone, or someone watching Netflix on a Roku next door, could fill the airwaves with interference.
         </p>
         
-        <h3>4. Get a 5GHz WiFi Router</h3>
-        <p>If changing the channel on your 2.4 GHz WiFi router didn't help, then buy a 5GHz router because it operates on a completely different set of frequencies from ANT+.</p>
-        
-        <h3>5. Use a different USB port</h3>
+        <h3>4. Use a different USB port</h3>
         <p>Some USB ports run at lower voltages than others, particularly in laptops where power saving is often enabled when running on batteries. Setting your computer's power management to 'high performance' will give the USB ports maximum power. It might improve your graphics performance too. Always set power management to 'high performance' for gaming and if you are using a laptop, always plug it in.</p>
 
-        <h3>6. Don't sweat on your dongle</h3>
+        <h3>5. Don't sweat on your dongle</h3>
         <p>OK, so you're using an extension cable. If your dongle is on the floor, or anywhere else where sweat falls, put it in a plastic bag with an elastic band around it. Sweat kills electronics.</p>
       </div>
     );

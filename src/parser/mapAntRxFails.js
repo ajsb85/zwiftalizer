@@ -4,7 +4,6 @@ import toArray from './toArray';
 import timeAxis from './timeAxis';
 import { nonZeroAvgReducer } from './functions';
 import indexToUnixTime from './indexToUnixTime.js';
-import { SECONDS_TO_ROUND_RECONNECT_TIME } from './constants';
 
 // Speed/Cadence sensor can transmit at these rates
 //
@@ -15,15 +14,7 @@ import { SECONDS_TO_ROUND_RECONNECT_TIME } from './constants';
 // Ref.
 // D00001163_-_ANT+_Device_Profile_-_Bicycle_Speed_and_Cadence_2.0.pdf
 // Page 29
-
-<<<<<<< HEAD
-=======
-import {ANT_AVERAGES_WINDOW_IN_SEC} from './constants';
-
->>>>>>> master
-const BASIC_DEVICE_SAMPLE_RATE = 4.0;
-
-const BASIC_DEVICE_THRESHOLD_MAX_FAILS = BASIC_DEVICE_SAMPLE_RATE;
+const _4HZ = 4.0;
 
 // ANT+ Powermeter
 // Data is transmitted from the bike power sensor every 8182/32768 seconds
@@ -34,7 +25,16 @@ const BASIC_DEVICE_THRESHOLD_MAX_FAILS = BASIC_DEVICE_SAMPLE_RATE;
 // D00001086_-_ANT+_Device_Profile_-_Bicycle_Power_-_Rev4.2.pdf
 // Page 19
 
-const ADVANCED_DEVICE_SAMPLE_RATE = 8.0;
+const _8HZ = 8.0;
+
+import {
+  WAHOO_MANUFACTURER_ID,
+  WAHOO_KICKR_MODEL_ID,
+  BASIC_DEVICE,
+  POWER_METER_DEVICE,
+  SMART_TRAINER_DEVICE,
+  ANT_AVERAGES_WINDOW_IN_SEC
+} from './constants';
 
 import {
   Event,
@@ -55,6 +55,8 @@ export default function mapAntRxFails(
   timeAxisTimeSeries,
   searchesTimestamps
 ) {
+  let isBasic = true;
+
   const dropouts = [];
 
   const result = {
@@ -108,61 +110,49 @@ export default function mapAntRxFails(
     }
   });
 
-  const maxValue = rollup.max();
+  const maxValue = rollup.max() / ANT_AVERAGES_WINDOW_IN_SEC;
   console.log('maxValue');
   console.log(maxValue);
 
-  const medianValue = sampleRate - rollup.median();
+  const medianValue = rollup.median() / ANT_AVERAGES_WINDOW_IN_SEC;
   console.log('medianValue');
   console.log(medianValue);
-
-  // console.log('device rxFail max value');
-  // console.log(maxValue);
 
   // assumption 1 - basic devices (HR, Cadence, Speed) are sampled no more than 4 times a second
   // assumption 2 - advanced devices, like powermeters are sampled 8 times a second
 
-  let sampleRate = BASIC_DEVICE_SAMPLE_RATE;
-  //let highSignalThreshold = BASIC_DEVICE_SAMPLE_RATE;
+  let sampleRate = _4HZ;
 
-  // this could be unreliable, it says - it is a basic device if the max rxfail per second is less than
-  // or equal to the basic sample rate (assumed to be 4hz).
-  // @todo, try to use device manufacturerId and modelId to make a better guess
+  // Try to use device manufacturerId and modelId to make a better guess
   // at whether the device is sampled at 4HZ or 8HZ
-  const isBasic = maxValue <= BASIC_DEVICE_THRESHOLD_MAX_FAILS;
 
-  if (!isBasic) {
-    sampleRate = ADVANCED_DEVICE_SAMPLE_RATE;
-    //highSignalThreshold = ADVANCED_DEVICE_SAMPLE_RATE * 0.95;
+  // using type coercion == on manufacturerId (int) and WAHOO manufacturer const (string)
+  if (
+    device.type === POWER_METER_DEVICE ||
+    (device.manufacurerId &&
+      device.manufacurerId == WAHOO_MANUFACTURER_ID &&
+      device.modelId &&
+      device.modelId == WAHOO_KICKR_MODEL_ID)
+  ) {
+    isBasic = false;
+    sampleRate = _8HZ;    
   }
 
-  // make each N second avg value equal to the full, assumed sample rate (based on avg # of fails) minus the avg of RxFails in that N seconds
-  // what we are trying to do here is get the SUCCESSES by
-  // subtracting the fails from the sample rate
-
-  // e.g. 40 - 0 =  40 successful message received
-  // e.g. 40 - 10 =  30 successful message received
-  // e.g. 40 - 20 =  20 successful message received
-  // e.g. 40 - 30 =  10 successful message received ---> weak signal, possibly an indication of drop outs
-  // e.g. 40 - 40 =  0 successful message received ----> a drop out - problem is - when a device is completely lost, there are no rxfails at all, so it appears to be a strong signal
-
-  // the logging of the sampling is not exact seconds, there could be some overspil into the next second, so the 2s averages smooth things out
+  // the logging of the sampling is not exact seconds, there could be some overspill into the next second, so the 2s averages smooth things out
 
   // these might be interesting stats to add to the reports
-  
-  const seventyFifthPercentile = sampleRate - rollup.percentile(75);
+
+  const seventyFifthPercentile = sampleRate - rollup.percentile(75) / ANT_AVERAGES_WINDOW_IN_SEC;
   console.log('seventyFifthPercentile');
   console.log(seventyFifthPercentile);
 
-  const ninetiethPercentile = sampleRate - rollup.percentile(90);
+  const ninetiethPercentile = sampleRate - rollup.percentile(90) / ANT_AVERAGES_WINDOW_IN_SEC;
   console.log('ninetiethPercentile');
   console.log(ninetiethPercentile);
 
-  // @todo, get the median RxFails per manufacturerId modelId key
-
-  // zero out the SECONDS_TO_ROUND_RECONNECT_TIME averages that are below the threshold we `think`
+  // zero out the N seconds averages that are below the threshold we `think`
   // triggers a re-pairig (goto search).
-  // Also zero out the SECONDS_TO_ROUND_RECONNECT_TIME averages that are impossibly high -
+  // Also zero out the N seconds averages that are impossibly high -
   // when there are absolutely no rxfails in 10 seconds -
   // usually means a device is completely lost and did not re-pair.
 
@@ -173,32 +163,24 @@ export default function mapAntRxFails(
     // `goto search` entry, and no RxFails at all were seen, then this
     // bucket is likely NOT a perfect sample, but rather - no valid sample at all
     // set it to 0 signal
-
     const timestamp = indexToUnixTime(event.index);
 
-    const roundedTimeStamp = `${ANT_AVERAGES_WINDOW_IN_SEC}s-${Math.round(timestamp / SECONDS_TO_ROUND_RECONNECT_TIME) * SECONDS_TO_ROUND_RECONNECT_TIME}`;
+    const roundedTimeStamp = `${ANT_AVERAGES_WINDOW_IN_SEC}s-${Math.round(timestamp / ANT_AVERAGES_WINDOW_IN_SEC) * ANT_AVERAGES_WINDOW_IN_SEC}`;
 
+    // check the value that coincides with a device search is not zero
     if (
       searchesTimestamps &&
       searchesTimestamps.length &&
-      _.contains(searchesTimestamps, roundedTimeStamp) &&      
-      event.data.value <
-        1 /* low SECONDS_TO_ROUND_RECONNECT_TIME second average rx fails, not because the device is good, but becuase it's gone!*/
+      _.contains(searchesTimestamps, roundedTimeStamp) &&
+      event.data.value === 0
     ) {
       // return the suspected drop out seconds for surfacing in the charts and textual analysis
       dropouts.push(roundedTimeStamp);
-      // console.log(JSON.stringify(event), ' is likely the cause of the re-pairing / goto search');
+      console.log(JSON.stringify(event), ' is likely the cause of the re-pairing / goto search');
       // @todo, set a flag that says this device had at least one suspected drop out in a 10 second period
-      return e.setData(0);
-    } else {
-      // set to 0 any signal that is not in range of a searchesTimestamps
-      // but is sort of perfect, which is highly unlikely
-      // return e.setData({
-      //   value: sampleRate - e.get('value') > highSignalThreshold
-      //     ? 0
-      //     : sampleRate - e.get('value')
-      // });
-      return e.setData({value: sampleRate - e.get('value')})
+      return e;
+    } else {            
+      return e.setData({ value: sampleRate - e.get('value') });
     }
   });
 
