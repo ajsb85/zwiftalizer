@@ -59,7 +59,7 @@ export { default as antDevices } from './antDevices';
 
 export { default as mapFpsLines } from './mapFpsLines';
 
-export { default as mapFecLines } from './mapFecLines';
+export { default as mapAntFecLines } from './mapAntFecLines';
 
 export { default as reduceFps } from './reduceFps';
 
@@ -112,3 +112,9 @@ export {
 export {
   default as getBTLEDeviceManufacturer
 } from './getBTLEDeviceManufacturer';
+
+export {
+  default as getTimeBasedPowerData
+} from './getTimeBasedPowerData';
+
+

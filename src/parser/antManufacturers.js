@@ -48,7 +48,7 @@ export default function antManufacturers(lines) {
   const mfgLines = [];
 
   _.each(antLines, line => {
-    if (antManufacturersRegex.test(line)){
+    if (antManufacturersRegex.test(line)) {
       mfgLines.push(line);
     }
   });
@@ -75,93 +75,94 @@ export default function antManufacturers(lines) {
 
       let modelId = parseInt(matches[3], 10);
 
-      if (extendedDeviceId === 0 || manufacturerId === 0) {
-        // allow model zero
-        continue;
-      }
-
       // saris/cycleops powertap pro+ wireless blurts out all kinds of manufacturer id junk
       // ignore manufacturerIds that a are out of the range of the lookup table
+
       if (
-        extendedDeviceId === 0 ||
-        manufacturerId === 0 ||
-        manufacturerId >= MAX_MANUFACTURER_ID
+        extendedDeviceId &&
+        manufacturerId &&
+        manufacturerId < MAX_MANUFACTURER_ID
       ) {
-        continue;
-      }
+        // The special case of the Tacx Neo, says it's Model 1 and Model 2800, take Model 2800
+        // Be sure to check we are not couting model 2800 twice because of this conversion.
 
-      // The special case of the Tacx Neo, says it's Model 1 and Model 2800, take Model 2800
-      // Be sure to check we are not couting model 2800 twice because of this conversion.
+        // 2017-05-22, bug, manufacturerId is int but TACX_MANUFACTURER_ID is string. Comparison fails.
+        if (`${manufacturerId}` === TACX_MANUFACTURER_ID && modelId === 1) {
+          modelId = 2800;
+        }
 
-      // 2017-05-22, bug, manufacturerId is int but TACX_MANUFACTURER_ID is string. Comparison fails.
-      if (`${manufacturerId}` === TACX_MANUFACTURER_ID && modelId === 1) {
-        modelId = 2800;
-      }
+        // 2017-05-25, possible bug, Elite Drivo might be model 0 or model 20.
+        // We might have to group them together as model 0, like we are doing for Neos that have two
+        // possible model numbers.
+        // if (manufacturerIdString === ELITE_MANUFACTURER_ID && modelId === 20) {
+        //   modelId = 0;
+        // }
 
-      // 2017-05-25, possible bug, Elite Drivo might be model 0 or model 20.
-      // We might have to group them together as model 0, like we are doing for Neos that have two
-      // possible model numbers.
-      // if (manufacturerIdString === ELITE_MANUFACTURER_ID && modelId === 20) {
-      //   modelId = 0;
-      // }
+        const entry = {
+          extendedDeviceId,
+          manufacturerId,
+          modelId
+        };
 
-      const entry = {
-        extendedDeviceId,
-        manufacturerId,
-        modelId
-      };
-
-      // @todo, it might be a bit quicker to always push devices
-      // onto the array, then call uniq to get the distinct list
-      if (!_.findWhere(distinctMfgModelEntries, entry)) {
-        distinctMfgModelEntries.push(entry);
+        // @todo, it might be a bit quicker to always push devices
+        // onto the array, then call uniq to get the distinct list
+        if (!_.findWhere(distinctMfgModelEntries, entry)) {
+          distinctMfgModelEntries.push(entry);
+        }
       }
     }
   }
 
   _.each(distinctMfgModelEntries, m => {
-    let type = BASIC_DEVICE;
-    // treat kickr as FEC smart trainer, until we know whether or not it is doing its own gradient protocol or FEC standard
-    if (_.contains(SMART_TRAINER_MANUFACTURERS, `${m.manufacturerId}`)) {
-      // set to SMART_TRAINER_DEVICE (smart trainer), but still could be a Saris power meter
-      type = SMART_TRAINER_DEVICE;
-    } else if (_.contains(POWERMETER_MANUFACTURERS, `${m.manufacturerId}`)) {
-      type = POWER_METER_DEVICE;
-    }
+    const entry = {
+      extendedDeviceId: m.extendedDeviceId,
+      deviceId: 0,
+      manufacturerId: `${m.manufacturerId}`,
+      manufacturer: 'Unknown',
+      modelId: `${m.modelId}`,
+      model: 'Unknown',
+      type: BASIC_DEVICE
+    };
 
-    let deviceId = 0;
+    // treat kickr as FEC smart trainer, until we know whether or not it is doing its own gradient protocol or FEC standard
+    if (_.contains(SMART_TRAINER_MANUFACTURERS, entry.manufacturerId)) {
+      // set to SMART_TRAINER_DEVICE (smart trainer), but still could be a Saris power meter
+      entry.type = SMART_TRAINER_DEVICE;
+    } else if (_.contains(POWERMETER_MANUFACTURERS, entry.manufacturerId)) {
+      entry.type = POWER_METER_DEVICE;
+    }
 
     try {
       // Get lower 16 bits of the 20 bit number.
       // This is critical for matching up channels with devices when we look at rxfails.
-      deviceId = parseInt(m.extendedDeviceId, 10) & 0xffff;
+      entry.deviceId = parseInt(entry.extendedDeviceId, 10) & 0xffff;
     } catch (e) {
       console.log('Failed to extract short deviceId from extended deviceId');
     }
 
     // try and differentiate between CycleOps and Powertap devices (both  have manufacturer 9)
-    if (`${m.manufacturerId}` === SARIS_MANUFACTURER_ID) {
-      if (_.contains(POWERTAP_MODELS, `${m.modelId}`)) {
-        type = POWER_METER_DEVICE;
-      } else if (_.contains(CYCLEOPS_TRAINER_MODELS, `${m.modelId}`)) {
-        type = SMART_TRAINER_DEVICE;
+    if (`${entry.manufacturerId}` === SARIS_MANUFACTURER_ID) {
+      if (_.contains(POWERTAP_MODELS, entry.modelId)) {
+        entry.type = POWER_METER_DEVICE;
+      } else if (_.contains(CYCLEOPS_TRAINER_MODELS, entry.modelId)) {
+        entry.type = SMART_TRAINER_DEVICE;
       } else {
         // Generic powertap device
-        type = POWER_METER_DEVICE;
-        m.modelId = 0;
+        entry.type = POWER_METER_DEVICE;
+        entry.modelId = 0;
       }
     }
-    
-    if (`${m.manufacturerId}` === WATTTEAM_MANUFACTURER_ID) {
-      // PowerBeat
-      type = POWER_METER_DEVICE;
-      m.modelId = 0;
+
+    // PowerBeat
+    if (entry.manufacturerId === WATTTEAM_MANUFACTURER_ID) {
+      entry.type = POWER_METER_DEVICE;
+      entry.modelId = 0;
     }
 
-    if (`${m.manufacturerId}` === WATTBIKE_MANUFACTURER_ID) {
-      // wattbike
-      type = SMART_TRAINER_DEVICE;
-      m.modelId = 0;
+    // wattbike
+    if (entry.manufacturerId === WATTBIKE_MANUFACTURER_ID) {
+      entry.type = SMART_TRAINER_DEVICE;
+      entry.modelId = 0;
     }
 
     // Always use strings for AntplusDevice lookup.
@@ -169,26 +170,17 @@ export default function antManufacturers(lines) {
     // where Wattbike trigges the unknown device modal, when it should not.
     // returns undefined if manufacturer not found
     const makeAndModel = AntplusDevices.find(
-      `${m.manufacturerId}`,
-      `${m.modelId}`,
-      type
+      entry.manufacturerId,
+      entry.modelId,
+      entry.type
     );
 
-    const entry = {
-      extendedDeviceId: m.extendedDeviceId,
-      deviceId,
-      manufacturerId: m.manufacturerId,
-      manufacturer: makeAndModel ? makeAndModel.manufacturerName : 'Unknown',
-      modelId: m.modelId,
-      model: makeAndModel ? makeAndModel.modelName : 'Unknown',
-      type
-    };
-
-    entry.typeName = titleCase(deviceTypes[type]);
-
-    if (entry.model === '') {
-      entry.model = 'Unknown';
+    if (typeof makeAndModel !== 'undefined') {
+      entry.manufacturer = makeAndModel.manufacturerName;
+      entry.model = makeAndModel.modelName;
     }
+
+    entry.typeName = titleCase(deviceTypes[entry.type]);
 
     manufacturerModelItems.push(entry);
   });

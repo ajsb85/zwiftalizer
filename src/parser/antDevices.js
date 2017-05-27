@@ -1,12 +1,14 @@
-var _ = require('underscore');
-
-const MAX_DEVICES = 4;
-
 import { BASIC_DEVICE } from './constants';
 
 import titleCase from './titleCase';
+
 import deviceTypes from '../types/devices.json';
+
 import toArray from './toArray';
+
+const _ = require('underscore');
+
+const MAX_DEVICES = 4;
 
 /**
  * Returns an array of paired ant+ devices
@@ -40,68 +42,64 @@ export default function antDevices(lines) {
     return result;
   }
 
- const j = pairings.length;
+  const j = pairings.length;
 
   // stop when we have found at least MAX_DEVICES or looked at all pairings
-  for (let i = 0; i <= MAX_DEVICES; i++) {
-
+  for (let i = 0; i <= MAX_DEVICES; i += 1) {
     if (i > j) {
       break;
     }
 
     const d = pairings[i];
 
-    if (!d) {
-      continue;
-    }
-
-    // not using the mfg or ant network id anymore
-    const matches = d.match(
-      /^\[[^\]]*\]\s+?ant\s+?:\s+?pairing\sdeviceid\s([\d]*)\sto\schannel\s([\d]*).*$/i
-    );
-
-    if (!matches) {
-      console.log(
-        'Failed to extract deviceId and channel from ant pairing deviceId line'
+    if (d) {
+      // not using the mfg or ant network id anymore
+      const matches = d.match(
+        /^\[[^\]]*\]\s+?ant\s+?:\s+?pairing\sdeviceid\s([\d]*)\sto\schannel\s([\d]*).*$/i
       );
-      break;
+
+      if (!matches) {
+        console.log(
+          'Failed to extract deviceId and channel from ant pairing deviceId line'
+        );
+        break;
+      }
+
+      let deviceId = 0;
+
+      try {
+        deviceId = parseInt(matches[1], 10);
+      } catch (e) {
+        console.log('Failed to convert deviceId to number');
+      }
+
+      const channel = matches[2];
+
+      if (!deviceId || !channel) {
+        console.log('Failed to get values for ant deviceId, channel');
+      }
+
+      const device = {
+        deviceId,
+        channel,
+        extendedDeviceId: '',
+        manufacturerId: '',
+        manufacturer: '',
+        modelId: '',
+        model: '',
+        type: BASIC_DEVICE,
+        typeName: titleCase(deviceTypes[BASIC_DEVICE])
+      };
+
+      const exisingDeviceFound = _.find(result, existingDevice => {
+        return existingDevice.deviceId === device.deviceId;
+      });
+
+      if (!exisingDeviceFound) {
+        result.push(device);
+      }
     }
-
-    let deviceId = 0;
-
-    try {
-      deviceId = parseInt(matches[1]);
-    } catch (e) {
-      console.log('Failed to convert deviceId to number');
-    }
-
-    const channel = matches[2];
-
-    if (!deviceId || !channel) {
-      console.log('Failed to get values for ant deviceId, channel');
-    }
-
-    let device = {
-      deviceId,
-      channel,
-      extendedDeviceId: '',
-      manufacturerId: '',
-      manufacturer: '',
-      modelId: '',
-      model: '',
-      type: BASIC_DEVICE,
-      typeName: titleCase(deviceTypes[BASIC_DEVICE])
-    };
-
-    const exisingDeviceFound = _.find(result, existingDevice => {
-      return existingDevice.deviceId === device.deviceId;
-    });
-
-    if (!exisingDeviceFound) {
-      result.push(device);
-    }
-
-  };
+  }
 
   return Object.freeze(result);
 }

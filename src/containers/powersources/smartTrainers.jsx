@@ -85,8 +85,6 @@ class SmartTrainers extends React.Component {
           fontWeight: '600'
         };
 
-        //const chartKey = `${i + 1}`;
-
         const smartTrainerPercentRounded = Math.round(smartTrainer.percent);
 
         const chartKey = `${smartTrainerPercentRounded}%`

@@ -1,12 +1,10 @@
-var _ = require('underscore');
-var sprintf = require('sprintf-js').sprintf;
+import { TimeSeries, avg } from 'pondjs';
+
 import toArray from './toArray';
 
-var moment = require('moment');
-
-import { Event, Collection, EventOut, Pipeline, TimeSeries, avg } from 'pondjs';
-
 import { nonZeroAvgReducer } from './functions';
+
+const _ = require('underscore');
 
 export const powerEntryRegex = /^\[[^\]]*\]\s+?ant\s+?:\s+?\[powermeter\]\s+?.*pavg:.*$/i;
 
@@ -43,7 +41,7 @@ export default function mapPowermeterData(lines, timeAxisTimeSeries) {
     }
 
     try {
-      const timestamp = parseInt(matches[1]);
+      const timestamp = parseInt(matches[1], 10);
 
       const value = Math.round(matches[2] * 100) / 100;
 

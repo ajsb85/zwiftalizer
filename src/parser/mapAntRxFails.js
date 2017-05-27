@@ -1,44 +1,23 @@
-var _ = require('underscore');
-var sprintf = require('sprintf-js').sprintf;
+import { TimeSeries, avg } from 'pondjs';
+
 import toArray from './toArray';
-import timeAxis from './timeAxis';
-import { nonZeroAvgReducer } from './functions';
-import indexToUnixTime from './indexToUnixTime.js';
 
-// Speed/Cadence sensor can transmit at these rates
-//
-// 1. 8102 counts (~4.04Hz, 4 messages/second)
-// 2. 16204 counts (~2.02Hz, 2 messages/second)
-// 3. 32408 counts (~1.01Hz, 1 message/second)
-//
-// Ref.
-// D00001163_-_ANT+_Device_Profile_-_Bicycle_Speed_and_Cadence_2.0.pdf
-// Page 29
+import indexToUnixTime from './indexToUnixTime';
 
-const _4HZ = 4.0;
+const _ = require('underscore');
 
-// ANT+ Powermeter
-// Data is transmitted from the bike power sensor every 8182/32768 seconds
-// (approximately 4.00 Hz)
-//
-// Ref.
-//
-// D00001086_-_ANT+_Device_Profile_-_Bicycle_Power_-_Rev4.2.pdf
-// Page 19
-
-const _8HZ = 8.0;
+const sprintf = require('sprintf-js').sprintf;
 
 import {
   WAHOO_MANUFACTURER_ID,
   WAHOO_KICKR_MODEL_ID,
+  TACX_MANUFACTURER_ID,
+  TACX_NEO_MODEL_IDS,
   POWER_METER_DEVICE,
-  ANT_AVERAGES_WINDOW_IN_SEC
+  ANT_AVERAGES_WINDOW_IN_SEC,
+  FOUR_HZ,
+  EIGHT_HZ
 } from './constants';
-
-import {
-  TimeSeries,
-  avg
-} from 'pondjs';
 
 const antRxFailFmt = '^\\[[^\\]]*\\]\\s+?ant\\s+?:\\s+?rx\\s+?fail\\s+?on\\s+?channel\\s+?%s$';
 
@@ -49,8 +28,6 @@ export default function mapAntRxFails(
   timeAxisTimeSeries,
   searchesTimestamps
 ) {
-  let isBasic = true;
-
   const dropouts = [];
 
   const result = {
@@ -66,7 +43,9 @@ export default function mapAntRxFails(
   const fails = [];
 
   _.each(antLines, line => {
-    rxFailRegex.test(line) && fails.push(line);
+    if (rxFailRegex.test(line)) {
+      fails.push(line);
+    }
   });
 
   // fails is only for the current channel, so now count them in each distinct timeslot
@@ -78,7 +57,7 @@ export default function mapAntRxFails(
     }
 
     try {
-      const timestamp = parseInt(matches[1]);
+      const timestamp = parseInt(matches[1], 10);
       const value = 1;
       result.points.push([timestamp, value]);
     } catch (e) {
@@ -94,27 +73,20 @@ export default function mapAntRxFails(
     seriesList: [timeAxisTimeSeries, ts]
   });
 
-
   const maxValue = mergedSeries.max();
-  console.log('maxValue');
-  console.log(maxValue);
+  console.log(`maxValue ${maxValue}`);
 
   const medianValue = mergedSeries.median();
-  console.log('medianValue');
-  console.log(medianValue);
+  console.log(`medianValue ${medianValue}`);
 
   const meanValue = mergedSeries.mean();
-  console.log('meanValue');
-  console.log(meanValue);
+  console.log(`meanValue ${meanValue}`);
 
   const minValue = mergedSeries.min();
-  console.log('minValue');
-  console.log(minValue);
+  console.log(`minValue ${minValue}`);
 
   const stdev = mergedSeries.stdev();
-  console.log('stdev');
-  console.log(stdev);
-
+  console.log(`stdev ${stdev}`);
 
   // N second avg of fails
   const rollup = mergedSeries.fixedWindowRollup({
@@ -129,22 +101,27 @@ export default function mapAntRxFails(
   // assumption 1 - basic devices (HR, Cadence, Speed) are sampled no more than 4 times a second
   // assumption 2 - advanced devices, like powermeters are sampled 8 times a second
 
-  let sampleRate = _4HZ;
+  let sampleRate = FOUR_HZ;
 
   // Try to use device manufacturerId and modelId to make a better guess
-  // at whether the device is sampled at 4HZ or 8HZ
+  // at whether the device is sampled at 4HZ or 8HZ.
+  // If the max number of RxFails is higher than 4Hz, then use 8Hz
+  // And if the device is either known to be a Power meter, Kickr or Neo then use 8HZ
   if (
+    maxValue > sampleRate ||
     device.type === POWER_METER_DEVICE ||
-    (device.manufacurerId &&
-      `${device.manufacurerId}` === WAHOO_MANUFACTURER_ID &&
+    (device.manufacturerId &&
       device.modelId &&
-      `${device.modelId}` === WAHOO_KICKR_MODEL_ID)
+      ((`${device.manufacturerId}` === WAHOO_MANUFACTURER_ID &&
+        `${device.modelId}` === WAHOO_KICKR_MODEL_ID) ||
+        (`${device.manufacturerId}` === TACX_MANUFACTURER_ID &&
+          _.contains(TACX_NEO_MODEL_IDS, `${device.modelId}`))))
   ) {
-    isBasic = false;
-    sampleRate = _8HZ;
+    sampleRate = EIGHT_HZ;
   }
 
-  // the logging of the sampling is not exact seconds, there could be some overspill into the next second, so the 2s averages smooth things out
+  // the logging of the sampling is not exact seconds, there could be some overspill into the next second,
+  // so the 2s averages smooth things out
 
   // Zero out the N seconds averages that are impossibly high -
   // when there are absolutely no rxfails in 10 seconds -
@@ -155,7 +132,7 @@ export default function mapAntRxFails(
     // `goto search` entry, and no RxFails at all were seen, then this
     // bucket is likely NOT a perfect sample, but rather - no valid sample at all
     // set it to 0 signal
-  
+
     const timestamp = indexToUnixTime(e.indexAsString());
 
     const roundedTimeStamp = `${ANT_AVERAGES_WINDOW_IN_SEC}s-${Math.round(timestamp / ANT_AVERAGES_WINDOW_IN_SEC) * ANT_AVERAGES_WINDOW_IN_SEC}`;
@@ -169,7 +146,9 @@ export default function mapAntRxFails(
     ) {
       // return the suspected drop out seconds for surfacing in the charts and textual analysis
       dropouts.push(roundedTimeStamp);
-      console.log(`${JSON.parse(e)} channel ${device.channel} device ${device.deviceId} is likely the cause of the re-pairing / goto search`);
+      // console.log(
+      //   `${JSON.stringify(e)} channel ${device.channel} device ${device.deviceId} is likely the cause of the re-pairing / goto search`
+      // );
       return e.setData({ value: sampleRate });
     }
     return e.setData({ value: sampleRate - e.get('value') });
@@ -178,6 +157,6 @@ export default function mapAntRxFails(
   return {
     timeseries: filteredRollup,
     dropouts,
-    isBasic
+    sampleRate
   };
 }

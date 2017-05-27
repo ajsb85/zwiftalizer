@@ -1,10 +1,12 @@
-const _ = require('underscore');
-
 import { createStore, compose, applyMiddleware } from 'redux';
 
 import thunkMiddleware from 'redux-thunk';
+
 import createLogger from 'redux-logger';
+
 import rootReducer from '../reducers';
+
+const _ = require('underscore');
 
 const loggerMiddleware = createLogger();
 
@@ -19,7 +21,7 @@ export function getPreferencesFromLocalStorage() {
 export default function configureStore() {
   const initialState = {};
 
-  let localStoragePreferences = getPreferencesFromLocalStorage() || null;
+  const localStoragePreferences = getPreferencesFromLocalStorage() || null;
 
   // default sharing to the benchmarks is on
   let share = true;
@@ -59,9 +61,9 @@ export default function configureStore() {
     compose(
       applyMiddleware(
         // lets us dispatch async functions
-        thunkMiddleware,
+        thunkMiddleware
         //loggerMiddleware // neat middleware that logs actions
-      ),
+      )
       // enables redux chrome dev tools extension
       //window.devToolsExtension ? window.devToolsExtension() : f => f
     )

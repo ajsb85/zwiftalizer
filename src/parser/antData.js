@@ -1,5 +1,28 @@
-var _ = require('underscore');
-const AntplusDevices = require('../../local_modules/node_modules/zwiftalizer-antplus-devices');
+import { TimeSeries } from 'pondjs';
+
+import titleCase from './titleCase';
+
+import mapAntLines from './mapAntLines';
+
+import getTimeBasedPowerData from './getTimeBasedPowerData';
+
+import antDevices from './antDevices';
+
+import antManufacturers from './antManufacturers';
+
+import mapAntSearches from './mapAntSearches';
+
+import mapAntRxFails from './mapAntRxFails';
+
+import mapPowermeterData from './mapPowermeterData';
+
+import mapGradientData from './mapGradientData';
+
+import mapCalibrationData from './mapCalibrationData';
+
+import deviceTypes from '../types/devices.json';
+
+import indexToUnixTime from './indexToUnixTime';
 
 import {
   WAHOO_MANUFACTURER_ID,
@@ -7,22 +30,12 @@ import {
   POWER_METER_DEVICE,
   SMART_TRAINER_DEVICE,
   SARIS_MANUFACTURER_ID,
-  SECONDS_TO_ROUND_RECONNECT_TIME,
-  ANT_AVERAGES_WINDOW_IN_SEC
+  ANT_AVERAGES_WINDOW_IN_SEC,
+  FOUR_HZ,
+  EIGHT_HZ
 } from './constants';
 
-import titleCase from './titleCase';
-import mapAntLines from './mapAntLines';
-import antDevices from './antDevices';
-import antManufacturers from './antManufacturers';
-import mapAntSearches from './mapAntSearches';
-import mapAntRxFails from './mapAntRxFails';
-import mapPowermeterData from './mapPowermeterData';
-import mapGradientData from './mapGradientData';
-import mapCalibrationData from './mapCalibrationData';
-import deviceTypes from '../types/devices.json';
-import { TimeSeries } from 'pondjs';
-import indexToUnixTime from './indexToUnixTime.js';
+const _ = require('underscore');
 
 export default function antData(log, timeAxisTimeSeries) {
   const antLines = mapAntLines(log);
@@ -34,10 +47,10 @@ export default function antData(log, timeAxisTimeSeries) {
   // gets the timestamps of goto searches
   // for correlating with the times in each device channel that `might`
   // be low because of re-pairings
-  for (let event of searches.collection().events()) {
-    const e = JSON.parse(event);
-    if (e.data && e.data.value > 0) {
-      searchesTimestamps.push(indexToUnixTime(e.index));
+  for (const e of searches.collection().events()) {
+    // const e = JSON.parse(event);
+    if (e.get('value') > 0) {
+      searchesTimestamps.push(indexToUnixTime(e.indexAsString()));
     }
   }
 
@@ -50,6 +63,9 @@ export default function antData(log, timeAxisTimeSeries) {
 
   // gets the power data, but we can not tell which device / channel is producing it
   const power = mapPowermeterData(antLines, timeAxisTimeSeries);
+
+  // gets SRM time based power entries, but we do not try to do anything with the values yet
+  // const timeBasedPowerEntries = getTimeBasedPowerData(log);
 
   // this is kinda useless, just prints info
   const calibration = mapCalibrationData(antLines);
@@ -96,10 +112,8 @@ export default function antData(log, timeAxisTimeSeries) {
     // power data source to cycleops
     if (
       power.count() &&
-      !signal.isBasic &&
-      device.type === BASIC_DEVICE &&
-      // device.manufacturerId is a string 
-      device.manufacturerId === ''
+      signal.sampleRate === EIGHT_HZ &&
+      device.type === BASIC_DEVICE
     ) {
       device.type = POWER_METER_DEVICE;
       device.typeName = titleCase(deviceTypes[POWER_METER_DEVICE]);
@@ -112,7 +126,7 @@ export default function antData(log, timeAxisTimeSeries) {
     Object.assign(device, {
       signal: signal.timeseries,
       dropouts: signal.dropouts,
-      isBasic: signal.isBasic
+      sampleRate: signal.sampleRate
     });
   });
 
@@ -148,20 +162,20 @@ export default function antData(log, timeAxisTimeSeries) {
   // if power was assigned to powermeter device, then kickrDevice.power will be undefined
   // assign a null power timeseries to kickr
   if (kickrDevice && !kickrDevice.power) {
-    const power = new TimeSeries({
+    const nullPower = new TimeSeries({
       name: 'power',
       columns: ['time', 'value'],
       points: []
     });
 
-    const reducedPowerSeries = TimeSeries.timeSeriesListSum({
+    const reducedNullPowerSeries = TimeSeries.timeSeriesListSum({
       name: 'power',
       fieldSpec: ['time', 'value'],
-      seriesList: [timeAxisTimeSeries, power]
+      seriesList: [timeAxisTimeSeries, nullPower]
     });
 
     Object.assign(kickrDevice, {
-      power: reducedPowerSeries
+      power: reducedNullPowerSeries
     });
   }
 
@@ -184,7 +198,7 @@ export default function antData(log, timeAxisTimeSeries) {
 
   if (
     powerDevice &&
-    powerDevice.manufacturerId !== 0 &&
+    powerDevice.manufacturerId &&
     powerDevice.model === 'Unknown'
   ) {
     showUnknownPowerMeterModelModal = true;
@@ -195,7 +209,7 @@ export default function antData(log, timeAxisTimeSeries) {
 
   if (
     fecSmartTrainerDevice &&
-    fecSmartTrainerDevice.manufacturerId !== 0 &&
+    fecSmartTrainerDevice.manufacturerId &&
     fecSmartTrainerDevice.model === 'Unknown'
   ) {
     showUnknownSmartTrainerModelModal = true;
