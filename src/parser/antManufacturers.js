@@ -1,14 +1,11 @@
-var _ = require('underscore');
-
 import toArray from './toArray';
+
 import titleCase from './titleCase';
+
 import deviceTypes from '../types/devices.json';
-const AntplusDevices = require('../../local_modules/node_modules/zwiftalizer-antplus-devices');
 
 import {
-  MAX_DEVICES,
   MAX_MANUFACTURER_ID,
-  WAHOO_MANUFACTURER_ID,
   TACX_MANUFACTURER_ID,
   SARIS_MANUFACTURER_ID,
   WATTBIKE_MANUFACTURER_ID,
@@ -21,6 +18,10 @@ import {
   POWERTAP_MODELS,
   CYCLEOPS_TRAINER_MODELS
 } from './constants';
+
+const AntplusDevices = require('../../local_modules/node_modules/zwiftalizer-antplus-devices');
+
+const _ = require('underscore');
 
 /**
  * Returns an array of ant+ device manufacturers
@@ -47,7 +48,9 @@ export default function antManufacturers(lines) {
   const mfgLines = [];
 
   _.each(antLines, line => {
-    antManufacturersRegex.test(line) && mfgLines.push(line);
+    if (antManufacturersRegex.test(line)){
+      mfgLines.push(line);
+    }
   });
 
   if (!mfgLines.length) {
@@ -59,7 +62,7 @@ export default function antManufacturers(lines) {
 
   const j = mfgLines.length;
 
-  for (let i = 0; i < j; i++) {
+  for (let i = 0; i < j; i += 1) {
     const m = mfgLines[i];
 
     const matches = m.match(
@@ -67,11 +70,10 @@ export default function antManufacturers(lines) {
     );
 
     if (matches) {
-      const extendedDeviceId = parseInt(matches[1]);
-      const manufacturerId = parseInt(matches[2]);
+      const extendedDeviceId = parseInt(matches[1], 10);
+      const manufacturerId = parseInt(matches[2], 10);
 
-      // var because we default some modelsIds to zero, for known manufacturers that have only one device - like wattbike
-      var modelId = parseInt(matches[3]);
+      let modelId = parseInt(matches[3], 10);
 
       if (extendedDeviceId === 0 || manufacturerId === 0) {
         // allow model zero
@@ -92,14 +94,12 @@ export default function antManufacturers(lines) {
       // Be sure to check we are not couting model 2800 twice because of this conversion.
 
       // 2017-05-22, bug, manufacturerId is int but TACX_MANUFACTURER_ID is string. Comparison fails.
-      const manufacturerIdString = manufacturerId +'';
-
-      if (manufacturerIdString === TACX_MANUFACTURER_ID && modelId === 1) {
+      if (`${manufacturerId}` === TACX_MANUFACTURER_ID && modelId === 1) {
         modelId = 2800;
       }
 
       // 2017-05-25, possible bug, Elite Drivo might be model 0 or model 20.
-      // We might have to group them together as model 0, like we are doing for Neos that have two 
+      // We might have to group them together as model 0, like we are doing for Neos that have two
       // possible model numbers.
       // if (manufacturerIdString === ELITE_MANUFACTURER_ID && modelId === 20) {
       //   modelId = 0;
@@ -121,14 +121,11 @@ export default function antManufacturers(lines) {
 
   _.each(distinctMfgModelEntries, m => {
     let type = BASIC_DEVICE;
-    const manufacturerIdString = '' + m.manufacturerId;
-    let modelIdString = '' + m.modelId;
-
     // treat kickr as FEC smart trainer, until we know whether or not it is doing its own gradient protocol or FEC standard
-    if (_.contains(SMART_TRAINER_MANUFACTURERS, manufacturerIdString)) {
+    if (_.contains(SMART_TRAINER_MANUFACTURERS, `${m.manufacturerId}`)) {
       // set to SMART_TRAINER_DEVICE (smart trainer), but still could be a Saris power meter
       type = SMART_TRAINER_DEVICE;
-    } else if (_.contains(POWERMETER_MANUFACTURERS, manufacturerIdString)) {
+    } else if (_.contains(POWERMETER_MANUFACTURERS, `${m.manufacturerId}`)) {
       type = POWER_METER_DEVICE;
     }
 
@@ -137,16 +134,16 @@ export default function antManufacturers(lines) {
     try {
       // Get lower 16 bits of the 20 bit number.
       // This is critical for matching up channels with devices when we look at rxfails.
-      deviceId = parseInt(m.extendedDeviceId) & 0xffff;
+      deviceId = parseInt(m.extendedDeviceId, 10) & 0xffff;
     } catch (e) {
       console.log('Failed to extract short deviceId from extended deviceId');
     }
 
     // try and differentiate between CycleOps and Powertap devices (both  have manufacturer 9)
-    if (manufacturerIdString === SARIS_MANUFACTURER_ID) {
-      if (_.contains(POWERTAP_MODELS, modelIdString)) {
+    if (`${m.manufacturerId}` === SARIS_MANUFACTURER_ID) {
+      if (_.contains(POWERTAP_MODELS, `${m.modelId}`)) {
         type = POWER_METER_DEVICE;
-      } else if (_.contains(CYCLEOPS_TRAINER_MODELS, modelIdString)) {
+      } else if (_.contains(CYCLEOPS_TRAINER_MODELS, `${m.modelId}`)) {
         type = SMART_TRAINER_DEVICE;
       } else {
         // Generic powertap device
@@ -155,13 +152,13 @@ export default function antManufacturers(lines) {
       }
     }
     
-    if (manufacturerIdString === WATTTEAM_MANUFACTURER_ID) {
+    if (`${m.manufacturerId}` === WATTTEAM_MANUFACTURER_ID) {
       // PowerBeat
       type = POWER_METER_DEVICE;
       m.modelId = 0;
     }
 
-    if (manufacturerIdString === WATTBIKE_MANUFACTURER_ID) {
+    if (`${m.manufacturerId}` === WATTBIKE_MANUFACTURER_ID) {
       // wattbike
       type = SMART_TRAINER_DEVICE;
       m.modelId = 0;
@@ -172,8 +169,8 @@ export default function antManufacturers(lines) {
     // where Wattbike trigges the unknown device modal, when it should not.
     // returns undefined if manufacturer not found
     const makeAndModel = AntplusDevices.find(
-      manufacturerIdString,
-      '' + m.modelId,
+      `${m.manufacturerId}`,
+      `${m.modelId}`,
       type
     );
 

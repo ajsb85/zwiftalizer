@@ -192,7 +192,7 @@ class Chart extends React.Component {
       device.deviceId +
       ' - ' +
       this.getMakeAndModel(device) +
-      ' Powermeter')
+      ' Power meter')
       .replace(/\s(\s)+/, ' ')
       .trim();
 

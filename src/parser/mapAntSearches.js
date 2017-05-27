@@ -1,10 +1,10 @@
-var _ = require('underscore');
-
 import { TimeSeries, max } from 'pondjs';
 
 import toArray from './toArray';
 
-import {ANT_AVERAGES_WINDOW_IN_SEC} from './constants';
+import { ANT_AVERAGES_WINDOW_IN_SEC } from './constants';
+
+const _ = require('underscore');
 
 // lines is assumed to be ANT lines only, as an array, with times already in unix format using epochify
 export default function mapAntSearches(lines, timeAxisTimeSeries) {
@@ -23,7 +23,9 @@ export default function mapAntSearches(lines, timeAxisTimeSeries) {
   const searches = [];
 
   _.each(antLines, line => {
-    searchesRegex.test(line) && searches.push(line);
+    if (searchesRegex.test(line)){
+      searches.push(line);
+    }
   });
 
   _.each(searches, line => {
@@ -33,7 +35,7 @@ export default function mapAntSearches(lines, timeAxisTimeSeries) {
       return;
     }
 
-    const timestamp = parseInt(matches[1]);
+    const timestamp = parseInt(matches[1], 10);
 
     result.points.push([timestamp, 1]);
   });
@@ -46,7 +48,7 @@ export default function mapAntSearches(lines, timeAxisTimeSeries) {
     seriesList: [timeAxisTimeSeries, ts]
   });
 
-  // rollup max to SECONDS_TO_ROUND_RECONNECT_TIME slots for consistency with the
+  // rollup max to ANT_AVERAGES_WINDOW_IN_SEC slots for consistency with the
   // ANT+ devices charts resolution
   const rollup = reducedSeries.fixedWindowRollup({
     windowSize: `${ANT_AVERAGES_WINDOW_IN_SEC}s`,

@@ -64,16 +64,7 @@ export default function antData(log, timeAxisTimeSeries) {
     if (manufacturer) {
       Object.assign(device, manufacturer);
     }
-
-    // @todo, use the manufacturer information (if known) to make
-    // a better guess at the the sample rate for the device
-    // For example, if the manufacturer is SRM, Quarq, Stages, 4iiii, or
-    // any other power meter manufacturer then assume 8HZ.
-    // Actually, it might be true that if a manufacturer id exists at all
-    // in the log then the device is a power meter or smart trainer (8HZ)
-    // and if no manufacturer id exists, then the device is a 'basic'
-    // speed, cadence or heart rate monitor (4HZ).
-    
+ 
     // always get rxfails for the channel because it can reveal
     // if a device is being sampled at a high rate (probably a power source)
     const signal = mapAntRxFails(
@@ -102,7 +93,7 @@ export default function antData(log, timeAxisTimeSeries) {
     // (or a power meter using the standard power profile).
     // Out of all the known power meters, saris/powertap/cycleops is the only one we know of that
     // does not broadcast manufacturerId, modelId. Going to take a big risk here and attribute the
-    // power data source to cycleops  
+    // power data source to cycleops
     if (
       power.count() &&
       !signal.isBasic &&
@@ -131,7 +122,7 @@ export default function antData(log, timeAxisTimeSeries) {
 
   const kickrDevice = _.find(devices, device => {
     return device.type === SMART_TRAINER_DEVICE &&
-      device.manufacturerId + '' === WAHOO_MANUFACTURER_ID;
+      `${device.manufacturerId}` === WAHOO_MANUFACTURER_ID;
   });
 
   // can be kickr again, in fec mode, not ANT+ power meter data mode
