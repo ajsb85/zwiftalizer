@@ -145,7 +145,7 @@
 [21:30:19] Showing Cursor
 [21:30:19] resize: 1920 x 1080
 
-[21:30:22] Logged in user: mrh5937@gmail.com
+[21:30:22] Logged in user: anonymous@gmail.com
 [21:30:22] NETCLIENT:Connecting to game server node [54.213.246.33:3022]
 [21:30:22] NETWORK:error (4) sending player state
 [21:30:22] NETWORK:error (4) sending player state

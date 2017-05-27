@@ -113,7 +113,8 @@ export default function antData(log, timeAxisTimeSeries) {
     if (
       power.count() &&
       signal.sampleRate === EIGHT_HZ &&
-      device.type === BASIC_DEVICE
+      device.type === BASIC_DEVICE &&
+      `${device.manufacturerId}` !== WAHOO_MANUFACTURER_ID
     ) {
       device.type = POWER_METER_DEVICE;
       device.typeName = titleCase(deviceTypes[POWER_METER_DEVICE]);
