@@ -10,7 +10,7 @@ export default function timeAxis(
 
   const timestamps = [];
 
-  for (let i = startTimestamp; i <= endTimestamp; i += step) {
+  for (let i = startTimestamp; i < endTimestamp; i += step) {
     timestamps.push([i, defaultValue]);
   }
 

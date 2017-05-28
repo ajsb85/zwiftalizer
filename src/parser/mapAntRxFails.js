@@ -4,10 +4,6 @@ import toArray from './toArray';
 
 import indexToUnixTime from './indexToUnixTime';
 
-const _ = require('underscore');
-
-const sprintf = require('sprintf-js').sprintf;
-
 import {
   WAHOO_MANUFACTURER_ID,
   WAHOO_KICKR_MODEL_ID,
@@ -19,6 +15,10 @@ import {
   EIGHT_HZ
 } from './constants';
 
+const _ = require('underscore');
+
+const sprintf = require('sprintf-js').sprintf;
+
 const antRxFailFmt = '^\\[[^\\]]*\\]\\s+?ant\\s+?:\\s+?rx\\s+?fail\\s+?on\\s+?channel\\s+?%s$';
 
 // lines is assumed to be ANT lines only, as an array, with times already in unix format using epochify
@@ -29,6 +29,8 @@ export default function mapAntRxFails(
   searchesTimestamps
 ) {
   const dropouts = [];
+
+  let totalRxFails = 0;
 
   const result = {
     name: 'signal',
@@ -59,6 +61,7 @@ export default function mapAntRxFails(
     try {
       const timestamp = parseInt(matches[1], 10);
       const value = 1;
+      totalRxFails += 1;
       result.points.push([timestamp, value]);
     } catch (e) {
       console.log('Failed to parse ant rx fail time entry', e);
@@ -74,19 +77,6 @@ export default function mapAntRxFails(
   });
 
   const maxValue = mergedSeries.max();
-  console.log(`maxValue ${maxValue}`);
-
-  const medianValue = mergedSeries.median();
-  console.log(`medianValue ${medianValue}`);
-
-  const meanValue = mergedSeries.mean();
-  console.log(`meanValue ${meanValue}`);
-
-  const minValue = mergedSeries.min();
-  console.log(`minValue ${minValue}`);
-
-  const stdev = mergedSeries.stdev();
-  console.log(`stdev ${stdev}`);
 
   // N second avg of fails
   const rollup = mergedSeries.fixedWindowRollup({
@@ -105,10 +95,10 @@ export default function mapAntRxFails(
 
   // Try to use device manufacturerId and modelId to make a better guess
   // at whether the device is sampled at 4HZ or 8HZ.
-  // If the max number of RxFails is higher than 4Hz, then use 8Hz
+  // If the max number of RxFails is higher than 5, then use 8Hz
   // And if the device is either known to be a Power meter, Kickr or Neo then use 8HZ
   if (
-    maxValue > sampleRate ||
+    maxValue > FOUR_HZ + 1 ||
     device.type === POWER_METER_DEVICE ||
     (device.manufacturerId &&
       device.modelId &&
@@ -119,6 +109,34 @@ export default function mapAntRxFails(
   ) {
     sampleRate = EIGHT_HZ;
   }
+
+  const totalSamples = sampleRate * timeAxisTimeSeries.count();
+
+  const failureRate = Math.round(totalRxFails / totalSamples / 0.0001) / 100;
+
+  const successRate = 100 - failureRate;
+
+  console.log(`totalRxFails ${totalRxFails}`);
+
+  console.log(`totalSeconds ${timeAxisTimeSeries.count()}`);
+
+  console.log(`totalSamples ${totalSamples}`);
+
+  console.log(`success rate ${100 - failureRate}`);
+
+  console.log(`maxValue ${maxValue}`);
+
+  const medianValue = mergedSeries.median();
+  console.log(`medianValue ${medianValue}`);
+
+  const meanValue = mergedSeries.mean();
+  console.log(`meanValue ${meanValue}`);
+
+  const minValue = mergedSeries.min();
+  console.log(`minValue ${minValue}`);
+
+  const stdev = mergedSeries.stdev();
+  console.log(`stdev ${stdev}`);
 
   // the logging of the sampling is not exact seconds, there could be some overspill into the next second,
   // so the 2s averages smooth things out
@@ -157,6 +175,7 @@ export default function mapAntRxFails(
   return {
     timeseries: filteredRollup,
     dropouts,
-    sampleRate
+    sampleRate,
+    successRate
   };
 }

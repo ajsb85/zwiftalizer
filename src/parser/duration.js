@@ -1,6 +1,5 @@
-var _ = require('underscore');
-
 import toArray from './toArray';
+
 import getTimestamp from './getTimestamp';
 
 /**

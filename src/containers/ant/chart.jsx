@@ -46,6 +46,8 @@ import { TimeSeries } from 'pondjs';
 
 import structure from '../../styles/structure.css';
 
+import styles from './styles.css';
+
 const headingRowStyle = {
   marginBottom: '1rem'
 };
@@ -171,13 +173,7 @@ class Chart extends React.Component {
 
       return (
         <h5 className={structure.subHeading}>
-          Calibration
-          {' '}
-          {calibrationSuccess}
-          &nbsp;
-          <strong>({calibrationValues})</strong>
-          &nbsp;auto-zero&nbsp;
-          <strong>{autoZero}</strong>
+          Calibration {calibrationSuccess}&nbsp;<strong>({calibrationValues})</strong>&nbsp;auto-zero&nbsp;<strong>{autoZero}</strong>
         </h5>
       );
 
@@ -262,71 +258,85 @@ class Chart extends React.Component {
             </div>
           </div>
         </div>
-        <Resizable>
-          <ChartContainer
-            timeRange={this.state.timerange}
-            onTimeRangeChanged={this.handleTimeRangeChange}
-            padding={0}
-            enablePanZoom={true}
-            minDuration={minDuration}
-            maxTime={this.state.initialRange.end()}
-            minTime={this.state.initialRange.begin()}
-            showGrid={false}
-          >
-            <ChartRow height={largeChartHeight} debug={false}>
-              <YAxis
-                id="powerAxis"
-                label="Watts"
-                min={minPower}
-                max={maxPower}
-                absolute={true}
-                width={leftAxisLabelWidth}
-                type="linear"
-                format="d"
-              />
-              <Charts>
-                <BarChart
-                  axis="powerSignal"
-                  series={device.signal}
-                  style={style}
-                  columns={['value']}
-                />
-                <LineChart
-                  axis="powerAxis"
-                  breakLine={true}
-                  series={device.power}
-                  style={powerStyle}
-                  smooth={true}
-                  interpolation="curveBasis"
-                />
-                <Baseline
-                  axis="powerAxis"
-                  style={baselineStyle}
-                  value={maxPower}
-                  label="Max Pwr"
-                  position="left"
-                />
-                <Baseline
-                  axis="powerAxis"
-                  style={baselineStyle}
-                  value={avgPower}
-                  label="Avg Pwr"
-                  position="left"
-                />
-              </Charts>
-              <YAxis
-                id="powerSignal"
-                label="Signal"
-                min={0}
-                max={maxSignal}
-                absolute={true}
-                width={rightAxisLabelWidth}
-                type="linear"
-                format="d"
-              />
-            </ChartRow>
-          </ChartContainer>
-        </Resizable>
+        <div className="row">
+          <div className="col-xs-12 col-sm-10">
+            <Resizable>
+              <ChartContainer
+                timeRange={this.state.timerange}
+                onTimeRangeChanged={this.handleTimeRangeChange}
+                padding={0}
+                enablePanZoom={true}
+                minDuration={minDuration}
+                maxTime={this.state.initialRange.end()}
+                minTime={this.state.initialRange.begin()}
+                showGrid={false}
+              >
+                <ChartRow height={largeChartHeight} debug={false}>
+                  <YAxis
+                    id="powerAxis"
+                    label="Watts"
+                    min={minPower}
+                    max={maxPower}
+                    absolute={true}
+                    width={leftAxisLabelWidth}
+                    type="linear"
+                    format="d"
+                  />
+                  <Charts>
+                    <BarChart
+                      axis="powerSignal"
+                      series={device.signal}
+                      style={style}
+                      columns={['value']}
+                    />
+                    <LineChart
+                      axis="powerAxis"
+                      breakLine={true}
+                      series={device.power}
+                      style={powerStyle}
+                      smooth={true}
+                      interpolation="curveBasis"
+                    />
+                    <Baseline
+                      axis="powerAxis"
+                      style={baselineStyle}
+                      value={maxPower}
+                      label="Max Pwr"
+                      position="left"
+                    />
+                    <Baseline
+                      axis="powerAxis"
+                      style={baselineStyle}
+                      value={avgPower}
+                      label="Avg Pwr"
+                      position="left"
+                    />
+                  </Charts>
+                  <YAxis
+                    id="powerSignal"
+                    label="Signal"
+                    min={0}
+                    max={maxSignal}
+                    absolute={true}
+                    width={rightAxisLabelWidth}
+                    type="linear"
+                    format="d"
+                  />
+                </ChartRow>
+              </ChartContainer>
+            </Resizable>
+          </div>
+          <div className="hidden-xs col-sm-2">          
+            <div className={styles.signalBoxContent}> 
+              <div>
+                <h4>Success Rate</h4>
+              </div>
+              <div>
+                <h3>{device.successRate}%</h3>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
