@@ -4,6 +4,7 @@ import titleCase from './titleCase';
 
 import mapAntLines from './mapAntLines';
 
+// get SRM time based power data, not doing anything with this yet
 import getTimeBasedPowerData from './getTimeBasedPowerData';
 
 import antDevices from './antDevices';
@@ -31,7 +32,6 @@ import {
   SMART_TRAINER_DEVICE,
   SARIS_MANUFACTURER_ID,
   ANT_AVERAGES_WINDOW_IN_SEC,
-  FOUR_HZ,
   EIGHT_HZ
 } from './constants';
 
@@ -128,7 +128,7 @@ export default function antData(log, timeAxisTimeSeries) {
       signal: signal.timeseries,
       dropouts: signal.dropouts,
       sampleRate: signal.sampleRate,
-      successRate: signal.successRate,
+      failureRate: signal.failureRate
     });
   });
 

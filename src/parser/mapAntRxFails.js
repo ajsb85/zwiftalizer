@@ -76,6 +76,7 @@ export default function mapAntRxFails(
     seriesList: [timeAxisTimeSeries, ts]
   });
 
+  const minValue = mergedSeries.min();
   const maxValue = mergedSeries.max();
 
   // N second avg of fails
@@ -110,33 +111,35 @@ export default function mapAntRxFails(
     sampleRate = EIGHT_HZ;
   }
 
+
+
   const totalSamples = sampleRate * timeAxisTimeSeries.count();
 
   const failureRate = Math.round(totalRxFails / totalSamples / 0.0001) / 100;
 
-  const successRate = 100 - failureRate;
+  // const medianValue = mergedSeries.median();
 
-  console.log(`totalRxFails ${totalRxFails}`);
+  // const meanValue = mergedSeries.mean();
 
-  console.log(`totalSeconds ${timeAxisTimeSeries.count()}`);
+  // const stdev = mergedSeries.stdev();
 
-  console.log(`totalSamples ${totalSamples}`);
+  // console.log(`totalRxFails ${totalRxFails}`);
 
-  console.log(`success rate ${100 - failureRate}`);
+  // console.log(`totalSeconds ${timeAxisTimeSeries.count()}`);
+
+  // console.log(`totalSamples ${totalSamples}`);
+
+  // console.log(`failureRate rate ${failureRate}`);
 
   console.log(`maxValue ${maxValue}`);
 
-  const medianValue = mergedSeries.median();
-  console.log(`medianValue ${medianValue}`);
-
-  const meanValue = mergedSeries.mean();
-  console.log(`meanValue ${meanValue}`);
-
-  const minValue = mergedSeries.min();
   console.log(`minValue ${minValue}`);
 
-  const stdev = mergedSeries.stdev();
-  console.log(`stdev ${stdev}`);
+  // console.log(`medianValue ${medianValue}`);
+
+  // console.log(`meanValue ${meanValue}`);
+
+  // console.log(`stdev ${stdev}`);
 
   // the logging of the sampling is not exact seconds, there could be some overspill into the next second,
   // so the 2s averages smooth things out
@@ -169,13 +172,14 @@ export default function mapAntRxFails(
       // );
       return e.setData({ value: sampleRate });
     }
-    return e.setData({ value: sampleRate - e.get('value') });
+
+    return e.setData({ value: maxValue - e.get('value') });
   });
 
   return {
     timeseries: filteredRollup,
     dropouts,
     sampleRate,
-    successRate
+    failureRate
   };
 }

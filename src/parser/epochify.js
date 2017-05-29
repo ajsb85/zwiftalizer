@@ -1,8 +1,8 @@
-var _ = require('underscore');
-var moment = require('moment');
-
 import startDateTime from './startDateTime';
+
 import toArray from './toArray';
+
+const moment = require('moment');
 
 const ansiDateFormat = 'YYYY-MM-DD';
 const slashDateFormat = 'YYYY/MM/DD';
@@ -10,7 +10,7 @@ const timeFormat = 'HH:mm:ss';
 const dateTimeFormat = ansiDateFormat + ' ' + timeFormat;
 const timeDateFormat = timeFormat + ' ' + ansiDateFormat;
 
-export default async function epochify(str, callback) {
+export default (async function epochify(str, callback) {
   if (!str) {
     callback('empty string', []);
   }
@@ -32,23 +32,23 @@ export default async function epochify(str, callback) {
   // keep track of what the hour is so that we know when to add 24 hours to the day
   let lastHour = null;
 
-  //let logDayFormatted = logDay.format(ansiDateFormat)
+  // let logDayFormatted = logDay.format(ansiDateFormat)
   let logDayFormatted = logDay.format(slashDateFormat);
 
-  const convertAll = function() {
-    var lines = [];
+  const convertAll = () => {
+    const lines = [];
 
-    var previousTime = {
+    const previousTime = {
       dateTime: null,
       unixtimestamp: null
     };
 
-    var dateTime = null;
+    let dateTime = null;
 
     // for entry at index position n, convert the time to a unixtimestamp,
     // and add the result to the new lines array
 
-    const convertDates = function(n) {
+    const convertDates = (n) => {
       const matches = entries[n].match(/^\[([^\]]*)\]\s+?(.*)$/i);
 
       if (!matches || matches.length < 3) {
@@ -77,23 +77,30 @@ export default async function epochify(str, callback) {
         logDayFormatted = logDay.format(slashDateFormat);
       }
 
-      dateTime = logDayFormatted + ' ' + time;
+      dateTime = `${logDayFormatted} ${time}`;
 
       // if time has not changed, use previous to save calling the slow Date.parse function more than neccessary
       if (previousTime.dateTime && previousTime.dateTime === dateTime) {
-        lines.push('[' + previousTime.unixtimestamp + '] ' + value);
+        lines.push(`[${previousTime.unixtimestamp}] ${value}`);
       } else {
         const unixtimestamp = Date.parse(dateTime);
-        lines.push('[' + unixtimestamp + '] ' + value);
+
+        // If the new time is before the previous time, then skip the line.
+        // This can happen if the system clock is adjusted mid game by NTP.
+        if (previousTime.unixtimestamp && previousTime.unixtimestamp > unixtimestamp) {
+          return;
+        }
+
+        lines.push(`[${unixtimestamp}] ${value}`);
         previousTime.dateTime = dateTime;
         previousTime.unixtimestamp = unixtimestamp;
       }
     };
 
     // batch calls to convertDates so that the js execution thread is not blocked
-    var n = 0;
-    var max = entries.length;
-    var batch = 250;
+    let n = 0;
+    const max = entries.length;
+    const batch = 250;
 
     (function nextBatch() {
       for (var i = 0; i < batch && n < max; ++i, ++n) {
@@ -106,8 +113,8 @@ export default async function epochify(str, callback) {
         // done, pass the data back to the callback function
         callback(null /* no erro*/, lines);
       }
-    })();
+    }());
   };
 
   convertAll();
-}
+});

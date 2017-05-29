@@ -327,7 +327,7 @@ input[type=checkbox].withfont:focus ~ label
 
 .shoplinksLabel,
 ul.shoplinks {
-    font-family: "Roboto Mono", Arial, Helvetica, sans-serif;    
+    font-family: "Roboto Mono", Courier, Monaco, Arial, Helvetica, sans-serif;    
     font-weight: normal;
     font-size: 1.1rem;
     line-height: 1.6rem;

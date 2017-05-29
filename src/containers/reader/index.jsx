@@ -50,8 +50,13 @@ class Reader extends React.Component {
     this.setState({ showDbUploadExplanationModal: false });
   }
 
+  handleNewIssueClick(e) {
+    e.stopPropagation();
+    console.log('handleNewIssueClick');
+  }
+
   render() {
-    const { isLoading, isLoaded, share } = this.props;
+    const { isLoading, isLoaded, isFailure, share } = this.props;
 
     const dropBoxStyle = isLoaded
       ? {
@@ -66,12 +71,16 @@ class Reader extends React.Component {
           height: '6rem'
         }
       : {
-          height: '14rem'
+          height: '16rem'
         };
 
-    const instructionsDiv = isLoading
-      ? null
-      : <div>
+    let messageDiv = null;
+
+    let instructionsDiv = null;
+
+    if (!isLoading && !isFailure) {
+      instructionsDiv = (
+        <div>
           <div className={styles.headingIcon}>
             <i className="fa fa-download" />
           </div>
@@ -79,15 +88,29 @@ class Reader extends React.Component {
           <div className={styles.subHeading}>
             (Log.txt is in %USER%\Documents\Zwift\Logs)
           </div>
-        </div>;
+        </div>
+      );
+    }
 
     const spinnerDiv = isLoading ? <div className={styles.spinner} /> : null;
 
-    const messageDiv = isLoading
-      ? <div className={styles.messageContainer}>
+    if (isLoading) {
+      messageDiv = (
+        <div className={styles.messageContainer}>
           Reading file ...
         </div>
-      : null;
+      );
+    }
+
+    if (isFailure) {
+      messageDiv = (
+        <div className={styles.errorContainer}>
+          R Tape loading error, 0:1<br/><br/>
+          Sorry, an error occurred reading the log file.<br/><br/>
+          Please report this as a <a href="https://github.com/mhanney/zwiftalizer/issues/new" target="_blank" onClick={this.handleNewIssueClick}>new issue</a> and attach the log that failed.
+        </div>
+      );
+    }
 
     const shareStatus = share ? 'checked' : '';
 

@@ -121,6 +121,14 @@
   font-size: 3.4rem;
   color: #999;
 }
+.errorContainer {    
+  text-align: left;
+  font-weight: 400;    
+  font-size: 1.8rem;
+  font-family: "Roboto Mono", Courier, Monaco, Arial, Helvetica, sans-serif;
+  color: #999;
+  margin: 0 10rem;
+}
 .checkboxWrapper {
   height: 5rem;
   min-height: 5rem;

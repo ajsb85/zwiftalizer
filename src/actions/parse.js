@@ -34,9 +34,9 @@ export const SET_ANT_DEVICES = 'SET_ANT_DEVICES';
 export const SET_NETWORK_DATA = 'SET_NETWORK_DATA';
 export const SET_BTLE_DATA = 'SET_BTLE_DATA';
 export const FILE_LOADED = 'FILE_LOADED';
+export const UNABLE_TO_LOAD_FILE = 'UNABLE_TO_LOAD_FILE';
 export const FILE_LOADING = 'FILE_LOADING';
 export const RESET = 'RESET';
-export const UPDATE_PROGRESS = 'UPDATE_PROGRESS';
 export const SHOW_UNKNOWN_POWERMETER_MODEL_MODAL = 'SHOW_UNKNOWN_POWERMETER_MODEL_MODAL';
 export const SHOW_UNKNOWN_SMART_TRAINER_MODEL_MODAL = 'SHOW_UNKNOWN_SMART_TRAINER_MODEL_MODAL';
 
@@ -49,6 +49,12 @@ function fileLoading() {
 function fileLoaded() {
   return {
     type: FILE_LOADED
+  };
+}
+
+function unableToLoadFile() {
+  return {
+    type: UNABLE_TO_LOAD_FILE
   };
 }
 
@@ -215,15 +221,15 @@ function parseHead(head) {
 }
 
 export function uploadSytemSummary(data) {
-  return function (dispatch) {
+  return function(dispatch) {
     return request
       .post(
         'https://iayslzt1s8.execute-api.us-west-2.amazonaws.com/dev/logs',
         data,
-      {
-        cache: false,
-        dataType: 'json'
-      }
+        {
+          cache: false,
+          dataType: 'json'
+        }
       )
       .then((xhr, json) => {
         // console.log('Success uploading system summary')
@@ -240,15 +246,15 @@ export function uploadSytemSummary(data) {
 }
 
 export function uploadDevicesSummary(data) {
-  return function (dispatch) {
+  return function(dispatch) {
     return request
       .post(
         'https://zkt5wkylqf.execute-api.us-west-2.amazonaws.com/dev/devices',
         data,
-      {
-        cache: false,
-        dataType: 'json'
-      }
+        {
+          cache: false,
+          dataType: 'json'
+        }
       )
       .then((xhr, json) => {
         // console.log('Success uploading deviecs summary')
@@ -294,15 +300,15 @@ export function postAntDevice(device) {
     };
   })(device);
 
-  return function (dispatch) {
+  return function(dispatch) {
     return request
       .post(
         'https://5jhhymcz61.execute-api.us-west-2.amazonaws.com/dev/send',
         deviceSummary,
-      {
-        cache: false,
-        dataType: 'json'
-      }
+        {
+          cache: false,
+          dataType: 'json'
+        }
       )
       .then((xhr, json) => {
         console.log('Success uploading ant+ device');
@@ -337,229 +343,239 @@ function parseFileContents(log, isDemo = false, share = true) {
     // delayed so that the state can update the loading message
     setTimeout(
       () => {
-        const head = Parser.head(log);
+        let systemData;
 
-        // we parse the head of the log to get all of the system properties, and the constants for the graphics properties
-        const systemData = parseHead(head);
+        try {
+          const head = Parser.head(log);
+          // we parse the head of the log to get all of the system properties, and the constants for the graphics properties
+          systemData = parseHead(head);
+        } catch (err) {
+          console.log(`Failed to read log: ${err}`);
+          dispatch(unableToLoadFile());
+        }
 
         // turn all times into continuous epoch unix timestamps, and normalize all the new lines
         // this is by far the most time consuming loop, so it is split into batches, and a callback function
         // fires when all the timestamps have been converted
         Parser.epochify(Parser.normalize(log), (err, normalizedLog) => {
-          if (err) {
-            console.log(err);
-            // @todo, a friendly error message
-            dispatch(fileLoaded());
-            return;
-          }
-
-          const activityData = parseActivity(normalizedLog);
-
-          const graphicsData = parseGraphics(
-            normalizedLog,
-            activityData.duration
-          );
-
-          // now remove all the fps lines to make the next extraction quicker
-          const logWithoutFpsLines = Parser.stripFpsLines(normalizedLog);
-
-          const antData = parseAnt(
-            logWithoutFpsLines,
-            activityData.timeAxisTimeSeries
-          );
-
-          // now remove all the ANT+ lines to make the next extraction quicker
-          const logWithoutFpsAntLines = Parser.normalize(
-            Parser.stripAntLines(logWithoutFpsLines)
-          );
-
-          const networkData = parseNetwork(
-            logWithoutFpsAntLines,
-            activityData.timeAxisTimeSeries
-          );
-
-          const btleMessages = parseBtle(
-            logWithoutFpsAntLines,
-            activityData.timeAxisTimeSeries
-          );
-
-          dispatch({
-            type: SET_SYSTEM_DATA,
-            data: {
-              ...systemData
+          try {
+            if (err) {
+              console.log(err);
+              // @todo, a friendly error message
+              dispatch(fileLoaded());
+              return;
             }
-          });
 
-          dispatch({
-            type: SET_ACTIVITY_DATA,
-            data: {
-              ...activityData
-            }
-          });
+            const activityData = parseActivity(normalizedLog);
 
-          // notice how we merge the graphics and system data together here,
-          // the data.systemData spread operator will include CPU details too
-          dispatch({
-            type: SET_GRAPHICS_DATA,
-            data: {
-              ...graphicsData,
-              specs: {
+            const graphicsData = parseGraphics(
+              normalizedLog,
+              activityData.duration
+            );
+
+            // now remove all the fps lines to make the next extraction quicker
+            const logWithoutFpsLines = Parser.stripFpsLines(normalizedLog);
+
+            const antData = parseAnt(
+              logWithoutFpsLines,
+              activityData.timeAxisTimeSeries
+            );
+
+            // now remove all the ANT+ lines to make the next extraction quicker
+            const logWithoutFpsAntLines = Parser.normalize(
+              Parser.stripAntLines(logWithoutFpsLines)
+            );
+
+            const networkData = parseNetwork(
+              logWithoutFpsAntLines,
+              activityData.timeAxisTimeSeries
+            );
+
+            const btleMessages = parseBtle(
+              logWithoutFpsAntLines,
+              activityData.timeAxisTimeSeries
+            );
+
+            dispatch({
+              type: SET_SYSTEM_DATA,
+              data: {
                 ...systemData
               }
-            }
-          });
-
-          const profileName = systemData.profile
-            ? systemData.profile.toLowerCase()
-            : '';
-
-          let profileId = 0;
-
-          switch (profileName) {
-            case 'ultra':
-              profileId = 3;
-              break;
-
-            case 'high':
-              profileId = 2;
-              break;
-
-            case 'medium':
-              profileId = 1;
-              break;
-
-            default:
-              profileId = 0;
-              break;
-          }
-
-          dispatch({
-            type: SET_ANT_DATA,
-            data: {
-              ...antData
-            }
-          });
-
-          dispatch({
-            type: SET_NETWORK_DATA,
-            data: {
-              ...networkData
-            }
-          });
-
-          dispatch({
-            type: SET_BTLE_DATA,
-            data: {
-              ...btleMessages
-            }
-          });
-
-          if (graphicsData.fpsData.count) {
-            const systemSummary = {
-              logId: uuid.v4(),
-              timestamp: activityData.startTimestamp,
-              duration: `${activityData.duration}`,
-              specs: {
-                resolution: systemData.resolution,
-                profileId: `${profileId}`,
-                profile: systemData.profile,
-                minFps: `${Math.round(graphicsData.fpsData.min())}`,
-                maxFps: `${Math.round(graphicsData.fpsData.max())}`,
-                avgFps: `${Math.round(graphicsData.fpsData.avg())}`,
-                stdev: `${Math.round(graphicsData.fpsData.stdev())}`,
-                samples: `${graphicsData.fpsSamples}`,
-                platform: systemData.platform,
-                cpuVendor: systemData.cpuVendor,
-                cpuDetails: systemData.cpuDetails,
-                ram: systemData.ram,
-                gpuVendor: systemData.gpuVendor,
-                gpuDetails: systemData.gpuDetails,
-                shadowres: systemData.shadowres,
-                openglMajor: systemData.openglMajor
-              }
-            };
-
-            const systemId = `${systemData.platform} / ${systemData.cpuVendor} ${systemData.cpuDetails} / ${systemData.gpuVendor} ${systemData.gpuDetails}`;
-
-            const panelKey = `${systemData.resolution}-${profileId}`;
-
-            const currentSystemBenchmark = {
-              resolution: parseInt(systemData.resolution, 10),
-              profileId: parseInt(profileId, 10),
-              panelKey,
-              specs: Object.assign({}, systemSummary.specs, {
-                systemId
-              })
-            };
+            });
 
             dispatch({
-              type: SET_CURRENT_SYSTEM_BENCHMARK,
+              type: SET_ACTIVITY_DATA,
               data: {
-                ...currentSystemBenchmark
+                ...activityData
               }
             });
 
-            // this dispatch is to write which benchmarks panel to expanded
-            // based on the current system
-            // using local storage to persist this state
-            // of which panels are toggled
+            // notice how we merge the graphics and system data together here,
+            // the data.systemData spread operator will include CPU details too
             dispatch({
-              type: TOGGLE_PROFILE_PANEL,
+              type: SET_GRAPHICS_DATA,
               data: {
-                key: panelKey
+                ...graphicsData,
+                specs: {
+                  ...systemData
+                }
               }
             });
 
-            if (!isDemo && share) {
-              dispatch(uploadSytemSummary(systemSummary));
-            }
-          }
+            const profileName = systemData.profile
+              ? systemData.profile.toLowerCase()
+              : '';
 
-          if (!isDemo && share && antData.devices) {
-            // extract just the power meter and smart trainer type devicesSummary
-            const powerSourceDevices = _.filter(antData.devices, d => {
-              return d.type === SMART_TRAINER_DEVICE ||
-                d.type === POWER_METER_DEVICE;
+            let profileId = 0;
+
+            switch (profileName) {
+              case 'ultra':
+                profileId = 3;
+                break;
+
+              case 'high':
+                profileId = 2;
+                break;
+
+              case 'medium':
+                profileId = 1;
+                break;
+
+              default:
+                profileId = 0;
+                break;
+            }
+
+            dispatch({
+              type: SET_ANT_DATA,
+              data: {
+                ...antData
+              }
             });
 
-            if (powerSourceDevices && powerSourceDevices.length) {
-              const devicesSummaryData = [];
+            dispatch({
+              type: SET_NETWORK_DATA,
+              data: {
+                ...networkData
+              }
+            });
 
-              _.each(powerSourceDevices, d => {
-                // extract a sub set of the device properties for posting to the central db
-                const deviceSummary = ((
-                  {
-                    extendedDeviceId,
-                    manufacturerId,
-                    manufacturer,
-                    modelId,
-                    model,
-                    type
-                  }
-                ) => {
-                  return {
-                    extendedDeviceId,
-                    manufacturerId,
-                    manufacturer,
-                    modelId,
-                    model,
-                    type
-                  };
-                })(d);
+            dispatch({
+              type: SET_BTLE_DATA,
+              data: {
+                ...btleMessages
+              }
+            });
 
-                // @todo, check for empty values, particularly in modelId and model name
+            if (graphicsData.fpsData.count) {
+              const systemSummary = {
+                logId: uuid.v4(),
+                timestamp: activityData.startTimestamp,
+                duration: `${activityData.duration}`,
+                specs: {
+                  resolution: systemData.resolution,
+                  profileId: `${profileId}`,
+                  profile: systemData.profile,
+                  minFps: `${Math.round(graphicsData.fpsData.min())}`,
+                  maxFps: `${Math.round(graphicsData.fpsData.max())}`,
+                  avgFps: `${Math.round(graphicsData.fpsData.avg())}`,
+                  stdev: `${Math.round(graphicsData.fpsData.stdev())}`,
+                  samples: `${graphicsData.fpsSamples}`,
+                  platform: systemData.platform,
+                  cpuVendor: systemData.cpuVendor,
+                  cpuDetails: systemData.cpuDetails,
+                  ram: systemData.ram,
+                  gpuVendor: systemData.gpuVendor,
+                  gpuDetails: systemData.gpuDetails,
+                  shadowres: systemData.shadowres,
+                  openglMajor: systemData.openglMajor
+                }
+              };
 
-                devicesSummaryData.push(deviceSummary);
+              const systemId = `${systemData.platform} / ${systemData.cpuVendor} ${systemData.cpuDetails} / ${systemData.gpuVendor} ${systemData.gpuDetails}`;
+
+              const panelKey = `${systemData.resolution}-${profileId}`;
+
+              const currentSystemBenchmark = {
+                resolution: parseInt(systemData.resolution, 10),
+                profileId: parseInt(profileId, 10),
+                panelKey,
+                specs: Object.assign({}, systemSummary.specs, {
+                  systemId
+                })
+              };
+
+              dispatch({
+                type: SET_CURRENT_SYSTEM_BENCHMARK,
+                data: {
+                  ...currentSystemBenchmark
+                }
               });
 
-              // console.log('devices summary data for api post');
-              // console.log(JSON.stringify(devicesSummaryData));
+              // this dispatch is to write which benchmarks panel to expanded
+              // based on the current system
+              // using local storage to persist this state
+              // of which panels are toggled
+              dispatch({
+                type: TOGGLE_PROFILE_PANEL,
+                data: {
+                  key: panelKey
+                }
+              });
 
-              dispatch(uploadDevicesSummary({ devices: devicesSummaryData }));
+              if (!isDemo && share) {
+                dispatch(uploadSytemSummary(systemSummary));
+              }
             }
-          }
 
-          dispatch(fileLoaded());
+            if (!isDemo && share && antData.devices) {
+              // extract just the power meter and smart trainer type devicesSummary
+              const powerSourceDevices = _.filter(antData.devices, d => {
+                return d.type === SMART_TRAINER_DEVICE ||
+                  d.type === POWER_METER_DEVICE;
+              });
+
+              if (powerSourceDevices && powerSourceDevices.length) {
+                const devicesSummaryData = [];
+
+                _.each(powerSourceDevices, d => {
+                  // extract a sub set of the device properties for posting to the central db
+                  const deviceSummary = ((
+                    {
+                      extendedDeviceId,
+                      manufacturerId,
+                      manufacturer,
+                      modelId,
+                      model,
+                      type
+                    }
+                  ) => {
+                    return {
+                      extendedDeviceId,
+                      manufacturerId,
+                      manufacturer,
+                      modelId,
+                      model,
+                      type
+                    };
+                  })(d);
+
+                  // @todo, check for empty values, particularly in modelId and model name
+
+                  devicesSummaryData.push(deviceSummary);
+                });
+
+                // console.log('devices summary data for api post');
+                // console.log(JSON.stringify(devicesSummaryData));
+
+                dispatch(uploadDevicesSummary({ devices: devicesSummaryData }));
+              }
+            }
+            dispatch(fileLoaded());
+          } catch (err2) {
+            console.log(`Failed to read log: ${err2}`);
+            dispatch(unableToLoadFile());
+          }
         });
       },
       delay

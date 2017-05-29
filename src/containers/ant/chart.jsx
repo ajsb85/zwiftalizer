@@ -61,8 +61,6 @@ const baselineStyle = {
   }
 };
 
-const chartHeight = 85;
-
 const largeChartHeight = 200;
 
 const leftLabelAxisLabelWidth = 110;
@@ -328,11 +326,19 @@ class Chart extends React.Component {
           </div>
           <div className="hidden-xs col-sm-2">          
             <div className={styles.signalBoxContent}> 
-              <div>
-                <h4>Success Rate</h4>
+              <div className={styles.signalBoxTitle}>
+                Sample Rate
               </div>
-              <div>
-                <h3>{device.successRate}%</h3>
+              <div className={styles.signalBoxValue}>
+                {device.sampleRate}Hz
+              </div>
+            </div>
+            <div className={styles.signalBoxContent}> 
+              <div className={styles.signalBoxTitle}>
+                Avg Fails
+              </div>
+              <div className={styles.signalBoxValue}>
+                {device.failureRate}%
               </div>
             </div>
           </div>
@@ -414,58 +420,80 @@ class Chart extends React.Component {
               </div>
             </div>
           </div>
-        </div>
-        <Resizable>
-          <ChartContainer
-            timeRange={this.state.timerange}
-            onTimeRangeChanged={this.handleTimeRangeChange}
-            padding={0}
-            enablePanZoom={true}
-            minDuration={minDuration}
-            maxTime={this.state.initialRange.end()}
-            minTime={this.state.initialRange.begin()}
-            showGrid={false}
-          >
-            <ChartRow height={largeChartHeight} debug={false}>
-              <YAxis
-                id="gradientAxis"
-                label="Resistance"
-                min={minGrad}
-                max={maxGrad}
-                absolute={true}
-                width={leftAxisLabelWidth}
-                type="linear"
-                format=",.2f"
-              />
-              <Charts>
-                <BarChart
-                  axis="fecSignal"
-                  series={device.signal}
-                  style={style}
-                  columns={['value']}
-                />
-                <LineChart
-                  axis="gradientAxis"
-                  breakLine={true}
-                  series={device.gradient}
-                  style={resistanceStyle}
-                  smooth={true}
-                  interpolation="curveBasis"
-                />
-              </Charts>
-              <YAxis
-                id="fecSignal"
-                label="Signal"
-                min={0}
-                max={maxSignal}
-                absolute={true}
-                width={rightAxisLabelWidth}
-                type="linear"
-                format="d"
-              />
-            </ChartRow>
-          </ChartContainer>
-        </Resizable>
+        </div>        
+        <div className="row">
+          <div className="col-xs-12 col-sm-10">
+            <Resizable>
+              <ChartContainer
+                timeRange={this.state.timerange}
+                onTimeRangeChanged={this.handleTimeRangeChange}
+                padding={0}
+                enablePanZoom={true}
+                minDuration={minDuration}
+                maxTime={this.state.initialRange.end()}
+                minTime={this.state.initialRange.begin()}
+                showGrid={false}
+              >
+                <ChartRow height={largeChartHeight} debug={false}>
+                  <YAxis
+                    id="gradientAxis"
+                    label="Resistance"
+                    min={minGrad}
+                    max={maxGrad}
+                    absolute={true}
+                    width={leftAxisLabelWidth}
+                    type="linear"
+                    format=",.2f"
+                  />
+                  <Charts>
+                    <BarChart
+                      axis="fecSignal"
+                      series={device.signal}
+                      style={style}
+                      columns={['value']}
+                    />
+                    <LineChart
+                      axis="gradientAxis"
+                      breakLine={true}
+                      series={device.gradient}
+                      style={resistanceStyle}
+                      smooth={true}
+                      interpolation="curveBasis"
+                    />
+                  </Charts>
+                  <YAxis
+                    id="fecSignal"
+                    label="Signal"
+                    min={0}
+                    max={maxSignal}
+                    absolute={true}
+                    width={rightAxisLabelWidth}
+                    type="linear"
+                    format="d"
+                  />
+                </ChartRow>
+              </ChartContainer>
+            </Resizable>
+          </div>
+          <div className="hidden-xs col-sm-2">          
+            <div className={styles.signalBoxContent}> 
+              <div className={styles.signalBoxTitle}>
+                Sample Rate
+              </div>
+              <div className={styles.signalBoxValue}>
+                {device.sampleRate}Hz
+              </div>
+            </div>
+            <div className={styles.signalBoxContent}> 
+              <div className={styles.signalBoxTitle}>
+                Avg Fails
+              </div>
+              <div className={styles.signalBoxValue}>
+                {device.failureRate}%
+              </div>
+            </div>
+          </div>
+        </div>        
       </div>
     );
   }
@@ -523,49 +551,71 @@ class Chart extends React.Component {
             </div>
           </div>
         </div>
-        <Resizable>
-          <ChartContainer
-            timeRange={this.state.timerange}
-            onTimeRangeChanged={this.handleTimeRangeChange}
-            padding={0}
-            enablePanZoom={true}
-            minDuration={minDuration}
-            maxTime={this.state.initialRange.end()}
-            minTime={this.state.initialRange.begin()}
-            showGrid={false}
-          >
-            <ChartRow height={chartHeight} debug={false}>
-              <YAxis
-                id={leftAxisId}
-                label="Signal"
-                min={0}
-                max={max}
-                absolute={true}
-                width={leftAxisLabelWidth}
-                type="linear"
-                format="d"
-              />
-              <Charts>
-                <BarChart
-                  axis={leftAxisId}
-                  series={device.signal}
-                  style={style}
-                  columns={['value']}
-                />
-              </Charts>
-              <YAxis
-                id={rightAxisId}
-                label="Signal"
-                min={0}
-                max={max}
-                absolute={true}
-                width={rightAxisLabelWidth}
-                type="linear"
-                format="d"
-              />
-            </ChartRow>
-          </ChartContainer>
-        </Resizable>
+        <div className="row">
+          <div className="col-xs-12 col-sm-10">
+            <Resizable>
+              <ChartContainer
+                timeRange={this.state.timerange}
+                onTimeRangeChanged={this.handleTimeRangeChange}
+                padding={0}
+                enablePanZoom={true}
+                minDuration={minDuration}
+                maxTime={this.state.initialRange.end()}
+                minTime={this.state.initialRange.begin()}
+                showGrid={false}
+              >
+                <ChartRow height={largeChartHeight} debug={false}>
+                  <YAxis
+                    id={leftAxisId}
+                    label="Signal"
+                    min={0}
+                    max={max}
+                    absolute={true}
+                    width={leftAxisLabelWidth}
+                    type="linear"
+                    format="d"
+                  />
+                  <Charts>
+                    <BarChart
+                      axis={leftAxisId}
+                      series={device.signal}
+                      style={style}
+                      columns={['value']}
+                    />
+                  </Charts>
+                  <YAxis
+                    id={rightAxisId}
+                    label="Signal"
+                    min={0}
+                    max={max}
+                    absolute={true}
+                    width={rightAxisLabelWidth}
+                    type="linear"
+                    format="d"
+                  />
+                </ChartRow>
+              </ChartContainer>
+            </Resizable>
+          </div>
+          <div className="hidden-xs col-sm-2">          
+            <div className={styles.signalBoxContent}> 
+              <div className={styles.signalBoxTitle}>
+                Sample Rate
+              </div>
+              <div className={styles.signalBoxValue}>
+                {device.sampleRate}Hz
+              </div>
+            </div>
+            <div className={styles.signalBoxContent}> 
+              <div className={styles.signalBoxTitle}>
+                Avg Fails
+              </div>
+              <div className={styles.signalBoxValue}>
+                {device.failureRate}%
+              </div>
+            </div>
+          </div>
+        </div>        
       </div>
     );
   }
@@ -667,91 +717,112 @@ class Chart extends React.Component {
               </div>
             </div>
           </div>
-
         </div>
-        <Resizable>
-          <ChartContainer
-            timeRange={this.state.timerange}
-            onTimeRangeChanged={this.handleTimeRangeChange}
-            padding={0}
-            enablePanZoom={true}
-            minDuration={minDuration}
-            maxTime={this.state.initialRange.end()}
-            minTime={this.state.initialRange.begin()}
-            showGrid={false}
-          >
-            <ChartRow height={largeChartHeight} debug={false}>
-              <YAxis
-                id="powerAxis"
-                label="Power"
-                min={minPower}
-                max={maxPower}
-                absolute={true}
-                width={leftAxisLabelWidth}
-                type="linear"
-                format="d"
-              />
-              <YAxis
-                id="gradientAxis"
-                label="Resistance"
-                min={minGrad}
-                max={maxGrad}
-                absolute={true}
-                width={leftAxisLabelWidth}
-                type="linear"
-                format=",.2f"
-              />
-              <Charts>
-                <BarChart
-                  axis="powerSignal"
-                  series={device.signal}
-                  style={style}
-                  columns={['value']}
-                />
-                <LineChart
-                  axis="gradientAxis"
-                  breakLine={true}
-                  series={device.gradient}
-                  style={resistanceStyle}
-                  smooth={true}
-                  interpolation="curveBasis"
-                />
-                <LineChart
-                  axis="powerAxis"
-                  breakLine={true}
-                  series={device.power}
-                  style={powerStyle}
-                  smooth={true}
-                  interpolation="curveBasis"
-                />
-                <Baseline
-                  axis="powerAxis"
-                  style={baselineStyle}
-                  value={maxPower}
-                  label="Max"
-                  position="left"
-                />
-                <Baseline
-                  axis="powerAxis"
-                  style={baselineStyle}
-                  value={avgPower}
-                  label="Avg"
-                  position="left"
-                />
-              </Charts>
-              <YAxis
-                id="powerSignal"
-                label="Signal"
-                min={0}
-                max={maxSignal}
-                absolute={true}
-                width={rightAxisLabelWidth}
-                type="linear"
-                format="d"
-              />
-            </ChartRow>
-          </ChartContainer>
-        </Resizable>
+        <div className="row">
+          <div className="col-xs-12 col-sm-10">
+            <Resizable>
+              <ChartContainer
+                timeRange={this.state.timerange}
+                onTimeRangeChanged={this.handleTimeRangeChange}
+                padding={0}
+                enablePanZoom={true}
+                minDuration={minDuration}
+                maxTime={this.state.initialRange.end()}
+                minTime={this.state.initialRange.begin()}
+                showGrid={false}
+              >
+                <ChartRow height={largeChartHeight} debug={false}>
+                  <YAxis
+                    id="powerAxis"
+                    label="Power"
+                    min={minPower}
+                    max={maxPower}
+                    absolute={true}
+                    width={leftAxisLabelWidth}
+                    type="linear"
+                    format="d"
+                  />
+                  <YAxis
+                    id="gradientAxis"
+                    label="Resistance"
+                    min={minGrad}
+                    max={maxGrad}
+                    absolute={true}
+                    width={leftAxisLabelWidth}
+                    type="linear"
+                    format=",.2f"
+                  />
+                  <Charts>
+                    <BarChart
+                      axis="powerSignal"
+                      series={device.signal}
+                      style={style}
+                      columns={['value']}
+                    />
+                    <LineChart
+                      axis="gradientAxis"
+                      breakLine={true}
+                      series={device.gradient}
+                      style={resistanceStyle}
+                      smooth={true}
+                      interpolation="curveBasis"
+                    />
+                    <LineChart
+                      axis="powerAxis"
+                      breakLine={true}
+                      series={device.power}
+                      style={powerStyle}
+                      smooth={true}
+                      interpolation="curveBasis"
+                    />
+                    <Baseline
+                      axis="powerAxis"
+                      style={baselineStyle}
+                      value={maxPower}
+                      label="Max"
+                      position="left"
+                    />
+                    <Baseline
+                      axis="powerAxis"
+                      style={baselineStyle}
+                      value={avgPower}
+                      label="Avg"
+                      position="left"
+                    />
+                  </Charts>
+                  <YAxis
+                    id="powerSignal"
+                    label="Signal"
+                    min={0}
+                    max={maxSignal}
+                    absolute={true}
+                    width={rightAxisLabelWidth}
+                    type="linear"
+                    format="d"
+                  />
+                </ChartRow>
+              </ChartContainer>
+            </Resizable>
+          </div>
+          <div className="hidden-xs col-sm-2">          
+            <div className={styles.signalBoxContent}> 
+              <div className={styles.signalBoxTitle}>
+                Sample Rate
+              </div>
+              <div className={styles.signalBoxValue}>
+                {device.sampleRate}Hz
+              </div>
+            </div>
+            <div className={styles.signalBoxContent}> 
+              <div className={styles.signalBoxTitle}>
+                Avg Fails
+              </div>
+              <div className={styles.signalBoxValue}>
+                {device.failureRate}%
+              </div>
+            </div>
+          </div>
+        </div>    
       </div>
     );
   }
@@ -791,48 +862,52 @@ class Chart extends React.Component {
             </div>
           </div>
         </div>
-        <Resizable>
-          <ChartContainer
-            timeRange={this.state.initialRange}
-            format="HH:mm:ss"
-            padding={0}
-            trackerPosition={this.state.tracker}
-          >
-            <ChartRow height={75} debug={false}>
-              <Brush
-                timeRange={this.state.brushrange}
-                allowSelectionClear={true}
-                onTimeRangeChanged={this.handleTimeRangeChange}
-              />
-              <YAxis
-                id="searchesBrushAxis"
-                label="Searches"
-                min={0}
-                max={1}
-                width={leftAxisLabelWidth}
-                type="linear"
-                format="d"
-              />
-              <Charts>
-                <BarChart
-                  axis="searchesBrushAxis"
-                  series={this.state.searches}
-                  style={style}
-                  columns={['value']}
-                />
-              </Charts>
-              <YAxis
-                id="searchesBrushAxis2"
-                label="Searches"
-                min={0}
-                max={1}
-                width={rightAxisLabelWidth}
-                type="linear"
-                format="d"
-              />
-            </ChartRow>
-          </ChartContainer>
-        </Resizable>
+        <div className="row">
+          <div className="col-xs-12 col-sm-10">
+            <Resizable>
+              <ChartContainer
+                timeRange={this.state.initialRange}
+                format="HH:mm:ss"
+                padding={0}
+                trackerPosition={this.state.tracker}
+              >
+                <ChartRow height={75} debug={false}>
+                  <Brush
+                    timeRange={this.state.brushrange}
+                    allowSelectionClear={true}
+                    onTimeRangeChanged={this.handleTimeRangeChange}
+                  />
+                  <YAxis
+                    id="searchesBrushAxis"
+                    label="Searches"
+                    min={0}
+                    max={1}
+                    width={leftAxisLabelWidth}
+                    type="linear"
+                    format="d"
+                  />
+                  <Charts>
+                    <BarChart
+                      axis="searchesBrushAxis"
+                      series={this.state.searches}
+                      style={style}
+                      columns={['value']}
+                    />
+                  </Charts>
+                  <YAxis
+                    id="searchesBrushAxis2"
+                    label="Searches"
+                    min={0}
+                    max={1}
+                    width={rightAxisLabelWidth}
+                    type="linear"
+                    format="d"
+                  />
+                </ChartRow>
+              </ChartContainer>
+            </Resizable>
+          </div>
+        </div>
       </div>
     );
   }

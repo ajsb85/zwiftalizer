@@ -61,11 +61,11 @@ export default function configureStore() {
     compose(
       applyMiddleware(
         // lets us dispatch async functions
-        thunkMiddleware,
-        loggerMiddleware // neat middleware that logs actions
+        thunkMiddleware
+        // loggerMiddleware // neat middleware that logs actions
       ),
       // enables redux chrome dev tools extension
-      window.devToolsExtension ? window.devToolsExtension() : f => f
+      // window.devToolsExtension ? window.devToolsExtension() : f => f
     )
   );
 
