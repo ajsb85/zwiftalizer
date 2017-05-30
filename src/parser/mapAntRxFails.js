@@ -111,35 +111,33 @@ export default function mapAntRxFails(
     sampleRate = EIGHT_HZ;
   }
 
-
-
   const totalSamples = sampleRate * timeAxisTimeSeries.count();
 
   const failureRate = Math.round(totalRxFails / totalSamples / 0.0001) / 100;
 
-  // const medianValue = mergedSeries.median();
+  const medianValue = mergedSeries.median();
 
-  // const meanValue = mergedSeries.mean();
+  const meanValue = mergedSeries.mean();
 
-  // const stdev = mergedSeries.stdev();
+  const stdev = mergedSeries.stdev();
 
-  // console.log(`totalRxFails ${totalRxFails}`);
+  console.log(`totalRxFails ${totalRxFails}`);
 
-  // console.log(`totalSeconds ${timeAxisTimeSeries.count()}`);
+  console.log(`totalSeconds ${timeAxisTimeSeries.count()}`);
 
-  // console.log(`totalSamples ${totalSamples}`);
+  console.log(`totalSamples ${totalSamples}`);
 
-  // console.log(`failureRate rate ${failureRate}`);
+  console.log(`failureRate rate ${failureRate}`);
 
   console.log(`maxValue ${maxValue}`);
 
   console.log(`minValue ${minValue}`);
 
-  // console.log(`medianValue ${medianValue}`);
+  console.log(`medianValue ${medianValue}`);
 
-  // console.log(`meanValue ${meanValue}`);
+  console.log(`meanValue ${meanValue}`);
 
-  // console.log(`stdev ${stdev}`);
+  console.log(`stdev ${stdev}`);
 
   // the logging of the sampling is not exact seconds, there could be some overspill into the next second,
   // so the 2s averages smooth things out
@@ -173,7 +171,7 @@ export default function mapAntRxFails(
       return e.setData({ value: sampleRate });
     }
 
-    return e.setData({ value: maxValue - e.get('value') });
+    return e.setData({ value: sampleRate - e.get('value') });
   });
 
   return {
