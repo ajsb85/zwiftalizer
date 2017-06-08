@@ -76,6 +76,13 @@ class PowerMeterNameModal extends React.Component {
       return;
     }
 
+    if (
+      this.state.manufacturerName.toLowerCase() === 'unknown' ||
+      this.state.modelName.toLowerCase() === 'unknown'
+    ) {
+      return;
+    }
+
     this.state.powerDevice.manufacturer = this.state.manufacturerName;
 
     this.state.powerDevice.model = this.state.modelName;
@@ -106,7 +113,7 @@ class PowerMeterNameModal extends React.Component {
       return null;
     }
 
-    const marginTopAndBottom = {marginTop:'2rem',marginBottom:'2rem'};
+    const marginTopAndBottom = { marginTop: '2rem', marginBottom: '2rem' };
 
     const { showUnknownPowerMeterModelModal } = this.props;
 
@@ -153,7 +160,11 @@ class PowerMeterNameModal extends React.Component {
     }
 
     return (
-      <Modal show={showUnknownPowerMeterModelModal} onHide={this.closeModal} backdrop="static">
+      <Modal
+        show={showUnknownPowerMeterModelModal}
+        onHide={this.closeModal}
+        backdrop="static"
+      >
         <Modal.Header closeButton>
           <Modal.Title>
             What's the make and model of your power meter?
@@ -167,7 +178,7 @@ class PowerMeterNameModal extends React.Component {
                   <p>
                     We were unable to identify your power meter.
                   </p>
-                   <p>
+                  <p>
                     Can you help fix the Zwiftalizer by typing its name?
                   </p>
                 </div>
@@ -214,13 +225,13 @@ class PowerMeterNameModal extends React.Component {
               </div>
               <div className="row" style={marginTopAndBottom}>
                 <div className="col-xs-offset-1 col-xs-10">
-                  <div className="btn-group pull-right">        
+                  <div className="btn-group pull-right">
                     <Button bsStyle="primary" bsSize="lg" type="submit">
                       Submit
                     </Button>
                     <Button
                       bsStyle="default"
-                       bsSize="lg" 
+                      bsSize="lg"
                       type="button"
                       onClick={this.closeModal}
                     >
@@ -228,7 +239,7 @@ class PowerMeterNameModal extends React.Component {
                     </Button>
                   </div>
                 </div>
-              </div>              
+              </div>
             </div>
           </form>
         </Modal.Body>

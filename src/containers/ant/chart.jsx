@@ -327,7 +327,7 @@ class Chart extends React.Component {
           <div className="hidden-xs col-sm-2">          
             <div className={styles.signalBoxContent}> 
               <div className={styles.signalBoxTitle}>
-                Sample Rate
+                Data Rate
               </div>
               <div className={styles.signalBoxValue}>
                 {device.sampleRate}Hz
@@ -478,7 +478,7 @@ class Chart extends React.Component {
           <div className="hidden-xs col-sm-2">          
             <div className={styles.signalBoxContent}> 
               <div className={styles.signalBoxTitle}>
-                Sample Rate
+                Data Rate
               </div>
               <div className={styles.signalBoxValue}>
                 {device.sampleRate}Hz
@@ -600,7 +600,7 @@ class Chart extends React.Component {
           <div className="hidden-xs col-sm-2">          
             <div className={styles.signalBoxContent}> 
               <div className={styles.signalBoxTitle}>
-                Sample Rate
+                Data Rate
               </div>
               <div className={styles.signalBoxValue}>
                 {device.sampleRate}Hz
@@ -807,7 +807,7 @@ class Chart extends React.Component {
           <div className="hidden-xs col-sm-2">          
             <div className={styles.signalBoxContent}> 
               <div className={styles.signalBoxTitle}>
-                Sample Rate
+                Data Rate
               </div>
               <div className={styles.signalBoxValue}>
                 {device.sampleRate}Hz

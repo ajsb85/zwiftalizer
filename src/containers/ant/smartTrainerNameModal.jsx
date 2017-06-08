@@ -23,7 +23,9 @@ class SmartTrainerNameModal extends React.Component {
     });
 
     this.state = {
-      manufacturerName: smartTrainerDevice ? smartTrainerDevice.manufacturer : '',
+      manufacturerName: smartTrainerDevice
+        ? smartTrainerDevice.manufacturer
+        : '',
       modelName: smartTrainerDevice ? smartTrainerDevice.model : '',
       smartTrainerDevice: smartTrainerDevice,
       devices: devices,
@@ -76,6 +78,13 @@ class SmartTrainerNameModal extends React.Component {
       return;
     }
 
+    if (
+      this.state.manufacturerName.toLowerCase() === 'unknown' ||
+      this.state.modelName.toLowerCase() === 'unknown'
+    ) {
+      return;
+    }
+
     this.state.smartTrainerDevice.manufacturer = this.state.manufacturerName;
 
     this.state.smartTrainerDevice.model = this.state.modelName;
@@ -106,7 +115,7 @@ class SmartTrainerNameModal extends React.Component {
       return null;
     }
 
-    const marginTopAndBottom = {marginTop:'2rem',marginBottom:'2rem'};
+    const marginTopAndBottom = { marginTop: '2rem', marginBottom: '2rem' };
 
     const { showUnknownSmartTrainerModelModal } = this.props;
 
@@ -153,7 +162,11 @@ class SmartTrainerNameModal extends React.Component {
     }
 
     return (
-      <Modal show={showUnknownSmartTrainerModelModal} onHide={this.closeModal} backdrop="static">
+      <Modal
+        show={showUnknownSmartTrainerModelModal}
+        onHide={this.closeModal}
+        backdrop="static"
+      >
         <Modal.Header closeButton>
           <Modal.Title>
             What's the make and model of your smart trainer?
@@ -167,7 +180,7 @@ class SmartTrainerNameModal extends React.Component {
                   <p>
                     We were unable to identify your smart trainer.
                   </p>
-                   <p>
+                  <p>
                     Can you help fix the Zwiftalizer by typing its name?
                   </p>
                 </div>
@@ -214,13 +227,13 @@ class SmartTrainerNameModal extends React.Component {
               </div>
               <div className="row" style={marginTopAndBottom}>
                 <div className="col-xs-offset-1 col-xs-10">
-                  <div className="btn-group pull-right">        
+                  <div className="btn-group pull-right">
                     <Button bsStyle="primary" bsSize="lg" type="submit">
                       Submit
                     </Button>
                     <Button
                       bsStyle="default"
-                       bsSize="lg" 
+                      bsSize="lg"
                       type="button"
                       onClick={this.closeModal}
                     >
@@ -228,7 +241,7 @@ class SmartTrainerNameModal extends React.Component {
                     </Button>
                   </div>
                 </div>
-              </div>              
+              </div>
             </div>
           </form>
         </Modal.Body>

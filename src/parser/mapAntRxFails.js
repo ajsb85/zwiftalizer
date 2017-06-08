@@ -111,11 +111,24 @@ export default function mapAntRxFails(
     sampleRate = EIGHT_HZ;
   }
 
-
-
   const totalSamples = sampleRate * timeAxisTimeSeries.count();
 
   const failureRate = Math.round(totalRxFails / totalSamples / 0.0001) / 100;
+
+  // console.log(failureRate);
+
+  // Hack, power meters that were expected to be EIGHT_HZ
+  // but are actually 4HZ show a 40 to 50% failure rate,
+  // Make this normal again by subracting the failureRate from 50 (not 100).
+
+  // if (failureRate > 40 && sampleRate === EIGHT_HZ) {
+  //   const totalExpectedFailures = FOUR_HZ * timeAxisTimeSeries.count();
+
+  //   const adjustedTotalRxFails = totalRxFails - totalExpectedFailures;
+
+  //   failureRate = Math.round(adjustedTotalRxFails / totalSamples / 0.0001) /
+  //     100;
+  // }
 
   // const medianValue = mergedSeries.median();
 

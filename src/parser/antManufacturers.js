@@ -140,7 +140,7 @@ export default function antManufacturers(lines) {
       console.log('Failed to extract short deviceId from extended deviceId');
     }
 
-    // try and differentiate between CycleOps and Powertap devices (both  have manufacturer 9)
+    // try and differentiate between CycleOps and Powertap devices (both have manufacturer 9)
     if (`${entry.manufacturerId}` === SARIS_MANUFACTURER_ID) {
       if (_.contains(POWERTAP_MODELS, entry.modelId)) {
         entry.type = POWER_METER_DEVICE;
