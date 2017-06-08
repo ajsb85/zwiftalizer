@@ -144,11 +144,9 @@ export default function mapAntRxFails(
 
   // console.log(`failureRate rate ${failureRate}`);
 
-  console.log(`maxValue ${maxValue}`);
+  // console.log(`maxValue ${maxValue}`);
 
-  console.log(`minValue ${minValue}`);
-
-  // console.log(`medianValue ${medianValue}`);
+  // console.log(`minValue ${minValue}`);
 
   // console.log(`meanValue ${meanValue}`);
 
@@ -186,7 +184,7 @@ export default function mapAntRxFails(
       return e.setData({ value: sampleRate });
     }
 
-    return e.setData({ value: maxValue - e.get('value') });
+    return e.setData({ value: sampleRate - e.get('value') });
   });
 
   return {

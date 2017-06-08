@@ -345,7 +345,7 @@ error: the locations of a builtin vertex attribute (named gl_MultiTexCoord0) and
 [14:47:13] FPS 189, 238925, 10976, -32770
 [14:47:13] NETCLIENT:Session ID: 57e6c3d8-9108-452b-a17a-67861710dc99
 [14:47:13] FPS 190, 238925, 10976, -32770
-[14:47:13] Logged in user: mrh5937@gmail.com
+[14:47:13] Logged in user: anonymous@gmail.com
 [14:47:13] xp: 131051
 [14:47:14] NETWORK:Got the list of worlds
 [14:47:14] Giant dt in app. dt = 1.03
