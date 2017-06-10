@@ -58,11 +58,7 @@ class System extends React.Component {
     const cpuVendorLower = cpuVendor.toLowerCase();
     const gpuVendorLower = gpuVendor.toLowerCase();
 
-    if (
-      platformLower === 'pc' &&            
-      cpuTerms &&
-      cpuTerms.length
-    ) {
+    if (platformLower === 'pc' && cpuTerms && cpuTerms.length) {
       const cpuQueryTerms = cpuTerms.join('+');
 
       cpuShopLinks.push({
@@ -81,7 +77,7 @@ class System extends React.Component {
       });
 
       // http://www.helios825.org/url-parameters.php
-       cpuShopLinks.push({
+      cpuShopLinks.push({
         tag: EBAY_LABEL,
         href: `http://www.ebay.com/sch/?_ipg=200&_sop=12&_dmd=1&_nkw=${cpuQueryTerms}`
       });
@@ -126,12 +122,126 @@ class System extends React.Component {
         href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${cpuQueryTerms}`
       });
 
-      cpuLinksMarkup = cpuShopLinks.map(
-        function(link, i) {
-          return <li key={i}><a target="_blank" href={link.href}>{link.tag}</a></li>;
-        },
-        this
+      cpuLinksMarkup = cpuShopLinks.map(function(link, i) {
+        return (
+          <li key={i}><a target="_blank" href={link.href}>{link.tag}</a></li>
+        );
+      }, this);
+
+      cpuLinks = (
+        <div>
+          <span className={styles.shoplinksLabel}>CPU:&nbsp;</span>
+          <ul className={styles.shoplinks}>{cpuLinksMarkup}</ul>
+        </div>
       );
+    }
+
+    if (platformLower === 'alienware') {
+      const cpuQueryTerms =
+        'alienware+alpha+nvidia+windows+desktop+-steam+-mouse+-keyboard';
+
+      cpuShopLinks.push({
+        tag: AMAZON_US_LABEL,
+        href: `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_UK_LABEL,
+        href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_CA_LABEL,
+        href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_DE_LABEL,
+        href: `https://www.amazon.de/s/?tag=${AMAZON_DE_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_ES_LABEL,
+        href: `https://www.amazon.es/s/?tag=${AMAZON_ES_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_FR_LABEL,
+        href: `https://www.amazon.fr/s/?tag=${AMAZON_FR_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_IT_LABEL,
+        href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_JP_LABEL,
+        href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuLinksMarkup = cpuShopLinks.map(function(link, i) {
+        return (
+          <li key={i}><a target="_blank" href={link.href}>{link.tag}</a></li>
+        );
+      }, this);
+
+      cpuLinks = (
+        <div>
+          <span className={styles.shoplinksLabel}>CPU:&nbsp;</span>
+          <ul className={styles.shoplinks}>{cpuLinksMarkup}</ul>
+        </div>
+      );
+    }
+
+    if (platformLower === 'mac') {
+      const cpuQueryTerms = 'apple+computer';
+
+      cpuShopLinks.push({
+        tag: AMAZON_US_LABEL,
+        href: `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_UK_LABEL,
+        href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_CA_LABEL,
+        href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_DE_LABEL,
+        href: `https://www.amazon.de/s/?tag=${AMAZON_DE_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_ES_LABEL,
+        href: `https://www.amazon.es/s/?tag=${AMAZON_ES_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_FR_LABEL,
+        href: `https://www.amazon.fr/s/?tag=${AMAZON_FR_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_IT_LABEL,
+        href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_JP_LABEL,
+        href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuLinksMarkup = cpuShopLinks.map(function(link, i) {
+        return (
+          <li key={i}><a target="_blank" href={link.href}>{link.tag}</a></li>
+        );
+      }, this);
 
       cpuLinks = (
         <div>
@@ -142,7 +252,7 @@ class System extends React.Component {
     }
 
     if (
-      platformLower === 'pc' &&      
+      platformLower === 'pc' &&
       (gpuVendorLower === 'nvidia' || gpuVendorLower === 'ati') &&
       gpuTerms &&
       gpuTerms.length
@@ -210,12 +320,11 @@ class System extends React.Component {
         href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${gpuQueryTerms}`
       });
 
-      gpuLinksMarkup = gpuShopLinks.map(
-        function(link, i) {
-          return <li key={i}><a target="_blank" href={link.href}>{link.tag}</a></li>;
-        },
-        this
-      );
+      gpuLinksMarkup = gpuShopLinks.map(function(link, i) {
+        return (
+          <li key={i}><a target="_blank" href={link.href}>{link.tag}</a></li>
+        );
+      }, this);
 
       gpuLinks = (
         <div>
@@ -261,7 +370,9 @@ class System extends React.Component {
       relativeMinWidth = Math.round(minFps / maxMaxResolutionProfile * 100);
     }
 
-    let platformClass, cpuClass, gpuClass = null;
+    let platformClass,
+      cpuClass,
+      gpuClass = null;
 
     if (platform) {
       switch (platform.toLowerCase()) {
@@ -393,27 +504,25 @@ class System extends React.Component {
             <div className={styles.systemName}>
               {systemId}
             </div>
-            { current ? 
-            <div className={styles.currentSystem}>
-              Your system is always visible regardless of any search filter settings.
-            </div> : null}
+            {current
+              ? <div className={styles.currentSystem}>
+                  Your system is always visible regardless of any search filter
+                  settings.
+                </div>
+              : null}
             {detailsMarkup}
             {shopLinksMarkup}
           </div>
           <div className="col-xs-12 col-sm-4">
-          { current ?
-            <div className={styles.samplesOuter}>
-              <div className={styles.samplesInner}>
-                &nbsp;
-              </div>
-            </div>            
-            :
-            <div className={styles.samplesOuter}>
-              <div className={styles.samplesInner}>
-                {samples}<br />Logs
-              </div>
-            </div>
-          }
+            {current
+              ? <div className={styles.samplesOuter}>
+                  <div className={styles.samplesInner} />
+                </div>
+              : <div className={styles.samplesOuter}>
+                  <div className={styles.samplesInner}>
+                    {samples}<br />Logs
+                  </div>
+                </div>}
             <div className={styles.barsOuter}>
               <div className="progress" style={barStyle}>
                 <div
