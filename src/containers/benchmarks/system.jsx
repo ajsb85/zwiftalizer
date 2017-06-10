@@ -29,12 +29,12 @@ class System extends React.Component {
     super(props);
   }
 
-  renderDetails(cpuDetail) {
-    if (!cpuDetail) {
+  renderDetails(details) {
+    if (!details) {
       return null;
     }
 
-    return <h4 className={styles.cpuDetail}>{cpuDetail}</h4>;
+    return <h4 className={styles.cpuDetail}>{details}</h4>;
   }
 
   renderShopLinks() {
@@ -43,7 +43,8 @@ class System extends React.Component {
       gpuVendor,
       gpuTerms,
       cpuVendor,
-      cpuTerms
+      cpuTerms,
+      details
     } = this.props.data;
 
     let cpuLinks;
@@ -60,6 +61,46 @@ class System extends React.Component {
 
     if (platformLower === 'pc' && cpuTerms && cpuTerms.length) {
       const cpuQueryTerms = cpuTerms.join('+');
+
+      cpuShopLinks.push({
+        tag: AMAZON_US_LABEL,
+        href: `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_UK_LABEL,
+        href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_CA_LABEL,
+        href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_DE_LABEL,
+        href: `https://www.amazon.de/s/?tag=${AMAZON_DE_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_ES_LABEL,
+        href: `https://www.amazon.es/s/?tag=${AMAZON_ES_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_FR_LABEL,
+        href: `https://www.amazon.fr/s/?tag=${AMAZON_FR_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_IT_LABEL,
+        href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${cpuQueryTerms}`
+      });
+
+      cpuShopLinks.push({
+        tag: AMAZON_JP_LABEL,
+        href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${cpuQueryTerms}`
+      });
 
       cpuShopLinks.push({
         tag: PRICEWATCH_LABEL,
@@ -82,170 +123,180 @@ class System extends React.Component {
         href: `http://www.ebay.com/sch/?_ipg=200&_sop=12&_dmd=1&_nkw=${cpuQueryTerms}`
       });
 
-      cpuShopLinks.push({
-        tag: AMAZON_US_LABEL,
-        href: `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${cpuQueryTerms}`
-      });
-
-      cpuShopLinks.push({
-        tag: AMAZON_UK_LABEL,
-        href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${cpuQueryTerms}`
-      });
-
-      cpuShopLinks.push({
-        tag: AMAZON_CA_LABEL,
-        href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${cpuQueryTerms}`
-      });
-
-      cpuShopLinks.push({
-        tag: AMAZON_DE_LABEL,
-        href: `https://www.amazon.de/s/?tag=${AMAZON_DE_TAG}&field-keywords=${cpuQueryTerms}`
-      });
-
-      cpuShopLinks.push({
-        tag: AMAZON_ES_LABEL,
-        href: `https://www.amazon.es/s/?tag=${AMAZON_ES_TAG}&field-keywords=${cpuQueryTerms}`
-      });
-
-      cpuShopLinks.push({
-        tag: AMAZON_FR_LABEL,
-        href: `https://www.amazon.fr/s/?tag=${AMAZON_FR_TAG}&field-keywords=${cpuQueryTerms}`
-      });
-
-      cpuShopLinks.push({
-        tag: AMAZON_IT_LABEL,
-        href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${cpuQueryTerms}`
-      });
-
-      cpuShopLinks.push({
-        tag: AMAZON_JP_LABEL,
-        href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${cpuQueryTerms}`
-      });
-
-      cpuLinksMarkup = cpuShopLinks.map(function(link, i) {
-        return (
-          <li key={i}><a target="_blank" href={link.href}>{link.tag}</a></li>
-        );
-      }, this);
+      cpuLinksMarkup = cpuShopLinks.map(
+        function(link, i) {
+          return (
+            <li key={i}><a target="_blank" href={link.href}>{link.tag}</a></li>
+          );
+        },
+        this
+      );
 
       cpuLinks = (
         <div>
-          <span className={styles.shoplinksLabel}>CPU:&nbsp;</span>
+          <span className={styles.shoplinksLabel}>Buy CPU:&nbsp;</span>
           <ul className={styles.shoplinks}>{cpuLinksMarkup}</ul>
         </div>
       );
     }
 
     if (platformLower === 'alienware') {
-      const cpuQueryTerms =
-        'alienware+alpha+nvidia+windows+desktop+-steam+-mouse+-keyboard';
+      var lowerDetails = details ? details.toLowerCase() : '';
+
+      let queryTerms = 'alienware+alpha+-steam+-xbox';
+
+      if (lowerDetails.indexOf('r2') !== -1) {
+        queryTerms += '+R2';
+      }
 
       cpuShopLinks.push({
         tag: AMAZON_US_LABEL,
-        href: `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${cpuQueryTerms}`
+        href: `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${queryTerms}`
       });
 
       cpuShopLinks.push({
         tag: AMAZON_UK_LABEL,
-        href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${cpuQueryTerms}`
+        href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${queryTerms}`
       });
 
       cpuShopLinks.push({
         tag: AMAZON_CA_LABEL,
-        href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${cpuQueryTerms}`
+        href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${queryTerms}`
       });
 
       cpuShopLinks.push({
         tag: AMAZON_DE_LABEL,
-        href: `https://www.amazon.de/s/?tag=${AMAZON_DE_TAG}&field-keywords=${cpuQueryTerms}`
+        href: `https://www.amazon.de/s/?tag=${AMAZON_DE_TAG}&field-keywords=${queryTerms}`
       });
 
       cpuShopLinks.push({
         tag: AMAZON_ES_LABEL,
-        href: `https://www.amazon.es/s/?tag=${AMAZON_ES_TAG}&field-keywords=${cpuQueryTerms}`
+        href: `https://www.amazon.es/s/?tag=${AMAZON_ES_TAG}&field-keywords=${queryTerms}`
       });
 
       cpuShopLinks.push({
         tag: AMAZON_FR_LABEL,
-        href: `https://www.amazon.fr/s/?tag=${AMAZON_FR_TAG}&field-keywords=${cpuQueryTerms}`
+        href: `https://www.amazon.fr/s/?tag=${AMAZON_FR_TAG}&field-keywords=${queryTerms}`
       });
 
       cpuShopLinks.push({
         tag: AMAZON_IT_LABEL,
-        href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${cpuQueryTerms}`
+        href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${queryTerms}`
       });
 
       cpuShopLinks.push({
         tag: AMAZON_JP_LABEL,
-        href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${cpuQueryTerms}`
+        href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${queryTerms}`
       });
 
-      cpuLinksMarkup = cpuShopLinks.map(function(link, i) {
-        return (
-          <li key={i}><a target="_blank" href={link.href}>{link.tag}</a></li>
-        );
-      }, this);
+      cpuShopLinks.push({
+        tag: EBAY_LABEL,
+        href: `http://www.ebay.com/sch/?_ipg=200&_sop=12&_dmd=1&_nkw=${queryTerms}`
+      });
+
+      cpuLinksMarkup = cpuShopLinks.map(
+        function(link, i) {
+          return (
+            <li key={i}><a target="_blank" href={link.href}>{link.tag}</a></li>
+          );
+        },
+        this
+      );
 
       cpuLinks = (
         <div>
-          <span className={styles.shoplinksLabel}>CPU:&nbsp;</span>
+          <span className={styles.shoplinksLabel}>Buy:&nbsp;</span>
           <ul className={styles.shoplinks}>{cpuLinksMarkup}</ul>
         </div>
       );
     }
 
     if (platformLower === 'mac') {
-      const cpuQueryTerms = 'apple+computer';
+      let queryTerms = 'apple+computer';
+
+      var lowerDetails = details ? details.toLowerCase() : '';
+
+      if (lowerDetails.indexOf('imac') !== -1) {
+        queryTerms += '+imac';
+      }
+
+      if (lowerDetails.indexOf('macbook pro') !== -1) {
+        queryTerms += '+macbook+pro';
+      } else if (lowerDetails.indexOf('macbook air') !== -1) {
+        queryTerms += '+macbook+air';
+      } else if (lowerDetails.indexOf('macbook') !== -1) {
+        queryTerms += '+macbook';
+      }
+
+      if (lowerDetails.indexOf('4k') !== -1) {
+        queryTerms += '+4k';
+      }
+
+      if (lowerDetails.indexOf('5k') !== -1) {
+        queryTerms += '+5k';
+      }
+
+      if (lowerDetails.indexOf('touch') !== -1) {
+        queryTerms += '+touch';
+      }
 
       cpuShopLinks.push({
         tag: AMAZON_US_LABEL,
-        href: `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${cpuQueryTerms}`
+        href: `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${queryTerms}`
       });
 
       cpuShopLinks.push({
         tag: AMAZON_UK_LABEL,
-        href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${cpuQueryTerms}`
+        href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${queryTerms}`
       });
 
       cpuShopLinks.push({
         tag: AMAZON_CA_LABEL,
-        href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${cpuQueryTerms}`
+        href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${queryTerms}`
       });
 
       cpuShopLinks.push({
         tag: AMAZON_DE_LABEL,
-        href: `https://www.amazon.de/s/?tag=${AMAZON_DE_TAG}&field-keywords=${cpuQueryTerms}`
+        href: `https://www.amazon.de/s/?tag=${AMAZON_DE_TAG}&field-keywords=${queryTerms}`
       });
 
       cpuShopLinks.push({
         tag: AMAZON_ES_LABEL,
-        href: `https://www.amazon.es/s/?tag=${AMAZON_ES_TAG}&field-keywords=${cpuQueryTerms}`
+        href: `https://www.amazon.es/s/?tag=${AMAZON_ES_TAG}&field-keywords=${queryTerms}`
       });
 
       cpuShopLinks.push({
         tag: AMAZON_FR_LABEL,
-        href: `https://www.amazon.fr/s/?tag=${AMAZON_FR_TAG}&field-keywords=${cpuQueryTerms}`
+        href: `https://www.amazon.fr/s/?tag=${AMAZON_FR_TAG}&field-keywords=${queryTerms}`
       });
 
       cpuShopLinks.push({
         tag: AMAZON_IT_LABEL,
-        href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${cpuQueryTerms}`
+        href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${queryTerms}`
       });
 
       cpuShopLinks.push({
         tag: AMAZON_JP_LABEL,
-        href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${cpuQueryTerms}`
+        href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${queryTerms}`
       });
 
-      cpuLinksMarkup = cpuShopLinks.map(function(link, i) {
-        return (
-          <li key={i}><a target="_blank" href={link.href}>{link.tag}</a></li>
-        );
-      }, this);
+      cpuShopLinks.push({
+        tag: EBAY_LABEL,
+        href: `http://www.ebay.com/sch/?_ipg=200&_sop=12&_dmd=1&_nkw=${queryTerms}`
+      });
+
+      cpuLinksMarkup = cpuShopLinks.map(
+        function(link, i) {
+          return (
+            <li key={i}><a target="_blank" href={link.href}>{link.tag}</a></li>
+          );
+        },
+        this
+      );
 
       cpuLinks = (
         <div>
-          <span className={styles.shoplinksLabel}>CPU:&nbsp;</span>
+          <span className={styles.shoplinksLabel}>Buy:&nbsp;</span>
           <ul className={styles.shoplinks}>{cpuLinksMarkup}</ul>
         </div>
       );
@@ -258,27 +309,6 @@ class System extends React.Component {
       gpuTerms.length
     ) {
       const gpuQueryTerms = gpuTerms.join('+');
-
-      const pricewatchGpuLink = `http://www.pricewatch.com/search?q=${gpuQueryTerms}&gallery=1&sortby=price&condition=new&discounted=2`;
-      gpuShopLinks.push({
-        tag: PRICEWATCH_LABEL,
-        href: pricewatchGpuLink
-      });
-
-      gpuShopLinks.push({
-        tag: TWEAKERS_LABEL,
-        href: `https://tweakers.net/pricewatch/zoeken/?keyword=${gpuQueryTerms}`
-      });
-
-      gpuShopLinks.push({
-        tag: NEWEGG_LABEL,
-        href: `https://www.newegg.com/Product/ProductList.aspx?Submit=ENE&DEPA=0&Order=PRICE&PageSize=36&Description=${gpuQueryTerms}`
-      });
-
-      gpuShopLinks.push({
-        tag: EBAY_LABEL,
-        href: `http://www.ebay.com/sch/?_ipg=200&_sop=12&_dmd=1&_nkw=${gpuQueryTerms}`
-      });
 
       gpuShopLinks.push({
         tag: AMAZON_US_LABEL,
@@ -320,15 +350,38 @@ class System extends React.Component {
         href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${gpuQueryTerms}`
       });
 
-      gpuLinksMarkup = gpuShopLinks.map(function(link, i) {
-        return (
-          <li key={i}><a target="_blank" href={link.href}>{link.tag}</a></li>
-        );
-      }, this);
+      gpuShopLinks.push({
+        tag: PRICEWATCH_LABEL,
+        href: `http://www.pricewatch.com/search?q=${gpuQueryTerms}&gallery=1&sortby=price&condition=new&discounted=2`
+      });
+
+      gpuShopLinks.push({
+        tag: TWEAKERS_LABEL,
+        href: `https://tweakers.net/pricewatch/zoeken/?keyword=${gpuQueryTerms}`
+      });
+
+      gpuShopLinks.push({
+        tag: NEWEGG_LABEL,
+        href: `https://www.newegg.com/Product/ProductList.aspx?Submit=ENE&DEPA=0&Order=PRICE&PageSize=36&Description=${gpuQueryTerms}`
+      });
+
+      gpuShopLinks.push({
+        tag: EBAY_LABEL,
+        href: `http://www.ebay.com/sch/?_ipg=200&_sop=12&_dmd=1&_nkw=${gpuQueryTerms}`
+      });
+
+      gpuLinksMarkup = gpuShopLinks.map(
+        function(link, i) {
+          return (
+            <li key={i}><a target="_blank" href={link.href}>{link.tag}</a></li>
+          );
+        },
+        this
+      );
 
       gpuLinks = (
         <div>
-          <span className={styles.shoplinksLabel}>GPU:&nbsp;</span>
+          <span className={styles.shoplinksLabel}>Buy GPU:&nbsp;</span>
           <ul className={styles.shoplinks}>{gpuLinksMarkup}</ul>
         </div>
       );
@@ -370,9 +423,7 @@ class System extends React.Component {
       relativeMinWidth = Math.round(minFps / maxMaxResolutionProfile * 100);
     }
 
-    let platformClass,
-      cpuClass,
-      gpuClass = null;
+    let platformClass, cpuClass, gpuClass = null;
 
     if (platform) {
       switch (platform.toLowerCase()) {
