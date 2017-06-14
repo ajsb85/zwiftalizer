@@ -61,7 +61,9 @@ const baselineStyle = {
   }
 };
 
-const largeChartHeight = 200;
+const largeChartHeight = 150;
+
+const smallChartHeight = 100;
 
 const leftLabelAxisLabelWidth = 110;
 
@@ -94,8 +96,8 @@ const basicDeviceStyles = [
   ])
 ];
 
-// 15 second max zoom
-const minDuration = 15 * 1000;
+// 3 second max zoom
+const minDuration = 3 * 1000;
 
 const signalFormat = format('d');
 
@@ -299,14 +301,14 @@ class Chart extends React.Component {
                       axis="powerAxis"
                       style={baselineStyle}
                       value={maxPower}
-                      label="Max Pwr"
+                      label="Max Power"
                       position="left"
                     />
                     <Baseline
                       axis="powerAxis"
                       style={baselineStyle}
                       value={avgPower}
-                      label="Avg Pwr"
+                      label="Avg Power"
                       position="left"
                     />
                   </Charts>
@@ -564,7 +566,7 @@ class Chart extends React.Component {
                 minTime={this.state.initialRange.begin()}
                 showGrid={false}
               >
-                <ChartRow height={largeChartHeight} debug={false}>
+                <ChartRow height={smallChartHeight} debug={false}>
                   <YAxis
                     id={leftAxisId}
                     label="Signal"
@@ -779,14 +781,14 @@ class Chart extends React.Component {
                       axis="powerAxis"
                       style={baselineStyle}
                       value={maxPower}
-                      label="Max"
+                      label="Max Power"
                       position="left"
                     />
                     <Baseline
                       axis="powerAxis"
                       style={baselineStyle}
                       value={avgPower}
-                      label="Avg"
+                      label="Avg Power"
                       position="left"
                     />
                   </Charts>

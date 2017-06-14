@@ -27,12 +27,9 @@ import indexToUnixTime from './indexToUnixTime';
 
 import {
   WAHOO_MANUFACTURER_ID,
-  BASIC_DEVICE,
   POWER_METER_DEVICE,
   SMART_TRAINER_DEVICE,
-  SARIS_MANUFACTURER_ID,
-  ANT_AVERAGES_WINDOW_IN_SEC,
-  EIGHT_HZ
+  ANT_AVERAGES_WINDOW_IN_SEC
 } from './constants';
 
 const _ = require('underscore');
@@ -80,7 +77,7 @@ export default function antData(log, timeAxisTimeSeries) {
     if (manufacturer) {
       Object.assign(device, manufacturer);
     }
- 
+
     // always get rxfails for the channel because it can reveal
     // if a device is being sampled at a high rate (probably a power source)
     const signal = mapAntRxFails(
@@ -89,40 +86,6 @@ export default function antData(log, timeAxisTimeSeries) {
       timeAxisTimeSeries,
       searchesTimestampsRounded
     );
-
-    // attempt to find powermeters that do not broadcast manufacturer and modelIds
-    // (pro+, sl+, PowerBeam, PowerSync, Phantom 5, Phantom 3)
-    // RxFail pattern does not look like a basic device,
-    // is not already detected as being made by a known PM manufacturer (could be saris, powertap)
-    // and is not a SMART_TRAINER_DEVICE, or KICKR
-
-    // @todo, check we are not attributing a kickr ANT+ powermeter to cycleops.
-    // We shoud not be as device.manufacturerId should be set 
-    // correctly for Wahoo Kickr and Wahoo Kickr Snap
-
-    // If we have power data, and the device appears to be sampled at
-    // a rate higher than the basic sample rate
-    // and the device has neither been identified as a
-    // smart trainer or power meter,
-    // and we have no manufacturerId, 
-    // then it's very likely to be a power tap
-    // (or a power meter using the standard power profile).
-    // Out of all the known power meters, saris/powertap/cycleops is the only one we know of that
-    // does not broadcast manufacturerId, modelId. Going to take a big risk here and attribute the
-    // power data source to cycleops
-    if (
-      power.count() &&
-      signal.sampleRate === EIGHT_HZ &&
-      device.type === BASIC_DEVICE &&
-      `${device.manufacturerId}` !== WAHOO_MANUFACTURER_ID
-    ) {
-      device.type = POWER_METER_DEVICE;
-      device.typeName = titleCase(deviceTypes[POWER_METER_DEVICE]);
-      device.manufacturerId = SARIS_MANUFACTURER_ID;
-      device.modelId = '0'; /* generic */
-      device.manufacturer = 'PowerTap';
-      device.model = 'Wireless';
-    }
 
     Object.assign(device, {
       signal: signal.timeseries,
@@ -199,9 +162,7 @@ export default function antData(log, timeAxisTimeSeries) {
   let showUnknownSmartTrainerModelModal = false;
 
   if (
-    powerDevice &&
-    powerDevice.manufacturerId &&
-    powerDevice.model === 'Unknown'
+    powerDevice && powerDevice.manufacturerId && powerDevice.model === 'Unknown'
   ) {
     showUnknownPowerMeterModelModal = true;
   }

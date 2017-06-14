@@ -97,7 +97,7 @@ function parseActivity(log) {
     timerange.endMilliseconds
   );
 
-  console.log(`activity duration in seconds: ${duration}`);
+  // console.log(`activity duration in seconds: ${duration}`);
 
   // using Object.freeze to ensure these properties cannot accidentally be modified
   return Object.freeze({

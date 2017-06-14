@@ -8,7 +8,7 @@ const PATHS = {
   app: path.join(__dirname, 'src'),
   build: path.join(__dirname, 'public'),
   node_modules: path.join(__dirname, 'node_modules'),
-  local_modules: path.join(__dirname, 'local_modules'),
+  local_modules: path.join(__dirname, 'local_modules')
 };
 
 var plugins = [
@@ -19,7 +19,6 @@ var plugins = [
 ];
 
 const common = {
-
   // Entry accepts a path or an object of entries. We'll be using the
   // latter form given it's convenient with more complex configurations.
   entry: {
@@ -32,42 +31,45 @@ const common = {
   },
 
   module: {
-    loaders: [{
+    loaders: [
+      {
         test: /\.(js|jsx)$/,
-        
+
         loader: 'babel-loader',
         // Parse only app files! Without this it will go through entire project.
         // In addition to being slow, that will most likely result in an error.
         include: [PATHS.local_modules, PATHS.app],
 
         // to be absolute sure we aren't babelizing node_modules, exclude that dir explicitly
-        exclude: [
-          path.resolve(PATHS.node_modules)
-        ],
+        exclude: [path.resolve(PATHS.node_modules)],
 
         // Options to configure babel with
         query: {
           plugins: ['transform-runtime', 'transform-object-rest-spread'],
-          presets: ['es2015', 'env', 'react'],
+          presets: ['es2015', 'env', 'react']
         }
-
-      }, {
+      },
+      {
         test: /\.css$/,
         loader: 'style-loader!css-loader?modules&localIdentName=[name]-[local]-[hash:base64:5]'
       },
       {
         test: /\.(png|jpg|gif)$/,
         loader: 'url-loader?limit=65536'
-      }, {
+      },
+      {
         test: /\.json$/,
         loader: 'json-loader'
-      }, {
+      },
+      {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "url-loader?limit=10000&minetype=application/font-woff"
-      }, {
+        loader: 'url-loader?limit=10000&minetype=application/font-woff'
+      },
+      {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "file-loader?name=[name].[ext]"
-      }, {
+        loader: 'file-loader?name=[name].[ext]'
+      },
+      {
         test: /\.log$/,
         loader: 'raw-loader'
       }
@@ -83,14 +85,11 @@ const common = {
   },
 
   plugins: plugins
-
 };
 
 // Default configuration
 if (TARGET === 'dev' || !TARGET) {
-
   module.exports = merge(common, {
-
     // enable sourcemaps for debugging js
     //devtool: (process.env.DEBUG ? 'eval-source-map' : 'cheap-source-map'),
 
@@ -115,21 +114,18 @@ if (TARGET === 'dev' || !TARGET) {
       //
       // 0.0.0.0 is available to all network devices unlike default
       // localhost
-      disableHostCheck: true,   // for using local host headers
+      disableHostCheck: true, // for using local host headers
       host: process.env.HOST,
       port: process.env.PORT
     },
     plugins: [
-      //new webpack.HotModuleReplacementPlugin()      
+      //new webpack.HotModuleReplacementPlugin()
     ]
-
   });
 }
 
 if (TARGET === 'release') {
-
   module.exports = merge(common, {
-
     plugins: [
       new webpack.optimize.UglifyJsPlugin({
         sourceMap: true,

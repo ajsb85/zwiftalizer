@@ -1,5 +1,6 @@
 export const MAX_DEVICES = 4;
-export const MAX_MANUFACTURER_ID = 273;
+/* export const MAX_MANUFACTURER_ID = 273; */
+export const MAX_MANUFACTURER_ID = 253;
 
 export const BASIC_DEVICE = 0;
 export const POWER_METER_DEVICE = 1;
@@ -78,7 +79,7 @@ export const SMART_TRAINER_MANUFACTURERS = [
   KURT_MANUFACTURER_ID
 ];
 
-export const ANT_AVERAGES_WINDOW_IN_SEC = 2;
+export const ANT_AVERAGES_WINDOW_IN_SEC = 3;
 
 // Speed/Cadence sensor can transmit at these rates
 //

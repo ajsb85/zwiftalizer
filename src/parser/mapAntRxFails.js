@@ -9,7 +9,6 @@ import {
   WAHOO_KICKR_MODEL_ID,
   TACX_MANUFACTURER_ID,
   TACX_NEO_MODEL_IDS,
-  POWER_METER_DEVICE,
   ANT_AVERAGES_WINDOW_IN_SEC,
   FOUR_HZ,
   EIGHT_HZ
@@ -76,10 +75,10 @@ export default function mapAntRxFails(
     seriesList: [timeAxisTimeSeries, ts]
   });
 
-  const minValue = mergedSeries.min();
+  // const minValue = mergedSeries.min();
+
   const maxValue = mergedSeries.max();
 
-  // N second avg of fails
   const rollup = mergedSeries.fixedWindowRollup({
     windowSize: `${ANT_AVERAGES_WINDOW_IN_SEC}s`,
     aggregation: {
@@ -89,18 +88,14 @@ export default function mapAntRxFails(
     }
   });
 
-  // assumption 1 - basic devices (HR, Cadence, Speed) are sampled no more than 4 times a second
-  // assumption 2 - advanced devices, like powermeters are sampled 8 times a second
-
   let sampleRate = FOUR_HZ;
 
   // Try to use device manufacturerId and modelId to make a better guess
-  // at whether the device is sampled at 4HZ or 8HZ.
-  // If the max number of RxFails is higher than 5, then use 8Hz
-  // And if the device is either known to be a Power meter, Kickr or Neo then use 8HZ
+  // at whether the device is 4HZ or 8HZ data rate.
+  // If the max number of RxFails is higher than 5
+  // or if the device is either known to be a Power meter, Kickr or Neo then use 8HZ
   if (
     maxValue > FOUR_HZ + 1 ||
-    device.type === POWER_METER_DEVICE ||
     (device.manufacturerId &&
       device.modelId &&
       ((`${device.manufacturerId}` === WAHOO_MANUFACTURER_ID &&
@@ -111,56 +106,20 @@ export default function mapAntRxFails(
     sampleRate = EIGHT_HZ;
   }
 
-  const totalSamples = sampleRate * timeAxisTimeSeries.count();
+  const totalMessagesMax = sampleRate * timeAxisTimeSeries.count();
 
-  const failureRate = Math.round(totalRxFails / totalSamples / 0.0001) / 100;
-
-  // console.log(failureRate);
-
-  // Hack, power meters that were expected to be EIGHT_HZ
-  // but are actually 4HZ show a 40 to 50% failure rate,
-  // Make this normal again by subracting the failureRate from 50 (not 100).
-
-  // if (failureRate > 40 && sampleRate === EIGHT_HZ) {
-  //   const totalExpectedFailures = FOUR_HZ * timeAxisTimeSeries.count();
-
-  //   const adjustedTotalRxFails = totalRxFails - totalExpectedFailures;
-
-  //   failureRate = Math.round(adjustedTotalRxFails / totalSamples / 0.0001) /
-  //     100;
-  // }
-
-  // const medianValue = mergedSeries.median();
-
-  // const meanValue = mergedSeries.mean();
-
-  // const stdev = mergedSeries.stdev();
-
-  // console.log(`totalRxFails ${totalRxFails}`);
-
-  // console.log(`totalSeconds ${timeAxisTimeSeries.count()}`);
-
-  // console.log(`totalSamples ${totalSamples}`);
-
-  // console.log(`failureRate rate ${failureRate}`);
-
-  // console.log(`maxValue ${maxValue}`);
-
-  // console.log(`minValue ${minValue}`);
-
-  // console.log(`meanValue ${meanValue}`);
-
-  // console.log(`stdev ${stdev}`);
+  const failureRate = Math.round(totalRxFails / totalMessagesMax / 0.0001) /
+    100;
 
   // the logging of the sampling is not exact seconds, there could be some overspill into the next second,
-  // so the 2s averages smooth things out
+  // so the ANT_AVERAGES_WINDOW_IN_SEC averages smooth things out
 
   // Zero out the N seconds averages that are impossibly high -
-  // when there are absolutely no rxfails in 10 seconds -
+  // when there are absolutely no rxfails in ANT_AVERAGES_WINDOW_IN_SEC seconds -
   // usually means a device is completely lost and did not re-pair.
 
   const filteredRollup = rollup.map(e => {
-    // if the 2 second averag bucket aligns with a
+    // if the ANT_AVERAGES_WINDOW_IN_SEC averag bucket aligns with a
     // `goto search` entry, and no RxFails at all were seen, then this
     // bucket is likely NOT a perfect sample, but rather - no valid sample at all
     // set it to 0 signal
@@ -184,7 +143,9 @@ export default function mapAntRxFails(
       return e.setData({ value: sampleRate });
     }
 
-    return e.setData({ value: sampleRate - e.get('value') });
+    return e.setData({
+      value: sampleRate - e.get('value')
+    });
   });
 
   return {
