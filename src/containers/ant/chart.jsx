@@ -158,9 +158,8 @@ class Chart extends React.Component {
         ? 'succesful'
         : 'failed';
 
-      const calibrationValues = device.calibration.values[0] +
-        ',' +
-        device.calibration.values[1];
+      const calibrationValues =
+        device.calibration.values[0] + ',' + device.calibration.values[1];
 
       let autoZero = 'not supported';
 
@@ -176,9 +175,9 @@ class Chart extends React.Component {
           Calibration {calibrationSuccess}&nbsp;<strong>({calibrationValues})</strong>&nbsp;auto-zero&nbsp;<strong>{autoZero}</strong>
         </h5>
       );
-
-      return null;
     }
+
+    return null;
   }
 
   renderPowerDevice(device) {
@@ -326,8 +325,8 @@ class Chart extends React.Component {
               </ChartContainer>
             </Resizable>
           </div>
-          <div className="hidden-xs col-sm-2">          
-            <div className={styles.signalBoxContent}> 
+          <div className="hidden-xs col-sm-2">
+            <div className={styles.signalBoxContent}>
               <div className={styles.signalBoxTitle}>
                 Data Rate
               </div>
@@ -335,7 +334,7 @@ class Chart extends React.Component {
                 {device.sampleRate}Hz
               </div>
             </div>
-            <div className={styles.signalBoxContent}> 
+            <div className={styles.signalBoxContent}>
               <div className={styles.signalBoxTitle}>
                 Avg Fails
               </div>
@@ -422,7 +421,7 @@ class Chart extends React.Component {
               </div>
             </div>
           </div>
-        </div>        
+        </div>
         <div className="row">
           <div className="col-xs-12 col-sm-10">
             <Resizable>
@@ -477,8 +476,8 @@ class Chart extends React.Component {
               </ChartContainer>
             </Resizable>
           </div>
-          <div className="hidden-xs col-sm-2">          
-            <div className={styles.signalBoxContent}> 
+          <div className="hidden-xs col-sm-2">
+            <div className={styles.signalBoxContent}>
               <div className={styles.signalBoxTitle}>
                 Data Rate
               </div>
@@ -486,7 +485,7 @@ class Chart extends React.Component {
                 {device.sampleRate}Hz
               </div>
             </div>
-            <div className={styles.signalBoxContent}> 
+            <div className={styles.signalBoxContent}>
               <div className={styles.signalBoxTitle}>
                 Avg Fails
               </div>
@@ -495,7 +494,7 @@ class Chart extends React.Component {
               </div>
             </div>
           </div>
-        </div>        
+        </div>
       </div>
     );
   }
@@ -599,8 +598,8 @@ class Chart extends React.Component {
               </ChartContainer>
             </Resizable>
           </div>
-          <div className="hidden-xs col-sm-2">          
-            <div className={styles.signalBoxContent}> 
+          <div className="hidden-xs col-sm-2">
+            <div className={styles.signalBoxContent}>
               <div className={styles.signalBoxTitle}>
                 Data Rate
               </div>
@@ -608,7 +607,7 @@ class Chart extends React.Component {
                 {device.sampleRate}Hz
               </div>
             </div>
-            <div className={styles.signalBoxContent}> 
+            <div className={styles.signalBoxContent}>
               <div className={styles.signalBoxTitle}>
                 Avg Fails
               </div>
@@ -617,7 +616,7 @@ class Chart extends React.Component {
               </div>
             </div>
           </div>
-        </div>        
+        </div>
       </div>
     );
   }
@@ -806,8 +805,8 @@ class Chart extends React.Component {
               </ChartContainer>
             </Resizable>
           </div>
-          <div className="hidden-xs col-sm-2">          
-            <div className={styles.signalBoxContent}> 
+          <div className="hidden-xs col-sm-2">
+            <div className={styles.signalBoxContent}>
               <div className={styles.signalBoxTitle}>
                 Data Rate
               </div>
@@ -815,7 +814,7 @@ class Chart extends React.Component {
                 {device.sampleRate}Hz
               </div>
             </div>
-            <div className={styles.signalBoxContent}> 
+            <div className={styles.signalBoxContent}>
               <div className={styles.signalBoxTitle}>
                 Avg Fails
               </div>
@@ -824,7 +823,7 @@ class Chart extends React.Component {
               </div>
             </div>
           </div>
-        </div>    
+        </div>
       </div>
     );
   }
@@ -852,7 +851,8 @@ class Chart extends React.Component {
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>ANT+ device searches</h4>
               <h5 className={structure.infoHeading}>
-                Fewer is better. Expect one at the start. Lots of bars here indicates a weak signal.
+                Fewer is better. Expect one at the start. Lots of bars here
+                indicates a weak signal.
               </h5>
             </div>
           </div>
@@ -914,19 +914,28 @@ class Chart extends React.Component {
     );
   }
 
-  render() {
-    // plucking out each device type instead of iterating so that power, kickr, fec always comes before basic devices regardless of the order the devices are in in the state
-
+  componentWillMount() {
+    // plucking out each device type instead of iterating so that power, kickr,
+    // fec always comes before basic devices regardless of the order the
+    // devices are in in the state
     const powerDevice = _.find(this.state.devices, device => {
       return device.type === POWER_METER_DEVICE;
     });
 
-    const powerChart = powerDevice ? this.renderPowerDevice(powerDevice) : null;
+    this.setState({ powerDevice: powerDevice });
+  }
+
+  render() {
+    const powerChart = this.state.powerDevice
+      ? this.renderPowerDevice(this.state.powerDevice)
+      : null;
 
     const smartWithAntPowerProtocol = _.find(this.state.devices, device => {
       const manufacturerIdString = device.manufacturerId + '';
-      return device.type === SMART_TRAINER_DEVICE &&
-        manufacturerIdString === WAHOO_MANUFACTURER_ID;
+      return (
+        device.type === SMART_TRAINER_DEVICE &&
+        manufacturerIdString === WAHOO_MANUFACTURER_ID
+      );
       // manufacturerIdString === SARIS_MANUFACTURER_ID ||
       // manufacturerIdString === ELITE_MANUFACTURER_ID);
     });
