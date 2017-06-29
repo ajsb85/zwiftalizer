@@ -13,8 +13,8 @@ const PATHS = {
 
 var plugins = [
   new webpack.DefinePlugin({
-    // 'process.env.NODE_ENV': JSON.stringify('production')
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    'process.env.NODE_ENV': JSON.stringify('production')
+    //'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
   })
 ];
 
@@ -92,7 +92,7 @@ const common = {
 if (TARGET === 'dev' || !TARGET) {
   module.exports = merge(common, {
     // enable sourcemaps for debugging js
-    //devtool: (process.env.DEBUG ? 'eval-source-map' : 'cheap-source-map'),
+    // devtool: (process.env.DEBUG ? 'eval-source-map' : 'cheap-source-map'),
 
     devServer: {
       contentBase: PATHS.build,
@@ -101,9 +101,9 @@ if (TARGET === 'dev' || !TARGET) {
       // routing works. This is a good default that will come
       // in handy in more complicated setups.
       historyApiFallback: true,
-      //hot: true,
-      //inline: true,
-      //progress: true,
+      // hot: true,
+      // inline: true,
+      // progress: true,
 
       // Display only errors to reduce the amount of output.
       //stats: 'errors-only',

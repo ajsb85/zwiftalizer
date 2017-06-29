@@ -105,6 +105,8 @@ export { default as mapNetworkReconnects } from './mapNetworkReconnects';
 
 export { default as mapNetworkErrors } from './mapNetworkErrors';
 
+export { default as secondsToTime } from './secondsToTime';
+
 export {
   default as mapNetworkPhoneConnectionAttempts
 } from './mapNetworkPhoneConnectionAttempts';

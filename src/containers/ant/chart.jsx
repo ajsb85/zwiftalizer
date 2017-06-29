@@ -61,9 +61,7 @@ const baselineStyle = {
   }
 };
 
-const largeChartHeight = 150;
-
-const smallChartHeight = 100;
+const chartHeight = 150;
 
 const leftLabelAxisLabelWidth = 110;
 
@@ -158,8 +156,9 @@ class Chart extends React.Component {
         ? 'succesful'
         : 'failed';
 
-      const calibrationValues =
-        device.calibration.values[0] + ',' + device.calibration.values[1];
+      const calibrationValues = device.calibration.values[0] +
+        ',' +
+        device.calibration.values[1];
 
       let autoZero = 'not supported';
 
@@ -172,7 +171,13 @@ class Chart extends React.Component {
 
       return (
         <h5 className={structure.subHeading}>
-          Calibration {calibrationSuccess}&nbsp;<strong>({calibrationValues})</strong>&nbsp;auto-zero&nbsp;<strong>{autoZero}</strong>
+          Calibration
+          {' '}
+          {calibrationSuccess}
+          &nbsp;
+          <strong>({calibrationValues})</strong>
+          &nbsp;auto-zero&nbsp;
+          <strong>{autoZero}</strong>
         </h5>
       );
     }
@@ -184,8 +189,8 @@ class Chart extends React.Component {
     const key = device.deviceId + device.channel;
 
     let label = ('Device ' +
-      device.deviceId +
-      ' - ' +
+      device.deviceId +  ' Channel ' + device.channel +
+      ' ' +
       this.getMakeAndModel(device) +
       ' Power meter')
       .replace(/\s(\s)+/, ' ')
@@ -270,7 +275,7 @@ class Chart extends React.Component {
                 minTime={this.state.initialRange.begin()}
                 showGrid={false}
               >
-                <ChartRow height={largeChartHeight} debug={false}>
+                <ChartRow height={chartHeight} debug={false}>
                   <YAxis
                     id="powerAxis"
                     label="Watts"
@@ -342,6 +347,14 @@ class Chart extends React.Component {
                 {device.failureRate}%
               </div>
             </div>
+            <div className={styles.signalBoxContent}>
+              <div className={styles.signalBoxTitle}>
+                Searches
+              </div>
+              <div className={styles.signalBoxValue}>
+                {device.dropoutsTotal}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -352,7 +365,7 @@ class Chart extends React.Component {
     const key = device.deviceId + device.channel;
 
     let label = ('Device ' +
-      device.deviceId +
+      device.deviceId +  ' Channel ' + device.channel +
       ' - ' +
       this.getMakeAndModel(device) +
       ' Smart Trainer')
@@ -435,7 +448,7 @@ class Chart extends React.Component {
                 minTime={this.state.initialRange.begin()}
                 showGrid={false}
               >
-                <ChartRow height={largeChartHeight} debug={false}>
+                <ChartRow height={chartHeight} debug={false}>
                   <YAxis
                     id="gradientAxis"
                     label="Resistance"
@@ -493,6 +506,14 @@ class Chart extends React.Component {
                 {device.failureRate}%
               </div>
             </div>
+            <div className={styles.signalBoxContent}>
+              <div className={styles.signalBoxTitle}>
+                Searches
+              </div>
+              <div className={styles.signalBoxValue}>
+                {device.dropoutsTotal}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -508,10 +529,9 @@ class Chart extends React.Component {
 
   renderBasicDevice(device, i) {
     let label = ('Device ' +
-      device.deviceId +
-      ' - ' +
-      this.getMakeAndModel(device) +
-      ' Basic Sensor')
+      device.deviceId +  ' Channel ' + device.channel +
+      ' ' +
+      this.getMakeAndModel(device))
       .replace(/\s(\s)+/, ' ')
       .trim();
 
@@ -565,7 +585,7 @@ class Chart extends React.Component {
                 minTime={this.state.initialRange.begin()}
                 showGrid={false}
               >
-                <ChartRow height={smallChartHeight} debug={false}>
+                <ChartRow height={chartHeight} debug={false}>
                   <YAxis
                     id={leftAxisId}
                     label="Signal"
@@ -615,6 +635,14 @@ class Chart extends React.Component {
                 {device.failureRate}%
               </div>
             </div>
+            <div className={styles.signalBoxContent}>
+              <div className={styles.signalBoxTitle}>
+                Searches
+              </div>
+              <div className={styles.signalBoxValue}>
+                {device.dropoutsTotal}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -625,7 +653,7 @@ class Chart extends React.Component {
     const key = device.deviceId + device.channel;
 
     let label = ('Device ' +
-      device.deviceId +
+      device.deviceId +  ' Channel ' + device.channel +
       ' - ' +
       this.getMakeAndModel(device))
       .replace(/\s(\s)+/, ' ')
@@ -732,7 +760,7 @@ class Chart extends React.Component {
                 minTime={this.state.initialRange.begin()}
                 showGrid={false}
               >
-                <ChartRow height={largeChartHeight} debug={false}>
+                <ChartRow height={chartHeight} debug={false}>
                   <YAxis
                     id="powerAxis"
                     label="Power"
@@ -820,6 +848,14 @@ class Chart extends React.Component {
               </div>
               <div className={styles.signalBoxValue}>
                 {device.failureRate}%
+              </div>
+            </div>
+            <div className={styles.signalBoxContent}>
+              <div className={styles.signalBoxTitle}>
+                Searches
+              </div>
+              <div className={styles.signalBoxValue}>
+                {device.dropoutsTotal}
               </div>
             </div>
           </div>
@@ -923,6 +959,28 @@ class Chart extends React.Component {
     });
 
     this.setState({ powerDevice: powerDevice });
+
+    const smartWithAntPowerProtocol = _.find(this.state.devices, device => {
+      const manufacturerIdString = device.manufacturerId + '';
+      return device.type === SMART_TRAINER_DEVICE &&
+        manufacturerIdString === WAHOO_MANUFACTURER_ID;
+      // manufacturerIdString === SARIS_MANUFACTURER_ID ||
+      // manufacturerIdString === ELITE_MANUFACTURER_ID);
+    });
+
+    this.setState({ smartWithAntPowerProtocol: smartWithAntPowerProtocol });
+
+    const fecDevice = _.find(this.state.devices, device => {
+      return device.type === SMART_TRAINER_DEVICE;
+    });
+
+    this.setState({ fecDevice: fecDevice });
+
+    const basicDevices = _.filter(this.state.devices, device => {
+      return device.type === BASIC_DEVICE;
+    });
+
+    this.setState({ basicDevices: basicDevices });
   }
 
   render() {
@@ -930,34 +988,18 @@ class Chart extends React.Component {
       ? this.renderPowerDevice(this.state.powerDevice)
       : null;
 
-    const smartWithAntPowerProtocol = _.find(this.state.devices, device => {
-      const manufacturerIdString = device.manufacturerId + '';
-      return (
-        device.type === SMART_TRAINER_DEVICE &&
-        manufacturerIdString === WAHOO_MANUFACTURER_ID
-      );
-      // manufacturerIdString === SARIS_MANUFACTURER_ID ||
-      // manufacturerIdString === ELITE_MANUFACTURER_ID);
-    });
-
-    const kickrChart = smartWithAntPowerProtocol
-      ? this.renderSmartWithAntPowerProtocolDevice(smartWithAntPowerProtocol)
+    const kickrChart = this.state.smartWithAntPowerProtocol
+      ? this.renderSmartWithAntPowerProtocolDevice(
+          this.state.smartWithAntPowerProtocol
+        )
       : null;
 
-    const fecDevice = _.find(this.state.devices, device => {
-      return device.type === SMART_TRAINER_DEVICE;
-    });
-
-    const fecChart = fecDevice && !smartWithAntPowerProtocol
-      ? this.renderFecDevice(fecDevice)
+    const fecChart = this.state.fecDevice && !this.state.smartWithAntPowerProtocol
+      ? this.renderFecDevice(this.state.fecDevice)
       : null;
 
-    const basicDevices = _.filter(this.state.devices, device => {
-      return device.type === BASIC_DEVICE;
-    });
-
-    const basicDeviceCharts = basicDevices
-      ? this.renderBasicDevices(basicDevices)
+    const basicDeviceCharts = this.state.basicDevices
+      ? this.renderBasicDevices(this.state.basicDevices)
       : null;
 
     const brush = this.renderSearchesBrush();

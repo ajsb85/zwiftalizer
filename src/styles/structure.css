@@ -122,16 +122,16 @@
 }
 .heading {
   color: #178acc;
-  font-size: 2.2rem;
-  line-height: 2.4rem;
+  font-size: 1.8rem;
+  line-height: 2rem;
   font-weight: 600;
 }
 .subHeading {
   color: #178acc;
   font-weight: 400;
-  font-size: 1.6rem;
-  line-height: 1.6rem;
-  margin-bottom: 1.2rem;
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  margin-bottom: 1rem;
 }
 .infoHeading {
   color: #666;

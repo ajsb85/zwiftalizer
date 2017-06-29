@@ -28,6 +28,7 @@ export const FAVERO_MANUFACTURER_ID = '263';
 export const SAXONAR_MANUFACTURER_ID = '29';
 
 export const WAHOO_KICKR_MODEL_ID = '1';
+export const WAHOO_KICKR_SNAP_MODEL_ID = '16';
 
 // these are to try and identify ant+ powersources that are NOT also smart trainers
 // SARIS_MANUFACTURER_ID is the odd one out

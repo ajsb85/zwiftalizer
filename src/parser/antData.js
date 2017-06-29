@@ -90,6 +90,7 @@ export default function antData(log, timeAxisTimeSeries) {
     Object.assign(device, {
       signal: signal.timeseries,
       dropouts: signal.dropouts,
+      dropoutsTotal: signal.dropouts.length || 0,
       sampleRate: signal.sampleRate,
       failureRate: signal.failureRate
     });

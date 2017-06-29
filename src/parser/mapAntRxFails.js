@@ -4,9 +4,12 @@ import toArray from './toArray';
 
 import indexToUnixTime from './indexToUnixTime';
 
+import secondsToTime from './secondsToTime';
+
 import {
   WAHOO_MANUFACTURER_ID,
   WAHOO_KICKR_MODEL_ID,
+  WAHOO_KICKR_SNAP_MODEL_ID,
   TACX_MANUFACTURER_ID,
   TACX_NEO_MODEL_IDS,
   ANT_AVERAGES_WINDOW_IN_SEC,
@@ -99,7 +102,7 @@ export default function mapAntRxFails(
     (device.manufacturerId &&
       device.modelId &&
       ((`${device.manufacturerId}` === WAHOO_MANUFACTURER_ID &&
-        `${device.modelId}` === WAHOO_KICKR_MODEL_ID) ||
+        (`${device.modelId}` === WAHOO_KICKR_MODEL_ID || `${device.modelId}` === WAHOO_KICKR_SNAP_MODEL_ID)) ||
         (`${device.manufacturerId}` === TACX_MANUFACTURER_ID &&
           _.contains(TACX_NEO_MODEL_IDS, `${device.modelId}`))))
   ) {
@@ -124,23 +127,29 @@ export default function mapAntRxFails(
     // bucket is likely NOT a perfect sample, but rather - no valid sample at all
     // set it to 0 signal
 
-    const timestamp = indexToUnixTime(e.indexAsString());
+    const interval = indexToUnixTime(e.indexAsString());
 
-    const roundedTimeStamp = `${ANT_AVERAGES_WINDOW_IN_SEC}s-${Math.round(timestamp / ANT_AVERAGES_WINDOW_IN_SEC) * ANT_AVERAGES_WINDOW_IN_SEC}`;
+    const roundedInterval = parseInt(`${Math.round(interval / ANT_AVERAGES_WINDOW_IN_SEC) * ANT_AVERAGES_WINDOW_IN_SEC}`, 10);
+
+    // the interval is every ANT_AVERAGES_WINDOW_IN_SEC since unix epoc
+    // e.g. 3s-12345 is the 12345th 3 second interval since the unix epoc,
+    // so multiply out the interval by the ANT_AVERAGES_WINDOW_IN_SEC to get the unix time
+    const humanizedTimestamp = secondsToTime(roundedInterval * ANT_AVERAGES_WINDOW_IN_SEC);
+
+    const avgFormatRoundedInterval = `${ANT_AVERAGES_WINDOW_IN_SEC}s-${roundedInterval}`;
 
     // check the value that coincides with a device search
     if (
       searchesTimestamps &&
       searchesTimestamps.length &&
-      _.contains(searchesTimestamps, roundedTimeStamp) &&
+      _.contains(searchesTimestamps, avgFormatRoundedInterval) &&
       e.get('value') === 0
     ) {
       // return the suspected drop out seconds for surfacing in the charts and textual analysis
-      dropouts.push(roundedTimeStamp);
-      // console.log(
-      //   `${JSON.stringify(e)} channel ${device.channel} device ${device.deviceId} is likely the cause of the re-pairing / goto search`
-      // );
-      return e.setData({ value: sampleRate });
+      if (!_.contains(dropouts, humanizedTimestamp)) {
+        dropouts.push(humanizedTimestamp);
+      }
+      return e.setData({ value: 0 });
     }
 
     return e.setData({
@@ -148,8 +157,13 @@ export default function mapAntRxFails(
     });
   });
 
+  console.log(`Channel ${device.channel}`);
+  console.log(dropouts);
+
   return {
     timeseries: filteredRollup,
+    // the dropouts is an array of the timestamps when the series went to zero
+    // at the same time as a goto search event occurred
     dropouts,
     sampleRate,
     failureRate
