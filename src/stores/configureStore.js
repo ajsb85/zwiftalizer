@@ -61,7 +61,7 @@ export default function configureStore() {
     compose(
       applyMiddleware(
         // lets us dispatch async functions
-        thunkMiddleware //,
+        thunkMiddleware
         // loggerMiddleware // neat middleware that logs actions
       ),
       // enables redux chrome dev tools extension

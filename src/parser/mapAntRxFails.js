@@ -6,22 +6,9 @@ import indexToUnixTime from './indexToUnixTime';
 
 import secondsToTime from './secondsToTime';
 
-import {
-  WAHOO_MANUFACTURER_ID,
-  WAHOO_KICKR_MODEL_ID,
-  WAHOO_KICKR_SNAP_MODEL_ID,
-  TACX_MANUFACTURER_ID,
-  TACX_NEO_MODEL_IDS,
-  ANT_AVERAGES_WINDOW_IN_SEC,
-  FOUR_HZ,
-  EIGHT_HZ
-} from './constants';
+import { ANT_AVERAGES_WINDOW_IN_SEC, FOUR_HZ, EIGHT_HZ } from './constants';
 
 const _ = require('underscore');
-
-const sprintf = require('sprintf-js').sprintf;
-
-const antRxFailFmt = '^\\[[^\\]]*\\]\\s+?ant\\s+?:\\s+?rx\\s+?fail\\s+?on\\s+?channel\\s+?%s$';
 
 // lines is assumed to be ANT lines only, as an array, with times already in unix format using epochify
 export default function mapAntRxFails(
@@ -42,7 +29,10 @@ export default function mapAntRxFails(
 
   const antLines = Array.isArray(lines) ? lines : toArray(lines);
 
-  const rxFailRegex = new RegExp(sprintf(antRxFailFmt, device.channel), 'i');
+  const rxFailRegex = new RegExp(
+    `^\\[[^\\]]*\\]\\s+?ant\\s+?:\\s+?rx\\s+?fail\\s+?on\\s+?channel\\s+?${device.channel}$`,
+    'i'
+  );
 
   const fails = [];
 
@@ -91,31 +81,16 @@ export default function mapAntRxFails(
     }
   });
 
-  let sampleRate = FOUR_HZ;
+  let dataRate = FOUR_HZ;
 
-  // Try to use device manufacturerId and modelId to make a better guess
-  // at whether the device is 4HZ or 8HZ data rate.
-  // If the max number of RxFails is higher than 5
-  // or if the device is either known to be a Power meter, Kickr or Neo then use 8HZ
-  if (
-    maxValue > FOUR_HZ + 1 ||
-    (device.manufacturerId &&
-      device.modelId &&
-      ((`${device.manufacturerId}` === WAHOO_MANUFACTURER_ID &&
-        (`${device.modelId}` === WAHOO_KICKR_MODEL_ID || `${device.modelId}` === WAHOO_KICKR_SNAP_MODEL_ID)) ||
-        (`${device.manufacturerId}` === TACX_MANUFACTURER_ID &&
-          _.contains(TACX_NEO_MODEL_IDS, `${device.modelId}`))))
-  ) {
-    sampleRate = EIGHT_HZ;
+  if (maxValue > FOUR_HZ + 1) {
+    dataRate = EIGHT_HZ;
   }
 
-  const totalMessagesMax = sampleRate * timeAxisTimeSeries.count();
+  const totalMessagesMax = dataRate * timeAxisTimeSeries.count();
 
   const failureRate = Math.round(totalRxFails / totalMessagesMax / 0.0001) /
     100;
-
-  // the logging of the sampling is not exact seconds, there could be some overspill into the next second,
-  // so the ANT_AVERAGES_WINDOW_IN_SEC averages smooth things out
 
   // Zero out the N seconds averages that are impossibly high -
   // when there are absolutely no rxfails in ANT_AVERAGES_WINDOW_IN_SEC seconds -
@@ -129,12 +104,17 @@ export default function mapAntRxFails(
 
     const interval = indexToUnixTime(e.indexAsString());
 
-    const roundedInterval = parseInt(`${Math.round(interval / ANT_AVERAGES_WINDOW_IN_SEC) * ANT_AVERAGES_WINDOW_IN_SEC}`, 10);
+    const roundedInterval = parseInt(
+      `${Math.round(interval / ANT_AVERAGES_WINDOW_IN_SEC) * ANT_AVERAGES_WINDOW_IN_SEC}`,
+      10
+    );
 
     // the interval is every ANT_AVERAGES_WINDOW_IN_SEC since unix epoc
     // e.g. 3s-12345 is the 12345th 3 second interval since the unix epoc,
     // so multiply out the interval by the ANT_AVERAGES_WINDOW_IN_SEC to get the unix time
-    const humanizedTimestamp = secondsToTime(roundedInterval * ANT_AVERAGES_WINDOW_IN_SEC);
+    const humanizedTimestamp = secondsToTime(
+      roundedInterval * ANT_AVERAGES_WINDOW_IN_SEC
+    );
 
     const avgFormatRoundedInterval = `${ANT_AVERAGES_WINDOW_IN_SEC}s-${roundedInterval}`;
 
@@ -153,7 +133,7 @@ export default function mapAntRxFails(
     }
 
     return e.setData({
-      value: sampleRate - e.get('value')
+      value: dataRate - e.get('value')
     });
   });
 
@@ -165,7 +145,7 @@ export default function mapAntRxFails(
     // the dropouts is an array of the timestamps when the series went to zero
     // at the same time as a goto search event occurred
     dropouts,
-    sampleRate,
+    sampleRate: dataRate,
     failureRate
   };
 }
