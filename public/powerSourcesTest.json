@@ -2,199 +2,862 @@
     "data": {
         "regions": [
             {
-                "countryCode": "US",
-                "countryName": "United States",
+                "countryCode": "AU",
+                "countryName": "Australia",
                 "powermeters": {
                     "data": [
                         {
                             "manufacturerId": "1",
-                            "modelId": "2161",
+                            "modelId": "1381",
                             "type": 1,
                             "count": 1,
-                            "percent": 10,
+                            "percent": 4.35,
                             "color": "#1285c7",
-                            "modelName": "Vector 2",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Vector CP",
                             "controllable": null,
                             "maxIncline": null,
-                            "accuracy": 0.02,
-                            "manufacturerName": "Garmin"
+                            "accuracy": 0.02
                         },
                         {
-                            "manufacturerId": "263",
-                            "modelId": "1",
+                            "manufacturerId": "1",
+                            "modelId": "10007",
                             "type": 1,
                             "count": 1,
-                            "percent": 10,
-                            "color": "#383838",
-                            "modelName": "BePro",
-                            "controllable": null,
-                            "maxIncline": null,
-                            "accuracy": 0.02,
-                            "manufacturerName": "Favero"
-                        },
-                        {
-                            "manufacturerId": "29",
-                            "modelId": "1031",
-                            "type": 1,
-                            "count": 1,
-                            "percent": 10,
-                            "color": "#b4cc64",
-                            "modelName": "power2max NG",
-                            "controllable": null,
-                            "maxIncline": null,
-                            "accuracy": 0.02,
-                            "manufacturerName": "power2max"
-                        },
-                        {
-                            "manufacturerId": "29",
-                            "modelId": "4",
-                            "type": 1,
-                            "count": 1,
-                            "percent": 10,
-                            "color": "#b4cc64",
-                            "modelName": "power2max",
-                            "controllable": null,
-                            "maxIncline": null,
-                            "accuracy": 0.02,
-                            "manufacturerName": "power2max"
-                        },
-                        {
-                            "manufacturerId": "51",
-                            "modelId": "7",
-                            "type": 1,
-                            "count": 1,
-                            "percent": 10,
-                            "color": "#e32525",
-                            "modelName": "Precision",
-                            "controllable": null,
-                            "maxIncline": null,
-                            "accuracy": 0.02,
-                            "manufacturerName": "4iiii"
-                        },
-                        {
-                            "manufacturerId": "69",
-                            "modelId": "1",
-                            "type": 1,
-                            "count": 2,
-                            "percent": 20,
-                            "color": "#0079c1",
-                            "modelName": "Powermeter",
-                            "controllable": null,
-                            "maxIncline": null,
-                            "accuracy": 0.02,
-                            "manufacturerName": "Stages"
-                        },
-                        {
-                            "manufacturerId": "7",
-                            "modelId": "1",
-                            "type": 1,
-                            "count": 1,
-                            "percent": 10,
-                            "color": "#d0112b",
+                            "percent": 4.35,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
                             "modelName": "Unknown",
                             "controllable": null,
                             "maxIncline": null,
-                            "accuracy": 0.015,
-                            "manufacturerName": "Quarq"
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "0",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 8.7,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "6",
+                            "modelId": "55219",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 4.35,
+                            "color": "#666",
+                            "manufacturerName": "Unknown",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
                         },
                         {
                             "manufacturerId": "7",
                             "modelId": "9092",
                             "type": 1,
                             "count": 1,
-                            "percent": 10,
+                            "percent": 4.35,
                             "color": "#d0112b",
-                            "modelName": "Unknown",
+                            "manufacturerName": "Quarq",
+                            "modelName": "Specialized",
                             "controllable": null,
                             "maxIncline": null,
-                            "accuracy": 0.015,
-                            "manufacturerName": "Quarq"
+                            "accuracy": 0.015
                         },
                         {
                             "manufacturerId": "9",
-                            "modelId": "4096",
+                            "modelId": "272",
                             "type": 1,
                             "count": 1,
-                            "percent": 10,
+                            "percent": 4.35,
                             "color": "#fc6923",
-                            "modelName": "G3 Hub",
+                            "manufacturerName": "PowerTap",
+                            "modelName": "C1 Chainrings",
                             "controllable": null,
                             "maxIncline": null,
-                            "accuracy": 0.015,
-                            "manufacturerName": "PowerTap"
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "288",
+                            "type": 1,
+                            "count": 3,
+                            "percent": 13.04,
+                            "color": "#fc6923",
+                            "manufacturerName": "PowerTap",
+                            "modelName": "P1 Pedals",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "29",
+                            "modelId": "1031",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 4.35,
+                            "color": "#b4cc64",
+                            "manufacturerName": "power2max",
+                            "modelName": "power2max NG",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "48",
+                            "modelId": "910",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 8.7,
+                            "color": "#b1343a",
+                            "manufacturerName": "Pioneer",
+                            "modelName": "Power Meter",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "60",
+                            "modelId": "115",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 4.35,
+                            "color": "#666",
+                            "manufacturerName": "Rotor",
+                            "modelName": "Power Cranks",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "69",
+                            "modelId": "1",
+                            "type": 1,
+                            "count": 9,
+                            "percent": 39.13,
+                            "color": "#0079c1",
+                            "manufacturerName": "Stages",
+                            "modelName": "Powermeter",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
                         }
                     ],
-                    "total": 10
+                    "total": 23
                 },
                 "smartTrainers": {
                     "data": [
                         {
-                            "manufacturerId": 9,
-                            "modelId": 320,
+                            "manufacturerId": "9",
+                            "modelId": "320",
                             "type": 2,
-                            "count": 1,
-                            "percent": 9.09
-                        },
-                        {
-                            "manufacturerId": "32",
-                            "modelId": "16",
-                            "type": 2,
-                            "count": 1,
-                            "percent": 9.09,
-                            "color": "#003479",
-                            "modelName": "Kickr Snap",
+                            "count": 2,
+                            "percent": 2.41,
+                            "color": "#ffd403",
+                            "manufacturerName": "CycleOps",
+                            "modelName": "Hammer",
                             "controllable": true,
-                            "maxIncline": 0.1,
-                            "accuracy": 0.05,
-                            "manufacturerName": "Wahoo",
+                            "maxIncline": 0.25,
+                            "accuracy": 0.03,
                             "maxPower": 2000
                         },
                         {
                             "manufacturerId": "32",
                             "modelId": "1",
                             "type": 2,
-                            "count": 4,
-                            "percent": 36.36,
+                            "count": 45,
+                            "percent": 54.22,
                             "color": "#003479",
+                            "manufacturerName": "Wahoo",
                             "modelName": "Kickr",
                             "controllable": true,
                             "maxIncline": 0.2,
                             "accuracy": 0.03,
-                            "manufacturerName": "Wahoo",
                             "maxPower": 2500
+                        },
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "16",
+                            "type": 2,
+                            "count": 6,
+                            "percent": 7.23,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr Snap",
+                            "controllable": true,
+                            "maxIncline": 0.1,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "17",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 1.2,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Real Turbo Muin B+",
+                            "controllable": true,
+                            "maxIncline": 0.18,
+                            "accuracy": null,
+                            "maxPower": 550
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "23",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 1.2,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Direto",
+                            "controllable": true,
+                            "maxIncline": 0.14,
+                            "accuracy": 0.025,
+                            "maxPower": 1400
+                        },
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "328",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 1.2,
+                            "color": "#ffd403",
+                            "manufacturerName": "CycleOps",
+                            "modelName": "Magnus",
+                            "controllable": true,
+                            "maxIncline": 0.15,
+                            "accuracy": 0.05,
+                            "maxPower": 1500
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "20",
+                            "type": 2,
+                            "count": 2,
+                            "percent": 2.41,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Drivo/Kura",
+                            "controllable": true,
+                            "maxIncline": 0.24,
+                            "accuracy": 0.01,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2180",
+                            "type": 2,
+                            "count": 5,
+                            "percent": 6.02,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Vortex Smart",
+                            "controllable": true,
+                            "maxIncline": 0.07,
+                            "accuracy": 0.1,
+                            "maxPower": 950
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2900",
+                            "type": 2,
+                            "count": 4,
+                            "percent": 4.82,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Flux",
+                            "controllable": true,
+                            "maxIncline": 0.1,
+                            "accuracy": 0.05,
+                            "maxPower": 1500
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2780",
+                            "type": 2,
+                            "count": 3,
+                            "percent": 3.61,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Bushido Smart",
+                            "controllable": true,
+                            "maxIncline": 0.15,
+                            "accuracy": 0.1,
+                            "maxPower": 1400
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 13,
+                            "percent": 15.66,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        }
+                    ],
+                    "total": 83
+                }
+            },
+            {
+                "countryCode": "US",
+                "countryName": "United States",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "2162",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 1.89,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "0",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 1.89,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "2161",
+                            "type": 1,
+                            "count": 6,
+                            "percent": 11.32,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Vector 2",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "7",
+                            "modelId": "4868",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 3.77,
+                            "color": "#d0112b",
+                            "manufacturerName": "Quarq",
+                            "modelName": "ELSA",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "7",
+                            "modelId": "8964",
+                            "type": 1,
+                            "count": 4,
+                            "percent": 7.55,
+                            "color": "#d0112b",
+                            "manufacturerName": "Quarq",
+                            "modelName": "Riken",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "7",
+                            "modelId": "5383",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 1.89,
+                            "color": "#d0112b",
+                            "manufacturerName": "Quarq",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "272",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 1.89,
+                            "color": "#fc6923",
+                            "manufacturerName": "PowerTap",
+                            "modelName": "C1 Chainrings",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "48",
+                            "modelId": "910",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 3.77,
+                            "color": "#b1343a",
+                            "manufacturerName": "Pioneer",
+                            "modelName": "Power Meter",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "263",
+                            "modelId": "1",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 1.89,
+                            "color": "#383838",
+                            "manufacturerName": "Favero",
+                            "modelName": "BePro",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "29",
+                            "modelId": "4",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 1.89,
+                            "color": "#b4cc64",
+                            "manufacturerName": "power2max",
+                            "modelName": "power2max",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "29",
+                            "modelId": "1031",
+                            "type": 1,
+                            "count": 4,
+                            "percent": 7.55,
+                            "color": "#b4cc64",
+                            "manufacturerName": "power2max",
+                            "modelName": "power2max NG",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "51",
+                            "modelId": "7",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 3.77,
+                            "color": "#e32525",
+                            "manufacturerName": "4iiii",
+                            "modelName": "Precision",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "69",
+                            "modelId": "1",
+                            "type": 1,
+                            "count": 15,
+                            "percent": 28.3,
+                            "color": "#0079c1",
+                            "manufacturerName": "Stages",
+                            "modelName": "Powermeter",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "7",
+                            "modelId": "9092",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 3.77,
+                            "color": "#d0112b",
+                            "manufacturerName": "Quarq",
+                            "modelName": "Specialized",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "7",
+                            "modelId": "1",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 3.77,
+                            "color": "#d0112b",
+                            "manufacturerName": "Quarq",
+                            "modelName": "DZero",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "288",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 3.77,
+                            "color": "#fc6923",
+                            "manufacturerName": "PowerTap",
+                            "modelName": "P1 Pedals",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "0",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 1.89,
+                            "color": "#fc6923",
+                            "manufacturerName": "PowerTap",
+                            "modelName": "Wireless",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "4096",
+                            "type": 1,
+                            "count": 5,
+                            "percent": 9.43,
+                            "color": "#fc6923",
+                            "manufacturerName": "PowerTap",
+                            "modelName": "G3 Hub",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        }
+                    ],
+                    "total": 53
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "328",
+                            "type": 2,
+                            "count": 3,
+                            "percent": 1.96,
+                            "color": "#ffd403",
+                            "manufacturerName": "CycleOps",
+                            "modelName": "Magnus",
+                            "controllable": true,
+                            "maxIncline": 0.15,
+                            "accuracy": 0.05,
+                            "maxPower": 1500
+                        },
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "320",
+                            "type": 2,
+                            "count": 3,
+                            "percent": 1.96,
+                            "color": "#ffd403",
+                            "manufacturerName": "CycleOps",
+                            "modelName": "Hammer",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.03,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "1",
+                            "type": 2,
+                            "count": 80,
+                            "percent": 52.29,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.03,
+                            "maxPower": 2500
+                        },
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "16",
+                            "type": 2,
+                            "count": 24,
+                            "percent": 15.69,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr Snap",
+                            "controllable": true,
+                            "maxIncline": 0.1,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
                         },
                         {
                             "manufacturerId": "67",
                             "modelId": "22",
                             "type": 2,
-                            "count": 1,
-                            "percent": 9.09,
+                            "count": 3,
+                            "percent": 1.96,
                             "color": "#1d1d1d",
+                            "manufacturerName": "Bkool",
                             "modelName": "Smart Pro",
                             "controllable": true,
                             "maxIncline": 0.2,
                             "accuracy": 0.05,
-                            "manufacturerName": "Bkool"
+                            "maxPower": 2000
                         },
                         {
-                            "manufacturerId": 86,
-                            "modelId": 15,
+                            "manufacturerId": "86",
+                            "modelId": "14",
                             "type": 2,
                             "count": 1,
-                            "percent": 9.09
+                            "percent": 0.65,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
                         },
                         {
                             "manufacturerId": "86",
                             "modelId": "0",
                             "type": 2,
-                            "count": 1,
-                            "percent": 9.09,
+                            "count": 3,
+                            "percent": 1.96,
                             "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "15",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 0.65,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Unknown",
+                            "controllable": true,
+                            "maxIncline": null,
+                            "accuracy": null,
+                            "maxPower": null
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "18",
+                            "type": 2,
+                            "count": 2,
+                            "percent": 1.31,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "QUBO Digital Smart B+",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "20",
+                            "type": 2,
+                            "count": 2,
+                            "percent": 1.31,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
                             "modelName": "Drivo/Kura",
                             "controllable": true,
                             "maxIncline": 0.24,
                             "accuracy": 0.01,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2180",
+                            "type": 2,
+                            "count": 6,
+                            "percent": 3.92,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Vortex Smart",
+                            "controllable": true,
+                            "maxIncline": 0.07,
+                            "accuracy": 0.1,
+                            "maxPower": 950
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2780",
+                            "type": 2,
+                            "count": 5,
+                            "percent": 3.27,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Bushido Smart",
+                            "controllable": true,
+                            "maxIncline": 0.15,
+                            "accuracy": 0.1,
+                            "maxPower": 1400
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2080",
+                            "type": 2,
+                            "count": 4,
+                            "percent": 2.61,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Genius Smart",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2900",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 0.65,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Flux",
+                            "controllable": true,
+                            "maxIncline": 0.1,
+                            "accuracy": 0.05,
+                            "maxPower": 1500
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 14,
+                            "percent": 9.15,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2240",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 0.65,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Flow Smart",
+                            "controllable": true,
+                            "maxIncline": 0.06,
+                            "accuracy": 0.1,
+                            "maxPower": 800
+                        }
+                    ],
+                    "total": 153
+                }
+            },
+            {
+                "countryCode": "ZA",
+                "countryName": "South Africa",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "7",
+                            "modelId": "4868",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 50,
+                            "color": "#d0112b",
+                            "manufacturerName": "Quarq",
+                            "modelName": "ELSA",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "7",
+                            "modelId": "1",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 50,
+                            "color": "#d0112b",
+                            "manufacturerName": "Quarq",
+                            "modelName": "DZero",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        }
+                    ],
+                    "total": 2
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "320",
+                            "type": 2,
+                            "count": 2,
+                            "percent": 33.33,
+                            "color": "#ffd403",
+                            "manufacturerName": "CycleOps",
+                            "modelName": "Hammer",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.03,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "16",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 16.67,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr Snap",
+                            "controllable": true,
+                            "maxIncline": 0.1,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "20",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 16.67,
+                            "color": "#dc1f1f",
                             "manufacturerName": "Elite",
+                            "modelName": "Drivo/Kura",
+                            "controllable": true,
+                            "maxIncline": 0.24,
+                            "accuracy": 0.01,
                             "maxPower": 2000
                         },
                         {
@@ -202,13 +865,543 @@
                             "modelId": "2800",
                             "type": 2,
                             "count": 1,
-                            "percent": 9.09,
+                            "percent": 16.67,
                             "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
                             "modelName": "NEO Smart",
                             "controllable": true,
                             "maxIncline": 0.25,
-                            "accuracy": 0.02,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2240",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 16.67,
+                            "color": "#62b5e5",
                             "manufacturerName": "Tacx",
+                            "modelName": "Flow Smart",
+                            "controllable": true,
+                            "maxIncline": 0.06,
+                            "accuracy": 0.1,
+                            "maxPower": 800
+                        }
+                    ],
+                    "total": 6
+                }
+            },
+            {
+                "countryCode": "VN",
+                "countryName": "Vietnam",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "6",
+                            "modelId": "7",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#666",
+                            "manufacturerName": "Unknown",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        }
+                    ],
+                    "total": 1
+                },
+                "smartTrainers": {
+                    "data": [],
+                    "total": 0
+                }
+            },
+            {
+                "countryCode": "NO",
+                "countryName": "Norway",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "1381",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 50,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Vector CP",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "0",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 50,
+                            "color": "#fc6923",
+                            "manufacturerName": "PowerTap",
+                            "modelName": "Wireless",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        }
+                    ],
+                    "total": 2
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 4,
+                            "percent": 57.14,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2080",
+                            "type": 2,
+                            "count": 3,
+                            "percent": 42.86,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Genius Smart",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
+                        }
+                    ],
+                    "total": 7
+                }
+            },
+            {
+                "countryCode": "DK",
+                "countryName": "Denmark",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "29",
+                            "modelId": "1031",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 50,
+                            "color": "#b4cc64",
+                            "manufacturerName": "power2max",
+                            "modelName": "power2max NG",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "69",
+                            "modelId": "1",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 50,
+                            "color": "#0079c1",
+                            "manufacturerName": "Stages",
+                            "modelName": "Powermeter",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        }
+                    ],
+                    "total": 4
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "17",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 20,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Real Turbo Muin B+",
+                            "controllable": true,
+                            "maxIncline": 0.18,
+                            "accuracy": null,
+                            "maxPower": 550
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 4,
+                            "percent": 80,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        }
+                    ],
+                    "total": 5
+                }
+            },
+            {
+                "countryCode": "GB",
+                "countryName": "United Kingdom",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "2161",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 11.11,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Vector 2",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "7",
+                            "modelId": "5380",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 5.56,
+                            "color": "#d0112b",
+                            "manufacturerName": "Quarq",
+                            "modelName": "Riken AL",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "29",
+                            "modelId": "1031",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 5.56,
+                            "color": "#b4cc64",
+                            "manufacturerName": "power2max",
+                            "modelName": "power2max NG",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "51",
+                            "modelId": "7",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 5.56,
+                            "color": "#e32525",
+                            "manufacturerName": "4iiii",
+                            "modelName": "Precision",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "288",
+                            "type": 1,
+                            "count": 3,
+                            "percent": 16.67,
+                            "color": "#fc6923",
+                            "manufacturerName": "PowerTap",
+                            "modelName": "P1 Pedals",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "60",
+                            "modelId": "114",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 5.56,
+                            "color": "#666",
+                            "manufacturerName": "Rotor",
+                            "modelName": "inPower",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "69",
+                            "modelId": "1",
+                            "type": 1,
+                            "count": 9,
+                            "percent": 50,
+                            "color": "#0079c1",
+                            "manufacturerName": "Stages",
+                            "modelName": "Powermeter",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        }
+                    ],
+                    "total": 18
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "16",
+                            "type": 2,
+                            "count": 7,
+                            "percent": 10.14,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr Snap",
+                            "controllable": true,
+                            "maxIncline": 0.1,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "1",
+                            "type": 2,
+                            "count": 12,
+                            "percent": 17.39,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.03,
+                            "maxPower": 2500
+                        },
+                        {
+                            "manufacturerId": "67",
+                            "modelId": "22",
+                            "type": 2,
+                            "count": 2,
+                            "percent": 2.9,
+                            "color": "#1d1d1d",
+                            "manufacturerName": "Bkool",
+                            "modelName": "Smart Pro",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "67",
+                            "modelId": "17",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 1.45,
+                            "color": "#1d1d1d",
+                            "manufacturerName": "Bkool",
+                            "modelName": "Smart Go",
+                            "controllable": true,
+                            "maxIncline": 0.08,
+                            "accuracy": 0.05,
+                            "maxPower": 800
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "0",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 1.45,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "20",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 1.45,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Drivo/Kura",
+                            "controllable": true,
+                            "maxIncline": 0.24,
+                            "accuracy": 0.01,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2080",
+                            "type": 2,
+                            "count": 2,
+                            "percent": 2.9,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Genius Smart",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2180",
+                            "type": 2,
+                            "count": 9,
+                            "percent": 13.04,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Vortex Smart",
+                            "controllable": true,
+                            "maxIncline": 0.07,
+                            "accuracy": 0.1,
+                            "maxPower": 950
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 23,
+                            "percent": 33.33,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2240",
+                            "type": 2,
+                            "count": 6,
+                            "percent": 8.7,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Flow Smart",
+                            "controllable": true,
+                            "maxIncline": 0.06,
+                            "accuracy": 0.1,
+                            "maxPower": 800
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2780",
+                            "type": 2,
+                            "count": 5,
+                            "percent": 7.25,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Bushido Smart",
+                            "controllable": true,
+                            "maxIncline": 0.15,
+                            "accuracy": 0.1,
+                            "maxPower": 1400
+                        }
+                    ],
+                    "total": 69
+                }
+            },
+            {
+                "countryCode": "SE",
+                "countryName": "Sweden",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "2161",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 66.67,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Vector 2",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "29",
+                            "modelId": "1031",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 33.33,
+                            "color": "#b4cc64",
+                            "manufacturerName": "power2max",
+                            "modelName": "power2max NG",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        }
+                    ],
+                    "total": 3
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "1",
+                            "type": 2,
+                            "count": 3,
+                            "percent": 25,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.03,
+                            "maxPower": 2500
+                        },
+                        {
+                            "manufacturerId": "67",
+                            "modelId": "22",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 8.33,
+                            "color": "#1d1d1d",
+                            "manufacturerName": "Bkool",
+                            "modelName": "Smart Pro",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "21",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 8.33,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Rampa",
+                            "controllable": true,
+                            "maxIncline": 0.1,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 6,
+                            "percent": 50,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
                             "maxPower": 2200
                         },
                         {
@@ -216,22 +1409,414 @@
                             "modelId": "2780",
                             "type": 2,
                             "count": 1,
-                            "percent": 9.09,
+                            "percent": 8.33,
                             "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
                             "modelName": "Bushido Smart",
                             "controllable": true,
                             "maxIncline": 0.15,
                             "accuracy": 0.1,
-                            "manufacturerName": "Tacx",
                             "maxPower": 1400
                         }
                     ],
-                    "total": 11
+                    "total": 12
                 }
             },
             {
-                "countryCode": "GB",
-                "countryName": "United Kingdom",
+                "countryCode": "JP",
+                "countryName": "Japan",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "51",
+                            "modelId": "7",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#e32525",
+                            "manufacturerName": "4iiii",
+                            "modelName": "Precision",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        }
+                    ],
+                    "total": 1
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "18",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 20,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "QUBO Digital Smart B+",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "0",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 20,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 20,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2900",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 20,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Flux",
+                            "controllable": true,
+                            "maxIncline": 0.1,
+                            "accuracy": 0.05,
+                            "maxPower": 1500
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2780",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 20,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Bushido Smart",
+                            "controllable": true,
+                            "maxIncline": 0.15,
+                            "accuracy": 0.1,
+                            "maxPower": 1400
+                        }
+                    ],
+                    "total": 5
+                }
+            },
+            {
+                "countryCode": "DE",
+                "countryName": "Germany",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "2162",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 16.67,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "7",
+                            "modelId": "9479",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 16.67,
+                            "color": "#d0112b",
+                            "manufacturerName": "Quarq",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "263",
+                            "modelId": "3",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 16.67,
+                            "color": "#383838",
+                            "manufacturerName": "Favero",
+                            "modelName": "BePro Dual",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "60",
+                            "modelId": "114",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 16.67,
+                            "color": "#666",
+                            "manufacturerName": "Rotor",
+                            "modelName": "inPower",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "69",
+                            "modelId": "1",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 16.67,
+                            "color": "#0079c1",
+                            "manufacturerName": "Stages",
+                            "modelName": "Powermeter",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "288",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 16.67,
+                            "color": "#fc6923",
+                            "manufacturerName": "PowerTap",
+                            "modelName": "P1 Pedals",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        }
+                    ],
+                    "total": 6
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "1",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 7.14,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.03,
+                            "maxPower": 2500
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 9,
+                            "percent": 64.29,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2900",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 7.14,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Flux",
+                            "controllable": true,
+                            "maxIncline": 0.1,
+                            "accuracy": 0.05,
+                            "maxPower": 1500
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2180",
+                            "type": 2,
+                            "count": 2,
+                            "percent": 14.29,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Vortex Smart",
+                            "controllable": true,
+                            "maxIncline": 0.07,
+                            "accuracy": 0.1,
+                            "maxPower": 950
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2780",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 7.14,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Bushido Smart",
+                            "controllable": true,
+                            "maxIncline": 0.15,
+                            "accuracy": 0.1,
+                            "maxPower": 1400
+                        }
+                    ],
+                    "total": 14
+                }
+            },
+            {
+                "countryCode": "RO",
+                "countryName": "Romania",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "2161",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Vector 2",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        }
+                    ],
+                    "total": 1
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "1",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.03,
+                            "maxPower": 2500
+                        }
+                    ],
+                    "total": 1
+                }
+            },
+            {
+                "countryCode": "TW",
+                "countryName": "Taiwan",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "2161",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 40,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Vector 2",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "29",
+                            "modelId": "4",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 20,
+                            "color": "#b4cc64",
+                            "manufacturerName": "power2max",
+                            "modelName": "power2max",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "69",
+                            "modelId": "1",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 20,
+                            "color": "#0079c1",
+                            "manufacturerName": "Stages",
+                            "modelName": "Powermeter",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "4096",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 20,
+                            "color": "#fc6923",
+                            "manufacturerName": "PowerTap",
+                            "modelName": "G3 Hub",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        }
+                    ],
+                    "total": 5
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "0",
+                            "type": 2,
+                            "count": 2,
+                            "percent": 66.67,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 33.33,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        }
+                    ],
+                    "total": 3
+                }
+            },
+            {
+                "countryCode": "BR",
+                "countryName": "Brazil",
                 "powermeters": {
                     "data": [],
                     "total": 0
@@ -239,11 +1824,953 @@
                 "smartTrainers": {
                     "data": [
                         {
-                            "manufacturerId": 89,
-                            "modelId": 2800,
+                            "manufacturerId": "86",
+                            "modelId": "15",
                             "type": 2,
                             "count": 1,
-                            "percent": 100
+                            "percent": 50,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Unknown",
+                            "controllable": true,
+                            "maxIncline": null,
+                            "accuracy": null,
+                            "maxPower": null
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 50,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        }
+                    ],
+                    "total": 2
+                }
+            },
+            {
+                "countryCode": "CA",
+                "countryName": "Canada",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "69",
+                            "modelId": "1",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#0079c1",
+                            "manufacturerName": "Stages",
+                            "modelName": "Powermeter",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        }
+                    ],
+                    "total": 1
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "16",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 11.11,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr Snap",
+                            "controllable": true,
+                            "maxIncline": 0.1,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "1",
+                            "type": 2,
+                            "count": 5,
+                            "percent": 55.56,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.03,
+                            "maxPower": 2500
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 2,
+                            "percent": 22.22,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2180",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 11.11,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Vortex Smart",
+                            "controllable": true,
+                            "maxIncline": 0.07,
+                            "accuracy": 0.1,
+                            "maxPower": 950
+                        }
+                    ],
+                    "total": 9
+                }
+            },
+            {
+                "countryCode": "CH",
+                "countryName": "Switzerland",
+                "powermeters": {
+                    "data": [],
+                    "total": 0
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        }
+                    ],
+                    "total": 1
+                }
+            },
+            {
+                "countryCode": "FI",
+                "countryName": "Finland",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "69",
+                            "modelId": "1",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#0079c1",
+                            "manufacturerName": "Stages",
+                            "modelName": "Powermeter",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        }
+                    ],
+                    "total": 1
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        }
+                    ],
+                    "total": 1
+                }
+            },
+            {
+                "countryCode": "FR",
+                "countryName": "France",
+                "powermeters": {
+                    "data": [],
+                    "total": 0
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 2,
+                            "percent": 100,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        }
+                    ],
+                    "total": 2
+                }
+            },
+            {
+                "countryCode": "JE",
+                "countryName": "Jersey",
+                "powermeters": {
+                    "data": [],
+                    "total": 0
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        }
+                    ],
+                    "total": 1
+                }
+            },
+            {
+                "countryCode": "NL",
+                "countryName": "Netherlands",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "2079",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 50,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Vector S",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "48",
+                            "modelId": "910",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 50,
+                            "color": "#b1343a",
+                            "manufacturerName": "Pioneer",
+                            "modelName": "Power Meter",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        }
+                    ],
+                    "total": 2
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "1",
+                            "type": 2,
+                            "count": 2,
+                            "percent": 33.33,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.03,
+                            "maxPower": 2500
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 3,
+                            "percent": 50,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2180",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 16.67,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Vortex Smart",
+                            "controllable": true,
+                            "maxIncline": 0.07,
+                            "accuracy": 0.1,
+                            "maxPower": 950
+                        }
+                    ],
+                    "total": 6
+                }
+            },
+            {
+                "countryCode": "NZ",
+                "countryName": "New Zealand",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "29",
+                            "modelId": "4",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 50,
+                            "color": "#b4cc64",
+                            "manufacturerName": "power2max",
+                            "modelName": "power2max",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "51",
+                            "modelId": "7",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 25,
+                            "color": "#e32525",
+                            "manufacturerName": "4iiii",
+                            "modelName": "Precision",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "69",
+                            "modelId": "1",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 25,
+                            "color": "#0079c1",
+                            "manufacturerName": "Stages",
+                            "modelName": "Powermeter",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        }
+                    ],
+                    "total": 4
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 7.69,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        },
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "320",
+                            "type": 2,
+                            "count": 2,
+                            "percent": 15.38,
+                            "color": "#ffd403",
+                            "manufacturerName": "CycleOps",
+                            "modelName": "Hammer",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.03,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "1",
+                            "type": 2,
+                            "count": 4,
+                            "percent": 30.77,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.03,
+                            "maxPower": 2500
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "0",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 7.69,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2900",
+                            "type": 2,
+                            "count": 4,
+                            "percent": 30.77,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Flux",
+                            "controllable": true,
+                            "maxIncline": 0.1,
+                            "accuracy": 0.05,
+                            "maxPower": 1500
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2180",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 7.69,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Vortex Smart",
+                            "controllable": true,
+                            "maxIncline": 0.07,
+                            "accuracy": 0.1,
+                            "maxPower": 950
+                        }
+                    ],
+                    "total": 13
+                }
+            },
+            {
+                "countryCode": "SG",
+                "countryName": "Singapore",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "7",
+                            "modelId": "8964",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#d0112b",
+                            "manufacturerName": "Quarq",
+                            "modelName": "Riken",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        }
+                    ],
+                    "total": 1
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 2,
+                            "percent": 100,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
+                        }
+                    ],
+                    "total": 2
+                }
+            },
+            {
+                "countryCode": "BE",
+                "countryName": "Belgium",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "10007",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        }
+                    ],
+                    "total": 1
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "16",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 25,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr Snap",
+                            "controllable": true,
+                            "maxIncline": 0.1,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "1",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 25,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.03,
+                            "maxPower": 2500
+                        },
+                        {
+                            "manufacturerId": "67",
+                            "modelId": "22",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 25,
+                            "color": "#1d1d1d",
+                            "manufacturerName": "Bkool",
+                            "modelName": "Smart Pro",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "0",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 25,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        }
+                    ],
+                    "total": 4
+                }
+            },
+            {
+                "countryCode": "CO",
+                "countryName": "Colombia",
+                "powermeters": {
+                    "data": [],
+                    "total": 0
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "67",
+                            "modelId": "22",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#1d1d1d",
+                            "manufacturerName": "Bkool",
+                            "modelName": "Smart Pro",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
+                        }
+                    ],
+                    "total": 1
+                }
+            },
+            {
+                "countryCode": "MY",
+                "countryName": "Malaysia",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "69",
+                            "modelId": "1",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#0079c1",
+                            "manufacturerName": "Stages",
+                            "modelName": "Powermeter",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        }
+                    ],
+                    "total": 1
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "320",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#ffd403",
+                            "manufacturerName": "CycleOps",
+                            "modelName": "Hammer",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.03,
+                            "maxPower": 2000
+                        }
+                    ],
+                    "total": 1
+                }
+            },
+            {
+                "countryCode": "RU",
+                "countryName": "Russia",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "69",
+                            "modelId": "1",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#0079c1",
+                            "manufacturerName": "Stages",
+                            "modelName": "Powermeter",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        }
+                    ],
+                    "total": 1
+                },
+                "smartTrainers": {
+                    "data": [],
+                    "total": 0
+                }
+            },
+            {
+                "countryCode": "UY",
+                "countryName": "Uruguay",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "69",
+                            "modelId": "1",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#0079c1",
+                            "manufacturerName": "Stages",
+                            "modelName": "Powermeter",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        }
+                    ],
+                    "total": 1
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "17",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Real Turbo Muin B+",
+                            "controllable": true,
+                            "maxIncline": 0.18,
+                            "accuracy": null,
+                            "maxPower": 550
+                        }
+                    ],
+                    "total": 1
+                }
+            },
+            {
+                "countryCode": "PL",
+                "countryName": "Poland",
+                "powermeters": {
+                    "data": [],
+                    "total": 0
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "17",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Real Turbo Muin B+",
+                            "controllable": true,
+                            "maxIncline": 0.18,
+                            "accuracy": null,
+                            "maxPower": 550
+                        }
+                    ],
+                    "total": 1
+                }
+            },
+            {
+                "countryCode": "GR",
+                "countryName": "Greece",
+                "powermeters": {
+                    "data": [],
+                    "total": 0
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "16",
+                            "type": 2,
+                            "count": 2,
+                            "percent": 100,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr Snap",
+                            "controllable": true,
+                            "maxIncline": 0.1,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
+                        }
+                    ],
+                    "total": 2
+                }
+            },
+            {
+                "countryCode": "ZM",
+                "countryName": "Zambia",
+                "powermeters": {
+                    "data": [],
+                    "total": 0
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "16",
+                            "type": 2,
+                            "count": 2,
+                            "percent": 100,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr Snap",
+                            "controllable": true,
+                            "maxIncline": 0.1,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
+                        }
+                    ],
+                    "total": 2
+                }
+            },
+            {
+                "countryCode": "CL",
+                "countryName": "Chile",
+                "powermeters": {
+                    "data": [],
+                    "total": 0
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2780",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Bushido Smart",
+                            "controllable": true,
+                            "maxIncline": 0.15,
+                            "accuracy": 0.1,
+                            "maxPower": 1400
+                        }
+                    ],
+                    "total": 1
+                }
+            },
+            {
+                "countryCode": "ES",
+                "countryName": "Spain",
+                "powermeters": {
+                    "data": [],
+                    "total": 0
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "67",
+                            "modelId": "17",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#1d1d1d",
+                            "manufacturerName": "Bkool",
+                            "modelName": "Smart Go",
+                            "controllable": true,
+                            "maxIncline": 0.08,
+                            "accuracy": 0.05,
+                            "maxPower": 800
+                        }
+                    ],
+                    "total": 1
+                }
+            },
+            {
+                "countryCode": "IT",
+                "countryName": "Italy",
+                "powermeters": {
+                    "data": [
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "2162",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        }
+                    ],
+                    "total": 1
+                },
+                "smartTrainers": {
+                    "data": [],
+                    "total": 0
+                }
+            },
+            {
+                "countryCode": "JM",
+                "countryName": "Jamaica",
+                "powermeters": {
+                    "data": [],
+                    "total": 0
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "1",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.03,
+                            "maxPower": 2500
+                        }
+                    ],
+                    "total": 1
+                }
+            },
+            {
+                "countryCode": "LU",
+                "countryName": "Luxembourg",
+                "powermeters": {
+                    "data": [],
+                    "total": 0
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "0",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        }
+                    ],
+                    "total": 1
+                }
+            },
+            {
+                "countryCode": "PT",
+                "countryName": "Portugal",
+                "powermeters": {
+                    "data": [],
+                    "total": 0
+                },
+                "smartTrainers": {
+                    "data": [
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "0",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 100,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
                         }
                     ],
                     "total": 1
@@ -256,228 +2783,656 @@
                     "data": [
                         {
                             "manufacturerId": "1",
-                            "modelId": "2161",
+                            "modelId": "10007",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 1.5,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "2162",
+                            "type": 1,
+                            "count": 3,
+                            "percent": 2.26,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "1381",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 1.5,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Vector CP",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "2079",
                             "type": 1,
                             "count": 1,
-                            "percent": 10,
+                            "percent": 0.75,
                             "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Vector S",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "0",
+                            "type": 1,
+                            "count": 3,
+                            "percent": 2.26,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "1",
+                            "modelId": "2161",
+                            "type": 1,
+                            "count": 13,
+                            "percent": 9.77,
+                            "color": "#1285c7",
+                            "manufacturerName": "Garmin",
                             "modelName": "Vector 2",
                             "controllable": null,
                             "maxIncline": null,
-                            "accuracy": 0.02,
-                            "manufacturerName": "Garmin"
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "6",
+                            "modelId": "7",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 0.75,
+                            "color": "#666",
+                            "manufacturerName": "Unknown",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "6",
+                            "modelId": "55219",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 0.75,
+                            "color": "#666",
+                            "manufacturerName": "Unknown",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "7",
+                            "modelId": "8964",
+                            "type": 1,
+                            "count": 5,
+                            "percent": 3.76,
+                            "color": "#d0112b",
+                            "manufacturerName": "Quarq",
+                            "modelName": "Riken",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "7",
+                            "modelId": "5380",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 0.75,
+                            "color": "#d0112b",
+                            "manufacturerName": "Quarq",
+                            "modelName": "Riken AL",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "7",
+                            "modelId": "5383",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 0.75,
+                            "color": "#d0112b",
+                            "manufacturerName": "Quarq",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "7",
+                            "modelId": "1",
+                            "type": 1,
+                            "count": 3,
+                            "percent": 2.26,
+                            "color": "#d0112b",
+                            "manufacturerName": "Quarq",
+                            "modelName": "DZero",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "7",
+                            "modelId": "9479",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 0.75,
+                            "color": "#d0112b",
+                            "manufacturerName": "Quarq",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "7",
+                            "modelId": "4868",
+                            "type": 1,
+                            "count": 3,
+                            "percent": 2.26,
+                            "color": "#d0112b",
+                            "manufacturerName": "Quarq",
+                            "modelName": "ELSA",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "29",
+                            "modelId": "4",
+                            "type": 1,
+                            "count": 4,
+                            "percent": 3.01,
+                            "color": "#b4cc64",
+                            "manufacturerName": "power2max",
+                            "modelName": "power2max",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "29",
+                            "modelId": "1031",
+                            "type": 1,
+                            "count": 9,
+                            "percent": 6.77,
+                            "color": "#b4cc64",
+                            "manufacturerName": "power2max",
+                            "modelName": "power2max NG",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "288",
+                            "type": 1,
+                            "count": 9,
+                            "percent": 6.77,
+                            "color": "#fc6923",
+                            "manufacturerName": "PowerTap",
+                            "modelName": "P1 Pedals",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "0",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 1.5,
+                            "color": "#fc6923",
+                            "manufacturerName": "PowerTap",
+                            "modelName": "Wireless",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "4096",
+                            "type": 1,
+                            "count": 6,
+                            "percent": 4.51,
+                            "color": "#fc6923",
+                            "manufacturerName": "PowerTap",
+                            "modelName": "G3 Hub",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "272",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 1.5,
+                            "color": "#fc6923",
+                            "manufacturerName": "PowerTap",
+                            "modelName": "C1 Chainrings",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "48",
+                            "modelId": "910",
+                            "type": 1,
+                            "count": 5,
+                            "percent": 3.76,
+                            "color": "#b1343a",
+                            "manufacturerName": "Pioneer",
+                            "modelName": "Power Meter",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "51",
+                            "modelId": "7",
+                            "type": 1,
+                            "count": 5,
+                            "percent": 3.76,
+                            "color": "#e32525",
+                            "manufacturerName": "4iiii",
+                            "modelName": "Precision",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
+                        },
+                        {
+                            "manufacturerId": "7",
+                            "modelId": "9092",
+                            "type": 1,
+                            "count": 3,
+                            "percent": 2.26,
+                            "color": "#d0112b",
+                            "manufacturerName": "Quarq",
+                            "modelName": "Specialized",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "60",
+                            "modelId": "114",
+                            "type": 1,
+                            "count": 2,
+                            "percent": 1.5,
+                            "color": "#666",
+                            "manufacturerName": "Rotor",
+                            "modelName": "inPower",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "60",
+                            "modelId": "115",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 0.75,
+                            "color": "#666",
+                            "manufacturerName": "Rotor",
+                            "modelName": "Power Cranks",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.015
+                        },
+                        {
+                            "manufacturerId": "263",
+                            "modelId": "3",
+                            "type": 1,
+                            "count": 1,
+                            "percent": 0.75,
+                            "color": "#383838",
+                            "manufacturerName": "Favero",
+                            "modelName": "BePro Dual",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": 0.02
                         },
                         {
                             "manufacturerId": "263",
                             "modelId": "1",
                             "type": 1,
                             "count": 1,
-                            "percent": 10,
+                            "percent": 0.75,
                             "color": "#383838",
+                            "manufacturerName": "Favero",
                             "modelName": "BePro",
                             "controllable": null,
                             "maxIncline": null,
-                            "accuracy": 0.02,
-                            "manufacturerName": "Favero"
-                        },
-                        {
-                            "manufacturerId": "29",
-                            "modelId": "1031",
-                            "type": 1,
-                            "count": 1,
-                            "percent": 10,
-                            "color": "#b4cc64",
-                            "modelName": "power2max NG",
-                            "controllable": null,
-                            "maxIncline": null,
-                            "accuracy": 0.02,
-                            "manufacturerName": "power2max"
-                        },
-                        {
-                            "manufacturerId": "29",
-                            "modelId": "4",
-                            "type": 1,
-                            "count": 1,
-                            "percent": 10,
-                            "color": "#b4cc64",
-                            "modelName": "power2max",
-                            "controllable": null,
-                            "maxIncline": null,
-                            "accuracy": 0.02,
-                            "manufacturerName": "power2max"
-                        },
-                        {
-                            "manufacturerId": "51",
-                            "modelId": "7",
-                            "type": 1,
-                            "count": 1,
-                            "percent": 10,
-                            "color": "#e32525",
-                            "modelName": "Precision",
-                            "controllable": null,
-                            "maxIncline": null,
-                            "accuracy": 0.02,
-                            "manufacturerName": "4iiii"
+                            "accuracy": 0.02
                         },
                         {
                             "manufacturerId": "69",
                             "modelId": "1",
                             "type": 1,
-                            "count": 2,
-                            "percent": 20,
+                            "count": 43,
+                            "percent": 32.33,
                             "color": "#0079c1",
+                            "manufacturerName": "Stages",
                             "modelName": "Powermeter",
                             "controllable": null,
                             "maxIncline": null,
-                            "accuracy": 0.02,
-                            "manufacturerName": "Stages"
-                        },
-                        {
-                            "manufacturerId": "7",
-                            "modelId": "1",
-                            "type": 1,
-                            "count": 1,
-                            "percent": 10,
-                            "color": "#d0112b",
-                            "modelName": "Unknown",
-                            "controllable": null,
-                            "maxIncline": null,
-                            "accuracy": 0.015,
-                            "manufacturerName": "Quarq"
-                        },
-                        {
-                            "manufacturerId": "7",
-                            "modelId": "9092",
-                            "type": 1,
-                            "count": 1,
-                            "percent": 10,
-                            "color": "#d0112b",
-                            "modelName": "Unknown",
-                            "controllable": null,
-                            "maxIncline": null,
-                            "accuracy": 0.015,
-                            "manufacturerName": "Quarq"
-                        },
-                        {
-                            "manufacturerId": "9",
-                            "modelId": "4096",
-                            "type": 1,
-                            "count": 1,
-                            "percent": 10,
-                            "color": "#fc6923",
-                            "modelName": "G3 Hub",
-                            "controllable": null,
-                            "maxIncline": null,
-                            "accuracy": 0.015,
-                            "manufacturerName": "PowerTap"
+                            "accuracy": 0.02
                         }
                     ],
-                    "total": 10
+                    "total": 133
                 },
                 "smartTrainers": {
                     "data": [
                         {
-                            "manufacturerId": 9,
-                            "modelId": 320,
+                            "manufacturerId": "9",
+                            "modelId": "328",
                             "type": 2,
-                            "count": 1,
-                            "percent": 8.33
+                            "count": 4,
+                            "percent": 0.97,
+                            "color": "#ffd403",
+                            "manufacturerName": "CycleOps",
+                            "modelName": "Magnus",
+                            "controllable": true,
+                            "maxIncline": 0.15,
+                            "accuracy": 0.05,
+                            "maxPower": 1500
+                        },
+                        {
+                            "manufacturerId": "9",
+                            "modelId": "320",
+                            "type": 2,
+                            "count": 10,
+                            "percent": 2.43,
+                            "color": "#ffd403",
+                            "manufacturerName": "CycleOps",
+                            "modelName": "Hammer",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.03,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "32",
+                            "modelId": "1",
+                            "type": 2,
+                            "count": 155,
+                            "percent": 37.62,
+                            "color": "#003479",
+                            "manufacturerName": "Wahoo",
+                            "modelName": "Kickr",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.03,
+                            "maxPower": 2500
                         },
                         {
                             "manufacturerId": "32",
                             "modelId": "16",
                             "type": 2,
-                            "count": 1,
-                            "percent": 8.33,
+                            "count": 44,
+                            "percent": 10.68,
                             "color": "#003479",
+                            "manufacturerName": "Wahoo",
                             "modelName": "Kickr Snap",
                             "controllable": true,
                             "maxIncline": 0.1,
                             "accuracy": 0.05,
-                            "manufacturerName": "Wahoo",
                             "maxPower": 2000
-                        },
-                        {
-                            "manufacturerId": "32",
-                            "modelId": "1",
-                            "type": 2,
-                            "count": 4,
-                            "percent": 33.33,
-                            "color": "#003479",
-                            "modelName": "Kickr",
-                            "controllable": true,
-                            "maxIncline": 0.2,
-                            "accuracy": 0.03,
-                            "manufacturerName": "Wahoo",
-                            "maxPower": 2500
                         },
                         {
                             "manufacturerId": "67",
                             "modelId": "22",
                             "type": 2,
-                            "count": 1,
-                            "percent": 8.33,
+                            "count": 8,
+                            "percent": 1.94,
                             "color": "#1d1d1d",
+                            "manufacturerName": "Bkool",
                             "modelName": "Smart Pro",
                             "controllable": true,
                             "maxIncline": 0.2,
                             "accuracy": 0.05,
-                            "manufacturerName": "Bkool"
+                            "maxPower": 2000
                         },
                         {
-                            "manufacturerId": 86,
-                            "modelId": 15,
+                            "manufacturerId": "67",
+                            "modelId": "17",
+                            "type": 2,
+                            "count": 2,
+                            "percent": 0.49,
+                            "color": "#1d1d1d",
+                            "manufacturerName": "Bkool",
+                            "modelName": "Smart Go",
+                            "controllable": true,
+                            "maxIncline": 0.08,
+                            "accuracy": 0.05,
+                            "maxPower": 800
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "15",
+                            "type": 2,
+                            "count": 2,
+                            "percent": 0.49,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Unknown",
+                            "controllable": true,
+                            "maxIncline": null,
+                            "accuracy": null,
+                            "maxPower": null
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "17",
+                            "type": 2,
+                            "count": 4,
+                            "percent": 0.97,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Real Turbo Muin B+",
+                            "controllable": true,
+                            "maxIncline": 0.18,
+                            "accuracy": null,
+                            "maxPower": 550
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "23",
                             "type": 2,
                             "count": 1,
-                            "percent": 8.33
+                            "percent": 0.24,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Direto",
+                            "controllable": true,
+                            "maxIncline": 0.14,
+                            "accuracy": 0.025,
+                            "maxPower": 1400
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "14",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 0.24,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "21",
+                            "type": 2,
+                            "count": 1,
+                            "percent": 0.24,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Rampa",
+                            "controllable": true,
+                            "maxIncline": 0.1,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "20",
+                            "type": 2,
+                            "count": 6,
+                            "percent": 1.46,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "Drivo/Kura",
+                            "controllable": true,
+                            "maxIncline": 0.24,
+                            "accuracy": 0.01,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "86",
+                            "modelId": "18",
+                            "type": 2,
+                            "count": 3,
+                            "percent": 0.73,
+                            "color": "#dc1f1f",
+                            "manufacturerName": "Elite",
+                            "modelName": "QUBO Digital Smart B+",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null,
+                            "maxPower": 2000
                         },
                         {
                             "manufacturerId": "86",
                             "modelId": "0",
                             "type": 2,
-                            "count": 1,
-                            "percent": 8.33,
+                            "count": 11,
+                            "percent": 2.67,
                             "color": "#dc1f1f",
-                            "modelName": "Drivo/Kura",
-                            "controllable": true,
-                            "maxIncline": 0.24,
-                            "accuracy": 0.01,
                             "manufacturerName": "Elite",
-                            "maxPower": 2000
+                            "modelName": "Unknown",
+                            "controllable": null,
+                            "maxIncline": null,
+                            "accuracy": null
                         },
                         {
                             "manufacturerId": "89",
-                            "modelId": "2800",
+                            "modelId": "2180",
                             "type": 2,
-                            "count": 2,
-                            "percent": 16.67,
+                            "count": 25,
+                            "percent": 6.07,
                             "color": "#62b5e5",
-                            "modelName": "NEO Smart",
-                            "controllable": true,
-                            "maxIncline": 0.25,
-                            "accuracy": 0.02,
                             "manufacturerName": "Tacx",
-                            "maxPower": 2200
+                            "modelName": "Vortex Smart",
+                            "controllable": true,
+                            "maxIncline": 0.07,
+                            "accuracy": 0.1,
+                            "maxPower": 950
                         },
                         {
                             "manufacturerId": "89",
                             "modelId": "2780",
                             "type": 2,
-                            "count": 1,
-                            "percent": 8.33,
+                            "count": 17,
+                            "percent": 4.13,
                             "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
                             "modelName": "Bushido Smart",
                             "controllable": true,
                             "maxIncline": 0.15,
                             "accuracy": 0.1,
-                            "manufacturerName": "Tacx",
                             "maxPower": 1400
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2080",
+                            "type": 2,
+                            "count": 9,
+                            "percent": 2.18,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Genius Smart",
+                            "controllable": true,
+                            "maxIncline": 0.2,
+                            "accuracy": 0.05,
+                            "maxPower": 2000
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2240",
+                            "type": 2,
+                            "count": 8,
+                            "percent": 1.94,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Flow Smart",
+                            "controllable": true,
+                            "maxIncline": 0.06,
+                            "accuracy": 0.1,
+                            "maxPower": 800
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2900",
+                            "type": 2,
+                            "count": 11,
+                            "percent": 2.67,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "Flux",
+                            "controllable": true,
+                            "maxIncline": 0.1,
+                            "accuracy": 0.05,
+                            "maxPower": 1500
+                        },
+                        {
+                            "manufacturerId": "89",
+                            "modelId": "2800",
+                            "type": 2,
+                            "count": 90,
+                            "percent": 21.84,
+                            "color": "#62b5e5",
+                            "manufacturerName": "Tacx",
+                            "modelName": "NEO Smart",
+                            "controllable": true,
+                            "maxIncline": 0.25,
+                            "accuracy": 0.01,
+                            "maxPower": 2200
                         }
                     ],
-                    "total": 12
+                    "total": 412
                 }
             }
         ]
     },
-    "dateLastUpdate": 1494831227611
+    "dateLastUpdate": 1499143247447
 }

@@ -37,7 +37,7 @@ class Powermeters extends React.Component {
   render() {
     const { countryCode, powermeters } = this.props;
 
-    if (!this.isObject(powermeters) || !powermeters.data) {
+    if (!this.isObject(powermeters) || powermeters.total === 0) {
       return null;
     }
 

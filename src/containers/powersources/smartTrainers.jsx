@@ -37,13 +37,13 @@ class SmartTrainers extends React.Component {
   render() {
     const { countryCode, smartTrainers } = this.props;
 
-    if (!this.isObject(smartTrainers) || !smartTrainers.data) {
+    if (!this.isObject(smartTrainers) || smartTrainers.total === 0) {
       return null;
     }
 
-    const orderedSmartTrainers = _.sortBy(smartTrainers.data, t => {
-      return t.percent;
-    }).reverse();
+    const orderedSmartTrainers = _.sortBy(_.sortBy(smartTrainers.data, t => {
+      return t.percent;      
+    }).reverse());
 
     const chartData = [];
 

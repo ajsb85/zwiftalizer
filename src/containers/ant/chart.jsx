@@ -963,9 +963,7 @@ class Chart extends React.Component {
     const smartWithAntPowerProtocol = _.find(this.state.devices, device => {
       const manufacturerIdString = device.manufacturerId + '';
       return device.type === SMART_TRAINER_DEVICE &&
-        manufacturerIdString === WAHOO_MANUFACTURER_ID;
-      // manufacturerIdString === SARIS_MANUFACTURER_ID ||
-      // manufacturerIdString === ELITE_MANUFACTURER_ID);
+        manufacturerIdString === WAHOO_MANUFACTURER_ID;      
     });
 
     this.setState({ smartWithAntPowerProtocol: smartWithAntPowerProtocol });
