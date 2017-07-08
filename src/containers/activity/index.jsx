@@ -15,7 +15,7 @@ class Activity extends React.Component {
   }
 
   renderActivity() {
-    const { startDate, startTime, humanizedDuration } = this.props;
+    const { startDate, startTime, humanizedDuration, gameVersion } = this.props;
 
     const friendlyDate = moment(startDate, 'YYYY-MM-DD').format('MMM Do YYYY');
 
@@ -31,10 +31,16 @@ class Activity extends React.Component {
               <div className={structure.boxHeading}>Time</div>
               <div className={styles.activityBoxContent}>{startTime}</div>
             </div>
-            <div className={structure.boxLast}>
-              <div className={structure.boxHeadingLast}>Duration</div>
+            <div className={structure.box}>
+              <div className={structure.boxHeading}>Duration</div>
               <div className={styles.activityBoxContent}>
                 {humanizedDuration}
+              </div>
+            </div>
+            <div className={structure.boxLast}>
+              <div className={structure.boxHeadingLast}>Game Version</div>
+              <div className={styles.activityBoxContent}>
+                {gameVersion}
               </div>
             </div>
           </div>

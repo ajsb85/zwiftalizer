@@ -12,7 +12,8 @@ function activity(
     duration: unknown,
     durationFormatted: unknown,
     humanizedDuration: unknown,
-    timeAxis: null
+    timeAxis: null,
+    gameVersion: unknown
   },
   action
 ) {

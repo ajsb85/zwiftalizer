@@ -1,7 +1,7 @@
-var test = require('tape');
-var fs = require('fs');
-
 import { normalize, epochify, duration } from '../src/parser';
+
+const test = require('tape');
+const fs = require('fs');
 
 // path is relative to the root of the project
 epochify(

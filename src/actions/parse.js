@@ -205,6 +205,8 @@ function parseHead(head) {
 
   const openglMinor = Parser.openglMinor(normalizedHead);
 
+  const gameVersion = Parser.gameVersion(normalizedHead);
+
   return Object.freeze({
     platform,
     cpuVendor,
@@ -216,7 +218,8 @@ function parseHead(head) {
     resolution,
     shadowres,
     openglMajor,
-    openglMinor
+    openglMinor,
+    gameVersion
   });
 }
 
@@ -406,7 +409,8 @@ function parseFileContents(log, isDemo = false, share = true) {
             dispatch({
               type: SET_ACTIVITY_DATA,
               data: {
-                ...activityData
+                ...activityData,
+                gameVersion: `${systemData.gameVersion}`
               }
             });
 
@@ -472,6 +476,7 @@ function parseFileContents(log, isDemo = false, share = true) {
                 logId: uuid.v4(),
                 timestamp: activityData.startTimestamp,
                 duration: `${activityData.duration}`,
+                gameVersion: `${systemData.gameVersion}`,
                 specs: {
                   resolution: systemData.resolution,
                   profileId: `${profileId}`,
@@ -488,7 +493,8 @@ function parseFileContents(log, isDemo = false, share = true) {
                   gpuVendor: systemData.gpuVendor,
                   gpuDetails: systemData.gpuDetails,
                   shadowres: systemData.shadowres,
-                  openglMajor: systemData.openglMajor
+                  openglMajor: systemData.openglMajor,
+                  gameVersion: systemData.gameVersion
                 }
               };
 

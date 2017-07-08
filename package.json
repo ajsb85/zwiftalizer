@@ -1,7 +1,7 @@
 {
   "name": "Zwiftalizer",
   "description": "Zwift log analyzer web app",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "build": "1",
   "license": "Prioprietary",
   "repository": "git@github.com:mhanney/zwiftalizer.git",
@@ -17,7 +17,7 @@
     "posttest": "rm .babelrc",
     "pretest": "cp .testbabelrc .babelrc",
     "release": "webpack --progress --profile --colors",
-    "test": "babel-tape-runner tests/mapAntSearches.js",
+    "test": "babel-tape-runner tests/gameVersion.js",
     "install-local-modules": "npm install --prefix local_modules file:../zwiftalizer-antplus-devices"
   },
   "optionalDependencies": {
@@ -34,6 +34,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.24.1",
     "babel-runtime": "^6.23.0",
     "babel-tape-runner": "^2.0.1",
