@@ -361,7 +361,7 @@ function parseFileContents(log, isDemo = false, share = true) {
         // this is by far the most time consuming loop, so it is split into batches, and a callback function
         // fires when all the timestamps have been converted
         Parser.epochify(Parser.normalize(log), (err, normalizedLog) => {
-          try {
+          try {            
             if (err) {
               console.log(err);
               // @todo, a friendly error message

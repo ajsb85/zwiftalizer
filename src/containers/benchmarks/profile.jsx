@@ -1,6 +1,7 @@
 var _ = require('underscore');
 const _find = require('lodash/find');
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   toggleProfilePanel,

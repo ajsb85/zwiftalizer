@@ -57,11 +57,12 @@ export default function mapPowermeterData(lines, timeAxisTimeSeries) {
 
   const powerTimeSeries = new TimeSeries(result);
 
-  const reducedSeries = TimeSeries.timeseriesListReduce({
+  const reducedSeries = TimeSeries.timeSeriesListReduce({
     name: 'power',
     fieldSpec: ['time', 'value'],
     seriesList: [timeAxisTimeSeries, powerTimeSeries],
-    reducer: nonZeroAvgReducer
+    reducer: avg()
+    //reducer: nonZeroAvgReducer()
   });
 
   // 3 second average power

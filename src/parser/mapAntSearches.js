@@ -1,4 +1,4 @@
-import { TimeSeries, max } from 'pondjs';
+import { TimeSeries, max, sum } from 'pondjs';
 
 import toArray from './toArray';
 
@@ -42,10 +42,11 @@ export default function mapAntSearches(lines, timeAxisTimeSeries) {
 
   const ts = new TimeSeries(result);
 
-  const reducedSeries = TimeSeries.timeSeriesListSum({
+  const reducedSeries = TimeSeries.timeSeriesListReduce({
     name: 'searches',
     fieldSpec: ['time', 'value'],
-    seriesList: [timeAxisTimeSeries, ts]
+    seriesList: [timeAxisTimeSeries, ts],
+    reducer: sum()
   });
 
   // rollup max to ANT_AVERAGES_WINDOW_IN_SEC slots for consistency with the

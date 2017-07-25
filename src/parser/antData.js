@@ -1,4 +1,4 @@
-import { TimeSeries } from 'pondjs';
+import { TimeSeries, sum } from 'pondjs';
 
 import titleCase from './titleCase';
 
@@ -134,10 +134,11 @@ export default function antData(log, timeAxisTimeSeries) {
       points: []
     });
 
-    const reducedNullPowerSeries = TimeSeries.timeSeriesListSum({
+    const reducedNullPowerSeries = TimeSeries.timeSeriesListReduce({
       name: 'power',
       fieldSpec: ['time', 'value'],
-      seriesList: [timeAxisTimeSeries, nullPower]
+      seriesList: [timeAxisTimeSeries, nullPower],
+      reducer: sum()
     });
 
     Object.assign(kickrDevice, {

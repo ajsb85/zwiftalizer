@@ -1,6 +1,6 @@
 var _ = require('underscore');
 
-import { TimeSeries, max } from 'pondjs';
+import { TimeSeries, max, sum } from 'pondjs';
 
 import toArray from './toArray';
 
@@ -76,10 +76,11 @@ export default function mapNetworkErrors(lines, timeAxisTimeSeries) {
 
   const networkErrorsTs = new TimeSeries(networkErrors);
 
-  const reducedNetworkErrors = TimeSeries.timeSeriesListSum({
+  const reducedNetworkErrors = TimeSeries.timeSeriesListReduce({
     name: 'errors',
     fieldSpec: ['time', 'value'],
-    seriesList: [timeAxisTimeSeries, networkErrorsTs]
+    seriesList: [timeAxisTimeSeries, networkErrorsTs],
+    reducer: sum()
   });
 
   const rollupNetworkErrors = reducedNetworkErrors.fixedWindowRollup({
@@ -93,10 +94,11 @@ export default function mapNetworkErrors(lines, timeAxisTimeSeries) {
 
   const delayedPacketsTs = new TimeSeries(delayedPackets);
 
-  const reducedDelayedPackets = TimeSeries.timeSeriesListSum({
+  const reducedDelayedPackets = TimeSeries.timeSeriesListReduce({
     name: 'delayedPackets',
     fieldSpec: ['time', 'value'],
-    seriesList: [timeAxisTimeSeries, delayedPacketsTs]
+    seriesList: [timeAxisTimeSeries, delayedPacketsTs],
+    reducer: sum()
   });
 
   const rollupDelayedPackets = reducedDelayedPackets.fixedWindowRollup({
@@ -112,10 +114,11 @@ export default function mapNetworkErrors(lines, timeAxisTimeSeries) {
     invalidRoadTimeWarnings
   );
 
-  const reducedInvalidRoadTimeWarnings = TimeSeries.timeSeriesListSum({
+  const reducedInvalidRoadTimeWarnings = TimeSeries.timeSeriesListReduce({
     name: 'invalidRoadTimeWarnings',
     fieldSpec: ['time', 'value'],
-    seriesList: [timeAxisTimeSeries, reducedInvalidRoadTimeWarningsTs]
+    seriesList: [timeAxisTimeSeries, reducedInvalidRoadTimeWarningsTs],
+    reducer: sum()
   });
 
   const rollupInvalidRoadTimeWarnings = reducedInvalidRoadTimeWarnings.fixedWindowRollup(

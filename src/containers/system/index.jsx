@@ -7,7 +7,8 @@
  *  LICENSE file in the root directory of this source tree.
  */
 var _ = require('underscore');
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import structure from '../../styles/structure.css'
 import images from '../../styles/images.css'

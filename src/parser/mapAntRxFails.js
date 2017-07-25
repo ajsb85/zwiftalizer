@@ -1,4 +1,4 @@
-import { TimeSeries, avg } from 'pondjs';
+import { TimeSeries, avg, sum } from 'pondjs';
 
 import toArray from './toArray';
 
@@ -62,10 +62,11 @@ export default function mapAntRxFails(
 
   const ts = new TimeSeries(result);
 
-  const mergedSeries = TimeSeries.timeSeriesListSum({
+  const mergedSeries = TimeSeries.timeSeriesListReduce({
     name: 'signal',
     fieldSpec: ['time', 'value'],
-    seriesList: [timeAxisTimeSeries, ts]
+    seriesList: [timeAxisTimeSeries, ts],
+    reducer: sum()
   });
 
   // const minValue = mergedSeries.min();

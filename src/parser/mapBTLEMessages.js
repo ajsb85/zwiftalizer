@@ -32,10 +32,11 @@ export default function mapBTLEMessages(lines, timeAxisTimeSeries) {
     return null;
   }
 
-  const reducedSeries = TimeSeries.timeSeriesListSum({
+  const reducedSeries = TimeSeries.timeSeriesListReduce({
     name: 'messages',
     fieldSpec: ['time', 'value'],
-    seriesList: [timeAxisTimeSeries, ts]
+    seriesList: [timeAxisTimeSeries, ts],
+    reducer: sum()
   });
 
   // plot sum of all btle signals per 5 seconds

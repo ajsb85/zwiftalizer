@@ -7,7 +7,8 @@
  *  LICENSE file in the root directory of this source tree.
  */
 
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import structure from '../../styles/structure.css';
 import Specs from './specs.jsx'

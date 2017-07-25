@@ -1,6 +1,6 @@
 var _ = require('underscore');
 
-import { TimeSeries, max } from 'pondjs';
+import { TimeSeries, max, sum } from 'pondjs';
 
 import toArray from './toArray';
 
@@ -36,10 +36,11 @@ export default function mapNetworkReconnects(lines, timeAxisTimeSeries) {
 
   const ts = new TimeSeries(result);
 
-  const reducedSeries = TimeSeries.timeSeriesListSum({
+  const reducedSeries = TimeSeries.timeSeriesListReduce({
     name: 'reconnects',
     fieldSpec: ['time', 'value'],
-    seriesList: [timeAxisTimeSeries, ts]
+    seriesList: [timeAxisTimeSeries, ts],
+    reducer: sum()
   });
 
   // rollup max to exaggerate the reconnects bars
