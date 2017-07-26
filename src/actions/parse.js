@@ -610,6 +610,6 @@ export function readFile(log, share = true) {
       dispatch(parseFileContents(reader.result, false, share));
     };
 
-    reader.readAsBinaryString(log);
+    reader.readAsText(log);
   };
 }

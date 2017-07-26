@@ -6,7 +6,8 @@
  *  This source code is licensed under the MIT-style license found in the
  *  LICENSE file in the root directory of this source tree.
  */
-
+// polyfill for IE11
+import 'babel-polyfill'
 import {Provider} from 'react-redux'
 import {Router, Route, IndexRoute, browserHistory} from 'react-router'
 
