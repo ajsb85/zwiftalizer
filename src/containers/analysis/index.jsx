@@ -337,8 +337,8 @@ Analysis.propTypes = {
   //reader: PropTypes.object,
   system: PropTypes.object,
   ant: PropTypes.object,
-  router: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired
+  router: PropTypes.shape({
+    push: PropTypes.func.isRequired
   }).isRequired
 };
 

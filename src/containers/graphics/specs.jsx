@@ -207,7 +207,7 @@ function mapStateToProps(state) {
 }
 
 Specs.propTypes = {
-  router: React.PropTypes.shape({push: React.PropTypes.func.isRequired}).isRequired
+  router: PropTypes.shape({push: PropTypes.func.isRequired}).isRequired
 }
 
 var RoutedSpecs = withRouter(Specs);

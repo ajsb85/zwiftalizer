@@ -1,7 +1,6 @@
 import { load } from '../../actions/powerSources';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 const R = require('ramda');
 import Region from './region.jsx';

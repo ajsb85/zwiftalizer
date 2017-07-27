@@ -9,21 +9,31 @@
 // polyfill for IE11
 import 'babel-polyfill'
 import {Provider} from 'react-redux'
-import {Router, Route, IndexRoute, browserHistory} from 'react-router'
+
+import { BrowserRouter, IndexRoute, Route, Switch } from 'react-router-dom'
+
+import createBrowserHistory from 'history/lib/createBrowserHistory'
 
 import configureStore from '../stores/configureStore'
 
 var _ = require('underscore')
+
 import React from 'react'
+
 import ReactDOM from 'react-dom'
 
 var ReactGA = require('react-ga')
+
 ReactGA.initialize('UA-2833327-13')
 
 import App from './app'
+
 import Home from './home'
+
 import {Support} from './support'
+
 import Benchmarks from './benchmarks'
+
 import PowerSources from './powersources'
 
 function logPageView() {
@@ -33,19 +43,23 @@ function logPageView() {
 
 function run() {
 
+  const newHistory = createBrowserHistory();
+
   let store = configureStore()
 
   ReactDOM.render(
     <Provider store={store}>
     <div>
-      <Router onUpdate={logPageView} history={browserHistory}>
-        <Route path='/' component={App}>
-          <IndexRoute component={Home}/>          
-          <Route path='support' component={Support}/>
-          <Route path='benchmarks' component={Benchmarks}/>
-          <Route path='powersources' component={PowerSources}/>
-        </Route>
-      </Router>
+      <BrowserRouter onUpdate={logPageView} history={newHistory}>
+        <App>
+          <Switch>
+            <Route exact path='/' component={App}/>          
+            <Route path='support' component={Support}/>
+            <Route path='benchmarks' component={Benchmarks}/>
+            <Route path='powersources' component={PowerSources}/>
+          </Switch>
+        </App>        
+      </BrowserRouter>
     </div>
   </Provider>, document.getElementById('app'))
 }

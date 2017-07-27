@@ -9,7 +9,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadDemo, reset } from '../../actions/parse.js';
 import structure from '../../styles/structure.css';
@@ -140,11 +140,11 @@ function mapStateToProps(state) {
   };
 }
 
-App.propTypes = {
-  router: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired
-  }).isRequired
-};
+// App.propTypes = {
+//   router: PropTypes.shape({
+//     push: PropTypes.func.isRequired
+//   }).isRequired
+// };
 
 var RoutedApp = withRouter(App);
 
