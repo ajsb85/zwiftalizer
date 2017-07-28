@@ -59,9 +59,9 @@ class Powermeters extends React.Component {
 
         const keyStyle = {
           display: 'inline-block',
-          minWidth: '8rem',
-          padding: '0.3rem 0.7rem',
-          fontSize: '1.6rem',
+          minWidth: '6rem',
+          padding: '0.5rem 0.7rem',
+          fontSize: '1.3rem',
           fontWeight: '600',
           color: '#fff',
           lineHeight: '1',
@@ -85,8 +85,8 @@ class Powermeters extends React.Component {
           key: chartKey,
           rowKey: rowKey,
           y: powerPercentRounded,
-          color: keyColor,
-          x: `${powermeter.modelName}`
+          color: keyColor,          
+          x: `${i+1}`
         });
 
         let highlightStyle = {}
@@ -97,13 +97,14 @@ class Powermeters extends React.Component {
 
         return (
           <tr key={rowKey} style={highlightStyle}>
+            <td className="hidden-xs hidden-sm hidden-md"  style={{ textAlign: 'center' }}>{i+1}</td>
             <td style={{ textAlign: 'center' }}>
               <span style={keyStyle}>
                 {chartKey}
               </span>
             </td>            
             <td>{powermeter.manufacturerName}</td>
-            <td className="hidden-xs hidden-sm hidden-md">
+            <td>
               {powermeter.modelName}
             </td>
             <td>{accuracy}</td>
@@ -129,7 +130,7 @@ class Powermeters extends React.Component {
               <div className={styles.chartContainer}>                
                 <BarChart
                   chartKey={`${countryCode}-powermeters`}
-                  axisLabels={{x: 'Model', y: 'Percent'}}
+                  axisLabels={{y: 'Percent'}}
                   axes
                   grid
                   height={250}
@@ -150,10 +151,11 @@ class Powermeters extends React.Component {
                 width="100%"
               >
                 <thead>
-                  <tr>                    
+                  <tr>              
+                    <th className="hidden-xs hidden-sm hidden-md">Row</th>      
                     <th>Share</th>
                     <th>Make</th>
-                    <th className="hidden-xs hidden-sm hidden-md">Model</th>
+                    <th>Model</th>
                     <th>Accuracy</th>
                   </tr>
                 </thead>

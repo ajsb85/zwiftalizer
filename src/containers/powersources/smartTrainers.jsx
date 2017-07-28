@@ -69,9 +69,9 @@ class SmartTrainers extends React.Component {
 
         const keyStyle = {
           display: 'inline-block',
-          minWidth: '8rem',
-          padding: '0.3rem 0.7rem',
-          fontSize: '1.6rem',
+          minWidth: '6rem',
+          padding: '0.5rem 0.7rem',
+          fontSize: '1.3rem',
           fontWeight: '600',
           color: '#FFF',
           lineHeight: '1',
@@ -94,7 +94,7 @@ class SmartTrainers extends React.Component {
           rowKey: rowKey,
           y: Math.round(smartTrainerPercentRounded),
           color: keyColor,
-          x: `${smartTrainer.modelName}`
+          x: `${i+1}`
         });
 
         let highlightStyle = {};
@@ -105,12 +105,13 @@ class SmartTrainers extends React.Component {
 
         return (
           <tr key={rowKey} style={highlightStyle}>
+            <td className="hidden-xs hidden-sm hidden-md" style={{ textAlign: 'center' }}>{i+1}</td>
             <td style={{ textAlign: 'center' }}>
               <span style={keyStyle}>
                 {chartKey}
               </span>
             </td>          
-            <td className="hidden-xs hidden-sm hidden-md">
+            <td>
               {smartTrainer.manufacturerName}
             </td>
             <td>{smartTrainer.modelName}</td>
@@ -140,7 +141,7 @@ class SmartTrainers extends React.Component {
               <div className={styles.chartContainer}>                
                 <BarChart
                   chartKey={`${countryCode}-smarttrainers`}
-                  axisLabels={{x: 'Model', y: 'Percent'}}
+                  axisLabels={{y: 'Percent'}}
                   axes
                   grid
                   height={250}
@@ -162,8 +163,9 @@ class SmartTrainers extends React.Component {
               >
                 <thead>
                   <tr>                    
+                    <th className="hidden-xs hidden-sm hidden-md">Row</th>
                     <th>Share</th>
-                    <th className="hidden-xs hidden-sm hidden-md">Make</th>
+                    <th>Make</th>
                     <th>Model</th>
                     <th>Accuracy</th>
                     <th className="hidden-xs hidden-sm hidden-md">Interactive</th>

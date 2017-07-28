@@ -31,23 +31,18 @@ class App extends React.Component {
     }
 
     // load home route and allow to render
-    setTimeout(
-      () => {
-        this.props.router.push('/');
-      },
-      250
-    );
+    setTimeout(() => {            
+      this.props.history.push({
+        pathname: '/'
+      })      
+    }, 250);
 
-    setTimeout(
-      () => {
-        dispatch(loadDemo());
-      },
-      250
-    );
+    setTimeout(() => {
+      dispatch(loadDemo());
+    }, 250);
   }
 
   render() {
-
     const d = new Date();
     const year = d.getFullYear();
 
@@ -60,7 +55,7 @@ class App extends React.Component {
                 <div className={styles.brand}>
                   <span className={styles.signal}>
                     <i className="fa fa-line-chart" aria-hidden="true" />
-                  </span>&nbsp;<Link to="/">Zwiftalizer 1.3</Link>
+                  </span>&nbsp;<Link to="/">Zwiftalizer 1.4</Link>
                 </div>
               </div>
 
@@ -69,9 +64,7 @@ class App extends React.Component {
                   <span className={styles.signal}>
                     <i className="fa fa-play" aria-hidden="true" />
                   </span>&nbsp;
-                  <a onClick={this.handleDemoClick}>
-                    Demo
-                  </a>
+                  <a onClick={this.handleDemoClick}>Demo</a>
                 </div>
               </div>
 
@@ -101,7 +94,10 @@ class App extends React.Component {
                   <Link to="/support">
                     <i className="fa fa-paypal" />
                   </Link>&nbsp;
-                  <a href="https://github.com/mhanney/zwiftalizer" target="_blank">
+                  <a
+                    href="https://github.com/mhanney/zwiftalizer"
+                    target="_blank"
+                  >
                     <i className="fa fa-github" />
                   </a>
                 </div>
@@ -110,22 +106,41 @@ class App extends React.Component {
           </div>
         </div>
         <div className={styles.stickySubHeader}>
-         <div className="container">
+          <div className="container">
             <div className="row">
               <p>
-                Zwiftalizer is an open source, community supported project neither endorsed by nor affiliated with <a href="http://zwift.com" target="_blank">Zwift Inc</a>
-              </p>              
-            </div>   
+                Zwiftalizer is an open source, community supported project
+                neither endorsed by nor affiliated with{' '}
+                <a href="http://zwift.com" target="_blank">
+                  Zwift Inc
+                </a>
+              </p>
+            </div>
           </div>
         </div>
         <div className={styles.appBody}>
           {this.props.children}
         </div>
         <div className={styles.footer}>
-         <div className="container">
+          <div className="container">
             <div className="row">
-              <p>By Mike Hanney | <a href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md" target="_blank">License</a> | Follow <a href="https://twitter.com/zwiftalizer" target="_blank">@zwiftalizer</a> <a href="https://twitter.com/zwiftalizer" target="_blank"><i className="fa fa-twitter" /></a></p>
-            </div>   
+              <p>
+                By Mike Hanney |{' '}
+                <a
+                  href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md"
+                  target="_blank"
+                >
+                  License
+                </a>{' '}
+                | Follow{' '}
+                <a href="https://twitter.com/zwiftalizer" target="_blank">
+                  @zwiftalizer
+                </a>{' '}
+                <a href="https://twitter.com/zwiftalizer" target="_blank">
+                  <i className="fa fa-twitter" />
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -140,12 +155,4 @@ function mapStateToProps(state) {
   };
 }
 
-// App.propTypes = {
-//   router: PropTypes.shape({
-//     push: PropTypes.func.isRequired
-//   }).isRequired
-// };
-
-var RoutedApp = withRouter(App);
-
-export default connect(mapStateToProps)(RoutedApp);
+export default withRouter(connect(mapStateToProps)(App));

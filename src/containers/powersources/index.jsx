@@ -55,18 +55,18 @@ class PowerSources extends React.Component {
     }
 
     return (
-      <div className="container">
+      <div className="container">        
+        {regionNodes}
         <div className={editorial.boxesWrapOuter}>
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxLast}>
               <div className={editorial.editorialBoxHeading}>
-                Smart Trainer and Power Meter Model Usage
+                Caveats
               </div>
               <div className={editorial.editorialBoxContent}>
                 <div className="container-fluid">
                   <div className="row">
-                    <div className="col-xs-offset-1 col-xs-10">
-                      <h3>Caveats</h3>
+                    <div className="col-xs-offset-1 col-xs-10">                      
                       <ul>
                         <li>Only devices paired using ANT+ are included.</li>                        
                         <li>
@@ -84,6 +84,9 @@ class PowerSources extends React.Component {
                         <li>
                           CycleOps PowerBeam, PowerSync, Phantom 3, Phantom 5, PowertTap Pro+, PowertTap SLC+ and PowertTap SL+ are grouped together as 'Wireless' PowertTap power meters.
                         </li>
+                        <li>
+                          Since people use this tool to inspect ANT+ signal issues, it could be argued that the most popular power sources listed here are actually the most problematic.
+                        </li>
                         <li>Sampling started May 15th 2017.</li>
                       </ul>
                     </div>
@@ -93,7 +96,6 @@ class PowerSources extends React.Component {
             </div>
           </div>
         </div>
-        {regionNodes}
       </div>
     );
   }

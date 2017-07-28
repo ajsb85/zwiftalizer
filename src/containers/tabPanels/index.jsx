@@ -18,9 +18,9 @@ var _ = require('underscore')
       super(props)
     }
 
-    handleSelect(index, last) {
-      //console.log('Selected tab: ' + index + ', Last tab: ' + last);
-    }
+    // handleSelect(index, last) {
+    //   //console.log('Selected tab: ' + index + ', Last tab: ' + last);
+    // }
 
     render() {
       const {isLoaded} = this.props
@@ -37,9 +37,8 @@ var _ = require('underscore')
             <div className='row'>
               <div className='center-block'>
                 <div className='text-center'>
-                  <Tabs
-                    onSelect={this.handleSelect}
-                    selectedIndex={0}
+                  <Tabs                    
+                    defaultIndex={0}
                     style={{
                     margin: 0,
                     padding: 0,

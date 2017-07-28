@@ -139,7 +139,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-offset-1 col-sm-9">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>BTLE Messages</h4>
-              <h5 className={structure.infoHeading}>More is better. Irregular peaks and troughs are bad. Dips to zero are very bad. Use the mouse wheel to zoom in. Click and drag to pan.</h5>
+              <h5 className={structure.infoHeading}>Use the mouse wheel to zoom in. Click and drag to pan.</h5>
             </div>
           </div>
           <div className="col-xs-12 col-sm-2">

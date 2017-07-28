@@ -10,7 +10,6 @@ var _ = require('underscore');
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 import {
   load,
   getPerformanceScore,
@@ -336,12 +335,7 @@ function mapStateToProps(state) {
 Analysis.propTypes = {
   //reader: PropTypes.object,
   system: PropTypes.object,
-  ant: PropTypes.object,
-  router: PropTypes.shape({
-    push: PropTypes.func.isRequired
-  }).isRequired
+  ant: PropTypes.object
 };
 
-var RoutedAnalysis = withRouter(Analysis);
-
-export default connect(mapStateToProps)(RoutedAnalysis);
+export default connect(mapStateToProps)(Analysis);

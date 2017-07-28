@@ -10,7 +10,7 @@
 import 'babel-polyfill'
 import {Provider} from 'react-redux'
 
-import { BrowserRouter, IndexRoute, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, IndexRoute, Route, Switch } from 'react-router-dom'
 
 import createBrowserHistory from 'history/lib/createBrowserHistory'
 
@@ -49,19 +49,19 @@ function run() {
 
   ReactDOM.render(
     <Provider store={store}>
-    <div>
-      <BrowserRouter onUpdate={logPageView} history={newHistory}>
-        <App>
-          <Switch>
-            <Route exact path='/' component={App}/>          
-            <Route path='support' component={Support}/>
-            <Route path='benchmarks' component={Benchmarks}/>
-            <Route path='powersources' component={PowerSources}/>
-          </Switch>
-        </App>        
-      </BrowserRouter>
-    </div>
-  </Provider>, document.getElementById('app'))
+      <div>
+        <Router onUpdate={logPageView} history={newHistory}>        
+            <App>        
+              <Switch>
+                <Route exact path='/' component={Home}/>          
+                <Route exact path='/support' component={Support}/>
+                <Route exact path='/benchmarks' component={Benchmarks}/>
+                <Route exact path='/powersources' component={PowerSources}/>
+              </Switch>        
+            </App>
+        </Router>
+      </div>
+    </Provider>, document.getElementById('app'))
 }
 
 // roughly equivalent to jQuery's document ready

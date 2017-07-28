@@ -5,6 +5,7 @@ module.exports = {
     'public/bootstrap/*.*',
     'public/fonts/*.*',
     'public/flags/*.*',
+    'public/styles/*.*',
     'public/bundle.js',
     'public/favicon.ico',
     'public/demolog.txt',
