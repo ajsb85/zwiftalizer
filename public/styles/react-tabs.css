@@ -32,11 +32,9 @@
 }
 
 .react-tabs__tab--selected {
-  background: #fff;
-  border-color: #aaa;
+  background: #fff;  
   color: #178acc;    
-  border-bottom: 1px solid #fff;
-  border-right: 2px solid #aaa;
+  border-bottom: 1px solid #fff;  
 }
 
 .react-tabs__tab-panel {

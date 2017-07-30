@@ -1,7 +1,26 @@
+.systemsCount {  
+    font-size: 6rem;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    text-align: center;
+    line-height: 6rem;
+}
+
+.systemsCountSubheading{
+  font-size: 2rem;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  text-align: center;
+}
 
 .powerSourcesWrapOuter {
   width: 100%;
   margin: 1.5rem 0 1.5rem 0;
+}
+
+.lastUpdateTime {
+    text-align: center;
+    margin-top: 1.2rem;
 }
 
 .powerSourcesBoxHeading {
@@ -83,4 +102,23 @@
     margin-left: auto;
     margin-right: auto;    
     text-align: center;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .systemsCountContainer {
+    float: none;
+  }
+  .systemsCount {
+    text-align: center;
+    float: none;
+  }
+  .systemsCountSubheading {
+    text-align: center;
+    float: none;
+  }
+  .lastUpdateTime {
+    text-align: center;
+    margin-top: 1.2rem;
+  }
 }

@@ -1,3 +1,4 @@
+var moment = require('moment');
 import { load } from '../../actions/powerSources';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -6,6 +7,7 @@ const R = require('ramda');
 import Region from './region.jsx';
 import structure from '../../styles/structure.css';
 import editorial from '../../styles/editorial.css';
+import styles from './styles.css';
 
 class PowerSources extends React.Component {
   constructor(props) {
@@ -33,12 +35,24 @@ class PowerSources extends React.Component {
       dateLastUpdate
     } = this.props;
 
+    let powermetersTotal = 0;
+
+    let smartTrainersTotal = 0;
+
     let regionNodes = [];
 
     const worldwideCode = '00';
 
     if (data.regions) {
       const worldwide = R.find(R.propEq('countryCode', worldwideCode))(data.regions);
+
+      if (worldwide.powermeters) {
+        powermetersTotal = worldwide.powermeters.total;
+      }
+
+      if (worldwide.smartTrainers) {
+        smartTrainersTotal = worldwide.smartTrainers.total;
+      }
 
       if (worldwide) {
         regionNodes.push(<Region data={worldwide} key={worldwide.countryCode} />);
@@ -54,8 +68,42 @@ class PowerSources extends React.Component {
       );
     }
 
+    const totalDevices = powermetersTotal + smartTrainersTotal;
+
+    const dateLastUpdateHuman = moment(dateLastUpdate).format();
+
     return (
       <div className="container">        
+        <div className={editorial.boxesWrapOuter}>
+          <div className={structure.boxesWrapInner}>
+            <div className={structure.boxLast}>
+              <div className={editorial.editorialBoxHeading}>
+                Smart trainers and power meters usage
+              </div>
+              <div className={editorial.editorialBoxContent}>
+                <div className="container-fluid">
+                  <div className="row">
+                    <div className="col-xs-12">
+                      <div className={styles.systemsCount}>
+                        {totalDevices}
+                      </div>                      
+                    </div>
+                    <div className={styles.systemsCountSubheading}>
+                      Distinct ANT+ devices logged
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-xs-12">
+                      <div className={styles.lastUpdateTime}>
+                        Last Updated: {dateLastUpdateHuman}
+                      </div>
+                    </div>                    
+                  </div>
+                </div>
+              </div>                
+            </div>
+          </div>
+        </div>
         {regionNodes}
         <div className={editorial.boxesWrapOuter}>
           <div className={structure.boxesWrapInner}>
