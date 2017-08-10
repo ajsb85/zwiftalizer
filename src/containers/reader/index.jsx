@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
-// import Confetti from 'react-dom-confetti';
+import Confetti from 'react-dom-confetti';
 import { readFile, reset } from '../../actions/parse';
 import structure from '../../styles/structure.css';
 import styles from './styles.css';
@@ -115,22 +115,18 @@ class Reader extends React.Component {
 
     const shareStatus = share ? 'checked' : '';
 
-    // const showConfetti = isLoaded && share;
+    const showConfetti = isLoaded && share;    
 
-    // const confettiConfig = {
-    //   angle: 90,
-    //   spread: 90,
-    //   startVelocity: 26,
-    //   elementCount: 100,
-    //   decay: 0.95
-    // };
-
-    // <div className={styles.confettiContainer}>
-    //   <Confetti active={showConfetti} config={confettiConfig} />
-    // </div>
+    const confettiConfig = {
+      angle: 90,
+      spread: 90,
+      startVelocity: 26,
+      elementCount: 100,
+      decay: 0.95
+    };    
 
     return (
-      <div className={styles.root}>
+      <div className={styles.root}>        
         <div className="container">
           <div className="row">
             <div className="hidden-xs col-sm-12">
@@ -184,6 +180,10 @@ class Reader extends React.Component {
               </Dropzone>              
             </div>
           </div>
+        </div>
+
+        <div className={styles.confettiContainer}>
+          <Confetti active={showConfetti} config={confettiConfig} />
         </div>
 
         <Modal

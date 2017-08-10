@@ -169,9 +169,7 @@ class Profile extends React.Component {
           <div className="row">
             <div className="hidden-xs col-sm-offset-7 col-sm-5">
               <p>
-                Ordered by average FPS (Frames Per Second) descending.
-                <br />
-                Longer bars are better.
+                Ordered by average FPS descending. Longer bars are better.
               </p>
             </div>
           </div>

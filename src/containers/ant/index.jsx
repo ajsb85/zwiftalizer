@@ -23,6 +23,9 @@ class Ant extends React.Component {
   }
 
   render() {
+    console.log('Ant::render');
+    console.log(this.props);
+
     const { isLoaded } = this.props;
 
     return isLoaded ? this.renderDevices() : null;

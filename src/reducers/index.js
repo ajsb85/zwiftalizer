@@ -1,17 +1,16 @@
-import {
-  combineReducers
-} from 'redux'
+import { combineReducers } from 'redux';
 
-import reader from './reader'
-import system from './system'
-import activity from './activity'
-import graphics from './graphics'
-import ant from './ant'
-import btle from './btle'
-import network from './network'
-import benchmarks from './benchmarks'
-import preferences from './preferences'
-import powerSources from './powerSources'
+import reader from './reader';
+import system from './system';
+import activity from './activity';
+import graphics from './graphics';
+import ant from './ant';
+import btle from './btle';
+import network from './network';
+import benchmarks from './benchmarks';
+import preferences from './preferences';
+import powerSources from './powerSources';
+import tabs from './tabs';
 
 const reducers = {
   reader,
@@ -23,9 +22,10 @@ const reducers = {
   network,
   benchmarks,
   preferences,
-  powerSources
-}
+  powerSources,
+  tabs
+};
 
-const combinedReducers = combineReducers(reducers)
+const combinedReducers = combineReducers(reducers);
 
-export default combinedReducers
+export default combinedReducers;

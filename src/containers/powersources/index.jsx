@@ -129,12 +129,8 @@ class PowerSources extends React.Component {
                         <li>
                           Personal identifiable information is never used.
                         </li>
-                        <li>
-                          CycleOps PowerBeam, PowerSync, Phantom 3, Phantom 5, PowertTap Pro+, PowertTap SLC+ and PowertTap SL+ are grouped together as 'Wireless' PowertTap power meters.
-                        </li>
-                        <li>
-                          Since people use this tool to inspect ANT+ signal issues, it could be argued that the most popular power sources listed here are actually the most problematic.
-                        </li>
+                        <li>The following Saris devices are grouped together as 'Wireless' PowertTap power meters: PowerTap SLC+, PowerTap SL+, PowerTap Pro+, PowerTap Elite+, and PowerTap 2.4+ hub based power meters; PowerBeam Pro and PowerSync trainers; 400 Pro, 300 Pro, 200 Pro, 100 Pro, Phantom 3 and Phantom 5 Indoor Cycles.
+                        </li>                        
                         <li>Sampling started May 15th 2017.</li>
                       </ul>
                     </div>

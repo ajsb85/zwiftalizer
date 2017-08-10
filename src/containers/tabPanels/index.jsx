@@ -1,100 +1,103 @@
-var _ = require('underscore')
-  import React, {Component} from 'react'
-  import PropTypes from 'prop-types';
-  import {connect} from 'react-redux'
-  import {render} from 'react-dom'
-  import {Tab, Tabs, TabList, TabPanel} from 'react-tabs'
-  import Graphics from '../graphics'
-  import Ant from '../ant'
-  import Btle from '../btle'
-  import Network from '../network'
-  import Analysis from '../analysis'
-  import structure from '../../styles/structure.css'
-  import styles from './styles.css'
+var _ = require('underscore');
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { render } from 'react-dom';
 
-  class TabPanels extends React.Component {
+import { setSelectedTab } from '../../actions/tabs';
 
-    constructor(props) {
-      super(props)
-    }
+import { Tabs, TabLink, TabContent } from 'react-tabs-redux';
 
-    // handleSelect(index, last) {
-    //   //console.log('Selected tab: ' + index + ', Last tab: ' + last);
-    // }
+import Graphics from '../graphics';
+import Ant from '../ant';
+import Btle from '../btle';
+import Network from '../network';
+import Analysis from '../analysis';
+import structure from '../../styles/structure.css';
+import styles from './styles.css';
 
-    render() {
-      const {isLoaded} = this.props
-      return isLoaded
-        ? this.renderTabs()
-        : null
-    }
+class TabPanels extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-    renderTabs() {
+  onChangeSelectedTab(selectedTab, tabNamespace) {
+    const { dispatch } = this.props;
+    dispatch(setSelectedTab(selectedTab, tabNamespace));
+  }
 
-      return (
-        <div className={styles.root}>
-          <div className='container'>
-            <div className='row'>
-              <div className='center-block'>
-                <div className='text-center'>
-                  <Tabs                    
-                    defaultIndex={0}
-                    style={{
+  render() {
+    const { isLoaded } = this.props;
+    return isLoaded ? this.renderTabs() : null;
+  }
+
+  renderTabs() {
+    return (
+      <div className={styles.root}>
+        <div className="container">
+          <div className="row">
+            <div className="center-block">
+              <div className="text-center">
+                <Tabs
+                  handleSelect={this.onChangeSelectedTab}
+                  renderActiveTabContentOnly={true}
+                  style={{
                     margin: 0,
                     padding: 0,
                     marginBefore: 0,
                     marginAfter: 0,
                     marginStart: 0,
                     marginEnd: 0
-                  }}>
-                    <TabList>
-                      <Tab>Graphics</Tab>
-                      <Tab>ANT+ Devices</Tab>
-                      <Tab>BTLE Devices</Tab>
-                      <Tab>Network</Tab>
-                      <Tab>Analysis</Tab>
-                    </TabList>
+                  }}
+                >
+                  <div className="tab-links">
+                    <TabLink to="tab1">Graphics</TabLink>
+                    <TabLink to="tab2">ANT+ Devices</TabLink>
+                    <TabLink to="tab3">BTLE Devices</TabLink>
+                    <TabLink to="tab4">Network</TabLink>
+                    <TabLink to="tab5">Analysis</TabLink>
+                  </div>
 
-                    <TabPanel>
-                      <Graphics/>
-                    </TabPanel>
+                  <TabContent for="tab1">
+                    <Graphics />
+                  </TabContent>
 
-                    <TabPanel>
-                      <Ant/>
-                    </TabPanel>
+                  <TabContent for="tab2">
+                    <Ant />
+                  </TabContent>
 
-                    <TabPanel>
-                      <Btle/>
-                    </TabPanel>
+                  <TabContent for="tab3">
+                    <Btle />
+                  </TabContent>
 
-                    <TabPanel>
-                      <Network/>
-                    </TabPanel>
+                  <TabContent for="tab4">
+                    <Network />
+                  </TabContent>
 
-                    <TabPanel>
-                      <Analysis/>
-                    </TabPanel>
-
-                  </Tabs>
-                </div>
+                  <TabContent for="tab5">
+                    <Analysis />
+                  </TabContent>
+                </Tabs>
               </div>
             </div>
           </div>
         </div>
-
-      )
-    }
+      </div>
+    );
   }
+}
 
-  function mapStateToProps(state) {
-    const {reader} = state
-    return {
-      ...reader
-    }
-  }
+function mapStateToProps(state) {
+  const { reader, tabs } = state;
+  return {
+    ...reader,
+    ...tabs
+  };
+}
 
-  TabPanels.propTypes = {
-    reader: PropTypes.object
-  }
+TabPanels.propTypes = {
+  reader: PropTypes.object,
+  tabs: PropTypes.object
+};
 
-  export default connect(mapStateToProps)(TabPanels)
+export default connect(mapStateToProps)(TabPanels);
