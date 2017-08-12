@@ -61,7 +61,7 @@ const baselineStyle = {
   }
 };
 
-const chartHeight = 150;
+const chartHeight = 100;
 
 const leftLabelAxisLabelWidth = 110;
 

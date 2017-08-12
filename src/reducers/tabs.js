@@ -1,18 +1,14 @@
 import { SET_SELECTED_TAB } from '../actions/tabs';
 
 const initialState = {
-  tabs1: null,
-  tabs2: null,
-  tabs3: null,
-  tabs4: null,
-  tabs5: null
+  selectedTab: 'tab1'
 };
 
 function tabs(state = initialState, action) {
   switch (action.type) {
     case SET_SELECTED_TAB:
       return Object.assign({}, state, {
-        [action.namespace]: action.tab
+        selectedTab: action.tab
       });
 
     default:

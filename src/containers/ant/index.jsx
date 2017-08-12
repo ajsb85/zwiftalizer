@@ -23,11 +23,7 @@ class Ant extends React.Component {
   }
 
   render() {
-    console.log('Ant::render');
-    console.log(this.props);
-
     const { isLoaded } = this.props;
-
     return isLoaded ? this.renderDevices() : null;
   }
 
@@ -36,11 +32,7 @@ class Ant extends React.Component {
 
     const markup = devices && devices.length
       ? <Chart devices={devices} searches={searches} />
-      : <div className="row" style={{height:"30rem"}}>
-          <div className="col-sm-12">
-            <h3 className={structure.sectionSubHeading}>No devices found</h3>
-          </div>
-        </div>;
+      : null
 
     return (
       <div className="container">

@@ -44,7 +44,7 @@
 }
 .chartsBoxContent {
   composes: box;
-  min-height: 35rem;
+  min-height: 25rem;
   background: #f6f6f6;
   border-top-right-radius: 2.5rem;
   border-bottom-left-radius: 2.5rem;
@@ -118,7 +118,7 @@
   line-height: 3rem;
 }
 .chartContainer {
-  margin-bottom: 2rem;
+  margin-bottom: 0.2rem;
 }
 .heading {
   color: #178acc;

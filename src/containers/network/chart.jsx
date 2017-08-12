@@ -43,7 +43,7 @@ const minDuration = 15 * 1000
 
 const signalFormat = format('d');
 
-const chartHeight = 150
+const chartHeight = 100
 
 const leftLabelAxisLabelWidth = 110
 
@@ -194,29 +194,32 @@ class Chart extends React.Component {
               </div>
             </div>
           </div>
-
         </div>
-        <Resizable>
-          <ChartContainer
-            timeRange={this.state.timerange}
-            onTimeRangeChanged={this.handleTimeRangeChange}
-            padding={0}
-            enablePanZoom={true}
-            minDuration={minDuration}
-            maxTime={this.state.initialRange.end()}
-            minTime={this.state.initialRange.begin()}
-            showGrid={false}>
-            <ChartRow height="150" debug={false}>
-              <YAxis id="errors1" label="Errors" min={0} max={maxMaxErrors} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
-              <Charts>
-                <LineChart axis="errors1" breakLine={true} series={this.state.errors.generalErrors} style={generalErrorsStyle} smooth={true} interpolation="curveBasis"/>
-                <LineChart axis="errors1" breakLine={true} series={this.state.errors.delayedPackets} style={delayedPacketErrorsStyle} smooth={true} interpolation="curveBasis"/>
-                <LineChart axis="errors1" breakLine={true} series={this.state.errors.invalidRoadTimeWarnings} style={invalidRoadTimeWarningsStyle} smooth={true} interpolation="curveBasis"/>
-              </Charts>
-              <YAxis id="errors1" label="Network" min={0} max={maxMaxErrors} absolute={true} width={rightAxisLabelWidth} type="linear" format="d"/>
-            </ChartRow>
-          </ChartContainer>
-        </Resizable>
+        <div className="row">
+          <div className="col-xs-12 col-sm-10">
+            <Resizable>
+              <ChartContainer
+                timeRange={this.state.timerange}
+                onTimeRangeChanged={this.handleTimeRangeChange}
+                padding={0}
+                enablePanZoom={true}
+                minDuration={minDuration}
+                maxTime={this.state.initialRange.end()}
+                minTime={this.state.initialRange.begin()}
+                showGrid={false}>
+                <ChartRow height="150" debug={false}>
+                  <YAxis id="errors1" label="Errors" min={0} max={maxMaxErrors} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
+                  <Charts>
+                    <LineChart axis="errors1" breakLine={true} series={this.state.errors.generalErrors} style={generalErrorsStyle} smooth={true} interpolation="curveBasis"/>
+                    <LineChart axis="errors1" breakLine={true} series={this.state.errors.delayedPackets} style={delayedPacketErrorsStyle} smooth={true} interpolation="curveBasis"/>
+                    <LineChart axis="errors1" breakLine={true} series={this.state.errors.invalidRoadTimeWarnings} style={invalidRoadTimeWarningsStyle} smooth={true} interpolation="curveBasis"/>
+                  </Charts>
+                  <YAxis id="errors1" label="Network" min={0} max={maxMaxErrors} absolute={true} width={rightAxisLabelWidth} type="linear" format="d"/>
+                </ChartRow>
+              </ChartContainer>
+            </Resizable>
+          </div>
+        </div>
       </div>
     )
   }
@@ -236,25 +239,29 @@ class Chart extends React.Component {
           </div>
         </div>
 
-        <Resizable>
-          <ChartContainer
-            timeRange={this.state.timerange}
-            onTimeRangeChanged={this.handleTimeRangeChange}
-            padding={0}
-            enablePanZoom={true}
-            minDuration={minDuration}
-            maxTime={this.state.initialRange.end()}
-            minTime={this.state.initialRange.begin()}
-            showGrid={false}>
-            <ChartRow height={chartHeight} debug={false}>
-              <YAxis id="connectionAttempts1" label="Connection Attempts" min={0} max={max} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
-              <Charts>
-                <BarChart axis="connectionAttempts1" series={this.state.phoneConnectionAttempts} style={phoneConnectionAttemtpsStyle} columns={["value"]}/>
-              </Charts>
-              <YAxis id="connectionAttempts2" label="Connection Attempts" min={0} max={max} absolute={true} width={rightAxisLabelWidth} type="linear" format="d"/>
-            </ChartRow>
-          </ChartContainer>
-        </Resizable>
+        <div className="row">
+          <div className="col-xs-12 col-sm-10">
+            <Resizable>
+              <ChartContainer
+                timeRange={this.state.timerange}
+                onTimeRangeChanged={this.handleTimeRangeChange}
+                padding={0}
+                enablePanZoom={true}
+                minDuration={minDuration}
+                maxTime={this.state.initialRange.end()}
+                minTime={this.state.initialRange.begin()}
+                showGrid={false}>
+                <ChartRow height={chartHeight} debug={false}>
+                  <YAxis id="connectionAttempts1" label="Attempt" min={0} max={max} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
+                  <Charts>
+                    <BarChart axis="connectionAttempts1" series={this.state.phoneConnectionAttempts} style={phoneConnectionAttemtpsStyle} columns={["value"]}/>
+                  </Charts>
+                  <YAxis id="connectionAttempts2" label="Attempt" min={0} max={max} absolute={true} width={rightAxisLabelWidth} type="linear" format="d"/>
+                </ChartRow>
+              </ChartContainer>
+            </Resizable>
+          </div>
+        </div>
       </div>
     )
   }
@@ -267,22 +274,26 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-offset-1 col-sm-10">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>Network reconnects</h4>
-              <h5 className={structure.infoHeading}>Fewer bars are better.</h5>
+              <h5 className={structure.infoHeading}>Fewer is better.</h5>
             </div>
           </div>
         </div>
-        <Resizable >
-          <ChartContainer timeRange={this.state.initialRange} format="HH:mm:ss" padding={0} trackerPosition={this.state.tracker}>
-            <ChartRow height={chartHeight} debug={false}>
-              <Brush timeRange={this.state.brushrange} allowSelectionClear={true} onTimeRangeChanged={this.handleTimeRangeChange}></Brush>
-              <YAxis id="reconnectsBrushAxis1" label="Reconnects" min={0} max={1} width={leftAxisLabelWidth} type="linear" format="d"></YAxis>
-              <Charts>
-                <BarChart axis="reconnectsBrushAxis1" series={this.state.reconnects} style={reconnectsStyle} columns={["value"]}/>
-              </Charts>
-              <YAxis id="reconnectsBrushAxis2" label="Reconnects" min={0} max={1} width={rightAxisLabelWidth} type="linear" format="d"></YAxis>
-            </ChartRow>
-          </ChartContainer>
-        </Resizable>
+        <div className="row">
+          <div className="col-xs-12 col-sm-10">
+            <Resizable >
+              <ChartContainer timeRange={this.state.initialRange} format="HH:mm:ss" padding={0} trackerPosition={this.state.tracker}>
+                <ChartRow height={chartHeight} debug={false}>
+                  <Brush timeRange={this.state.brushrange} allowSelectionClear={true} onTimeRangeChanged={this.handleTimeRangeChange}></Brush>
+                  <YAxis id="reconnectsBrushAxis1" label="Reconnects" min={0} max={1} width={leftAxisLabelWidth} type="linear" format="d"></YAxis>
+                  <Charts>
+                    <BarChart axis="reconnectsBrushAxis1" series={this.state.reconnects} style={reconnectsStyle} columns={["value"]}/>
+                  </Charts>
+                  <YAxis id="reconnectsBrushAxis2" label="Reconnects" min={0} max={1} width={rightAxisLabelWidth} type="linear" format="d"></YAxis>
+                </ChartRow>
+              </ChartContainer>
+            </Resizable>
+          </div>
+        </div>
       </div>
     )
   }

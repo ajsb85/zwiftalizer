@@ -2,8 +2,12 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Reader from '../reader'
 import Activity from '../activity'
-import TabPanels from '../tabPanels'
 import System from '../system'
+import Graphics from '../graphics';
+import Ant from '../ant';
+import Btle from '../btle';
+import Network from '../network';
+import Analysis from '../analysis';
 
 class Home extends React.Component {
   render() {
@@ -12,7 +16,11 @@ class Home extends React.Component {
         <Reader/>
         <Activity/>
         <System/>
-        <TabPanels/>
+        <Graphics />
+        <Ant />
+        <Btle />
+        <Network />
+        <Analysis />
       </div>
     )
   }

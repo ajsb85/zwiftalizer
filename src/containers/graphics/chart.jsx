@@ -244,40 +244,44 @@ class Chart extends React.Component {
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxFirstLast}>
               <div className={structure.chartsBoxContent}>
-                <Resizable>
-                  <ChartContainer
-                    timeRange={this.state.timerange}
-                    trackerPosition={this.state.tracker}
-                    onTrackerChanged={this.handleTrackerChanged}
-                    onTimeRangeChanged={this.handleTimeRangeChange}
-                    enablePanZoom={true}
-                    minDuration={minDuration}
-                    maxTime={this.state.initialRange.end()}
-                    minTime={this.state.initialRange.begin()}
-                    showGrid={false}>
-                    <ChartRow height="175" debug={false} trackerValues={trackerValues} trackerHintHeight={30}>
-                      <LabelAxis id="fpsAxis" label="FPS" values={this.state.fpsSummaryValues} min={this.state.minOverall} max={this.state.maxOverall} width={100} type="linear" format="d"/>
-                      <Charts>
-                        <LineChart axis="fpsAxis" series={this.fpsSeries} style={primaryStyle} smooth={true} interpolation="curveBasis"/>
-                        <Baseline axis="fpsAxis" value={this.state.avgOverall} style={baselineStyle} label="Avg" position="left"/>
-                      </Charts>
-                      <ValueAxis id="trackerValueAxis" value={fpsValue} detail="FPS" width={60} min={this.state.minOverall} max={this.state.maxOverall}/>
-                    </ChartRow>
-                  </ChartContainer>
-                </Resizable>
-                <Resizable>
-                  <ChartContainer timeRange={this.state.initialRange} format="HH:mm:ss" trackerPosition={this.state.tracker}>
-                    <ChartRow height="125" debug={false}>
-                      <Brush timeRange={this.state.brushrange} allowSelectionClear={true} onTimeRangeChanged={this.handleTimeRangeChange}></Brush>
-                      <YAxis id="fpsBrushAxis" label="FPS" min={this.state.minOverall - 5} max={this.state.maxOverall + 5} width={100} type="linear" format="d"></YAxis>
-                      <Charts>
-                        <LineChart axis="fpsBrushAxis" series={this.fpsSeries} style={primaryStyle} smooth={true} interpolation="curveBasis"/>
-                        <Baseline axis="fpsBrushAxis" value={this.state.avgOverall} style={baselineStyle}/>
-                      </Charts>
-                      <YAxis id="fpsBrushAxis2" label="FPS" min={this.state.minOverall - 5} max={this.state.maxOverall + 5} width={60} type="linear" format="d"></YAxis>
-                    </ChartRow>
-                  </ChartContainer>
-                </Resizable>
+                <div className="row">
+                  <div className="col-xs-12 col-sm-10">
+                    <Resizable>
+                      <ChartContainer
+                        timeRange={this.state.timerange}
+                        trackerPosition={this.state.tracker}
+                        onTrackerChanged={this.handleTrackerChanged}
+                        onTimeRangeChanged={this.handleTimeRangeChange}
+                        enablePanZoom={true}
+                        minDuration={minDuration}
+                        maxTime={this.state.initialRange.end()}
+                        minTime={this.state.initialRange.begin()}
+                        showGrid={false}>
+                        <ChartRow height="100" debug={false} trackerValues={trackerValues} trackerHintHeight={30}>
+                          <LabelAxis id="fpsAxis" label="FPS" values={this.state.fpsSummaryValues} min={this.state.minOverall} max={this.state.maxOverall} width={100} type="linear" format="d"/>
+                          <Charts>
+                            <LineChart axis="fpsAxis" series={this.fpsSeries} style={primaryStyle} smooth={true} interpolation="curveBasis"/>
+                            <Baseline axis="fpsAxis" value={this.state.avgOverall} style={baselineStyle} label="Avg" position="left"/>
+                          </Charts>
+                          <ValueAxis id="trackerValueAxis" value={fpsValue} detail="FPS" width={60} min={this.state.minOverall} max={this.state.maxOverall}/>
+                        </ChartRow>
+                      </ChartContainer>
+                    </Resizable>
+                    <Resizable>
+                      <ChartContainer timeRange={this.state.initialRange} format="HH:mm:ss" trackerPosition={this.state.tracker}>
+                        <ChartRow height="75" debug={false}>
+                          <Brush timeRange={this.state.brushrange} allowSelectionClear={true} onTimeRangeChanged={this.handleTimeRangeChange}></Brush>
+                          <YAxis id="fpsBrushAxis" label="FPS" min={this.state.minOverall - 5} max={this.state.maxOverall + 5} width={100} type="linear" format="d"></YAxis>
+                          <Charts>
+                            <LineChart axis="fpsBrushAxis" series={this.fpsSeries} style={primaryStyle} smooth={true} interpolation="curveBasis"/>
+                            <Baseline axis="fpsBrushAxis" value={this.state.avgOverall} style={baselineStyle}/>
+                          </Charts>
+                          <YAxis id="fpsBrushAxis2" label="FPS" min={this.state.minOverall - 5} max={this.state.maxOverall + 5} width={60} type="linear" format="d"></YAxis>
+                        </ChartRow>
+                      </ChartContainer>
+                    </Resizable>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

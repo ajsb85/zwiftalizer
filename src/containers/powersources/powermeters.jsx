@@ -11,7 +11,7 @@ class Powermeters extends React.Component {
     super(props);
     this.state = {
       highlightRow: false
-    };
+    };    
     this.mouseOverHandler = this.mouseOverHandler.bind(this);
     this.mouseOutHandler = this.mouseOutHandler.bind(this);
   }
