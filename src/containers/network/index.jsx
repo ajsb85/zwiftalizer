@@ -29,17 +29,8 @@ class Network extends React.Component {
   renderChart() {
 
     return (
-
-      <div className="container">
-        <div className={structure.boxesWrapOuter}>
-          <div className={structure.boxesWrapInner}>
-            <div className={structure.boxFirstLast}>
-              <div className={structure.chartsBoxContent}>
-                <Chart data={this.props}/>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="container">       
+        <Chart data={this.props}/>             
       </div>
     )
   }

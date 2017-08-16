@@ -6,9 +6,6 @@
  *  This source code is licensed under the MIT-style license found in the
  *  LICENSE file in the root directory of this source tree.
  */
-// var _ = require('underscore')
-// var moment = require('moment')
-// var sprintf = require('sprintf-js').sprintf
 
 export { default as normalize } from './normalize';
 
@@ -110,15 +107,7 @@ export { default as secondsToTime } from './secondsToTime';
 export { default as gameVersion } from './gameVersion';
 
 export {
-  default as mapNetworkPhoneConnectionAttempts
-} from './mapNetworkPhoneConnectionAttempts';
-
-export {
   default as getBTLEDeviceManufacturer
 } from './getBTLEDeviceManufacturer';
 
-export {
-  default as getTimeBasedPowerData
-} from './getTimeBasedPowerData';
-
-
+export { default as getTimeBasedPowerData } from './getTimeBasedPowerData';

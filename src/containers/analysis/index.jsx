@@ -128,17 +128,6 @@ class Analysis extends React.Component {
 
     return (
       <div className="container">
-       <div className="row">
-          <div className="col-xs-12 col-sm-offset-1 col-sm-10">
-            <h3>
-              DISCLAIMER
-            </h3>
-            <p>
-              The opinions expressed below are the those of one member of the Zwift community and do not represent the opinions of Zwift Inc in any way.
-            </p>
-          </div>
-        </div>        
-        
         <div className="row">
           <div className="col-xs-12">
             <div className={structure.boxesWrapOuter}>
@@ -231,8 +220,7 @@ class Analysis extends React.Component {
 
         <h3>3. Use a short, high quality USB extension cable</h3>
         <p>ANT+ works up to 30 meters but since it uses a low powered radio, at a fixed frequency of 2457 MHz, it is susceptible to radio-frequency interference. 
-        Using an extension cable to move the dongle away from your computer reduces interference caused by electronics inside the computer. 
-        Similarly, do not put the dongle too close to the smart trainer because it also contains electronics can be a source of interference. </p>
+        Using an extension cable to move the dongle away from your computer reduces interference caused by electronics inside the computer. </p>
 
         <h3>4. Change your WiFi router channel</h3>
         <p>If you have a 2.4 GHz WiFi router, use channels 1 to 5 and avoid channel 10 becuase it is the same frequency as ANT+ (2457MHz). 

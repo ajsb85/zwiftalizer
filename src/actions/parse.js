@@ -156,15 +156,9 @@ function parseNetwork(log, timeAxisTimeSeries) {
 
   const errors = Parser.mapNetworkErrors(networkLines, timeAxisTimeSeries);
 
-  const phoneConnectionAttempts = Parser.mapNetworkPhoneConnectionAttempts(
-    networkLines,
-    timeAxisTimeSeries
-  );
-
   return {
     reconnects,
-    errors,
-    phoneConnectionAttempts
+    errors
   };
 }
 

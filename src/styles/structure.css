@@ -46,7 +46,8 @@
   composes: box;
   min-height: 25rem;
   background: #f6f6f6;
-  border-top-right-radius: 2.5rem;
+  border: 0;
+  /* border-top-right-radius: 2.5rem; */
   border-bottom-left-radius: 2.5rem;
 }
 .boxHeading {

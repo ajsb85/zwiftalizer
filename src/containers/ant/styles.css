@@ -16,17 +16,18 @@
 .signalBoxTitle {
     display: block;
     font-size: 1rem;
-    line-height: 1.2rem;
+    line-height: 1rem;
     font-weight: normal;
     letter-spacing: 0.2rem;
     text-transform: uppercase;
-    margin-bottom: 0.4rem
+    margin-bottom: 0.1rem;
 }
 
 .signalBoxValue {
-  display: block;
-  font-size: 1.8rem;
-  line-height: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 0.8rem;
+    display: block;
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.1rem;
 }

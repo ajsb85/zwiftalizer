@@ -32,10 +32,12 @@ import {TimeSeries} from 'pondjs';
 
 import structure from '../../styles/structure.css'
 
+import {CHART_HEIGHT, BRUSH_HEIGHT} from '../../styles/constants.js';
+
 /* Frame rates are very subjective. */
 /* Based on community feedback, and the fact that the majority of users have */
 /* Intel HD integrated graphics, not discrete GPUs, I have decided to make these tiers low */
-/* Basically, if it works, all is good, but can be better, or best (like a car wash menu) */
+/* Basically, if it works, all is good, but can be better, or best */
 const bestThreshold = 30
 const betterThreshold = 15
 
@@ -182,6 +184,22 @@ class Chart extends React.Component {
       }
     ]
 
+    const style = styler([
+      {
+        key: 'value',
+        color: colors.brand
+      }
+    ]);
+
+    const categories = [
+      {
+        key: 'value',
+        label: 'FPS',
+        disabled: false
+      }
+    ];
+
+
     return (
 
       <div className="container">
@@ -238,12 +256,31 @@ class Chart extends React.Component {
               <div className={structure.boxContent}>{this.state.samplesStr}</div>
             </div>
           </div>
-        </div>
-
+        </div>          
         <div className={structure.boxesWrapOuter}>
           <div className={structure.boxesWrapInner}>
             <div className={structure.boxFirstLast}>
+              <div className={structure.boxHeadingLast}>
+                Graphics Performance
+              </div>
               <div className={structure.chartsBoxContent}>
+                <div className="row">
+                  <div className="col-xs-12 col-sm-offset-1 col-sm-7">
+                    <div className={structure.alignLeft}>
+                      <h4 className={structure.heading}>Frames Per Second</h4>
+                      <h5 className={structure.infoHeading}>
+                        Use the mouse wheel to zoom in. Click and drag to pan.
+                      </h5>
+                    </div>
+                  </div>
+                  <div className="col-xs-12 col-sm-3">
+                    <div className="pull-right">
+                      <div className={structure.legendWrapper}>
+                        <Legend type="swatch" style={style} categories={categories} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div className="row">
                   <div className="col-xs-12 col-sm-10">
                     <Resizable>
@@ -257,7 +294,7 @@ class Chart extends React.Component {
                         maxTime={this.state.initialRange.end()}
                         minTime={this.state.initialRange.begin()}
                         showGrid={false}>
-                        <ChartRow height="100" debug={false} trackerValues={trackerValues} trackerHintHeight={30}>
+                        <ChartRow height={CHART_HEIGHT} debug={false} trackerValues={trackerValues} trackerHintHeight={30}>
                           <LabelAxis id="fpsAxis" label="FPS" values={this.state.fpsSummaryValues} min={this.state.minOverall} max={this.state.maxOverall} width={100} type="linear" format="d"/>
                           <Charts>
                             <LineChart axis="fpsAxis" series={this.fpsSeries} style={primaryStyle} smooth={true} interpolation="curveBasis"/>
@@ -269,7 +306,7 @@ class Chart extends React.Component {
                     </Resizable>
                     <Resizable>
                       <ChartContainer timeRange={this.state.initialRange} format="HH:mm:ss" trackerPosition={this.state.tracker}>
-                        <ChartRow height="75" debug={false}>
+                        <ChartRow height={BRUSH_HEIGHT} debug={false}>
                           <Brush timeRange={this.state.brushrange} allowSelectionClear={true} onTimeRangeChanged={this.handleTimeRangeChange}></Brush>
                           <YAxis id="fpsBrushAxis" label="FPS" min={this.state.minOverall - 5} max={this.state.maxOverall + 5} width={100} type="linear" format="d"></YAxis>
                           <Charts>

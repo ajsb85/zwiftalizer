@@ -15,6 +15,7 @@ import { format } from 'd3-format';
 import { timeFormat } from 'd3-time-format';
 import { colors } from '../../styles/colors';
 import { timeAxis } from '../../parser';
+
 import {
   BASIC_DEVICE,
   POWER_METER_DEVICE,
@@ -48,9 +49,7 @@ import structure from '../../styles/structure.css';
 
 import styles from './styles.css';
 
-const headingRowStyle = {
-  marginBottom: '1rem'
-};
+import {CHART_HEIGHT, BRUSH_HEIGHT} from '../../styles/constants.js';
 
 const baselineStyle = {
   line: {
@@ -60,8 +59,6 @@ const baselineStyle = {
     dashed: true
   }
 };
-
-const chartHeight = 100;
 
 const leftLabelAxisLabelWidth = 110;
 
@@ -244,7 +241,7 @@ class Chart extends React.Component {
 
     return (
       <div key={key} className={structure.chartContainer}>
-        <div className="row" style={headingRowStyle}>
+        <div className="row">
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>{label}</h4>
@@ -275,7 +272,7 @@ class Chart extends React.Component {
                 minTime={this.state.initialRange.begin()}
                 showGrid={false}
               >
-                <ChartRow height={chartHeight} debug={false}>
+                <ChartRow height={CHART_HEIGHT} debug={false}>
                   <YAxis
                     id="powerAxis"
                     label="Watts"
@@ -375,8 +372,6 @@ class Chart extends React.Component {
     let minGrad = 0;
     let maxGrad = 0;
 
-    //console.log(device.gradient.toJSON())
-
     if (device.gradient && device.gradient.count() > 0) {
       minGrad = parseInt(device.gradient.min());
       maxGrad = parseInt(device.gradient.max());
@@ -418,7 +413,7 @@ class Chart extends React.Component {
 
     return (
       <div key={key} className={structure.chartContainer}>
-        <div className="row" style={headingRowStyle}>
+        <div className="row">
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>{label}</h4>
@@ -448,7 +443,7 @@ class Chart extends React.Component {
                 minTime={this.state.initialRange.begin()}
                 showGrid={false}
               >
-                <ChartRow height={chartHeight} debug={false}>
+                <ChartRow height={CHART_HEIGHT} debug={false}>
                   <YAxis
                     id="gradientAxis"
                     label="Resistance"
@@ -555,7 +550,7 @@ class Chart extends React.Component {
 
     return (
       <div key={key} className={structure.chartContainer}>
-        <div className="row" style={headingRowStyle}>
+        <div className="row">
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>{label}</h4>
@@ -585,7 +580,7 @@ class Chart extends React.Component {
                 minTime={this.state.initialRange.begin()}
                 showGrid={false}
               >
-                <ChartRow height={chartHeight} debug={false}>
+                <ChartRow height={CHART_HEIGHT} debug={false}>
                   <YAxis
                     id={leftAxisId}
                     label="Signal"
@@ -730,7 +725,7 @@ class Chart extends React.Component {
 
     return (
       <div key={key} className={structure.chartContainer}>
-        <div className="row" style={headingRowStyle}>
+        <div className="row">
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>{label}</h4>
@@ -760,7 +755,7 @@ class Chart extends React.Component {
                 minTime={this.state.initialRange.begin()}
                 showGrid={false}
               >
-                <ChartRow height={chartHeight} debug={false}>
+                <ChartRow height={CHART_HEIGHT} debug={false}>
                   <YAxis
                     id="powerAxis"
                     label="Power"
@@ -882,7 +877,7 @@ class Chart extends React.Component {
 
     return (
       <div key="searchesBrush" className={structure.chartContainer}>
-        <div className="row" style={headingRowStyle}>
+        <div className="row">
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>ANT+ device searches</h4>
@@ -909,7 +904,7 @@ class Chart extends React.Component {
                 padding={0}
                 trackerPosition={this.state.tracker}
               >
-                <ChartRow height={75} debug={false}>
+                <ChartRow height={BRUSH_HEIGHT} debug={false}>
                   <Brush
                     timeRange={this.state.brushrange}
                     allowSelectionClear={true}
@@ -1006,6 +1001,9 @@ class Chart extends React.Component {
       <div className={structure.boxesWrapOuter}>
         <div className={structure.boxesWrapInner}>
           <div className={structure.boxFirstLast}>
+            <div className={structure.boxHeadingLast}>
+              ANT+ signal quality
+            </div>
             <div className={structure.chartsBoxContent}>
               {powerChart}
               {kickrChart}

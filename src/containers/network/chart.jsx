@@ -38,12 +38,12 @@ import {TimeSeries} from 'pondjs'
 
 import structure from '../../styles/structure.css'
 
+import {CHART_HEIGHT, BRUSH_HEIGHT} from '../../styles/constants.js';
+
 // 15 second max zoom
 const minDuration = 15 * 1000
 
 const signalFormat = format('d');
-
-const chartHeight = 100
 
 const leftLabelAxisLabelWidth = 110
 
@@ -53,21 +53,10 @@ const rightAxisLabelWidth = 60
 
 const brushLeftLabelAxisWidth = (2 * leftLabelAxisLabelWidth)
 
-const headingRowStyle = {
-  marginBottom: '1rem'
-}
-
 const reconnectsStyle = styler([
   {
     key: 'value',
     color: colors.fiestared
-  }
-])
-
-const phoneConnectionAttemtpsStyle = styler([
-  {
-    key: 'value',
-    color: colors.orange
   }
 ])
 
@@ -100,7 +89,7 @@ class Chart extends React.Component {
   constructor(props) {
     super(props)
 
-    const {reconnects, phoneConnectionAttempts, errors} = props.data;
+    const {reconnects, errors} = props.data;
 
     const tracker = null
     const brushrange = null
@@ -112,8 +101,7 @@ class Chart extends React.Component {
     const emptyTimeSeries = timeAxis(firstTimestamp, lastTimestamp)
 
     this.state = {
-      reconnects,
-      phoneConnectionAttempts,
+      reconnects,      
       errors,
       tracker,
       timerange,
@@ -124,8 +112,7 @@ class Chart extends React.Component {
 
     this.handleTrackerChanged = this.handleTrackerChanged.bind(this)
     this.handleTimeRangeChange = this.handleTimeRangeChange.bind(this)
-    this.renderNetworkSignals = this.renderNetworkSignals.bind(this)
-    this.renderPhoneConnectionAttempts = this.renderPhoneConnectionAttempts.bind(this)
+    this.renderNetworkSignals = this.renderNetworkSignals.bind(this)    
     this.renderReconnectsBrush = this.renderReconnectsBrush.bind(this)
   }
 
@@ -142,7 +129,6 @@ class Chart extends React.Component {
   }
 
   renderNetworkSignals() {
-
     const maxGeneralErrors = parseInt(signalFormat(this.state.errors.generalErrors.max()))
     const maxDelayed = parseInt(signalFormat(this.state.errors.delayedPackets.max()))
     const maxInvalidRoadTimeWarnings = parseInt(signalFormat(this.state.errors.invalidRoadTimeWarnings.max()))
@@ -179,8 +165,7 @@ class Chart extends React.Component {
 
     return (
       <div key="networkSignals">
-
-        <div className="row" style={headingRowStyle}>
+        <div className="row">
           <div className="col-xs-12 col-sm-offset-1 col-sm-6">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>Network errors</h4>
@@ -207,7 +192,7 @@ class Chart extends React.Component {
                 maxTime={this.state.initialRange.end()}
                 minTime={this.state.initialRange.begin()}
                 showGrid={false}>
-                <ChartRow height="150" debug={false}>
+                <ChartRow height={CHART_HEIGHT} debug={false}>
                   <YAxis id="errors1" label="Errors" min={0} max={maxMaxErrors} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
                   <Charts>
                     <LineChart axis="errors1" breakLine={true} series={this.state.errors.generalErrors} style={generalErrorsStyle} smooth={true} interpolation="curveBasis"/>
@@ -224,53 +209,10 @@ class Chart extends React.Component {
     )
   }
 
-  renderPhoneConnectionAttempts() {
-    const max = parseInt(signalFormat(this.state.phoneConnectionAttempts.max()))
-
-    return (
-      <div key="phoneConnectionAttemptsChart">
-
-        <div className="row" style={headingRowStyle}>
-          <div className="col-xs-12 col-sm-offset-1 col-sm-10">
-            <div className={structure.alignLeft}>
-              <h4 className={structure.heading}>Mobile app connection attempts</h4>
-              <h5 className={structure.infoHeading}>Lots of bars here is normal if you don't use the mobile app.</h5>
-            </div>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-xs-12 col-sm-10">
-            <Resizable>
-              <ChartContainer
-                timeRange={this.state.timerange}
-                onTimeRangeChanged={this.handleTimeRangeChange}
-                padding={0}
-                enablePanZoom={true}
-                minDuration={minDuration}
-                maxTime={this.state.initialRange.end()}
-                minTime={this.state.initialRange.begin()}
-                showGrid={false}>
-                <ChartRow height={chartHeight} debug={false}>
-                  <YAxis id="connectionAttempts1" label="Attempt" min={0} max={max} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
-                  <Charts>
-                    <BarChart axis="connectionAttempts1" series={this.state.phoneConnectionAttempts} style={phoneConnectionAttemtpsStyle} columns={["value"]}/>
-                  </Charts>
-                  <YAxis id="connectionAttempts2" label="Attempt" min={0} max={max} absolute={true} width={rightAxisLabelWidth} type="linear" format="d"/>
-                </ChartRow>
-              </ChartContainer>
-            </Resizable>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
   renderReconnectsBrush() {
-
     return (
       <div key="reconnectsBrush">
-        <div className="row" style={headingRowStyle}>
+        <div className="row">
           <div className="col-xs-12 col-sm-offset-1 col-sm-10">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>Network reconnects</h4>
@@ -282,7 +224,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-10">
             <Resizable >
               <ChartContainer timeRange={this.state.initialRange} format="HH:mm:ss" padding={0} trackerPosition={this.state.tracker}>
-                <ChartRow height={chartHeight} debug={false}>
+                <ChartRow height={BRUSH_HEIGHT} debug={false}>
                   <Brush timeRange={this.state.brushrange} allowSelectionClear={true} onTimeRangeChanged={this.handleTimeRangeChange}></Brush>
                   <YAxis id="reconnectsBrushAxis1" label="Reconnects" min={0} max={1} width={leftAxisLabelWidth} type="linear" format="d"></YAxis>
                   <Charts>
@@ -299,16 +241,21 @@ class Chart extends React.Component {
   }
 
   render() {
-
-    const networkSignals = this.renderNetworkSignals()
-
-    const phoneConnectionAttempts = this.renderPhoneConnectionAttempts()
+    const networkSignals = this.renderNetworkSignals()    
     const brush = this.renderReconnectsBrush()
     return (
-      <div>
-        {networkSignals}
-        {phoneConnectionAttempts}
-        {brush}
+       <div className={structure.boxesWrapOuter}>
+        <div className={structure.boxesWrapInner}>
+          <div className={structure.boxFirstLast}>
+            <div className={structure.boxHeadingLast}>
+              Network Quality
+            </div>
+            <div className={structure.chartsBoxContent}>
+              {networkSignals}        
+              {brush}
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
