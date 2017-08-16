@@ -94,7 +94,7 @@
   composes: boxValueInner;
   font-weight: 700;
   font-size: 2.2rem;
-  line-height: 2.6rem;
+  line-height: 2.8rem;
 }
 .boxValueSmall {
   composes: boxValueInner;
@@ -129,16 +129,19 @@
 }
 .subHeading {
   color: #178acc;
-  font-weight: 400;
-  font-size: 1.4rem;
-  line-height: 1.4rem;
-  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
 }
 .infoHeading {
   color: #666;
   font-weight: 400;
-  font-size: 1.4rem;
-  line-height: 1.8rem;
+  font-size: 1.3rem;
+  line-height: 1.3rem;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
 }
 .legendWrapper {
   margin-top: 10px;

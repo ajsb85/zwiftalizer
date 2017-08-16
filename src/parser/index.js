@@ -70,8 +70,6 @@ export { default as mapBTLELines } from './mapBTLELines';
 
 export { default as mapBTLEMessages } from './mapBTLEMessages';
 
-export { default as mapPowermeterData } from './mapPowermeterData';
-
 export { default as stripAntLines } from './stripAntLines';
 
 export { default as lineCount } from './lineCount';
@@ -94,8 +92,6 @@ export { default as mapAntRxFails } from './mapAntRxFails';
 
 export { default as antData } from './antData';
 
-export { default as mapGradientData } from './mapGradientData';
-
 export { default as mapNetworkLines } from './mapNetworkLines';
 
 export { default as mapNetworkReconnects } from './mapNetworkReconnects';
@@ -109,5 +105,3 @@ export { default as gameVersion } from './gameVersion';
 export {
   default as getBTLEDeviceManufacturer
 } from './getBTLEDeviceManufacturer';
-
-export { default as getTimeBasedPowerData } from './getTimeBasedPowerData';

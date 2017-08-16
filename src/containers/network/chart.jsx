@@ -181,7 +181,7 @@ class Chart extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-xs-12 col-sm-10">
+          <div className="col-xs-12">
             <Resizable>
               <ChartContainer
                 timeRange={this.state.timerange}
@@ -221,7 +221,7 @@ class Chart extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-xs-12 col-sm-10">
+          <div className="col-xs-12">
             <Resizable >
               <ChartContainer timeRange={this.state.initialRange} format="HH:mm:ss" padding={0} trackerPosition={this.state.tracker}>
                 <ChartRow height={BRUSH_HEIGHT} debug={false}>

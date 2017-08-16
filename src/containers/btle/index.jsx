@@ -33,15 +33,8 @@ class Btle extends React.Component {
     if (messages && messages.count()) {
       return (
         <div className="container">
-          <div className={structure.boxesWrapOuter}>
-            <div className={structure.boxesWrapInner}>
-              <div className={structure.boxFirstLast}>
-                <div className={structure.chartsBoxContent}>
-                  <Chart data={this.props}/></div>
-              </div>
-            </div>
-          </div>
-        </div>
+          <Chart data={this.props}/>
+        </div>        
       )
     }
 

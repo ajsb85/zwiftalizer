@@ -37,12 +37,12 @@ import {TimeSeries} from 'pondjs'
 
 import structure from '../../styles/structure.css'
 
+import {CHART_HEIGHT, BRUSH_HEIGHT} from '../../styles/constants.js';
+
 // 15 second max zoom
 const minDuration = 15 * 1000
 
 const signalFormat = format('d');
-
-const chartHeight = 150
 
 const leftLabelAxisLabelWidth = 110
 
@@ -161,7 +161,7 @@ class Chart extends React.Component {
             maxTime={this.state.initialRange.end()}
             minTime={this.state.initialRange.begin()}
             showGrid={false}>
-            <ChartRow height="150" debug={false}>
+            <ChartRow height={CHART_HEIGHT} debug={false}>
               <YAxis id="messages1" label="Messages" min={0} max={maxMessages} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"/>
               <Charts>
                 <BarChart axis="messages1" series={this.state.messages} style={messagesStyle} columns={['value']}/>
@@ -192,7 +192,7 @@ class Chart extends React.Component {
         </div>
         <Resizable >
           <ChartContainer timeRange={this.state.initialRange} format="HH:mm:ss" padding={0} trackerPosition={this.state.tracker}>
-            <ChartRow height={chartHeight} debug={false}>
+            <ChartRow height={BRUSH_HEIGHT} debug={false}>
               <Brush timeRange={this.state.brushrange} allowSelectionClear={true} onTimeRangeChanged={this.handleTimeRangeChange}></Brush>
               <YAxis id="messages1" label="Messages" min={0} max={maxMessages} absolute={true} width={leftAxisLabelWidth} type="linear" format="d"></YAxis>
               <Charts>
@@ -211,9 +211,15 @@ class Chart extends React.Component {
     const btleMessages = this.renderBtleMessages()
     const brush = this.renderBrush()
     return (
-      <div>
-        {btleMessages}
-        {brush}
+      <div className={structure.boxesWrapOuter}>
+          <div className={structure.boxesWrapInner}>
+            <div className={structure.boxFirstLast}>
+              <div className={structure.chartsBoxContent}>
+                {btleMessages}
+                {brush}
+              </div>
+            </div>
+          </div>
       </div>
     )
   }

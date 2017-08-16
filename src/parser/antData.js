@@ -1,11 +1,4 @@
-import { TimeSeries, sum } from 'pondjs';
-
-import titleCase from './titleCase';
-
 import mapAntLines from './mapAntLines';
-
-// get SRM time based power data, not doing anything with this yet
-import getTimeBasedPowerData from './getTimeBasedPowerData';
 
 import antDevices from './antDevices';
 
@@ -15,18 +8,11 @@ import mapAntSearches from './mapAntSearches';
 
 import mapAntRxFails from './mapAntRxFails';
 
-import mapPowermeterData from './mapPowermeterData';
-
-import mapGradientData from './mapGradientData';
-
 import mapCalibrationData from './mapCalibrationData';
-
-import deviceTypes from '../types/devices.json';
 
 import indexToUnixTime from './indexToUnixTime';
 
-import {
-  WAHOO_MANUFACTURER_ID,
+import {  
   POWER_METER_DEVICE,
   SMART_TRAINER_DEVICE,
   ANT_AVERAGES_WINDOW_IN_SEC
@@ -57,12 +43,6 @@ export default function antData(log, timeAxisTimeSeries) {
       return `${ANT_AVERAGES_WINDOW_IN_SEC}s-${Math.round(t / ANT_AVERAGES_WINDOW_IN_SEC) * ANT_AVERAGES_WINDOW_IN_SEC}`;
     })
   );
-
-  // gets the power data, but we can not tell which device / channel is producing it
-  const power = mapPowermeterData(antLines, timeAxisTimeSeries);
-
-  // gets SRM time based power entries, but we do not try to do anything with the values yet
-  // const timeBasedPowerEntries = getTimeBasedPowerData(log);
 
   // this is kinda useless, just prints info
   const calibration = mapCalibrationData(antLines);
@@ -99,57 +79,18 @@ export default function antData(log, timeAxisTimeSeries) {
   const powerDevice = _.find(devices, device => {
     return device.type === POWER_METER_DEVICE;
   });
-
-  const kickrDevice = _.find(devices, device => {
-    return device.type === SMART_TRAINER_DEVICE &&
-      `${device.manufacturerId}` === WAHOO_MANUFACTURER_ID;
-  });
-
+  
   // can be kickr again, in fec mode, not ANT+ power meter data mode
   const fecSmartTrainerDevice = _.find(devices, device => {
     return device.type === SMART_TRAINER_DEVICE;
   });
 
-  // Assign the power data to the powermeter before the kickr, but never both.
+  // Assign the calibration data to the powermeter before the kickr, but never both.
   // Does not work for Paul Holmgren who uses a stages PM as a cadence meter and kickr for power because of ERG mode.
   // Would be interesting to see if we can detect ERG mode is engaged.
   if (powerDevice) {
     Object.assign(powerDevice, {
-      power,
       calibration
-    });
-  } else if (kickrDevice) {
-    // kickr does not emit calibration zero offset
-    Object.assign(kickrDevice, {
-      power
-    });
-  }
-
-  // if power was assigned to powermeter device, then kickrDevice.power will be undefined
-  // assign a null power timeseries to kickr
-  if (kickrDevice && !kickrDevice.power) {
-    const nullPower = new TimeSeries({
-      name: 'power',
-      columns: ['time', 'value'],
-      points: []
-    });
-
-    const reducedNullPowerSeries = TimeSeries.timeSeriesListReduce({
-      name: 'power',
-      fieldSpec: ['time', 'value'],
-      seriesList: [timeAxisTimeSeries, nullPower],
-      reducer: sum()
-    });
-
-    Object.assign(kickrDevice, {
-      power: reducedNullPowerSeries
-    });
-  }
-
-  if (fecSmartTrainerDevice) {
-    const gradient = mapGradientData(antLines, timeAxisTimeSeries);
-    Object.assign(fecSmartTrainerDevice, {
-      gradient
     });
   }
 
@@ -164,7 +105,7 @@ export default function antData(log, timeAxisTimeSeries) {
   let showUnknownSmartTrainerModelModal = false;
 
   if (
-    powerDevice && powerDevice.manufacturerId && powerDevice.model === 'Unknown'
+    powerDevice && powerDevice.manufacturerId && powerDevice.modelId && powerDevice.model === 'Unknown'
   ) {
     showUnknownPowerMeterModelModal = true;
   }
@@ -175,6 +116,7 @@ export default function antData(log, timeAxisTimeSeries) {
   if (
     fecSmartTrainerDevice &&
     fecSmartTrainerDevice.manufacturerId &&
+    fecSmartTrainerDevice.modelId &&
     fecSmartTrainerDevice.model === 'Unknown'
   ) {
     showUnknownSmartTrainerModelModal = true;
