@@ -7,7 +7,6 @@ import Graphics from '../graphics';
 import Ant from '../ant';
 import Btle from '../btle';
 import Network from '../network';
-import Analysis from '../analysis';
 
 class Home extends React.Component {
   render() {
@@ -19,8 +18,7 @@ class Home extends React.Component {
         <Graphics />
         <Ant />
         <Btle />
-        <Network />
-        <Analysis />
+        <Network />        
       </div>
     )
   }

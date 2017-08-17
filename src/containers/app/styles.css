@@ -90,7 +90,7 @@
   cursor: pointer;
 }
 .signal {
-  color: #F9C033;
+  color: #FFD12C;
 }
 .brand {
   composes: navItem;

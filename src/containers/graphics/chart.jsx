@@ -9,8 +9,11 @@
 import React from 'react'
 
 import {format} from 'd3-format';
+
 import {timeFormat} from 'd3-time-format';
+
 import {colors} from '../../styles/colors'
+
 import {
   TimeRange,
   Charts,
@@ -27,6 +30,12 @@ import {
   Baseline,
   styler
 } from 'react-timeseries-charts'
+
+import {
+  load,
+  getPerformanceScore,
+  openProfilePanel
+} from '../../actions/benchmarks';
 
 import {TimeSeries} from 'pondjs';
 
@@ -80,6 +89,8 @@ class Chart extends React.Component {
   constructor(props) {
     super(props)
 
+    this.seeInBenchMarksClicked = this.seeInBenchMarksClicked.bind(this);
+
     this.fpsSeries = props.data;
 
     //this.fpsSeries = new TimeSeries(props.data);
@@ -130,14 +141,13 @@ class Chart extends React.Component {
       maxOverall,
       avgOverall,
       stdevOverall,
-      fpsSummaryValues,
+      fpsSummaryValues,      
       ...specs
     }
 
     this.handleTrackerChanged = this.handleTrackerChanged.bind(this)
 
     this.handleTimeRangeChange = this.handleTimeRangeChange.bind(this)
-
   }
 
   handleTrackerChanged(tracker) {
@@ -145,13 +155,41 @@ class Chart extends React.Component {
   }
 
   handleTimeRangeChange(timerange) {
-
     if (timerange) {
       this.setState({timerange, brushrange: timerange});
     } else {
       this.setState({timerange: this.state.initialRange, brushrange: null});
     }
+  }
 
+ seeInBenchMarksClicked(e) {
+    e.preventDefault();
+
+    const { currentSystem, dispatch } = this.props;
+
+    if (!currentSystem) {
+      return;
+    }
+
+    // force open the panel that contains the current system before scrolling 
+    // incase the user closed it (this just sets up the preference for opening the panel after the bench marks loads)
+    dispatch(openProfilePanel(currentSystem.panelKey));
+
+    var callback = () => {
+      // route to the benchmarks page
+      this.props.history.push({ pathname: '/benchmarks' });
+
+      // scroll to the current system, with enough delay to wait for the router redirect to benchmarks to complete rendering
+      setTimeout(() => {
+        const anchorToScrollTo = document.getElementById('current');
+        anchorToScrollTo &&
+          anchorToScrollTo.scrollIntoView(false /* align top */);
+      }, 500);
+    };
+
+    setTimeout(() => {
+      dispatch(load(callback));
+    }, 100);
   }
 
   render() {
@@ -201,7 +239,6 @@ class Chart extends React.Component {
 
 
     return (
-
       <div className="container">
         <div className={structure.boxesWrapOuter}>
           <div className={structure.boxesWrapInner}>

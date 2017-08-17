@@ -31,30 +31,12 @@ class Analysis extends React.Component {
   }
 
   renderAnalysis() {
-    const { currentSystem, devices, searches, searchesTimestampsRounded } = this.props;
-
-    let antPlusAnalysis = null
-
-    let antPlusRecommendations = null;
-
-    const countSearchesTimestamps = searchesTimestampsRounded && searchesTimestampsRounded.length;
-
-    // const countSearches = searches && searches.size();
-
-    if (countSearchesTimestamps) {            
-       antPlusAnalysis = this.getAntSearchesOpinion(countSearchesTimestamps);
-
-       if (countSearchesTimestamps > 1) {
-         antPlusRecommendations = this.getAntPlusSignalRecommendations();
-       }
-    }
+    const { currentSystem, devices } = this.props;
 
     var profileComment = '';
 
     if (!_.isUndefined(currentSystem.profileId)) {
-      profileComment += 'Your graphics profile (level of realism and detail) is ' +
-        this.getProfileOpinion(currentSystem.profileId) +
-        ' level. The levels are Basic, Medium, High and Ultra. ';
+      profileComment += 'Your graphics profile (level of realism and detail) is ' + this.getProfileOpinion(currentSystem.profileId) + ' level. The levels are Basic, Medium, High and Ultra. ';
       profileComment += 'Integrated GPUs use the Basic profile. ';
       profileComment += 'The Medium and High profiles use higher quality effects for increased realism. ';
       profileComment += 'The Ultra profile gives the highest level of realism by using more sophisticated lighting, shadows and additional polygons. ';
@@ -119,7 +101,7 @@ class Analysis extends React.Component {
       resolutionComment += 'Your resolution (picture frame size measured in the number of pixels in the vertical axis) is ' +
         this.getResolutionOpinion(currentSystem.resolution) +
         '. ';
-      resolutionComment += 'The levels are 576 standard definition (SD), 750 iOS (iPhone 7), 720 high definition (HD), 1080 full high definition (FHD), ';
+      resolutionComment += 'The levels are 576 standard definition (SD), 720 high definition (HD), 1080 full high definition (FHD), ';
       resolutionComment += '1440 wide quad high definition (WQHD - 4 times as many pixels as 720 HD), ';
       resolutionComment += '2160 ultra high definition (4K - 4 times as many pixels as 1080 FHD). ';
       resolutionComment += 'You can change the graphics resolution to whatever you want. ';
@@ -136,102 +118,29 @@ class Analysis extends React.Component {
                   <div className={structure.boxHeadingLast}>
                     Graphics Analysis
                   </div>
-                  <div className={editorial.editorialBoxContent}>
-                    <div className="container">
-                      <div className="row">
-                        <div className="col-xs-12 col-sm-offset-1 col-sm-10">
-                        <div className={fpsAlertClass}>                          
-                            <p>
-                              {avgFpsComment}
-                              {minFpsComment}
-                              {maxFpsComment}
-                              {additionalFpsComment}
-                            </p>
-                          </div>
-                          <h3>Graphics profile</h3>
-                          <p>{profileComment}</p>
-                          <h3>Graphics resolution</h3>
-                          <p>{resolutionComment}</p>                          
+                  <div className={editorial.editorialBoxContent}>                    
+                    <div className="row">
+                      <div className="col-xs-12 col-sm-offset-1 col-sm-10">
+                      <div className={fpsAlertClass}>                          
+                          <p>
+                            {avgFpsComment}
+                            {minFpsComment}
+                            {maxFpsComment}
+                            {additionalFpsComment}
+                          </p>
                         </div>
+                        <h3>Graphics profile</h3>
+                        <p>{profileComment}</p>
+                        <h3>Graphics resolution</h3>
+                        <p>{resolutionComment}</p>                          
                       </div>
-                    </div>
+                    </div>                    
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="row">
-          <div className="col-xs-12">
-            <div className={structure.boxesWrapOuter}>
-              <div className={structure.boxesWrapInner}>
-                <div className={structure.boxFirstLast}>
-                  <div className={structure.boxHeadingLast}>
-                    ANT+ Analysis
-                  </div>
-                  <div className={editorial.editorialBoxContent}>
-                    <div className="container">
-                      <div className="row">
-                        <div className="col-xs-12 col-sm-offset-1 col-sm-10">                              
-                            {antPlusAnalysis}                          
-                            {antPlusRecommendations}                          
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    );
-  }
-
-  getAntSearchesOpinion(n) {
-    if (n === 1) {
-      return <div className="alert alert-success"><p><strong>Perfect!</strong> There was only one search for your ANT+ devices which means there were no dropouts after you started riding. It does not get any better than that.</p></div>
-    } else if (n <= 3) {
-      return <div className="alert alert-info"><p><strong>Pretty good.</strong> Your ANT+ devices were searched for just a couple of times. Probably nothing to worry about but you should zoom in on the ANT+ charts to check for dropouts in one or more device signals anyway.</p></div>
-    } else if (n <= 5) {
-      return <div className="alert alert-warning"><p><strong>Ah.</strong> Your ANT+ devices were searched for between three and five times. You should probably try to improve your signal and you might also want to zoom in on the ANT+ charts to check for dropouts in one or more device signals.</p></div>
-    } else if (n <= 10) {
-      return <div className="alert alert-warning"><p><strong>Hmm.</strong> Your ANT+ devices were searched for between five and ten times. That might indicate your signal needs improving.</p></div>
-    } else if (n <= 20) {
-      return <div className="alert alert-danger"><p><strong>Oh dear.</strong> Your ANT+ devices were searched for between ten and twenty times. Your signal almost certainly needs improving.</p></div>
-    } else {
-      return <div className="alert alert-danger"><p><strong>Yikes!</strong> Your signal is up and down like a fiddlers elbow. Your signal definitely needs improving.</p></div>
-    }
-  }
-
-  getAntPlusSignalRecommendations() {
-    return (
-
-      <div>
-        <h3>ANT+ Recommendations</h3>
-
-        <h3>1. Check your batteries & push everything in</h3>
-        <p>Let's check the easy things first. Are your batteries fresh in your devices? Change them anyway if you don't know. Is the dongle firmly pushed in? Check again.</p>
-
-        <h3>2. Stop Garmin ANT Agent / Garmin Connect</h3>
-        <p>Check for Garmin ANT Agent in the system tray. Stop it if it is running so that it does not try to read the dongle at the same time as Zwift.</p>
-
-        <h3>3. Use a short, high quality USB extension cable</h3>
-        <p>ANT+ works up to 30 meters but since it uses a low powered radio, at a fixed frequency of 2457 MHz, it is susceptible to radio-frequency interference. 
-        Using an extension cable to move the dongle away from your computer reduces interference caused by electronics inside the computer. </p>
-
-        <h3>4. Change your WiFi router channel</h3>
-        <p>If you have a 2.4 GHz WiFi router, use channels 1 to 5 and avoid channel 10 becuase it is the same frequency as ANT+ (2457MHz). 
-        This is still an issue even if the computer you use for Zwift has a hard wired network connection because other devices nearby that use WiFi - your phone, or someone watching Netflix on a Roku next door, could fill the airwaves with interference.         
-        </p>
-        
-        <h3>5. Use a different USB port</h3>
-        <p>Some USB ports run at lower voltages than others, particularly in laptops where power saving is often enabled when running on batteries. Setting your computer's power management to 'high performance' will give the USB ports maximum power. It might improve your graphics performance too. Always set power management to 'high performance' for gaming and if you are using a laptop, always plug it in.</p>
-
-        <h3>6. Don't sweat on your dongle</h3>
-        <p>If your dongle is on the floor, or anywhere else where sweat falls, put it in a plastic bag with an elastic band around it. Sweat kills electronics.</p>
+        </div>        
       </div>
     );
   }
@@ -310,18 +219,16 @@ class Analysis extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { reader, system, graphics, benchmarks, ant } = state;
+  const { reader, system, graphics, benchmarks } = state;
   return {
     ...reader,
     ...system,
     ...graphics,
-    ...benchmarks,
-    ...ant
+    ...benchmarks    
   };
 }
 
-Analysis.propTypes = {
-  //reader: PropTypes.object,
+Analysis.propTypes = {  
   system: PropTypes.object,
   ant: PropTypes.object
 };

@@ -542,9 +542,6 @@ class Chart extends React.Component {
       return device.type !== BASIC_DEVICE;
     });
 
-    console.log('powerDevices');
-    console.log(powerDevices);
-
     this.setState({ powerDevices: powerDevices });
 
     const basicDevices = _.filter(this.state.devices, device => {

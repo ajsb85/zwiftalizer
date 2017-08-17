@@ -97,20 +97,20 @@ class System extends React.Component {
         href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${cpuQueryTerms}`
       });
 
-      cpuShopLinks.push({
-        tag: AMAZON_JP_LABEL,
-        href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${cpuQueryTerms}`
-      });
+      // cpuShopLinks.push({
+      //   tag: AMAZON_JP_LABEL,
+      //   href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${cpuQueryTerms}`
+      // });
 
-      cpuShopLinks.push({
-        tag: PRICEWATCH_LABEL,
-        href: `http://www.pricewatch.com/search?q=${cpuQueryTerms}&gallery=1&sortby=price&condition=new&discounted=2`
-      });
+      // cpuShopLinks.push({
+      //   tag: PRICEWATCH_LABEL,
+      //   href: `http://www.pricewatch.com/search?q=${cpuQueryTerms}&gallery=1&sortby=price&condition=new&discounted=2`
+      // });
 
-      cpuShopLinks.push({
-        tag: TWEAKERS_LABEL,
-        href: `https://tweakers.net/pricewatch/zoeken/?keyword=${cpuQueryTerms}`
-      });
+      // cpuShopLinks.push({
+      //   tag: TWEAKERS_LABEL,
+      //   href: `https://tweakers.net/pricewatch/zoeken/?keyword=${cpuQueryTerms}`
+      // });
 
       cpuShopLinks.push({
         tag: NEWEGG_LABEL,
@@ -184,10 +184,10 @@ class System extends React.Component {
         href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${queryTerms}`
       });
 
-      cpuShopLinks.push({
-        tag: AMAZON_JP_LABEL,
-        href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${queryTerms}`
-      });
+      // cpuShopLinks.push({
+      //   tag: AMAZON_JP_LABEL,
+      //   href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${queryTerms}`
+      // });
 
       cpuShopLinks.push({
         tag: EBAY_LABEL,
@@ -275,10 +275,10 @@ class System extends React.Component {
         href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${queryTerms}`
       });
 
-      cpuShopLinks.push({
-        tag: AMAZON_JP_LABEL,
-        href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${queryTerms}`
-      });
+      // cpuShopLinks.push({
+      //   tag: AMAZON_JP_LABEL,
+      //   href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${queryTerms}`
+      // });
 
       cpuShopLinks.push({
         tag: EBAY_LABEL,
@@ -345,20 +345,20 @@ class System extends React.Component {
         href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${gpuQueryTerms}`
       });
 
-      gpuShopLinks.push({
-        tag: AMAZON_JP_LABEL,
-        href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${gpuQueryTerms}`
-      });
+      // gpuShopLinks.push({
+      //   tag: AMAZON_JP_LABEL,
+      //   href: `https://www.amazon.co.jp/s/?tag=${AMAZON_JP_TAG}&field-keywords=${gpuQueryTerms}`
+      // });
 
-      gpuShopLinks.push({
-        tag: PRICEWATCH_LABEL,
-        href: `http://www.pricewatch.com/search?q=${gpuQueryTerms}&gallery=1&sortby=price&condition=new&discounted=2`
-      });
+      // gpuShopLinks.push({
+      //   tag: PRICEWATCH_LABEL,
+      //   href: `http://www.pricewatch.com/search?q=${gpuQueryTerms}&gallery=1&sortby=price&condition=new&discounted=2`
+      // });
 
-      gpuShopLinks.push({
-        tag: TWEAKERS_LABEL,
-        href: `https://tweakers.net/pricewatch/zoeken/?keyword=${gpuQueryTerms}`
-      });
+      // gpuShopLinks.push({
+      //   tag: TWEAKERS_LABEL,
+      //   href: `https://tweakers.net/pricewatch/zoeken/?keyword=${gpuQueryTerms}`
+      // });
 
       gpuShopLinks.push({
         tag: NEWEGG_LABEL,
@@ -535,8 +535,7 @@ class System extends React.Component {
         };
 
     return (
-      <div>
-        {current ? <a id="current" /> : null}
+      <div>        
         <div className="row" style={rowStyle}>
           <div className="col-xs-12 col-sm-2">
             <div className={styles.iconsWrapper}>
@@ -557,8 +556,7 @@ class System extends React.Component {
             </div>
             {current
               ? <div className={styles.currentSystem}>
-                  Your system is always visible regardless of any search filter
-                  settings.
+                  Your system is always visible regardless of any search filter settings.
                 </div>
               : null}
             {detailsMarkup}
@@ -612,9 +610,9 @@ class System extends React.Component {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
+        {current ? <a id="current" /> : null}
       </div>
     );
   }

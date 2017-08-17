@@ -48,14 +48,13 @@ class Profile extends React.Component {
 
     let results = _.clone(this.props.data.results);
 
-    // hot insert current system if exists    
+    // hot insert current system if exists
     if (
       currentSystem &&
       (currentSystem.resolution === resolution &&
         currentSystem.profileId === profileId)
     ) {
-
-      // Hack, darn, we use samples as the name of 
+      // Hack, darn, we use samples as the name of
       // the key that holds the number of logs averaged for this system, AND
       // the number of FPS samples taken for an individual system.
       // Set the samples to 1 here to represent N=1 log for the current system.
@@ -89,21 +88,19 @@ class Profile extends React.Component {
       ? systemWithBestMax.maxFps
       : 0;
 
-    var resultsData = results &&
-      results.map(
-        function(result, i) {
-          const data = {
-            maxAvgResolutionProfile,
-            maxMaxResolutionProfile,
-            ...result
-          };
+    var resultsData =
+      results &&
+      results.map(function(result, i) {
+        const data = {
+          maxAvgResolutionProfile,
+          maxMaxResolutionProfile,
+          ...result
+        };
 
-          const key = resolution + '-' + profileId + '-' + i;
+        const key = resolution + '-' + profileId + '-' + i;
 
-          return <System data={data} key={key} />;
-        },
-        this
-      );
+        return <System data={data} key={key} />;
+      }, this);
 
     const panelStyle = isExpanded
       ? {
@@ -168,9 +165,7 @@ class Profile extends React.Component {
           </div>
           <div className="row">
             <div className="hidden-xs col-sm-offset-7 col-sm-5">
-              <p>
-                Ordered by average FPS descending. Longer bars are better.
-              </p>
+              <p>Ordered by average FPS descending. Longer bars are better.</p>
             </div>
           </div>
           {resultsData}
@@ -193,20 +188,23 @@ class Profile extends React.Component {
     var name = '';
 
     switch (profileId) {
-      case 3: {
-        name = 'Ultra';
-      }
-      break;
+      case 3:
+        {
+          name = 'Ultra';
+        }
+        break;
 
-      case 2: {
-        name = 'High';
-      }
-      break;
+      case 2:
+        {
+          name = 'High';
+        }
+        break;
 
-      case 1: {
-        name = 'Medium';
-      }
-      break;
+      case 1:
+        {
+          name = 'Medium';
+        }
+        break;
 
       default:
         name = 'Basic';
@@ -251,9 +249,7 @@ class Profile extends React.Component {
                   {performanceScore.opinion}
                 </span>
               </div>
-              <div
-                className="col-xs-offset-1 col-xs-11 col-sm-offset-0 col-sm-8 col-md-offset-0 col-md-3"
-              >
+              <div className="col-xs-offset-1 col-xs-11 col-sm-offset-0 col-sm-8 col-md-offset-0 col-md-3">
                 <div className={styles.systemsCountContainer}>
                   <span className={styles.systemsCountBadge}>
                     {totalSystems}/{totalRecords}
@@ -267,7 +263,6 @@ class Profile extends React.Component {
         </div>
 
         {this.renderPanel(isExpanded)}
-
       </div>
     );
   }

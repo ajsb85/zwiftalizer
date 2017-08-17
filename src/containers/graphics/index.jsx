@@ -13,6 +13,7 @@ import {connect} from 'react-redux'
 import structure from '../../styles/structure.css';
 import Specs from './specs.jsx'
 import {Chart} from './chart.jsx'
+import Analysis from './analysis';
 
 class Graphics extends React.Component {
 
@@ -33,7 +34,7 @@ class Graphics extends React.Component {
     const {fpsData, fpsSamples, specs} = this.props;
 
     const markup = fpsData && fpsData.size()
-      ?  <Chart data={fpsData} samples={fpsSamples} specs={specs}/>
+      ?  <Chart data={fpsData} samples={fpsSamples} specs={specs} />
       :  <div className="row" style={{height:"30rem"}}>
           <div className="col-sm-12">
             <h3 className={structure.sectionSubHeading}>No graphics performance data found</h3>
@@ -44,6 +45,7 @@ class Graphics extends React.Component {
       <div>
         <Specs specs={specs}/>
         {markup}
+        <Analysis />        
       </div>
     )
   }

@@ -16,6 +16,12 @@
   border-top-right-radius: 2.75rem;
   border-bottom-left-radius: 2.5rem;
 }
+
+.boxesWrapFlexEnd {
+  composes: boxesWrapInner;
+  justify-content: flex-end;
+}
+
 .boxBase {
   flex: 1 auto;
   text-align: center;
@@ -128,12 +134,12 @@
   font-weight: 600;
 }
 .subHeading {
-  color: #178acc;
-  font-size: 1.6rem;
-  line-height: 1.8rem;
-  font-weight: 600;
-  margin-top: 1rem;
-  margin-bottom: 0.3rem;
+    color: #178acc;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    font-weight: 400;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 .infoHeading {
   color: #666;

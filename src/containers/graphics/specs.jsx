@@ -99,15 +99,13 @@ class Specs extends React.Component {
 
     var callback = () => {
       // route to the benchmarks page
-      //this.props.router.push('/benchmarks')
-
       this.props.history.push({ pathname: '/benchmarks' });
 
       // scroll to the current system, with enough delay to wait for the router redirect to benchmarks to complete rendering
       setTimeout(() => {
         const anchorToScrollTo = document.getElementById('current');
         anchorToScrollTo &&
-          anchorToScrollTo.scrollIntoView(true /* align top */);
+          anchorToScrollTo.scrollIntoView(false /* align top */);
       }, 500);
     };
 
@@ -124,40 +122,17 @@ class Specs extends React.Component {
       currentSystem.profileId
     );
 
-    var mutation = performanceScore.value === 8 ? 'n' : '';
-
     const conditionalMarkup =
       fpsData && fpsData.size()
         ? <div className="row">
             <div className="col-xs-12">
               <div className={structure.boxesWrapOuter}>
-                <div className={structure.boxesWrapInner}>
-                  <div className={structure.boxFirstLast}>
-                    <div className={editorial.editorialBoxContent}>
-                      <div className="container">
-                        <div className="row">
-                          <div className="col-xs-12 col-sm-offset-1 col-sm-5">
-                            <h3>
-                              This system is a{mutation}&nbsp;<Badge data={performanceScore} />
-                            </h3>
-                          </div>
-                          <div className="col-xs-12 col-sm-5">
-                            <div className="pull-right">
-                              <button
-                                type="button"
-                                className="btn btn-primary"
-                                onClick={this.seeInBenchMarksClicked}
-                              >
-                                See standing in benchmarks
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <div className={structure.boxesWrapFlexEnd}>                
+                  <div onClick={this.seeInBenchMarksClicked} style={{cursor: 'pointer'}}>
+                    <Badge data={performanceScore} />&nbsp; See in benchmarks
+                  </div>                                                                                                                     
+                </div>                                  
+              </div>                                  
             </div>
           </div>
         : null;

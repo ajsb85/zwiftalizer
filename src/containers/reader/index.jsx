@@ -105,8 +105,7 @@ class Reader extends React.Component {
 
     if (isFailure) {
       messageDiv = (
-        <div className={styles.errorContainer}>
-          R Tape loading error, 0:1<br/><br/>
+        <div className={styles.errorContainer}>          
           Sorry, an error occurred reading the log file.<br/><br/>
           Please report this as a <a href="https://github.com/mhanney/zwiftalizer/issues/new" target="_blank" onClick={this.handleNewIssueClick}>new issue</a> and attach the log that failed.
         </div>
@@ -144,17 +143,7 @@ class Reader extends React.Component {
                     </div>
                   </div>
                   <h2 className={styles.checkboxLabel}>
-                    Upload my system specs &nbsp;<a
-                      href=""
-                      onClick={this.openDbUploadExplanationModal}
-                    >
-                      <span className={styles.infoCircle}>
-                        <i
-                          className="fa fa-question-circle"
-                          aria-hidden="true"
-                        />
-                      </span>
-                    </a>
+                    Upload my system specs &nbsp;<a href="" onClick={this.openDbUploadExplanationModal}><span className={styles.infoCircle}><i className="fa fa-question-circle" aria-hidden="true"/></span></a>
                   </h2>
                 </div>
               </div>

@@ -35,11 +35,11 @@ class App extends React.Component {
       this.props.history.push({
         pathname: '/'
       })      
-    }, 250);
+    }, 200);
 
     setTimeout(() => {
       dispatch(loadDemo());
-    }, 250);
+    }, 200);
   }
 
   render() {
@@ -88,18 +88,9 @@ class App extends React.Component {
 
               <div className="col-sm-12 col-md-2">
                 <div className={styles.navPills}>
-                  <a href="https://twitter.com/zwiftalizer" target="_blank">
-                    <i className="fa fa-twitter" />
-                  </a>&nbsp;
-                  <Link to="/support">
-                    <i className="fa fa-paypal" />
-                  </Link>&nbsp;
-                  <a
-                    href="https://github.com/mhanney/zwiftalizer"
-                    target="_blank"
-                  >
-                    <i className="fa fa-github" />
-                  </a>
+                <a href="https://twitter.com/zwiftalizer" target="_blank"><i className="fa fa-twitter" /></a>&nbsp;
+                <Link to="/support"><i className="fa fa-paypal" /></Link>&nbsp;
+                <a href="https://github.com/mhanney/zwiftalizer" target="_blank"><i className="fa fa-github" /></a>
                 </div>
               </div>
             </div>
@@ -108,12 +99,7 @@ class App extends React.Component {
         <div className={styles.stickySubHeader}>
           <div className="container">
             <div className="row">
-              <p>
-                Zwiftalizer is an open source, community supported project
-                neither endorsed by nor affiliated with{' '}
-                <a href="http://zwift.com" target="_blank">
-                  Zwift Inc
-                </a>
+              <p>Zwiftalizer is an open source, community supported project neither endorsed by nor affiliated with&nbsp;<a href="http://zwift.com" target="_blank">Zwift Inc</a>
               </p>
             </div>
           </div>
@@ -124,21 +110,7 @@ class App extends React.Component {
         <div className={styles.footer}>
           <div className="container">
             <div className="row">
-              <p>
-                By Mike Hanney |{' '}
-                <a
-                  href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md"
-                  target="_blank"
-                >
-                  License
-                </a>{' '}
-                | Follow{' '}
-                <a href="https://twitter.com/zwiftalizer" target="_blank">
-                  @zwiftalizer
-                </a>{' '}
-                <a href="https://twitter.com/zwiftalizer" target="_blank">
-                  <i className="fa fa-twitter" />
-                </a>
+              <p>By Mike Hanney&nbsp;|&nbsp;<a href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md" target="_blank">License</a>&nbsp;|&nbsp;Follow&nbsp;<a href="https://twitter.com/zwiftalizer" target="_blank">&nbsp;@zwiftalizer</a>&nbsp;<a href="https://twitter.com/zwiftalizer" target="_blank"><i className="fa fa-twitter" /></a>
               </p>
             </div>
           </div>

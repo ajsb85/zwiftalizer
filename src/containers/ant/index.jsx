@@ -13,6 +13,7 @@ import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import structure from '../../styles/structure.css';
 import { Chart } from './chart.jsx';
+import Analysis from './analysis';
 import editorial from '../../styles/editorial.css';
 import PowerMeterNameModal from './powerMeterNameModal.jsx';
 import SmartTrainerNameModal from './smartTrainerNameModal.jsx';
@@ -37,6 +38,7 @@ class Ant extends React.Component {
     return (
       <div className="container">
         {markup}       
+        <Analysis/>
         <PowerMeterNameModal/> 
         <SmartTrainerNameModal/>
       </div>
