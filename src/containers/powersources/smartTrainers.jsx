@@ -1,10 +1,28 @@
 var _ = require('underscore');
 import React from 'react';
 import structure from '../../styles/structure.css';
+import shopping from '../../styles/shopping.css';
 import styles from './styles.css';
 import { colors } from '../../styles/colors';
 import { BarChart } from 'react-easy-chart';
 import shadeColor, { shadeFactor } from './shadeColor.js';
+
+import {
+  AMAZON_US_LABEL,  
+  AMAZON_CA_LABEL,  
+  AMAZON_UK_LABEL,
+  AMAZON_DE_LABEL,
+  AMAZON_ES_LABEL,
+  AMAZON_FR_LABEL,
+  AMAZON_IT_LABEL,  
+  AMAZON_US_TAG,
+  AMAZON_CA_TAG,
+  AMAZON_UK_TAG,
+  AMAZON_DE_TAG,
+  AMAZON_ES_TAG,
+  AMAZON_FR_TAG,
+  AMAZON_IT_TAG
+} from '../constants/index.js';
 
 class SmartTrainers extends React.Component {
   constructor(props) {
@@ -102,6 +120,55 @@ class SmartTrainers extends React.Component {
         if (this.state.highlightRow && this.state.rowKey === rowKey) {
           highlightStyle = { backgroundColor: '#FF0' };
         }
+        
+        let buyLinksMarkup;
+        const buyLinks = [];
+        const buyQueryTerms = `${smartTrainer.manufacturerName}${smartTrainer.modelName !== 'Unknown' ? ' ' + smartTrainer.modelName + ' ' : ''} smart trainer`.replace(/\s(\s)+/, ' ').replace(' ', '+');
+
+        buyLinks.push({
+          tag: AMAZON_US_LABEL,
+          href: `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${buyQueryTerms}`
+        });
+  
+        buyLinks.push({
+          tag: AMAZON_UK_LABEL,
+          href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${buyQueryTerms}`
+        });
+  
+        buyLinks.push({
+          tag: AMAZON_CA_LABEL,
+          href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${buyQueryTerms}`
+        });
+  
+        buyLinks.push({
+          tag: AMAZON_DE_LABEL,
+          href: `https://www.amazon.de/s/?tag=${AMAZON_DE_TAG}&field-keywords=${buyQueryTerms}`
+        });
+  
+        buyLinks.push({
+          tag: AMAZON_ES_LABEL,
+          href: `https://www.amazon.es/s/?tag=${AMAZON_ES_TAG}&field-keywords=${buyQueryTerms}`
+        });
+  
+        buyLinks.push({
+          tag: AMAZON_FR_LABEL,
+          href: `https://www.amazon.fr/s/?tag=${AMAZON_FR_TAG}&field-keywords=${buyQueryTerms}`
+        });
+  
+        buyLinks.push({
+          tag: AMAZON_IT_LABEL,
+          href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${buyQueryTerms}`
+        });
+  
+        buyLinksMarkup = buyLinks.map(function(link, i) {
+          return (
+            <li key={i}>
+              <a target="_blank" href={link.href}>
+                {link.tag}
+              </a>
+            </li>
+          );
+        }, this);
 
         return (
           <tr key={rowKey} style={highlightStyle}>
@@ -121,6 +188,11 @@ class SmartTrainers extends React.Component {
             <td className="hidden-xs hidden-sm hidden-md">
               {smartTrainer.maxPower}
             </td>
+            <td className="hidden-xs hidden-sm hidden-md">                            
+              <ul className={shopping.shoplinks}>
+                {buyLinksMarkup}
+              </ul>                          
+          </td>
           </tr>
         );
       },
@@ -171,6 +243,7 @@ class SmartTrainers extends React.Component {
                     <th className="hidden-xs hidden-sm hidden-md">Interactive</th>
                     <th className="hidden-xs hidden-sm hidden-md">Max Incline</th>
                     <th className="hidden-xs hidden-sm hidden-md">Max Power</th>
+                    <th className="hidden-xs hidden-sm hidden-md">Buy</th>
                   </tr>
                 </thead>
                 <tbody>

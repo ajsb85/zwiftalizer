@@ -1,11 +1,3 @@
-/**
- *  Copyright (c) 2016, Michael R Hanney. All rights reserved.
- *
- *  No affiliation with Zwift LLC whatsoever. Use at your own risk.
- *
- *  This source code is licensed under the MIT-style license found in the
- *  LICENSE file in the root directory of this source tree.
- */
 var _ = require('underscore');
 var moment = require('moment');
 
@@ -49,7 +41,7 @@ import structure from '../../styles/structure.css';
 
 import styles from './styles.css';
 
-import {CHART_HEIGHT, BRUSH_HEIGHT} from '../../styles/constants.js';
+import { CHART_HEIGHT, BRUSH_HEIGHT } from '../../styles/constants.js';
 
 const baselineStyle = {
   line: {
@@ -68,7 +60,12 @@ const rightAxisLabelWidth = 60;
 
 const powerFormat = format('d');
 
-const basicDeviceColors = [colors.salmonpink, colors.sonicblue, colors.beige];
+const basicDeviceColors = [
+  colors.salmonpink,
+  colors.sonicblue,
+  colors.beige,
+  colors.seafoamgreen
+];
 
 const basicDeviceStyles = [
   styler([
@@ -87,6 +84,12 @@ const basicDeviceStyles = [
     {
       key: 'value',
       color: basicDeviceColors[2]
+    }
+  ]),
+  styler([
+    {
+      key: 'value',
+      color: basicDeviceColors[3]
     }
   ])
 ];
@@ -122,10 +125,8 @@ class Chart extends React.Component {
 
     this.handleTrackerChanged = this.handleTrackerChanged.bind(this);
     this.handleTimeRangeChange = this.handleTimeRangeChange.bind(this);
-    this.renderPowerDevices = this.renderPowerDevices.bind(this);    
-    this.renderPowerDevice = this.renderPowerDevice.bind(this);    
-    this.renderBasicDevices = this.renderBasicDevices.bind(this);
-    this.renderBasicDevice = this.renderBasicDevice.bind(this);
+    this.renderDevices = this.renderDevices.bind(this);
+    this.renderDevice = this.renderDevice.bind(this);
     this.renderSearchesBrush = this.renderSearchesBrush.bind(this);
   }
 
@@ -142,7 +143,7 @@ class Chart extends React.Component {
   }
 
   getMakeAndModel(device) {
-    return (`${device.manufacturer} ${device.model}`).trim();
+    return `${device.manufacturer} ${device.model}`.trim();
   }
 
   renderCalibration(device) {
@@ -151,9 +152,8 @@ class Chart extends React.Component {
         ? 'succesful'
         : 'failed';
 
-      const calibrationValues = device.calibration.values[0] +
-        ',' +
-        device.calibration.values[1];
+      const calibrationValues =
+        device.calibration.values[0] + ',' + device.calibration.values[1];
 
       let autoZero = 'not supported';
 
@@ -166,8 +166,7 @@ class Chart extends React.Component {
 
       return (
         <h5 className={structure.subHeading}>
-          Calibration
-          {' '}
+          Calibration &nbsp;
           {calibrationSuccess}
           &nbsp;
           <strong>({calibrationValues})</strong>
@@ -180,168 +179,31 @@ class Chart extends React.Component {
     return null;
   }
 
-  renderPowerDevice(device) {
+  renderDevices(devices) {
+    let devicesArray = _.isArray(devices) ? devices : [devices];
+
+    const charts = devicesArray.map((device, i) => {
+      return this.renderDevice(device, i);
+    });
+    return charts;
+  }
+
+  renderDevice(device, i) {
     const key = device.deviceId + device.channel;
 
-    let label = (`Device ${device.deviceId} Channel ${device.channel} ${this.getMakeAndModel(device)}`).replace(/\s(\s)+/, ' ').trim();
-
-    const calibrationMessage = this.renderCalibration(device);
-   
-    const maxSignal = parseInt(signalFormat(device.signal.max()));
-
-    const style = styler([
-      {
-        key: 'value',
-        color: colors.seafoamgreen
-      }
-    ]);
-
-    const powerStyle = styler([
-      {
-        key: 'value',
-        color: colors.purple,
-        width: 2
-      }
-    ]);
-
-    const categories = [
-      {
-        key: 'value',
-        label: 'Signal',
-        disabled: false
-      }
-    ];
-
-    return (
-      <div key={key} className={structure.chartContainer}>
-        <div className="row">
-          <div className="col-xs-12 col-sm-offset-1 col-sm-7">
-            <div className={structure.alignLeft}>
-              <h4 className={structure.heading}>{label}</h4>
-              {calibrationMessage}
-              <h5 className={structure.infoHeading}>
-                Use the mouse wheel to zoom in. Click and drag to pan.
-              </h5>
-            </div>
-          </div>
-          <div className="col-xs-12 col-sm-3">
-            <div className="pull-right">
-              <div className={structure.legendWrapper}>
-                <Legend type="swatch" style={style} categories={categories} />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-xs-12 col-sm-10">
-            <Resizable>
-              <ChartContainer
-                timeRange={this.state.timerange}
-                onTimeRangeChanged={this.handleTimeRangeChange}
-                padding={0}
-                enablePanZoom={true}
-                minDuration={minDuration}
-                maxTime={this.state.initialRange.end()}
-                minTime={this.state.initialRange.begin()}
-                showGrid={false}
-              >
-                <ChartRow height={CHART_HEIGHT} debug={false}>              
-                <YAxis
-                    id="powerSignal"
-                    label="Signal"
-                    min={0}
-                    max={maxSignal}
-                    absolute={true}
-                    width={leftAxisLabelWidth}
-                    type="linear"
-                    format="d"
-                  />
-                  <Charts>                   
-                    <BarChart
-                      axis="powerSignal"
-                      series={device.signal}
-                      style={style}
-                      columns={['value']}
-                    />
-                  </Charts>
-                  <YAxis
-                    id="powerSignal2"
-                    label="Signal"
-                    min={0}
-                    max={maxSignal}
-                    absolute={true}
-                    width={rightAxisLabelWidth}
-                    type="linear"
-                    format="d"
-                  />
-                </ChartRow>
-              </ChartContainer>
-            </Resizable>
-          </div>
-          <div className="hidden-xs col-sm-2">
-            <div className={styles.signalBoxContent}>
-              <div className={styles.signalBoxTitle}>
-                Data Rate
-              </div>
-              <div className={styles.signalBoxValue}>
-                {device.sampleRate}Hz
-              </div>
-            </div>
-            <div className={styles.signalBoxContent}>
-              <div className={styles.signalBoxTitle}>
-                Avg Fails
-              </div>
-              <div className={styles.signalBoxValue}>
-                {device.failureRate}%
-              </div>
-            </div>
-            <div className={styles.signalBoxContent}>
-              <div className={styles.signalBoxTitle}>
-                Searches
-              </div>
-              <div className={styles.signalBoxValue}>
-                {device.dropoutsTotal}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  renderPowerDevices(devices) {
-    let devicesArray = _.isArray(devices) ? devices : [devices];
-        
-    const charts = devicesArray.map((device, i) => {
-      return this.renderPowerDevice(device, i);
-    });
-    return charts;
-  }
-
-  renderBasicDevices(devices) {
-    let devicesArray = _.isArray(devices) ? devices : [devices];
-    
-    const charts = devicesArray.map((device, i) => {
-      return this.renderBasicDevice(device, i);
-    });
-    return charts;
-  }
-
-  renderBasicDevice(device, i) {
-    let label = ('Device ' +
-      device.deviceId +  ' Channel ' + device.channel +
-      ' ' +
-      this.getMakeAndModel(device))
+    let label = `Channel ${device.channel} Device ${device.deviceId} ${device.manufacturer} ${device.model}`
       .replace(/\s(\s)+/, ' ')
       .trim();
 
     const labelAxisId = 'labelAxis' + i;
+
     const leftAxisId = 'leftAxis' + i;
+
     const rightAxisId = 'rightAxis' + i;
 
-    // (one device id, two signals, one on each channel). Device Ids are ints, ''+ to cast to string
-    const key = device.deviceId + device.channel;
     const max = parseInt(signalFormat(device.signal.max()));
+
+    const calibrationMessage = this.renderCalibration(device);
 
     const style = basicDeviceStyles[i];
 
@@ -358,7 +220,10 @@ class Chart extends React.Component {
         <div className="row">
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
-              <h4 className={structure.heading}>{label}</h4>
+              <h4 className={structure.heading}>
+                {label}
+              </h4>
+              {calibrationMessage}
               <h5 className={structure.infoHeading}>
                 Use the mouse wheel to zoom in. Click and drag to pan.
               </h5>
@@ -420,25 +285,19 @@ class Chart extends React.Component {
           </div>
           <div className="hidden-xs col-sm-2">
             <div className={styles.signalBoxContent}>
-              <div className={styles.signalBoxTitle}>
-                Data Rate
-              </div>
+              <div className={styles.signalBoxTitle}>Data Rate</div>
               <div className={styles.signalBoxValue}>
                 {device.sampleRate}Hz
               </div>
             </div>
             <div className={styles.signalBoxContent}>
-              <div className={styles.signalBoxTitle}>
-                Avg Fails
-              </div>
+              <div className={styles.signalBoxTitle}>Avg RxFails</div>
               <div className={styles.signalBoxValue}>
                 {device.failureRate}%
               </div>
             </div>
             <div className={styles.signalBoxContent}>
-              <div className={styles.signalBoxTitle}>
-                Searches
-              </div>
+              <div className={styles.signalBoxTitle}>Searches</div>
               <div className={styles.signalBoxValue}>
                 {device.dropoutsTotal}
               </div>
@@ -470,7 +329,9 @@ class Chart extends React.Component {
         <div className="row">
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
-              <h4 className={structure.heading}>ANT+ device searches/re-syncs</h4>
+              <h4 className={structure.heading}>
+                ANT+ device searches/re-syncs
+              </h4>
               <h5 className={structure.infoHeading}>
                 Fewer is better. One at the start is ideal.
               </h5>
@@ -534,30 +395,9 @@ class Chart extends React.Component {
     );
   }
 
-  componentWillMount() {
-    // plucking out each device type instead of iterating so that power, kickr,
-    // fec always comes before basic devices regardless of the order the
-    // devices are in in the state
-    const powerDevices = _.find(this.state.devices, device => {
-      return device.type !== BASIC_DEVICE;
-    });
-
-    this.setState({ powerDevices: powerDevices });
-
-    const basicDevices = _.filter(this.state.devices, device => {
-      return device.type === BASIC_DEVICE;
-    });
-
-    this.setState({ basicDevices: basicDevices });
-  }
-
   render() {
-    const powerDeviceCharts = this.state.powerDevices
-      ? this.renderPowerDevices(this.state.powerDevices)
-      : null;
-
-    const basicDeviceCharts = this.state.basicDevices
-      ? this.renderBasicDevices(this.state.basicDevices)
+    const basicDeviceCharts = this.state.devices
+      ? this.renderDevices(this.state.devices)
       : null;
 
     const brush = this.renderSearchesBrush();
@@ -566,11 +406,8 @@ class Chart extends React.Component {
       <div className={structure.boxesWrapOuter}>
         <div className={structure.boxesWrapInner}>
           <div className={structure.boxFirstLast}>
-            <div className={structure.boxHeadingLast}>
-              ANT+ signal quality
-            </div>
-            <div className={structure.chartsBoxContent}>                  
-              {powerDeviceCharts}
+            <div className={structure.boxHeadingLast}>ANT+ signal quality</div>
+            <div className={structure.chartsBoxContent}>
               {basicDeviceCharts}
               {brush}
             </div>

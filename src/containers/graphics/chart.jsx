@@ -237,7 +237,6 @@ class Chart extends React.Component {
       }
     ];
 
-
     return (
       <div className="container">
         <div className={structure.boxesWrapOuter}>

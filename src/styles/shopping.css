@@ -1,0 +1,39 @@
+.shoplinksContainer {
+  display: block;  
+  text-align: left;
+  margin: 0 0 0.5rem 0;
+}
+
+.shoplinksEditorialLabel,
+.shoplinksLabel,
+ul.shoplinks {
+    font-family: "Roboto Mono", Courier, Monaco, Arial, Helvetica, sans-serif;    
+    font-weight: normal;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+}
+
+.shoplinksEditorialLabel,
+.shoplinksLabel{
+  float: left;
+}
+
+.shoplinksLabel {  
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+ul.shoplinks {
+    list-style:none;
+    padding-left:0;
+    margin-bottom: 0.3rem;
+}
+
+ul.shoplinks li {
+  display: inline;
+  list-style-type: none;
+  padding-right: 0.3rem;
+  line-height: 1.6rem;
+}
+
+ul.shoplinks li+li { padding-left: 0.3rem; border-left: 1px solid #ccc }

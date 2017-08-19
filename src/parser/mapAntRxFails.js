@@ -69,8 +69,6 @@ export default function mapAntRxFails(
     reducer: sum()
   });
 
-  // const minValue = mergedSeries.min();
-
   const maxValue = mergedSeries.max();
 
   const rollup = mergedSeries.fixedWindowRollup({
@@ -96,7 +94,6 @@ export default function mapAntRxFails(
   // Zero out the N seconds averages that are impossibly high -
   // when there are absolutely no rxfails in ANT_AVERAGES_WINDOW_IN_SEC seconds -
   // usually means a device is completely lost and did not re-pair.
-
   const filteredRollup = rollup.map(e => {
     // if the ANT_AVERAGES_WINDOW_IN_SEC averag bucket aligns with a
     // `goto search` entry, and no RxFails at all were seen, then this
@@ -137,9 +134,6 @@ export default function mapAntRxFails(
       value: dataRate - e.get('value')
     });
   });
-
-  console.log(`Channel ${device.channel}`);
-  console.log(dropouts);
 
   return {
     timeseries: filteredRollup,

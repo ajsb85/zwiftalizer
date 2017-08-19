@@ -325,32 +325,5 @@ input[type=checkbox].withfont:focus ~ label
     margin-bottom: 0.5rem;
 }
 
-.shoplinksLabel,
-ul.shoplinks {
-    font-family: "Roboto Mono", Courier, Monaco, Arial, Helvetica, sans-serif;    
-    font-weight: normal;
-    font-size: 1.1rem;
-    line-height: 1.6rem;
-}
-.shoplinksLabel {
-  display: block;
-  float: left;
-  font-weight: 800;
-}
-
-ul.shoplinks {
-    list-style:none;
-    padding-left:0;
-    margin-bottom: 0.3rem;
-}
-
-ul.shoplinks li {
-  display: inline;
-  list-style-type: none;
-  padding-right: 0.3rem;
-  line-height: 1.6rem;
-}
-
-ul.shoplinks li+li { padding-left: 0.3rem; border-left: 1px solid #ccc }
 
 

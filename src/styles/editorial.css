@@ -40,7 +40,7 @@
     color: #666;
     text-align: left;
     margin: 0 0 3rem 0;
-    line-height: 2rem;
+    line-height: 2.2rem;
 }
 
 .editorialBoxContent p.footnote {
@@ -68,15 +68,20 @@
     margin: 1rem 0 0.5rem 0;
     text-align: left;
     color: #777;
-    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    /* font-family: "Open Sans","Segoe UI",Arial,Helvetica,sans-serif;    */    
+    border-bottom: 0.2rem solid #dcdcdc;
+    border-right: 0.2rem solid #dcdcdc;
+    background-color: #fff;
+    padding: 0 0.4rem;
 }
 .editorialBoxContent h4 {
   font-weight: 600;
-  font-size: 1.6rem;
-  line-height: 2.2rem;
+  font-size: 1.4rem;
+  line-height: 2rem;
   margin: 0 0 0.8rem 0;
   text-align: left;
   color: #777;
+  margin: 2rem 0 0.5rem 0;
 }
 .editorialColumn {
   text-align: left;

@@ -2,13 +2,13 @@ import { createStore, compose, applyMiddleware } from 'redux';
 
 import thunkMiddleware from 'redux-thunk';
 
-import createLogger from 'redux-logger';
+// import createLogger from 'redux-logger';
 
 import rootReducer from '../reducers';
 
 const _ = require('underscore');
 
-const loggerMiddleware = createLogger();
+// const loggerMiddleware = createLogger();
 
 export function getPreferencesFromLocalStorage() {
   if (!localStorage.preferences) {
@@ -61,8 +61,8 @@ export default function configureStore() {
     compose(
       applyMiddleware(
         // lets us dispatch async functions
-        thunkMiddleware,
-        loggerMiddleware // neat middleware that logs actions
+        thunkMiddleware
+        // loggerMiddleware // neat middleware that logs actions
       ),
       // enables redux chrome dev tools extension
       // window.devToolsExtension ? window.devToolsExtension() : f => f
