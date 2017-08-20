@@ -1,11 +1,3 @@
-/**
- *  Copyright (c) 2016, Michael R Hanney. All rights reserved.
- *
- *  No affiliation with Zwift LLC whatsoever. Use at your own risk.
- *
- *  This source code is licensed under the MIT-style license found in the
- *  LICENSE file in the root directory of this source tree.
- */
 var _ = require('underscore');
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -13,6 +5,8 @@ import { connect } from 'react-redux';
 import structure from '../../styles/structure.css';
 import images from '../../styles/images.css';
 import editorial from '../../styles/editorial.css';
+import shopping from '../../styles/shopping.css';
+import {renderBuyLink} from '../../buylinks/index.js';
 
 class Analysis extends React.Component {
   constructor(props) {
@@ -80,12 +74,72 @@ class Analysis extends React.Component {
     );
   }
 
+  renderAntDongleBuyLinks() {
+    const productsToLink = [
+      'Suunto Movestick Mini',
+      'Garmin USB ANT Stick'
+    ];
+
+    const buyLinks = productsToLink.map(function(product, i) {
+      const links = renderBuyLink(product);
+
+      return (        
+          <div className={shopping.shoplinksContainer} key={i}>          
+            <span className={shopping.shoplinksEditorialLabel}>{product}&nbsp;</span>
+            <ul className={shopping.shoplinks}>
+              {links}
+            </ul>
+          </div>          
+      );
+    }, this);
+
+    return (
+      <div>
+      <h3>Recommended ANT+ Dongles</h3>
+        {buyLinks}
+        <p></p>    
+      </div>
+    )
+  }
+
+  renderAntAccessoriesLinks() {
+    const productsToLink = [
+      'Rankie USB Extension Cable 3 Feet USB 2.0 R1330',
+      'AmazonBasics USB 2.0 Extension Cable 3.3 Feet'
+    ];
+
+    const buyLinks = productsToLink.map(function(product, i) {
+      const links = renderBuyLink(product);
+
+      return (        
+          <div className={shopping.shoplinksContainer} key={i}>          
+            <span className={shopping.shoplinksEditorialLabel}>{product}&nbsp;</span>
+            <ul className={shopping.shoplinks}>
+              {links}
+            </ul>
+          </div>          
+      );
+    }, this);
+
+    return (
+      <div>
+      <h3>Recommended USB 2.0 Extension Cables</h3>
+        {buyLinks}
+        <p></p>    
+      </div>
+    )
+  }
+
   renderAnalysis() {
     const { devices, searches, searchesTimestampsRounded } = this.props;
 
     let antPlusAnalysis = null;
 
     let antPlusRecommendations = null;
+
+    let antPlusDongleBuyLinks = null;
+
+    let antPlusAccessoriesBuyLinks = null;
 
     const countSearchesTimestamps =
       searchesTimestampsRounded && searchesTimestampsRounded.length;
@@ -95,6 +149,8 @@ class Analysis extends React.Component {
 
       if (countSearchesTimestamps > 1) {
         antPlusRecommendations = this.getAntPlusSignalRecommendations();
+        antPlusDongleBuyLinks = this.renderAntDongleBuyLinks();
+        antPlusAccessoriesBuyLinks = this.renderAntAccessoriesLinks();
       }
     }
 
@@ -113,6 +169,8 @@ class Analysis extends React.Component {
                       {antPlusAnalysis}
                       {deviceDropoutsMarkup}
                       {antPlusRecommendations}
+                      {antPlusDongleBuyLinks}
+                      {antPlusAccessoriesBuyLinks}
                     </div>
                   </div>
                 </div>
@@ -128,45 +186,47 @@ class Analysis extends React.Component {
     if (n === 1) {
       return (
         <div className="alert alert-success">
-          <p>
-            <strong>Perfect!</strong> There was only one pairing of your ANT+
-            devices which means there were no dropouts after you started riding.
-            It does not get any better than that.
+          <p className={editorial.alertBox}>
+            <strong>Perfect!</strong> Your ANT+ devices were paired just once
+            which means there were no dropouts after you started riding.
+            Congratulations!
           </p>
         </div>
       );
     } else if (n <= 2) {
       return (
         <div className="alert alert-info">
-          <p>
-            <strong>Pretty good.</strong> Your ANT+ devices were paired a couple of times. Probably nothing to worry about.
+          <p className={editorial.alertBox}>
+            <strong>Pretty good.</strong> Your ANT+ devices were paired a couple
+            of times. Probably nothing to worry about.
           </p>
         </div>
       );
     } else if (n <= 5) {
       return (
         <div className="alert alert-warning">
-          <p>
-            <strong>Ah.</strong> Your ANT+ devices were paired between two
-            and five times. You can probably improve your signal.
+          <p className={editorial.alertBox}>
+            <strong>Ah.</strong> Your ANT+ devices were paired several times.
+            You might want to improve your signal.
           </p>
         </div>
       );
     } else if (n <= 10) {
       return (
         <div className="alert alert-warning">
-          <p>
-            <strong>Hmm.</strong> Your ANT+ devices were paired between
-            six and ten times. You can probably improve your signal.
+          <p className={editorial.alertBox}>
+            <strong>Hmm.</strong> Your ANT+ devices were paired many times. You
+            definitely want to improve your signal.
           </p>
         </div>
       );
     } else {
       return (
         <div className="alert alert-danger">
-          <p>
-            <strong>Yikes!</strong> Your ANT+ device signal was up and down like a fiddlers
-            elbow. Your signal can definitely be improved.
+          <p className={editorial.alertBox}>
+            <strong>Yikes!</strong> Your ANT+ device signal was up and down like
+            a fiddler's elbow. Your environment is the most likely cause. Work
+            through the recommendations below changing one thing at a time.
           </p>
         </div>
       );
@@ -198,7 +258,7 @@ class Analysis extends React.Component {
           fixed frequency of 2457 MHz, it is susceptible to radio-frequency
           interference. Using an extension cable to move the dongle away from
           your computer reduces interference caused by electronics inside the
-          computer.{' '}
+          computer.
         </p>
 
         <h4>4. Change your WiFi router channel</h4>
@@ -207,8 +267,8 @@ class Analysis extends React.Component {
           channel 10 becuase it is the same frequency as ANT+ (2457MHz). This is
           still an issue even if the computer you use for Zwift has a hard wired
           network connection because other devices nearby that use WiFi - your
-          phone, or someone watching Netflix on a Roku next door, could fill the
-          airwaves with interference.
+          phone, or someone watching Netflix on a Roku next door - could be
+          flooding the environment with noise.
         </p>
 
         <h4>5. Use a different USB port</h4>
@@ -219,6 +279,7 @@ class Analysis extends React.Component {
           give the USB ports maximum power. It might improve your graphics
           performance too. Always set power management to 'high performance' for
           gaming and if you are using a laptop, always plug it in.
+          Alternatively, try plugging your dongle into a powered USB hub.
         </p>
 
         <h4>6. Don't sweat on your dongle</h4>

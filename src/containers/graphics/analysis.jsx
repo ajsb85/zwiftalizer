@@ -1,11 +1,3 @@
-/**
- *  Copyright (c) 2016, Michael R Hanney. All rights reserved.
- *
- *  No affiliation with Zwift LLC whatsoever. Use at your own risk.
- *
- *  This source code is licensed under the MIT-style license found in the
- *  LICENSE file in the root directory of this source tree.
- */
 var _ = require('underscore');
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -21,22 +13,7 @@ import structure from '../../styles/structure.css';
 import images from '../../styles/images.css';
 import editorial from '../../styles/editorial.css';
 
-import {
-  AMAZON_US_LABEL,
-  AMAZON_CA_LABEL,
-  AMAZON_UK_LABEL,
-  AMAZON_DE_LABEL,
-  AMAZON_ES_LABEL,
-  AMAZON_FR_LABEL,
-  AMAZON_IT_LABEL,
-  AMAZON_US_TAG,
-  AMAZON_CA_TAG,
-  AMAZON_UK_TAG,
-  AMAZON_DE_TAG,
-  AMAZON_ES_TAG,
-  AMAZON_FR_TAG,
-  AMAZON_IT_TAG
-} from '../constants/index.js';
+import {renderBuyLink} from '../../buylinks/index.js';
 
 class Analysis extends React.Component {
   constructor(props) {
@@ -46,59 +23,6 @@ class Analysis extends React.Component {
   render() {
     const { isLoaded } = this.props;
     return isLoaded ? this.renderAnalysis() : null;
-  }
-
-  renderBuyLink(item) {
-    let buyLinksMarkup;
-    const buyLinks = [];
-    const buyQueryTerms = item.toLowerCase().replace(' ', '+');
-
-    buyLinks.push({
-      tag: AMAZON_US_LABEL,
-      href: `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${buyQueryTerms}`
-    });
-
-    buyLinks.push({
-      tag: AMAZON_UK_LABEL,
-      href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${buyQueryTerms}`
-    });
-
-    buyLinks.push({
-      tag: AMAZON_CA_LABEL,
-      href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${buyQueryTerms}`
-    });
-
-    buyLinks.push({
-      tag: AMAZON_DE_LABEL,
-      href: `https://www.amazon.de/s/?tag=${AMAZON_DE_TAG}&field-keywords=${buyQueryTerms}`
-    });
-
-    buyLinks.push({
-      tag: AMAZON_ES_LABEL,
-      href: `https://www.amazon.es/s/?tag=${AMAZON_ES_TAG}&field-keywords=${buyQueryTerms}`
-    });
-
-    buyLinks.push({
-      tag: AMAZON_FR_LABEL,
-      href: `https://www.amazon.fr/s/?tag=${AMAZON_FR_TAG}&field-keywords=${buyQueryTerms}`
-    });
-
-    buyLinks.push({
-      tag: AMAZON_IT_LABEL,
-      href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${buyQueryTerms}`
-    });
-
-    buyLinksMarkup = buyLinks.map(function(link, i) {
-      return (
-        <li key={i}>
-          <a target="_blank" href={link.href}>
-            {link.tag}
-          </a>
-        </li>
-      );
-    }, this);
-
-    return buyLinksMarkup;
   }
 
   renderUltraGpuBuyLinks() {
@@ -111,7 +35,7 @@ class Analysis extends React.Component {
     ];
 
     const buyLinks = gpusToLink.map(function(gpu, i) {
-      const links = this.renderBuyLink(gpu);        
+      const links = renderBuyLink(gpu);        
       return(
         <div className={shopping.shoplinksContainer} key={i}>          
           <span className={shopping.shoplinksEditorialLabel}>{gpu}&nbsp;</span>
@@ -126,25 +50,53 @@ class Analysis extends React.Component {
       <div>
         <h3>1440 (Ultra) and 4K capable GPUs</h3>
         {buyLinks}
+        <p>The GTX 960, GTX 970, and GTX 980 are also capable of 1440 Ultra and 4K but are no longer manufactured.</p>
       </div>
     )
   }
 
   render1440UltraLaptopBuyLinks() {
-    const gpusToLink = [
-      'MSI Gaming Laptop GeForce GTX 960M',      
+    const systemsToLink = [
+      'Alienware 4K Gaming Laptop GTX 970M',   
       'MSI VR Ready Laptop GeForce GTX 1060',
-      'Asus Gaming Laptop GeForce GTX 960M',
-      'Asus Gaming Laptop GeForce GTX 1050',
-      'Asus Gaming Laptop GeForce GTX 1060'      
+      'MSI Gaming Laptop GeForce GTX 1050 2G',                        
+      'Asus Gaming Laptop GeForce GTX 1060',      
+      'Asus Gaming Laptop GeForce GTX 1050 2G',      
     ];
 
-    const buyLinks = gpusToLink.map(function(gpu, i) {
-      const links = this.renderBuyLink(gpu);
+    const buyLinks = systemsToLink.map(function(system, i) {
+      const links = renderBuyLink(system);
 
       return (        
           <div className={shopping.shoplinksContainer} key={i}>          
-            <span className={shopping.shoplinksEditorialLabel}>{gpu}&nbsp;</span>
+            <span className={shopping.shoplinksEditorialLabel}>{system}&nbsp;</span>
+            <ul className={shopping.shoplinks}>
+              {links}
+            </ul>
+          </div>          
+      );
+    }, this);
+
+    return (
+      <div>
+      <h3>1440 (Ultra) capable laptops</h3>
+        {buyLinks}
+        <p></p>    
+      </div>
+    )
+  }
+
+  renderAlienwareAlpha1080BuyLinks() {
+    const ssytemsToLink = [
+      'Alienware Alpha ASM100'      
+    ];
+
+    const buyLinks = ssytemsToLink.map(function(system, i) {
+      const links = renderBuyLink(system);
+
+      return (        
+          <div className={shopping.shoplinksContainer} key={i}>          
+            <span className={shopping.shoplinksEditorialLabel}>{system}&nbsp;</span>
             <ul className={shopping.shoplinks}>
               {links}
             </ul>
@@ -154,8 +106,36 @@ class Analysis extends React.Component {
 
     return (
       <div>
-      <h3>1440 (Ultra) capable laptops</h3>
+      <h3>1080 HD Compact Gaming PC</h3>
         {buyLinks}
+        <p></p>    
+      </div>
+    )
+  }
+
+  renderAlienwareAlpha4KBuyLinks() {
+    const ssytemsToLink = [
+      'Alienware Alpha R2 NVidia GeForce GTX 960'      
+    ];
+
+    const buyLinks = ssytemsToLink.map(function(system, i) {
+      const links = renderBuyLink(system);
+
+      return (        
+          <div className={shopping.shoplinksContainer} key={i}>          
+            <span className={shopping.shoplinksEditorialLabel}>{system}&nbsp;</span>
+            <ul className={shopping.shoplinks}>
+              {links}
+            </ul>
+          </div>        
+      );
+    }, this);
+
+    return (
+      <div>
+      <h3>1440 (Ultra) and 4K capable compact gaming PC</h3>
+        {buyLinks}
+        <p></p>    
       </div>
     )
   }
@@ -195,25 +175,16 @@ class Analysis extends React.Component {
     var maxFpsComment = '';
     var additionalFpsComment = '';
 
-    if (!_.isUndefined(currentSystem.specs.avgFps)) {
-      avgFpsComment =
-        'Your average frame rate is ' +
-        this.getFpsOpinion(currentSystem.specs.avgFps) +
-        ', ';
-    }
-
     if (!_.isUndefined(currentSystem.specs.minFps)) {
-      minFpsComment =
-        'your minimum frame rate is ' +
-        this.getFpsOpinion(currentSystem.specs.minFps) +
-        ', ';
+      minFpsComment = `Minimum frame rate is ${this.getFpsOpinion(currentSystem.specs.minFps)}. `;      
+    }
+    
+    if (!_.isUndefined(currentSystem.specs.avgFps)) {
+      avgFpsComment = `Average frame rate is ${this.getFpsOpinion(currentSystem.specs.avgFps)}. `;
     }
 
     if (!_.isUndefined(currentSystem.specs.maxFps)) {
-      maxFpsComment =
-        'and your maximum frame rate is ' +
-        this.getFpsOpinion(currentSystem.specs.maxFps) +
-        '. ';
+      maxFpsComment = `Maximum frame rate is ${this.getFpsOpinion(currentSystem.specs.maxFps)}. `;      
     }
 
     if (currentSystem.specs.avgFps <= 15 && currentSystem.resolution > 576) {
@@ -247,6 +218,10 @@ class Analysis extends React.Component {
 
     let ultraLaptopBuyLinks = null;
 
+    let alienWare4KBuyLinks = null;
+
+    let alienWare1080BuyLinks = null;
+
     if (!_.isUndefined(currentSystem.resolution)) {
       resolutionComment += `Your resolution (picture frame size measured in the number of pixels in the vertical axis) is ${this.getResolutionOpinion(
         currentSystem.resolution
@@ -254,15 +229,19 @@ class Analysis extends React.Component {
       resolutionComment +=
         'The levels are 576 (standard definition - SD), 720 (high definition - HD), High (1080 - full high definition - FHD), ';
       resolutionComment +=
-        'Ultra (1440 - wide quad high definition - WQHD - 4 times as many pixels as 720 HD), ';
+        'Ultra (1440 - wide quad high definition - WQHD - 4x as many pixels as 720 HD), ';
       resolutionComment +=
-        'and 4K (2160 - ultra high definition - 4 times as many pixels as 1080 FHD). ';
+        'and 4K (2160 - ultra high definition - 4x as many pixels as 1080 FHD). ';
       resolutionComment +=
         'You can change the graphics resolution to whatever you want. However, a high end discrete GPU is necessary to unlock the Ultra and 4K resolution options.';
 
       ultraGpuBuyLinks = this.renderUltraGpuBuyLinks();
 
-      ultraLaptopBuyLinks = this.render1440UltraLaptopBuyLinks();
+      ultraLaptopBuyLinks = this.render1440UltraLaptopBuyLinks(); 
+
+      alienWare4KBuyLinks = this.renderAlienwareAlpha4KBuyLinks();
+
+      alienWare1080BuyLinks = this.renderAlienwareAlpha1080BuyLinks();
     }
 
     return (
@@ -279,9 +258,9 @@ class Analysis extends React.Component {
                     <div className="row">
                       <div className="col-xs-12 col-sm-offset-1 col-sm-10">
                         <div className={fpsAlertClass}>
-                          <p>
-                            {avgFpsComment}
+                          <p className={editorial.alertBox}>
                             {minFpsComment}
+                            {avgFpsComment}                           
                             {maxFpsComment}
                             {additionalFpsComment}                            
                           </p>
@@ -296,6 +275,8 @@ class Analysis extends React.Component {
                         </p>                        
                         {ultraGpuBuyLinks}
                         {ultraLaptopBuyLinks}
+                        {alienWare4KBuyLinks}
+                        {alienWare1080BuyLinks}
                       </div>
                     </div>
                   </div>

@@ -10,7 +10,7 @@ ul.shoplinks {
     font-family: "Roboto Mono", Courier, Monaco, Arial, Helvetica, sans-serif;    
     font-weight: normal;
     font-size: 1.2rem;
-    line-height: 1.4rem;
+    line-height: 1.6rem;
 }
 
 .shoplinksEditorialLabel,
@@ -19,8 +19,7 @@ ul.shoplinks {
 }
 
 .shoplinksLabel {  
-  font-weight: 600;
-  font-size: 1.2rem;
+  font-weight: 600;    
 }
 
 ul.shoplinks {
