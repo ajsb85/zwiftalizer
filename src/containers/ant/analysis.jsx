@@ -15,7 +15,8 @@ class Analysis extends React.Component {
 
   render() {
     const { isLoaded, devices } = this.props;
-    return isLoaded && devices ? this.renderAnalysis() : null;
+
+    return isLoaded && devices && devices.length ? this.renderAnalysis() : null;
   }
 
   renderDeviceDropouts(device, i) {

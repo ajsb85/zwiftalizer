@@ -22,7 +22,7 @@ import {
   AMAZON_ES_TAG,
   AMAZON_FR_TAG,
   AMAZON_IT_TAG
-} from '../constants/index.js';
+} from '../../constants/index.js';
 
 class SmartTrainers extends React.Component {
   constructor(props) {
