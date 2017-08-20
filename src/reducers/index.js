@@ -10,7 +10,6 @@ import network from './network';
 import benchmarks from './benchmarks';
 import preferences from './preferences';
 import powerSources from './powerSources';
-import tabs from './tabs';
 
 const reducers = {
   reader,
@@ -22,8 +21,7 @@ const reducers = {
   network,
   benchmarks,
   preferences,
-  powerSources,
-  tabs
+  powerSources
 };
 
 const combinedReducers = combineReducers(reducers);

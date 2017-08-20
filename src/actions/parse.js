@@ -215,7 +215,8 @@ export function uploadSytemSummary(data) {
     return request
       .post(
         'https://iayslzt1s8.execute-api.us-west-2.amazonaws.com/dev/logs',
-        data, {
+        data,
+        {
           cache: false,
           dataType: 'json'
         }
@@ -234,7 +235,8 @@ export function uploadDevicesSummary(data) {
     return request
       .post(
         'https://zkt5wkylqf.execute-api.us-west-2.amazonaws.com/dev/devices',
-        data, {
+        data,
+        {
           cache: false,
           dataType: 'json'
         }
@@ -280,7 +282,8 @@ export function postAntDevice(device) {
     return request
       .post(
         'https://5jhhymcz61.execute-api.us-west-2.amazonaws.com/dev/send',
-        deviceSummary, {
+        deviceSummary,
+        {
           cache: false,
           dataType: 'json'
         }

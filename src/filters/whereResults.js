@@ -16,7 +16,7 @@ export default function whereResults(predicate, data) {
       return [];
     }
 
-    let profiles = [];
+    const profiles = [];
 
     resolution.profiles.map(profile => {
       const filteredResults = R.filter(R.where(predicate))(profile.results);
@@ -33,7 +33,7 @@ export default function whereResults(predicate, data) {
     if (profiles.length) {
       response.push({
         resolution: resolution.resolution,
-        profiles: profiles
+        profiles
       });
     }
   });

@@ -1,11 +1,3 @@
-/**
- *  Copyright (c) 2016, Michael R Hanney. All rights reserved.
- *
- *  No affiliation with Zwift LLC whatsoever. Use at your own risk.
- *
- *  This source code is licensed under the MIT-style license found in the
- *  LICENSE file in the root directory of this source tree.
- */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';

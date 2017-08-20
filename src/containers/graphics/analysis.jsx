@@ -59,9 +59,9 @@ class Analysis extends React.Component {
     const systemsToLink = [
       'Alienware 4K Gaming Laptop GTX 970M',   
       'MSI VR Ready Laptop GeForce GTX 1060',
-      'MSI Gaming Laptop GeForce GTX 1050 2G',                        
+      'MSI Gaming Laptop GeForce GTX 1050',                        
       'Asus Gaming Laptop GeForce GTX 1060',      
-      'Asus Gaming Laptop GeForce GTX 1050 2G',      
+      'Asus Gaming Laptop GeForce GTX 1050',      
     ];
 
     const buyLinks = systemsToLink.map(function(system, i) {
@@ -106,7 +106,7 @@ class Analysis extends React.Component {
 
     return (
       <div>
-      <h3>1080 HD Compact Gaming PC</h3>
+      <h3>1080 HD compact gaming PC</h3>
         {buyLinks}
         <p></p>    
       </div>
