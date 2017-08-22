@@ -22,8 +22,7 @@ class App extends React.Component {
     router: PropTypes.object
   };
 
-  sendPageView(location) {
-    console.log(`send page view ${location.pathname}`);
+  sendPageView(location) {    
     ReactGA.set({ page: location.pathname });
     ReactGA.pageview(location.pathname);
   }
