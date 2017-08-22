@@ -330,7 +330,7 @@ class Chart extends React.Component {
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>
-                ANT+ device searches/re-syncs
+                ANT+ device searches/re-pairings
               </h4>
               <h5 className={structure.infoHeading}>
                 Fewer is better. One at the start is ideal.
@@ -350,7 +350,6 @@ class Chart extends React.Component {
             <Resizable>
               <ChartContainer
                 timeRange={this.state.initialRange}
-                format="HH:mm:ss"
                 padding={0}
                 trackerPosition={this.state.tracker}
               >

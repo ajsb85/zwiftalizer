@@ -121,7 +121,7 @@ class Specs extends React.Component {
               <div className={structure.boxesWrapOuter}>
                 <div className={structure.boxesWrapFlexEnd}>                
                   <div onClick={this.seeInBenchMarksClicked} style={{cursor: 'pointer'}}>
-                    <Badge data={performanceScore} />&nbsp; See in benchmarks
+                    Rank&nbsp;&nbsp;<Badge data={performanceScore} />&nbsp; See in benchmarks
                   </div>                                                                                                                     
                 </div>                                  
               </div>                                  

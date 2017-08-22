@@ -14,6 +14,25 @@ This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
 The code runs 100% in your web browser on your computer.
 
+## 1.4.0 Changes (2017-08-19)
+
+* Maintenance and some UI changes.
+* Replaced Tabbed UI with single page showing all charts and recommendations.
+* ANT+ signal charts - Added list of hh:mm:ss times where the ANT+ signal looked to be weak or lost.
+* ANT+ signal charts - Simplifed to only signal strenght type of chart (removed Power meter, Smart Trainer, Kickr specific charts). 
+The .fit file is more appropriate for rendering power over time, and not all PMs (Power2Max) have their power logged. It wasn't worth the maintenance.
+* ANT+ signal charts - Added list of recommended ANT+ dongles and extension cables with AMZ associate links.
+* Powersources - Country specific Smart Trainer and Power meter usage now needs at least 25 devices to qualify for rendering.
+* Powersources - Smart Trainer and Power meter usage X axis labels cleaned up.
+* Powersources - Recognition of more powermeter and smart trainer models - Quark DFour, Rotor Power Dual, Elite Direto.
+* Loader - removed animation and confetti.
+* Now works in Microsoft IE 11 and Edge.
+* Updated React to version 15.6.1.
+* Updated Webpack to version 3.5.2.
+* Update Pondjs to version 0.8.7.
+* Update React Timeseries Charts to version 0.12.8.
+
+
 ## 1.1.0 Changes (2017-05-13)
 
 * Filters added to the Benchmarks report

@@ -332,7 +332,7 @@ class Chart extends React.Component {
                     </ChartContainer>
                   </Resizable>
                   <Resizable>
-                    <ChartContainer timeRange={this.state.initialRange} format="HH:mm:ss" trackerPosition={this.state.tracker}>
+                    <ChartContainer timeRange={this.state.initialRange} trackerPosition={this.state.tracker}>
                       <ChartRow height={BRUSH_HEIGHT} debug={false}>
                         <Brush timeRange={this.state.brushrange} allowSelectionClear={true} onTimeRangeChanged={this.handleTimeRangeChange}></Brush>
                         <YAxis id="fpsBrushAxis" label="FPS" min={this.state.minOverall - 5} max={this.state.maxOverall + 5} width={100} type="linear" format="d"></YAxis>

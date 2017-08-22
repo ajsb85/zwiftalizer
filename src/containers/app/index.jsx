@@ -1,15 +1,41 @@
 import React, { Component } from 'react';
+
 import PropTypes from 'prop-types';
+
 import { Link, withRouter } from 'react-router-dom';
+
 import { connect } from 'react-redux';
+
 import { loadDemo, reset } from '../../actions/parse.js';
+
 import structure from '../../styles/structure.css';
+
 import styles from './styles.css';
 
+const ReactGA = require('react-ga');
+
+ReactGA.initialize('UA-2833327-13');
+
 class App extends React.Component {
+
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
+  sendPageView(location) {
+    console.log(`send page view ${location.pathname}`);
+    ReactGA.set({ page: location.pathname });
+    ReactGA.pageview(location.pathname);
+  }
+
   constructor(props) {
     super(props);
     this.handleDemoClick = this.handleDemoClick.bind(this);
+  }
+
+  componentDidMount() {
+    this.sendPageView(this.context.router.history.location);
+    this.context.router.history.listen(this.sendPageView);
   }
 
   handleDemoClick(e) {
@@ -21,16 +47,16 @@ class App extends React.Component {
       dispatch(reset());
     }
 
-    // load home route and allow to render
+    // load demo route (home) and allow to render before loading demo data
     setTimeout(() => {            
       this.props.history.push({
-        pathname: '/'
+        pathname: '/demo'
       })      
-    }, 200);
+    }, 100);
 
     setTimeout(() => {
       dispatch(loadDemo());
-    }, 200);
+    }, 100);
   }
 
   render() {

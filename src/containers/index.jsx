@@ -1,74 +1,65 @@
-/**
- *  Copyright (c) 2016, Michael R Hanney. All rights reserved.
- *
- *  No affiliation with Zwift LLC whatsoever. Use at your own risk.
- *
- *  This source code is licensed under the MIT-style license found in the
- *  LICENSE file in the root directory of this source tree.
- */
 // polyfill for IE11
-import 'babel-polyfill'
-import {Provider} from 'react-redux'
+import 'babel-polyfill';
 
-import { BrowserRouter as Router, IndexRoute, Route, Switch } from 'react-router-dom'
+import { Provider } from 'react-redux';
 
-import createBrowserHistory from 'history/lib/createBrowserHistory'
+import {
+  BrowserRouter as Router,
+  IndexRoute,
+  Route,
+  Switch
+} from 'react-router-dom';
 
-import configureStore from '../stores/configureStore'
+import createBrowserHistory from 'history/lib/createBrowserHistory';
 
-var _ = require('underscore')
+import configureStore from '../stores/configureStore';
 
-import React from 'react'
+var _ = require('underscore');
 
-import ReactDOM from 'react-dom'
+import React from 'react';
 
-var ReactGA = require('react-ga')
+import ReactDOM from 'react-dom';
 
-ReactGA.initialize('UA-2833327-13')
+import App from './app';
 
-import App from './app'
+import Home from './home';
 
-import Home from './home'
+import { Support } from './support';
 
-import {Support} from './support'
+import Benchmarks from './benchmarks';
 
-import Benchmarks from './benchmarks'
+import PowerSources from './powersources';
 
-import PowerSources from './powersources'
+function run() {  
+  let store = configureStore();
 
-function logPageView() {
-  ReactGA.set({page: window.location.pathname})
-  ReactGA.pageview(window.location.pathname)
-}
-
-function run() {
-
-  const newHistory = createBrowserHistory();
-
-  let store = configureStore()
+  const history = createBrowserHistory();
 
   ReactDOM.render(
     <Provider store={store}>
       <div>
-        <Router onUpdate={logPageView} history={newHistory}>        
-            <App>        
-              <Switch>
-                <Route exact path='/' component={Home}/>          
-                <Route exact path='/support' component={Support}/>
-                <Route exact path='/benchmarks' component={Benchmarks}/>
-                <Route exact path='/powersources' component={PowerSources}/>
-              </Switch>        
-            </App>
+        <Router history={history}>        
+          <App>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/demo" component={Home} />
+              <Route exact path="/support" component={Support} />
+              <Route exact path="/benchmarks" component={Benchmarks} />
+              <Route exact path="/powersources" component={PowerSources} />
+            </Switch>
+          </App>          
         </Router>
       </div>
-    </Provider>, document.getElementById('app'))
+    </Provider>,
+    document.getElementById('app')
+  );
 }
 
 // roughly equivalent to jQuery's document ready
-const loadedStates = ['complete', 'loaded', 'interactive']
+const loadedStates = ['complete', 'loaded', 'interactive'];
 
 if (_.contains(loadedStates, document.readyState) && document.body) {
-  run()
+  run();
 } else {
-  window.addEventListener('DOMContentLoaded', run, false)
+  window.addEventListener('DOMContentLoaded', run, false);
 }
