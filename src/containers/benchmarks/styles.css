@@ -72,7 +72,7 @@ display: flex;
   font-family: Montserrat, Arial, Helvetica, sans-serif;
 }
 .lastUpdateTime {
-    text-align: left;
+    text-align: center;
     margin-top: 1.2rem;
 }
 .opinion {
@@ -248,6 +248,23 @@ input[type=checkbox].withfont:focus ~ label
     cursor: pointer;
 }
 
+ input[type=text].searchForm {
+  font-size: 1.4rem;  
+  font-weight: normal;
+  text-align: center;
+  line-height: 1.8rem;
+  width: 30rem;
+}
+
+.searchFormHelp {
+  display: block;
+  text-align: left;
+  margin-top: 0.5rem;;
+  margin-bottom: 1rem;  
+  color: #999;
+  font-size: 1.4rem;
+}
+
 @media only screen and (max-width: 480px) {
   [class*="col-"] {
     padding-left: 5px !important;
@@ -284,11 +301,7 @@ input[type=checkbox].withfont:focus ~ label
     float: none;
     margin: 0;
     padding: 0.5rem 0;
-  }
-  .lastUpdateTime {
-    text-align: center;
-    margin-top: 1.2rem;
-  }
+  }  
 }
 
 @media only screen and (min-width: 767px) and (max-width:991px) {

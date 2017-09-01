@@ -1,6 +1,7 @@
 var moment = require('moment');
 const R = require('ramda');
 const _ = require('underscore');
+const { tokenize } = require('./searchTermTokenizer.js');
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -26,7 +27,8 @@ class Benchmarks extends React.Component {
       cpuFilter: ALL,
       gpuFilter: ALL,
       minFpsFilter: ALL,
-      showFiltersPanel: false
+      showFiltersPanel: false,
+      searchTerms: []
     };
 
     this.handlePlatformFilterChange = this.handlePlatformFilterChange.bind(
@@ -41,13 +43,12 @@ class Benchmarks extends React.Component {
     this.handleMinFpsFilterChange = this.handleMinFpsFilterChange.bind(this);
     this.findMySystemClicked = this.findMySystemClicked.bind(this);
     this.toggleFiltersPanelClicked = this.toggleFiltersPanelClicked.bind(this);
+    this.handleSearchInputKeyPress = this.handleSearchInputKeyPress.bind(this);
+    this.handleSearchClick = this.handleSearchClick.bind(this);
 
-    setTimeout(
-      () => {
-        dispatch(load());
-      },
-      100
-    );
+    setTimeout(() => {
+      dispatch(load());
+    }, 100);
   }
 
   handlePlatformFilterChange(e) {
@@ -86,16 +87,35 @@ class Benchmarks extends React.Component {
     // force open the panel that contains the current system before scrolling incase the user closed it
     dispatch(openProfilePanel(currentSystem.panelKey));
 
-    setTimeout(
-      () => {
-        const anchorToScrollTo = document.getElementById('current');
-        if (anchorToScrollTo) {
-          anchorToScrollTo.scrollIntoView(true /* align top */);
-          window.scrollBy(0, -300); // scroll 300 px because of sticky header
-        }
-      },
-      200
-    );
+    setTimeout(() => {
+      const anchorToScrollTo = document.getElementById('current');
+      if (anchorToScrollTo) {
+        anchorToScrollTo.scrollIntoView(true /* align top */);
+        window.scrollBy(0, -300); // scroll 300 px because of sticky header
+      }
+    }, 200);
+  }
+
+  handleSearchInputKeyPress(target) {    
+    if (target.keyCode === 13) {
+      this.handleSearchClick();
+    }
+  }
+
+  handleSearchClick(e) {
+    if (e) {
+      e.preventDefault();
+    }
+    const input = document.getElementById('searchTermsInput');
+    if (!input.value) {
+      this.setState({ searchTerms: [] });
+    }
+    const vals = tokenize(input.value);
+    this.setState({ searchTerms: vals });
+
+    // setTimeout(() => {
+    //   console.log(this.state.searchTerms);
+    // }, 200);
   }
 
   toggleFiltersPanelClicked(e) {
@@ -290,9 +310,7 @@ class Benchmarks extends React.Component {
                       checked={this.state.profileFilter === ALL}
                       onChange={this.handleProfileFilterChange}
                     />
-                    <label htmlFor="profile0">
-                      All
-                    </label>
+                    <label htmlFor="profile0">All</label>
                   </div>
                   <div>
                     <input
@@ -304,9 +322,7 @@ class Benchmarks extends React.Component {
                       checked={this.state.profileFilter === '3'}
                       onChange={this.handleProfileFilterChange}
                     />
-                    <label htmlFor="profile1">
-                      Ultra
-                    </label>
+                    <label htmlFor="profile1">Ultra</label>
                   </div>
                   <div>
                     <input
@@ -318,9 +334,7 @@ class Benchmarks extends React.Component {
                       checked={this.state.profileFilter === '2'}
                       onChange={this.handleProfileFilterChange}
                     />
-                    <label htmlFor="profile2">
-                      High
-                    </label>
+                    <label htmlFor="profile2">High</label>
                   </div>
                   <div>
                     <input
@@ -344,9 +358,7 @@ class Benchmarks extends React.Component {
                       checked={this.state.profileFilter === '0'}
                       onChange={this.handleProfileFilterChange}
                     />
-                    <label htmlFor="profile4">
-                      Basic
-                    </label>
+                    <label htmlFor="profile4">Basic</label>
                   </div>
                 </div>
               </div>
@@ -558,15 +570,14 @@ class Benchmarks extends React.Component {
     }
 
     return (
-      <div className={styles.rightAlignControls}>
-        <button
-          type="button"
-          className="btn btn-primary btn-sm"
-          onClick={this.findMySystemClicked}
-        >
-          Find my system
-        </button>
-      </div>
+      <button
+        type="button"
+        style={{ width: '12rem' }}
+        className="btn btn-primary btn-md"
+        onClick={this.findMySystemClicked}
+      >
+        Find mine
+      </button>
     );
   }
 
@@ -582,6 +593,13 @@ class Benchmarks extends React.Component {
     let resolutionEntries;
     let filtered;
     let predicates = {};
+
+    // Search and Filters interact (NOT mutually exclusive)
+    if (this.state.searchTerms) {
+      this.state.searchTerms.map(term => {
+        predicates.terms = R.contains(term);
+      });
+    }
 
     if (this.state.platformFilter !== ALL) {
       predicates.platform = R.equals(this.state.platformFilter);
@@ -625,7 +643,6 @@ class Benchmarks extends React.Component {
       // Create the resolution and empty profiles collection
       // so that the current system has somewhere to go.
       if (currentSystem) {
-        
         const existingResolutionNode = _.findWhere(filtered, {
           resolution: currentSystem.resolution
         });
@@ -644,7 +661,6 @@ class Benchmarks extends React.Component {
           filtered = _.sortBy(filtered, f => {
             return f.resolution;
           }).reverse();
-
         } else {
           // do we have the resolution panel, but not the profile?
 
@@ -668,18 +684,15 @@ class Benchmarks extends React.Component {
         }
       }
 
-      resolutionEntries = filtered.map(
-        function(resolution, i) {
-          const data = Object.assign({}, resolution, {
-            totalRecords,
-            expanded,
-            currentSystem
-          });
+      resolutionEntries = filtered.map(function(resolution, i) {
+        const data = Object.assign({}, resolution, {
+          totalRecords,
+          expanded,
+          currentSystem
+        });
 
-          return <Resolution data={data} key={data.resolution} />;
-        },
-        this
-      );
+        return <Resolution data={data} key={data.resolution} />;
+      }, this);
     }
 
     const dateLastUpdateHuman = moment(dateLastUpdate).format();
@@ -708,18 +721,51 @@ class Benchmarks extends React.Component {
                         </div>
                       </div>
                       <div className="row">
-                        <div className="col-xs-12 col-sm-6">
+                        <div className="col-xs-12">
                           <div className={styles.lastUpdateTime}>
                             Last Updated: {dateLastUpdateHuman}
                           </div>
                         </div>
-                        <div className="col-xs-12 col-sm-6">
-                          {this.renderFindMySystemControls(currentSystem)}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className={editorialStyles.boxesWrapOuter}>
+              <div className={structure.boxesWrapInner}>
+                <div className={structure.boxLast}>
+                  <div className={editorialStyles.editorialBoxContent}>
+                    <div className="container-fluid">
+                      <div className="row">
+                        <div className="col-xs-12 col-sm-8">
+                          <input
+                            id="searchTermsInput"
+                            type="text"
+                            maxLength="128"
+                            placeholder="Example: laptop"
+                            className="form-control"
+                            onKeyUp={this.handleSearchInputKeyPress}
+                          />
+                          <span id="searchTermsInputHelp" className={styles.searchFormHelp}>
+                            Multile search words are ORed. Filters always apply.
+                          </span>
+                        </div>
+                        <div className="col-xs-12 col-sm-4">
+                          <button
+                            type="button"
+                            className="btn btn-primary btn-md"
+                            style={{ width: '12rem' }}
+                            onClick={this.handleSearchClick}
+                          >
+                            Search
+                          </button>&nbsp;{this.renderFindMySystemControls(
+                            currentSystem
+                          )}
                         </div>
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
