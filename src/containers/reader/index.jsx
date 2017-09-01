@@ -167,9 +167,10 @@ class Reader extends React.Component {
                 <div className="row">
                   <div className="col-xs-12">
                     <h3>
-                      Check the box to upload your system specs to the database.
+                      When the box is checked your system specs get uploaded to the database.
                     </h3>
                     <p />
+
                     <h3>Why would I want to do that?</h3>
                     <p>
                       Uploads contribute to the reports that help the community make informed purchasing decisions.

@@ -129,6 +129,15 @@ class App extends React.Component {
               <p>By Mike Hanney&nbsp;|&nbsp;<a href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md" target="_blank">License</a>&nbsp;|&nbsp;Follow&nbsp;<a href="https://twitter.com/zwiftalizer" target="_blank">&nbsp;@zwiftalizer</a>&nbsp;<a href="https://twitter.com/zwiftalizer" target="_blank"><i className="fa fa-twitter" /></a>
               </p>
             </div>
+            <div className="row">
+              <p>
+              </p>
+            </div>
+            <div className="row">
+              <p>
+                <a href="https://heapanalytics.com/?utm_source=badge" rel="nofollow"><img style={{width:'108px',height:'41px'}} src="//heapanalytics.com/img/badgeLight.png" alt="Heap | Mobile and Web Analytics" /></a>                
+              </p>
+            </div>
           </div>
         </div>
       </div>
