@@ -96,7 +96,7 @@ class Benchmarks extends React.Component {
     }, 200);
   }
 
-  handleSearchInputKeyPress(target) {    
+  handleSearchInputKeyPress(target) {
     if (target.keyCode === 13) {
       this.handleSearchClick();
     }
@@ -112,6 +112,10 @@ class Benchmarks extends React.Component {
     }
     const vals = tokenize(input.value);
     this.setState({ searchTerms: vals });
+
+    if (window.heap) {
+      window.heap.track('Search', { terms: vals.join(',') });
+    }
 
     // setTimeout(() => {
     //   console.log(this.state.searchTerms);
@@ -592,43 +596,55 @@ class Benchmarks extends React.Component {
 
     let resolutionEntries;
     let filtered;
-    let predicates = {};
+    let predicate = {};
 
     // Search and Filters interact (NOT mutually exclusive)
     if (this.state.searchTerms) {
-      this.state.searchTerms.map(term => {
-        predicates.terms = R.contains(term);
-      });
+      if (this.state.searchTerms.length === 1) {
+        predicate.terms = R.contains(this.state.searchTerms[0]);
+      } else {
+        const innerPredicates = [];
+
+        this.state.searchTerms.map(term => {
+          innerPredicates.push(R.contains(term));
+        });
+
+        // terms are ANDed
+        // predicate.terms = R.allPass(innerPredicates);
+
+        // terms are ORed
+        predicate.terms = R.anyPass(innerPredicates);
+      }
     }
 
     if (this.state.platformFilter !== ALL) {
-      predicates.platform = R.equals(this.state.platformFilter);
+      predicate.platform = R.equals(this.state.platformFilter);
     }
 
     if (this.state.resolutionFilter !== ALL) {
-      predicates.resolution = R.equals(
+      predicate.resolution = R.equals(
         parseInt(this.state.resolutionFilter, 10)
       );
     }
 
     if (this.state.profileFilter !== ALL) {
-      predicates.profileId = R.equals(parseInt(this.state.profileFilter, 10));
+      predicate.profileId = R.equals(parseInt(this.state.profileFilter, 10));
     }
 
     if (this.state.cpuFilter !== ALL) {
-      predicates.cpuVendor = R.equals(this.state.cpuFilter);
+      predicate.cpuVendor = R.equals(this.state.cpuFilter);
     }
 
     if (this.state.gpuFilter !== ALL) {
-      predicates.gpuVendor = R.equals(this.state.gpuFilter);
+      predicate.gpuVendor = R.equals(this.state.gpuFilter);
     }
 
     if (this.state.minFpsFilter !== ALL) {
-      predicates.minFps = R.gte(R.__, parseInt(this.state.minFpsFilter, 10));
+      predicate.minFps = R.gte(R.__, parseInt(this.state.minFpsFilter, 10));
     }
 
-    if (Object.keys(predicates).length) {
-      const filteredResolutions = whereResults(predicates, this.props);
+    if (Object.keys(predicate).length) {
+      const filteredResolutions = whereResults(predicate, this.props);
       if (filteredResolutions && filteredResolutions.resolutions) {
         filtered = filteredResolutions.resolutions;
       }
@@ -747,7 +763,10 @@ class Benchmarks extends React.Component {
                             className="form-control"
                             onKeyUp={this.handleSearchInputKeyPress}
                           />
-                          <span id="searchTermsInputHelp" className={styles.searchFormHelp}>
+                          <span
+                            id="searchTermsInputHelp"
+                            className={styles.searchFormHelp}
+                          >
                             Multile search words are ORed. Filters always apply.
                           </span>
                         </div>
