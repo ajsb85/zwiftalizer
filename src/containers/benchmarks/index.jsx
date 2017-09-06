@@ -28,7 +28,8 @@ class Benchmarks extends React.Component {
       gpuFilter: ALL,
       minFpsFilter: ALL,
       showFiltersPanel: false,
-      searchTerms: []
+      searchTerms: [],
+      searchTermLogic: 'OR'
     };
 
     this.handlePlatformFilterChange = this.handlePlatformFilterChange.bind(
@@ -45,6 +46,7 @@ class Benchmarks extends React.Component {
     this.toggleFiltersPanelClicked = this.toggleFiltersPanelClicked.bind(this);
     this.handleSearchInputKeyPress = this.handleSearchInputKeyPress.bind(this);
     this.handleSearchClick = this.handleSearchClick.bind(this);
+    this.handleSearchTermLogicChange = this.handleSearchTermLogicChange.bind(this);
 
     setTimeout(() => {
       dispatch(load());
@@ -73,6 +75,10 @@ class Benchmarks extends React.Component {
 
   handleMinFpsFilterChange(e) {
     this.setState({ minFpsFilter: e.target.value });
+  }
+
+  handleSearchTermLogicChange(e) {
+    this.setState({ searchTermLogic: e.target.value });
   }
 
   findMySystemClicked(e) {
@@ -598,8 +604,8 @@ class Benchmarks extends React.Component {
     let filtered;
     let predicate = {};
 
-    // Search and Filters interact (NOT mutually exclusive)
-    if (this.state.searchTerms) {
+    // Search and Filters interact (NOT mutually exclusive)    
+    if (_.isArray(this.state.searchTerms) && this.state.searchTerms.length >= 1)  {
       if (this.state.searchTerms.length === 1) {
         predicate.terms = R.contains(this.state.searchTerms[0]);
       } else {
@@ -609,11 +615,13 @@ class Benchmarks extends React.Component {
           innerPredicates.push(R.contains(term));
         });
 
-        // terms are ANDed
-        // predicate.terms = R.allPass(innerPredicates);
+        if (this.state.searchTermLogic === 'AND') {
+          predicate.terms = R.allPass(innerPredicates);
+        }
 
-        // terms are ORed
-        predicate.terms = R.anyPass(innerPredicates);
+        if (this.state.searchTermLogic === 'OR') {
+          predicate.terms = R.anyPass(innerPredicates);
+        }
       }
     }
 
@@ -762,13 +770,7 @@ class Benchmarks extends React.Component {
                             placeholder="Example: laptop"
                             className="form-control"
                             onKeyUp={this.handleSearchInputKeyPress}
-                          />
-                          <span
-                            id="searchTermsInputHelp"
-                            className={styles.searchFormHelp}
-                          >
-                            Multile search words are ORed. Filters always apply.
-                          </span>
+                          />                          
                         </div>
                         <div className="col-xs-12 col-sm-4">
                           <button
@@ -783,6 +785,48 @@ class Benchmarks extends React.Component {
                           )}
                         </div>
                       </div>
+                      <div className="row">
+                        <div className="col-xs-12 col-sm-3">
+                          <span
+                          id="searchTermsInputHelp"
+                          className={styles.searchFormHelp}>
+                          Multiple search words logic:
+                        </span>
+                        </div>
+                        <div className="col-xs-12 col-sm-2">
+                          <div className={styles.searchLogicRadiosContainer}>
+                            <div className={styles.formContainer}>
+                              <input
+                                id="searchTermLogic0"
+                                name="searchTermLogic"
+                                type="radio"
+                                className={styles.withfont}
+                                value="OR"
+                                checked={this.state.searchTermLogic === 'OR'}
+                                onChange={this.handleSearchTermLogicChange}
+                              />
+                              <label htmlFor="searchTermLogic0">OR</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-xs-12 col-sm-2">
+                        <div className={styles.searchLogicRadiosContainer}>
+                          <div className={styles.formContainer}>
+                            <input
+                              id="searchTermLogic1"
+                              name="searchTermLogic"
+                              type="radio"
+                              className={styles.withfont}
+                              value="AND"
+                              checked={this.state.searchTermLogic === 'AND'}
+                              onChange={this.handleSearchTermLogicChange}
+                            />
+                            <label htmlFor="searchTermLogic1">AND</label>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+
                     </div>
                   </div>
                 </div>

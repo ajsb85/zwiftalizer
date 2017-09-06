@@ -259,10 +259,17 @@ input[type=checkbox].withfont:focus ~ label
 .searchFormHelp {
   display: block;
   text-align: left;
-  margin-top: 0.5rem;;
+  margin-top: 1rem;;
   margin-bottom: 1rem;  
   color: #999;
   font-size: 1.4rem;
+}
+
+.searchLogicRadiosContainer {
+  display: block;
+  text-align: left;
+  margin-top: 1rem;;
+  margin-bottom: 1rem;  
 }
 
 @media only screen and (max-width: 480px) {
@@ -302,6 +309,10 @@ input[type=checkbox].withfont:focus ~ label
     margin: 0;
     padding: 0.5rem 0;
   }  
+  .searchFormHelp,
+  .searchLogicRadiosContainer {
+    text-align: center;    
+  }
 }
 
 @media only screen and (min-width: 767px) and (max-width:991px) {
@@ -323,6 +334,10 @@ input[type=checkbox].withfont:focus ~ label
   }
   .thumbs {
     display: none !important;
+  }
+  .searchFormHelp,
+  .searchLogicRadiosContainer {
+    text-align: center;    
   }
 }
 
