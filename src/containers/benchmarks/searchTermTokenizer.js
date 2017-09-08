@@ -16,10 +16,6 @@ module.exports.tokenize = function tokenize(str) {
     'sse2',
     'multiplier',
     'frequency',
-    'ultra',
-    'high',
-    'medium',
-    'basic',
     'pc',
     'all',
     'in',
@@ -56,7 +52,7 @@ module.exports.tokenize = function tokenize(str) {
       continue;
     }
 
-    term = term.toLowerCase();
+    term = term.toLowerCase().replace('"', '');
 
     if (noiseWords.includes(term)) {
       continue;
