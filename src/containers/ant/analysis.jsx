@@ -6,7 +6,7 @@ import structure from '../../styles/structure.css';
 import images from '../../styles/images.css';
 import editorial from '../../styles/editorial.css';
 import shopping from '../../styles/shopping.css';
-import {renderBuyLink} from '../../buylinks/index.js';
+import { renderBuyLink } from '../../buylinks/index.js';
 
 class Analysis extends React.Component {
   constructor(props) {
@@ -35,12 +35,8 @@ class Analysis extends React.Component {
 
     return (
       <div key={key}>
-        <h4>
-          {label}
-        </h4>
-        <p>
-          {dropoutTimes}
-        </p>
+        <h4>{label}</h4>
+        <p>{dropoutTimes}</p>
       </div>
     );
   }
@@ -76,31 +72,28 @@ class Analysis extends React.Component {
   }
 
   renderAntDongleBuyLinks() {
-    const productsToLink = [
-      'Suunto Movestick Mini',
-      'Garmin USB ANT Stick'
-    ];
+    const productsToLink = ['Suunto Movestick Mini', 'Garmin USB ANT Stick'];
 
     const buyLinks = productsToLink.map(function(product, i) {
       const links = renderBuyLink(product);
 
-      return (        
-          <div className={shopping.shoplinksContainer} key={i}>          
-            <span className={shopping.shoplinksEditorialLabel}>{product}&nbsp;</span>
-            <ul className={shopping.shoplinks}>
-              {links}
-            </ul>
-          </div>          
+      return (
+        <div className={shopping.shoplinksContainer} key={i}>
+          <span className={shopping.shoplinksEditorialLabel}>
+            {product}&nbsp;
+          </span>
+          <ul className={shopping.shoplinks}>{links}</ul>
+        </div>
       );
     }, this);
 
     return (
       <div>
-      <h3>Recommended ANT+ Dongles</h3>
+        <h3>Recommended ANT+ Dongles</h3>
         {buyLinks}
-        <p></p>    
+        <p />
       </div>
-    )
+    );
   }
 
   renderAntAccessoriesLinks() {
@@ -112,23 +105,23 @@ class Analysis extends React.Component {
     const buyLinks = productsToLink.map(function(product, i) {
       const links = renderBuyLink(product);
 
-      return (        
-          <div className={shopping.shoplinksContainer} key={i}>          
-            <span className={shopping.shoplinksEditorialLabel}>{product}&nbsp;</span>
-            <ul className={shopping.shoplinks}>
-              {links}
-            </ul>
-          </div>          
+      return (
+        <div className={shopping.shoplinksContainer} key={i}>
+          <span className={shopping.shoplinksEditorialLabel}>
+            {product}&nbsp;
+          </span>
+          <ul className={shopping.shoplinks}>{links}</ul>
+        </div>
       );
     }, this);
 
     return (
       <div>
-      <h3>Recommended USB 2.0 Extension Cables</h3>
+        <h3>Recommended USB 2.0 Extension Cables</h3>
         {buyLinks}
-        <p></p>    
+        <p />
       </div>
-    )
+    );
   }
 
   renderAnalysis() {
@@ -253,34 +246,33 @@ class Analysis extends React.Component {
           Zwift.
         </p>
 
-        <h4>3. Use a short, high quality USB extension cable</h4>
+        <h4>3. Try a different USB port</h4>
+        <p>
+          Most USB ports provide 500mA current but some only only provide 100mA.
+          This is why trying a different USB port can improve your ANT+ signal.
+        </p>
+
+        <h4>4. Use a short, high quality USB extension cable</h4>
         <p>
           ANT+ works up to 30 meters but since it uses a low powered radio, at a
           fixed frequency of 2457 MHz, it is susceptible to radio-frequency
-          interference. Using an extension cable to move the dongle away from
-          your computer reduces interference caused by electronics inside the
-          computer.
+          interference. Using an SHORT extension cable, to move the dongle away
+          from your computer, reduces interference caused by electronics inside
+          the computer. A USB port puts out 5v @ 500 mA. Voltage and current
+          drops over long cables. This is why short cables are better. A long
+          cable plugged into a powered USB hub may work because the powered USB
+          hub puts out up to 2.5A - 5 times more current than a built-in USB
+          port.
         </p>
 
-        <h4>4. Change your WiFi router channel</h4>
+        <h4>5. Change your WiFi router channel</h4>
         <p>
           If you have a 2.4 GHz WiFi router, use channels 1 to 5 and avoid
-          channel 10 becuase it is the same frequency as ANT+ (2457MHz). This is
-          still an issue even if the computer you use for Zwift has a hard wired
-          network connection because other devices nearby that use WiFi - your
-          phone, or someone watching Netflix on a Roku next door - could be
+          channel 10 becuase it uses the same frequency as ANT+ (2457MHz). This
+          is still an issue even if the computer you use for Zwift has a hard
+          wired network connection because other devices nearby that use WiFi -
+          your phone, or someone watching Netflix on a Roku next door - could be
           flooding the environment with noise.
-        </p>
-
-        <h4>5. Use a different USB port</h4>
-        <p>
-          Some USB ports run at lower voltages than others, particularly in
-          laptops where power saving is often enabled when running on batteries.
-          Setting your computer's power management to 'high performance' will
-          give the USB ports maximum power. It might improve your graphics
-          performance too. Always set power management to 'high performance' for
-          gaming and if you are using a laptop, always plug it in.
-          Alternatively, try plugging your dongle into a powered USB hub.
         </p>
 
         <h4>6. Don't sweat on your dongle</h4>

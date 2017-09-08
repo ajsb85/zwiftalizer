@@ -123,7 +123,7 @@ class Reader extends React.Component {
                     </div>
                   </div>
                   <h2 className={styles.checkboxLabel}>
-                    Upload my system specs &nbsp;<a href="" onClick={this.openDbUploadExplanationModal}><span className={styles.infoCircle}><i className="fa fa-question-circle" aria-hidden="true"/></span></a>
+                    I agree to share my system specs &nbsp;<a href="" onClick={this.openDbUploadExplanationModal}><span className={styles.infoCircle}><i className="fa fa-question-circle" aria-hidden="true"/></span></a>
                   </h2>
                 </div>
               </div>
@@ -157,7 +157,7 @@ class Reader extends React.Component {
         >
           <Modal.Header closeButton>
             <Modal.Title>
-              What happens when the box is checked?
+              Data collection and privacy policy
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -167,23 +167,25 @@ class Reader extends React.Component {
                 <div className="row">
                   <div className="col-xs-12">
                     <h3>
-                      When the box is checked your system specs get uploaded to the database.
+                      What happens when the box is checked?
                     </h3>
-                    <p />
-
-                    <h3>Why would I want to do that?</h3>
                     <p>
-                      Uploads contribute to the reports that help the community make informed purchasing decisions.
+                      With the 'I agree' box checked, your system specs get uploaded to the database in the background. This box must be checked BEFORE loading a log file. Checking it after loading a log file has no affect.
                     </p>
 
-                    <h3>Is my log sent to a server?</h3>
+                    <h3>Why would I want to upload my specs?</h3>
                     <p>
-                      No. I don't need them and I don't want the responsibility of securing personally identifiable information. All processing is done by JavaScript running in your web browser. The results are sent to a database over secure HTTPS.
+                      Uploads contribute to the benchmarks and power sources reports that help the community make informed purchasing decisions.
+                    </p>
+
+                    <h3>Is my log file sent to a server?</h3>
+                    <p>
+                      No. I don't need them and I don't want the responsibility of securing PII (Personally Identifiable Information). All processing is done by JavaScript running in your web browser. The results are sent to a database over secure HTTPS.
                     </p>
 
                     <h3>Is the data anonymous?</h3>
                     <p>
-                      Yes. PII (Personally Identifiable Information) is NOT used or stored in the database. Your IP address is used to do an approximate location lookup for grouping the power sources report by country. Your Zwift userid is NEVER read. The email address you use with Zwift is NEVER read. The Zwiftalizer will NEVER ask for your Zwift username or password.
+                      Yes. PII is NOT used or stored in the database. Your IP address is used to do an approximate location lookup for grouping the power sources report by country. Your Zwift userid is NEVER read. The email address you use with Zwift is NEVER read. The Zwiftalizer will NEVER ask for your Zwift username or password.
                     </p>
                     <p>
                       The following data is uploaded:

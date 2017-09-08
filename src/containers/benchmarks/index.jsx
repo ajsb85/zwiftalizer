@@ -29,7 +29,7 @@ class Benchmarks extends React.Component {
       minFpsFilter: ALL,
       showFiltersPanel: false,
       searchTerms: [],
-      searchTermLogic: 'OR'
+      searchTermLogic: 'AND'
     };
 
     this.handlePlatformFilterChange = this.handlePlatformFilterChange.bind(
@@ -767,7 +767,7 @@ class Benchmarks extends React.Component {
                             id="searchTermsInput"
                             type="text"
                             maxLength="128"
-                            placeholder="Example: laptop"
+                            placeholder="Example: macbook radeon"
                             className="form-control"
                             onKeyUp={this.handleSearchInputKeyPress}
                           />                          
@@ -791,42 +791,46 @@ class Benchmarks extends React.Component {
                           id="searchTermsInputHelp"
                           className={styles.searchFormHelp}>
                           Multiple search words logic:
-                        </span>
+                          </span>
                         </div>
                         <div className="col-xs-12 col-sm-2">
                           <div className={styles.searchLogicRadiosContainer}>
                             <div className={styles.formContainer}>
                               <input
-                                id="searchTermLogic0"
+                                id="searchTermLogic1"
                                 name="searchTermLogic"
                                 type="radio"
                                 className={styles.withfont}
-                                value="OR"
-                                checked={this.state.searchTermLogic === 'OR'}
+                                value="AND"
+                                checked={this.state.searchTermLogic === 'AND'}
                                 onChange={this.handleSearchTermLogicChange}
                               />
-                              <label htmlFor="searchTermLogic0">OR</label>
+                              <label htmlFor="searchTermLogic1">AND</label>
                             </div>
                           </div>
                         </div>
                         <div className="col-xs-12 col-sm-2">
-                        <div className={styles.searchLogicRadiosContainer}>
-                          <div className={styles.formContainer}>
-                            <input
-                              id="searchTermLogic1"
+                          <div className={styles.searchLogicRadiosContainer}>
+                            <div className={styles.formContainer}>
+                              <input
+                              id="searchTermLogic0"
                               name="searchTermLogic"
                               type="radio"
                               className={styles.withfont}
-                              value="AND"
-                              checked={this.state.searchTermLogic === 'AND'}
+                              value="OR"
+                              checked={this.state.searchTermLogic === 'OR'}
                               onChange={this.handleSearchTermLogicChange}
                             />
-                            <label htmlFor="searchTermLogic1">AND</label>
+                              <label htmlFor="searchTermLogic0">OR</label>                              
+                            </div>
                           </div>
                         </div>
+                        <div className="hidden-xs col-sm-3">                        
+                        <span className={styles.searchFormHelp}>
+                        More <a href="" onClick={this.toggleFiltersPanelClicked}>Filters</a>
+                        </span>
+                        </div>                        
                       </div>
-                      </div>
-
                     </div>
                   </div>
                 </div>

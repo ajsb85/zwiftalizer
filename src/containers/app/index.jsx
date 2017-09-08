@@ -67,14 +67,18 @@ class App extends React.Component {
         <div className={styles.stickyHeader}>
           <div className="container">
             <div className="row">
-              <div className="col-sm-12 col-md-3">
+              <div className="col-sm-12 col-md-2">
                 <div className={styles.brand}>
-                  <span className={styles.signal}>
-                    <i className="fa fa-line-chart" aria-hidden="true" />
-                  </span>&nbsp;<Link to="/">Zwiftalizer 1.4</Link>
+                  <Link to="/">Zwiftalizer</Link>
                 </div>
               </div>
-
+              <div className="col-sm-12 col-md-2">
+                <div className={styles.navItem}>
+                  <span className={styles.signal}>
+                    <i className="fa fa-home" aria-hidden="true" />
+                    </span>&nbsp;<Link to="/">Home</Link>
+                </div>
+              </div>
               <div className="col-sm-12 col-md-2">
                 <div className={styles.navItem}>
                   <span className={styles.signal}>
@@ -93,12 +97,12 @@ class App extends React.Component {
                 </div>
               </div>
 
-              <div className="col-sm-12 col-md-3">
+              <div className="col-sm-12 col-md-2">
                 <div className={styles.navItem}>
                   <span className={styles.signal}>
                     <i className="fa fa-bolt" aria-hidden="true" />
                   </span>&nbsp;
-                  <Link to="/powersources">Power Sources</Link>
+                  <Link to="/powersources">Power</Link>
                 </div>
               </div>
 
@@ -126,7 +130,7 @@ class App extends React.Component {
         <div className={styles.footer}>
           <div className="container">
             <div className="row">
-              <p>By Mike Hanney&nbsp;|&nbsp;<a href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md" target="_blank">License</a>&nbsp;|&nbsp;Follow&nbsp;<a href="https://twitter.com/zwiftalizer" target="_blank">&nbsp;@zwiftalizer</a>&nbsp;<a href="https://twitter.com/zwiftalizer" target="_blank"><i className="fa fa-twitter" /></a>
+              <p>By Mike Hanney&nbsp;|&nbsp;<a href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md" target="_blank">License</a>&nbsp;|&nbsp;Follow&nbsp;<a href="https://twitter.com/zwiftalizer" target="_blank">&nbsp;@zwiftalizer</a>&nbsp;<a href="https://twitter.com/zwiftalizer" target="_blank"><i className="fa fa-twitter" /></a>&nbsp;|&nbsp;Version 1.4
               </p>
             </div>
             <div className="row">
