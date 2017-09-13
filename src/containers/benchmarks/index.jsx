@@ -112,20 +112,20 @@ class Benchmarks extends React.Component {
     if (e) {
       e.preventDefault();
     }
+    
     const input = document.getElementById('searchTermsInput');
+
     if (!input.value) {
-      this.setState({ searchTerms: [] });
+      this.setState({ searchTerms: [] });      
+    } else {
+      const vals = tokenize(input.value);
+      
+      this.setState({ searchTerms: vals });
+      
+      if (window.heap) {
+        window.heap.track('Search', { terms: vals.join(',') });
+      }
     }
-    const vals = tokenize(input.value);
-    this.setState({ searchTerms: vals });
-
-    if (window.heap) {
-      window.heap.track('Search', { terms: vals.join(',') });
-    }
-
-    // setTimeout(() => {
-    //   console.log(this.state.searchTerms);
-    // }, 200);
   }
 
   toggleFiltersPanelClicked(e) {

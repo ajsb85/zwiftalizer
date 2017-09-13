@@ -34,7 +34,6 @@ module.exports.tokenize = function tokenize(str) {
     'engine',
     'with',
     'graphics',
-    '200',
     'ati',
     'hd',
     'series'

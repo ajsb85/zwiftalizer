@@ -170,12 +170,12 @@ class Reader extends React.Component {
                       What happens when the box is checked?
                     </h3>
                     <p>
-                      With the 'I agree' box checked, your system specs get uploaded to the database in the background. This box must be checked BEFORE loading a log file. Checking it after loading a log file has no affect.
+                      With the 'I agree' box checked, a summary of your system is uploaded to the database in the background, but not the whole log file. This box must be checked BEFORE loading a log file. Checking it after loading a log file has no affect.
                     </p>
 
                     <h3>Why would I want to upload my specs?</h3>
                     <p>
-                      Uploads contribute to the benchmarks and power sources reports that help the community make informed purchasing decisions.
+                      Uploads contribute to the benchmarks of graphics performance and power sources reports that help the community make informed purchasing decisions.
                     </p>
 
                     <h3>Is my log file sent to a server?</h3>
