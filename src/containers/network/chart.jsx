@@ -215,7 +215,7 @@ class Chart extends React.Component {
         <div className="row">
           <div className="col-xs-12">
             <Resizable >
-              <ChartContainer timeRange={this.state.initialRange} format="HH:mm:ss" padding={0} trackerPosition={this.state.tracker}>
+              <ChartContainer timeRange={this.state.initialRange} padding={0} trackerPosition={this.state.tracker}>
                 <ChartRow height={BRUSH_HEIGHT} debug={false}>
                   <Brush timeRange={this.state.brushrange} allowSelectionClear={true} onTimeRangeChanged={this.handleTimeRangeChange}></Brush>
                   <YAxis id="reconnectsBrushAxis1" label="Reconnects" min={0} max={1} width={leftAxisLabelWidth} type="linear" format="d"></YAxis>
