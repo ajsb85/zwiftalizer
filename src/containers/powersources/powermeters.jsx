@@ -11,7 +11,7 @@ class Powermeters extends React.Component {
     super(props);
     this.state = {
       highlightRow: false
-    };    
+    };
     this.mouseOverHandler = this.mouseOverHandler.bind(this);
     this.mouseOutHandler = this.mouseOutHandler.bind(this);
   }
@@ -21,12 +21,12 @@ class Powermeters extends React.Component {
       return false;
     }
     return typeof val === 'function' || typeof val === 'object';
-  };
-  
+  }
+
   mouseOverHandler(d, e) {
     this.setState({
       highlightRow: true,
-       rowKey: d.rowKey
+      rowKey: d.rowKey
     });
   }
 
@@ -47,98 +47,106 @@ class Powermeters extends React.Component {
 
     const chartData = [];
 
-    var powermeterRows = orderedPowermeters.map(
-      function(powermeter, i) {
-        const rowKey = `${countryCode}-${powermeter.manufacturerId}-${powermeter.modelId}`;
+    var powermeterRows = orderedPowermeters.map(function(powermeter, i) {
 
-        const keyColor = shadeColor(powermeter.color, shadeFactor);
+      const rowKey = `${countryCode}-${powermeter.manufacturerId}-${powermeter.modelId}`;
 
-        const accuracy = powermeter.accuracy
-          ? '+/- ' + (Math.round(powermeter.accuracy * 10000) / 100) + '%'
-          : 'Unknown';
+      const keyColor = shadeColor(powermeter.color, shadeFactor);
 
-        const keyStyle = {
-          display: 'inline-block',
-          minWidth: '6rem',
-          padding: '0.5rem 0.7rem',
-          fontSize: '1.3rem',
-          fontWeight: '600',
-          color: '#fff',
-          lineHeight: '1',
-          verticalAlign: 'middle',
-          whiteSpace: 'nowrap',
-          textAlign: 'center',
-          backgroundColor: keyColor,
-          borderRadius: '1.5rem',
-          border: '0.2rem solid #555',
-          fontFamily: '"Open Sans", Arial, Helvetica, sans-serif',
-          fontWeight: '600'
-        };
+      const accuracy = powermeter.accuracy
+        ? '+/- ' + Math.round(powermeter.accuracy * 10000) / 100 + '%'
+        : 'Unknown';
 
-        // const chartKey = `${i + 1}`;
+      const leftRightBalanceAdjustable = powermeter.leftRightBalanceAdjustable === null ? 'Unknown' : powermeter.leftRightBalanceAdjustable ? 'Yes' : 'No'
+      const slopeAdjustable = powermeter.slopeAdjustable === null ? 'Unknown' : powermeter.slopeAdjustable ? 'Yes' : 'No'
+      const zeroCadenceExploitable = powermeter.zeroCadenceExploitable === null ? 'Unknown' : powermeter.zeroCadenceExploitable ? 'Yes' : 'No'
 
-        const powerPercentRounded = Math.round(powermeter.percent);
+      const keyStyle = {
+        display: 'inline-block',
+        minWidth: '6rem',
+        padding: '0.5rem 0.7rem',
+        fontSize: '1.3rem',
+        fontWeight: '600',
+        color: '#fff',
+        lineHeight: '1',
+        verticalAlign: 'middle',
+        whiteSpace: 'nowrap',
+        textAlign: 'center',
+        backgroundColor: keyColor,
+        borderRadius: '1.5rem',
+        border: '0.2rem solid #555',
+        fontFamily: '"Open Sans", Arial, Helvetica, sans-serif',
+        fontWeight: '600'
+      };
 
-        const chartKey = `${powerPercentRounded}%`
+      // const chartKey = `${i + 1}`;
 
-        chartData.push({
-          key: chartKey,
-          rowKey: rowKey,
-          y: powerPercentRounded,
-          color: keyColor,          
-          x: `${i+1}`
-        });
+      const powerPercentRounded = Math.round(powermeter.percent);
 
-        let highlightStyle = {}
-        
-        if (this.state.highlightRow && this.state.rowKey === rowKey) {          
-          highlightStyle = {backgroundColor: '#FF0'};
-        }
+      const chartKey = `${powerPercentRounded}`;
 
-        return (
-          <tr key={rowKey} style={highlightStyle}>
-            <td className="hidden-xs hidden-sm hidden-md"  style={{ textAlign: 'center' }}>{i+1}</td>
-            <td style={{ textAlign: 'center' }}>
-              <span style={keyStyle}>
-                {chartKey}
-              </span>
-            </td>            
-            <td>{powermeter.manufacturerName}</td>
-            <td>
-              {powermeter.modelName}
-            </td>
-            <td>{accuracy}</td>
-          </tr>
-        );
-      },
-      this
-    );
+      const powerPercentFormatted = `${powerPercentRounded === 0 ? '<1' : powerPercentRounded}%`;
+
+      chartData.push({
+        key: chartKey,
+        rowKey: rowKey,
+        y: powerPercentRounded,
+        color: keyColor,
+        x: `${i + 1}`
+      });
+
+      let highlightStyle = {};
+
+      if (this.state.highlightRow && this.state.rowKey === rowKey) {
+        highlightStyle = { backgroundColor: '#FF0' };
+      }
+
+      return (
+        <tr key={rowKey} style={highlightStyle}>
+          <td
+            className="hidden-xs hidden-sm hidden-md"
+            style={{ textAlign: 'center' }}
+          >
+            {i + 1}
+          </td>
+          <td style={{ textAlign: 'center' }}>
+            <span style={keyStyle}>{powerPercentFormatted}</span>
+          </td>
+          <td>{powermeter.manufacturerName}</td>
+          <td>{powermeter.modelName}</td>
+          <td>{accuracy}</td>          
+          <td className="hidden-xs hidden-sm hidden-md">{leftRightBalanceAdjustable}</td>
+          <td className="hidden-xs hidden-sm hidden-md">{slopeAdjustable}</td>
+          <td className="hidden-xs hidden-sm hidden-md">{zeroCadenceExploitable}</td>
+        </tr>
+      );
+    }, this);
 
     return (
-      <div>        
+      <div>
         <div className="container-fluid">
           <div className="row">
             <div className="col-xs-12">
-              <h3>
-                Power Meters
-              </h3>
-              <span className={styles.totalBadge}>Sample size {powermeters.total}</span>
+              <h3>Power Meters</h3>
+              <span className={styles.totalBadge}>
+                Sample size {powermeters.total}
+              </span>
             </div>
           </div>
           <div className="row hidden-xs hidden-sm hidden-md">
-            <div className="col-xs-12">              
-              <div className={styles.chartContainer}>                
+            <div className="col-xs-12">
+              <div className={styles.chartContainer}>
                 <BarChart
                   chartKey={`${countryCode}-powermeters`}
-                  axisLabels={{y: 'Percent'}}
+                  axisLabels={{ y: 'Percent' }}
                   axes
                   grid
                   height={250}
-                  width={860}    
+                  width={860}
                   data={chartData}
-                  padding={10}                 
+                  padding={10}
                   mouseOverHandler={this.mouseOverHandler}
-                  mouseOutHandler={this.mouseOutHandler}                  
+                  mouseOutHandler={this.mouseOutHandler}
                 />
               </div>
             </div>
@@ -151,21 +159,22 @@ class Powermeters extends React.Component {
                 width="100%"
               >
                 <thead>
-                  <tr>              
-                    <th className="hidden-xs hidden-sm hidden-md">Row</th>      
-                    <th>Share</th>
-                    <th>Make</th>
-                    <th>Model</th>
-                    <th>Accuracy</th>
+                  <tr>
+                    <th className="col-sm-1 hidden-xs hidden-sm hidden-md">Row</th>
+                    <th className="col-sm-2">Share</th>
+                    <th className="col-sm-2">Make</th>
+                    <th className="col-sm-2">Model</th>
+                    <th className="col-sm-2">Accuracy</th>                    
+                    <th className="col-sm-1 hidden-xs hidden-sm hidden-md">User Serviceable Leg Imbalance Correction</th>
+                    <th className="col-sm-1 hidden-xs hidden-sm hidden-md">User Serviceable Torque Slope</th>
+                    <th className="col-sm-1 hidden-xs hidden-sm hidden-md">Exhibits Coasting Power Bug</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {powermeterRows}
-                </tbody>
+                <tbody>{powermeterRows}</tbody>
               </table>
             </div>
           </div>
-        </div>        
+        </div>
       </div>
     );
   }

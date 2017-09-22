@@ -14,6 +14,16 @@ This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
 The code runs 100% in your web browser on your computer.
 
+## 1.4.1 Changes (2017-09-21)
+* Maintenance
+* Added Heap Analytics
+* Added basic search function to Benchmarks report
+* Lowered the minimum number of log files used to make averages for a system to 3, and min fps >= 8
+* Added 'Spin Down Calibration Required' column to Smart Trainers in Power Sources report
+* Added 'User Serviceable Leg Imbalance Correction' column to Power Meters in Power Sources report
+* Added 'User Serviceable Torque Slope' column to Power Meters in Power Sources report
+* Added 'Exhibits Coasting Power Bug' column to Power Meters in Power Sources report
+
 ## 1.4.0 Changes (2017-08-19)
 
 * Maintenance and some UI changes.

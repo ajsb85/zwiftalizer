@@ -94,7 +94,7 @@ class PowerSources extends React.Component {
                       </div>
                     </div>
                     <div className={styles.systemsCountSubheading}>
-                      Distinct ANT+ devices logged
+                      Distinct ANT+ devices logged.
                     </div>
                     <div className={styles.systemsCountSubheading}>
                       Devices by country available where devices sample size >= {minSampleSize}
@@ -130,6 +130,9 @@ class PowerSources extends React.Component {
                         <li>
                           A power source is never counted more than once
                           regardless of how many times it is seen by this tool.
+                        </li>
+                        <li>
+                          Since this tool is often used to diagnose ANT+ signal issues, it is possible that the smart trainers at the top of the list are the ones with the worst signals.
                         </li>
                         <li>
                           Country is identified by the IP address of the user
