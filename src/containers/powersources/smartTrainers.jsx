@@ -4,17 +4,11 @@ import structure from '../../styles/structure.css';
 import shopping from '../../styles/shopping.css';
 import styles from './styles.css';
 import { colors } from '../../styles/colors';
-import { BarChart } from 'react-easy-chart';
 import shadeColor, { shadeFactor } from './shadeColor.js';
 
 class SmartTrainers extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = {
-      highlightRow: false
-    };
-    this.mouseOverHandler = this.mouseOverHandler.bind(this);
-    this.mouseOutHandler = this.mouseOutHandler.bind(this);    
+    super(props);    
   }
 
   isObject(val) {
@@ -22,17 +16,6 @@ class SmartTrainers extends React.Component {
       return false;
     }
     return typeof val === 'function' || typeof val === 'object';
-  };
-
-  mouseOverHandler(d, e) {
-    this.setState({
-      highlightRow: true,
-      rowKey: d.rowKey
-    });
-  }
-
-  mouseOutHandler() {
-    this.setState({ highlightRow: false });
   }
 
   render() {
@@ -42,94 +25,103 @@ class SmartTrainers extends React.Component {
       return null;
     }
 
-    const orderedSmartTrainers = _.sortBy(_.sortBy(smartTrainers.data, t => {
-      return t.percent;      
-    }).reverse());
-
-    const chartData = [];
-
-    var smartTrainerRows = orderedSmartTrainers.map(
-      function(smartTrainer, i) {
-        const rowKey = `${countryCode}-${smartTrainer.manufacturerId}-${smartTrainer.modelId}`;
-
-        const keyColor = shadeColor(smartTrainer.color, shadeFactor);
-
-        const accuracy = smartTrainer.accuracy
-          ? '+/- ' + (Math.round(smartTrainer.accuracy * 10000) / 100) + '%'
-          : 'Unknown';
-
-        var controllable = smartTrainer.controllable === null ? 'Unknown' : smartTrainer.controllable ? 'Yes' : 'No';
-
-        const supportsSpindownCalibration = smartTrainer.supportsSpindownCalibration === null ? 'Unknown' : smartTrainer.supportsSpindownCalibration ? 'Yes' : 'No'
-                
-        const maxIncline = smartTrainer.maxIncline
-          ? + (Math.round(smartTrainer.maxIncline * 10000) / 100) + ' %'
-          : 'Unknown';
-
-        const keyStyle = {
-          display: 'inline-block',
-          minWidth: '6rem',
-          padding: '0.5rem 0.7rem',
-          fontSize: '1.3rem',
-          fontWeight: '600',
-          color: '#FFF',
-          lineHeight: '1',
-          verticalAlign: 'middle',
-          whiteSpace: 'nowrap',
-          textAlign: 'center',
-          backgroundColor: keyColor,
-          borderRadius: '1.5rem',
-          border: '0.2rem solid #1580BD',
-          fontFamily: '"Open Sans", Arial, Helvetica, sans-serif',
-          fontWeight: '600'
-        };
-
-        const smartTrainerPercentRounded = Math.round(smartTrainer.percent);
-
-        const chartKey = `${smartTrainerPercentRounded}`
-
-        const smartTrainerPercentFormatted = `${smartTrainerPercentRounded === 0 ? '<1' : smartTrainerPercentRounded}%`;
-
-        chartData.push({
-          key: chartKey,
-          rowKey: rowKey,
-          y: Math.round(smartTrainerPercentRounded),
-          color: keyColor,
-          x: `${i+1}`
-        });
-
-        let highlightStyle = {};
-
-        if (this.state.highlightRow && this.state.rowKey === rowKey) {
-          highlightStyle = { backgroundColor: '#FF0' };
-        }
-        
-        return (
-          <tr key={rowKey} style={highlightStyle}>
-            <td className="hidden-xs hidden-sm hidden-md" style={{ textAlign: 'center' }}>{i+1}</td>
-            <td style={{ textAlign: 'center' }}>
-              <span style={keyStyle}>
-                {smartTrainerPercentFormatted}
-              </span>
-            </td>          
-            <td>
-              {smartTrainer.manufacturerName}
-            </td>
-            <td>{smartTrainer.modelName}</td>
-            <td>{accuracy}</td>
-            <td className="hidden-xs hidden-sm hidden-md">
-              {smartTrainer.maxPower}
-            </td>
-            <td className="hidden-xs hidden-sm hidden-md">{maxIncline}</td>
-            <td className="hidden-xs hidden-sm hidden-md">{controllable}</td>                        
-            <td className="hidden-xs hidden-sm hidden-md">
-              {supportsSpindownCalibration}
-            </td>            
-          </tr>
-        );
-      },
-      this
+    const orderedSmartTrainers = _.sortBy(
+      _.sortBy(smartTrainers.data, t => {
+        return t.percent;
+      }).reverse()
     );
+
+    var maxShare = 100;
+
+    if (orderedSmartTrainers && orderedSmartTrainers.length) {
+      maxShare = Math.round(orderedSmartTrainers[0].percent);
+    }
+    
+    const barContainerStyle = {
+      marginTop: '1.8rem'
+    };
+
+    var smartTrainerRows = orderedSmartTrainers.map(function(smartTrainer, i) {
+      const rowKey = `${countryCode}-${smartTrainer.manufacturerId}-${smartTrainer.modelId}`;
+
+      const keyColor = shadeColor(smartTrainer.color, shadeFactor);
+
+      const accuracy = smartTrainer.accuracy
+        ? '+/- ' + Math.round(smartTrainer.accuracy * 10000) / 100 + '%'
+        : 'Unknown';
+
+      var controllable =
+        smartTrainer.controllable === null
+          ? 'Unknown'
+          : smartTrainer.controllable ? 'Yes' : 'No';
+
+      const supportsSpindownCalibration =
+        smartTrainer.supportsSpindownCalibration === null
+          ? 'Unknown'
+          : smartTrainer.supportsSpindownCalibration ? 'Yes' : 'No';
+
+      const maxIncline = smartTrainer.maxIncline
+        ? +(Math.round(smartTrainer.maxIncline * 10000) / 100) + ' %'
+        : 'Unknown';
+
+      const smartTrainerPercentRounded = Math.round(smartTrainer.percent);
+
+      const relativeBarWidth = Math.round(
+        smartTrainerPercentRounded / maxShare * 100
+      );
+
+      const barStyle = {
+        width: relativeBarWidth + '%',
+        minWidth: '2.8rem',
+        backgroundImage: 'none',
+        backgroundColor: keyColor
+      };
+
+      const chartKey = `${smartTrainerPercentRounded}`;
+
+      const smartTrainerPercentFormatted = `${smartTrainerPercentRounded === 0
+        ? '<1'
+        : smartTrainerPercentRounded}%`;
+
+      return (
+        <tr key={rowKey}>
+          <td
+            className="hidden-xs hidden-sm hidden-md"
+            style={{ textAlign: 'center' }}
+          >
+            {i + 1}
+          </td>
+          <td 
+            className="hidden-xs hidden-sm hidden-md"
+            style={{ textAlign: 'center' }}>
+            <div className="progress" style={barContainerStyle}>
+              <div
+                className="progress-bar progress-bar-success"
+                role="progressbar"
+                aria-valuenow={relativeBarWidth}
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style={barStyle}
+              >
+                {smartTrainerPercentFormatted}
+              </div>
+            </div>
+          </td>
+          <td className="col-sm-1 hidden-lg hidden-xl" style={{ textAlign: 'center' }}>{smartTrainerPercentFormatted}</td>
+          <td>{smartTrainer.manufacturerName}</td>
+          <td>{smartTrainer.modelName}</td>
+          <td>{accuracy}</td>
+          <td>
+            {smartTrainer.maxPower}
+          </td>
+          <td>{maxIncline}</td>
+          <td className="hidden-xs hidden-sm hidden-md">{controllable}</td>
+          <td className="hidden-xs hidden-sm hidden-md">
+            {supportsSpindownCalibration}
+          </td>
+        </tr>
+      );
+    }, this);
 
     return (
       <div>
@@ -137,27 +129,11 @@ class SmartTrainers extends React.Component {
           <div className="row">
             <div className="col-xs-12">
               <h3>Smart Trainers</h3>
-              <span className={styles.totalBadge}> Sample size {smartTrainers.total}</span>
+              <span className={styles.totalBadge}>                
+                Sample size {smartTrainers.total}
+              </span>
             </div>
-          </div>
-          <div className="row hidden-xs hidden-sm hidden-md">
-            <div className="col-xs-12">
-              <div className={styles.chartContainer}>                
-                <BarChart
-                  chartKey={`${countryCode}-smarttrainers`}
-                  axisLabels={{y: 'Percent'}}
-                  axes
-                  grid
-                  height={250}
-                  width={860}    
-                  data={chartData}
-                  padding={10}                 
-                  mouseOverHandler={this.mouseOverHandler}
-                  mouseOutHandler={this.mouseOutHandler}                  
-                />                
-              </div>
-            </div>
-          </div>
+          </div>          
           <div className="row">
             <div className="col-xs-12">
               <table
@@ -166,25 +142,34 @@ class SmartTrainers extends React.Component {
                 width="100%"
               >
                 <thead>
-                  <tr>                    
-                    <th className="col-sm-1 hidden-xs hidden-sm hidden-md">Row</th>
-                    <th className="col-sm-2">Share</th>
-                    <th className="col-sm-2">Make</th>
+                  <tr>
+                    <th className="col-sm-1 hidden-xs hidden-sm hidden-md">
+                      Rank
+                    </th>
+                    <th className="col-sm-3 hidden-xs hidden-sm hidden-md">Share</th>
+                    <th className="col-sm-1 hidden-lg hidden-xl">Share</th>
+                    <th className="col-sm-1">Make</th>
                     <th className="col-sm-2">Model</th>
                     <th className="col-sm-1">Accuracy</th>
-                    <th className="col-sm-1 hidden-xs hidden-sm hidden-md">Max Power</th>
-                    <th className="col-sm-1 hidden-xs hidden-sm hidden-md">Max Incline</th>
-                    <th className="col-sm-1 hidden-xs hidden-sm hidden-md">Interactive</th>                                      
-                    <th className="col-sm-1 hidden-xs hidden-sm hidden-md">Spin Down Calibration Required</th>
+                    <th className="col-sm-1">
+                      Max Power
+                    </th>
+                    <th className="col-sm-1">
+                      Max Incline
+                    </th>
+                    <th className="col-sm-1 hidden-xs hidden-sm hidden-md">
+                      Interactive
+                    </th>
+                    <th className="col-sm-1 hidden-xs hidden-sm hidden-md">
+                      Spin Down Calibration Required
+                    </th>
                   </tr>
                 </thead>
-                <tbody>
-                  {smartTrainerRows}
-                </tbody>
+                <tbody>{smartTrainerRows}</tbody>
               </table>
             </div>
           </div>
-        </div>        
+        </div>
       </div>
     );
   }

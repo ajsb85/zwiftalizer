@@ -3,7 +3,6 @@ import React from 'react';
 import structure from '../../styles/structure.css';
 import styles from './styles.css';
 import { colors } from '../../styles/colors';
-import { BarChart } from 'react-easy-chart';
 import shadeColor, { shadeFactor } from './shadeColor.js';
 
 class Powermeters extends React.Component {
@@ -45,10 +44,17 @@ class Powermeters extends React.Component {
       return t.percent;
     }).reverse();
 
-    const chartData = [];
+    var maxShare = 100;
+
+    if (orderedPowermeters && orderedPowermeters.length) {
+      maxShare = Math.round(orderedPowermeters[0].percent);
+    }
+
+    const barContainerStyle = {
+      marginTop: '1.8rem'
+    };
 
     var powermeterRows = orderedPowermeters.map(function(powermeter, i) {
-
       const rowKey = `${countryCode}-${powermeter.manufacturerId}-${powermeter.modelId}`;
 
       const keyColor = shadeColor(powermeter.color, shadeFactor);
@@ -57,67 +63,70 @@ class Powermeters extends React.Component {
         ? '+/- ' + Math.round(powermeter.accuracy * 10000) / 100 + '%'
         : 'Unknown';
 
-      const leftRightBalanceAdjustable = powermeter.leftRightBalanceAdjustable === null ? 'Unknown' : powermeter.leftRightBalanceAdjustable ? 'Yes' : 'No'
-      const slopeAdjustable = powermeter.slopeAdjustable === null ? 'Unknown' : powermeter.slopeAdjustable ? 'Yes' : 'No'
-      const zeroCadenceExploitable = powermeter.zeroCadenceExploitable === null ? 'Unknown' : powermeter.zeroCadenceExploitable ? 'Yes' : 'No'
-
-      const keyStyle = {
-        display: 'inline-block',
-        minWidth: '6rem',
-        padding: '0.5rem 0.7rem',
-        fontSize: '1.3rem',
-        fontWeight: '600',
-        color: '#fff',
-        lineHeight: '1',
-        verticalAlign: 'middle',
-        whiteSpace: 'nowrap',
-        textAlign: 'center',
-        backgroundColor: keyColor,
-        borderRadius: '1.5rem',
-        border: '0.2rem solid #555',
-        fontFamily: '"Open Sans", Arial, Helvetica, sans-serif',
-        fontWeight: '600'
-      };
-
-      // const chartKey = `${i + 1}`;
+      const leftRightBalanceAdjustable =
+        powermeter.leftRightBalanceAdjustable === null
+          ? 'Unknown'
+          : powermeter.leftRightBalanceAdjustable ? 'Yes' : 'No';
+      const slopeAdjustable =
+        powermeter.slopeAdjustable === null
+          ? 'Unknown'
+          : powermeter.slopeAdjustable ? 'Yes' : 'No';
+      const zeroCadenceExploitable =
+        powermeter.zeroCadenceExploitable === null
+          ? 'Unknown'
+          : powermeter.zeroCadenceExploitable ? 'Yes' : 'No';
 
       const powerPercentRounded = Math.round(powermeter.percent);
 
-      const chartKey = `${powerPercentRounded}`;
+      const relativeBarWidth = Math.round(
+        powerPercentRounded / maxShare * 100
+      );
 
-      const powerPercentFormatted = `${powerPercentRounded === 0 ? '<1' : powerPercentRounded}%`;
+      const barStyle = {
+        width: relativeBarWidth + '%',
+        minWidth: '2.8rem',
+        backgroundImage: 'none',
+        backgroundColor: keyColor
+      };
 
-      chartData.push({
-        key: chartKey,
-        rowKey: rowKey,
-        y: powerPercentRounded,
-        color: keyColor,
-        x: `${i + 1}`
-      });
-
-      let highlightStyle = {};
-
-      if (this.state.highlightRow && this.state.rowKey === rowKey) {
-        highlightStyle = { backgroundColor: '#FF0' };
-      }
+      const powerPercentFormatted = `${powerPercentRounded === 0
+        ? '<1'
+        : powerPercentRounded}%`;
 
       return (
-        <tr key={rowKey} style={highlightStyle}>
+        <tr key={rowKey}>
           <td
-            className="hidden-xs hidden-sm hidden-md"
+            className="hidden-xs hidden-sm hidden-md col-lg-1"
             style={{ textAlign: 'center' }}
           >
             {i + 1}
           </td>
-          <td style={{ textAlign: 'center' }}>
-            <span style={keyStyle}>{powerPercentFormatted}</span>
+          <td 
+          className="hidden-xs hidden-sm hidden-md col-lg-3"
+          style={{ textAlign: 'center' }}>
+            <div className="progress" style={barContainerStyle}>
+              <div
+                className="progress-bar progress-bar-success"
+                role="progressbar"
+                aria-valuenow={relativeBarWidth}
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style={barStyle}
+              >{powerPercentFormatted}
+              </div>
+            </div>
           </td>
-          <td>{powermeter.manufacturerName}</td>
-          <td>{powermeter.modelName}</td>
-          <td>{accuracy}</td>          
-          <td className="hidden-xs hidden-sm hidden-md">{leftRightBalanceAdjustable}</td>
-          <td className="hidden-xs hidden-sm hidden-md">{slopeAdjustable}</td>
-          <td className="hidden-xs hidden-sm hidden-md">{zeroCadenceExploitable}</td>
+          <td className="col-sm-1 hidden-lg hidden-xl" style={{ textAlign: 'center' }}>{powerPercentFormatted}</td>
+          <td className="col-sm-1">{powermeter.manufacturerName}</td>
+          <td className="col-sm-2">{powermeter.modelName}</td>
+          <td className="col-sm-1">{accuracy}</td>          
+          <td className="col-sm-1">
+            {leftRightBalanceAdjustable}
+          </td>
+          <td className="col-sm-1">{slopeAdjustable}</td>
+          <td className="col-sm-1">
+            {zeroCadenceExploitable}
+          </td>
         </tr>
       );
     }, this);
@@ -132,25 +141,7 @@ class Powermeters extends React.Component {
                 Sample size {powermeters.total}
               </span>
             </div>
-          </div>
-          <div className="row hidden-xs hidden-sm hidden-md">
-            <div className="col-xs-12">
-              <div className={styles.chartContainer}>
-                <BarChart
-                  chartKey={`${countryCode}-powermeters`}
-                  axisLabels={{ y: 'Percent' }}
-                  axes
-                  grid
-                  height={250}
-                  width={860}
-                  data={chartData}
-                  padding={10}
-                  mouseOverHandler={this.mouseOverHandler}
-                  mouseOutHandler={this.mouseOutHandler}
-                />
-              </div>
-            </div>
-          </div>
+          </div>          
           <div className="row">
             <div className="col-xs-12">
               <table
@@ -160,14 +151,23 @@ class Powermeters extends React.Component {
               >
                 <thead>
                   <tr>
-                    <th className="col-sm-1 hidden-xs hidden-sm hidden-md">Row</th>
-                    <th className="col-sm-2">Share</th>
-                    <th className="col-sm-2">Make</th>
+                    <th className="col-sm-1 hidden-xs hidden-sm hidden-md">
+                      Rank
+                    </th>
+                    <th className="col-sm-3 hidden-xs hidden-sm hidden-md">Share</th>
+                    <th className="col-sm-1 hidden-lg hidden-xl">Share</th>
+                    <th className="col-sm-1">Make</th>
                     <th className="col-sm-2">Model</th>
-                    <th className="col-sm-2">Accuracy</th>                    
-                    <th className="col-sm-1 hidden-xs hidden-sm hidden-md">User Serviceable Leg Imbalance Correction</th>
-                    <th className="col-sm-1 hidden-xs hidden-sm hidden-md">User Serviceable Torque Slope</th>
-                    <th className="col-sm-1 hidden-xs hidden-sm hidden-md">Exhibits Coasting Power Bug</th>
+                    <th className="col-sm-1">Accuracy</th>
+                    <th className="col-sm-1">
+                      User Serviceable Leg Imbalance Correction
+                    </th>
+                    <th className="col-sm-1">
+                      User Serviceable Torque Slope
+                    </th>
+                    <th className="col-sm-1">
+                      Exhibits Coasting Power Bug
+                    </th>
                   </tr>
                 </thead>
                 <tbody>{powermeterRows}</tbody>
