@@ -2,6 +2,5 @@
   composes: boxContent from '../../styles/structure.css';
   color: #FF9800;
   font-size: 2.4rem;
-  line-height: 2.6rem;
-  font-weight: 700;
+  line-height: 2.6rem;  
 }

@@ -67,17 +67,23 @@
     color: #666;
     text-align: left;
     margin: 0;
-    line-height: 1.6rem;
+    line-height: 2rem;
 }
 
 .editorialBoxContent h3 {
-    font-weight: 600;
-    font-size: 1.6rem;
+    /* font-weight: 600;
+    font-size: 1.6rem; */
     line-height: 2.6rem;
     margin: 1rem 0 0.5rem 0;
     text-align: left;
-    color: #777;
-    /* font-family: "Open Sans","Segoe UI",Arial,Helvetica,sans-serif;    */    
+    color: #777;    
+
+    font-weight: 600;
+    font-size: 1.8rem;
+    letter-spacing: 0.05rem;
+    /* text-align: center; */
+    font-family: "Proxima Nova Bold", "Open Sans", "Segoe UI", Arial, Helvetica, sans-serif;
+
     border-bottom: 0.2rem solid #dcdcdc;
     border-right: 0.2rem solid #dcdcdc;
     background-color: #fff;

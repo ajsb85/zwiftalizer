@@ -69,7 +69,7 @@ display: flex;
   letter-spacing: -0.01rem;
   min-height: 4.5rem;
   padding: 1.2rem 0 0 0;
-  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-family: "Proxima Nova Bold", "Open Sans", "Segoe UI", Arial, Helvetica, sans-serif;
 }
 .lastUpdateTime {
     text-align: center;
@@ -156,15 +156,14 @@ display: flex;
     float:right;
 }
 .systemsCount {  
-    font-size: 6rem;
-    font-family: Montserrat, Arial, Helvetica, sans-serif;
-    font-weight: 600;
+    font-size: 8rem;
+    font-family: "Proxima Nova Bold", "Open Sans", "Segoe UI", Arial, Helvetica, sans-serif;    
     text-align: center;
-    line-height: 6rem;
+    line-height: 8rem;
 }
 .systemsCountSubheading{
   font-size: 2rem;
-  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-family: "Proxima Nova Bold", "Open Sans", "Segoe UI", Arial, Helvetica, sans-serif;
   font-weight: 400;
   text-align: center;
 }
@@ -181,7 +180,7 @@ display: flex;
 
 .filters h3 {
     font-size: 1.4rem;
-    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    font-family: "Proxima Nova Bold", "Open Sans", "Segoe UI", Arial, Helvetica, sans-serif;
     font-weight: 600;
     text-align: left;
     margin-top: 1.6rem;

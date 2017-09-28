@@ -63,11 +63,15 @@
   text-transform: uppercase;  
   color: #fff;
   height: 2.6rem;
-  padding: 0.12rem 1.5rem;
-  font-size: 1.8rem;
-  font-weight: 700;
+  padding: 0.12rem 1.5rem;  
   overflow: hidden;
   background: #178acc;
+
+  font-size: 1.8rem;
+  /* font-weight: 700; */
+  letter-spacing: 0.05rem;
+  text-align: center;
+  font-family: "Proxima Nova Bold", "Open Sans", "Segoe UI", Arial, Helvetica, sans-serif;
 }
 .boxHeadingLast {
   composes: boxHeading;
@@ -79,8 +83,7 @@
   padding: 1rem 0.2rem 1rem 0.2rem;
   width: 100%;
   white-space: normal;
-  font-weight: 700;
-  font-size: 2.8rem;
+    
   color: #666;
   white-space: nowrap;
   overflow: hidden;
@@ -88,6 +91,10 @@
   min-height: 5rem;
   align-items: center;
   justify-content: center;
+  
+  font-size: 3rem;    
+  text-align: center;
+  font-family: "Proxima Nova Bold", "Open Sans", "Segoe UI", Arial, Helvetica, sans-serif;
 }
 .boxValueInner {
   letter-spacing: -0.1rem;

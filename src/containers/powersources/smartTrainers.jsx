@@ -61,7 +61,7 @@ class SmartTrainers extends React.Component {
           : smartTrainer.supportsSpindownCalibration ? 'Yes' : 'No';
 
       const maxIncline = smartTrainer.maxIncline
-        ? +(Math.round(smartTrainer.maxIncline * 10000) / 100) + ' %'
+        ? +(Math.round(smartTrainer.maxIncline * 10000) / 100) + '%'
         : 'Unknown';
 
       const smartTrainerPercentRounded = Math.round(smartTrainer.percent);

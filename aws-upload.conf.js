@@ -11,6 +11,7 @@ module.exports = {
     'public/demolog.txt',
     'public/index.html',
     'public/*.png',
+    'public/*.css',
     'public/img/*.*'
   ]
 };

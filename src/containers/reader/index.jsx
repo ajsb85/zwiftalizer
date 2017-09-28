@@ -104,6 +104,8 @@ class Reader extends React.Component {
 
     const shareStatus = share ? 'checked' : '';
     
+    // &nbsp;<a href="" onClick={this.openDbUploadExplanationModal}><span className={styles.infoCircle}><i className="fa fa-question-circle" aria-hidden="true"/></span></a>
+    
     return (
       <div className={styles.root}>        
         <div className="container">
@@ -123,7 +125,7 @@ class Reader extends React.Component {
                     </div>
                   </div>
                   <h2 className={styles.checkboxLabel}>
-                    I agree to share my system specs &nbsp;<a href="" onClick={this.openDbUploadExplanationModal}><span className={styles.infoCircle}><i className="fa fa-question-circle" aria-hidden="true"/></span></a>
+                    I agree to share my system specs 
                   </h2>
                 </div>
               </div>
