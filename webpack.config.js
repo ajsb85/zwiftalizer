@@ -1,4 +1,4 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const path = require('path');
 
@@ -11,11 +11,11 @@ const PATHS = {
   local_modules: path.join(__dirname, 'local_modules')
 };
 
-var plugins = [
+const plugins = [
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production')
     //'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-  })
+  })  
 ];
 
 const common = {
@@ -46,7 +46,8 @@ const common = {
         // Options to configure babel with
         query: {
           plugins: ['transform-runtime', 'transform-object-rest-spread'],
-          presets: ['es2015', 'stage-0', 'react']
+          //presets: ['es2015', 'stage-0', 'react']
+          presets: ['env', 'stage-0', 'react']
         }
       },
       {

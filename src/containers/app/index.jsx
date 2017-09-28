@@ -130,7 +130,7 @@ class App extends React.Component {
         <div className={styles.footer}>
           <div className="container">
             <div className="row">
-              <p>By Mike Hanney&nbsp;|&nbsp;<a href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md" target="_blank">License</a>&nbsp;|&nbsp;Follow&nbsp;<a href="https://twitter.com/zwiftalizer" target="_blank">&nbsp;@zwiftalizer</a>&nbsp;<a href="https://twitter.com/zwiftalizer" target="_blank"><i className="fa fa-twitter" /></a>&nbsp;|&nbsp;Version 1.4.1
+              <p>By Mike Hanney&nbsp;|&nbsp;<a href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md" target="_blank">License</a>&nbsp;|&nbsp;Follow&nbsp;<a href="https://twitter.com/zwiftalizer" target="_blank">&nbsp;@zwiftalizer</a>&nbsp;<a href="https://twitter.com/zwiftalizer" target="_blank"><i className="fa fa-twitter" /></a>&nbsp;|&nbsp;Version 1.4.2
               </p>
             </div>
             <div className="row">

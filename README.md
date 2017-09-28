@@ -14,6 +14,9 @@ This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
 The code runs 100% in your web browser on your computer.
 
+## 1.4.2 Changes (2017-09-27)
+* React 16.0 update
+
 ## 1.4.1 Changes (2017-09-21)
 * Maintenance
 * Added Heap Analytics
