@@ -12,7 +12,7 @@ import mapCalibrationData from './mapCalibrationData';
 
 import indexToUnixTime from './indexToUnixTime';
 
-import {  
+import {
   POWER_METER_DEVICE,
   SMART_TRAINER_DEVICE,
   ANT_AVERAGES_WINDOW_IN_SEC
@@ -40,7 +40,9 @@ export default function antData(log, timeAxisTimeSeries) {
   // rounding to nearest ANT_AVERAGES_WINDOW_IN_SEC
   const searchesTimestampsRounded = _.uniq(
     searchesTimestamps.map(t => {
-      return `${ANT_AVERAGES_WINDOW_IN_SEC}s-${Math.round(t / ANT_AVERAGES_WINDOW_IN_SEC) * ANT_AVERAGES_WINDOW_IN_SEC}`;
+      return `${ANT_AVERAGES_WINDOW_IN_SEC}s-${Math.round(
+        t / ANT_AVERAGES_WINDOW_IN_SEC
+      ) * ANT_AVERAGES_WINDOW_IN_SEC}`;
     })
   );
 
@@ -79,7 +81,7 @@ export default function antData(log, timeAxisTimeSeries) {
   const powerDevice = _.find(devices, device => {
     return device.type === POWER_METER_DEVICE;
   });
-  
+
   // can be kickr again, in fec mode, not ANT+ power meter data mode
   const fecSmartTrainerDevice = _.find(devices, device => {
     return device.type === SMART_TRAINER_DEVICE;
@@ -103,21 +105,24 @@ export default function antData(log, timeAxisTimeSeries) {
   // opening a modal windows to prompt the user to supply
   // the name of the smart trainer model.
   let showUnknownSmartTrainerModelModal = false;
-
+  
   if (
-    powerDevice && powerDevice.manufacturerId && powerDevice.modelId && powerDevice.model === 'Unknown'
+    powerDevice &&
+    powerDevice.manufacturerId &&
+    powerDevice.modelId &&
+    powerDevice.model === `Model ${powerDevice.modelId}`
   ) {
     showUnknownPowerMeterModelModal = true;
   }
 
   // for testing the modal
-  //showUnknownPowerMeterModelModal = true;
+  // showUnknownPowerMeterModelModal = true;
 
   if (
     fecSmartTrainerDevice &&
     fecSmartTrainerDevice.manufacturerId &&
     fecSmartTrainerDevice.modelId &&
-    fecSmartTrainerDevice.model === 'Unknown'
+    fecSmartTrainerDevice.model === `Model ${fecSmartTrainerDevice.modelId}`
   ) {
     showUnknownSmartTrainerModelModal = true;
   }

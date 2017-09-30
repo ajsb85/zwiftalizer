@@ -46,7 +46,7 @@ const common = {
         // Options to configure babel with
         query: {
           plugins: ['transform-runtime', 'transform-object-rest-spread'],
-          presets: ['es2015', 'stage-0', 'react']          
+          presets: ['es2015', 'stage-1', 'react']          
         }
       },
       {

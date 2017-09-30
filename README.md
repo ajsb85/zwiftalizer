@@ -14,6 +14,12 @@ This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
 The code runs 100% in your web browser on your computer.
 
+## 1.4.3 Changes (2017-09-29)
+* Reverted to React 15.5.4 because React Bootstrap modals don't work with React 16.
+* Fixed bug that stopped the crowd sourced collection of power meter and smart trainer model name modals
+* Fixed bug in BTLE chart heading and brush chart X-axis labels formatting.
+* Added Lambda at Edge function to set Cache-Control and Content Security Policy response headers for all assets coming from the CloudFront distro (everything except the json data).
+
 ## 1.4.2 Changes (2017-09-27)
 * React 16.0 update
 
