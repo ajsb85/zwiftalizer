@@ -5,45 +5,45 @@
 }
 .intel {
   composes: bgImage;
-  background: url('../img/halloween/intel_logo.png') no-repeat 50% 50%/contain;
+  background: url('../img/default/intel_logo.png') no-repeat 50% 50%/contain;
 }
 .nvidia {
   composes: bgImage;
-  background: url('../img/halloween/nvidia_logo.png') no-repeat 50% 50%/contain;
+  background: url('../img/default/nvidia_logo.png') no-repeat 50% 50%/contain;
 }
 .amd {
   composes: bgImage;
-  background: url('../img/halloween/amd_logo.png') no-repeat 50% 50%/contain;
+  background: url('../img/default/amd_logo.png') no-repeat 50% 50%/contain;
 }
 .ati {
   composes: bgImage;
-  background: url('../img/halloween/ati_radeon_logo.png') no-repeat 50% 50%/contain;
+  background: url('../img/default/ati_radeon_logo.png') no-repeat 50% 50%/contain;
 }
 .radeon {
   composes: bgImage;
-  background: url('../img/halloween/amd_radeon_logo.png') no-repeat 50% 50%/contain;
+  background: url('../img/default/amd_radeon_logo.png') no-repeat 50% 50%/contain;
 }
 .firepro {
   composes: bgImage;
-  background: url('../img/halloween/amd_firepro_logo.png') no-repeat 50% 50%/contain;
+  background: url('../img/default/amd_firepro_logo.png') no-repeat 50% 50%/contain;
 }
 .amd {
   composes: bgImage;
-  background: url('../img/halloween/amd_logo.png') no-repeat 50% 50%/contain;
+  background: url('../img/default/amd_logo.png') no-repeat 50% 50%/contain;
 }
 .pc {
   composes: bgImage;
-  background: url('../img/halloween/windows_logo.png') no-repeat 50% 50%/contain;
+  background: url('../img/default/windows_logo.png') no-repeat 50% 50%/contain;
 }
 .mac {
   composes: bgImage;
-  background: url('../img/halloween/apple_logo.png') no-repeat 50% 50%/contain;
+  background: url('../img/default/apple_logo.png') no-repeat 50% 50%/contain;
 }
 .arm64 {
   composes: bgImage;
-  background: url('../img/halloween/arm64_logo.png') no-repeat 50% 50%/contain;
+  background: url('../img/default/arm64_logo.png') no-repeat 50% 50%/contain;
 }
 .alienware {
   composes: bgImage;
-  background: url('../img/halloween/alienware_logo.png') no-repeat 50% 50%/contain;
+  background: url('../img/default/alienware_logo.png') no-repeat 50% 50%/contain;
 }
