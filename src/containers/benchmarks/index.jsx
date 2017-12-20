@@ -261,18 +261,6 @@ class Benchmarks extends React.Component {
                   </div>
                   <div>
                     <input
-                      id="resolution7"
-                      name="resolutionFilter"
-                      type="radio"
-                      className={styles.withfont}
-                      value="1125"
-                      checked={this.state.resolutionFilter === '1125'}
-                      onChange={this.handleResolutionFilterChange}
-                    />
-                    <label htmlFor="resolution3">1125 (iPhone X)</label>
-                  </div>
-                  <div>
-                    <input
                       id="resolution3"
                       name="resolutionFilter"
                       type="radio"

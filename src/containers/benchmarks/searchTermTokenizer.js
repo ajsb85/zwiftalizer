@@ -40,7 +40,7 @@ module.exports.tokenize = function tokenize(str) {
   ];
 
   const input = trim(str);
-  const regex = /([^,\(\)\[\]\s\/@]+)/g;
+  const regex = /([^,\(\)\[\]\s\/@-]+)/g;
   const items = [];
   let matches;
 

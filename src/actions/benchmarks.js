@@ -75,7 +75,7 @@ export function getPerformanceScore(resolution, profileId) {
 
   const maxScore = 10;
 
-  var opinion = 'Ride On!';
+  var opinion = 'Epic!';
 
   // A 'score' for the current resolution and profile combination works out as a scale of 3/10 to 10/10
   var value = Math.round(resolution / 395) + profileId + 2;
