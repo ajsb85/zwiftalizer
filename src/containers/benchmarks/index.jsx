@@ -46,7 +46,9 @@ class Benchmarks extends React.Component {
     this.toggleFiltersPanelClicked = this.toggleFiltersPanelClicked.bind(this);
     this.handleSearchInputKeyPress = this.handleSearchInputKeyPress.bind(this);
     this.handleSearchClick = this.handleSearchClick.bind(this);
-    this.handleSearchTermLogicChange = this.handleSearchTermLogicChange.bind(this);
+    this.handleSearchTermLogicChange = this.handleSearchTermLogicChange.bind(
+      this
+    );
 
     setTimeout(() => {
       dispatch(load());
@@ -112,16 +114,16 @@ class Benchmarks extends React.Component {
     if (e) {
       e.preventDefault();
     }
-    
+
     const input = document.getElementById('searchTermsInput');
 
     if (!input.value) {
-      this.setState({ searchTerms: [] });      
+      this.setState({ searchTerms: [] });
     } else {
       const vals = tokenize(input.value);
-      
+
       this.setState({ searchTerms: vals });
-      
+
       if (window.heap) {
         window.heap.track('Search', { terms: vals.join(',') });
       }
@@ -256,6 +258,18 @@ class Benchmarks extends React.Component {
                       onChange={this.handleResolutionFilterChange}
                     />
                     <label htmlFor="resolution2">1440 (WQHD)</label>
+                  </div>
+                  <div>
+                    <input
+                      id="resolution7"
+                      name="resolutionFilter"
+                      type="radio"
+                      className={styles.withfont}
+                      value="1125"
+                      checked={this.state.resolutionFilter === '1125'}
+                      onChange={this.handleResolutionFilterChange}
+                    />
+                    <label htmlFor="resolution3">1125 (iPhone X)</label>
                   </div>
                   <div>
                     <input
@@ -604,8 +618,11 @@ class Benchmarks extends React.Component {
     let filtered;
     let predicate = {};
 
-    // Search and Filters interact (NOT mutually exclusive)    
-    if (_.isArray(this.state.searchTerms) && this.state.searchTerms.length >= 1)  {
+    // Search and Filters interact (NOT mutually exclusive)
+    if (
+      _.isArray(this.state.searchTerms) &&
+      this.state.searchTerms.length >= 1
+    ) {
       if (this.state.searchTerms.length === 1) {
         predicate.terms = R.contains(this.state.searchTerms[0]);
       } else {
@@ -770,7 +787,7 @@ class Benchmarks extends React.Component {
                             placeholder="Example: macbook radeon"
                             className="form-control"
                             onKeyUp={this.handleSearchInputKeyPress}
-                          />                          
+                          />
                         </div>
                         <div className="col-xs-12 col-sm-4">
                           <button
@@ -788,9 +805,10 @@ class Benchmarks extends React.Component {
                       <div className="row">
                         <div className="col-xs-12 col-sm-3">
                           <span
-                          id="searchTermsInputHelp"
-                          className={styles.searchFormHelp}>
-                          Multiple search words logic:
+                            id="searchTermsInputHelp"
+                            className={styles.searchFormHelp}
+                          >
+                            Multiple search words logic:
                           </span>
                         </div>
                         <div className="col-xs-12 col-sm-2">
@@ -813,23 +831,26 @@ class Benchmarks extends React.Component {
                           <div className={styles.searchLogicRadiosContainer}>
                             <div className={styles.formContainer}>
                               <input
-                              id="searchTermLogic0"
-                              name="searchTermLogic"
-                              type="radio"
-                              className={styles.withfont}
-                              value="OR"
-                              checked={this.state.searchTermLogic === 'OR'}
-                              onChange={this.handleSearchTermLogicChange}
-                            />
-                              <label htmlFor="searchTermLogic0">OR</label>                              
+                                id="searchTermLogic0"
+                                name="searchTermLogic"
+                                type="radio"
+                                className={styles.withfont}
+                                value="OR"
+                                checked={this.state.searchTermLogic === 'OR'}
+                                onChange={this.handleSearchTermLogicChange}
+                              />
+                              <label htmlFor="searchTermLogic0">OR</label>
                             </div>
                           </div>
                         </div>
-                        <div className="hidden-xs col-sm-3">                        
-                        <span className={styles.searchFormHelp}>
-                        More <a href="" onClick={this.toggleFiltersPanelClicked}>Filters</a>
-                        </span>
-                        </div>                        
+                        <div className="hidden-xs col-sm-3">
+                          <span className={styles.searchFormHelp}>
+                            More{' '}
+                            <a href="" onClick={this.toggleFiltersPanelClicked}>
+                              Filters
+                            </a>
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>

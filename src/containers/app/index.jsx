@@ -17,12 +17,11 @@ const ReactGA = require('react-ga');
 ReactGA.initialize('UA-2833327-13');
 
 class App extends React.Component {
-
   static contextTypes = {
     router: PropTypes.object
   };
 
-  sendPageView(location) {    
+  sendPageView(location) {
     ReactGA.set({ page: location.pathname });
     ReactGA.pageview(location.pathname);
   }
@@ -47,10 +46,10 @@ class App extends React.Component {
     }
 
     // load demo route (home) and allow to render before loading demo data
-    setTimeout(() => {            
+    setTimeout(() => {
       this.props.history.push({
         pathname: '/demo'
-      })      
+      });
     }, 100);
 
     setTimeout(() => {
@@ -76,7 +75,7 @@ class App extends React.Component {
                 <div className={styles.navItem}>
                   <span className={styles.signal}>
                     <i className="fa fa-home" aria-hidden="true" />
-                    </span>&nbsp;<Link to="/">Home</Link>
+                  </span>&nbsp;<Link to="/">Home</Link>
                 </div>
               </div>
               <div className="col-sm-12 col-md-2">
@@ -108,9 +107,18 @@ class App extends React.Component {
 
               <div className="col-sm-12 col-md-2">
                 <div className={styles.navPills}>
-                <a href="https://twitter.com/zwiftalizer" target="_blank"><i className="fa fa-twitter" /></a>&nbsp;
-                <Link to="/support"><i className="fa fa-paypal" /></Link>&nbsp;
-                <a href="https://github.com/mhanney/zwiftalizer" target="_blank"><i className="fa fa-github" /></a>
+                  <a href="https://twitter.com/zwiftalizer" target="_blank">
+                    <i className="fa fa-twitter" />
+                  </a>&nbsp;
+                  <Link to="/support">
+                    <i className="fa fa-paypal" />
+                  </Link>&nbsp;
+                  <a
+                    href="https://github.com/mhanney/zwiftalizer"
+                    target="_blank"
+                  >
+                    <i className="fa fa-github" />
+                  </a>
                 </div>
               </div>
             </div>
@@ -119,27 +127,56 @@ class App extends React.Component {
         <div className={styles.stickySubHeader}>
           <div className="container">
             <div className="row">
-              <p>Zwiftalizer is an open source, community supported project neither endorsed by nor affiliated with&nbsp;<a href="http://zwift.com" target="_blank">Zwift Inc</a>
+              <p>
+                Zwiftalizer is an open source, community supported project
+                neither endorsed by nor affiliated with&nbsp;<a
+                  href="http://zwift.com"
+                  target="_blank"
+                >
+                  Zwift Inc
+                </a>
               </p>
             </div>
           </div>
         </div>
-        <div className={styles.appBody}>
-          {this.props.children}
-        </div>
+        <div className={styles.appBody}>{this.props.children}</div>
         <div className={styles.footer}>
           <div className="container">
             <div className="row">
-              <p>By Mike Hanney&nbsp;|&nbsp;<a href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md" target="_blank">License</a>&nbsp;|&nbsp;Follow&nbsp;<a href="https://twitter.com/zwiftalizer" target="_blank">&nbsp;@zwiftalizer</a>&nbsp;<a href="https://twitter.com/zwiftalizer" target="_blank"><i className="fa fa-twitter" /></a>&nbsp;|&nbsp;Version 1.4.2
+              <p>
+                By Mike Hanney&nbsp;|&nbsp;<a
+                  href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md"
+                  target="_blank"
+                >
+                  License
+                </a>&nbsp;|&nbsp;Follow&nbsp;<a
+                  href="https://twitter.com/zwiftalizer"
+                  target="_blank"
+                >
+                  &nbsp;@zwiftalizer
+                </a>&nbsp;<a
+                  href="https://twitter.com/zwiftalizer"
+                  target="_blank"
+                >
+                  <i className="fa fa-twitter" />
+                </a>&nbsp;|&nbsp;Version 1.4.3
               </p>
             </div>
             <div className="row">
-              <p>
-              </p>
+              <p />
             </div>
             <div className="row">
               <p>
-                <a href="https://heapanalytics.com/?utm_source=badge" rel="nofollow"><img style={{width:'108px',height:'41px'}} src="//heapanalytics.com/img/badgeLight.png" alt="Heap | Mobile and Web Analytics" /></a>                
+                <a
+                  href="https://heapanalytics.com/?utm_source=badge"
+                  rel="nofollow"
+                >
+                  <img
+                    style={{ width: '108px', height: '41px' }}
+                    src="//heapanalytics.com/img/badgeLight.png"
+                    alt="Heap | Mobile and Web Analytics"
+                  />
+                </a>
               </p>
             </div>
           </div>
