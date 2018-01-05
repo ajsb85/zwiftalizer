@@ -59,7 +59,7 @@ class System extends React.Component {
     const gpuVendorLower = gpuVendor.toLowerCase();
 
     const isCurrentCpu = function isCurrentCpu(terms) {
-      const currentCpuModels = ['haswell', 'skylake', 'kabylake', 'coffee'];
+      const currentCpuModels = ['skylake', 'kabylake', 'coffee'];
       for (var i = 0; i < terms.length; i++) {
         for (var j = 0; j < currentCpuModels.length; j++) {
           if (terms[i].indexOf(currentCpuModels[j]) !== -1) {
@@ -78,7 +78,38 @@ class System extends React.Component {
         '1070',
         '1080',
         '470',
-        '480'
+        '480',
+        '5000',
+        '5100',
+        '5200',
+        '5300',
+        '5500',
+        '5600',
+        'P5700',
+        '6000',
+        '6100',
+        '6200',
+        'P6300',
+        '510',
+        '515',
+        '520',
+        '530',
+        'P530',
+        '540',
+        '550',
+        '555',
+        'P555',
+        '580',
+        'P580',
+        '600',
+        '610',
+        '615',
+        '620',
+        '630',
+        'P630',
+        '640',
+        '650',
+        'MX150'
       ];
       for (var i = 0; i < terms.length; i++) {
         for (var j = 0; j < currentGpuModels.length; j++) {
@@ -98,9 +129,11 @@ class System extends React.Component {
       if (cpuCurrent) {
         let cpuQueryTerms = cpuTerms.join('+');
 
-        // if we also have a nvidia or ati gpu, search for gaming pc or laptop complete system
+        // if we also have a nvidia or ati gpu, search for pc or laptop complete system
         if (
-          (gpuVendorLower === 'nvidia' || gpuVendorLower === 'ati') &&
+          (gpuVendorLower === 'nvidia' ||
+            gpuVendorLower === 'ati' ||
+            gpuVendorLower === 'intel') &&
           gpuTerms &&
           gpuTerms.length &&
           isCurrentGpu(gpuTerms)
