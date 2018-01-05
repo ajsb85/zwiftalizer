@@ -14,16 +14,28 @@ This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
 The code runs 100% in your web browser on your computer.
 
+## 1.4.4 Changes (2018-01-05)
+
+* Dropped Power Sources Report because it's not popular (/powersources route still actually works, just hidden from main menu).
+* Amazon links now appear for current CPU and GPU models only (mainly to make rendering faster - browser trying to figure out if a link is visited or not is very slow)
+* eBay links now appear for GPUs only (kept them just for my own use)
+* Dropped asking for ANT+ model names. Too many models with 0 model Ids and no longer rendering the Power Sources report anyway.
+* Still collecting Power Source data, if known, in case I change my mind.
+*
+
 ## 1.4.3 Changes (2017-09-29)
+
 * Reverted to React 15.5.4 because React Bootstrap modals don't work with React 16.
 * Fixed bug that stopped the crowd sourced collection of power meter and smart trainer model name modals
 * Fixed bug in BTLE chart heading and brush chart X-axis labels formatting.
 * Added Lambda at Edge function to set Cache-Control and Content Security Policy response headers for all assets coming from the CloudFront distro (everything except the json data).
 
 ## 1.4.2 Changes (2017-09-27)
+
 * React 16.0 update
 
 ## 1.4.1 Changes (2017-09-21)
+
 * Maintenance
 * Added Heap Analytics
 * Added basic search function to Benchmarks report
@@ -38,8 +50,8 @@ The code runs 100% in your web browser on your computer.
 * Maintenance and some UI changes.
 * Replaced Tabbed UI with single page showing all charts and recommendations.
 * ANT+ signal charts - Added list of hh:mm:ss times where the ANT+ signal looked to be weak or lost.
-* ANT+ signal charts - Simplifed to only signal strenght type of chart (removed Power meter, Smart Trainer, Kickr specific charts). 
-The .fit file is more appropriate for rendering power over time, and not all PMs (Power2Max) have their power logged. It wasn't worth the maintenance.
+* ANT+ signal charts - Simplifed to only signal strenght type of chart (removed Power meter, Smart Trainer, Kickr specific charts).
+  The .fit file is more appropriate for rendering power over time, and not all PMs (Power2Max) have their power logged. It wasn't worth the maintenance.
 * ANT+ signal charts - Added list of recommended ANT+ dongles and extension cables with AMZ associate links.
 * Powersources - Country specific Smart Trainer and Power meter usage now needs at least 25 devices to qualify for rendering.
 * Powersources - Smart Trainer and Power meter usage X axis labels cleaned up.
@@ -50,7 +62,6 @@ The .fit file is more appropriate for rendering power over time, and not all PMs
 * Updated Webpack to version 3.5.2.
 * Update Pondjs to version 0.8.7.
 * Update React Timeseries Charts to version 0.12.8.
-
 
 ## 1.1.0 Changes (2017-05-13)
 
@@ -92,27 +103,22 @@ The .fit file is more appropriate for rendering power over time, and not all PMs
 * Smaller download without the Shop html bundle
 * updated unit tests to use the callback version of the date conversion function
 
-
 ## 1.0.1 Changes (2017-03-07)
 
 * The Firefox fix: Converting dates no longer blocks the main javascript thread, so it no longer throws warnings on Firefox, and all browsers will be more responsive to events while the long date conversion loop is executing.
 * Removed the Store section
 
-
 ## 1.0 Changes (2017-02-14)
 
 * 1 year in beta
-
 
 ## 0.9.9 Changes (2017-01-20)
 
 * Enforced HTTPS only
 
-
 ## 0.9.8 Changes (2016-12-09)
 
 * iOS update - parsing of Apple iOS device CPU, GPU and resolutions.
-
 
 ## 0.9.7 Changes (2016-11-27)
 
@@ -120,7 +126,6 @@ The .fit file is more appropriate for rendering power over time, and not all PMs
 * Graphics - Added opinionated score out of 10 badge and button to locate & highlight current system in the benchmarks.
 * Added Analysis Tab. A wordy description of where the current system ranks compared to others and how the score was decided.
 * Added BTLE Tab. Experimental attempt to plot Bluetooth Smart messages over time.
-
 
 ## 0.9.6 Changes (2016-11-22)
 
@@ -135,7 +140,6 @@ The .fit file is more appropriate for rendering power over time, and not all PMs
 * Maintenance - React Timeseries Charts updated to version 0.10.2
 * Maintenance - PondJS updated to version 0.7.2
 * Maintenance - Updated chart styles
-
 
 ## 0.9.1 Changes (2016-08-24)
 
@@ -176,7 +180,6 @@ The .fit file is more appropriate for rendering power over time, and not all PMs
 * Using pondjs 0.6.0 from npm
 * Using react-timeseries-charts 0.9.2 from npm
 
-
 ## 0.3.1 Changes (2016-04-05)
 
 * Can now parse logs shorter than 3 minutes again
@@ -186,7 +189,6 @@ The .fit file is more appropriate for rendering power over time, and not all PMs
 * Removed dependency on Bootstrap JavaScript
 * Replaced jQuery ajax with qwest (for the demo)
 * Replaced Bootstrap.js with bootstrap.native
-
 
 ## 0.3.0 Additions (2016-02-26)
 
@@ -200,7 +202,6 @@ The .fit file is more appropriate for rendering power over time, and not all PMs
 * [ESnet's React Timeseries Charts](https://github.com/esnet/react-timeseries-charts), Copyright of The Regents of the University of California, through Lawrence Berkeley National Laboratory.
 * Unit tests in Tape.js
 * Help screens
-
 
 ## 0.2.0 Additions (2016-01-25)
 
@@ -263,14 +264,12 @@ package.json)
 
 ```
 npm run release
-
 ```
 
 To run the tests
 
 ```
 npm run test
-
 ```
 
 ## Acknowledgements and References
@@ -294,7 +293,6 @@ npm run test
 * [Zwift](http://zwift.com/) &mdash; GLOBAL. CYCLING. COMMUNITY.
 
 ##Licenses
-
 
 ### ESnet React Timeseries Charts License
 
@@ -334,7 +332,7 @@ upgrades to the features, functionality or performance of the source code
 ("Enhancements") to anyone; however, if you choose to make your Enhancements
 available either publicly, or directly to Lawrence Berkeley National Laboratory,
 without imposing a separate written license agreement for such Enhancements,
-then you hereby grant the following license: a  non-exclusive, royalty-free
+then you hereby grant the following license: a non-exclusive, royalty-free
 perpetual license to install, use, modify, prepare derivative works, incorporate
 into other computer software, distribute, and sublicense such enhancements or
 derivative works thereof, in binary and source code form.
@@ -343,7 +341,7 @@ derivative works thereof, in binary and source code form.
 
 ESnet Timeseries Library (Pond), Copyright (c) 2015, The Regents of the
 University of California, through Lawrence Berkeley National Laboratory (subject
-to receipt of any required approvals from the U.S. Dept. of Energy).  All rights
+to receipt of any required approvals from the U.S. Dept. of Energy). All rights
 reserved."
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -377,11 +375,10 @@ upgrades to the features, functionality or performance of the source code
 ("Enhancements") to anyone; however, if you choose to make your Enhancements
 available either publicly, or directly to Lawrence Berkeley National Laboratory,
 without imposing a separate written license agreement for such Enhancements,
-then you hereby grant the following license: a  non-exclusive, royalty-free
+then you hereby grant the following license: a non-exclusive, royalty-free
 perpetual license to install, use, modify, prepare derivative works, incorporate
 into other computer software, distribute, and sublicense such enhancements or
 derivative works thereof, in binary and source code form.
-
 
 ### Zwiftalizer
 

@@ -96,16 +96,16 @@ class App extends React.Component {
                 </div>
               </div>
 
-              <div className="col-sm-12 col-md-2">
+              {/* <div className="col-sm-12 col-md-2">
                 <div className={styles.navItem}>
                   <span className={styles.signal}>
                     <i className="fa fa-bolt" aria-hidden="true" />
                   </span>&nbsp;
                   <Link to="/powersources">Power</Link>
                 </div>
-              </div>
+              </div> */}
 
-              <div className="col-sm-12 col-md-2">
+              <div className="col-sm-12 col-md-4">
                 <div className={styles.navPills}>
                   <a href="https://twitter.com/zwiftalizer" target="_blank">
                     <i className="fa fa-twitter" />
@@ -159,7 +159,7 @@ class App extends React.Component {
                   target="_blank"
                 >
                   <i className="fa fa-twitter" />
-                </a>&nbsp;|&nbsp;Version 1.4.3
+                </a>&nbsp;|&nbsp;Version 1.4.4
               </p>
             </div>
             <div className="row">

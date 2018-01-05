@@ -105,27 +105,27 @@ export default function antData(log, timeAxisTimeSeries) {
   // opening a modal windows to prompt the user to supply
   // the name of the smart trainer model.
   let showUnknownSmartTrainerModelModal = false;
-  
-  if (
-    powerDevice &&
-    powerDevice.manufacturerId &&
-    powerDevice.modelId &&
-    powerDevice.model === `Model ${powerDevice.modelId}`
-  ) {
-    showUnknownPowerMeterModelModal = true;
-  }
+
+  // if (
+  //   powerDevice &&
+  //   powerDevice.manufacturerId &&
+  //   powerDevice.modelId &&
+  //   powerDevice.model === `Model ${powerDevice.modelId}`
+  // ) {
+  //   showUnknownPowerMeterModelModal = true;
+  // }
 
   // for testing the modal
   // showUnknownPowerMeterModelModal = true;
 
-  if (
-    fecSmartTrainerDevice &&
-    fecSmartTrainerDevice.manufacturerId &&
-    fecSmartTrainerDevice.modelId &&
-    fecSmartTrainerDevice.model === `Model ${fecSmartTrainerDevice.modelId}`
-  ) {
-    showUnknownSmartTrainerModelModal = true;
-  }
+  // if (
+  //   fecSmartTrainerDevice &&
+  //   fecSmartTrainerDevice.manufacturerId &&
+  //   fecSmartTrainerDevice.modelId &&
+  //   fecSmartTrainerDevice.model === `Model ${fecSmartTrainerDevice.modelId}`
+  // ) {
+  //   showUnknownSmartTrainerModelModal = true;
+  // }
 
   // for testing the modal
   //showUnknownSmartTrainerModelModal = true;

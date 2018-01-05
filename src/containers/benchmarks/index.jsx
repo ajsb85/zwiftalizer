@@ -745,7 +745,7 @@ class Benchmarks extends React.Component {
                             {totalRecords}
                           </div>
                           <div className={styles.systemsCountSubheading}>
-                            Systems with 3+ logs where min FPS >= 8)
+                            Systems with 3+ logs where min FPS >= 15)
                           </div>
                         </div>
                       </div>

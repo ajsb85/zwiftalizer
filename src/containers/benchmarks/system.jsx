@@ -4,7 +4,7 @@ import images from '../../styles/images.css';
 import shopping from '../../styles/shopping.css';
 
 import {
-  AMAZON_US_LABEL,  
+  AMAZON_US_LABEL,
   AMAZON_CA_LABEL,
   AMAZON_UK_LABEL,
   AMAZON_DE_LABEL,
@@ -32,11 +32,7 @@ class System extends React.Component {
       return null;
     }
 
-    return (
-      <h4 className={styles.cpuDetail}>
-        {details}
-      </h4>
-    );
+    return <h4 className={styles.cpuDetail}>{details}</h4>;
   }
 
   renderShopLinks() {
@@ -46,6 +42,7 @@ class System extends React.Component {
       gpuTerms,
       cpuVendor,
       cpuTerms,
+      terms,
       details
     } = this.props.data;
 
@@ -61,73 +58,88 @@ class System extends React.Component {
     const cpuVendorLower = cpuVendor.toLowerCase();
     const gpuVendorLower = gpuVendor.toLowerCase();
 
+    const isCurrentCpu = function isCurrentCpu(terms) {
+      const currentCpuModels = ['haswell', 'skylake', 'kabylake', 'coffee'];
+      for (var i = 0; i < terms.length; i++) {
+        for (var j = 0; j < currentCpuModels.length; j++) {
+          if (terms[i].indexOf(currentCpuModels[j]) !== -1) {
+            return true;
+          }
+        }
+      }
+      return false;
+    };
+
+    const isCurrentGpu = function isCurrentGpu(terms) {
+      const currentGpuModels = [
+        '1030',
+        '1050',
+        '1060',
+        '1070',
+        '1080',
+        '470',
+        '480'
+      ];
+      for (var i = 0; i < terms.length; i++) {
+        for (var j = 0; j < currentGpuModels.length; j++) {
+          if (terms[i].indexOf(currentGpuModels[j]) !== -1) {
+            return true;
+          }
+        }
+      }
+      return false;
+    };
+
     if (platformLower === 'pc' && cpuTerms && cpuTerms.length) {
-      const cpuQueryTerms = cpuTerms.join('+');
+      const cpuCurrent = isCurrentCpu(terms);
 
-      cpuShopLinks.push({
-        tag: AMAZON_US_LABEL,
-        href: `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${cpuQueryTerms}`
-      });
+      var gpuCurrent = false;
 
-      cpuShopLinks.push({
-        tag: AMAZON_UK_LABEL,
-        href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${cpuQueryTerms}`
-      });
+      if (cpuCurrent) {
+        let cpuQueryTerms = cpuTerms.join('+');
 
-      cpuShopLinks.push({
-        tag: AMAZON_CA_LABEL,
-        href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${cpuQueryTerms}`
-      });
+        // if we also have a nvidia or ati gpu, search for gaming pc or laptop complete system
+        if (
+          (gpuVendorLower === 'nvidia' || gpuVendorLower === 'ati') &&
+          gpuTerms &&
+          gpuTerms.length &&
+          isCurrentGpu(gpuTerms)
+        ) {
+          cpuQueryTerms += '+' + gpuTerms.join('+');
 
-      cpuShopLinks.push({
-        tag: AMAZON_DE_LABEL,
-        href: `https://www.amazon.de/s/?tag=${AMAZON_DE_TAG}&field-keywords=${cpuQueryTerms}`
-      });
+          cpuShopLinks.push({
+            tag: AMAZON_US_LABEL,
+            href: `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${cpuQueryTerms}`
+          });
 
-      cpuShopLinks.push({
-        tag: AMAZON_ES_LABEL,
-        href: `https://www.amazon.es/s/?tag=${AMAZON_ES_TAG}&field-keywords=${cpuQueryTerms}`
-      });
+          cpuShopLinks.push({
+            tag: AMAZON_UK_LABEL,
+            href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${cpuQueryTerms}`
+          });
 
-      cpuShopLinks.push({
-        tag: AMAZON_FR_LABEL,
-        href: `https://www.amazon.fr/s/?tag=${AMAZON_FR_TAG}&field-keywords=${cpuQueryTerms}`
-      });
+          cpuShopLinks.push({
+            tag: AMAZON_CA_LABEL,
+            href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${cpuQueryTerms}`
+          });
 
-      cpuShopLinks.push({
-        tag: AMAZON_IT_LABEL,
-        href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${cpuQueryTerms}`
-      });
+          cpuLinksMarkup = cpuShopLinks.map(function(link, i) {
+            return (
+              <li key={i}>
+                <a target="_blank" href={link.href}>
+                  {link.tag}
+                </a>
+              </li>
+            );
+          }, this);
 
-      cpuShopLinks.push({
-        tag: NEWEGG_LABEL,
-        href: `https://www.newegg.com/Product/ProductList.aspx?Submit=ENE&DEPA=0&Order=PRICE&PageSize=36&Description=${cpuQueryTerms}`
-      });
-
-      // http://www.helios825.org/url-parameters.php
-      cpuShopLinks.push({
-        tag: EBAY_LABEL,
-        href: `http://www.ebay.com/sch/?_ipg=200&_sop=12&_dmd=1&_nkw=${cpuQueryTerms}`
-      });
-
-      cpuLinksMarkup = cpuShopLinks.map(function(link, i) {
-        return (
-          <li key={i}>
-            <a target="_blank" href={link.href}>
-              {link.tag}
-            </a>
-          </li>
-        );
-      }, this);
-
-      cpuLinks = (
-        <div>
-          <span className={shopping.shoplinksLabel}>Buy CPU:&nbsp;</span>
-          <ul className={shopping.shoplinks}>
-            {cpuLinksMarkup}
-          </ul>
-        </div>
-      );
+          cpuLinks = (
+            <div>
+              <span className={shopping.shoplinksLabel}>Buy System:&nbsp;</span>
+              <ul className={shopping.shoplinks}>{cpuLinksMarkup}</ul>
+            </div>
+          );
+        }
+      }
     }
 
     if (platformLower === 'alienware') {
@@ -155,26 +167,6 @@ class System extends React.Component {
       });
 
       cpuShopLinks.push({
-        tag: AMAZON_DE_LABEL,
-        href: `https://www.amazon.de/s/?tag=${AMAZON_DE_TAG}&field-keywords=${queryTerms}`
-      });
-
-      cpuShopLinks.push({
-        tag: AMAZON_ES_LABEL,
-        href: `https://www.amazon.es/s/?tag=${AMAZON_ES_TAG}&field-keywords=${queryTerms}`
-      });
-
-      cpuShopLinks.push({
-        tag: AMAZON_FR_LABEL,
-        href: `https://www.amazon.fr/s/?tag=${AMAZON_FR_TAG}&field-keywords=${queryTerms}`
-      });
-
-      cpuShopLinks.push({
-        tag: AMAZON_IT_LABEL,
-        href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${queryTerms}`
-      });
-
-      cpuShopLinks.push({
         tag: EBAY_LABEL,
         href: `http://www.ebay.com/sch/?_ipg=200&_sop=12&_dmd=1&_nkw=${queryTerms}`
       });
@@ -192,9 +184,7 @@ class System extends React.Component {
       cpuLinks = (
         <div>
           <span className={shopping.shoplinksLabel}>Buy:&nbsp;</span>
-          <ul className={shopping.shoplinks}>
-            {cpuLinksMarkup}
-          </ul>
+          <ul className={shopping.shoplinks}>{cpuLinksMarkup}</ul>
         </div>
       );
     }
@@ -243,31 +233,6 @@ class System extends React.Component {
         href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${queryTerms}`
       });
 
-      cpuShopLinks.push({
-        tag: AMAZON_DE_LABEL,
-        href: `https://www.amazon.de/s/?tag=${AMAZON_DE_TAG}&field-keywords=${queryTerms}`
-      });
-
-      cpuShopLinks.push({
-        tag: AMAZON_ES_LABEL,
-        href: `https://www.amazon.es/s/?tag=${AMAZON_ES_TAG}&field-keywords=${queryTerms}`
-      });
-
-      cpuShopLinks.push({
-        tag: AMAZON_FR_LABEL,
-        href: `https://www.amazon.fr/s/?tag=${AMAZON_FR_TAG}&field-keywords=${queryTerms}`
-      });
-
-      cpuShopLinks.push({
-        tag: AMAZON_IT_LABEL,
-        href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${queryTerms}`
-      });
-
-      cpuShopLinks.push({
-        tag: EBAY_LABEL,
-        href: `http://www.ebay.com/sch/?_ipg=200&_sop=12&_dmd=1&_nkw=${queryTerms}`
-      });
-
       cpuLinksMarkup = cpuShopLinks.map(function(link, i) {
         return (
           <li key={i}>
@@ -281,9 +246,7 @@ class System extends React.Component {
       cpuLinks = (
         <div>
           <span className={shopping.shoplinksLabel}>Buy:&nbsp;</span>
-          <ul className={shopping.shoplinks}>
-            {cpuLinksMarkup}
-          </ul>
+          <ul className={shopping.shoplinks}>{cpuLinksMarkup}</ul>
         </div>
       );
     }
@@ -296,51 +259,27 @@ class System extends React.Component {
     ) {
       const gpuQueryTerms = gpuTerms.join('+');
 
-      gpuShopLinks.push({
-        tag: AMAZON_US_LABEL,
-        href: `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${gpuQueryTerms}`
-      });
+      if (isCurrentGpu(gpuTerms)) {
+        gpuShopLinks.push({
+          tag: AMAZON_US_LABEL,
+          href: `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${gpuQueryTerms}`
+        });
 
-      gpuShopLinks.push({
-        tag: AMAZON_UK_LABEL,
-        href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${gpuQueryTerms}`
-      });
+        gpuShopLinks.push({
+          tag: AMAZON_UK_LABEL,
+          href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${gpuQueryTerms}`
+        });
 
-      gpuShopLinks.push({
-        tag: AMAZON_CA_LABEL,
-        href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${gpuQueryTerms}`
-      });
-
-      gpuShopLinks.push({
-        tag: AMAZON_DE_LABEL,
-        href: `https://www.amazon.de/s/?tag=${AMAZON_DE_TAG}&field-keywords=${gpuQueryTerms}`
-      });
-
-      gpuShopLinks.push({
-        tag: AMAZON_ES_LABEL,
-        href: `https://www.amazon.es/s/?tag=${AMAZON_ES_TAG}&field-keywords=${gpuQueryTerms}`
-      });
-
-      gpuShopLinks.push({
-        tag: AMAZON_FR_LABEL,
-        href: `https://www.amazon.fr/s/?tag=${AMAZON_FR_TAG}&field-keywords=${gpuQueryTerms}`
-      });
-
-      gpuShopLinks.push({
-        tag: AMAZON_IT_LABEL,
-        href: `https://www.amazon.it/s/?tag=${AMAZON_IT_TAG}&field-keywords=${gpuQueryTerms}`
-      });
-
-      gpuShopLinks.push({
-        tag: NEWEGG_LABEL,
-        href: `https://www.newegg.com/Product/ProductList.aspx?Submit=ENE&DEPA=0&Order=PRICE&PageSize=36&Description=${gpuQueryTerms}`
-      });
-
-      gpuShopLinks.push({
-        tag: EBAY_LABEL,
-        href: `http://www.ebay.com/sch/?_ipg=200&_sop=12&_dmd=1&_nkw=${gpuQueryTerms}`
-      });
-
+        gpuShopLinks.push({
+          tag: AMAZON_CA_LABEL,
+          href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${gpuQueryTerms}`
+        });
+      } else {
+        gpuShopLinks.push({
+          tag: EBAY_LABEL,
+          href: `http://www.ebay.com/sch/?_ipg=200&_sop=12&_dmd=1&_nkw=${gpuQueryTerms}`
+        });
+      }
       gpuLinksMarkup = gpuShopLinks.map(function(link, i) {
         return (
           <li key={i}>
@@ -354,9 +293,7 @@ class System extends React.Component {
       gpuLinks = (
         <div>
           <span className={shopping.shoplinksLabel}>Buy GPU:&nbsp;</span>
-          <ul className={shopping.shoplinks}>
-            {gpuLinksMarkup}
-          </ul>
+          <ul className={shopping.shoplinks}>{gpuLinksMarkup}</ul>
         </div>
       );
     }
@@ -526,29 +463,29 @@ class System extends React.Component {
             </div>
           </div>
           <div className="col-xs-12 col-sm-6">
-            <div className={styles.systemName}>
-              {systemId}
-            </div>
-            {current
-              ? <div className={styles.currentSystem}>
-                  Your system is always visible regardless of any search filter
-                  settings.
-                </div>
-              : null}
+            <div className={styles.systemName}>{systemId}</div>
+            {current ? (
+              <div className={styles.currentSystem}>
+                Your system is always visible regardless of any search filter
+                settings.
+              </div>
+            ) : null}
             {detailsMarkup}
             {shopLinksMarkup}
           </div>
           <div className="col-xs-12 col-sm-4">
-            {current
-              ? <div className={styles.samplesOuter}>
-                  <div className={styles.samplesInner} />
+            {current ? (
+              <div className={styles.samplesOuter}>
+                <div className={styles.samplesInner} />
+              </div>
+            ) : (
+              <div className={styles.samplesOuter}>
+                <div className={styles.samplesInner}>
+                  {samples}
+                  <br />Logs
                 </div>
-              : <div className={styles.samplesOuter}>
-                  <div className={styles.samplesInner}>
-                    {samples}
-                    <br />Logs
-                  </div>
-                </div>}
+              </div>
+            )}
             <div className={styles.barsOuter}>
               <div className="progress" style={barStyle}>
                 <div
