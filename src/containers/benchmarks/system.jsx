@@ -109,11 +109,26 @@ class System extends React.Component {
         'P630',
         '640',
         '650',
-        'MX150'
+        'MX150',
+        '840M',
+        '950M',
+        '960M'
       ];
       for (var i = 0; i < terms.length; i++) {
         for (var j = 0; j < currentGpuModels.length; j++) {
           if (terms[i].indexOf(currentGpuModels[j]) !== -1) {
+            return true;
+          }
+        }
+      }
+      return false;
+    };
+
+    const isMobileGpu = function isMobileGpu(terms) {
+      const mobileGpuModels = ['MX150', '840M', '950M', '960M'];
+      for (var i = 0; i < terms.length; i++) {
+        for (var j = 0; j < mobileGpuModels.length; j++) {
+          if (terms[i].indexOf(mobileGpuModels[j]) !== -1) {
             return true;
           }
         }
@@ -292,27 +307,30 @@ class System extends React.Component {
     ) {
       const gpuQueryTerms = gpuTerms.join('+');
 
-      if (isCurrentGpu(gpuTerms)) {
-        gpuShopLinks.push({
-          tag: AMAZON_US_LABEL,
-          href: `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${gpuQueryTerms}`
-        });
+      if (!isMobileGpu(gpuTerms)) {
+        if (isCurrentGpu(gpuTerms)) {
+          gpuShopLinks.push({
+            tag: AMAZON_US_LABEL,
+            href: `https://www.amazon.com/s?tag=${AMAZON_US_TAG}&keywords=${gpuQueryTerms}`
+          });
 
-        gpuShopLinks.push({
-          tag: AMAZON_UK_LABEL,
-          href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${gpuQueryTerms}`
-        });
+          gpuShopLinks.push({
+            tag: AMAZON_UK_LABEL,
+            href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${gpuQueryTerms}`
+          });
 
-        gpuShopLinks.push({
-          tag: AMAZON_CA_LABEL,
-          href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${gpuQueryTerms}`
-        });
-      } else {
-        gpuShopLinks.push({
-          tag: EBAY_LABEL,
-          href: `http://www.ebay.com/sch/?_ipg=200&_sop=12&_dmd=1&_nkw=${gpuQueryTerms}`
-        });
+          gpuShopLinks.push({
+            tag: AMAZON_CA_LABEL,
+            href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${gpuQueryTerms}`
+          });
+        } else {
+          gpuShopLinks.push({
+            tag: EBAY_LABEL,
+            href: `http://www.ebay.com/sch/?_ipg=200&_sop=12&_dmd=1&_nkw=${gpuQueryTerms}`
+          });
+        }
       }
+
       gpuLinksMarkup = gpuShopLinks.map(function(link, i) {
         return (
           <li key={i}>
