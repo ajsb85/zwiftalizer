@@ -96,6 +96,15 @@ class App extends React.Component {
                 </div>
               </div>
 
+              <div className="col-sm-12 col-md-2">
+                <div className={styles.navItem}>
+                  <span className={styles.signal}>
+                    <i className="fa fa-question" aria-hidden="true" />
+                  </span>&nbsp;
+                  <Link to="/help">Help</Link>
+                </div>
+              </div>
+
               {/* <div className="col-sm-12 col-md-2">
                 <div className={styles.navItem}>
                   <span className={styles.signal}>
@@ -105,7 +114,7 @@ class App extends React.Component {
                 </div>
               </div> */}
 
-              <div className="col-sm-12 col-md-4">
+              <div className="col-sm-12 col-md-2">
                 <div className={styles.navPills}>
                   <a href="https://twitter.com/zwiftalizer" target="_blank">
                     <i className="fa fa-twitter" />

@@ -28,9 +28,11 @@ import { Support } from './support';
 
 import Benchmarks from './benchmarks';
 
+import { Help } from './help';
+
 import PowerSources from './powersources';
 
-function run() {  
+function run() {
   let store = configureStore();
 
   const history = createBrowserHistory();
@@ -38,16 +40,17 @@ function run() {
   ReactDOM.render(
     <Provider store={store}>
       <div>
-        <Router history={history}>        
+        <Router history={history}>
           <App>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/demo" component={Home} />
               <Route exact path="/support" component={Support} />
               <Route exact path="/benchmarks" component={Benchmarks} />
+              <Route exact path="/help" component={Help} />
               <Route exact path="/powersources" component={PowerSources} />
             </Switch>
-          </App>          
+          </App>
         </Router>
       </div>
     </Provider>,

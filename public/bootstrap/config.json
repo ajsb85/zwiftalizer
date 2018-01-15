@@ -397,11 +397,12 @@
     "alerts.less",
     "progress-bars.less",
     "panels.less",
+    "responsive-embed.less",
     "close.less",
     "tooltip.less",
     "popovers.less",
     "modals.less"
   ],
   "js": [],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=179f9c7b343cb79f21889b70ae7e4496"
+  "customizerUrl": "https://getbootstrap.com/docs/3.3/customize/?id=c9517d6c9069f95c0ba0b8db8672caee"
 }
