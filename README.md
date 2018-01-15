@@ -14,6 +14,11 @@ This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
 The code runs 100% in your web browser on your computer.
 
+## 1.4.5 Changes (2018-01-05)
+
+* Added a Help menu link
+* Embedded YouTube walk-through / tutorial video
+
 ## 1.4.4 Changes (2018-01-05)
 
 * Dropped Power Sources Report because it's not popular (/powersources route still actually works, just hidden from main menu).
@@ -21,7 +26,6 @@ The code runs 100% in your web browser on your computer.
 * eBay links now appear for GPUs only (kept them just for my own use)
 * Dropped asking for ANT+ model names. Too many models with 0 model Ids and no longer rendering the Power Sources report anyway.
 * Still collecting Power Source data, if known, in case I change my mind.
-*
 
 ## 1.4.3 Changes (2017-09-29)
 
