@@ -1,49 +1,54 @@
 .stickyHeader {
-    position: fixed;
-    top:0;
-    right: 0;
-    left: 0;
-    z-index: 1030;
-    padding: 2.25rem 0;
-    background: #178acc;
-    min-height: 6.3rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  padding: 2.25rem 0;
+  background: #178acc;
+  min-height: 6.3rem;
 }
 
 .stickySubHeader {
-    position: fixed;
-    top: 6.3rem;
-    right: 0;
-    left: 0;
-    z-index: 1030;    
-    background: #F9852B;    
-    height: 3.5rem;
-    max-height: 3.5rem;
-    /*border-bottom: 2px solid #fff;*/
+  position: fixed;
+  top: 6.3rem;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  background: #ff8cff;
+  height: 3.5rem;
+  max-height: 3.5rem;
+  /*border-bottom: 2px solid #fff;*/
+  /* background: #f9852b; */
 }
 
-.stickySubHeader p,
+.stickySubHeader p {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 2rem;
+  font-family: 'Open Sans', 'Segoe UI', Arial, Helvetica, sans-serif;
+  color: rgb(49, 49, 49);
+  text-align: center;
+  padding-top: 0.7rem;
+}
+
 .stickySubHeader p a,
 .stickySubHeader p a:active,
 .stickySubHeader p a:visited,
 .stickySubHeader p a:hover {
-    margin: 0;    
-    font-weight: 400;
-    font-size: 1.3rem;
-    line-height: 2rem;
-    font-family: "Open Sans", "Segoe UI", Arial, Helvetica, sans-serif;
-    color: #fefefe;
-    text-align: center;
-    padding-top: 0.7rem;
+  color: #fbff00;
+  text-decoration: underline;
 }
 
 .footer {
-    display: block;
-    margin: 0 auto;
-    z-index: 1030;    
-    background:transparent;    
-    height: 3rem;
-    max-height: 3rem;
-    padding: 0.7rem;
+  display: block;
+  margin: 0 auto;
+  z-index: 1030;
+  background: transparent;
+  height: 3rem;
+  max-height: 3rem;
+  padding: 0.7rem;
 }
 
 .footer p,
@@ -51,11 +56,11 @@
 .footer p a:active,
 .footer p a:visited,
 .footer p a:hover {
-    font-weight: 400;
-    font-size: 1.3rem;
-    line-height: 2rem;
-    font-family: "Open Sans", "Segoe UI", Arial, Helvetica, sans-serif;
-    text-align: center;  
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 2rem;
+  font-family: 'Open Sans', 'Segoe UI', Arial, Helvetica, sans-serif;
+  text-align: center;
 }
 
 .appBody {
@@ -64,32 +69,33 @@
 }
 
 .navItem {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: uppercase;
-    vertical-align: baseline;
-    /* color: #178acc; */
-    color: #fff;
-    /* height: 2.6rem; */
-    padding: 0;
-    width: 100%;
-    white-space: normal;    
-    font-size: 1.8rem;
-    letter-spacing: 0.05rem;
-    text-align: center;
-    font-family: "Proxima Nova Bold", "Open Sans", "Segoe UI", Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  vertical-align: baseline;
+  /* color: #178acc; */
+  color: #fff;
+  /* height: 2.6rem; */
+  padding: 0;
+  width: 100%;
+  white-space: normal;
+  font-size: 1.8rem;
+  letter-spacing: 0.05rem;
+  text-align: center;
+  font-family: 'Proxima Nova Bold', 'Open Sans', 'Segoe UI', Arial, Helvetica,
+    sans-serif;
 }
-.navItem>a {
+.navItem > a {
   text-decoration: none;
   color: #fff;
 }
-.navItem>a:hover {
-  color: #F9A32D;
+.navItem > a:hover {
+  color: #f9a32d;
   cursor: pointer;
 }
 .signal {
-  color: #FFD12C;
+  color: #ffd12c;
 }
 .brand {
   composes: navItem;
@@ -105,47 +111,34 @@
   margin-top: -0.5rem;
 }
 
-@media only screen and (max-width:991px) {
-
+@media only screen and (max-width: 991px) {
   .appBody {
-    padding-top:0;
+    padding-top: 0;
   }
 
-  .navItem, .brand, .navPills {
+  .navItem,
+  .brand,
+  .navPills {
     justify-content: center;
     height: 4rem;
   }
 
   .stickyHeader {
-      position: relative;
-      top:0;
-      right: 0;
-      left: 0;
-      z-index: 1030;    
+    position: relative;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
   }
 
-  .stickySubHeader {
-      display: none;
+  .stickySubHeader,
+  .stickySubSubHeader {
+    display: none;
   }
-
-  .stickySubHeader {
-    top: 24rem;
-    height: 5.2rem;
-    max-height: 5.2rem;
-  }
-
-  .stickySubHeader p {
-    font-weight: 400;
-    font-size: 1.4rem;
-    line-height: 1.6rem;
-    color: #fff;
-    text-align: center;
-    padding: 0.7rem;
-  }
-
-
 }
-@media(min-width:768px) {}
-@media(min-width:992px) {}
-@media(min-width:1200px) {}
-
+@media (min-width: 768px) {
+}
+@media (min-width: 992px) {
+}
+@media (min-width: 1200px) {
+}

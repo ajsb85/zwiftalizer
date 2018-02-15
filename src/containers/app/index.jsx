@@ -12,6 +12,8 @@ import structure from '../../styles/structure.css';
 
 import styles from './styles.css';
 
+import { AMAZON_US_TAG, AMAZON_UK_TAG } from '../../constants/index.js';
+
 const ReactGA = require('react-ga');
 
 ReactGA.initialize('UA-2833327-13');
@@ -60,6 +62,13 @@ class App extends React.Component {
   render() {
     const d = new Date();
     const year = d.getFullYear();
+
+    var amzLink = `https://www.amazon.com?tag=${AMAZON_US_TAG}`;
+
+    //if (navigator.language && navigator.language.toLowerCase() === 'en-gb') {
+    if (navigator.language && navigator.language.toLowerCase() === 'en-us') {
+      var amzLink = `https://www.amazon.co.uk?tag=${AMAZON_UK_TAG}`;
+    }
 
     return (
       <div>
@@ -133,17 +142,15 @@ class App extends React.Component {
             </div>
           </div>
         </div>
+
         <div className={styles.stickySubHeader}>
           <div className="container">
             <div className="row">
               <p>
-                Zwiftalizer is an open source, community supported project
-                neither endorsed by nor affiliated with&nbsp;<a
-                  href="http://zwift.com"
-                  target="_blank"
-                >
-                  Zwift Inc
-                </a>
+                If you find this site useful you can support it by following
+                our&nbsp;<a href={amzLink} target="_blank">
+                  Amazon
+                </a>&nbsp;link before you shop (can be anything). Thank you!
               </p>
             </div>
           </div>
@@ -185,6 +192,20 @@ class App extends React.Component {
                     src="//heapanalytics.com/img/badgeLight.png"
                     alt="Heap | Mobile and Web Analytics"
                   />
+                </a>
+              </p>
+            </div>
+            <div className="row">
+              <p />
+            </div>
+            <div className="row">
+              <p>
+                Zwiftalizer is an open source, community supported project
+                neither endorsed by nor affiliated with&nbsp;<a
+                  href="http://zwift.com"
+                  target="_blank"
+                >
+                  Zwift Inc
                 </a>
               </p>
             </div>

@@ -165,11 +165,6 @@ class System extends React.Component {
             href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${cpuQueryTerms}`
           });
 
-          cpuShopLinks.push({
-            tag: AMAZON_CA_LABEL,
-            href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${cpuQueryTerms}`
-          });
-
           cpuLinksMarkup = cpuShopLinks.map(function(link, i) {
             return (
               <li key={i}>
@@ -207,11 +202,6 @@ class System extends React.Component {
       cpuShopLinks.push({
         tag: AMAZON_UK_LABEL,
         href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${queryTerms}`
-      });
-
-      cpuShopLinks.push({
-        tag: AMAZON_CA_LABEL,
-        href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${queryTerms}`
       });
 
       cpuShopLinks.push({
@@ -276,11 +266,6 @@ class System extends React.Component {
         href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${queryTerms}`
       });
 
-      cpuShopLinks.push({
-        tag: AMAZON_CA_LABEL,
-        href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${queryTerms}`
-      });
-
       cpuLinksMarkup = cpuShopLinks.map(function(link, i) {
         return (
           <li key={i}>
@@ -317,11 +302,6 @@ class System extends React.Component {
           gpuShopLinks.push({
             tag: AMAZON_UK_LABEL,
             href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${gpuQueryTerms}`
-          });
-
-          gpuShopLinks.push({
-            tag: AMAZON_CA_LABEL,
-            href: `https://www.amazon.ca/s/?tag=${AMAZON_CA_TAG}&field-keywords=${gpuQueryTerms}`
           });
         } else {
           gpuShopLinks.push({
