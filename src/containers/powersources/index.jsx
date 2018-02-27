@@ -89,15 +89,14 @@ class PowerSources extends React.Component {
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-xs-12">
-                      <div className={styles.systemsCount}>
-                        {totalDevices}
-                      </div>
+                      <div className={styles.systemsCount}>{totalDevices}</div>
                     </div>
                     <div className={styles.systemsCountSubheading}>
                       Distinct ANT+ devices logged.
                     </div>
                     <div className={styles.systemsCountSubheading}>
-                      Devices by country available where devices sample size >= {minSampleSize}
+                      Devices by country available where devices sample size >={' '}
+                      {minSampleSize}
                     </div>
                   </div>
                   <div className="row">
@@ -132,7 +131,9 @@ class PowerSources extends React.Component {
                           regardless of how many times it is seen by this tool.
                         </li>
                         <li>
-                          Since this tool is often used to diagnose ANT+ signal issues, it is possible that the smart trainers at the top of the list are the ones with the worst signals.
+                          Since this tool is often used to diagnose ANT+ signal
+                          issues, it is possible that the smart trainers at the
+                          top of the list are the ones with the worst signals.
                         </li>
                         <li>
                           Country is identified by the IP address of the user
