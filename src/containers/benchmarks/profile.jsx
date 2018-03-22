@@ -8,7 +8,7 @@ import {
   getPerformanceScore
 } from '../../actions/benchmarks';
 import System from './system.jsx';
-import Badge from '../badge';
+// import Badge from '../badge';
 import structure from '../../styles/structure.css';
 import styles from './styles.css';
 import { colors } from '../../styles/colors';
@@ -231,24 +231,16 @@ class Profile extends React.Component {
           <div className="container-fluid">
             <div className="row">
               <div className="col-xs-1 col-sm-1 col-md-1">
-                {isExpanded
-                  ? <i className="fa fa-minus" />
-                  : <i className="fa fa-plus" />}
+                {isExpanded ? (
+                  <i className="fa fa-minus" />
+                ) : (
+                  <i className="fa fa-plus" />
+                )}
               </div>
               <div className="col-xs-11 col-sm-3 col-md-2">
                 {resolution}&nbsp;{name}
               </div>
-              <div className="hidden-xs hidden-sm col-md-6">
-                <Badge data={performanceScore} />
-                &nbsp;
-                <span className={styles.thumbs}>
-                  {this.getPerformanceScoreMarkup(performanceScore.value)}
-                </span>
-                &nbsp;
-                <span className={styles.opinion}>
-                  {performanceScore.opinion}
-                </span>
-              </div>
+              <div className="hidden-xs hidden-sm col-md-6">&nbsp;</div>
               <div className="col-xs-offset-1 col-xs-11 col-sm-offset-0 col-sm-8 col-md-offset-0 col-md-3">
                 <div className={styles.systemsCountContainer}>
                   <span className={styles.systemsCountBadge}>

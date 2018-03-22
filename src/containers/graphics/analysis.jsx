@@ -8,12 +8,12 @@ import {
   openProfilePanel
 } from '../../actions/benchmarks';
 import shopping from '../../styles/shopping.css';
-import Badge from '../badge';
+//import Badge from '../badge';
 import structure from '../../styles/structure.css';
 import images from '../../styles/images.css';
 import editorial from '../../styles/editorial.css';
 
-import {renderBuyLink} from '../../buylinks/index.js';
+import { renderBuyLink } from '../../buylinks/index.js';
 
 class Analysis extends React.Component {
   constructor(props) {
@@ -35,14 +35,12 @@ class Analysis extends React.Component {
     ];
 
     const buyLinks = gpusToLink.map(function(gpu, i) {
-      const links = renderBuyLink(gpu);        
-      return(
-        <div className={shopping.shoplinksContainer} key={i}>          
+      const links = renderBuyLink(gpu);
+      return (
+        <div className={shopping.shoplinksContainer} key={i}>
           <span className={shopping.shoplinksEditorialLabel}>{gpu}&nbsp;</span>
-          <ul className={shopping.shoplinks}>
-            {links}
-          </ul>
-        </div>        
+          <ul className={shopping.shoplinks}>{links}</ul>
+        </div>
       );
     }, this);
 
@@ -50,94 +48,93 @@ class Analysis extends React.Component {
       <div>
         <h3>1440 (Ultra) and 4K capable GPUs</h3>
         {buyLinks}
-        <p>The GTX 960, GTX 970, and GTX 980 are also capable of 1440 Ultra and 4K but are no longer manufactured.</p>
+        <p>
+          The GTX 960, GTX 970, and GTX 980 are also capable of 1440 Ultra and
+          4K but are no longer manufactured.
+        </p>
       </div>
-    )
+    );
   }
 
   render1440UltraLaptopBuyLinks() {
     const systemsToLink = [
-      'Alienware 4K Gaming Laptop GTX 970M',   
+      'Alienware 4K Gaming Laptop GTX 970M',
       'MSI VR Ready Laptop GeForce GTX 1060',
-      'MSI Gaming Laptop GeForce GTX 1050',                        
-      'Asus Gaming Laptop GeForce GTX 1060',      
-      'Asus Gaming Laptop GeForce GTX 1050',      
+      'MSI Gaming Laptop GeForce GTX 1050',
+      'Asus Gaming Laptop GeForce GTX 1060',
+      'Asus Gaming Laptop GeForce GTX 1050'
     ];
 
     const buyLinks = systemsToLink.map(function(system, i) {
       const links = renderBuyLink(system);
 
-      return (        
-          <div className={shopping.shoplinksContainer} key={i}>          
-            <span className={shopping.shoplinksEditorialLabel}>{system}&nbsp;</span>
-            <ul className={shopping.shoplinks}>
-              {links}
-            </ul>
-          </div>          
+      return (
+        <div className={shopping.shoplinksContainer} key={i}>
+          <span className={shopping.shoplinksEditorialLabel}>
+            {system}&nbsp;
+          </span>
+          <ul className={shopping.shoplinks}>{links}</ul>
+        </div>
       );
     }, this);
 
     return (
       <div>
-      <h3>1440 (Ultra) capable laptops</h3>
+        <h3>1440 (Ultra) capable laptops</h3>
         {buyLinks}
-        <p></p>    
+        <p />
       </div>
-    )
+    );
   }
 
   renderAlienwareAlpha1080BuyLinks() {
-    const ssytemsToLink = [
-      'Alienware Alpha ASM100'      
-    ];
+    const ssytemsToLink = ['Alienware Alpha ASM100'];
 
     const buyLinks = ssytemsToLink.map(function(system, i) {
       const links = renderBuyLink(system);
 
-      return (        
-          <div className={shopping.shoplinksContainer} key={i}>          
-            <span className={shopping.shoplinksEditorialLabel}>{system}&nbsp;</span>
-            <ul className={shopping.shoplinks}>
-              {links}
-            </ul>
-          </div>        
+      return (
+        <div className={shopping.shoplinksContainer} key={i}>
+          <span className={shopping.shoplinksEditorialLabel}>
+            {system}&nbsp;
+          </span>
+          <ul className={shopping.shoplinks}>{links}</ul>
+        </div>
       );
     }, this);
 
     return (
       <div>
-      <h3>1080 HD compact gaming PC</h3>
+        <h3>1080 HD compact gaming PC</h3>
         {buyLinks}
-        <p></p>    
+        <p />
       </div>
-    )
+    );
   }
 
   renderAlienwareAlpha4KBuyLinks() {
-    const ssytemsToLink = [
-      'Alienware Alpha R2 NVidia GeForce GTX 960'      
-    ];
+    const ssytemsToLink = ['Alienware Alpha R2 NVidia GeForce GTX 960'];
 
     const buyLinks = ssytemsToLink.map(function(system, i) {
       const links = renderBuyLink(system);
 
-      return (        
-          <div className={shopping.shoplinksContainer} key={i}>          
-            <span className={shopping.shoplinksEditorialLabel}>{system}&nbsp;</span>
-            <ul className={shopping.shoplinks}>
-              {links}
-            </ul>
-          </div>        
+      return (
+        <div className={shopping.shoplinksContainer} key={i}>
+          <span className={shopping.shoplinksEditorialLabel}>
+            {system}&nbsp;
+          </span>
+          <ul className={shopping.shoplinks}>{links}</ul>
+        </div>
       );
     }, this);
 
     return (
       <div>
-      <h3>1440 (Ultra) and 4K capable compact gaming PC</h3>
+        <h3>1440 (Ultra) and 4K capable compact gaming PC</h3>
         {buyLinks}
-        <p></p>    
+        <p />
       </div>
-    )
+    );
   }
 
   renderAnalysis() {
@@ -158,7 +155,7 @@ class Analysis extends React.Component {
       profileComment +=
         'Graphics profile is automatically set by the game engine according to the capabilities of your graphics processing unit (GPU). You can not set it yourself. ';
       profileComment +=
-        'You do not necessarily need to be running the Ultra or 4K resolutions to get the Ultra profile. An Nvidia GTX 1050 or 960 will get the Ultra profile at High (1080) resolution. '
+        'You do not necessarily need to be running the Ultra or 4K resolutions to get the Ultra profile. An Nvidia GTX 1050 or 960 will get the Ultra profile at High (1080) resolution. ';
     }
 
     var performanceScore = getPerformanceScore(
@@ -176,15 +173,21 @@ class Analysis extends React.Component {
     var additionalFpsComment = '';
 
     if (!_.isUndefined(currentSystem.specs.minFps)) {
-      minFpsComment = `Minimum frame rate is ${this.getFpsOpinion(currentSystem.specs.minFps)}. `;      
+      minFpsComment = `Minimum frame rate is ${this.getFpsOpinion(
+        currentSystem.specs.minFps
+      )}. `;
     }
-    
+
     if (!_.isUndefined(currentSystem.specs.avgFps)) {
-      avgFpsComment = `Average frame rate is ${this.getFpsOpinion(currentSystem.specs.avgFps)}. `;
+      avgFpsComment = `Average frame rate is ${this.getFpsOpinion(
+        currentSystem.specs.avgFps
+      )}. `;
     }
 
     if (!_.isUndefined(currentSystem.specs.maxFps)) {
-      maxFpsComment = `Maximum frame rate is ${this.getFpsOpinion(currentSystem.specs.maxFps)}. `;      
+      maxFpsComment = `Maximum frame rate is ${this.getFpsOpinion(
+        currentSystem.specs.maxFps
+      )}. `;
     }
 
     if (currentSystem.specs.avgFps <= 15 && currentSystem.resolution > 576) {
@@ -237,7 +240,7 @@ class Analysis extends React.Component {
 
       ultraGpuBuyLinks = this.renderUltraGpuBuyLinks();
 
-      ultraLaptopBuyLinks = this.render1440UltraLaptopBuyLinks(); 
+      ultraLaptopBuyLinks = this.render1440UltraLaptopBuyLinks();
 
       alienWare4KBuyLinks = this.renderAlienwareAlpha4KBuyLinks();
 
@@ -260,19 +263,15 @@ class Analysis extends React.Component {
                         <div className={fpsAlertClass}>
                           <p className={editorial.alertBox}>
                             {minFpsComment}
-                            {avgFpsComment}                           
+                            {avgFpsComment}
                             {maxFpsComment}
-                            {additionalFpsComment}                            
+                            {additionalFpsComment}
                           </p>
                         </div>
                         <h3>Graphics profile</h3>
-                        <p>
-                          {profileComment}
-                        </p>
+                        <p>{profileComment}</p>
                         <h3>Graphics resolution</h3>
-                        <p>
-                          {resolutionComment}
-                        </p>                        
+                        <p>{resolutionComment}</p>
                         {ultraGpuBuyLinks}
                         {ultraLaptopBuyLinks}
                         {alienWare4KBuyLinks}

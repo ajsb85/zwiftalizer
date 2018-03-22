@@ -115,19 +115,22 @@ class Specs extends React.Component {
     );
 
     const conditionalMarkup =
-      fpsData && fpsData.size()
-        ? <div className="row">
-            <div className="col-xs-12">
-              <div className={structure.boxesWrapOuter}>
-                <div className={structure.boxesWrapFlexEnd}>                
-                  <div onClick={this.seeInBenchMarksClicked} style={{cursor: 'pointer'}}>
-                    Rank&nbsp;&nbsp;<Badge data={performanceScore} />&nbsp; See in benchmarks
-                  </div>                                                                                                                     
-                </div>                                  
-              </div>                                  
+      fpsData && fpsData.size() ? (
+        <div className="row">
+          <div className="col-xs-12">
+            <div className={structure.boxesWrapOuter}>
+              <div className={structure.boxesWrapFlexEnd}>
+                <div
+                  onClick={this.seeInBenchMarksClicked}
+                  style={{ cursor: 'pointer' }}
+                >
+                  See in benchmarks
+                </div>
+              </div>
             </div>
           </div>
-        : null;
+        </div>
+      ) : null;
 
     return (
       <div className="container">
