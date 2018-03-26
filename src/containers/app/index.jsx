@@ -65,8 +65,8 @@ class App extends React.Component {
 
     var amzLink = `https://www.amazon.com?tag=${AMAZON_US_TAG}`;
 
-    //if (navigator.language && navigator.language.toLowerCase() === 'en-gb') {
-    if (navigator.language && navigator.language.toLowerCase() === 'en-us') {
+    if (navigator.language && navigator.language.toLowerCase() === 'en-gb') {
+      //if (navigator.language && navigator.language.toLowerCase() === 'en-us') {
       var amzLink = `https://www.amazon.co.uk?tag=${AMAZON_UK_TAG}`;
     }
 
