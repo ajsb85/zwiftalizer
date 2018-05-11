@@ -230,26 +230,6 @@ export function uploadSytemSummary(data) {
   };
 }
 
-export function uploadDevicesSummary(data) {
-  return () => {
-    return request
-      .post(
-        'https://zkt5wkylqf.execute-api.us-west-2.amazonaws.com/dev/devices',
-        data,
-        {
-          cache: false,
-          dataType: 'json'
-        }
-      )
-      .catch((e, xhr, response) => {
-        console.log('Error uploading deviecs summary');
-        console.log(e);
-        console.log(xhr);
-        console.log(response);
-      });
-  };
-}
-
 export function postAntDevice(device) {
   // submit the powermeter device details
   // to the API gateway which will trigger a lambda
@@ -474,7 +454,9 @@ function parseFileContents(log, isDemo = false, share = true) {
             }
           };
 
-          const systemId = `${systemData.platform} / ${systemData.cpuVendor} ${systemData.cpuDetails} / ${systemData.gpuVendor} ${systemData.gpuDetails}`;
+          const systemId = `${systemData.platform} / ${systemData.cpuVendor} ${
+            systemData.cpuDetails
+          } / ${systemData.gpuVendor} ${systemData.gpuDetails}`;
 
           const panelKey = `${systemData.resolution}-${profileId}`;
 
@@ -545,11 +527,6 @@ function parseFileContents(log, isDemo = false, share = true) {
 
               devicesSummaryData.push(deviceSummary);
             });
-
-            // console.log('devices summary data for api post');
-            // console.log(JSON.stringify(devicesSummaryData));
-
-            dispatch(uploadDevicesSummary({ devices: devicesSummaryData }));
           }
         }
 

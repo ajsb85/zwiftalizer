@@ -119,8 +119,8 @@ class Support extends React.Component {
                                     </td>
                                     <td>
                                       <p>
-                                        Hosting at 95 mirror locations wordlwide
-                                        for 2 months
+                                        Hosting at 100+ mirror locations
+                                        wordlwide for 2 months
                                       </p>
                                     </td>
                                   </tr>
