@@ -32,6 +32,10 @@ import { Help } from './help';
 
 import PowerSources from './powersources';
 
+import { Privacy } from './privacypolicy';
+
+import { TermsOfUse } from './termsofuse';
+
 function run() {
   let store = configureStore();
 
@@ -49,6 +53,8 @@ function run() {
               <Route exact path="/benchmarks" component={Benchmarks} />
               <Route exact path="/help" component={Help} />
               <Route exact path="/powersources" component={PowerSources} />
+              <Route exact path="/privacypolicy" component={Privacy} />
+              <Route exact path="/termsofuse" component={TermsOfUse} />
             </Switch>
           </App>
         </Router>

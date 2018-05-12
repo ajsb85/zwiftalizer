@@ -173,7 +173,7 @@ class Reader extends React.Component {
           onHide={this.closeDbUploadExplanationModal}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Data collection and privacy policy</Modal.Title>
+            <Modal.Title>Data collection policy</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className={editorial.editorialBoxContentTransparent}>

@@ -213,7 +213,7 @@ class Profile extends React.Component {
 
     const totalSystems = results && results.length ? results.length : 0;
 
-    const percentage = Math.round(totalSystems / totalRecords * 100) + '%';
+    const percentage = Math.round(totalSystems / totalRecords * 100);
 
     const isExpanded = _find(expanded, function(panel) {
       return panel === panelKey;
@@ -247,7 +247,9 @@ class Profile extends React.Component {
                     {totalSystems}/{totalRecords}
                   </span>
                   &nbsp;
-                  <span className={styles.systemsCountBadge}>{percentage}</span>
+                  <span className={styles.systemsCountBadge}>
+                    {percentage < 1 ? '<1%' : percentage + '%'}
+                  </span>
                 </div>
               </div>
             </div>

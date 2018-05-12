@@ -14,6 +14,12 @@ This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
 The code runs 100% in your web browser on your computer.
 
+## 1.4.7 Changes (2018-05-11)
+
+* Stopped collecting ANT+ device IDs and IP addresses.
+* Added Terms of Use.
+* Added Privacy Policy.
+
 ## 1.4.6 Changes (2018-03-21)
 
 * Added 2880 res (iMac 5K), 864 res (iPhone 8, 8 Plus and iPhone X)

@@ -165,7 +165,10 @@ class App extends React.Component {
                   target="_blank"
                 >
                   License
-                </a>&nbsp;|&nbsp;Follow&nbsp;<a
+                </a>&nbsp;|&nbsp;
+                <Link to="/termsofuse">Terms Of Use</Link>&nbsp;|&nbsp;
+                <Link to="/privacypolicy">Privacy Policy</Link>&nbsp;|&nbsp;
+                Follow&nbsp;<a
                   href="https://twitter.com/zwiftalizer"
                   target="_blank"
                 >
@@ -175,7 +178,7 @@ class App extends React.Component {
                   target="_blank"
                 >
                   <i className="fa fa-twitter" />
-                </a>&nbsp;|&nbsp;Version 1.4.6
+                </a>&nbsp;|&nbsp;Version 1.4.7
               </p>
             </div>
             <div className="row">
