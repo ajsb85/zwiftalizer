@@ -63,7 +63,7 @@ export default function configureStore() {
         // lets us dispatch async functions
         thunkMiddleware
         //loggerMiddleware // neat middleware that logs actions
-      ),
+      )
       // enables redux chrome dev tools extension
       // window.devToolsExtension ? window.devToolsExtension() : f => f
     )
