@@ -214,7 +214,7 @@ export function uploadSytemSummary(data) {
   return () => {
     return request
       .post(
-        'https://iayslzt1s8.execute-api.us-west-2.amazonaws.com/dev/logs',
+        'https://lz4gqxsq5g.execute-api.us-west-2.amazonaws.com/dev/logs',
         data,
         {
           cache: false,
@@ -428,35 +428,34 @@ function parseFileContents(log, isDemo = false, share = true) {
         }
 
         if (graphicsData.fpsData.count) {
+          const systemId = `${systemData.platform} / ${systemData.cpuVendor} ${
+            systemData.cpuDetails
+          } / ${systemData.gpuVendor} ${systemData.gpuDetails}`;
+
           const systemSummary = {
             logId: uuid.v4(),
             timestamp: activityData.startTimestamp,
             duration: `${activityData.duration}`,
             gameVersion: `${systemData.gameVersion}`,
-            specs: {
-              resolution: systemData.resolution,
-              profileId: `${profileId}`,
-              profile: systemData.profile,
-              minFps: `${Math.round(graphicsData.fpsData.min())}`,
-              maxFps: `${Math.round(graphicsData.fpsData.max())}`,
-              avgFps: `${Math.round(graphicsData.fpsData.avg())}`,
-              stdev: `${Math.round(graphicsData.fpsData.stdev())}`,
-              samples: `${graphicsData.fpsSamples}`,
-              platform: systemData.platform,
-              cpuVendor: systemData.cpuVendor,
-              cpuDetails: systemData.cpuDetails,
-              ram: systemData.ram,
-              gpuVendor: systemData.gpuVendor,
-              gpuDetails: systemData.gpuDetails,
-              shadowres: systemData.shadowres,
-              openglMajor: systemData.openglMajor,
-              gameVersion: systemData.gameVersion
-            }
+            resolution: systemData.resolution,
+            profileId: `${profileId}`,
+            profile: systemData.profile,
+            minFps: `${Math.round(graphicsData.fpsData.min())}`,
+            maxFps: `${Math.round(graphicsData.fpsData.max())}`,
+            avgFps: `${Math.round(graphicsData.fpsData.avg())}`,
+            stdev: `${Math.round(graphicsData.fpsData.stdev())}`,
+            samples: `${graphicsData.fpsSamples}`,
+            platform: systemData.platform,
+            cpuVendor: systemData.cpuVendor,
+            cpuDetails: systemData.cpuDetails,
+            ram: systemData.ram,
+            gpuVendor: systemData.gpuVendor,
+            gpuDetails: systemData.gpuDetails,
+            shadowres: systemData.shadowres,
+            openglMajor: systemData.openglMajor,
+            gameVersion: systemData.gameVersion,
+            systemId: systemId
           };
-
-          const systemId = `${systemData.platform} / ${systemData.cpuVendor} ${
-            systemData.cpuDetails
-          } / ${systemData.gpuVendor} ${systemData.gpuDetails}`;
 
           const panelKey = `${systemData.resolution}-${profileId}`;
 
@@ -464,9 +463,7 @@ function parseFileContents(log, isDemo = false, share = true) {
             resolution: parseInt(systemData.resolution, 10),
             profileId: parseInt(profileId, 10),
             panelKey,
-            specs: Object.assign({}, systemSummary.specs, {
-              systemId
-            })
+            specs: systemSummary
           };
 
           dispatch({

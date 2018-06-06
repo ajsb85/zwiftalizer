@@ -14,6 +14,10 @@ This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
 The code runs 100% in your web browser on your computer.
 
+## 1.4.8 Changes (2018-06-05)
+
+* Changed DynamoDB record format so that the data can be more easily exported using AWS Data Pipeline and AWS QuickSight
+
 ## 1.4.7 Changes (2018-05-11)
 
 * Stopped collecting ANT+ device IDs and IP addresses.

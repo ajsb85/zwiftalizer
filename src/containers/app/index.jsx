@@ -178,7 +178,7 @@ class App extends React.Component {
                   target="_blank"
                 >
                   <i className="fa fa-twitter" />
-                </a>&nbsp;|&nbsp;Version 1.4.7
+                </a>&nbsp;|&nbsp;Version 1.4.8
               </p>
             </div>
             <div className="row">
