@@ -113,7 +113,9 @@ class System extends React.Component {
         '840m',
         '940m',
         '950m',
-        '960m'
+        '960m',
+        '930mx',
+        '940mx'
       ];
       for (var i = 0; i < terms.length; i++) {
         for (var j = 0; j < currentGpuModels.length; j++) {
@@ -126,7 +128,16 @@ class System extends React.Component {
     };
 
     const isMobileGpu = function isMobileGpu(terms) {
-      const mobileGpuModels = ['mx150', '840m', '940m', '950m', '960m'];
+      const mobileGpuModels = [
+        'mx150',
+        '840m',
+        '940m',
+        '940m',
+        '950m',
+        '960m',
+        '930mx',
+        '940mx'
+      ];
       for (var i = 0; i < terms.length; i++) {
         for (var j = 0; j < mobileGpuModels.length; j++) {
           if (terms[i].indexOf(mobileGpuModels[j]) !== -1) {
