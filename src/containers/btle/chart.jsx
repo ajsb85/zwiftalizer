@@ -31,6 +31,8 @@ import structure from '../../styles/structure.css';
 
 import { CHART_HEIGHT, BRUSH_HEIGHT } from '../../styles/constants.js';
 
+const SHOW_GRID = true;
+
 // 15 second max zoom
 const minDuration = 15 * 1000;
 
@@ -125,7 +127,7 @@ class Chart extends React.Component {
     return (
       <div key="btleMessages">
         <div className="row" style={headingRowStyle}>
-          <div className="col-xs-12 col-sm-offset-1 col-sm-9">
+          <div className="col-xs-12 col-sm-offset-1 col-sm-6">
             <div className={structure.alignLeft}>
               <h4 className={structure.heading}>BTLE Messages</h4>
               <h5 className={structure.infoHeading}>
@@ -133,7 +135,7 @@ class Chart extends React.Component {
               </h5>
             </div>
           </div>
-          <div className="col-xs-12 col-sm-2">
+          <div className="col-xs-12 col-sm-4">
             <div className="pull-right">
               <div className={structure.legendWrapper}>
                 <Legend
@@ -145,49 +147,53 @@ class Chart extends React.Component {
             </div>
           </div>
         </div>
-        <Resizable>
-          <ChartContainer
-            timeRange={this.state.timerange}
-            onTimeRangeChanged={this.handleTimeRangeChange}
-            padding={0}
-            enablePanZoom={true}
-            minDuration={minDuration}
-            maxTime={this.state.initialRange.end()}
-            minTime={this.state.initialRange.begin()}
-            showGrid={false}
-          >
-            <ChartRow height={CHART_HEIGHT} debug={false}>
-              <YAxis
-                id="messages1"
-                label="Messages"
-                min={0}
-                max={maxMessages}
-                absolute={true}
-                width={leftAxisLabelWidth}
-                type="linear"
-                format="d"
-              />
-              <Charts>
-                <BarChart
-                  axis="messages1"
-                  series={this.state.messages}
-                  style={messagesStyle}
-                  columns={['value']}
-                />
-              </Charts>
-              <YAxis
-                id="messages2"
-                label="Messages"
-                min={0}
-                max={maxMessages}
-                absolute={true}
-                width={leftAxisLabelWidth}
-                type="linear"
-                format="d"
-              />
-            </ChartRow>
-          </ChartContainer>
-        </Resizable>
+        <div className="row">
+          <div className="col-xs-12">
+            <Resizable>
+              <ChartContainer
+                timeRange={this.state.timerange}
+                onTimeRangeChanged={this.handleTimeRangeChange}
+                padding={0}
+                enablePanZoom={true}
+                minDuration={minDuration}
+                maxTime={this.state.initialRange.end()}
+                minTime={this.state.initialRange.begin()}
+                showGrid={SHOW_GRID}
+              >
+                <ChartRow height={CHART_HEIGHT} debug={false}>
+                  <YAxis
+                    id="messages1"
+                    label="Messages"
+                    min={0}
+                    max={maxMessages}
+                    absolute={true}
+                    width={leftAxisLabelWidth}
+                    type="linear"
+                    format="d"
+                  />
+                  <Charts>
+                    <BarChart
+                      axis="messages1"
+                      series={this.state.messages}
+                      style={messagesStyle}
+                      columns={['value']}
+                    />
+                  </Charts>
+                  <YAxis
+                    id="messages2"
+                    label="Messages"
+                    min={0}
+                    max={maxMessages}
+                    absolute={true}
+                    width={leftAxisLabelWidth}
+                    type="linear"
+                    format="d"
+                  />
+                </ChartRow>
+              </ChartContainer>
+            </Resizable>
+          </div>
+        </div>
       </div>
     );
   }
@@ -209,7 +215,7 @@ class Chart extends React.Component {
         </div>
         <Resizable>
           <ChartContainer
-            timeRange={this.state.initialRange}            
+            timeRange={this.state.initialRange}
             padding={0}
             trackerPosition={this.state.tracker}
           >
@@ -267,12 +273,8 @@ class Chart extends React.Component {
                   BTLE Signal Quality
                 </div>
                 <div className={structure.chartsBoxContent}>
-                  <div className="row">
-                    <div className="col-xs-12 col-sm-offset-1 col-sm-10">
-                      {btleMessages}
-                      {brush}
-                    </div>
-                  </div>
+                  {btleMessages}
+                  {brush}
                 </div>
               </div>
             </div>

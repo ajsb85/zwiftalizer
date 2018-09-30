@@ -15,7 +15,7 @@
   right: 0;
   left: 0;
   z-index: 1030;
-  background: #31cfcf;
+  background: #3153be;
   height: 3.5rem;
   max-height: 3.5rem;
   /*border-bottom: 2px solid #fff;*/
@@ -28,7 +28,7 @@
   font-size: 1.3rem;
   line-height: 2rem;
   font-family: 'Open Sans', 'Segoe UI', Arial, Helvetica, sans-serif;
-  color: rgb(49, 49, 49);
+  color: rgb(210, 205, 205);
   text-align: center;
   padding-top: 0.7rem;
 }

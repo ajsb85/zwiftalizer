@@ -1,8 +1,7 @@
-import getAllMatches from './getAllMatches'
+import getAllMatches from './getAllMatches';
 
 export default function mapFpsLines(str) {
+  const fpsRegex = /^\[[^\]]*\]\s+?fps\s+?.*$/gim;
 
-  const fpsRegex = /^\[[^\]]*\]\s+?fps\s+?.*$/gim
-
-  return getAllMatches(str, fpsRegex)
+  return getAllMatches(str, fpsRegex);
 }

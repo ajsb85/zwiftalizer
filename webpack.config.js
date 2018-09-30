@@ -15,7 +15,7 @@ const plugins = [
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production')
     //'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-  })  
+  })
 ];
 
 const common = {
@@ -46,7 +46,7 @@ const common = {
         // Options to configure babel with
         query: {
           plugins: ['transform-runtime', 'transform-object-rest-spread'],
-          presets: ['es2015', 'stage-1', 'react']          
+          presets: ['es2015', 'stage-1', 'react']
         }
       },
       {

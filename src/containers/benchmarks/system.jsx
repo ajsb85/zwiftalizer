@@ -59,7 +59,7 @@ class System extends React.Component {
     const gpuVendorLower = gpuVendor.toLowerCase();
 
     const isCurrentCpu = function isCurrentCpu(terms) {
-      const currentCpuModels = ['skylake', 'kabylake', 'coffee'];
+      const currentCpuModels = ['sky', 'kaby', 'coffee'];
       for (var i = 0; i < terms.length; i++) {
         for (var j = 0; j < currentCpuModels.length; j++) {
           if (terms[i].indexOf(currentCpuModels[j]) !== -1) {
@@ -89,30 +89,31 @@ class System extends React.Component {
         '6000',
         '6100',
         '6200',
-        'P6300',
+        'p6300',
         '510',
         '515',
         '520',
         '530',
-        'P530',
+        'p530',
         '540',
         '550',
         '555',
-        'P555',
+        'p555',
         '580',
-        'P580',
+        'p580',
         '600',
         '610',
         '615',
         '620',
         '630',
-        'P630',
+        'p630',
         '640',
         '650',
-        'MX150',
-        '840M',
-        '950M',
-        '960M'
+        'mx150',
+        '840m',
+        '940m',
+        '950m',
+        '960m'
       ];
       for (var i = 0; i < terms.length; i++) {
         for (var j = 0; j < currentGpuModels.length; j++) {
@@ -125,7 +126,7 @@ class System extends React.Component {
     };
 
     const isMobileGpu = function isMobileGpu(terms) {
-      const mobileGpuModels = ['MX150', '840M', '950M', '960M'];
+      const mobileGpuModels = ['mx150', '840m', '940m', '950m', '960m'];
       for (var i = 0; i < terms.length; i++) {
         for (var j = 0; j < mobileGpuModels.length; j++) {
           if (terms[i].indexOf(mobileGpuModels[j]) !== -1) {
@@ -164,7 +165,6 @@ class System extends React.Component {
             tag: AMAZON_UK_LABEL,
             href: `https://www.amazon.co.uk/s/?tag=${AMAZON_UK_TAG}&field-keywords=${cpuQueryTerms}`
           });
-
           cpuLinksMarkup = cpuShopLinks.map(function(link, i) {
             return (
               <li key={i}>
@@ -309,24 +309,24 @@ class System extends React.Component {
             href: `http://www.ebay.com/sch/?_ipg=200&_sop=12&_dmd=1&_nkw=${gpuQueryTerms}`
           });
         }
-      }
 
-      gpuLinksMarkup = gpuShopLinks.map(function(link, i) {
-        return (
-          <li key={i}>
-            <a target="_blank" href={link.href}>
-              {link.tag}
-            </a>
-          </li>
+        gpuLinksMarkup = gpuShopLinks.map(function(link, i) {
+          return (
+            <li key={i}>
+              <a target="_blank" href={link.href}>
+                {link.tag}
+              </a>
+            </li>
+          );
+        }, this);
+
+        gpuLinks = (
+          <div>
+            <span className={shopping.shoplinksLabel}>Buy GPU:&nbsp;</span>
+            <ul className={shopping.shoplinks}>{gpuLinksMarkup}</ul>
+          </div>
         );
-      }, this);
-
-      gpuLinks = (
-        <div>
-          <span className={shopping.shoplinksLabel}>Buy GPU:&nbsp;</span>
-          <ul className={shopping.shoplinks}>{gpuLinksMarkup}</ul>
-        </div>
-      );
+      }
     }
 
     return (
@@ -360,9 +360,9 @@ class System extends React.Component {
     var relativeMinWidth = 100;
 
     if (maxMaxResolutionProfile > 0) {
-      relativeMaxWidth = Math.round(maxFps / maxMaxResolutionProfile * 100);
-      relativeAvgWidth = Math.round(avgFps / maxMaxResolutionProfile * 100);
-      relativeMinWidth = Math.round(minFps / maxMaxResolutionProfile * 100);
+      relativeMaxWidth = Math.round((maxFps / maxMaxResolutionProfile) * 100);
+      relativeAvgWidth = Math.round((avgFps / maxMaxResolutionProfile) * 100);
+      relativeMinWidth = Math.round((minFps / maxMaxResolutionProfile) * 100);
     }
 
     let platformClass,
@@ -513,7 +513,8 @@ class System extends React.Component {
               <div className={styles.samplesOuter}>
                 <div className={styles.samplesInner}>
                   {samples}
-                  <br />Logs
+                  <br />
+                  Logs
                 </div>
               </div>
             )}

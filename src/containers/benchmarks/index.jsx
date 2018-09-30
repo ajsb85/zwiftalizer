@@ -745,7 +745,7 @@ class Benchmarks extends React.Component {
                             {totalRecords}
                           </div>
                           <div className={styles.systemsCountSubheading}>
-                            Systems with 3+ logs where min FPS >= 15)
+                            Systems with 5+ logs where min FPS >= 20)
                           </div>
                         </div>
                       </div>
@@ -785,9 +785,9 @@ class Benchmarks extends React.Component {
                             onClick={this.handleSearchClick}
                           >
                             Search
-                          </button>&nbsp;{this.renderFindMySystemControls(
-                            currentSystem
-                          )}
+                          </button>
+                          &nbsp;
+                          {this.renderFindMySystemControls(currentSystem)}
                         </div>
                       </div>
                       <div className="row">

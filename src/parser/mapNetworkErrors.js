@@ -43,34 +43,40 @@ export default function mapNetworkErrors(lines, timeAxisTimeSeries) {
       return;
     }
 
-    const timestamp = parseInt(matches[1]);
+    const timestamp = parseInt(matches[1], 10);
 
     const type = matches[2];
 
     let errorType = null;
 
     try {
-      errorType = type.split(':')[1].toLowerCase().trim();
+      errorType = type
+        .split(':')[1]
+        .toLowerCase()
+        .trim();
     } catch (e) {
       console.log('Failed to parse network error type');
       return;
     }
 
     switch (errorType) {
-      case 'error': {
-        networkErrors.points.push([timestamp, 1]);
-      }
-      break;
+      case 'error':
+        {
+          networkErrors.points.push([timestamp, 1]);
+        }
+        break;
 
-      case 'delayed': {
-        delayedPackets.points.push([timestamp, 1]);
-      }
-      break;
+      case 'delayed':
+        {
+          delayedPackets.points.push([timestamp, 1]);
+        }
+        break;
 
-      case 'invalid road time': {
-        invalidRoadTimeWarnings.points.push([timestamp, 1]);
-      }
-      break;
+      case 'invalid road time':
+        {
+          invalidRoadTimeWarnings.points.push([timestamp, 1]);
+        }
+        break;
     }
   });
 

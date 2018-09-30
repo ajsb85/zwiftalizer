@@ -30,7 +30,9 @@ export default function mapAntRxFails(
   const antLines = Array.isArray(lines) ? lines : toArray(lines);
 
   const rxFailRegex = new RegExp(
-    `^\\[[^\\]]*\\]\\s+?ant\\s+?:\\s+?rx\\s+?fail\\s+?on\\s+?channel\\s+?${device.channel}$`,
+    `^\\[[^\\]]*\\]\\s+?ant\\s+?:\\s+?rx\\s+?fail\\s+?on\\s+?channel\\s+?${
+      device.channel
+    }$`,
     'i'
   );
 
@@ -88,8 +90,8 @@ export default function mapAntRxFails(
 
   const totalMessagesMax = dataRate * timeAxisTimeSeries.count();
 
-  const failureRate = Math.round(totalRxFails / totalMessagesMax / 0.0001) /
-    100;
+  const failureRate =
+    Math.round(totalRxFails / totalMessagesMax / 0.0001) / 100;
 
   // Zero out the N seconds averages that are impossibly high -
   // when there are absolutely no rxfails in ANT_AVERAGES_WINDOW_IN_SEC seconds -
@@ -103,7 +105,8 @@ export default function mapAntRxFails(
     const interval = indexToUnixTime(e.indexAsString());
 
     const roundedInterval = parseInt(
-      `${Math.round(interval / ANT_AVERAGES_WINDOW_IN_SEC) * ANT_AVERAGES_WINDOW_IN_SEC}`,
+      `${Math.round(interval / ANT_AVERAGES_WINDOW_IN_SEC) *
+        ANT_AVERAGES_WINDOW_IN_SEC}`,
       10
     );
 

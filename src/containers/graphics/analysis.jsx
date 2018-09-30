@@ -38,7 +38,10 @@ class Analysis extends React.Component {
       const links = renderBuyLink(gpu);
       return (
         <div className={shopping.shoplinksContainer} key={i}>
-          <span className={shopping.shoplinksEditorialLabel}>{gpu}&nbsp;</span>
+          <span className={shopping.shoplinksEditorialLabel}>
+            {gpu}
+            &nbsp;
+          </span>
           <ul className={shopping.shoplinks}>{links}</ul>
         </div>
       );
@@ -71,7 +74,8 @@ class Analysis extends React.Component {
       return (
         <div className={shopping.shoplinksContainer} key={i}>
           <span className={shopping.shoplinksEditorialLabel}>
-            {system}&nbsp;
+            {system}
+            &nbsp;
           </span>
           <ul className={shopping.shoplinks}>{links}</ul>
         </div>
@@ -96,7 +100,8 @@ class Analysis extends React.Component {
       return (
         <div className={shopping.shoplinksContainer} key={i}>
           <span className={shopping.shoplinksEditorialLabel}>
-            {system}&nbsp;
+            {system}
+            &nbsp;
           </span>
           <ul className={shopping.shoplinks}>{links}</ul>
         </div>
@@ -121,7 +126,8 @@ class Analysis extends React.Component {
       return (
         <div className={shopping.shoplinksContainer} key={i}>
           <span className={shopping.shoplinksEditorialLabel}>
-            {system}&nbsp;
+            {system}
+            &nbsp;
           </span>
           <ul className={shopping.shoplinks}>{links}</ul>
         </div>
@@ -268,14 +274,14 @@ class Analysis extends React.Component {
                             {additionalFpsComment}
                           </p>
                         </div>
-                        <h3>Graphics profile</h3>
+                        {/* <h3>Graphics profile</h3>
                         <p>{profileComment}</p>
                         <h3>Graphics resolution</h3>
                         <p>{resolutionComment}</p>
                         {ultraGpuBuyLinks}
                         {ultraLaptopBuyLinks}
                         {alienWare4KBuyLinks}
-                        {alienWare1080BuyLinks}
+                        {alienWare1080BuyLinks} */}
                       </div>
                     </div>
                   </div>

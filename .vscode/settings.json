@@ -1,0 +1,9 @@
+{
+  "editor.fontSize": 13,
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "eslint.enable": true,
+  "jshint.enable": false,
+  "prettier.singleQuote": true,
+  "editor.formatOnSave": true
+}

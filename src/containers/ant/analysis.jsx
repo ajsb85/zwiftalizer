@@ -21,13 +21,15 @@ class Analysis extends React.Component {
 
   renderDeviceDropouts(device, i) {
     // because 1 search at the start is normal
-    if (!device.dropouts || device.dropouts.length === 1) {
+    if (!device.dropouts || device.dropouts.length <= 1) {
       return null;
     }
 
     const key = device.deviceId + device.channel;
 
-    let label = `Channel ${device.channel} Device ${device.deviceId} ${device.manufacturer} ${device.model}`
+    let label = `Channel ${device.channel} Device ${device.deviceId} ${
+      device.manufacturer
+    } ${device.model}`
       .replace(/\s(\s)+/, ' ')
       .trim();
 
@@ -72,7 +74,11 @@ class Analysis extends React.Component {
   }
 
   renderAntDongleBuyLinks() {
-    const productsToLink = ['Suunto Movestick Mini', 'Garmin USB ANT Stick'];
+    const productsToLink = [
+      'Anself ANT+ USB Stick Adapter Compatible With Zwift',
+      'Suunto Movestick Mini',
+      'Garmin USB ANT Stick'
+    ];
 
     const buyLinks = productsToLink.map(function(product, i) {
       const links = renderBuyLink(product);
@@ -80,7 +86,8 @@ class Analysis extends React.Component {
       return (
         <div className={shopping.shoplinksContainer} key={i}>
           <span className={shopping.shoplinksEditorialLabel}>
-            {product}&nbsp;
+            {product}
+            &nbsp;
           </span>
           <ul className={shopping.shoplinks}>{links}</ul>
         </div>
@@ -108,7 +115,8 @@ class Analysis extends React.Component {
       return (
         <div className={shopping.shoplinksContainer} key={i}>
           <span className={shopping.shoplinksEditorialLabel}>
-            {product}&nbsp;
+            {product}
+            &nbsp;
           </span>
           <ul className={shopping.shoplinks}>{links}</ul>
         </div>
@@ -141,7 +149,7 @@ class Analysis extends React.Component {
     if (countSearchesTimestamps) {
       antPlusAnalysis = this.getAntSearchesOpinion(countSearchesTimestamps);
 
-      if (countSearchesTimestamps > 1) {
+      if (countSearchesTimestamps > 3) {
         antPlusRecommendations = this.getAntPlusSignalRecommendations();
         antPlusDongleBuyLinks = this.renderAntDongleBuyLinks();
         antPlusAccessoriesBuyLinks = this.renderAntAccessoriesLinks();
@@ -201,7 +209,7 @@ class Analysis extends React.Component {
         <div className="alert alert-warning">
           <p className={editorial.alertBox}>
             <strong>Ah.</strong> Your ANT+ devices were paired several times.
-            You might want to improve your signal.
+            You might be able to improve your signal.
           </p>
         </div>
       );
@@ -210,7 +218,7 @@ class Analysis extends React.Component {
         <div className="alert alert-warning">
           <p className={editorial.alertBox}>
             <strong>Hmm.</strong> Your ANT+ devices were paired many times. You
-            definitely want to improve your signal.
+            can probably improve your signal.
           </p>
         </div>
       );

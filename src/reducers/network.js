@@ -4,7 +4,8 @@ function network(
   state = {
     reconnects: null,
     errors: null,
-    phoneConnectionAttempts: null
+    phoneConnectionAttempts: null,
+    latencyTests: null
   },
   action
 ) {

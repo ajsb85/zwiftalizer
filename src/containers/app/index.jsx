@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
-
 import PropTypes from 'prop-types';
-
 import { Link, withRouter } from 'react-router-dom';
-
 import { connect } from 'react-redux';
-
 import { loadDemo, reset } from '../../actions/parse.js';
-
 import structure from '../../styles/structure.css';
-
 import styles from './styles.css';
-
 import { AMAZON_US_TAG, AMAZON_UK_TAG } from '../../constants/index.js';
 
 const ReactGA = require('react-ga');
@@ -84,14 +77,17 @@ class App extends React.Component {
                 <div className={styles.navItem}>
                   <span className={styles.signal}>
                     <i className="fa fa-home" aria-hidden="true" />
-                  </span>&nbsp;<Link to="/">Home</Link>
+                  </span>
+                  &nbsp;
+                  <Link to="/">Home</Link>
                 </div>
               </div>
               <div className="col-sm-12 col-md-2">
                 <div className={styles.navItem}>
                   <span className={styles.signal}>
                     <i className="fa fa-play" aria-hidden="true" />
-                  </span>&nbsp;
+                  </span>
+                  &nbsp;
                   <a onClick={this.handleDemoClick}>Demo</a>
                 </div>
               </div>
@@ -100,7 +96,8 @@ class App extends React.Component {
                 <div className={styles.navItem}>
                   <span className={styles.signal}>
                     <i className="fa fa-align-left" aria-hidden="true" />
-                  </span>&nbsp;
+                  </span>
+                  &nbsp;
                   <Link to="/benchmarks">Benchmarks</Link>
                 </div>
               </div>
@@ -109,7 +106,8 @@ class App extends React.Component {
                 <div className={styles.navItem}>
                   <span className={styles.signal}>
                     <i className="fa fa-question" aria-hidden="true" />
-                  </span>&nbsp;
+                  </span>
+                  &nbsp;
                   <Link to="/help">Help</Link>
                 </div>
               </div>
@@ -127,10 +125,12 @@ class App extends React.Component {
                 <div className={styles.navPills}>
                   <a href="https://twitter.com/zwiftalizer" target="_blank">
                     <i className="fa fa-twitter" />
-                  </a>&nbsp;
+                  </a>
+                  &nbsp;
                   <Link to="/support">
                     <i className="fa fa-paypal" />
-                  </Link>&nbsp;
+                  </Link>
+                  &nbsp;
                   <a
                     href="https://github.com/mhanney/zwiftalizer"
                     target="_blank"
@@ -147,10 +147,12 @@ class App extends React.Component {
           <div className="container">
             <div className="row">
               <p>
-                If you find this site useful you can support it by following
-                our&nbsp;<a href={amzLink} target="_blank">
+                Support this site by following our&nbsp;
+                <a href={amzLink} target="_blank">
                   Amazon
-                </a>&nbsp;link before you shop (can be anything). Thank you!
+                </a>
+                &nbsp;link before shopping for anything from A to Z.{' '}
+                <i className="fa fa-amazon" /> Thanks!
               </p>
             </div>
           </div>
@@ -160,25 +162,26 @@ class App extends React.Component {
           <div className="container">
             <div className="row">
               <p>
-                By Mike Hanney&nbsp;|&nbsp;<a
+                By Mike Hanney&nbsp;|&nbsp;
+                <a
                   href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md"
                   target="_blank"
                 >
                   License
-                </a>&nbsp;|&nbsp;
-                <Link to="/termsofuse">Terms Of Use</Link>&nbsp;|&nbsp;
-                <Link to="/privacypolicy">Privacy Policy</Link>&nbsp;|&nbsp;
-                Follow&nbsp;<a
-                  href="https://twitter.com/zwiftalizer"
-                  target="_blank"
-                >
+                </a>
+                &nbsp;|&nbsp;
+                <Link to="/termsofuse">Terms Of Use</Link>
+                &nbsp;|&nbsp;
+                <Link to="/privacypolicy">Privacy Policy</Link>
+                &nbsp;|&nbsp; Follow&nbsp;
+                <a href="https://twitter.com/zwiftalizer" target="_blank">
                   &nbsp;@zwiftalizer
-                </a>&nbsp;<a
-                  href="https://twitter.com/zwiftalizer"
-                  target="_blank"
-                >
+                </a>
+                &nbsp;
+                <a href="https://twitter.com/zwiftalizer" target="_blank">
                   <i className="fa fa-twitter" />
-                </a>&nbsp;|&nbsp;Version 1.4.8
+                </a>
+                &nbsp;|&nbsp;Version 1.4.9
               </p>
             </div>
             <div className="row">
@@ -204,10 +207,8 @@ class App extends React.Component {
             <div className="row">
               <p>
                 Zwiftalizer is an open source, community supported project
-                neither endorsed by nor affiliated with&nbsp;<a
-                  href="http://zwift.com"
-                  target="_blank"
-                >
+                neither endorsed by nor affiliated with&nbsp;
+                <a href="http://zwift.com" target="_blank">
                   Zwift Inc
                 </a>
               </p>

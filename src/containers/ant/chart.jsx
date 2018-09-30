@@ -43,6 +43,8 @@ import styles from './styles.css';
 
 import { CHART_HEIGHT, BRUSH_HEIGHT } from '../../styles/constants.js';
 
+const SHOW_GRID = true;
+
 const baselineStyle = {
   line: {
     stroke: colors.steel,
@@ -191,7 +193,9 @@ class Chart extends React.Component {
   renderDevice(device, i) {
     const key = device.deviceId + device.channel;
 
-    let label = `Channel ${device.channel} Device ${device.deviceId} ${device.manufacturer} ${device.model}`
+    let label = `Channel ${device.channel} Device ${device.deviceId} ${
+      device.manufacturer
+    } ${device.model}`
       .replace(/\s(\s)+/, ' ')
       .trim();
 
@@ -220,9 +224,7 @@ class Chart extends React.Component {
         <div className="row">
           <div className="col-xs-12 col-sm-offset-1 col-sm-7">
             <div className={structure.alignLeft}>
-              <h4 className={structure.heading}>
-                {label}
-              </h4>
+              <h4 className={structure.heading}>{label}</h4>
               {calibrationMessage}
               <h5 className={structure.infoHeading}>
                 Use the mouse wheel to zoom in. Click and drag to pan.
@@ -248,7 +250,7 @@ class Chart extends React.Component {
                 minDuration={minDuration}
                 maxTime={this.state.initialRange.end()}
                 minTime={this.state.initialRange.begin()}
-                showGrid={false}
+                showGrid={SHOW_GRID}
               >
                 <ChartRow height={CHART_HEIGHT} debug={false}>
                   <YAxis
@@ -287,14 +289,13 @@ class Chart extends React.Component {
             <div className={styles.signalBoxContent}>
               <div className={styles.signalBoxTitle}>Data Rate</div>
               <div className={styles.signalBoxValue}>
-                {device.sampleRate}Hz
+                {device.sampleRate}
+                Hz
               </div>
             </div>
             <div className={styles.signalBoxContent}>
               <div className={styles.signalBoxTitle}>Avg RxFails</div>
-              <div className={styles.signalBoxValue}>
-                {device.failureRate}%
-              </div>
+              <div className={styles.signalBoxValue}>{device.failureRate}%</div>
             </div>
             <div className={styles.signalBoxContent}>
               <div className={styles.signalBoxTitle}>Searches</div>

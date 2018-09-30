@@ -8,13 +8,9 @@ import {
 import { POWER_METER_DEVICE, SMART_TRAINER_DEVICE } from '../parser/constants';
 
 const request = require('qwest');
-
 const _ = require('underscore');
-
 const moment = require('moment');
-
 const uuid = require('node-uuid');
-
 const delay = 200;
 
 export const SET_SYSTEM_DATA = 'SET_SYSTEM_DATA';
@@ -102,7 +98,8 @@ function parseActivity(log) {
     duration,
     durationFormatted,
     humanizedDuration,
-    timeAxisTimeSeries
+    timeAxisTimeSeries,
+    timerange
   });
 }
 
@@ -139,7 +136,7 @@ function parseAnt(log, timeAxisTimeSeries) {
   return antData;
 }
 
-function parseNetwork(log, timeAxisTimeSeries) {
+function parseNetwork(log, timeAxisTimeSeries, timerange) {
   const networkLines = Parser.mapNetworkLines(log);
 
   const reconnects = Parser.mapNetworkReconnects(
@@ -149,9 +146,18 @@ function parseNetwork(log, timeAxisTimeSeries) {
 
   const errors = Parser.mapNetworkErrors(networkLines, timeAxisTimeSeries);
 
+  const phoneConnectionAttempts = Parser.mapNetworkPhoneConnectionAttempts(
+    networkLines,
+    timeAxisTimeSeries
+  );
+
+  const latencyTests = Parser.mapLatencyThresholdTests(networkLines, timerange);
+
   return {
     reconnects,
-    errors
+    errors,
+    phoneConnectionAttempts,
+    latencyTests
   };
 }
 
@@ -343,7 +349,8 @@ function parseFileContents(log, isDemo = false, share = true) {
 
           networkData = parseNetwork(
             logWithoutFpsAntLines,
-            activityData.timeAxisTimeSeries
+            activityData.timeAxisTimeSeries,
+            activityData.timerange
           );
 
           btleMessages = parseBtle(
@@ -453,8 +460,7 @@ function parseFileContents(log, isDemo = false, share = true) {
             gpuDetails: systemData.gpuDetails,
             shadowres: systemData.shadowres,
             openglMajor: systemData.openglMajor,
-            gameVersion: systemData.gameVersion,
-            systemId: systemId
+            systemId
           };
 
           const panelKey = `${systemData.resolution}-${profileId}`;

@@ -1,57 +1,57 @@
-var _ = require('underscore')
+var _ = require('underscore');
 
 /**
  * Returns the last seen calibration lastCalibration
  * @param {string} str - The string
  */
 
-import toArray from './toArray'
+import toArray from './toArray';
 
-export const LITTLE_ENDIAN = 1
-export const BIG_ENDIAN = 0
+export const LITTLE_ENDIAN = 1;
+export const BIG_ENDIAN = 0;
 
 const calibrationLineRegex = /^\[[^\]]*\]\s+calibration\s+?data\s+.*$/i;
 
 const doubleByteToUint16 = function(bytes, endianness = LITTLE_ENDIAN) {
-
   // Quarq is bigendian (and maybe SRM) (most significant byte comes first)
   if (endianness === BIG_ENDIAN) {
-    return (parseInt(bytes[0]) << 8) + parseInt(bytes[1])
+    return (parseInt(bytes[0]) << 8) + parseInt(bytes[1]);
   }
 
   // else
   // ANT+ standard, littleendian (least significant byte comes first)
-  return parseInt(bytes[0]) + (parseInt(bytes[1]) << 8)
-}
+  return parseInt(bytes[0]) + (parseInt(bytes[1]) << 8);
+};
 
 export default function mapCalibrationData(lines) {
-
   if (!lines) {
-    return undefined
+    return undefined;
   }
 
-  const antLines = Array.isArray(lines) ? lines : toArray(lines)
+  const antLines = Array.isArray(lines) ? lines : toArray(lines);
 
-  const calibrations = []
+  const calibrations = [];
 
   _.each(antLines, line => {
-    calibrationLineRegex.test(line) && calibrations.push(line)
-  })
+    calibrationLineRegex.test(line) && calibrations.push(line);
+  });
 
   if (!calibrations.length) {
-    return undefined
+    return undefined;
   }
 
   // take last calibration line
-  let lastCalibration = calibrations[calibrations.length - 1]
+  let lastCalibration = calibrations[calibrations.length - 1];
 
-  const captures = lastCalibration.match(/^\[[^\]]*\]\s+?calibration\s+?data\s+?((?:\[\d{1,3}\]\s?)+)$/i)
+  const captures = lastCalibration.match(
+    /^\[[^\]]*\]\s+?calibration\s+?data\s+?((?:\[\d{1,3}\]\s?)+)$/i
+  );
 
   if (!captures) {
-    return undefined
+    return undefined;
   }
 
-  let bytes
+  let bytes;
 
   // D00001086_-_ANT+_Device_Profile_-_Bicycle_Power_-_Rev4.2.pdf
   // Page 53
@@ -79,92 +79,96 @@ export default function mapCalibrationData(lines) {
   // values ranging from -32768 to +32767
 
   try {
+    bytes = captures[1].replace(/[\[|\]]/g, '').split(' ');
 
-    bytes = captures[1].replace(/[\[|\]]/g, '').split(' ')
+    let status = undefined;
 
-    let status = undefined
-
-    let endiannessGuess = LITTLE_ENDIAN
+    let endiannessGuess = LITTLE_ENDIAN;
 
     let autoZero = false;
 
-    const calibrationID = parseInt(bytes.slice(1, 2))
+    const calibrationID = parseInt(bytes.slice(1, 2), 10);
 
     switch (calibrationID) {
-
       // SRM,
       case 1:
-        // Quarq
+      // Quarq
       case 18:
-        status = true
-        endiannessGuess = BIG_ENDIAN
+        status = true;
+        endiannessGuess = BIG_ENDIAN;
         break;
-        // ANT+ standard (saris, stages)
+      // ANT+ standard (saris, stages)
       case 172:
-        status = true
-        break
+        status = true;
+        break;
 
       case 175:
-        status = false
-        break
+        status = false;
+        break;
     }
 
-    const autoZerostatusByte = parseInt(bytes.slice(2, 3))
+    const autoZerostatusByte = parseInt(bytes.slice(2, 3), 10);
 
     switch (autoZerostatusByte) {
-
       /* standard */
       case 0:
         autoZero = false;
-        break
+        break;
 
-        /* standard */
+      /* standard */
       case 1:
-        /* Quarq */
+      /* Quarq */
       case 3:
         autoZero = true;
-        break
+        break;
 
       default:
         autoZero = undefined;
-        break
+        break;
     }
 
     // The last two bytes are the powermeter's zero offset value.
     // This is a signed two-byte number allowing for values ranging from -32768 to +32767
     // Endian-ness matters :-(
-    const zeroOffsetBytes = bytes.slice(6, 8)
+    const zeroOffsetBytes = bytes.slice(6, 8);
 
     // don't trust value of zero, or max value
 
-    if (parseInt(zeroOffsetBytes[0]) === 0 && parseInt(zeroOffsetBytes[1]) === 0) {
-      return undefined
+    if (
+      parseInt(zeroOffsetBytes[0], 10) === 0 &&
+      parseInt(zeroOffsetBytes[1], 10) === 0
+    ) {
+      return undefined;
     }
 
-    if (parseInt(zeroOffsetBytes[0]) === 255 && parseInt(zeroOffsetBytes[1]) === 255) {
-      return undefined
+    if (
+      parseInt(zeroOffsetBytes[0], 10) === 255 &&
+      parseInt(zeroOffsetBytes[1], 10) === 255
+    ) {
+      return undefined;
     }
 
-    const valueBigEndian = doubleByteToUint16(zeroOffsetBytes, BIG_ENDIAN)
+    const valueBigEndian = doubleByteToUint16(zeroOffsetBytes, BIG_ENDIAN);
 
-    const valueLittleEndian = doubleByteToUint16(zeroOffsetBytes, LITTLE_ENDIAN)
+    const valueLittleEndian = doubleByteToUint16(
+      zeroOffsetBytes,
+      LITTLE_ENDIAN
+    );
 
-    const primaryValue = endiannessGuess === BIG_ENDIAN ? valueBigEndian : valueLittleEndian
+    const primaryValue =
+      endiannessGuess === BIG_ENDIAN ? valueBigEndian : valueLittleEndian;
 
-    const secondaryValue = endiannessGuess === BIG_ENDIAN ? valueLittleEndian : valueBigEndian
+    const secondaryValue =
+      endiannessGuess === BIG_ENDIAN ? valueLittleEndian : valueBigEndian;
 
     return {
       status,
       autoZero,
-      values: [
-        primaryValue,
-        secondaryValue
-      ],
+      values: [primaryValue, secondaryValue],
       endiannessGuess
-    }
-
+    };
   } catch (e) {
-    console.log('Error parsing calibration data: ' + e)
-    return undefined
+    console.log(`Error parsing calibration data: ${e}`);
+    return undefined;
   }
 }

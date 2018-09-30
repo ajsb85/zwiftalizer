@@ -31,9 +31,9 @@ export default function reduceFps(lines, sampleWindow = '15s') {
     }
 
     try {
-      const timestamp = parseInt(matches[1]);
+      const timestamp = parseInt(matches[1], 10);
 
-      const value = parseInt(matches[2]);
+      const value = parseInt(matches[2], 10);
 
       // often, there is a junk 5 fps line before the GPU kicks in
       // skip it, but only if fpsTimeseries has no length yet (at the start)

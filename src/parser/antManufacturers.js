@@ -176,8 +176,12 @@ export default function antManufacturers(lines) {
     );
 
     if (typeof makeAndModel !== 'undefined') {
-      entry.manufacturer = makeAndModel.manufacturerName !== 'Unknown' ? makeAndModel.manufacturerName : '';
-      entry.model = makeAndModel.modelName !== 'Unknown' ? makeAndModel.modelName : '';
+      entry.manufacturer =
+        makeAndModel.manufacturerName !== 'Unknown'
+          ? makeAndModel.manufacturerName
+          : '';
+      entry.model =
+        makeAndModel.modelName !== 'Unknown' ? makeAndModel.modelName : '';
     }
 
     entry.typeName = titleCase(deviceTypes[entry.type]);

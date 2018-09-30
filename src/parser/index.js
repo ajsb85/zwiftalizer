@@ -105,3 +105,11 @@ export { default as gameVersion } from './gameVersion';
 export {
   default as getBTLEDeviceManufacturer
 } from './getBTLEDeviceManufacturer';
+
+export {
+  default as mapLatencyThresholdTests
+} from './mapLatencyThresholdTests';
+
+export {
+  default as mapNetworkPhoneConnectionAttempts
+} from './mapNetworkPhoneConnectionAttempts';
