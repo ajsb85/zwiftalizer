@@ -73,7 +73,7 @@ class App extends React.Component {
                   <Link to="/">Zwiftalizer</Link>
                 </div>
               </div>
-              <div className="col-sm-12 col-md-2">
+              <div className="col-sm-12 col-md-3">
                 <div className={styles.navItem}>
                   <span className={styles.signal}>
                     <i className="fa fa-home" aria-hidden="true" />
@@ -92,23 +92,13 @@ class App extends React.Component {
                 </div>
               </div>
 
-              <div className="col-sm-12 col-md-2">
+              <div className="col-sm-12 col-md-3">
                 <div className={styles.navItem}>
                   <span className={styles.signal}>
                     <i className="fa fa-align-left" aria-hidden="true" />
                   </span>
                   &nbsp;
                   <Link to="/benchmarks">Benchmarks</Link>
-                </div>
-              </div>
-
-              <div className="col-sm-12 col-md-2">
-                <div className={styles.navItem}>
-                  <span className={styles.signal}>
-                    <i className="fa fa-question" aria-hidden="true" />
-                  </span>
-                  &nbsp;
-                  <Link to="/help">Help</Link>
                 </div>
               </div>
 
@@ -162,7 +152,6 @@ class App extends React.Component {
           <div className="container">
             <div className="row">
               <p>
-                By Mike Hanney&nbsp;|&nbsp;
                 <a
                   href="https://github.com/mhanney/zwiftalizer/blob/master/LICENSE.md"
                   target="_blank"
@@ -181,7 +170,7 @@ class App extends React.Component {
                 <a href="https://twitter.com/zwiftalizer" target="_blank">
                   <i className="fa fa-twitter" />
                 </a>
-                &nbsp;|&nbsp;Version 1.4.9
+                &nbsp;|&nbsp;Version 1.5.0
               </p>
             </div>
             <div className="row">

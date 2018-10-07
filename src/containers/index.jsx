@@ -28,8 +28,6 @@ import { Support } from './support';
 
 import Benchmarks from './benchmarks';
 
-import { Help } from './help';
-
 import PowerSources from './powersources';
 
 import { Privacy } from './privacypolicy';
@@ -51,7 +49,6 @@ function run() {
               <Route exact path="/demo" component={Home} />
               <Route exact path="/support" component={Support} />
               <Route exact path="/benchmarks" component={Benchmarks} />
-              <Route exact path="/help" component={Help} />
               <Route exact path="/powersources" component={PowerSources} />
               <Route exact path="/privacypolicy" component={Privacy} />
               <Route exact path="/termsofuse" component={TermsOfUse} />

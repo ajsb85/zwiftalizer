@@ -14,6 +14,11 @@ This is a browser based tool to analyze the log file from the Zwift cycling
 platform and output graphics, ANT+ device and network performance charts.
 The code runs 100% in your web browser on your computer.
 
+## 1.5.0 Changes (2018-10-06)
+
+- Removed my name
+- Remove my help video
+
 ## 1.4.9 Changes (2018-09-29)
 
 - Added Failed One Leg Latency Test chart
